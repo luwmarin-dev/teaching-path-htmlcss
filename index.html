@@ -7888,7 +7888,7 @@ function updateLineNumbers() {
   const lineNumbers = document.getElementById('line-numbers');
   if (!textarea || !lineNumbers) return;
 
-  const lines = textarea.value.split('\n').length;
+  const lines = (textarea.value || '').split('\n').length;
   let numbersHtml = '';
   for (let i = 1; i <= Math.max(lines, 1); i++) {
     numbersHtml += `${i}<br>`;
