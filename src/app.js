@@ -9,9 +9,12 @@ import {
   createInitialState,
   completeLesson,
   isLessonCompleted,
+  toggleLanguage,
+  setLanguage,
   saveStateToStorage,
   loadStateFromStorage
 } from './modules/state.js';
+import { t, UI_TEXT } from './modules/i18n.js';
 import { playSound } from './modules/audio.js';
 import { triggerConfetti } from './modules/confetti.js';
 import { TEMPLATES, downloadHtmlFile } from './modules/sandbox.js';
@@ -25,6 +28,18 @@ let currentCode = '';
 // DOM Elements Cache
 const elements = {};
 
+/**
+ * Resolves a bilingual string or object: { en: '...', uz: '...' }
+ */
+export function localize(val, lang = 'en') {
+  if (val === null || val === undefined) return '';
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object') {
+    return val[lang] || val.en || Object.values(val)[0] || '';
+  }
+  return String(val);
+}
+
 export function initApp() {
   cacheElements();
   attachGlobalListeners();
@@ -35,6 +50,7 @@ export function initApp() {
 function cacheElements() {
   elements.app = document.body;
   elements.starCount = document.getElementById('star-count');
+  elements.btnLang = document.getElementById('btn-lang');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnSandbox = document.getElementById('btn-sandbox');
@@ -42,17 +58,31 @@ function cacheElements() {
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
   elements.progressFill = document.getElementById('progress-fill');
   elements.progressText = document.getElementById('progress-text');
+  elements.progressTitle = document.getElementById('progress-title');
 
   elements.workspaceStage = document.getElementById('workspace-stage');
   elements.confettiCanvas = document.getElementById('confetti-canvas');
 }
 
 function attachGlobalListeners() {
+  // Language Toggle (English <-> Uzbek)
+  elements.btnLang?.addEventListener('click', () => {
+    state = toggleLanguage(state);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+    applyStateToUI();
+    if (currentView === 'sandbox') {
+      renderSandboxView();
+    } else {
+      renderLessonView();
+    }
+  });
+
   // Audio toggle
   elements.btnAudio?.addEventListener('click', () => {
     state.audioEnabled = !state.audioEnabled;
     saveStateToStorage(state);
-    elements.btnAudio.textContent = state.audioEnabled ? '🔊 Sound: ON' : '🔇 Sound: OFF';
+    elements.btnAudio.textContent = state.audioEnabled ? t('soundOn', state.lang) : t('soundOff', state.lang);
     playSound('click', state.audioEnabled);
   });
 
@@ -92,8 +122,19 @@ function attachGlobalListeners() {
 
 function applyStateToUI() {
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
-  if (elements.btnTeacher) elements.btnTeacher.classList.toggle('active', state.teacherMode);
-  if (elements.btnAudio) elements.btnAudio.textContent = state.audioEnabled ? '🔊 Sound: ON' : '🔇 Sound: OFF';
+  if (elements.btnLang) {
+    elements.btnLang.textContent = state.lang === 'uz' ? '🇬🇧 English' : '🇺🇿 O\'zbekcha';
+  }
+  if (elements.btnTeacher) {
+    elements.btnTeacher.classList.toggle('active', state.teacherMode);
+    elements.btnTeacher.textContent = t('teacherTips', state.lang);
+  }
+  if (elements.btnAudio) {
+    elements.btnAudio.textContent = state.audioEnabled ? t('soundOn', state.lang) : t('soundOff', state.lang);
+  }
+  if (elements.btnSandbox) {
+    elements.btnSandbox.textContent = t('freeSandbox', state.lang);
+  }
   updateProgressUI();
   renderSidebar();
 }
@@ -104,7 +145,8 @@ function updateProgressUI() {
   const percent = Math.round((completed / total) * 100);
 
   if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
-  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} Lessons (${percent}%)`;
+  const unitName = state.lang === 'uz' ? 'Mavzular' : 'Lessons';
+  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} ${unitName} (${percent}%)`;
 }
 
 function renderSidebar() {
@@ -115,7 +157,7 @@ function renderSidebar() {
     const modLessons = LESSONS.filter(l => l.module === mod.id);
     if (modLessons.length === 0) return;
 
-    html += `<div class="nav-section-title">${mod.title}</div>`;
+    html += `<div class="nav-section-title">${localize(mod.title, state.lang)}</div>`;
     html += `<ul class="lesson-list">`;
     modLessons.forEach(lesson => {
       const isCompleted = isLessonCompleted(state, lesson.id);
@@ -123,7 +165,7 @@ function renderSidebar() {
       html += `
         <li class="lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-lesson-id="${lesson.id}">
           <span class="lesson-item-icon">${lesson.icon}</span>
-          <span class="lesson-item-text">${lesson.title}</span>
+          <span class="lesson-item-text">${localize(lesson.title, state.lang)}</span>
         </li>
       `;
     });
@@ -218,33 +260,36 @@ function renderLessonView() {
         <div class="banner-meta">
           <span class="badge-module">${lesson.module.toUpperCase()}</span>
           <span class="badge-tags">${lesson.tag}</span>
-          ${isCompleted ? '<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">✅ Completed!</span>' : ''}
+          ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${t('completedTag', state.lang)}</span>` : ''}
         </div>
-        <h2 class="banner-title">${lesson.icon} ${lesson.title}</h2>
-        <p class="banner-summary">${lesson.summary}</p>
+        <h2 class="banner-title">${lesson.icon} ${localize(lesson.title, state.lang)}</h2>
+        <p class="banner-summary">${localize(lesson.summary, state.lang)}</p>
       </div>
-      <div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <button id="btn-start-practice" class="btn-header" style="background: var(--primary); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 108, 247, 0.4);" title="${t('startPractice', state.lang)}">
+          ${t('startPractice', state.lang)}
+        </button>
         <button id="btn-tag-list" class="btn-header" style="background: rgba(124, 108, 247, 0.2); color: #c8d3f5; border-color: var(--primary); font-weight: 800;">
-          📋 List of Tags
+          ${t('listOfTags', state.lang)}
         </button>
       </div>
     </div>
 
     <!-- Teacher Coaching Playbook (Toggleable) -->
     <div id="teacher-playbook-box" class="teacher-playbook" style="${state.teacherMode ? 'display:block' : 'display:none'}">
-      <h4>🧑‍🏫 Teacher Coaching Guide</h4>
+      <h4>${t('teacherTips', state.lang)}</h4>
       <div class="teacher-playbook-grid">
         <div class="teacher-item">
           <strong>💡 Kid Analogy:</strong>
-          <span>${lesson.teacherGuide.analogy}</span>
+          <span>${localize(lesson.teacherGuide.analogy, state.lang)}</span>
         </div>
         <div class="teacher-item">
           <strong>🗣️ Question to Ask Aloud:</strong>
-          <span>${lesson.teacherGuide.discussionQuestions[0] || ''}</span>
+          <span>${localize(lesson.teacherGuide.discussionQuestions?.[0], state.lang)}</span>
         </div>
         <div class="teacher-item">
           <strong>⚠️ Watch Out For:</strong>
-          <span>${lesson.teacherGuide.commonMistakes[0] || ''}</span>
+          <span>${localize(lesson.teacherGuide.commonMistakes?.[0], state.lang)}</span>
         </div>
       </div>
     </div>
@@ -264,17 +309,17 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>💻</span> Code (Edit Here)
+            <span>💻</span> ${t('codeEditorTitle', state.lang)}
           </div>
           <div class="pane-tools">
-            <button id="btn-reset-code" class="btn-tool" title="Reset back to example">🔄 Reset</button>
-            <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 Copy</button>
+            <button id="btn-reset-code" class="btn-tool" title="${t('resetCode', state.lang)}">${t('resetCode', state.lang)}</button>
+            <button id="btn-copy-code" class="btn-tool" title="${t('copyBtn', state.lang)}">${t('copyBtn', state.lang)}</button>
           </div>
         </div>
 
         <!-- Quick Tag Shortcuts -->
         <div class="quick-tags-bar">
-          <span class="quick-tag-label">Tags:</span>
+          <span class="quick-tag-label">${t('tagsLabel', state.lang)}</span>
           ${lesson.quickTags.map(t => `<button class="tag-chip" data-tag="${t}">${escapeHtml(t)}</button>`).join('')}
         </div>
 
@@ -289,12 +334,12 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>👁️</span> What the Browser Draws
+            <span>👁️</span> ${t('browserPreviewTitle', state.lang)}
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">Your Result</button>
-            <button id="tab-target" class="prev-tab-btn">🎯 Target Goal</button>
-            <button id="tab-side" class="prev-tab-btn">⚖️ Compare</button>
+            <button id="tab-live" class="prev-tab-btn active">${t('yourResultTab', state.lang)}</button>
+            <button id="tab-target" class="prev-tab-btn">${t('targetGoalTab', state.lang)}</button>
+            <button id="tab-side" class="prev-tab-btn">${t('compareTab', state.lang)}</button>
           </div>
         </div>
 
@@ -307,12 +352,12 @@ function renderLessonView() {
     <!-- Bottom Action Dock -->
     <div class="mission-dock">
       <div>
-        <div class="mission-tag">🎯 Mission</div>
-        <div class="mission-text">${lesson.challenge.mission}</div>
+        <div class="mission-tag">${t('missionTag', state.lang)}</div>
+        <div class="mission-text">${localize(lesson.challenge.mission, state.lang)}</div>
       </div>
       <div class="mission-actions">
-        <button id="btn-hint" class="btn-hint">💡 Hint</button>
-        <button id="btn-verify-mission" class="btn-verify">🚀 Check My Code!</button>
+        <button id="btn-hint" class="btn-hint">${t('hintBtn', state.lang)}</button>
+        <button id="btn-verify-mission" class="btn-verify">${t('checkCodeBtn', state.lang)}</button>
       </div>
     </div>
   `;
@@ -328,12 +373,12 @@ function renderHumanIntro(lesson) {
   return `
     <div class="human-intro-card">
       <div class="human-intro-item">
-        <h4>💡 In Human Language: What is this?</h4>
-        <p>${lesson.humanIntro.whatIsIt}</p>
+        <h4>${t('humanLanguageHeader', state.lang)}</h4>
+        <p>${localize(lesson.humanIntro.whatIsIt, state.lang)}</p>
       </div>
       <div class="human-intro-item">
-        <h4>🥪 The Secret Tag Sandwich: Opening vs Closing</h4>
-        <p>${lesson.humanIntro.whatIsATag}</p>
+        <h4>${t('tagSandwichHeader', state.lang)}</h4>
+        <p>${localize(lesson.humanIntro.whatIsATag, state.lang)}</p>
       </div>
     </div>
   `;
@@ -344,14 +389,17 @@ function renderTagShowcase(lesson) {
 
   return `
     <div class="tag-showcase-bar">
-      <span class="showcase-label">🏷️ Simple Tags to Know:</span>
+      <span class="showcase-label">${t('tagShowcaseHeader', state.lang)}</span>
       <div class="showcase-chips">
-        ${lesson.tagShowcase.map(t => `
-          <div class="showcase-chip" title="${t.meaning}">
+        ${lesson.tagShowcase.map(t => {
+          const meaningStr = localize(t.meaning, state.lang);
+          return `
+          <div class="showcase-chip" title="${meaningStr}">
             <code>${escapeHtml(t.tag)}</code>
-            <span>${t.meaning}</span>
+            <span>${meaningStr}</span>
           </div>
-        `).join('')}
+        `;
+        }).join('')}
       </div>
     </div>
   `;
@@ -363,19 +411,19 @@ function renderAnatomySection(lesson) {
   return `
     <div class="step-breakdown-card">
       <div class="step-card-header">
-        <h3>🔍 Step-by-Step Breakdown: What Each Part Does to the Result</h3>
+        <h3>${t('stepBreakdownHeader', state.lang)}</h3>
       </div>
       <div class="step-grid">
         ${lesson.anatomy.map(step => `
           <div class="step-item">
             <div class="step-part-row">
               <span class="step-code-chip">${escapeHtml(step.part)}</span>
-              <span class="step-role-badge">${step.role}</span>
+              <span class="step-role-badge">${localize(step.role, state.lang)}</span>
             </div>
-            <div class="step-explanation">${step.explanation}</div>
+            <div class="step-explanation">${localize(step.explanation, state.lang)}</div>
             <div class="step-effect">
               <span>👉</span>
-              <span><strong>Result:</strong> ${step.effect}</span>
+              <span><strong>${t('resultCallout', state.lang)}</strong> ${localize(step.effect, state.lang)}</span>
             </div>
           </div>
         `).join('')}
@@ -385,7 +433,8 @@ function renderAnatomySection(lesson) {
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function setupLessonListeners(lesson) {
@@ -421,7 +470,18 @@ function setupLessonListeners(lesson) {
     });
   });
 
-  // Reset
+  // Start Practice Button: loads starter code, smoothly scrolls to editor, focuses textarea
+  document.getElementById('btn-start-practice')?.addEventListener('click', () => {
+    textarea.value = lesson.initialCode;
+    currentCode = lesson.initialCode;
+    updateLivePreview();
+    updateLineNumbers();
+    playSound('click', state.audioEnabled);
+    document.querySelector('.code-editor-wrapper')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    textarea.focus();
+  });
+
+  // Reset to initial starter code
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
     textarea.value = lesson.initialCode;
     currentCode = lesson.initialCode;
@@ -434,8 +494,8 @@ function setupLessonListeners(lesson) {
   document.getElementById('btn-copy-code')?.addEventListener('click', () => {
     navigator.clipboard?.writeText(textarea.value);
     const btn = document.getElementById('btn-copy-code');
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
+    btn.textContent = t('copiedMsg', state.lang);
+    setTimeout(() => { btn.textContent = t('copyBtn', state.lang); }, 1500);
   });
 
   // List of Tags Button
@@ -449,7 +509,8 @@ function setupLessonListeners(lesson) {
   // Hint
   document.getElementById('btn-hint')?.addEventListener('click', () => {
     playSound('click', state.audioEnabled);
-    alert(`💡 HINT:\n\n${lesson.challenge.hint}`);
+    const hintText = localize(lesson.challenge.hint, state.lang);
+    alert(`💡 HINT / MASLAHAT:\n\n${hintText}`);
   });
 
   // Check code
@@ -516,8 +577,8 @@ function setupPreviewTabs(lesson) {
     previewContainer.innerHTML = `
       <div class="target-view-container">
         <div class="target-explanation-box">
-          <strong>🎯 What the Result Should Look Like:</strong>
-          <p style="margin: 4px 0 0; white-space: pre-line;">${lesson.targetDescription}</p>
+          <strong>${t('targetExplanationTitle', state.lang)}</strong>
+          <p style="margin: 4px 0 0; white-space: pre-line;">${localize(lesson.targetDescription, state.lang)}</p>
         </div>
         <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
       </div>
@@ -536,11 +597,11 @@ function setupPreviewTabs(lesson) {
     previewContainer.innerHTML = `
       <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%;">
         <div style="border-right: 1px solid var(--border-color); display: flex; flex-direction: column;">
-          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">YOUR RESULT</div>
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">${t('yourResultTab', state.lang).toUpperCase()}</div>
           <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
         <div style="display: flex; flex-direction: column;">
-          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">TARGET GOAL</div>
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">${t('targetGoalTab', state.lang).toUpperCase()}</div>
           <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
       </div>
@@ -564,32 +625,32 @@ function openTagListModal(lesson) {
     <div class="modal-card tag-list-modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
         <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-          <span>📋</span> List of Tags: ${lesson.title}
+          <span>📋</span> ${t('tagListModalTitle', state.lang)}: ${localize(lesson.title, state.lang)}
         </h3>
         <button id="btn-close-tag-modal" style="font-size: 16px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px;">✕</button>
       </div>
 
       <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">
-        Here are all the codes and tags you learn in this theme. Click any code chip to copy it!
+        ${t('tagListDesc', state.lang)}
       </p>
 
       <div class="tag-list-table-wrapper">
         <table class="tag-list-table">
           <thead>
             <tr>
-              <th style="width: 32%;">Code / Tag</th>
-              <th style="width: 25%;">Name</th>
-              <th>Meaning (What It Does)</th>
+              <th style="width: 32%;">${t('colCode', state.lang)}</th>
+              <th style="width: 25%;">${t('colName', state.lang)}</th>
+              <th>${t('colMeaning', state.lang)}</th>
             </tr>
           </thead>
           <tbody>
-            ${lesson.listOfTags.map(t => `
+            ${lesson.listOfTags.map(tg => `
               <tr>
                 <td>
-                  <code class="tag-code-pill" title="Click to copy" data-code="${escapeHtml(t.code)}">${escapeHtml(t.code)}</code>
+                  <code class="tag-code-pill" title="Click to copy" data-code="${escapeHtml(tg.code)}">${escapeHtml(tg.code)}</code>
                 </td>
-                <td style="font-weight: 700; color: var(--accent-amber);">${t.name}</td>
-                <td style="color: var(--text-main); font-size: 12px;">${t.description}</td>
+                <td style="font-weight: 700; color: var(--accent-amber);">${localize(tg.name, state.lang)}</td>
+                <td style="color: var(--text-main); font-size: 12px;">${localize(tg.description, state.lang)}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -597,7 +658,7 @@ function openTagListModal(lesson) {
       </div>
 
       <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
-        <button id="btn-close-tag-modal-bottom" class="btn-modal btn-modal-primary">Done</button>
+        <button id="btn-close-tag-modal-bottom" class="btn-modal btn-modal-primary">${t('doneBtn', state.lang)}</button>
       </div>
     </div>
   `;
@@ -609,7 +670,7 @@ function openTagListModal(lesson) {
       const code = pill.getAttribute('data-code');
       navigator.clipboard?.writeText(code);
       const originalText = pill.textContent;
-      pill.textContent = '✅ Copied!';
+      pill.textContent = t('copiedMsg', state.lang);
       setTimeout(() => { pill.textContent = originalText; }, 1200);
       playSound('click', state.audioEnabled);
     });
@@ -651,16 +712,16 @@ function showCelebrationModal(lesson, wasAlreadyCompleted) {
   modal.innerHTML = `
     <div class="modal-card">
       <div class="modal-icon">🎉</div>
-      <h3 class="modal-title">MISSION COMPLETE!</h3>
+      <h3 class="modal-title">${t('modalCompleteTitle', state.lang)}</h3>
       <div class="modal-body">
-        <p>Awesome! You mastered <strong>${lesson.title}</strong>!</p>
+        <p>${state.lang === 'uz' ? `Ajoyib! Siz <strong>${localize(lesson.title, state.lang)}</strong> mavzusini muvaffaqiyatli o'zlashtirdingiz!` : `Awesome! You mastered <strong>${localize(lesson.title, state.lang)}</strong>!`}</p>
         <p style="margin-top: 8px; font-size: 15px; color: var(--accent-amber); font-weight: 800;">
-          ${wasAlreadyCompleted ? '⭐ Mission verified again!' : '+3 STARS EARNED! ⭐⭐⭐'}
+          ${wasAlreadyCompleted ? (state.lang === 'uz' ? '⭐ Vazifa qayta tasdiqlandi!' : '⭐ Mission verified again!') : t('starsEarnedMsg', state.lang)}
         </p>
       </div>
       <div class="modal-actions">
-        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">Stay Here</button>
-        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">Next Lesson ➡️</button>` : ''}
+        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">${t('stayHereBtn', state.lang)}</button>
+        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">${t('nextLessonBtn', state.lang)}</button>` : ''}
       </div>
     </div>
   `;
@@ -680,15 +741,15 @@ function showTryAgainModal(feedback) {
   modal.innerHTML = `
     <div class="modal-card">
       <div class="modal-icon">🧐</div>
-      <h3 class="modal-title" style="color: var(--accent-red);">Almost There!</h3>
+      <h3 class="modal-title" style="color: var(--accent-red);">${t('tryAgainTitle', state.lang)}</h3>
       <div class="modal-body">
-        <p>Take a quick look at your code:</p>
+        <p>${t('tryAgainBody', state.lang)}</p>
         <div style="background: rgba(248, 113, 113, 0.15); border-radius: 8px; padding: 10px; margin-top: 8px; color: var(--accent-red); text-align: left; font-weight: bold; font-size: 12px;">
           ${feedback.map(f => `<div>• ${f}</div>`).join('')}
         </div>
       </div>
       <div class="modal-actions">
-        <button id="btn-modal-retry" class="btn-modal btn-modal-primary">Let Me Try Again! 💪</button>
+        <button id="btn-modal-retry" class="btn-modal btn-modal-primary">${t('retryBtn', state.lang)}</button>
       </div>
     </div>
   `;
@@ -707,8 +768,8 @@ function renderSandboxView() {
         <div class="banner-meta">
           <span class="badge-module">FREE PLAY</span>
         </div>
-        <h2 class="banner-title">🚀 Free Coding Sandbox</h2>
-        <p class="banner-summary">Build whatever you want! Download your real webpage when you're done.</p>
+        <h2 class="banner-title">${t('freeSandbox', state.lang)}</h2>
+        <p class="banner-summary">${state.lang === 'uz' ? 'Xohlagan narsangizni quring! Ishingiz tugagach haqiqiy .html fayl sifatida yuklab oling.' : 'Build whatever you want! Download your real webpage when you\'re done.'}</p>
       </div>
       <div>
         <button id="btn-download-html" class="btn-header" style="background: var(--accent-green); color: #000; border: none; font-weight: 800;">
@@ -719,7 +780,7 @@ function renderSandboxView() {
 
     <!-- Template Pills -->
     <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 8px 24px; display: flex; align-items: center; gap: 8px;">
-      <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">Templates:</span>
+      <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">${state.lang === 'uz' ? 'Andozalar:' : 'Templates:'}</span>
       ${TEMPLATES.map(t => `<button class="tag-chip btn-tpl" data-tpl="${t.id}">${t.name}</button>`).join('')}
     </div>
 
@@ -729,7 +790,7 @@ function renderSandboxView() {
         <div class="pane-header">
           <div class="pane-title"><span>💻</span> HTML &amp; CSS Code</div>
           <div class="pane-tools">
-            <button id="btn-sb-copy" class="btn-tool">📋 Copy</button>
+            <button id="btn-sb-copy" class="btn-tool">${t('copyBtn', state.lang)}</button>
           </div>
         </div>
         <div class="code-editor-wrapper">
@@ -740,7 +801,7 @@ function renderSandboxView() {
 
       <div class="pane-card">
         <div class="pane-header">
-          <div class="pane-title"><span>👁️</span> Live Webpage Preview</div>
+          <div class="pane-title"><span>👁️</span> ${t('browserPreviewTitle', state.lang)}</div>
         </div>
         <div class="preview-wrapper">
           <iframe id="sb-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
@@ -798,8 +859,8 @@ function renderSandboxView() {
   document.getElementById('btn-sb-copy')?.addEventListener('click', () => {
     navigator.clipboard?.writeText(textarea.value);
     const btn = document.getElementById('btn-sb-copy');
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
+    btn.textContent = t('copiedMsg', state.lang);
+    setTimeout(() => { btn.textContent = t('copyBtn', state.lang); }, 1500);
   });
 
   updateSbPreview();

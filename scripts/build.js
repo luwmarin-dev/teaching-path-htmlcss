@@ -16,6 +16,7 @@ function cleanModule(code) {
 }
 
 const curriculumCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/curriculum.js'), 'utf-8'));
+const i18nCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/i18n.js'), 'utf-8'));
 const validatorCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/validator.js'), 'utf-8'));
 const stateCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/state.js'), 'utf-8'));
 const audioCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/audio.js'), 'utf-8'));
@@ -38,6 +39,9 @@ const bundledJs = `/**
 
   // --- Curriculum Module ---
   ${curriculumCode}
+
+  // --- i18n Module ---
+  ${i18nCode}
 
   // --- Validator Module ---
   ${validatorCode}

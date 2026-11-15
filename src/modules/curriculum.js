@@ -908,125 +908,156 @@ export const LESSONS = [
   },
 
   // ==========================================
+// ==========================================
   // THEME 9: Flexbox Superpowers
   // ==========================================
   {
     id: 'theme-9-flexbox',
     module: 'full-powers',
-    title: 'Theme 9: Flexbox (Snapping Items in Line)',
+    title: {
+      en: 'Theme 9: Flexbox (Snapping Items in Line)',
+      uz: '9-Mavzu: Flexbox (Elementlarni Bir Qatorga Terish)'
+    },
     icon: '🧩',
     tag: 'display: flex, justify-content, gap',
     humanIntro: {
-      whatIsIt: 'In human language, **Flexbox** is the LEGO snap system of web layout! Without it, elements stack vertically like pancakes.',
-      whatIsATag: 'When you whisper `display: flex;` to a parent box, all the children inside snap into a neat horizontal row like ducks in a line!'
+      whatIsIt: {
+        en: 'In human language, **Flexbox** is the LEGO snap system of web layout! Without it, elements stack vertically like pancakes.',
+        uz: 'Oddiy tilda **Flexbox** — bu veb-sahifa elementlarini xuddi LEGO g\'ishtlari kabi bir tekis teruvchi tizimdir! Usiz hamma narsa ustma-ust tushib qoladi.'
+      },
+      whatIsATag: {
+        en: 'When you whisper `display: flex;` to a parent box, all the children inside snap into a neat horizontal row like ducks in a line!',
+        uz: 'Katta qutiga `display: flex;` deb yozsangiz, uning ichidagi barcha bolalar bir tekis gorizontal qatorga tiziladi!'
+      }
     },
-    summary: 'Line up buttons, badges, and cards side-by-side with display: flex, justify-content, and gap.',
-    story: 'Before flexbox, putting items side-by-side was hard. display: flex makes it instant!',
+    summary: {
+      en: 'Line up buttons, badges, and cards side-by-side with display: flex, justify-content, and gap.',
+      uz: 'Tugmalar, nishonlar va kartochkalarni display: flex, justify-content va gap yordamida yonma-yon joylashtiring.'
+    },
+    story: {
+      en: 'Before flexbox, putting items side-by-side was hard. display: flex makes it instant!',
+      uz: 'Flexboxdan oldin elementlarni yonma-yon qo\'yish juda qiyin edi. display: flex buni bir zumda osonlashtiradi!'
+    },
     initialCode: `<style>
-  .row {
-    background: #1e2030;
-    padding: 16px;
-    /* Add flex superpowers here! */
+  .badge-row {
+    background: #1c1e2f;
+    padding: 20px;
+    border-radius: 12px;
+    /* Add flexbox powers here! */
   }
-  .item {
-    background: #fbbf24;
-    color: #000000;
-    font-weight: bold;
+  .badge {
+    background: #7c6cf7;
+    color: white;
     padding: 10px 18px;
-    border-radius: 8px;
-    margin: 4px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
   }
 </style>
 
-<div class="row">
-  <div class="item">🤖 Bot</div>
-  <div class="item">🐱 Cat</div>
-  <div class="item">🚀 Rocket</div>
+<div class="badge-row">
+  <div class="badge">⭐ Hero</div>
+  <div class="badge">⚡ Legend</div>
+  <div class="badge">🔥 Master</div>
 </div>`,
     targetCode: `<style>
-  .row {
-    background: #1e2030;
-    padding: 16px;
+  .badge-row {
+    background: #1c1e2f;
+    padding: 20px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     gap: 16px;
   }
-  .item {
-    background: #fbbf24;
-    color: #000000;
-    font-weight: bold;
+  .badge {
+    background: #7c6cf7;
+    color: white;
     padding: 10px 18px;
-    border-radius: 8px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
   }
 </style>
 
-<div class="row">
-  <div class="item">🤖 Bot</div>
-  <div class="item">🐱 Cat</div>
-  <div class="item">🚀 Rocket</div>
+<div class="badge-row">
+  <div class="badge">⭐ Hero</div>
+  <div class="badge">⚡ Legend</div>
+  <div class="badge">🔥 Master</div>
 </div>`,
-    targetDescription: 'The 3 team member badges snap from a vertical column into a horizontal row, neatly centered with 16px gap spacing.',
+    targetDescription: {
+      en: 'Three hero badges side-by-side centered with neat 16px space between them.',
+      uz: 'O\'rtaga chiroyli tekislangan va orasida 16px masofa bo\'lgan 3 ta qahramon nishonlari.'
+    },
     anatomy: [
       {
         part: 'display: flex;',
-        role: 'Flex Superpower',
-        explanation: 'Snaps all child elements into a single horizontal row.',
-        effect: 'Puts items side-by-side'
+        role: { en: 'Flex Activation', uz: 'Flexni faollashtirish' },
+        explanation: { en: 'Tells the parent: "Snap all children into a horizontal row!"', uz: 'Ona qutiga: "Barcha bolalarni gorizontal qatorga tiz!" deb buyuradi.' },
+        effect: { en: 'Snaps items side-by-side', uz: 'Elementlarni yonma-yon teradi' }
       },
       {
         part: 'justify-content: center;',
-        role: 'Lineup Position',
-        explanation: 'Centers all the items together in the middle of the row.',
-        effect: 'Centers items horizontally'
+        role: { en: 'Horizontal Alignment', uz: 'Gorizontal tekislash' },
+        explanation: { en: 'Centers the group of items in the middle of the screen.', uz: 'Elementlar guruhini sahifaning qoq o\'rtasiga joylashtiradi.' },
+        effect: { en: 'Centers items horizontally', uz: 'Markazga tekislaydi' }
       },
       {
         part: 'gap: 16px;',
-        role: 'Spacer',
-        explanation: 'Creates clean breathing room between each item without messy margins.',
-        effect: 'Adds equal space between items'
+        role: { en: 'Space Between', uz: 'Oraliq masofa' },
+        explanation: { en: 'Puts neat breathing room between each badge without tricky margins.', uz: 'Elementlar orasiga 16px bo\'shliq qo\'yadi.' },
+        effect: { en: 'Even spacing between children', uz: 'Elementlar orasida bo\'shliq' }
       }
     ],
     listOfTags: [
-      { code: 'display: flex;', name: 'Flex Container', description: 'Activates flexbox layout on the parent container', exampleHtml: 'display: flex;' },
-      { code: 'justify-content: center;', name: 'Justify Center', description: 'Centers all items horizontally in the middle', exampleHtml: 'justify-content: center;' },
-      { code: 'justify-content: space-between;', name: 'Space Between', description: 'Pushes first item to far left, last to far right', exampleHtml: 'space-between' },
-      { code: 'align-items: center;', name: 'Align Items', description: 'Centers all items vertically', exampleHtml: 'align-items: center;' },
-      { code: 'gap: 16px;', name: 'Flex Gap', description: 'Creates equal spacing between items', exampleHtml: 'gap: 16px;' }
+      { code: 'display: flex;', name: { en: 'Flex Container', uz: 'Flex Idish' }, description: { en: 'Lines up all child items horizontally in one row', uz: 'Ichidagi bolalarni bir qatorga yonma-yon teradi' } },
+      { code: 'justify-content: center;', name: { en: 'Center Alignment', uz: 'Markazga tekislash' }, description: { en: 'Centers items horizontally inside the flex container', uz: 'Elementlarni gorizontal bo\'yicha o\'rtaga suradi' } },
+      { code: 'gap: 16px;', name: { en: 'Gap Spacing', uz: 'Oraliq masofa' }, description: { en: 'Adds clean space between all child items', uz: 'Bolalar orasiga bir xil masofa qo\'shadi' } }
     ],
     tagShowcase: [
-      { tag: 'display: flex;', meaning: 'Snap items side-by-side' },
-      { tag: 'justify-content: center;', meaning: 'Line up in the middle' },
-      { tag: 'gap: 16px;', meaning: 'Equal air space between' }
+      { tag: 'display: flex;', meaning: { en: 'Snap into row', uz: 'Qatorga tizish' } },
+      { tag: 'gap: 16px;', meaning: { en: 'Space between', uz: 'Oraliq masofa' } },
+      { tag: 'justify-content: center;', meaning: { en: 'Center items', uz: 'O\'rtaga joylash' } }
     ],
-    quickTags: ['display: flex;', 'justify-content: center;', 'justify-content: space-between;', 'gap: 16px;'],
+    quickTags: ['display: flex;', 'gap: 16px;', 'justify-content: center;'],
     challenge: {
-      mission: 'Add display: flex;, justify-content: center;, and gap: 16px; inside .row!',
-      hint: 'Inside .row { ... }, write display: flex; justify-content: center; gap: 16px;',
+      mission: {
+        en: 'Add display: flex; and gap: 16px; to .badge-row to arrange the badges side-by-side!',
+        uz: '.badge-row ga display: flex; va gap: 16px; qo\'shib nishonlarni yonma-yon qilib tering!'
+      },
+      hint: {
+        en: 'Inside .badge-row { ... } add display: flex; and gap: 16px;',
+        uz: '.badge-row { ... } ichiga display: flex; va gap: 16px; yozing.'
+      },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'display',
           valuePattern: /flex/i,
-          message: 'Set display: flex; on .row!'
+          message: 'Add display: flex; to .badge-row!'
         },
         {
           type: 'hasCssProperty',
-          property: 'justify-content',
-          valuePattern: /center|space-between|space-around/i,
-          message: 'Add justify-content: center; on .row!'
+          property: 'gap',
+          valuePattern: /16px/i,
+          message: 'Add gap: 16px; to .badge-row!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Flexbox is like a magnetic train track: cars immediately latch together in a neat row.',
+      analogy: {
+        en: 'A row of ducklings following their mom in a neat straight line.',
+        uz: 'Ona o\'rdak ortidan bitta tekis qatorda yurgan o\'rdakchalar.'
+      },
       discussionQuestions: [
-        'What happens if you change justify-content to space-between?',
-        'Does display: flex go on the parent container or the child item?'
+        { en: 'What happened to the badges before flex? (They stacked vertically!)', uz: 'Flexdan oldin nishonlar qanday edi? (Ustma-ust tushgan edi!)' }
       ],
       commonMistakes: [
-        'Putting display: flex on .item instead of the parent .row'
+        { en: 'Adding display: flex to the badge instead of badge-row', uz: 'display: flex ni badge-row ga emas, badge ga yozish' }
       ],
-      funActivity: 'Try justify-content: space-between to push the rocket and robot to opposite walls!'
+      funActivity: {
+        en: 'Try justify-content: space-between; to push them to opposite walls!',
+        uz: 'justify-content: space-between; qilib ko\'ring va nishonlar chetlarga surilishini tomosha qiling!'
+      }
     }
   },
 
@@ -1036,273 +1067,356 @@ export const LESSONS = [
   {
     id: 'theme-10-buttons',
     module: 'full-powers',
-    title: 'Theme 10: Buttons & Hover Glows',
-    icon: '✨',
-    tag: '<button>, :hover, transition',
-    humanIntro: {
-      whatIsIt: 'In human language, **Hover** is what makes video games feel responsive and alive! When your mouse pointer passes over an item, it zooms or glows.',
-      whatIsATag: '`:hover` is a CSS pseudo-class that triggers styles only when the cursor is over the element. `transition: transform 0.2s;` makes it animate silky smooth!'
+    title: {
+      en: 'Theme 10: Buttons & Hover Glows (:hover)',
+      uz: '10-Mavzu: Tugmalar va Sichqoncha Effekti (:hover)'
     },
-    summary: 'Make buttons spring to life with hover zoom and silky smooth transitions.',
-    story: 'Hover is like a pet wagging its tail when you reach out your hand.',
+    icon: '🔘',
+    tag: '<button>, :hover, cursor: pointer',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Buttons are the steering wheel of the internet! When kids press a button, games launch and rockets blast off.',
+        uz: 'Tugmalar — butun internetning boshqaruv rulidir! Tugma bosilganda o\'yinlar ochiladi va raketalar uchadi.'
+      },
+      whatIsATag: {
+        en: '`<button>` creates the clickable surface, and `:hover` adds magic visual feedback when your mouse glides over it!',
+        uz: '`<button>` bosiladigan tugma yasaydi, `:hover` esa sichqoncha ustiga kelganda rangini porlatadi!'
+      }
+    },
+    summary: {
+      en: 'Build interactive buttons that light up and lift off when hovered over.',
+      uz: 'Sichqoncha borganda yorishib ko\'tariladigan interaktiv tugmalar yarating.'
+    },
+    story: {
+      en: 'A plain button is okay, but a button with :hover feels alive like a real video game control!',
+      uz: 'Oddiy tugma ham yaxshi, lekin :hover bilan u haqiqiy video o\'yindagidek jonlanadi!'
+    },
     initialCode: `<style>
-  .btn {
-    background: #f87171;
+  .magic-btn {
+    background: #7c6cf7;
     color: white;
-    font-size: 18px;
-    padding: 12px 24px;
     border: none;
-    border-radius: 10px;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s;
   }
-  /* Add hover rule here! */
+  /* Add hover power below! */
 </style>
 
-<button class="btn">⚡ Power Up</button>`,
+<div style="text-align: center; padding: 40px;">
+  <button class="magic-btn">✨ Hover Over Me!</button>
+</div>`,
     targetCode: `<style>
-  .btn {
-    background: #f87171;
+  .magic-btn {
+    background: #7c6cf7;
     color: white;
-    font-size: 18px;
-    padding: 12px 24px;
     border: none;
-    border-radius: 10px;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s;
   }
-  .btn:hover {
-    transform: scale(1.15);
-    background: #ef4444;
+  .magic-btn:hover {
+    background: #2dd4bf;
+    transform: scale(1.1);
   }
 </style>
 
-<button class="btn">⚡ Power Up</button>`,
-    targetDescription: 'When your mouse pointer hovers over the red button, it smoothly zooms 15% larger like a video game action button!',
+<div style="text-align: center; padding: 40px;">
+  <button class="magic-btn">✨ Hover Over Me!</button>
+</div>`,
+    targetDescription: {
+      en: 'A stylish button that turns teal (#2dd4bf) and pops 10% larger (scale(1.1)) when the mouse hovers over it.',
+      uz: 'Sichqoncha ustiga borganda yashil-ko\'k (#2dd4bf) rangga kirib, 10% kattalashadigan ajoyib tugma.'
+    },
     anatomy: [
       {
-        part: '.btn:hover',
-        role: 'Hover State',
-        explanation: 'Applies these styles only while the mouse is hovering over the button.',
-        effect: 'Triggers on mouse over'
+        part: '<button> ... </button>',
+        role: { en: 'Button Element', uz: 'Tugma elementi' },
+        explanation: { en: 'Creates an interactive clickable button in HTML.', uz: 'HTML da bosiladigan tugma yaratadi.' },
+        effect: { en: 'Clickable button', uz: 'Bosiladigan tugma' }
       },
       {
-        part: 'transform: scale(1.15);',
-        role: 'Zoom Scale',
-        explanation: 'Multiplies the size by 1.15 (15% larger).',
-        effect: 'Makes the button grow'
-      },
-      {
-        part: 'transition: transform 0.2s;',
-        role: 'Smooth Animation',
-        explanation: 'Makes the growth take 0.2 seconds smoothly instead of jumping instantly.',
-        effect: 'Smooths the motion'
+        part: '.magic-btn:hover',
+        role: { en: 'Hover State', uz: 'Hover holati' },
+        explanation: { en: 'The colon :hover applies special styles ONLY when the mouse pointer is hovering.', uz: 'Faqat sichqoncha ustiga kelganda qo\'llanadigan maxsus stil.' },
+        effect: { en: 'Styles on mouseover', uz: 'Sichqoncha kelganda o\'zgaradi' }
       }
     ],
     listOfTags: [
-      { code: ':hover', name: 'Hover State', description: 'Styles that trigger only when the mouse cursor is over the element', exampleHtml: '.btn:hover { ... }' },
-      { code: 'cursor: pointer;', name: 'Hand Cursor', description: 'Turns the mouse cursor into a clicking hand 👆', exampleHtml: 'cursor: pointer;' },
-      { code: 'transition: all 0.3s ease;', name: 'Transition', description: 'Animates changes smoothly over time instead of snapping instantly', exampleHtml: 'transition: all 0.3s;' }
+      { code: '<button> ... </button>', name: { en: 'Button Tag', uz: 'Tugma tegi' }, description: { en: 'Creates a clickable pressable button', uz: 'Bosiladigan tugma hosil qiladi' } },
+      { code: ':hover', name: { en: 'Hover Selector', uz: 'Hover selektori' }, description: { en: 'Styles elements only when mouse hovers over them', uz: 'Sichqoncha kelgandagina elementga ta\'sir qiladi' } },
+      { code: 'cursor: pointer;', name: { en: 'Pointer Cursor', uz: 'Qo\'lcha kursor' }, description: { en: 'Turns arrow cursor into a clicking hand', uz: 'Sichqoncha strelkasini bosish qo\'lchasiga aylantiradi' } }
     ],
     tagShowcase: [
-      { tag: '.btn:hover', meaning: 'When mouse touches button' },
-      { tag: 'transition: 0.2s;', meaning: 'Smooth animation speed' }
+      { tag: '<button>', meaning: { en: 'Clickable button', uz: 'Bosiladigan tugma' } },
+      { tag: ':hover', meaning: { en: 'React on mouseover', uz: 'Sichqonchaga javob berish' } }
     ],
-    quickTags: ['.btn:hover {', 'transform: scale(1.15);', 'background: #ef4444;', '}'],
+    quickTags: ['.magic-btn:hover {', 'background: #2dd4bf;', 'transform: scale(1.1);'],
     challenge: {
-      mission: 'Add a .btn:hover rule that sets transform: scale(1.15);!',
-      hint: 'Write .btn:hover { transform: scale(1.15); }',
+      mission: {
+        en: 'Add a .magic-btn:hover rule with background: #2dd4bf; and transform: scale(1.1);',
+        uz: '.magic-btn:hover ga background: #2dd4bf; va transform: scale(1.1); qo\'shing!'
+      },
+      hint: {
+        en: 'Write: .magic-btn:hover { background: #2dd4bf; transform: scale(1.1); }',
+        uz: '.magic-btn:hover { background: #2dd4bf; transform: scale(1.1); } deb yozing.'
+      },
       rules: [
         {
-          type: 'custom',
-          check: (code) => /:hover/i.test(code),
-          message: 'Add the :hover selector!'
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /#2dd4bf|rgb\(45,\\s*212,\\s*191\)/i,
+          message: 'Set hover background to #2dd4bf!'
         },
         {
           type: 'hasCssProperty',
           property: 'transform',
           valuePattern: /scale/i,
-          message: 'Add transform: scale(...) inside the :hover rule!'
+          message: 'Add transform: scale(1.1) on hover!'
         }
       ]
     },
     teacherGuide: {
-      analogy: ':hover is like a puppy that wags its tail when you reach out your hand.',
+      analogy: {
+        en: 'An arcade button that lights up when you put your finger near it.',
+        uz: 'Qo\'lingizni yaqinlashtirganingizda yonib chiroq beruvchi o\'yin avtomati tugmasi.'
+      },
       discussionQuestions: [
-        'What would happen if you forgot transition? (It would snap abruptly)',
-        'What does scale(1.3) do compared to scale(0.9)?'
+        { en: 'Why is visual feedback important on buttons? (So users know it is clickable!)', uz: 'Nega tugmaga effekt berish muhim? (Foydalanuvchi bosilishini bilsin deb!)' }
       ],
       commonMistakes: [
-        'Putting a space between .btn and :hover (.btn:hover must touch!)'
+        { en: 'Forgetting the colon : before hover (must be :hover)', uz: 'hover dan oldin ikki nuqta : qo\'yishni unutish' }
       ],
-      funActivity: 'Try transform: rotate(10deg) scale(1.2) to make the button tilt playfully!'
+      funActivity: {
+        en: 'Try scale(1.5) for a giant cartoon balloon pop!',
+        uz: 'scale(1.5) qilib ko\'ring va tugma shar kabi shishishini ko\'ring!'
+      }
     }
   },
 
   // ==========================================
-  // THEME 11: Links & Portals
+  // THEME 11: Links & Web Portals
   // ==========================================
   {
     id: 'theme-11-links',
     module: 'full-powers',
-    title: 'Theme 11: Links & Web Portals',
-    icon: '🌐',
-    tag: '<a href="" target="_blank">',
-    humanIntro: {
-      whatIsIt: 'In human language, a **Link** is a teleporter door! Click it, and you travel to another web page anywhere on Earth.',
-      whatIsATag: '`<a>` stands for Anchor. The attribute `href` is where the teleporter leads. `target="_blank"` tells the browser to open it in a brand new tab!'
+    title: {
+      en: 'Theme 11: Links & Web Portals (<a>)',
+      uz: '11-Mavzu: Havolalar va Sayt Portallari (<a>)'
     },
-    summary: 'Connect pages across the world with clickable hyperlink portals.',
-    story: 'The web is called a "web" because billions of pages are linked together by <a> tags.',
+    icon: '🌐',
+    tag: '<a href="...">, target="_blank"',
+    humanIntro: {
+      whatIsIt: {
+        en: 'A link is a secret portal that teleports you to another universe on the web with a single click!',
+        uz: 'Havola (link) — bu bir marta bosish bilan sizni butunlay boshqa veb-sahifaga teleportatsiya qiluvchi sehrli portal!'
+      },
+      whatIsATag: {
+        en: '`<a>` stands for Anchor. The `href` attribute tells the browser the exact destination URL to visit.',
+        uz: '`<a>` tegi Anchor (Langar) so\'zidan olingan. `href` xususiyati esa boriladigan manzilni bildiradi.'
+      }
+    },
+    summary: {
+      en: 'Turn words and buttons into teleportation links that open web pages in new tabs.',
+      uz: 'So\'zlar va tugmalarni boshqa sahifalarga eltuvchi havolalarga aylantiring.'
+    },
+    story: {
+      en: 'The entire World Wide Web is woven together by millions of anchor tags linking every site!',
+      uz: 'Butun jahon o\'rgimchak to\'ri aynan millionlab <a> teglari orqali bir-biriga bog\'langan!'
+    },
     initialCode: `<p>
-  🚀 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
-</p>`,
-    targetCode: `<p>
-  🚀 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
+  Welcome to my coding realm! Check out my favorite website:
 </p>
 <p>
-  🪐 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>!
+  <!-- Turn this text into a link! -->
+  Visit Wikipedia to learn anything!
 </p>`,
-    targetDescription: 'Two clickable blue links with space emojis. Clicking either link opens its Wikipedia page in a new tab.',
+    targetCode: `<p>
+  Welcome to my coding realm! Check out my favorite website:
+</p>
+<p>
+  Visit <a href="https://wikipedia.org" target="_blank">Wikipedia</a> to learn anything!
+</p>`,
+    targetDescription: {
+      en: 'The word "Wikipedia" wrapped in an <a> tag pointing to https://wikipedia.org that opens in a new tab.',
+      uz: '"Wikipedia" so\'zi <a> tegi bilan https://wikipedia.org manziliga yo\'naltirilgan havola.'
+    },
     anatomy: [
       {
-        part: '<a',
-        role: 'Anchor Tag',
-        explanation: 'Short for Anchor. Creates a link to another page.',
-        effect: 'Makes text clickable'
-      },
-      {
-        part: 'href="..."',
-        role: 'Destination Portal',
-        explanation: 'Hypertext REFerence: the exact website address to visit.',
-        effect: 'Points to target URL'
+        part: '<a href="...">',
+        role: { en: 'Opening Anchor', uz: 'Ochuvchi Langar tegi' },
+        explanation: { en: 'href means "Hypertext Reference" - the address you are teleporting to.', uz: 'href — bu boriladigan saytning aniq manzili.' },
+        effect: { en: 'Makes text clickable', uz: 'Matnni bosiladigan havola qiladi' }
       },
       {
         part: 'target="_blank"',
-        role: 'New Tab Flag',
-        explanation: 'Tells the browser to open the link in a fresh, new tab.',
-        effect: 'Prevents losing current page'
+        role: { en: 'New Tab Flag', uz: 'Yangi vkladka buyrug\'i' },
+        explanation: { en: 'Opens the webpage in a brand new tab so kids never lose their current page.', uz: 'Saytni yangi vkladkada ochadi, asosiy sahifa yopilib ketmaydi.' },
+        effect: { en: 'Opens in new tab', uz: 'Yangi tabda ochadi' }
       }
     ],
     listOfTags: [
-      { code: '<a href="..."> ... </a>', name: 'Hyperlink', description: 'Creates a clickable link to another webpage', exampleHtml: '<a href="https://google.com">Google</a>' },
-      { code: 'href="https://..."', name: 'Destination URL', description: 'The web address where the link teleports', exampleHtml: 'href="https://wikipedia.org"' },
-      { code: 'target="_blank"', name: 'New Tab', description: 'Opens the clicked link in a brand new browser tab', exampleHtml: 'target="_blank"' }
+      { code: '<a href="URL"> ... </a>', name: { en: 'Anchor Tag', uz: 'Havola tegi' }, description: { en: 'Creates a hyperlink to another webpage or file', uz: 'Boshqa veb-sahifaga havola yaratadi' } },
+      { code: 'target="_blank"', name: { en: 'Blank Target', uz: 'Yangi vkladka' }, description: { en: 'Instructs the browser to open the link in a fresh new tab', uz: 'Havolani yangi toza tabda ochadi' } }
     ],
     tagShowcase: [
-      { tag: '<a href="...">', meaning: 'Teleporter door' },
-      { tag: 'target="_blank"', meaning: 'Opens in new tab' }
+      { tag: '<a href="...">', meaning: { en: 'Web portal', uz: 'Sayt portali' } },
+      { tag: 'target="_blank"', meaning: { en: 'New tab', uz: 'Yangi oyna' } }
     ],
-    quickTags: ['<a href="" target="_blank">', '</a>', 'target="_blank"'],
+    quickTags: ['<a href="https://wikipedia.org" target="_blank">', '</a>'],
     challenge: {
-      mission: 'Add a second link teleporting to "Planet Saturn"!',
-      hint: '<a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>',
+      mission: {
+        en: 'Wrap the word "Wikipedia" in an <a href="https://wikipedia.org" target="_blank"> tag!',
+        uz: '"Wikipedia" so\'zini <a href="https://wikipedia.org" target="_blank"> tegi bilan o\'rab oling!'
+      },
+      hint: {
+        en: 'Write: <a href="https://wikipedia.org" target="_blank">Wikipedia</a>',
+        uz: '<a href="https://wikipedia.org" target="_blank">Wikipedia</a> deb yozing.'
+      },
       rules: [
         {
-          type: 'custom',
-          check: (code) => (code.match(/<a\s/gi) || []).length >= 2,
-          message: 'Add at least TWO <a> link tags!'
+          type: 'hasTag',
+          tag: 'a',
+          message: 'Add an <a> tag!'
         },
         {
-          type: 'custom',
-          check: (code) => /saturn/i.test(code),
-          message: 'One link must mention Saturn!'
+          type: 'hasAttribute',
+          tag: 'a',
+          attribute: 'href',
+          valuePattern: /wikipedia/i,
+          message: 'Set href to https://wikipedia.org!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Links are like portal doors in video games: step through and arrive at a new planet.',
+      analogy: {
+        en: 'A portal door like in Minecraft or Monsters Inc.',
+        uz: 'Minecraft yoki multfilmlardagi boshqa dunyoga ochiluvchi sehrli eshik.'
+      },
       discussionQuestions: [
-        'Why does the cursor turn into a pointing hand 👆 over links?',
-        'What does href stand for?'
+        { en: 'What does href stand for? (Hypertext Reference)', uz: 'href nima degani? (Hypertext Reference - gipermatn manzili)' }
       ],
       commonMistakes: [
-        'Spelling href as "herf"'
+        { en: 'Forgetting https:// in the address', uz: 'Manzilda https:// ni unutib qoldirish' }
       ],
-      funActivity: 'Click a link and watch the new tab open!'
+      funActivity: {
+        en: 'Make an emoji link like 🚀 that teleports to NASA!',
+        uz: '🚀 emojisini NASA saytiga eltuvchi havolaga aylantiring!'
+      }
     }
   },
 
   // ==========================================
-  // THEME 12: Lists
+  // THEME 12: Bullet & Numbered Lists
   // ==========================================
   {
     id: 'theme-12-lists',
     module: 'full-powers',
-    title: 'Theme 12: Bullet & Numbered Lists',
-    icon: '📜',
+    title: {
+      en: 'Theme 12: Bullet & Numbered Lists (<ul>, <ol>, <li>)',
+      uz: '12-Mavzu: Ro\'yxatlar (<ul>, <ol>, <li>)'
+    },
+    icon: '📝',
     tag: '<ul>, <ol>, <li>',
     humanIntro: {
-      whatIsIt: 'In human language, a **List** is how we organize items cleanly — like an RPG backpack inventory, a recipe, or a top score leaderboard.',
-      whatIsATag: '`<ul>` makes bullet dots (Unordered). `<ol>` makes numbers 1, 2, 3 (Ordered). Every item gets wrapped in `<li>` (List Item)!'
+      whatIsIt: {
+        en: 'Lists keep your thoughts organized like an adventurer quest checklist or recipe!',
+        uz: 'Ro\'yxatlar vazifalaringizni xuddi o\'yindagi kvestlar kabi chiroyli tartibga soladi!'
+      },
+      whatIsATag: {
+        en: '`<ul>` gives bullet dots, `<ol>` gives numbers (1, 2, 3), and every single item inside is wrapped in `<li>`!',
+        uz: '`<ul>` nuqtali ro\'yxat, `<ol>` raqamli ro\'yxat (1, 2, 3) beradi, har bir qator esa `<li>` ichiga olinadi!'
+      }
     },
-    summary: 'Organize items with bullet points or sequential numbers.',
-    story: '<ul> is like ingredients in a salad. <ol> is like steps in a recipe where order matters.',
-    initialCode: `<ul>
-  <li>Wooden Sword 🗡️</li>
-  <li>Health Potion 🧪</li>
-  <li>Golden Apple 🍏</li>
+    summary: {
+      en: 'Organize items neatly into bullet point or numbered lists using ul, ol, and li tags.',
+      uz: 'Elementlarni ul, ol va li teglari yordamida nuqtali yoki raqamli qilib tartiblang.'
+    },
+    story: {
+      en: 'Every great video game has an inventory list. HTML lists make clean inventories!',
+      uz: 'Har qanday sarguzasht o\'yinida xaltadagi narsalar ro\'yxati bo\'ladi. HTML ro\'yxatlari buni oson qiladi!'
+    },
+    initialCode: `<p>My Secret Spy Gear:</p>
+<!-- Turn into a bullet list using <ul> and <li>! -->
+Laser Watch
+Invisible Cloak
+Jetpack Shoes`,
+    targetCode: `<p>My Secret Spy Gear:</p>
+<ul>
+  <li>Laser Watch</li>
+  <li>Invisible Cloak</li>
+  <li>Jetpack Shoes</li>
 </ul>`,
-    targetCode: `<ul>
-  <li>Wooden Sword 🗡️</li>
-  <li>Health Potion 🧪</li>
-  <li>Golden Apple 🍏</li>
-  <li>Dragon Shield 🛡️</li>
-</ul>`,
-    targetDescription: 'A clean 4-item bullet inventory list: Sword, Potion, Golden Apple, and Dragon Shield.',
+    targetDescription: {
+      en: 'A neat bullet-point list containing the 3 spy items wrapped in <li> inside <ul>.',
+      uz: '<ul> ichida 3 ta <li> tegi bilan chiroyli nuqtali ro\'yxat qilingan ayg\'oqchi jihozlari.'
+    },
     anatomy: [
       {
-        part: '<ul>',
-        role: 'Unordered List',
-        explanation: 'Creates a list where items have bullet points.',
-        effect: 'Wraps items in bullet points'
+        part: '<ul> ... </ul>',
+        role: { en: 'Unordered List', uz: 'Tartibsiz ro\'yxat' },
+        explanation: { en: 'Creates a bullet-point list container.', uz: 'Nuqtali ro\'yxat idishini yaratadi.' },
+        effect: { en: 'Bullet list container', uz: 'Nuqtali ro\'yxat' }
       },
       {
-        part: '<li>',
-        role: 'List Item',
-        explanation: 'Short for List Item. Every single item needs its own <li> tag.',
-        effect: 'Creates a single bullet row'
+        part: '<li>Item</li>',
+        role: { en: 'List Item', uz: 'Ro\'yxat elementi' },
+        explanation: { en: 'Defines each individual line item inside the list.', uz: 'Ro\'yxat ichidagi har bir qatorni bildiradi.' },
+        effect: { en: 'One bullet line', uz: 'Bitta ro\'yxat qatori' }
       }
     ],
     listOfTags: [
-      { code: '<ul> ... </ul>', name: 'Bullet List', description: 'Unordered list (dots before each item)', exampleHtml: '<ul><li>Item</li></ul>' },
-      { code: '<ol> ... </ol>', name: 'Numbered List', description: 'Ordered list with automatic 1, 2, 3 numbers', exampleHtml: '<ol><li>Step 1</li></ol>' },
-      { code: '<li> ... </li>', name: 'List Item', description: 'A single row/item inside any list', exampleHtml: '<li>Dragon Shield</li>' }
+      { code: '<ul> ... </ul>', name: { en: 'Unordered List', uz: 'Nuqtali Ro\'yxat' }, description: { en: 'Container for bullet-point list items', uz: 'Nuqtali ro\'yxat yaratuvchi ona teg' } },
+      { code: '<ol> ... </ol>', name: { en: 'Ordered List', uz: 'Raqamli Ro\'yxat' }, description: { en: 'Container for automatically numbered (1, 2, 3) list items', uz: 'Avtomatik raqamlanuvchi ro\'yxat ona tegi' } },
+      { code: '<li> ... </li>', name: { en: 'List Item', uz: 'Ro\'yxat qatori' }, description: { en: 'Each individual bullet or numbered item inside ul or ol', uz: 'ul yoki ol ichidagi har bir alohida qator' } }
     ],
     tagShowcase: [
-      { tag: '<ul>', meaning: 'Bullet list' },
-      { tag: '<ol>', meaning: 'Numbered list' },
-      { tag: '<li>', meaning: 'Single list item' }
+      { tag: '<ul>', meaning: { en: 'Bullet list', uz: 'Nuqtali ro\'yxat' } },
+      { tag: '<ol>', meaning: { en: 'Numbered 1, 2, 3', uz: 'Raqamli ro\'yxat' } },
+      { tag: '<li>', meaning: { en: 'Single item line', uz: 'Alohida qator' } }
     ],
-    quickTags: ['<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>'],
+    quickTags: ['<ul>', '<li>', '</li>', '</ul>'],
     challenge: {
-      mission: 'Add a 4th inventory item to the list: "Dragon Shield 🛡️"!',
-      hint: 'Add <li>Dragon Shield 🛡️</li> right before </ul>.',
+      mission: {
+        en: 'Wrap the 3 items in <li> and put them inside a <ul> list container!',
+        uz: '3 ta jihozni <li> bilan o\'rab, ularni <ul> ichiga joylashtiring!'
+      },
+      hint: {
+        en: 'Write: <ul><li>Laser Watch</li><li>Invisible Cloak</li><li>Jetpack Shoes</li></ul>',
+        uz: '<ul> ichiga 3 ta <li> yozing.'
+      },
       rules: [
         {
           type: 'hasTag',
           tag: 'ul',
-          message: 'Keep the <ul> tag!'
+          message: 'Add an <ul> tag!'
         },
         {
-          type: 'custom',
-          check: (code) => /Dragon Shield/i.test(code),
-          message: 'Add "Dragon Shield 🛡️" as a list item!'
+          type: 'hasTag',
+          tag: 'li',
+          message: 'Add <li> items!'
         }
       ]
     },
     teacherGuide: {
-      analogy: '<ul> is a shopping cart. <ol> is a race podium.',
+      analogy: {
+        en: 'A grocery shopping list or recipe ingredient list.',
+        uz: 'Bozorlik ro\'yxati yoki taom tayyorlash retsepti.'
+      },
       discussionQuestions: [
-        'When would you use numbers instead of bullets?'
+        { en: 'What is the difference between ul (bullets) and ol (numbers)?', uz: 'ul (nuqtali) va ol (raqamli) ning farqi nimada?' }
       ],
       commonMistakes: [
-        'Writing list text without <li> tags'
+        { en: 'Putting text inside ul without an li tag', uz: 'ul ichiga li tegini qo\'ymasdan matn yozish' }
       ],
-      funActivity: 'Change <ul> to <ol> and watch bullets turn into numbers!'
+      funActivity: {
+        en: 'Change ul to ol and watch the numbers 1, 2, 3 appear automatically!',
+        uz: 'ul ni ol ga almashtiring va raqamlar avtomatik chiqishini ko\'ring!'
+      }
     }
   },
 
@@ -1312,165 +1426,240 @@ export const LESSONS = [
   {
     id: 'theme-13-colors',
     module: 'full-powers',
-    title: 'Theme 13: Color Codes & Gradients',
-    icon: '🎨',
-    tag: 'color: #ff007f, background: linear-gradient()',
-    humanIntro: {
-      whatIsIt: 'In human language, computers understand millions of colors using secret **Hex Codes** (like #2dd4bf) or **Gradients** that melt two colors together!',
-      whatIsATag: '`background: linear-gradient(135deg, #ff757f, #2dd4bf);` creates a futuristic sunset blending from coral pink to mint teal.'
+    title: {
+      en: 'Theme 13: Colors & Gradients (HEX & Linear)',
+      uz: '13-Mavzu: Ranglar va Gradientlar (HEX va Chiziqli)'
     },
-    summary: 'Mix hex colors and create multi-color gradients.',
-    story: 'A gradient is like watching the sunset sky melt from orange into deep purple.',
+    icon: '🌈',
+    tag: 'color, background: linear-gradient()',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Colors bring emotion to the web! You can use common names, HEX codes with hashtags (#ff757f), or smooth color gradients.',
+        uz: 'Ranglar sahifaga joziba bag\'ishlaydi! Oddiy nomlar, panjara (#) bilan HEX kodlari yoki silliq gradientlardan foydalanishingiz mumkin.'
+      },
+      whatIsATag: {
+        en: '`linear-gradient(45deg, #7c6cf7, #ff757f)` blends two colors smoothly across the screen like a tropical sunset!',
+        uz: '`linear-gradient(45deg, #7c6cf7, #ff757f)` ikki rangni xuddi quyosh botishi kabi bir-biriga silliq qo\'shadi!'
+      }
+    },
+    summary: {
+      en: 'Master hex color codes and create breathtaking multi-color gradient backgrounds.',
+      uz: 'HEX rang kodlarini o\'rganing va chiroyli gradient fonlar yarating.'
+    },
+    story: {
+      en: 'Gradients make cards and banners feel modern, vibrant, and futuristic!',
+      uz: 'Gradientlar kartochkalarni zamonaviy va yorqin ko\'rsatadi!'
+    },
     initialCode: `<style>
-  .card {
-    background: #1e2030;
+  .sunset-card {
+    width: 260px;
+    height: 160px;
+    border-radius: 16px;
     color: white;
-    padding: 24px;
-    border-radius: 12px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    /* Add gradient background below! */
+    background: gray;
   }
 </style>
 
-<div class="card">
-  <h2>✨ Aurora Station</h2>
-  <p>Paints the sky with glowing colors</p>
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <div class="sunset-card">🌅 Sunset Vibe</div>
 </div>`,
     targetCode: `<style>
-  .card {
-    background: linear-gradient(135deg, #ff757f, #7c6cf7);
+  .sunset-card {
+    width: 260px;
+    height: 160px;
+    border-radius: 16px;
     color: white;
-    padding: 24px;
-    border-radius: 12px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff757f, #7c6cf7);
   }
 </style>
 
-<div class="card">
-  <h2>✨ Aurora Station</h2>
-  <p>Paints the sky with glowing colors</p>
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <div class="sunset-card">🌅 Sunset Vibe</div>
 </div>`,
-    targetDescription: 'A glowing card with a smooth gradient background melting from coral pink into rich purple.',
+    targetDescription: {
+      en: 'A card painted with a gorgeous diagonal gradient from coral pink (#ff757f) into purple (#7c6cf7).',
+      uz: 'Qizil-pushtidan (#ff757f) binafsha (#7c6cf7) rangga silliq o\'tuvchi diagonal gradientli kartochka.'
+    },
     anatomy: [
       {
-        part: 'background: linear-gradient(...)',
-        role: 'Gradient Fill',
-        explanation: 'Blends two colors across an angle (135deg).',
-        effect: 'Smooth color transition'
+        part: 'linear-gradient(135deg, ...)',
+        role: { en: 'Gradient Angle', uz: 'Gradient burchagi' },
+        explanation: { en: 'The angle (135deg) dictates which corner the colors blend across.', uz: 'Ranglar qaysi burchakka qarab oqishini belgilaydi.' },
+        effect: { en: 'Diagonal blend', uz: 'Diagonal rang o\'tishi' }
+      },
+      {
+        part: '#ff757f, #7c6cf7',
+        role: { en: 'Color Stops', uz: 'Rang nuqtalari' },
+        explanation: { en: 'The starting and ending colors in HEX format.', uz: 'Boshlang\'ich va yakuniy ranglarning HEX kodlari.' },
+        effect: { en: 'Smooth blend between colors', uz: 'Ikki rangning silliq uyg\'unligi' }
       }
     ],
     listOfTags: [
-      { code: 'color: #...', name: 'Hex Color', description: 'Sets text color using 6-digit hex code', exampleHtml: 'color: #2dd4bf;' },
-      { code: 'background: linear-gradient(...)', name: 'Linear Gradient', description: 'Smoothly blends two or more colors at an angle', exampleHtml: 'linear-gradient(45deg, pink, blue)' }
+      { code: 'background: linear-gradient(...)', name: { en: 'Linear Gradient', uz: 'Chiziqli Gradient' }, description: { en: 'Blends two or more colors smoothly across an angle', uz: 'Ikki yoki undan ko\'p rangni bir-biriga silliq qorishtiradi' } },
+      { code: 'color: #hexCode;', name: { en: 'Text Color', uz: 'Matn rangi' }, description: { en: 'Changes the foreground color of letters', uz: 'Harflarning rangini o\'zgartiradi' } }
     ],
     tagShowcase: [
-      { tag: '#ff757f', meaning: 'Hex color code' },
-      { tag: 'linear-gradient()', meaning: 'Two-color sunset melt' }
+      { tag: 'linear-gradient(...)', meaning: { en: 'Multi-color blend', uz: 'Ranglar uyg\'unligi' } },
+      { tag: '#ff757f', meaning: { en: 'Coral HEX', uz: 'Pushti-qizil HEX' } }
     ],
-    quickTags: ['linear-gradient(135deg, #ff757f, #7c6cf7);', 'background: linear-gradient('],
+    quickTags: ['background: linear-gradient(135deg, #ff757f, #7c6cf7);'],
     challenge: {
-      mission: 'Give .card a linear-gradient background from #ff757f to #7c6cf7!',
-      hint: 'Set background: linear-gradient(135deg, #ff757f, #7c6cf7);',
+      mission: {
+        en: 'Replace background: gray; with a linear-gradient from #ff757f to #7c6cf7!',
+        uz: 'background: gray; ni linear-gradient(135deg, #ff757f, #7c6cf7) ga almashtiring!'
+      },
+      hint: {
+        en: 'Set background: linear-gradient(135deg, #ff757f, #7c6cf7);',
+        uz: 'background: linear-gradient(135deg, #ff757f, #7c6cf7); deb yozing.'
+      },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'background',
           valuePattern: /linear-gradient/i,
-          message: 'Use a linear-gradient background!'
+          message: 'Apply linear-gradient to background!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'A gradient is like mixing red and yellow paint on a wet canvas.',
+      analogy: {
+        en: 'Mixing two colors of watercolor paint on paper until they blend.',
+        uz: 'Qog\'ozda ikki xil akvarel bo\'yog\'ini bir-biriga qo\'shib yuvish.'
+      },
       discussionQuestions: [
-        'What does 135deg mean? (The angle the colors flow!)'
+        { en: 'What does the deg in 135deg mean? (Degrees of rotation!)', uz: '135deg dagi deg nimani bildiradi? (Aylanish burchagi gradusi!)' }
       ],
       commonMistakes: [
-        'Missing commas between the colors in linear-gradient'
+        { en: 'Forgetting the closing parenthesis after linear-gradient', uz: 'linear-gradient dan keyin qavsni yopishni unutish' }
       ],
-      funActivity: 'Try 3 colors in linear-gradient: red, yellow, blue!'
+      funActivity: {
+        en: 'Try adding a 3rd color stop like #2dd4bf for a 3-color rainbow!',
+        uz: '3-rang sifatida #2dd4bf ni ham qo\'shib ko\'ring va kamalak hosil qiling!'
+      }
     }
   },
 
   // ==========================================
-  // THEME 14: Fonts & Typography
+  // THEME 14: Fonts & Neon Glows
   // ==========================================
   {
     id: 'theme-14-fonts',
     module: 'full-powers',
-    title: 'Theme 14: Fonts & Neon Glows',
-    icon: '🔤',
-    tag: 'font-size, text-shadow',
-    humanIntro: {
-      whatIsIt: 'In human language, fonts give your words character! A scary story needs a spooky font; a spaceship needs a futuristic computer font.',
-      whatIsATag: '`font-size` makes letters huge, and `text-shadow` casts a colored neon light behind the words.'
+    title: {
+      en: 'Theme 14: Fonts & Neon Glows (text-shadow)',
+      uz: '14-Mavzu: Shriftlar va Neon Nurlari (text-shadow)'
     },
-    summary: 'Make words gigantic and add neon light halos behind letters.',
-    story: 'text-shadow shines a flashlight behind your text onto the wall.',
+    icon: '✨',
+    tag: 'font-family, text-shadow',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Typography lets your web page speak with power, and neon glows make it look like a futuristic arcade game!',
+        uz: 'Shriftlar sahifangizga salobat beradi, neon nurlari esa uni kelajak o\'yinlari kabi yoritadi!'
+      },
+      whatIsATag: {
+        en: '`text-shadow: 0 0 10px #2dd4bf;` casts a glowing aura of light directly behind each letter.',
+        uz: '`text-shadow: 0 0 10px #2dd4bf;` har bir harf ortidan porloq neon nurini taratadi.'
+      }
+    },
+    summary: {
+      en: 'Change font sizing and project radiant neon glow effects behind your headings.',
+      uz: 'Shrift o\'lchamini o\'zgartiring va sarlavhalar ortiga porloq neon nurlari bering.'
+    },
+    story: {
+      en: 'Arcade games and cyberpunk posters use glowing text to pop off dark screens!',
+      uz: 'O\'yin zallari va kiberpank plakatlarida matnlar qorong\'i ekranda porlab turadi!'
+    },
     initialCode: `<style>
-  .title {
+  .arcade-title {
+    color: #ffffff;
     font-size: 32px;
-    color: #ffffff;
-    text-shadow: 0 0 10px #f472b6;
     text-align: center;
+    font-family: sans-serif;
+    /* Add glowing text-shadow here! */
   }
 </style>
 
-<div class="title">NEON NIGHTS</div>`,
+<div style="background: #0f1019; padding: 40px; border-radius: 12px;">
+  <h1 class="arcade-title">⚡ LEVEL UP! ⚡</h1>
+</div>`,
     targetCode: `<style>
-  .title {
-    font-size: 48px;
+  .arcade-title {
     color: #ffffff;
-    text-shadow: 0 0 15px #f472b6, 0 0 30px #f472b6;
+    font-size: 32px;
     text-align: center;
+    font-family: sans-serif;
+    text-shadow: 0 0 15px #2dd4bf;
   }
 </style>
 
-<div class="title">NEON NIGHTS</div>`,
-    targetDescription: 'A 48px gigantic title "NEON NIGHTS" radiating a vivid hot-pink neon glow in the dark.',
+<div style="background: #0f1019; padding: 40px; border-radius: 12px;">
+  <h1 class="arcade-title">⚡ LEVEL UP! ⚡</h1>
+</div>`,
+    targetDescription: {
+      en: 'The title "LEVEL UP!" glowing with a vivid neon teal aura behind the letters.',
+      uz: '"LEVEL UP!" sarlavhasi ortidan taralayotgan yorqin firuza neon nuri.'
+    },
     anatomy: [
       {
-        part: 'font-size: 48px;',
-        role: 'Letter Height',
-        explanation: 'Sets how tall the letters stand in pixels.',
-        effect: 'Enlarges text'
-      },
-      {
-        part: 'text-shadow: 0 0 15px #f472b6;',
-        role: 'Neon Glow',
-        explanation: 'Horizontal blur, vertical blur, blur radius, and color.',
-        effect: 'Creates neon halo'
+        part: 'text-shadow: 0 0 15px #2dd4bf;',
+        role: { en: 'Neon Shadow', uz: 'Neon soyasi' },
+        explanation: { en: '0 X-offset, 0 Y-offset, 15px blur blur-radius, and #2dd4bf glow color.', uz: '0 siljish, 15px xiralashtirish va #2dd4bf nur rangi.' },
+        effect: { en: 'Glowing light halo', uz: 'Porloq nur doirasi' }
       }
     ],
     listOfTags: [
-      { code: 'font-size: 48px;', name: 'Font Size', description: 'Controls the height of letters in pixels', exampleHtml: 'font-size: 32px;' },
-      { code: 'text-shadow: 0 0 10px color;', name: 'Text Shadow', description: 'Creates a glowing halo or drop shadow behind text', exampleHtml: 'text-shadow: 0 0 10px pink;' }
+      { code: 'text-shadow: X Y blur color;', name: { en: 'Text Shadow', uz: 'Matn soyasi' }, description: { en: 'Casts a shadow or luminous glow behind text letters', uz: 'Harflar ortidan soya yoki nur hosil qiladi' } },
+      { code: 'font-size: 32px;', name: { en: 'Font Size', uz: 'Shrift hajmi' }, description: { en: 'Sets how big or small words appear on the screen', uz: 'So\'zlarning ekrandagi kattaligini belgilaydi' } }
     ],
     tagShowcase: [
-      { tag: 'font-size: 48px;', meaning: 'Giant letter size' },
-      { tag: 'text-shadow: 0 0 15px color;', meaning: 'Neon light glow' }
+      { tag: 'text-shadow', meaning: { en: 'Neon letter glow', uz: 'Neon harf nurlari' } },
+      { tag: 'font-size', meaning: { en: 'Letter size', uz: 'Harf kattaligi' } }
     ],
-    quickTags: ['font-size: 48px;', 'text-shadow: 0 0 20px #f472b6;'],
+    quickTags: ['text-shadow: 0 0 15px #2dd4bf;', 'font-size: 36px;'],
     challenge: {
-      mission: 'Make the font-size "48px" on .title!',
-      hint: 'Change font-size: 32px; to font-size: 48px;',
+      mission: {
+        en: 'Add text-shadow: 0 0 15px #2dd4bf; to .arcade-title to make it glow neon teal!',
+        uz: '.arcade-title ga text-shadow: 0 0 15px #2dd4bf; qo\'shib uni neon rangida porlating!'
+      },
+      hint: {
+        en: 'Inside .arcade-title { ... } write text-shadow: 0 0 15px #2dd4bf;',
+        uz: '.arcade-title { ... } ichiga text-shadow: 0 0 15px #2dd4bf; deb yozing.'
+      },
       rules: [
         {
           type: 'hasCssProperty',
-          property: 'font-size',
-          valuePattern: /48px/i,
-          message: 'Set font-size to 48px!'
+          property: 'text-shadow',
+          valuePattern: /#2dd4bf|2dd4bf|15px/i,
+          message: 'Add a text-shadow with 15px blur and #2dd4bf!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Shining a flashlight behind letters onto a wall.',
+      analogy: {
+        en: 'A bright neon sign outside a restaurant at midnight.',
+        uz: 'Tundagi shaharda porlab turgan neon yozuvi.'
+      },
       discussionQuestions: [
-        'What does px stand for? (Pixels)'
+        { en: 'Why did we set 0 0 for X and Y? (So the glow radiates evenly in all directions!)', uz: 'Nega X va Y ga 0 berdik? (Nur har tomonga teng taralsin deb!)' }
       ],
       commonMistakes: [
-        'Adding a space: "48 px" (must be "48px")'
+        { en: 'Putting too small a blur number like 1px which looks like a hard outline', uz: '1px kabi juda kichik raqam yozib xiralashtirmaslik' }
       ],
-      funActivity: 'Set font-size to 72px!'
+      funActivity: {
+        en: 'Change the color to #ff757f for hot pink lasers!',
+        uz: 'Rangni #ff757f ga o\'zgartirib pushti lazer hosil qiling!'
+      }
     }
   },
 
@@ -1480,100 +1669,150 @@ export const LESSONS = [
   {
     id: 'theme-15-shapes',
     module: 'full-powers',
-    title: 'Theme 15: Rounded Corners & 50% Circles',
-    icon: '🔮',
-    tag: 'border-radius: 50%',
-    humanIntro: {
-      whatIsIt: 'In human language, `border-radius` takes sandpaper to sharp corners until they are smooth curves or circles.',
-      whatIsATag: 'On an exact square, `border-radius: 50%` rounds the corners so far that the box turns into a **perfect round circle**!'
+    title: {
+      en: 'Theme 15: Rounded Corners & 50% Circles',
+      uz: '15-Mavzu: Yumaloq Burchaklar va Aylana (50%)'
     },
-    summary: 'Turn sharp square boxes into round avatar badges and pill buttons.',
-    story: 'border-radius: 50% turns a square avatar into a round profile badge.',
+    icon: '⚪',
+    tag: 'border-radius: 12px, border-radius: 50%',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In the real world, sharp corners poke your fingers! Rounded corners make web apps feel smooth, friendly, and modern like an iPhone app.',
+        uz: 'Haqiqiy hayotda o\'tkir burchaklar qo\'lni og\'ritadi! Yumaloq burchaklar esa ilovalarni xuddi iPhone kabi muloyim va chiroyli ko\'rsatadi.'
+      },
+      whatIsATag: {
+        en: '`border-radius: 12px;` rounds corners. If you give an exact square `border-radius: 50%;`, it magically morphs into a 100% round circle!',
+        uz: '`border-radius: 12px;` burchaklarni sal yumaloqlaydi. Kvadratga `border-radius: 50%;` bersangiz, u bir zumda mukammal aylanaga aylanadi!'
+      }
+    },
+    summary: {
+      en: 'Soft-edge your cards with border-radius and turn square avatars into perfect circles with 50%.',
+      uz: 'Kartochkalarning burchaklarini yumaloqlang va 50% bilan kvadrat rasmlarni mukammal aylanaga aylantiring.'
+    },
+    story: {
+      en: 'Almost every profile avatar on YouTube, Discord, and Roblox is a square with border-radius: 50%!',
+      uz: 'YouTube, Discord va Roblox dagi barcha profil rasmlari aslida border-radius: 50% berilgan kvadratdir!'
+    },
     initialCode: `<style>
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: #ff757f;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 50px;
+    /* Make this square a circle! */
     border-radius: 0px;
   }
 </style>
 
-<div class="avatar">🐱</div>`,
+<div style="display: flex; justify-content: center; padding: 30px;">
+  <div class="avatar">🦊</div>
+</div>`,
     targetCode: `<style>
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: #ff757f;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 50px;
     border-radius: 50%;
   }
 </style>
 
-<div class="avatar">🐱</div>`,
-    targetDescription: 'A round coral-pink avatar badge with a cat emoji in the center.',
+<div style="display: flex; justify-content: center; padding: 30px;">
+  <div class="avatar">🦊</div>
+</div>`,
+    targetDescription: {
+      en: 'The square fox badge transformed into a 100% round circular profile avatar.',
+      uz: 'Kvadrat tulki nishoni border-radius: 50% yordamida mukammal aylanaga aylantirilgan.'
+    },
     anatomy: [
       {
         part: 'border-radius: 50%;',
-        role: 'Circle Spell',
-        explanation: 'Curves all 4 corners so much it morphs into a circle.',
-        effect: 'Turns square into circle'
+        role: { en: 'Circle Transformer', uz: 'Aylana o\'zgartiruvchi' },
+        explanation: { en: 'Bends the corners halfway across each side, creating an exact circle.', uz: 'Burchaklarni tomonlarning qoq o\'rtasigacha yumaloqlab, mukammal aylana yasaydi.' },
+        effect: { en: 'Turns square into circle', uz: 'Kvadratni aylanaga aylantiradi' }
       }
     ],
     listOfTags: [
-      { code: 'border-radius: 12px;', name: 'Rounded Corner', description: 'Gently rounds corners like an app icon', exampleHtml: 'border-radius: 12px;' },
-      { code: 'border-radius: 50%;', name: 'Circle', description: 'Turns an exact square into a 100% round circle', exampleHtml: 'border-radius: 50%;' }
+      { code: 'border-radius: 12px;', name: { en: 'Rounded Corners', uz: 'Yumaloq burchak' }, description: { en: 'Softens sharp corners into smooth rounded edges', uz: 'O\'tkir burchaklarni silliq qilib yumaloqlaydi' } },
+      { code: 'border-radius: 50%;', name: { en: 'Perfect Circle', uz: 'Mukammal aylana' }, description: { en: 'Turns any square element into a 100% round circular shape', uz: 'Istalgan kvadrat elementni 100% dumaloq aylanaga aylantiradi' } }
     ],
     tagShowcase: [
-      { tag: 'border-radius: 12px;', meaning: 'Rounded app icon' },
-      { tag: 'border-radius: 50%;', meaning: 'Perfect circle' }
+      { tag: 'border-radius: 12px;', meaning: { en: 'Smooth corners', uz: 'Yumaloq burchak' } },
+      { tag: 'border-radius: 50%;', meaning: { en: 'Round circle', uz: 'Aylana' } }
     ],
     quickTags: ['border-radius: 50%;', 'border-radius: 16px;'],
     challenge: {
-      mission: 'Set border-radius: 50% on .avatar to make it a circle!',
-      hint: 'Change border-radius: 0px; to border-radius: 50%;',
+      mission: {
+        en: 'Change border-radius: 0px; to border-radius: 50%; to make the fox avatar a circle!',
+        uz: 'border-radius: 0px; ni border-radius: 50%; ga o\'zgartirib tulki belgisini aylanaga aylantiring!'
+      },
+      hint: {
+        en: 'Change border-radius: 0px; to border-radius: 50%; inside .avatar',
+        uz: '.avatar ichida border-radius: 50%; deb yozing.'
+      },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'border-radius',
           valuePattern: /50%/i,
-          message: 'Set border-radius to 50%!'
+          message: 'Set border-radius: 50%!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Sanding corners off a wooden block.',
+      analogy: {
+        en: 'Sanding down sharp wooden corners until the wood block is round like a ball.',
+        uz: 'Yog\'och blok burchaklarini jilvirlab to\'p kabi yumaloqlash.'
+      },
       discussionQuestions: [
-        'Why does 50% make a square a circle?'
+        { en: 'Why does 50% turn a square into a circle? (Each corner curve reaches the exact center!)', uz: 'Nega 50% kvadratni aylanaga aylantiradi? (Egrilik tomonning qoq o\'rtasiga yetib boradi!)' }
       ],
       commonMistakes: [
-        'Typing 50px instead of 50%'
+        { en: 'Typing 50px instead of 50% (50px only rounds the edges a bit!)', uz: '50% o\'rniga 50px yozib qo\'yish' }
       ],
-      funActivity: 'Set border-radius: 20px for an iPhone app icon look!'
+      funActivity: {
+        en: 'Change to border-radius: 20px to see an iPhone app icon shape!',
+        uz: 'border-radius: 20px qilib, iPhone ilovasi ikonkasiga o\'xshatib ko\'ring!'
+      }
     }
   },
 
   // ==========================================
-  // THEME 16: Animations & Keyframes
+  // THEME 16: Keyframe Animations
   // ==========================================
   {
     id: 'theme-16-animations',
     module: 'full-powers',
-    title: 'Theme 16: Keyframe Animations (Alive & Bouncing)',
+    title: {
+      en: 'Theme 16: Keyframe Animations (Alive & Bouncing)',
+      uz: '16-Mavzu: Jonli Animatsiyalar (@keyframes)'
+    },
     icon: '🎈',
     tag: '@keyframes, animation: bounce infinite',
     humanIntro: {
-      whatIsIt: 'In human language, `@keyframes` turns you into a cartoon animator like at Disney or Pixar! You draw starting position (0%) and finish position (100%), and the browser animates it forever.',
-      whatIsATag: '`@keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }` makes an alien float continuously in zero gravity!'
+      whatIsIt: {
+        en: 'In human language, `@keyframes` turns you into a cartoon animator like at Disney or Pixar! You set the start (0%) and end (100%), and the browser brings it to life.',
+        uz: 'Oddiy inson tilida `@keyframes` sizni Pixar yoki Disney animatoriga aylantiradi! Boshlanishi (0%) va tugashini (100%) chizasiz, brauzer esa uni jonlantiradi.'
+      },
+      whatIsATag: {
+        en: '`@keyframes bounce` writes the dance choreography, and `animation: bounce 1s infinite alternate;` keeps the alien floating in space forever!',
+        uz: '`@keyframes bounce` raqs harakatlarini belgilaydi, `animation: bounce 1s infinite alternate;` esa o\'zga sayyoralikni koinotda to\'xtovsiz uchiradi!'
+      }
     },
-    summary: 'Make characters and buttons bounce, float, and pulse continuously on their own.',
-    story: 'Keyframes are like flipbook drawings: rapid frames that create smooth motion.',
+    summary: {
+      en: 'Make characters and buttons bounce, float, and pulse continuously on their own.',
+      uz: 'Qahramonlar va tugmalarni o\'z-o\'zidan sakraydigan, uchadigan va nafas oladigan qilib jonlantiring.'
+    },
+    story: {
+      en: 'Keyframes are like flipbook drawings: rapid frames that create smooth motion.',
+      uz: 'Keyframelar xuddi tez varaqlanadigan rasm daftarchasidek silliq harakat yaratadi.'
+    },
     initialCode: `<style>
   .alien {
     font-size: 60px;
@@ -1604,33 +1843,42 @@ export const LESSONS = [
 <div style="text-align: center; padding: 40px;">
   <div class="alien">👾</div>
 </div>`,
-    targetDescription: 'A purple alien invader 👾 continuously floating up and down in space smoothly in zero gravity.',
+    targetDescription: {
+      en: 'A purple alien invader 👾 continuously floating up and down smoothly in zero gravity.',
+      uz: 'Binafsharang fazogir 👾 vaznsizlikda yuqoriga va pastga to\'xtovsiz ravishda bir tekis suzib harakatlanmoqda.'
+    },
     anatomy: [
       {
         part: '@keyframes bounce { ... }',
-        role: 'Animation Timeline',
-        explanation: 'Defines the choreography from 0% (start) to 100% (finish).',
-        effect: 'Defines the motion path'
+        role: { en: 'Choreography Timeline', uz: 'Harakat xaritasi' },
+        explanation: { en: 'Defines positions from 0% (start) to 100% (finish).', uz: '0% dan 100% gacha bo\'lgan harakat yo\'lini belgilaydi.' },
+        effect: { en: 'Defines motion path', uz: 'Harakat yo\'nalishi' }
       },
       {
         part: 'animation: bounce 1s infinite alternate;',
-        role: 'Animation Attachment',
-        explanation: 'Name (bounce), speed (1s), loop (infinite), and back-and-forth (alternate).',
-        effect: 'Runs the animation continuously'
+        role: { en: 'Animation Engine', uz: 'Animatsiya motori' },
+        explanation: { en: 'Connects the bounce timeline with 1-second speed, looping forever.', uz: 'Harakatni 1 soniyali tezlikda to\'xtovsiz takrorlaydi.' },
+        effect: { en: 'Runs motion forever', uz: 'Harakatni to\'xtovsiz aylantiradi' }
       }
     ],
     listOfTags: [
-      { code: '@keyframes name { ... }', name: 'Keyframe Rule', description: 'Defines the movement timeline for an animation', exampleHtml: '@keyframes bounce { 0% { ... } }' },
-      { code: 'animation: name 1s infinite;', name: 'Animation Property', description: 'Attaches the animation timeline to any element to make it dance', exampleHtml: 'animation: bounce 1s infinite;' }
+      { code: '@keyframes name { ... }', name: { en: 'Keyframe Rule', uz: 'Keyframe Qoidasi' }, description: { en: 'Defines the movement timeline for an animation', uz: 'Animatsiyaning harakat bosqichlarini belgilaydi' } },
+      { code: 'animation: name 1s infinite;', name: { en: 'Animation Property', uz: 'Animatsiya xususiyati' }, description: { en: 'Attaches the keyframe timeline to any element', uz: 'Harakatni elementga bog\'lab uni jonlantiradi' } }
     ],
     tagShowcase: [
-      { tag: '@keyframes name', meaning: 'The dance choreography' },
-      { tag: 'animation: name 1s infinite;', meaning: 'Loop the dance forever' }
+      { tag: '@keyframes name', meaning: { en: 'Dance choreography', uz: 'Harakat xaritasi' } },
+      { tag: 'animation: name 1s infinite;', meaning: { en: 'Loop forever', uz: 'Cheksiz takrorlash' } }
     ],
     quickTags: ['animation: bounce 1s infinite alternate;', '@keyframes bounce {'],
     challenge: {
-      mission: 'Add animation: bounce 1s infinite alternate; to the .alien!',
-      hint: 'Inside .alien { ... }, write animation: bounce 1s infinite alternate;',
+      mission: {
+        en: 'Add animation: bounce 1s infinite alternate; to the .alien to bring it to life!',
+        uz: '.alien ga animation: bounce 1s infinite alternate; qo\'shib uni jonlantiring!'
+      },
+      hint: {
+        en: 'Inside .alien { ... } write animation: bounce 1s infinite alternate;',
+        uz: '.alien { ... } ichiga animation: bounce 1s infinite alternate; deb yozing.'
+      },
       rules: [
         {
           type: 'hasCssProperty',
@@ -1641,15 +1889,20 @@ export const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'Flipbook drawings flipped fast with your thumb.',
+      analogy: {
+        en: 'Flipbook drawings flipped fast with your thumb creating motion.',
+        uz: 'Burchaklariga rasm chizilgan daftarni barmoq bilan tez varaqlaganda hosil bo\'ladigan multfilm.'
+      },
       discussionQuestions: [
-        'What does "infinite" mean? (Loops forever without stopping!)',
-        'What happens if you change 1s to 0.2s? (It vibrates super fast!)'
+        { en: 'What does "infinite" mean? (Loops forever without stopping!)', uz: '"infinite" so\'zi nimani anglatadi? (To\'xtamasdan mangu davom etadi!)' }
       ],
       commonMistakes: [
-        'Mismatched animation name in @keyframes and the animation property'
+        { en: 'Mismatched animation name in @keyframes and animation property', uz: '@keyframes dagi nom bilan animation dagi nomni har xil yozib qo\'yish' }
       ],
-      funActivity: 'Change 1s to 0.1s to watch the alien buzz like a bee!'
+      funActivity: {
+        en: 'Change 1s to 0.1s to watch the alien vibrate furiously like a bee!',
+        uz: '1s ni 0.1s ga almashtiring va o\'zga sayyoralik asalari kabi pirpirashini ko\'ring!'
+      }
     }
   }
 ];

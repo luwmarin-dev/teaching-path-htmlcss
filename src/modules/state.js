@@ -12,53 +12,54 @@ export function createInitialState() {
     stars: 0,
     completedLessons: [],
     badges: [],
-    currentLessonId: 'html-bones',
+    currentLessonId: 'theme-1-tags',
     teacherMode: false,
     audioEnabled: true,
-    theme: 'candy', // 'candy' | 'arcade' | 'space' | 'sunshine'
+    lang: 'en', // 'en' | 'uz'
+    theme: 'dark',
     customSandboxCode: `<!DOCTYPE html>
 <html>
   <head>
     <style>
       body {
-        font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
-        background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-        min-height: 100vh;
+        font-family: sans-serif;
+        background: #12131a;
+        color: #f1f5f9;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-height: 100vh;
         margin: 0;
         text-align: center;
       }
       .card {
-        background: white;
+        background: #1c1e2f;
         padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border-radius: 16px;
+        border: 2px solid #7c6cf7;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         max-width: 320px;
       }
-      h1 { color: #ff4757; }
+      h1 { color: #2dd4bf; }
       button {
-        background: #2ed573;
+        background: #7c6cf7;
         color: white;
         border: none;
-        padding: 12px 24px;
-        font-size: 18px;
-        border-radius: 12px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: transform 0.2s;
+        font-weight: bold;
       }
-      button:hover {
-        transform: scale(1.1);
-      }
+      button:hover { background: #6957ea; }
     </style>
   </head>
   <body>
     <div class="card">
       <h1>🚀 My Secret Lab!</h1>
-      <p>I can build anything here!</p>
-      <button onclick="alert('Superpower Activated! ⚡')">Press Me</button>
+      <p>Build anything you imagine here!</p>
+      <button onclick="alert('⚡ Superpower Activated!')">Click Me</button>
     </div>
   </body>
 </html>`
@@ -73,7 +74,6 @@ export function completeLesson(state, lessonId, starsEarned = 3) {
   const updatedCompleted = [...state.completedLessons, lessonId];
   const updatedStars = state.stars + starsEarned;
 
-  // Check for auto-unlocked badges
   const updatedBadges = [...state.badges];
   if (updatedCompleted.length >= 1 && !updatedBadges.includes('first-code')) {
     updatedBadges.push('first-code');
@@ -122,6 +122,21 @@ export function toggleAudio(state) {
   return {
     ...state,
     audioEnabled: !state.audioEnabled
+  };
+}
+
+export function toggleLanguage(state) {
+  const nextLang = state.lang === 'uz' ? 'en' : 'uz';
+  return {
+    ...state,
+    lang: nextLang
+  };
+}
+
+export function setLanguage(state, lang) {
+  return {
+    ...state,
+    lang: lang === 'uz' ? 'uz' : 'en'
   };
 }
 

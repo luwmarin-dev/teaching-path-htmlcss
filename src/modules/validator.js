@@ -38,7 +38,15 @@ export function validateChallenge(code, rules = []) {
         let match;
         while ((match = cssRegex.exec(code)) !== null) {
           const val = match[1].trim();
-          if (!rule.valuePattern || rule.valuePattern.test(val)) {
+          if (!rule.valuePattern) {
+            passed = true;
+            break;
+          }
+          if (rule.valuePattern instanceof RegExp && rule.valuePattern.test(val)) {
+            passed = true;
+            break;
+          }
+          if (typeof rule.valuePattern === 'string' && val.toLowerCase().includes(rule.valuePattern.toLowerCase())) {
             passed = true;
             break;
           }

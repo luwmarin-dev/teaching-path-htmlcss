@@ -8,6 +8,8 @@ import {
   unlockBadge,
   toggleTeacherMode,
   toggleAudio,
+  toggleLanguage,
+  setLanguage,
   setStudentProfile,
   setTheme,
   saveStateToStorage,
@@ -60,6 +62,23 @@ describe('State Management', () => {
     const b1 = unlockBadge(state2, 'cool-coder');
     const b2 = unlockBadge(b1, 'cool-coder');
     assert.equal(b2.badges.filter(b => b === 'cool-coder').length, 1);
+  });
+
+  it('toggles and sets language between English and Uzbek cleanly', () => {
+    const state = createInitialState();
+    assert.equal(state.lang, 'en');
+
+    const toggledUz = toggleLanguage(state);
+    assert.equal(toggledUz.lang, 'uz');
+
+    const toggledEn = toggleLanguage(toggledUz);
+    assert.equal(toggledEn.lang, 'en');
+
+    const setDirectUz = setLanguage(state, 'uz');
+    assert.equal(setDirectUz.lang, 'uz');
+
+    const setDirectEn = setLanguage(setDirectUz, 'en');
+    assert.equal(setDirectEn.lang, 'en');
   });
 
   it('toggles teacher mode, audio settings, and themes', () => {
