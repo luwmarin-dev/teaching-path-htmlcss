@@ -1994,6 +1994,801 @@ function renderFiltersLab(container, lesson, isUz) {
   }, isUz);
 }
 
+
+// ==========================================
+// THEME 25: Overflow Lab
+// ==========================================
+function renderOverflowLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { overflowType: 'auto', boxHeight: 140 },
+    steps: [
+      {
+        title: { en: '1. overflow: visible (Spilling Spillover)', uz: '1. overflow: visible (Toshib Ketish)' },
+        code: '.terminal-box {\n  height: 100px;\n  overflow: visible;\n}',
+        explanation: {
+          en: 'Step 1: With overflow: visible, content that is larger than the container spills over and covers other page elements!',
+          uz: "1-Qadam: overflow: visible bo'lganda, qutiga sig'magan matn toshib chiqadi va boshqa elementlarni to'sib qo'yadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #ef4444; border-radius: 10px; width: 260px; height: 90px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: visible; position: relative;">
+              <div>🛰️ [SYS] Satellite Link: Online</div>
+              <div>⚡ [PWR] Reactor Core: 99%</div>
+              <div style="color: #ef4444; font-weight: bold;">👾 [SPILL] Alien Signal detected outside!</div>
+              <div style="color: #ef4444; font-weight: bold;">🚨 [SPILL] Words exploding across screen!</div>
+              <div style="color: #ef4444; font-weight: bold;">🏁 [SPILL] Uncontained telemetry logs!</div>
+            </div>
+            <div style="margin-top: 50px; background: rgba(239, 68, 68, 0.15); border: 1px dashed #ef4444; padding: 6px 12px; border-radius: 6px; font-size: 11px; color: #fca5a5;">
+              ⚠️ Next element is covered by spilled text!
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. overflow: hidden (Laser Cut)', uz: '2. overflow: hidden (Lazer Qirqish)' },
+        code: '.terminal-box {\n  height: 100px;\n  overflow: hidden;\n}',
+        explanation: {
+          en: 'Step 2: overflow: hidden cleanly chops off anything poking beyond the rounded borders like a laser razor!',
+          uz: "2-Qadam: overflow: hidden chegaradan toshgan har qanday narsani lazerdek toza qirqib yashiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 10px; width: 260px; height: 90px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: hidden;">
+              <div>🛰️ [SYS] Satellite Link: Online</div>
+              <div>⚡ [PWR] Reactor Core: 99%</div>
+              <div>👾 [WARN] Alien Signal Detected!</div>
+              <div>🛡️ [DEF] Shield Matrix: Active</div>
+              <div>🚀 [NAV] Warp Coordinates Locked</div>
+            </div>
+            <div style="margin-top: 15px; color: #94a3b8; font-size: 11px;">
+              ✂️ Extra items are clipped off safely.
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. overflow-y: scroll (Elevator)', uz: '3. overflow-y: scroll (Skroll Lifti)' },
+        code: '.terminal-box {\n  height: 130px;\n  overflow-y: scroll;\n}',
+        explanation: {
+          en: 'Step 3: overflow-y: scroll adds a vertical scrollbar so users can easily read through all 100+ telemetry logs!',
+          uz: "3-Qadam: overflow-y: scroll vertikal skrollbar qo'shib, 100+ xabarlarni erkin o'qish imkonini beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 10px; width: 260px; height: 130px; padding: 10px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow-y: scroll;" class="custom-cyber-scrollbar">
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛰️ [SYS] Sat Link Online</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">⚡ [PWR] Reactor Core 99%</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">👾 [WARN] Signal Detected</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛡️ [DEF] Shield Active</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🚀 [NAV] Warp Locked</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🏁 [SYS] Ready to Jump!</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Cyber Terminal', uz: '4. Interaktiv Kiber Terminal' },
+        code: (s) => `.terminal-box {\n  height: ${s.boxHeight}px;\n  overflow: ${s.overflowType};\n}`,
+        explanation: {
+          en: 'Step 4: Interactive Master Lab! Change overflow modes and adjust the terminal box height to watch live physics.',
+          uz: "4-Qadam: Interaktiv master laboratoriya! Overflow turlarini va balandlikni o'zgartirib jonli fizikani kuzating."
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${['visible', 'hidden', 'scroll', 'auto'].map(m => `
+                  <button class="btn-sm btn-pill ${s.overflowType === m ? 'active' : ''}" data-mode="${m}">
+                    overflow: ${m}
+                  </button>
+                `).join('')}
+              </div>
+              <div>
+                <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                  <span>Height:</span>
+                  <strong>${s.boxHeight}px</strong>
+                </label>
+                <input type="range" class="evolution-range-input" min="70" max="200" value="${s.boxHeight}" id="input-height" />
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-mode]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              onUpdate({ overflowType: btn.getAttribute('data-mode') });
+            });
+          });
+          mount.querySelector('#input-height')?.addEventListener('input', (e) => {
+            onUpdate({ boxHeight: parseInt(e.target.value) });
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 12px; width: 280px; height: ${s.boxHeight}px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: ${s.overflowType}; transition: height 0.15s ease;" class="custom-cyber-scrollbar">
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛰️ [SYS] Sat Link Online</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">⚡ [PWR] Reactor Core 99%</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">👾 [WARN] Alien Signal Detected</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛡️ [DEF] Shield Active</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🚀 [NAV] Warp Locked</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🏁 [SYS] Ready to Jump!</div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 26: Gradients Lab
+// ==========================================
+function renderGradientsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { angle: 135, type: 'linear', c1: '#ff007a', c2: '#7928ca' },
+    steps: [
+      {
+        title: { en: '1. Flat Solid Color', uz: '1. Oddiy Yagona Rang' },
+        code: '.box { background: #ff007a; }',
+        explanation: {
+          en: 'Step 1: A flat solid color has zero transition or depth.',
+          uz: "1-Qadam: Oddiy yagona rangda chuqurlik yoki o'tishlar yo'q."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: #ff007a; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.4);"></div>`;
+        }
+      },
+      {
+        title: { en: '2. Linear Gradient (Angle)', uz: '2. Chiziqli Gradient (Burchak)' },
+        code: '.box {\n  background: linear-gradient(135deg, #ff007a, #7928ca);\n}',
+        explanation: {
+          en: 'Step 2: linear-gradient blends colors smoothly along a directional angle (135 degrees)!',
+          uz: "2-Qadam: linear-gradient ranglarni diagonal burchak (135 gradus) bo'ylab silliq qorishtiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: linear-gradient(135deg, #ff007a, #7928ca); border-radius: 12px; box-shadow: 0 8px 24px rgba(255,0,122,0.4); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">NEBULA</div>`;
+        }
+      },
+      {
+        title: { en: '3. Radial Cosmic Sphere', uz: '3. Radial Kosmik Shar' },
+        code: '.orb {\n  background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%);\n  border-radius: 50%;\n}',
+        explanation: {
+          en: 'Step 3: radial-gradient radiates colors outward from a focal point, turning a 2D circle into a glowing 3D energy orb!',
+          uz: "3-Qadam: radial-gradient markazdan tashqariga nur sochib, oddiy aylanani 3D energiya shariga aylantiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); border-radius: 50%; box-shadow: 0 0 30px #00f2fe; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ORB</div>`;
+        }
+      },
+      {
+        title: { en: '4. Master Gradient Mixer', uz: '4. Master Gradient Mikser' },
+        code: (s) => s.type === 'linear' 
+          ? `.nebula {\n  background: linear-gradient(${s.angle}deg, ${s.c1}, ${s.c2});\n}`
+          : `.nebula {\n  background: radial-gradient(circle, ${s.c1} 0%, ${s.c2} 80%);\n}`,
+        explanation: {
+          en: 'Step 4: Rotate the angle slider and change color shades to discover infinite cosmic palettes!',
+          uz: "4-Qadam: Burchak slayderini aylantiring va ranglarni almashtirib cheksiz kosmik palitralarni kashf eting!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px;">
+                <button class="btn-sm btn-pill ${s.type === 'linear' ? 'active' : ''}" id="btn-linear">Linear</button>
+                <button class="btn-sm btn-pill ${s.type === 'radial' ? 'active' : ''}" id="btn-radial">Radial</button>
+              </div>
+              ${s.type === 'linear' ? `
+                <div>
+                  <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                    <span>Angle:</span>
+                    <strong>${s.angle}°</strong>
+                  </label>
+                  <input type="range" class="evolution-range-input" min="0" max="360" value="${s.angle}" id="input-angle" />
+                </div>
+              ` : ''}
+              <div style="display: flex; gap: 10px;">
+                <label style="font-size: 11px; color: #94a3b8;">C1: <input type="color" value="${s.c1}" id="input-c1" style="background: none; border: none; cursor: pointer;" /></label>
+                <label style="font-size: 11px; color: #94a3b8;">C2: <input type="color" value="${s.c2}" id="input-c2" style="background: none; border: none; cursor: pointer;" /></label>
+              </div>
+            </div>
+          `;
+          mount.querySelector('#btn-linear')?.addEventListener('click', () => onUpdate({ type: 'linear' }));
+          mount.querySelector('#btn-radial')?.addEventListener('click', () => onUpdate({ type: 'radial' }));
+          mount.querySelector('#input-angle')?.addEventListener('input', (e) => onUpdate({ angle: parseInt(e.target.value) }));
+          mount.querySelector('#input-c1')?.addEventListener('input', (e) => onUpdate({ c1: e.target.value }));
+          mount.querySelector('#input-c2')?.addEventListener('input', (e) => onUpdate({ c2: e.target.value }));
+        },
+        renderStage(stage, s) {
+          const bg = s.type === 'linear'
+            ? `linear-gradient(${s.angle}deg, ${s.c1}, ${s.c2})`
+            : `radial-gradient(circle at 35% 35%, ${s.c1} 0%, ${s.c2} 80%)`;
+          stage.innerHTML = `
+            <div style="width: 140px; height: 140px; background: ${bg}; border-radius: ${s.type === 'radial' ? '50%' : '16px'}; box-shadow: 0 0 35px ${s.c1}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 13px; letter-spacing: 1px;">
+              ${s.type.toUpperCase()}
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 27: Media Queries Lab
+// ==========================================
+function renderMediaQueriesLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { simulatedWidth: 850 },
+    steps: [
+      {
+        title: { en: '1. Wide Desktop (3 Columns)', uz: '1. Kompyuter (3 Ustun)' },
+        code: '.squad { display: flex; gap: 12px; }',
+        explanation: {
+          en: 'Step 1: On wide laptop screens, 3 hero cards fit side-by-side with ease.',
+          uz: "1-Qadam: Keng kompyuter ekranlarida 3 ta qahramon yonma-yon a'lo darajada sig'adi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; gap: 8px; width: 300px; padding: 10px; background: #0f172a; border-radius: 8px;">
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">🥷 Ninja</div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">⚡ Mage</div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">🤖 Mech</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. Squished Phone View', uz: "2. Siqilgan Telefon Ko'rinishi" },
+        code: '/* Squeezed on mobile without media queries! */',
+        explanation: {
+          en: 'Step 2: Without media queries, cards get tiny and unreadable on pocket smartphones!',
+          uz: "2-Qadam: Media query bo'lmasa, telefonlarda kartalar siqilib kichiklashib ketadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; gap: 4px; width: 140px; padding: 6px; background: #0f172a; border: 1px dashed #ef4444; border-radius: 8px;">
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">🥷 Nin</div>
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">⚡ Mag</div>
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">🤖 Mec</div>
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #fca5a5;">⚠️ Text squashed and unreadable!</div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. @media (max-width: 768px)', uz: '3. @media (max-width: 768px)' },
+        code: '@media (max-width: 768px) {\n  .squad { flex-direction: column; }\n}',
+        explanation: {
+          en: 'Step 3: The media query detects mobile screens and stacks cards vertically for easy scrolling!',
+          uz: "3-Qadam: Media query mobil ekranni aniqlaydi va qulay o'qish uchun kartalarni vertikal terib beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 150px; padding: 10px; background: #0f172a; border-radius: 8px; border: 2px solid #38bdf8;">
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">🥷 Shadow Ninja</div>
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">⚡ Thunder Mage</div>
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">🤖 Mech Knight</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Live Screen Width Simulator', uz: '4. Jonli Ekran Kengligi Simulyatori' },
+        code: (s) => `/* Simulated Width: ${s.simulatedWidth}px */\n@media (max-width: 768px) {\n  .squad { flex-direction: column; }\n}`,
+        explanation: {
+          en: 'Step 4: Slide the viewport width below 768px to watch the layout magically transform in real-time!',
+          uz: "4-Qadam: Slayderni 768px dan pastga tushiring va kartalar qanday qilib darhol vertikal o'tishini ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
+                <span style="color: #94a3b8;">Screen Width:</span>
+                <span style="color: ${s.simulatedWidth < 768 ? '#38bdf8' : '#10b981'}; font-weight: bold;">
+                  ${s.simulatedWidth}px ${s.simulatedWidth < 768 ? '📱 MOBILE' : '💻 DESKTOP'}
+                </span>
+              </div>
+              <input type="range" class="evolution-range-input" min="360" max="1100" value="${s.simulatedWidth}" id="sim-width" />
+            </div>
+          `;
+          mount.querySelector('#sim-width')?.addEventListener('input', (e) => onUpdate({ simulatedWidth: parseInt(e.target.value) }));
+        },
+        renderStage(stage, s) {
+          const isMobile = s.simulatedWidth < 768;
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: ${isMobile ? 'column' : 'row'}; gap: 8px; width: ${isMobile ? '160px' : '290px'}; padding: 12px; background: #0f172a; border-radius: 10px; border: 2px solid ${isMobile ? '#38bdf8' : '#10b981'}; transition: all 0.2s ease;">
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>🥷</div>
+                <strong>Ninja</strong>
+              </div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>⚡</div>
+                <strong>Mage</strong>
+              </div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>🤖</div>
+                <strong>Mech</strong>
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 28: Web Fonts & SVG Icons Lab
+// ==========================================
+function renderWebFontsIconsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { font: 'Orbitron', spacing: 3, iconColor: '#f59e0b' },
+    steps: [
+      {
+        title: { en: '1. Default System Font', uz: '1. Standart Shrift' },
+        code: '.title { font-family: serif; }',
+        explanation: {
+          en: 'Step 1: Plain generic browser fonts look ordinary and lack personality.',
+          uz: "1-Qadam: Standart brauzer shriftlari oddiy va zerikarli ko'rinadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="font-family: serif; font-size: 20px; color: white; padding: 20px; background: #0f172a; border-radius: 8px;">CYBER GUILD</div>`;
+        }
+      },
+      {
+        title: { en: '2. Google Font (Orbitron)', uz: '2. Google Font (Orbitron)' },
+        code: '.title {\n  font-family: \'Orbitron\', monospace;\n  letter-spacing: 3px;\n}',
+        explanation: {
+          en: 'Step 2: Connecting a cyber web font gives instant cinematic gaming prestige!',
+          uz: "2-Qadam: Kiber veb shrift ulash sarlavhaga video o'yinlardek nufuzli ko'rinish beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="font-family: 'Orbitron', monospace, sans-serif; letter-spacing: 3px; font-size: 18px; color: #38bdf8; padding: 20px; background: #0f172a; border-radius: 8px;">CYBER GUILD</div>`;
+        }
+      },
+      {
+        title: { en: '3. Vector SVG Badge', uz: '3. Vektor SVG Nishon' },
+        code: '<svg viewBox="0 0 24 24">\n  <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />\n</svg>',
+        explanation: {
+          en: 'Step 3: SVG draws infinite-resolution vector art that never gets blurry.',
+          uz: "3-Qadam: SVG cheksiz tiniqlikdagi vektor tasvirlarni chizadi va xiralashmaydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="text-align: center; padding: 20px; background: #0f172a; border: 2px solid #38bdf8; border-radius: 12px; width: 220px;">
+              <svg style="width: 44px; height: 44px; fill: #f59e0b; filter: drop-shadow(0 0 10px rgba(245,158,11,0.6));" viewBox="0 0 24 24">
+                <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+              </svg>
+              <div style="font-family: 'Orbitron', monospace; letter-spacing: 2px; color: #38bdf8; font-weight: bold; margin-top: 6px;">CYBER GUILD</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Typography & Icon Studio', uz: '4. Tipografiya va Ikonka Studiyasi' },
+        code: (s) => `.guild-title {\n  font-family: '${s.font}', monospace;\n  letter-spacing: ${s.spacing}px;\n}\n.svg-star { fill: ${s.iconColor}; }`,
+        explanation: {
+          en: 'Step 4: Switch fonts, adjust letter spacing, and repaint the vector crest live!',
+          uz: "4-Qadam: Shriftlarni almashtiring, harflar oralig'ini sozlang va vektor nishonni qayta bo'yang!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${['Orbitron', 'Press Start 2P', 'Courier New', 'sans-serif'].map(f => `
+                  <button class="btn-sm btn-pill ${s.font === f ? 'active' : ''}" data-font="${f}">${f}</button>
+                `).join('')}
+              </div>
+              <div>
+                <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                  <span>Spacing:</span>
+                  <strong>${s.spacing}px</strong>
+                </label>
+                <input type="range" class="evolution-range-input" min="0" max="8" value="${s.spacing}" id="input-spacing" />
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-font]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ font: btn.getAttribute('data-font') }));
+          });
+          mount.querySelector('#input-spacing')?.addEventListener('input', (e) => onUpdate({ spacing: parseInt(e.target.value) }));
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div style="text-align: center; padding: 20px; background: #0f172a; border: 2px solid #38bdf8; border-radius: 14px; width: 240px; box-shadow: 0 0 25px rgba(56,189,248,0.25);">
+              <svg style="width: 44px; height: 44px; fill: ${s.iconColor}; filter: drop-shadow(0 0 10px ${s.iconColor});" viewBox="0 0 24 24">
+                <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+              </svg>
+              <div style="font-family: '${s.font}', monospace, sans-serif; letter-spacing: ${s.spacing}px; color: #38bdf8; font-weight: 800; font-size: 15px; margin-top: 8px;">
+                CYBER GUILD
+              </div>
+              <p style="color: #94a3b8; font-size: 11px; margin: 4px 0 0;">Rank: Grand Champion ⭐</p>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 29: Third-Party Animations Lab
+// ==========================================
+function renderThirdPartyAnimationsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { effect: 'animate__bounceIn' },
+    steps: [
+      {
+        title: { en: '1. Static Card', uz: '1. Qimirlamaydigan Karta' },
+        code: '<div class="chest">💎 REWARD</div>',
+        explanation: {
+          en: 'Step 1: Without animation classes, elements appear abruptly without fanfare.',
+          uz: "1-Qadam: Animatsiya klasslarisiz elementlar birdaniga jonsiz paydo bo'ladi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="background: #1e293b; padding: 18px 24px; border-radius: 12px; border: 1px solid #334155; text-align: center; color: white;">💎 REWARD</div>`;
+        }
+      },
+      {
+        title: { en: '2. animate__bounceIn', uz: '2. animate__bounceIn (Sakrash)' },
+        code: '<div class="chest animate__animated animate__bounceIn">\n  💎 REWARD\n</div>',
+        explanation: {
+          en: 'Step 2: Adding animate__bounceIn gives an elastic superhero pop celebration!',
+          uz: "2-Qadam: animate__bounceIn qo'shilsa, element elastik superqahramondek sakrab sahnaga chiqadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div class="animate__animated animate__bounceIn" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; padding: 18px 24px; border-radius: 12px; text-align: center; color: white; box-shadow: 0 0 25px rgba(245,158,11,0.4);">💎 VICTORY REWARD!</div>`;
+        }
+      },
+      {
+        title: { en: '3. animate__pulse (Loop)', uz: '3. animate__pulse (Puls Takrori)' },
+        code: '<div class="chest animate__animated animate__pulse">\n  💎 REWARD\n</div>',
+        explanation: {
+          en: 'Step 3: animate__pulse keeps the element throbbing like a beating power core!',
+          uz: "3-Qadam: animate__pulse elementni quvvat o'zagidek to'xtovsiz urib turishga majbur qiladi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div class="animate__animated animate__pulse" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; padding: 18px 24px; border-radius: 12px; text-align: center; color: white; box-shadow: 0 0 25px rgba(245,158,11,0.4);">💎 +500 CYBER CRYSTALS</div>`;
+        }
+      },
+      {
+        title: { en: '4. Interactive Trigger Board', uz: '4. Interaktiv Effekt Doskasi' },
+        code: (s) => `<div class="chest animate__animated ${s.effect}">\n  💎 VICTORY!\n</div>`,
+        explanation: {
+          en: 'Step 4: Click any animation trigger button to test battle-tested Animate.css effects live!',
+          uz: "4-Qadam: Istalgan animatsiya tugmasini bosing va Animate.css effektlarini jonli sinab ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              ${['animate__bounceIn', 'animate__pulse', 'animate__fadeInUp', 'animate__zoomIn', 'animate__glow'].map(fx => `
+                <button class="btn-sm btn-pill ${s.effect === fx ? 'active' : ''}" data-fx="${fx}">
+                  ${fx.replace('animate__', '')}
+                </button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-fx]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ effect: btn.getAttribute('data-fx') }));
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div key="${Date.now()}" class="animate__animated ${s.effect}" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; border-radius: 14px; padding: 20px 30px; text-align: center; color: white; box-shadow: 0 0 30px rgba(245,158,11,0.4);">
+              <span style="font-size: 40px; display: block; margin-bottom: 6px;">💎</span>
+              <strong style="font-size: 15px;">VICTORY REWARD!</strong>
+              <div style="color: #cbd5e1; font-size: 12px; margin-top: 4px;">+500 Cyber Crystals</div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 30: Bootstrap Grid Lab
+// ==========================================
+function renderBootstrapGridLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { cols: 3 },
+    steps: [
+      {
+        title: { en: '1. Raw Unaligned Divs', uz: '1. Setkasiz Oddiy Divlar' },
+        code: '<div>Card 1</div><div>Card 2</div><div>Card 3</div>',
+        explanation: {
+          en: 'Step 1: Normal divs stack vertically taking 100% width each without columns.',
+          uz: "1-Qadam: Oddiy divlar har biri 100% kenglik olib faqat ustma-ust tushadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 240px;">
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 1</div>
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 2</div>
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 3</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. Bootstrap .container & .row', uz: '2. .container va .row' },
+        code: '<div class="container">\n  <div class="row">...</div>\n</div>',
+        explanation: {
+          en: 'Step 2: .container centers the content and .row creates the 12-unit horizontal flex track.',
+          uz: "2-Qadam: .container kontentni markazga oladi, .row esa 12 birlikli gorizontal yo'lni ochadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="border: 2px dashed #38bdf8; padding: 12px; border-radius: 8px; width: 280px; text-align: center; color: #38bdf8; font-size: 11px;">
+              📦 .container > .row (12 units available)
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Three .col-md-4 Columns', uz: '3. Uchta .col-md-4 Ustun' },
+        code: '<div class="row">\n  <div class="col-12 col-md-4">Card 1</div>\n  <div class="col-12 col-md-4">Card 2</div>\n  <div class="col-12 col-md-4">Card 3</div>\n</div>',
+        explanation: {
+          en: 'Step 3: 4 + 4 + 4 = 12! Three columns fit perfectly side-by-side on desktop screens.',
+          uz: "3-Qadam: 4 + 4 + 4 = 12! Uchta ustun kompyuter ekranida yonma-yon a'lo darajada joylashadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="container" style="max-width: 300px;">
+              <div class="row g-2">
+                <div class="col-4"><div style="background: #3b82f6; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+                <div class="col-4"><div style="background: #10b981; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+                <div class="col-4"><div style="background: #a855f7; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Dynamic 12-Column Calculator', uz: '4. Dinamik 12 Ustunli Kalkulyator' },
+        code: (s) => `<div class="row">\n  <!-- Each column takes ${12 / s.cols} of 12 units (${s.cols} columns total) -->\n  <div class="col-${12 / s.cols}">...</div>\n</div>`,
+        explanation: {
+          en: 'Step 4: Switch column configurations to see how Bootstrap mathematically divides the 12-unit row!',
+          uz: "4-Qadam: Ustunlar sonini o'zgartiring va Bootstrap 12 birlikni qanday matematik bo'lishini ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              ${[2, 3, 4, 6].map(n => `
+                <button class="btn-sm btn-pill ${s.cols === n ? 'active' : ''}" data-n="${n}">
+                  ${n} Columns (col-${12/n})
+                </button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-n]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ cols: parseInt(btn.getAttribute('data-n')) }));
+          });
+        },
+        renderStage(stage, s) {
+          const colors = ['#3b82f6', '#10b981', '#a855f7', '#f59e0b', '#ec4899', '#06b6d4'];
+          const items = Array.from({ length: s.cols }, (_, i) => `
+            <div class="col-${12 / s.cols}">
+              <div style="background: ${colors[i % colors.length]}; padding: 10px 4px; border-radius: 6px; text-align: center; color: white; font-size: 10px; font-weight: bold;">
+                col-${12 / s.cols}
+              </div>
+            </div>
+          `).join('');
+          stage.innerHTML = `
+            <div class="container" style="max-width: 320px;">
+              <div class="row g-2">
+                ${items}
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 31: Bootstrap Components Lab
+// ==========================================
+function renderBootstrapComponentsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { badgeStatus: 'ONLINE', alertType: 'primary' },
+    steps: [
+      {
+        title: { en: '1. Unstyled Box', uz: '1. Bezaklarsiz Quti' },
+        code: '<div>Commander Nova</div>',
+        explanation: {
+          en: 'Step 1: Without UI components, content is just raw text without visual hierarchy.',
+          uz: "1-Qadam: UI komponentlarsiz matn shunchaki jonsiz va tekis ko'rinadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="color: white; padding: 15px; background: #0f172a; border-radius: 6px; width: 220px;">Commander Nova - Captain</div>`;
+        }
+      },
+      {
+        title: { en: '2. .card & .card-body', uz: '2. .card va .card-body' },
+        code: '<div class="card">\n  <div class="card-body">...</div>\n</div>',
+        explanation: {
+          en: 'Step 2: Bootstrap card adds shadow depth, clean borders, and organized spacing.',
+          uz: "2-Qadam: Bootstrap card qutiga soya, chiroyli chegara va toza masofalar qo'shadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="card" style="width: 240px; margin: 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title">Commander Nova</h5>
+                <p class="card-text">Flagship captain with 100% clearance.</p>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Badges, Alerts & Buttons', uz: '3. Nishonlar, Ogohlantirish va Tugma' },
+        code: '<span class="badge bg-success rounded-pill">ONLINE</span>\n<div class="alert alert-primary">Ready!</div>\n<button class="btn btn-primary">Launch</button>',
+        explanation: {
+          en: 'Step 3: Combine status badges, colored alert banners, and action buttons!',
+          uz: "3-Qadam: Status nishonlari, rangli ogohlantirish qutilari va start tugmasini birlashtiring!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="card" style="width: 250px; margin: 0 auto;">
+              <div class="card-header d-flex justify-content-between" style="display: flex; justify-content: space-between;">
+                <span>🛡️ STATUS</span>
+                <span class="badge bg-success rounded-pill">ONLINE</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title" style="margin-top: 0;">Commander Nova</h5>
+                <div class="alert alert-primary" style="padding: 6px 10px; font-size: 11px; margin-bottom: 10px;">⚡ Warp Core Ready!</div>
+                <button class="btn btn-primary btn-sm">Launch Shuttle 🚀</button>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Component Studio', uz: '4. Interaktiv Komponent Studiyasi' },
+        code: (s) => `<div class="card">\n  <div class="card-header">\n    <span class="badge bg-success rounded-pill">${s.badgeStatus}</span>\n  </div>\n  <div class="card-body">\n    <div class="alert alert-${s.alertType}">Alert Active</div>\n  </div>\n</div>`,
+        explanation: {
+          en: 'Step 4: Customize component badges and alert styles live with one click!',
+          uz: "4-Qadam: Nishon va ogohlantirish uslublarini bir bosish bilan jonli o'zgartiring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px;">
+                ${['ONLINE', 'AWAY', 'IN BATTLE'].map(status => `
+                  <button class="btn-sm btn-pill ${s.badgeStatus === status ? 'active' : ''}" data-status="${status}">${status}</button>
+                `).join('')}
+              </div>
+              <div style="display: flex; gap: 6px;">
+                ${['primary', 'success', 'warning', 'danger'].map(type => `
+                  <button class="btn-sm btn-pill ${s.alertType === type ? 'active' : ''}" data-type="${type}">alert-${type}</button>
+                `).join('')}
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-status]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ badgeStatus: btn.getAttribute('data-status') }));
+          });
+          mount.querySelectorAll('[data-type]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ alertType: btn.getAttribute('data-type') }));
+          });
+        },
+        renderStage(stage, s) {
+          const badgeClass = s.badgeStatus === 'ONLINE' ? 'bg-success' : s.badgeStatus === 'AWAY' ? 'bg-warning' : 'bg-danger';
+          stage.innerHTML = `
+            <div class="card" style="width: 250px; margin: 0 auto;">
+              <div class="card-header" style="display: flex; justify-content: space-between;">
+                <span>🛡️ NOVA</span>
+                <span class="badge ${badgeClass} rounded-pill">${s.badgeStatus}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title" style="margin-top: 0; font-size: 15px;">Starship Captain</h5>
+                <div class="alert alert-${s.alertType}" style="padding: 6px 10px; font-size: 11px; margin-bottom: 10px;">
+                  Status: ${s.alertType.toUpperCase()} mode
+                </div>
+                <button class="btn btn-${s.alertType === 'warning' ? 'warning' : 'primary'} btn-sm">Take Action 🚀</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 32: Bootstrap UI / Navbar Lab
+// ==========================================
+function renderBootstrapUiLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { brand: 'CodeCraft OS', activeTab: 'Home' },
+    steps: [
+      {
+        title: { en: '1. Raw Bullet List', uz: "1. Oddiy Nuqtali Ro'yxat" },
+        code: '<ul><li>Home</li><li>Missions</li><li>Scores</li></ul>',
+        explanation: {
+          en: 'Step 1: Standard lists look like documents rather than modern app navigation.',
+          uz: "1-Qadam: Oddiy ro'yxatlar ilova menyusiga emas, hujjatga o'xshaydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<ul style="color: white; font-size: 12px; padding-left: 20px;"><li>Home</li><li>Missions</li><li>Scores</li></ul>`;
+        }
+      },
+      {
+        title: { en: '2. .navbar .navbar-dark .bg-dark', uz: "2. Qorong'u Navbar Konteyneri" },
+        code: '<nav class="navbar navbar-dark bg-dark">\n  ...\n</nav>',
+        explanation: {
+          en: 'Step 2: .navbar wraps the header in a sleek dark container with built-in flex alignment.',
+          uz: "2-Qadam: .navbar sarlavhani zamonaviy qorong'u flex konteyneriga o'raydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #0f172a; border: 1px solid #1e293b; padding: 10px 16px; border-radius: 8px; width: 280px; color: #38bdf8; font-weight: bold; font-size: 12px;">
+              🧭 Navigation Container (Ready for Links)
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Brand & Nav Links', uz: '3. Brend va Menyu Havolalari' },
+        code: '<a class="navbar-brand">👾 OS</a>\n<ul class="navbar-nav">\n  <li><a class="nav-link active">Home</a></li>\n</ul>',
+        explanation: {
+          en: 'Step 3: Brand logo on the left, pill menu links in the middle, and status buttons on the right!',
+          uz: "3-Qadam: Chapda logotip, o'rtada menyu havolalari va o'ngda tugma!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <nav class="navbar navbar-dark bg-dark" style="width: 290px; padding: 8px 12px; margin: 0 auto;">
+              <a class="navbar-brand" style="font-size: 13px;" href="#"><span>👾</span> CodeCraft</a>
+              <ul class="navbar-nav" style="gap: 4px;">
+                <li><a class="nav-link active" style="font-size: 11px;" href="#">Home</a></li>
+                <li><a class="nav-link" style="font-size: 11px;" href="#">Quests</a></li>
+              </ul>
+              <button class="btn btn-outline-info btn-sm" style="font-size: 10px; padding: 2px 6px;">Connect</button>
+            </nav>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Header Simulator', uz: '4. Interaktiv Sarlavha Simulyatori' },
+        code: (s) => `<nav class="navbar navbar-dark bg-dark">\n  <a class="navbar-brand">${s.brand}</a>\n  <a class="nav-link ${s.activeTab === 'Home' ? 'active' : ''}">Home</a>\n  <a class="nav-link ${s.activeTab === 'Quests' ? 'active' : ''}">Quests</a>\n</nav>`,
+        explanation: {
+          en: 'Step 4: Click nav tabs in the preview to test active state transitions live!',
+          uz: "4-Qadam: Prevyudagi menyu tugmalarini bosib faol holat o'tishlarini jonli sinab ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px;">
+              ${['Home', 'Quests', 'Rankings', 'Vault'].map(tab => `
+                <button class="btn-sm btn-pill ${s.activeTab === tab ? 'active' : ''}" data-tab="${tab}">${tab}</button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-tab]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ activeTab: btn.getAttribute('data-tab') }));
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <nav class="navbar navbar-dark bg-dark" style="width: 300px; padding: 8px 12px; margin: 0 auto;">
+              <a class="navbar-brand" style="font-size: 13px;" href="#"><span>👾</span> ${s.brand}</a>
+              <ul class="navbar-nav" style="gap: 4px;">
+                ${['Home', 'Quests', 'Rankings'].map(tab => `
+                  <li>
+                    <a class="nav-link ${s.activeTab === tab ? 'active' : ''}" style="font-size: 11px; cursor: pointer;" href="#">
+                      ${tab}
+                    </a>
+                  </li>
+                `).join('')}
+              </ul>
+              <button class="btn btn-outline-info btn-sm" style="font-size: 10px; padding: 2px 6px;">💳</button>
+            </nav>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
 // Fallback Default Lab
 function renderDefaultLab(container, lesson, isUz) {
   container.innerHTML = `
@@ -2033,7 +2828,15 @@ export function renderTopicLab(container, lesson, lang = 'en') {
     'theme-21-grid': renderGridTopicLab,
     'theme-22-position': renderPositionLab,
     'theme-23-transitions': renderTransitionsLab,
-    'theme-24-filters': renderFiltersLab
+    'theme-24-filters': renderFiltersLab,
+    'theme-25-overflow': renderOverflowLab,
+    'theme-26-gradients': renderGradientsLab,
+    'theme-27-media-queries': renderMediaQueriesLab,
+    'theme-28-web-fonts-icons': renderWebFontsIconsLab,
+    'theme-29-third-party-animations': renderThirdPartyAnimationsLab,
+    'theme-30-bootstrap-grid': renderBootstrapGridLab,
+    'theme-31-bootstrap-components': renderBootstrapComponentsLab,
+    'theme-32-bootstrap-ui': renderBootstrapUiLab
   };
 
   const renderer = renderers[lesson.id] || renderDefaultLab;

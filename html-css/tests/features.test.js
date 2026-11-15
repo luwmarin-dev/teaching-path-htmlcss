@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 describe('Visual Labs and Pedagogical Enhancements', () => {
-  it('has dedicated topic visual labs implemented for all 24 themes', () => {
+  it('has dedicated topic visual labs implemented for all 32 themes', () => {
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/topicLabs.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/boxModelLab.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/flexboxLab.js')), true);
@@ -58,14 +58,14 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
 
     assert.equal(uzHtml.includes('btn-topic-lab'), true);
     assert.equal(uzHtml.includes('renderTopicLab'), true);
-    assert.equal(uzHtml.includes('theme-24-filters'), true);
+    assert.equal(uzHtml.includes('theme-32-bootstrap-ui'), true);
 
     assert.equal(enHtml.includes('btn-topic-lab'), true);
     assert.equal(enHtml.includes('renderTopicLab'), true);
-    assert.equal(enHtml.includes('theme-24-filters'), true);
+    assert.equal(enHtml.includes('theme-32-bootstrap-ui'), true);
   });
 
-  it('renders sidebar cleanly with exactly 24 un-nested list items in both languages', () => {
+  it('renders sidebar cleanly with exactly 32 un-nested list items in both languages', () => {
     ['en', 'uz'].forEach(lang => {
       let html = '';
       MODULES.forEach(mod => {
@@ -86,8 +86,8 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
 
       const openLi = (html.match(/<li\b/g) || []).length;
       const closeLi = (html.match(/<\/li>/g) || []).length;
-      assert.equal(openLi, 24, `Expected 24 <li> for ${lang}`);
-      assert.equal(closeLi, 24, `Expected 24 </li> for ${lang}`);
+      assert.equal(openLi, 32, `Expected 32 <li> for ${lang}`);
+      assert.equal(closeLi, 32, `Expected 32 </li> for ${lang}`);
 
       // Ensure no raw unescaped < or > inside lesson titles
       for (const lesson of LESSONS) {

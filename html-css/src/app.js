@@ -389,6 +389,60 @@ export function wrapForPreview(snippet) {
       background: rgba(91, 95, 199, 0.25);
       color: #f1f5f9;
     }
+    /* Offline Bootstrap 5 Essentials */
+    *, *::before, *::after { box-sizing: border-box; }
+    .container, .container-fluid { width: 100%; padding-right: 12px; padding-left: 12px; margin: 0 auto; max-width: 100%; }
+    .row { display: flex; flex-wrap: wrap; margin-right: -8px; margin-left: -8px; }
+    .row > * { box-sizing: border-box; flex-shrink: 0; width: 100%; max-width: 100%; padding-right: 8px; padding-left: 8px; }
+    .col { flex: 1 0 0%; }
+    .col-12 { flex: 0 0 auto; width: 100%; }
+    .col-6 { flex: 0 0 auto; width: 50%; }
+    .col-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-3 { flex: 0 0 auto; width: 25%; }
+    @media (min-width: 768px) {
+      .col-md-6 { flex: 0 0 auto; width: 50%; }
+      .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+      .col-md-3 { flex: 0 0 auto; width: 25%; }
+      .col-md-12 { flex: 0 0 auto; width: 100%; }
+    }
+    .card { position: relative; display: flex; flex-direction: column; background: #1a1e2d; border: 1px solid #2e384d; border-radius: 12px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .card-header { padding: 10px 14px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #2e384d; font-weight: 700; color: #38bdf8; }
+    .card-body { padding: 14px; }
+    .card-title { margin-top: 0; margin-bottom: 6px; font-size: 17px; font-weight: 700; color: #fff; }
+    .card-text { margin-bottom: 10px; color: #cbd5e1; font-size: 14px; }
+    .btn { display: inline-block; font-weight: 600; text-align: center; cursor: pointer; border: 1px solid transparent; padding: 8px 14px; font-size: 13px; border-radius: 8px; transition: all 0.2s; }
+    .btn-primary { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+    .btn-success { background: #10b981; color: #fff; border-color: #10b981; }
+    .btn-danger { background: #ef4444; color: #fff; border-color: #ef4444; }
+    .btn-warning { background: #f59e0b; color: #000; border-color: #f59e0b; }
+    .btn-outline-primary { background: transparent; color: #38bdf8; border-color: #38bdf8; }
+    .badge { display: inline-block; padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 6px; color: #fff; }
+    .rounded-pill { border-radius: 50rem !important; }
+    .bg-primary { background: #3b82f6 !important; color: #fff !important; }
+    .bg-success { background: #10b981 !important; color: #fff !important; }
+    .bg-danger { background: #ef4444 !important; color: #fff !important; }
+    .bg-warning { background: #f59e0b !important; color: #000 !important; }
+    .alert { padding: 10px 14px; border-radius: 8px; margin-bottom: 12px; font-size: 13px; }
+    .alert-primary { background: rgba(59,130,246,0.15); border: 1px solid #3b82f6; color: #93c5fd; }
+    .alert-success { background: rgba(16,185,129,0.15); border: 1px solid #10b981; color: #6ee7b7; }
+    .alert-warning { background: rgba(245,158,11,0.15); border: 1px solid #f59e0b; color: #fde047; }
+    .navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 8px; margin-bottom: 16px; background: #0f172a; border: 1px solid #1e293b; }
+    .navbar-brand { font-size: 16px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .navbar-nav { display: flex; list-style: none; padding: 0; margin: 0; gap: 6px; }
+    .nav-link { padding: 5px 10px; color: #94a3b8; text-decoration: none; font-size: 13px; border-radius: 5px; }
+    .nav-link.active, .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    /* Third Party & Animation Helpers */
+    .animate__animated { animation-duration: 1s; animation-fill-mode: both; }
+    .animate__bounceIn { animation-name: bounceIn; }
+    .animate__pulse { animation-name: pulse; animation-iteration-count: infinite; }
+    .animate__fadeInUp { animation-name: fadeInUp; }
+    @keyframes bounceIn { 0% { opacity: 0; transform: scale3d(0.3,0.3,0.3); } 20% { transform: scale3d(1.1,1.1,1.1); } 40% { transform: scale3d(0.9,0.9,0.9); } 60% { opacity: 1; transform: scale3d(1.03,1.03,1.03); } 80% { transform: scale3d(0.97,0.97,0.97); } 100% { opacity: 1; transform: scale3d(1,1,1); } }
+    @keyframes pulse { 0% { transform: scale3d(1,1,1); } 50% { transform: scale3d(1.08,1.08,1.08); } 100% { transform: scale3d(1,1,1); } }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translate3d(0,30px,0); } 100% { opacity: 1; transform: translate3d(0,0,0); } }
+    /* Custom Scrollbar for overflow demos */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #07090e; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
   </style>
 </head>
 <body>

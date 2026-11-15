@@ -4,17 +4,19 @@ import { LESSONS, MODULES, getLessonById, getLessonsByModule } from '../src/modu
 import { validateChallenge } from '../src/modules/validator.js';
 
 describe('Curriculum Data Integrity', () => {
-  it('contains modules for HTML Core, CSS Core, Layout & Components, and Modern Mastery', () => {
-    assert.equal(MODULES.length, 4);
+  it('contains modules for HTML Core, CSS Core, Layout, Modern Mastery, Third-Party, and Bootstrap', () => {
+    assert.equal(MODULES.length, 6);
     const moduleIds = MODULES.map(m => m.id);
     assert.equal(moduleIds.includes('html-core'), true);
     assert.equal(moduleIds.includes('css-core'), true);
     assert.equal(moduleIds.includes('full-powers'), true);
     assert.equal(moduleIds.includes('modern-mastery'), true);
+    assert.equal(moduleIds.includes('third-party'), true);
+    assert.equal(moduleIds.includes('bootstrap'), true);
   });
 
-  it('contains all 24 foundational, intermediate, and modern themes', () => {
-    assert.equal(LESSONS.length, 24);
+  it('contains all 32 foundational, intermediate, modern, third-party, and bootstrap themes', () => {
+    assert.equal(LESSONS.length, 32);
   });
 
   it('strictly covers the teacher\'s initial 8 themes in order', () => {

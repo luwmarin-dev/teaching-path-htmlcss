@@ -75,7 +75,8 @@ export function validateChallenge(code, rules = []) {
 
       case 'custom': {
         try {
-          passed = !!rule.check(code);
+          const fn = rule.check || rule.fn;
+          passed = typeof fn === 'function' ? !!fn(code) : false;
         } catch {
           passed = false;
         }

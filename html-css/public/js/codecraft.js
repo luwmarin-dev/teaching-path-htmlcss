@@ -31,45 +31,67 @@ const MODULES = [
   {
     id: 'html-core',
     title: {
-      en: '🦴 HTML Core (Themes 1 - 5)',
-      uz: '🦴 Asosiy HTML (1 - 5 Mavzular)'
+      en: '🦴 Pure HTML Core & Media (Themes 1 - 5, 10 - 12, 17 - 20)',
+      uz: '🦴 Asosiy HTML & Media (1 - 5, 10 - 12, 17 - 20 Mavzular)'
     },
     tagline: {
-      en: 'Tags, document structure, tables, images, and basic divs',
-      uz: 'Teglar, hujjat tuzilishi, jadvallar, rasmlar va divlar'
+      en: 'Tags, document structure, tables, images, buttons, links, lists, inputs, and audio/video',
+      uz: "Teglar, hujjat tuzilishi, jadvallar, rasmlar, tugmalar, havolalar, ro'yxatlar, inputlar va audio/video"
     }
   },
   {
     id: 'css-core',
     title: {
-      en: '🎨 CSS Styling (Themes 6 - 8)',
-      uz: '🎨 CSS Bezaklari (6 - 8 Mavzular)'
+      en: '🎨 CSS Styling, Box Model & Overflow (Themes 6 - 8, 13 - 15, 25)',
+      uz: '🎨 CSS Bezaklari, Box Model va Overflow (6 - 8, 13 - 15, 25 Mavzular)'
     },
     tagline: {
-      en: 'Classes, margin & padding, and 2D transforms',
-      uz: 'Klasslar, margin va padding, hamda 2D transform'
+      en: 'Classes, margin vs padding, transforms, colors, fonts, shapes, and overflow clipping',
+      uz: "Klasslar, margin va padding, transform, ranglar, shriftlar, shakllar va overflow nazorati"
     }
   },
   {
     id: 'full-powers',
     title: {
-      en: '⚡ Layout & Components (Themes 9 - 16)',
-      uz: '⚡ Tartib va Komponentlar (9 - 16 Mavzular)'
+      en: '⚡ Advanced Layout & Positioning (Themes 9, 21 - 22)',
+      uz: '⚡ Murakkab Joylashuv & Tartib (9, 21 - 22 Mavzular)'
     },
     tagline: {
-      en: 'Flexbox, buttons, links, colors, shapes, and animations',
-      uz: 'Flexbox, tugmalar, havolalar, ranglar, shakllar va animatsiyalar'
+      en: 'Flexbox alignment, CSS Grid 2D worlds, and Deep CSS Positions (relative, absolute, fixed, sticky)',
+      uz: "Flexbox tartibi, CSS Grid 2D dunyosi va Chuqur CSS Position (relative, absolute, fixed, sticky)"
     }
   },
   {
     id: 'modern-mastery',
     title: {
-      en: '🚀 Modern Mastery (Themes 17 - 24)',
-      uz: '🚀 Zamonaviy Mahorat (17 - 24 Mavzular)'
+      en: '🚀 Visual Effects & Responsive Design (Themes 16, 23 - 24, 26 - 27)',
+      uz: '🚀 Maxsus Vizual Effektlar & Responsive (16, 23 - 24, 26 - 27 Mavzular)'
     },
     tagline: {
-      en: 'Inputs, audio, video, accordions, CSS grid, positioning, transitions, and filters',
-      uz: 'Inputlar, audio, video, akkordeon, CSS grid, joylashuv, animatsiyali o\'tishlar va filtrlar'
+      en: 'Keyframe animations, smooth hover physics, gradients, filters, and media queries',
+      uz: "Animatsiyalar, silliq o'tishlar, gradientlar, filtrlar va media queries"
+    }
+  },
+  {
+    id: 'third-party',
+    title: {
+      en: '🌐 Third-Party Web Technologies (Themes 28 - 29)',
+      uz: '🌐 Tashqi Kutubxonalar & Resurslar (28 - 29 Mavzular)'
+    },
+    tagline: {
+      en: 'Linked Web Fonts, Scalable SVG Icon Systems, and Animate.css / AOS Scroll Animation triggers',
+      uz: "Web Shriftlar (Google Fonts), SVG Ikonkalar va Animate.css / AOS animatsiyalari"
+    }
+  },
+  {
+    id: 'bootstrap',
+    title: {
+      en: '🅱️ Bootstrap 5 Framework (Themes 30 - 32)',
+      uz: '🅱️ Bootstrap 5 Freymvorki (30 - 32 Mavzular)'
+    },
+    tagline: {
+      en: 'Bootstrap responsive 12-column grid, modern UI cards/badges/alerts, and responsive navbar',
+      uz: "Bootstrap 12 ustunli moslashuvchan setka, zamonaviy UI kartalar/nishonlar va responsiv navbar"
     }
   }
 ];
@@ -1504,7 +1526,7 @@ const LESSONS = [
   // ==========================================
   {
     id: 'theme-10-buttons',
-    module: 'full-powers',
+    module: 'html-core',
     title: {
       en: 'Theme 10: Buttons & Hover Glows (:hover)',
       uz: '10-Mavzu: Tugmalar va Sichqoncha Effekti (:hover)'
@@ -1641,7 +1663,7 @@ const LESSONS = [
   // ==========================================
   {
     id: 'theme-11-links',
-    module: 'full-powers',
+    module: 'html-core',
     title: {
       en: 'Theme 11: Links & Web Portals (Portals)',
       uz: '11-Mavzu: Havolalar va Sayt Portallari (Portallar)'
@@ -1753,7 +1775,7 @@ const LESSONS = [
   // ==========================================
   {
     id: 'theme-12-lists',
-    module: 'full-powers',
+    module: 'html-core',
     title: {
       en: 'Theme 12: Bullet & Numbered Lists (Lists)',
       uz: '12-Mavzu: Ro\'yxatlar (Tartibli va Tartibsiz)'
@@ -1863,7 +1885,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-13-colors',
-    module: 'full-powers',
+    module: 'css-core',
     title: {
       en: 'Theme 13: Colors & Gradients (HEX & Linear)',
       uz: '13-Mavzu: Ranglar va Gradientlar (HEX va Chiziqli)'
@@ -1993,7 +2015,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-14-fonts',
-    module: 'full-powers',
+    module: 'css-core',
     title: {
       en: 'Theme 14: Fonts & Neon Glows (text-shadow)',
       uz: '14-Mavzu: Shriftlar va Neon Nurlari (text-shadow)'
@@ -2106,7 +2128,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-15-shapes',
-    module: 'full-powers',
+    module: 'css-core',
     title: {
       en: 'Theme 15: Rounded Corners & 50% Circles',
       uz: '15-Mavzu: Yumaloq Burchaklar va Aylana (50%)'
@@ -2226,7 +2248,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-16-animations',
-    module: 'full-powers',
+    module: 'modern-mastery',
     title: {
       en: 'Theme 16: Keyframe Animations (Alive & Bouncing)',
       uz: '16-Mavzu: Jonli Animatsiyalar (@keyframes)'
@@ -2349,7 +2371,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-17-inputs',
-    module: 'modern-mastery',
+    module: 'html-core',
     title: {
       en: 'Theme 17: Interactive Inputs (Player Name & Color)',
       uz: '17-Mavzu: Interaktiv Kiritish (Ism va Rang Tanlash)'
@@ -2557,7 +2579,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-18-audio',
-    module: 'modern-mastery',
+    module: 'html-core',
     title: {
       en: 'Theme 18: Audio Player (Sound FX & Music)',
       uz: '18-Mavzu: Audio Pleyer (Ovoz va Musiqa)'
@@ -2750,7 +2772,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-19-video',
-    module: 'modern-mastery',
+    module: 'html-core',
     title: {
       en: 'Theme 19: Video Player (Cinema on the Web)',
       uz: '19-Mavzu: Video Pleyer (Vebda Kino)'
@@ -2920,7 +2942,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-20-details',
-    module: 'modern-mastery',
+    module: 'html-core',
     title: {
       en: 'Theme 20: Accordion Secrets (Details & Summary)',
       uz: '20-Mavzu: Ochiluvchi Sirli Quti (Details va Summary)'
@@ -3093,7 +3115,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-21-grid',
-    module: 'modern-mastery',
+    module: 'full-powers',
     title: {
       en: 'Theme 21: CSS Grid (2D Game Inventory)',
       uz: '21-Mavzu: CSS Grid (2D O\'yin Inventari)'
@@ -3321,7 +3343,7 @@ Jetpack Shoes`,
   // ==========================================
   {
     id: 'theme-22-position',
-    module: 'modern-mastery',
+    module: 'full-powers',
     title: {
       en: 'Theme 22: Positioning (Corner Notification Badges)',
       uz: '22-Mavzu: Joylashuv (Burchakdagi Bildirishnoma Nishonlari)'
@@ -3929,6 +3951,1303 @@ Jetpack Shoes`,
         uz: '#2dd4bf rangini #ff5e7e ga almashtirib, olmosni yorqin pushti rangda porlating!'
       }
     }
+  },
+  // ==========================================
+  // THEME 25: CSS Overflow
+  // ==========================================
+  {
+    id: 'theme-25-overflow',
+    module: 'css-core',
+    title: {
+      en: 'Theme 25: CSS Overflow (Clipping & Cyber Scrollbars)',
+      uz: '25-Mavzu: CSS Overflow (Qirqish va Kiber Skrollbar)'
+    },
+    icon: '🌊',
+    tag: 'overflow: hidden | scroll | auto',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Imagine packing 10 soccer balls into a tiny shoe box — they spill out all over the floor! In CSS, when words or images are too big for their container, this is called **Overflow**. With the **overflow** property, you can decide whether content spills out, gets laser-cut cleanly, or creates a sleek cyber scrollbar!',
+        uz: "Kichik poyabzal qutisiga 10 ta futbol to'pini tiqsangiz nima bo'ladi? Polga toshib tushadi! CSS da matn yoki rasm o'z qutisiga sig'may qolsa, bu **Overflow** deyiladi. Siz overflow yordamida toshib chiqishni, lazerdek toza qirqib yashirishni yoki kiber skrollbar qo'shishni boshqarasiz!"
+      },
+      whatIsATag: {
+        en: '**overflow: hidden** slices away anything poking out of the borders like magic. **overflow-y: auto** adds a scrollbar only when needed so long hacker logs stay neat!',
+        uz: "**overflow: hidden** qutidan chiqib ketgan narsalarni lazerdek qirqib yashiradi. **overflow-y: auto** esa kerak bo'lgandagina zamonaviy skrollbar chiqaradi!"
+      }
+    },
+    summary: {
+      en: 'Master container overflow, crop messy spills with hidden, and build high-tech scrollable terminals.',
+      uz: "Konteyner toshishini boshqaring, hidden bilan tozalang va skroll bo'ladigan kiber terminallar quring."
+    },
+    story: {
+      en: 'The Starship Cyber Terminal is overflowing with thousands of incoming cosmic telemetry logs! Use overflow-y: auto to keep the terminal compact and scrollable!',
+      uz: "Yulduz kemasi terminali koinotdan kelayotgan minglab xabarlar bilan toshib ketdi! overflow-y: auto qo'shib, xabarlarni ixcham skroll qilinadigan qiling!"
+    },
+    initialCode: `<style>
+  .terminal-box {
+    width: 320px;
+    height: 150px;
+    background: #090d16;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    padding: 16px;
+    color: #38bdf8;
+    font-family: monospace;
+    /* Step: Add overflow-y: auto to create a smooth scrolling log! */
+  }
+  .log-line {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background: rgba(56, 189, 248, 0.08);
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+  }
+</style>
+
+<div class="terminal-box">
+  <div class="log-line">🛰️ [SYS] Satellite Link: Online</div>
+  <div class="log-line">⚡ [PWR] Reactor Core at 99%</div>
+  <div class="log-line">👾 [WARN] Alien Signal Detected!</div>
+  <div class="log-line">🛡️ [DEF] Shield Matrix: Active</div>
+  <div class="log-line">🚀 [NAV] Warp Coordinates Locked</div>
+  <div class="log-line">🏁 [SYS] Hyperspace Ready!</div>
+</div>`,
+    targetCode: `<style>
+  .terminal-box {
+    width: 320px;
+    height: 150px;
+    background: #090d16;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    padding: 16px;
+    color: #38bdf8;
+    font-family: monospace;
+    overflow-y: auto;
+  }
+  .log-line {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background: rgba(56, 189, 248, 0.08);
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+  }
+</style>
+
+<div class="terminal-box">
+  <div class="log-line">🛰️ [SYS] Satellite Link: Online</div>
+  <div class="log-line">⚡ [PWR] Reactor Core at 99%</div>
+  <div class="log-line">👾 [WARN] Alien Signal Detected!</div>
+  <div class="log-line">🛡️ [DEF] Shield Matrix: Active</div>
+  <div class="log-line">🚀 [NAV] Warp Coordinates Locked</div>
+  <div class="log-line">🏁 [SYS] Hyperspace Ready!</div>
+</div>`,
+    targetDescription: {
+      en: 'A high-tech cyberpunk terminal with a neon blue border that neatly scrolls through 6 telemetry logs without spilling!',
+      uz: "6 ta telemetriya xabarini toshib ketmasdan chiroyli skroll qiladigan neon ko'k hoshiyali kiber terminal!"
+    },
+    anatomy: [
+      {
+        code: 'overflow: hidden;',
+        name: { en: 'Overflow Hidden', uz: 'Overflow Hidden' },
+        purpose: { en: 'Clips off anything that spills outside the boundaries.', uz: 'Chegaradan toshgan har qanday narsani qirqib yashiradi.' },
+        role: { en: 'Laser scissors', uz: 'Lazer qaychi' }
+      },
+      {
+        code: 'overflow-y: auto;',
+        name: { en: 'Overflow Vertical Auto', uz: 'Vertikal Avto Skroll' },
+        purpose: { en: 'Displays a vertical scrollbar only when content overflows.', uz: 'Faqatgina matn toshganda vertikal skrollbarni chiqaradi.' },
+        role: { en: 'Scroll elevator', uz: 'Skroll lifti' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'overflow: hidden',
+        name: { en: 'Hidden Overflow', uz: 'Yashirin Toshish' },
+        description: { en: 'Hides overflowing content cleanly.', uz: 'Toshgan tarkibni toza yashiradi.' }
+      },
+      {
+        code: 'overflow-y: auto',
+        name: { en: 'Auto Scrollbar', uz: 'Avtomatik Skroll' },
+        description: { en: 'Adds scrollbar if content exceeds container height.', uz: "Balandlikdan oshganda skrollbar qo'shadi." }
+      }
+    ],
+    quickTags: ['overflow: hidden;', 'overflow-y: auto;', 'overflow: scroll;'],
+    challenge: {
+      mission: {
+        en: 'Add overflow-y: auto; to .terminal-box so all telemetry logs fit inside a scrollable window!',
+        uz: ".terminal-box ga overflow-y: auto; qo'shing, shunda barcha telemetriya xabarlari skroll oynasida sig'adi!"
+      },
+      hint: {
+        en: 'Write overflow-y: auto; inside the .terminal-box style block.',
+        uz: '.terminal-box uslublar bloki ichiga overflow-y: auto; yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'overflow-y',
+          valuePattern: /auto|scroll/i,
+          message: 'Add overflow-y: auto to .terminal-box!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Overflow is like a toy box. If you stuff too many toys in, overflow: hidden cuts the tops off, while overflow: scroll turns the box into an escalator!',
+        uz: "Overflow o'yinchoq qutisiga o'xshaydi. O'yinchoqlar ko'payib ketsa, hidden ularni qirqadi, scroll esa qutini eskalatorga aylantiradi!"
+      },
+      discussionQuestions: [
+        {
+          en: 'Why do round avatar cards use overflow: hidden? (So square images get clipped into clean circles!)',
+          uz: "Nima uchun yumaloq avatarlar overflow: hidden ishlatadi? (To'rtburchak rasmlar chiroyli aylana bo'lib qirqilishi uchun!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting to give the container a fixed height or max-height.',
+          uz: "Konteynerga aniq height yoki max-height berishni unutib qo'yish."
+        }
+      ],
+      funActivity: {
+        en: 'Change height from 150px to 80px to see how fast the scrollbar adapts!',
+        uz: "Balandlikni 150px dan 80px ga o'zgartirib, skrollbar qanday moslashishini ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 26: Gradients
+  // ==========================================
+  {
+    id: 'theme-26-gradients',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 26: Gradients (Linear, Radial & Conic Neons)',
+      uz: '26-Mavzu: Gradientlar (Linear, Radial va Conic Neonlar)'
+    },
+    icon: '🌈',
+    tag: 'background: linear-gradient() | radial-gradient()',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Why settle for one flat color when you can blend colors together like a neon sunset or a glowing space nebula? In CSS, a **Gradient** smoothly transitions between multiple colors. You can make diagonal rays (**linear-gradient**), glowing cosmic energy orbs (**radial-gradient**), or 360-degree radar sweeps (**conic-gradient**)!',
+        uz: "Nega faqat bitta oddiy rang bilan cheklanish kerak, agar quyosh botishi yoki kosmik tumanlik kabi yorqin neon ranglarni bir-biriga qorishtirish mumkin bo'lsa? CSS da **Gradient** ranglar orasidagi silliq o'tishdir. Siz diagonal nurlar (linear), nur taratuvchi sharlar (radial) yoki 360 darajali kiber radarlar (conic) yasashingiz mumkin!"
+      },
+      whatIsATag: {
+        en: '**linear-gradient(135deg, #ff007a, #7928ca)** blends colors at a 135-degree angle. **radial-gradient(circle, #00f2fe, #0b0d13)** radiates light outwards from the center!',
+        uz: '**linear-gradient(135deg, #ff007a, #7928ca)** ranglarni 135 gradus burchak ostida qorishtiradi. **radial-gradient(circle, #00f2fe, #0b0d13)** esa markazdan nur taratadi!'
+      }
+    },
+    summary: {
+      en: 'Create stunning linear, radial, and multi-stop glowing gradients that make designs look like AAA video games.',
+      uz: "Saytlarni AAA video o'yinlardek ko'rsatadigan ajoyib linear, radial va ko'p rangli gradientlar yarating."
+    },
+    story: {
+      en: 'The Galaxy Explorers Club needs two glowing badges: a Nebula Card powered by a diagonal linear gradient and a Cosmic Orb powered by a center radial gradient!',
+      uz: "Koinot Tadqiqotchilari Klubiga ikkita yorqin nishon kerak: diagonal linear gradientli Tumanlik Kartasi va markazdan nur taratuvchi Kosmik Shar!"
+    },
+    initialCode: `<style>
+  .gradient-showcase {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #090d16;
+    border-radius: 14px;
+  }
+  .nebula-card {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
+    /* Step 1: Add background: linear-gradient(135deg, #ff007a, #7928ca); */
+    background: #ff007a;
+  }
+  .cosmic-orb {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 0 35px #00f2fe;
+    /* Step 2: Add background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); */
+    background: #00f2fe;
+  }
+</style>
+
+<div class="gradient-showcase">
+  <div class="nebula-card">✨ NEBULA</div>
+  <div class="cosmic-orb">🔮 ORB</div>
+</div>`,
+    targetCode: `<style>
+  .gradient-showcase {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #090d16;
+    border-radius: 14px;
+  }
+  .nebula-card {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
+    background: linear-gradient(135deg, #ff007a, #7928ca);
+  }
+  .cosmic-orb {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 0 35px #00f2fe;
+    background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%);
+  }
+</style>
+
+<div class="gradient-showcase">
+  <div class="nebula-card">✨ NEBULA</div>
+  <div class="cosmic-orb">🔮 ORB</div>
+</div>`,
+    targetDescription: {
+      en: 'A neon showcase with a pink-purple diagonal linear gradient card alongside a glowing 3D cyan radial energy sphere!',
+      uz: "Pushti-binafsha diagonal linear gradientli karta hamda 3D ko'rinishdagi nur taratuvchi sian radial shar!"
+    },
+    anatomy: [
+      {
+        code: 'linear-gradient(135deg, color1, color2)',
+        name: { en: 'Linear Gradient', uz: 'Chiziqli Gradient' },
+        purpose: { en: 'Blends colors across a directional straight line.', uz: "Ranglarni to'g'ri yo'nalishli chiziq bo'ylab qorishtiradi." },
+        role: { en: 'Directional light', uz: "Yo'nalishli nur" }
+      },
+      {
+        code: 'radial-gradient(circle, color1, color2)',
+        name: { en: 'Radial Gradient', uz: 'Doiraviy Gradient' },
+        purpose: { en: 'Blends colors radiating out from a central focal point.', uz: "Ranglarni markaziy nuqtadan tashqariga doira shaklida qorishtiradi." },
+        role: { en: 'Glowing orb', uz: 'Nur taratuvchi shar' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'linear-gradient(deg, c1, c2)',
+        name: { en: 'Linear Gradient', uz: 'Linear Gradient' },
+        description: { en: 'Transitions colors on an angle.', uz: "Ranglarni burchak bo'yicha o'tkazadi." }
+      },
+      {
+        code: 'radial-gradient(circle, c1, c2)',
+        name: { en: 'Radial Gradient', uz: 'Radial Gradient' },
+        description: { en: 'Radiates colors outward in circular waves.', uz: "Ranglarni doira bo'ylab to'lqinlantiradi." }
+      }
+    ],
+    quickTags: [
+      'background: linear-gradient(135deg, #ff007a, #7928ca);',
+      'background: radial-gradient(circle, #00f2fe, #0b0d13);'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add background: linear-gradient(135deg, #ff007a, #7928ca); to .nebula-card!',
+        uz: ".nebula-card ga background: linear-gradient(135deg, #ff007a, #7928ca); qo'shing!"
+      },
+      hint: {
+        en: 'Replace the flat #ff007a background with linear-gradient(135deg, #ff007a, #7928ca);.',
+        uz: "Oddiy #ff007a rangini linear-gradient(135deg, #ff007a, #7928ca); ga almashtiring."
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /linear-gradient/i,
+          message: 'Add linear-gradient background to .nebula-card!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Think of watercolor paints on wet paper: two colors meet and blend together seamlessly without a sharp border.',
+        uz: "Xuddi nam qog'ozdagi akvarel bo'yoqlariga o'xshaydi: ikki rang qattiq chegarasiz silliq aralashib ketadi."
+      },
+      discussionQuestions: [
+        {
+          en: 'What happens if you change 135deg to 45deg or 90deg? (The direction of the gradient rotates!)',
+          uz: "135deg burchagini 45deg yoki 90deg qilsangiz nima o'zgaradi? (Gradient oqim yo'nalishi aylanadi!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Missing commas between colors or forgetting the closing parenthesis.',
+          uz: "Ranglar orasidagi vergulni yoki yopuvchi qavsni unutib qo'yish."
+        }
+      ],
+      funActivity: {
+        en: 'Try adding a 3rd color: linear-gradient(90deg, red, yellow, blue);!',
+        uz: "3-rangni qo'shib ko'ring: linear-gradient(90deg, red, yellow, blue);!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 27: Media Queries
+  // ==========================================
+  {
+    id: 'theme-27-media-queries',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 27: Media Queries (Responsive Mobile & Desktop)',
+      uz: '27-Mavzu: Media Queries (Mobil va Kompyuterga Moslashuvchanlik)'
+    },
+    icon: '📱',
+    tag: '@media (max-width: 768px)',
+    humanIntro: {
+      whatIsIt: {
+        en: 'People visit web pages on wide desktop monitors and narrow pocket smartphones! If you keep the layout the same, elements get squeezed and unreadable on small screens. **Media Queries** act like a magic sensor that detects screen width and automatically changes styles so your page looks incredible on every device!',
+        uz: "Odamlar saytlarga keng kompyuter ekranlaridan ham, tor telefonlardan ham kirishadi! Agar tartib o'zgarmasa, kichik ekranlarda elementlar siqilib xunuk ko'rinadi. **Media Queries** ekran kengligini sezuvchi sehrli sensor kabi ishlaydi va har qanday qurilmada saytni ajoyib ko'rsatadi!"
+      },
+      whatIsATag: {
+        en: '**@media (max-width: 768px)** tells the browser: "If the screen is 768 pixels or narrower, stack columns vertically so thumb-scrolling is effortless!"',
+        uz: `**@media (max-width: 768px)** brauzerga aytadi: "Agar ekran 768 piksel yoki undan kichik bo'lsa, ustunlarni vertikal terib ber, shunda barmoq bilan o'qish oson bo'ladi!"`
+      }
+    },
+    summary: {
+      en: 'Build responsive mobile-friendly layouts that adapt fluidly between desktop columns and mobile stacks.',
+      uz: "Kompyuter ustunlari va mobil terilishlar o'rtasida erkin moslashadigan responsiv dizaynlar quring."
+    },
+    story: {
+      en: 'The Cyber Squad roster displays 3 heroes side-by-side on computers. Add a media query so when viewed on a phone, the heroes stack vertically into comfortable cards!',
+      uz: "Kiber Jamoa ro'yxati kompyuterda 3 ta qahramonni yonma-yon ko'rsatadi. Media query qo'shing, shunda telefonda ular qulay vertikal kartalar bo'lib teriladi!"
+    },
+    initialCode: `<style>
+  .squad-dock {
+    display: flex;
+    gap: 16px;
+    padding: 18px;
+    background: #0f172a;
+    border-radius: 12px;
+  }
+  .hero-card {
+    flex: 1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 16px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+  }
+  .mobile-tag {
+    display: none;
+    color: #38bdf8;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  /* Step: Add @media (max-width: 768px) { .squad-dock { flex-direction: column; } .mobile-tag { display: block; } } */
+</style>
+
+<div class="squad-dock">
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>🥷 Ninja</h3>
+    <p>Stealth 100%</p>
+  </div>
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>⚡ Mage</h3>
+    <p>Mana 100%</p>
+  </div>
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>🤖 Mech</h3>
+    <p>Armor 100%</p>
+  </div>
+</div>`,
+    targetCode: `<style>
+  .squad-dock {
+    display: flex;
+    gap: 16px;
+    padding: 18px;
+    background: #0f172a;
+    border-radius: 12px;
+  }
+  .hero-card {
+    flex: 1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 16px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+  }
+  .mobile-tag {
+    display: none;
+    color: #38bdf8;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 768px) {
+    .squad-dock {
+      flex-direction: column;
+    }
+    .mobile-tag {
+      display: block;
+    }
+  }
+</style>
+
+<div class="squad-dock">
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>🥷 Ninja</h3>
+    <p>Stealth 100%</p>
+  </div>
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>⚡ Mage</h3>
+    <p>Mana 100%</p>
+  </div>
+  <div class="hero-card">
+    <div class="mobile-tag">📱 Phone Stack</div>
+    <h3>🤖 Mech</h3>
+    <p>Armor 100%</p>
+  </div>
+</div>`,
+    targetDescription: {
+      en: 'A responsive squad dock that intelligently stacks into single-column mobile cards on screens below 768px wide!',
+      uz: "768px dan kichik ekranlarda aqlli ravishda bitta ustunli mobil kartalariga aylanadigan responsiv jamoa paneli!"
+    },
+    anatomy: [
+      {
+        code: '@media (max-width: 768px)',
+        name: { en: 'Media Query Rule', uz: 'Media Query Qoidasi' },
+        purpose: { en: 'Triggers when viewport width is 768px or narrower.', uz: "Ekran kengligi 768px yoki undan kichik bo'lganda ishga tushadi." },
+        role: { en: 'Screen width sensor', uz: "Ekran o'lchami sensori" }
+      },
+      {
+        code: 'flex-direction: column;',
+        name: { en: 'Column Direction', uz: "Ustun Yo'nalishi" },
+        purpose: { en: 'Stacks child elements on top of each other.', uz: "Bolalar elementlarini ustma-ust teradi." },
+        role: { en: 'Vertical stacker', uz: 'Vertikal teruvchi' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: '@media (max-width: ...px)',
+        name: { en: 'Media Query', uz: 'Media Query' },
+        description: { en: 'Conditional styling for mobile/tablet screen sizes.', uz: "Mobil va planshet ekran o'lchamlari uchun shartli uslublar." }
+      }
+    ],
+    quickTags: [
+      '@media (max-width: 768px) { .squad-dock { flex-direction: column; } }'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add @media (max-width: 768px) and set .squad-dock to flex-direction: column!',
+        uz: "@media (max-width: 768px) qo'shing va .squad-dock ga flex-direction: column bering!"
+      },
+      hint: {
+        en: 'Wrap the responsive CSS inside @media (max-width: 768px) { ... }.',
+        uz: 'Moslashuvchan CSS ni @media (max-width: 768px) { ... } ichiga oling.'
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: code => code.includes('@media') && code.includes('max-width') && code.includes('column'),
+          message: 'Add @media (max-width: 768px) and set flex-direction: column!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Media queries are like an umbrella: you only open it when it starts raining (when the screen gets small)!',
+        uz: "Media query xuddi soyabonga o'xshaydi: uni faqat yomg'ir yoqqanda (ekran kichrayganda) ochasiz!"
+      },
+      discussionQuestions: [
+        {
+          en: 'Why is 768px commonly used? (It is the standard boundary between tablets/phones and laptop screens!)',
+          uz: "Nima uchun 768px ko'p ishlatiladi? (Bu telefon/planshet va noutbuk ekranlari orasidagi standart chegaradir!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting to close the outer curly brace } of the @media block.',
+          uz: "@media blokining tashqi jingalak qavsini } yopishni unutib qo'yish."
+        }
+      ],
+      funActivity: {
+        en: 'Resize your browser window narrow and wide to watch the cards snap between 3 columns and 1 stack!',
+        uz: "Brauzer oynasini kichraytirib-kattalashtirib, kartalar qanday qilib 3 ustun va 1 ustunga o'tishini ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 28: Web Fonts & SVG Icons
+  // ==========================================
+  {
+    id: 'theme-28-web-fonts-icons',
+    module: 'third-party',
+    title: {
+      en: 'Theme 28: Web Fonts & SVG Icons (Google Fonts & Vector Badges)',
+      uz: '28-Mavzu: Veb Shriftlar va SVG Ikonkalar (Google Fonts & Vektor Nishonlar)'
+    },
+    icon: '🖋️',
+    tag: '<link href="...fonts"> | <svg>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Default fonts look like homework essays. Real websites connect **Google Fonts** to give their titles futuristic cyber vibes! And instead of blurry photos that pixelate when zoomed, modern sites use **SVG vector graphics** — math-drawn shapes that stay razor-sharp on retina screens!',
+        uz: "Standart shriftlar maktab inshosiga o'xshaydi. Haqiqiy veb-saytlar esa sarlavhalarga kinolardagidek kiber ko'rinish berish uchun **Google Fonts** ulaydi! Katta qilganda xiralashadigan rasmlar o'rniga esa matematik aniqlikdagi tiniq **SVG vektor ikonkalardan** foydalaniladi!"
+      },
+      whatIsATag: {
+        en: 'font-family: \'Orbitron\', monospace; applies futuristic letterforms. <svg viewBox="0 0 24 24"> draws crystal-clear vector artwork with code!',
+        uz: `font-family: 'Orbitron', monospace; kelajak harflarini beradi. <svg viewBox="0 0 24 24"> esa kod yordamida o'ta tiniq vektor nishonlar chizadi!`
+      }
+    },
+    summary: {
+      en: 'Level up typography with Google Fonts aesthetics, letter-spacing, and scalable vector SVG icon badges.',
+      uz: "Google Fonts tipografiyasi, letter-spacing va o'lchami o'zgaruvchan SVG vektor ikonkalar bilan dizaynni yuksaltiring."
+    },
+    story: {
+      en: 'The Grand Champion Guild needs an official crest with a glowing gold SVG vector star and wide-spaced futuristic typography!',
+      uz: "Oliy Chempionlar Gildiyasiga oltin nurli SVG yulduzi va keng ochilgan kiber shriftli rasmiy nishon kerak!"
+    },
+    initialCode: `<style>
+  .guild-card {
+    background: #0f172a;
+    border: 2px solid #38bdf8;
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    max-width: 320px;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+  }
+  .guild-title {
+    /* Step: Add font-family: 'Orbitron', monospace, sans-serif; and letter-spacing: 3px; */
+    color: #38bdf8;
+    margin: 12px 0 6px;
+  }
+  .svg-icon {
+    width: 44px;
+    height: 44px;
+    fill: #f59e0b;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+  }
+</style>
+
+<div class="guild-card">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+  </svg>
+  <h2 class="guild-title">CYBER GUILD</h2>
+  <p>Grand Champions of CodeCraft ⭐</p>
+</div>`,
+    targetCode: `<style>
+  .guild-card {
+    background: #0f172a;
+    border: 2px solid #38bdf8;
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    max-width: 320px;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+  }
+  .guild-title {
+    font-family: 'Orbitron', monospace, sans-serif;
+    letter-spacing: 3px;
+    color: #38bdf8;
+    margin: 12px 0 6px;
+  }
+  .svg-icon {
+    width: 44px;
+    height: 44px;
+    fill: #f59e0b;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+  }
+</style>
+
+<div class="guild-card">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+  </svg>
+  <h2 class="guild-title">CYBER GUILD</h2>
+  <p>Grand Champions of CodeCraft ⭐</p>
+</div>`,
+    targetDescription: {
+      en: 'A high-tech guild card featuring wide letter-spaced cyber typography and a glowing vector gold star badge drawn in SVG code!',
+      uz: "Keng oraliqli kiber shrift hamda SVG kodida chizilgan oltin yulduzli vektor nishoniga ega yuqori texnologiyali gildiya kartasi!"
+    },
+    anatomy: [
+      {
+        code: 'font-family: "Orbitron", monospace;',
+        name: { en: 'Web Font Family', uz: 'Veb Shrift Oilasi' },
+        purpose: { en: 'Applies distinctive font aesthetics to text.', uz: "Matnga betakror zamonaviy ko'rinish beradi." },
+        role: { en: 'Cyber font', uz: 'Kiber shrift' }
+      },
+      {
+        code: '<svg viewBox="0 0 24 24">',
+        name: { en: 'Scalable Vector Graphics', uz: 'Masshtablanuvchi Vektor Grafika' },
+        purpose: { en: 'Draws resolution-independent vector shapes with code.', uz: "Har qanday o'lchamda tiniq turuvchi vektor shakllarni chizadi." },
+        role: { en: 'Infinite-zoom art', uz: 'Cheksiz tiniq rasm' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'letter-spacing: ...px',
+        name: { en: 'Letter Spacing', uz: "Harflar Oralig'i" },
+        description: { en: 'Adds cinema-style breathing space between letters.', uz: "Harflar orasiga kino uslubidagi masofa qo'shadi." }
+      },
+      {
+        code: '<svg> ... </svg>',
+        name: { en: 'SVG Tag', uz: 'SVG Teg' },
+        description: { en: 'Container for crystal-clear vector graphics.', uz: "O'ta tiniq vektor grafikalar konteyneri." }
+      }
+    ],
+    quickTags: [
+      "font-family: 'Orbitron', monospace, sans-serif;",
+      'letter-spacing: 3px;'
+    ],
+    challenge: {
+      mission: {
+        en: "Add font-family: 'Orbitron', monospace, sans-serif; and letter-spacing: 3px; to .guild-title!",
+        uz: ".guild-title ga font-family: 'Orbitron', monospace, sans-serif; va letter-spacing: 3px; qo'shing!"
+      },
+      hint: {
+        en: 'Write font-family and letter-spacing inside the .guild-title style block.',
+        uz: '.guild-title ichiga font-family va letter-spacing xossalarini yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'font-family',
+          message: 'Set font-family on .guild-title!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'SVG is like origami folded from math formulas: no matter how close you inspect it, it never gets pixelated or blurry.',
+        uz: "SVG matematik formulalardan yasalgan origamiga o'xshaydi: qancha yaqinlashtirmang, hech qachon piksellarga bo'linib ketmaydi."
+      },
+      discussionQuestions: [
+        {
+          en: 'Why do major websites use Google Fonts instead of only Arial and Times New Roman? (Brand personality and readability!)',
+          uz: "Nega saytlar faqat Arial o'rniga Google Fonts ishlatadi? (Brend o'ziga xosligi va o'qish qulayligi uchun!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting to include fallback font families like monospace or sans-serif.',
+          uz: "Zaxira shriftlar (monospace, sans-serif) qo'shishni unutib qo'yish."
+        }
+      ],
+      funActivity: {
+        en: 'Change letter-spacing from 3px to 8px to see how dramatic the title becomes!',
+        uz: "Harflar oralig'ini 3px dan 8px ga oshirib, sarlavha qanchalik jiddiy tus olishini ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 29: Third-Party Animations
+  // ==========================================
+  {
+    id: 'theme-29-third-party-animations',
+    module: 'third-party',
+    title: {
+      en: 'Theme 29: Animation Libraries (Animate.css & AOS Scroll Styles)',
+      uz: '29-Mavzu: Animatsiya Kutubxonalari (Animate.css va AOS Skroll Effektlari)'
+    },
+    icon: '🎪',
+    tag: 'class="animate__animated animate__bounceIn"',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Instead of typing 50 lines of complex @keyframes by hand every time, top web developers plug in prebuilt animation libraries like **Animate.css** and **AOS**! You just add class names like **animate__animated animate__bounceIn** to an element and it instantly springs to life with professional physics!',
+        uz: "Har safar 50 qator murakkab @keyframes yozib o'tirish o'rniga, ilg'or dasturchilar **Animate.css** va **AOS** kabi tayyor kutubxonalardan foydalanishadi! Elementga shunchaki **animate__animated animate__bounceIn** klasslarini yozasiz va u bir lahzada professional fizika bilan sakrab paydo bo'ladi!"
+      },
+      whatIsATag: {
+        en: '**animate__animated** primes the element with 3D hardware acceleration, and **animate__bounceIn** plays an elastic celebration entrance!',
+        uz: "**animate__animated** elementni 3D tezlanishga tayyorlaydi, **animate__bounceIn** esa uni bayramona elastik sakrash bilan sahnaga chiqaradi!"
+      }
+    },
+    summary: {
+      en: 'Harness battle-tested third-party animation classes like bounceIn and pulse to create explosive interactive game rewards.',
+      uz: "bounceIn va pulse kabi tayyor klasslardan foydalanib, ajoyib o'yin mukofotlari va interaktiv effektlar yarating."
+    },
+    story: {
+      en: 'A legendary treasure chest has just been unlocked! Bring it onto the screen with the famous Animate.css bounceIn entrance!',
+      uz: "Afsonaviy xazina sandig'i ochildi! Mashhur Animate.css bounceIn effekti yordamida uni ekranga sakratib chiqaring!"
+    },
+    initialCode: `<style>
+  .loot-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .treasure-chest {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 2px solid #f59e0b;
+    border-radius: 16px;
+    padding: 24px 36px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+    /* Step: Add classes animate__animated animate__bounceIn to the div below! */
+  }
+  .chest-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 8px;
+  }
+</style>
+
+<div class="loot-stage">
+  <div class="treasure-chest">
+    <span class="chest-icon">💎</span>
+    <h3>VICTORY REWARD!</h3>
+    <p>+500 Cyber Crystals</p>
+  </div>
+</div>`,
+    targetCode: `<style>
+  .loot-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .treasure-chest {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 2px solid #f59e0b;
+    border-radius: 16px;
+    padding: 24px 36px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+  }
+  .chest-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 8px;
+  }
+</style>
+
+<div class="loot-stage">
+  <div class="treasure-chest animate__animated animate__bounceIn">
+    <span class="chest-icon">💎</span>
+    <h3>VICTORY REWARD!</h3>
+    <p>+500 Cyber Crystals</p>
+  </div>
+</div>`,
+    targetDescription: {
+      en: 'A celebration loot card that springs into view with an elastic Animate.css bounceIn pop!',
+      uz: "Animate.css ning elastik bounceIn sakrashi bilan paydo bo'ladigan bayramona xazina kartasi!"
+    },
+    anatomy: [
+      {
+        code: 'class="animate__animated"',
+        name: { en: 'Animated Base Class', uz: 'Asosiy Animatsiya Klassi' },
+        purpose: { en: 'Activates animation timing and fill-mode properties.', uz: 'Animatsiya vaqti va holatlarini faollashtiradi.' },
+        role: { en: 'Engine starter', uz: 'Dvigatel kaliti' }
+      },
+      {
+        code: 'class="animate__bounceIn"',
+        name: { en: 'Bounce In Effect', uz: 'Sakrab Kirish Effekti' },
+        purpose: { en: 'Applies cubic-bezier spring physics to pop onto screen.', uz: "Ekranga elastik sakrab chiqish fizikasini qo'llaydi." },
+        role: { en: 'Spring acrobat', uz: 'Elastik akrobat' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'animate__animated',
+        name: { en: 'Animated Trigger', uz: 'Animatsiya Trigeri' },
+        description: { en: 'Prepares element for Animate.css effects.', uz: 'Elementni Animate.css effektlariga tayyorlaydi.' }
+      },
+      {
+        code: 'animate__pulse',
+        name: { en: 'Pulse Loop', uz: 'Puls Takrori' },
+        description: { en: 'Pulses element size like a beating heart.', uz: "Elementni yurakdek urib turishga majbur qiladi." }
+      }
+    ],
+    quickTags: [
+      'class="animate__animated animate__bounceIn"',
+      'class="animate__animated animate__pulse"'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add classes animate__animated and animate__bounceIn to the .treasure-chest element!',
+        uz: ".treasure-chest elementiga animate__animated va animate__bounceIn klasslarini qo'shing!"
+      },
+      hint: {
+        en: 'Change <div class="treasure-chest"> to <div class="treasure-chest animate__animated animate__bounceIn">.',
+        uz: `<div class="treasure-chest"> ni <div class="treasure-chest animate__animated animate__bounceIn"> ga o'zgartiring.`
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: code => code.includes('animate__animated') && code.includes('animate__bounceIn'),
+          message: 'Add animate__animated and animate__bounceIn classes!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Library classes are like cheat codes in a video game: instead of building the car piece by piece, you press the code and drive away!',
+        uz: "Kutubxona klasslari video o'yindagi maxfiy kodlarga o'xshaydi: mashinani noldan yig'masdan, bitta kod bilan tayyor mashinani haydab ketasiz!"
+      },
+      discussionQuestions: [
+        {
+          en: 'How do utility animation libraries help engineering teams build apps faster? (Consistency, speed, and tested browser compatibility!)',
+          uz: "Animatsiya kutubxonalari jamoalarga qanday yordam beradi? (Bir xil sifat, tezlik va barcha brauzerlarda sinovdan o'tganligi!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Spelling with a single underscore instead of double underscores (animate__bounceIn).',
+          uz: "Ikkita pastki chiziq o'rniga bittasini yozib qo'yish (animate__bounceIn to'g'ri)."
+        }
+      ],
+      funActivity: {
+        en: 'Replace bounceIn with animate__pulse to watch the chest throb continuously!',
+        uz: "bounceIn o'rniga animate__pulse yozib, sandiq qanday qilib to'xtovsiz urib turishini ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 30: Bootstrap Grid
+  // ==========================================
+  {
+    id: 'theme-30-bootstrap-grid',
+    module: 'bootstrap',
+    title: {
+      en: 'Theme 30: Bootstrap 5 Grid System (Container, Row & Col)',
+      uz: '30-Mavzu: Bootstrap 5 Setka Tizimi (Container, Row va Col)'
+    },
+    icon: '📐',
+    tag: 'class="container" | class="row" | class="col-md-4"',
+    humanIntro: {
+      whatIsIt: {
+        en: '**Bootstrap** is the most famous CSS framework on planet Earth! Its crowning achievement is the **12-Column Responsive Grid System**. Instead of writing dozens of custom media queries, you wrap elements in a **container**, open a **row**, and assign column fractions like **col-12** (100% on phones) and **col-md-4** (1/3 width on laptops)!',
+        uz: "**Bootstrap** — butun dunyoda eng mashhur CSS freymvorkidir! Uning eng zo'r ixtirosi — **12 ustunli moslashuvchan setka (Grid)**. O'nlab media query yozish o'rniga elementlarni **container** ga solasiz, **row** ochasiz va **col-12** (telefonda to'liq) hamda **col-md-4** (kompyuterda 3 ta teng ustun) klasslarini berasiz!"
+      },
+      whatIsATag: {
+        en: 'A row holds 12 total units. Three col-md-4 cards fit together like mathematical perfection (4 + 4 + 4 = 12)!',
+        uz: `Bitta row jami 12 birlikni sig'diradi. Uchta col-md-4 qutilar matematik aniqlikda yonma-yon sig'adi (4 + 4 + 4 = 12)!`
+      }
+    },
+    summary: {
+      en: 'Build professional multi-column responsive websites in minutes using Bootstrap 5 container, row, and col-md-* classes.',
+      uz: 'Bootstrap 5 container, row va col-md-* klasslari bilan bir necha daqiqada professional responsiv saytlar quring.'
+    },
+    story: {
+      en: 'The Cyber Store catalog needs 3 product cards neatly arranged in columns that automatically reflow on small screens!',
+      uz: `Kiber Do'kon katalogiga kichik ekranlarda avtomatik qayta teriladigan 3 ta mahsulot kartasi kerak!`
+    },
+    initialCode: `<!-- Bootstrap 5 Grid System -->
+<div class="container">
+  <div class="row g-2">
+    <!-- Step: Give each box class="col-12 col-md-4" so they form 3 columns on PC and 1 on Mobile! -->
+    <div class="col-12 col-md-4">
+      <div style="background: #3b82f6; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        🚀 Card 1 (Col 4)
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div style="background: #10b981; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        ⚡ Card 2 (Col 4)
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div style="background: #a855f7; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        🔮 Card 3 (Col 4)
+      </div>
+    </div>
+  </div>
+</div>`,
+    targetCode: `<!-- Bootstrap 5 Grid System -->
+<div class="container">
+  <div class="row g-2">
+    <div class="col-12 col-md-4">
+      <div style="background: #3b82f6; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        🚀 Card 1 (Col 4)
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div style="background: #10b981; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        ⚡ Card 2 (Col 4)
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div style="background: #a855f7; padding: 18px; border-radius: 8px; text-align: center; color: white; font-weight: bold;">
+        🔮 Card 3 (Col 4)
+      </div>
+    </div>
+  </div>
+</div>`,
+    targetDescription: {
+      en: 'A classic Bootstrap 3-column responsive layout built using .container, .row, and three .col-12 .col-md-4 columns!',
+      uz: '.container, .row va uchta .col-12 .col-md-4 ustunlaridan foydalanib qurilgan klassik Bootstrap 3 ustunli responsiv layout!'
+    },
+    anatomy: [
+      {
+        code: 'class="container"',
+        name: { en: 'Bootstrap Container', uz: 'Bootstrap Konteyneri' },
+        purpose: { en: 'Centers page content and adds comfortable responsive margins.', uz: 'Sahifani markazga olib, yon tomonlardan qulay masofa qoldiradi.' },
+        role: { en: 'Outer frame', uz: 'Tashqi ramka' }
+      },
+      {
+        code: 'class="row"',
+        name: { en: 'Bootstrap Row', uz: 'Bootstrap Qatori' },
+        purpose: { en: 'Flexbox wrapper that hosts columns totaling up to 12 units.', uz: "Jami 12 birlikgacha bo'lgan ustunlarni o'z ichiga oluvchi flexbox qatori." },
+        role: { en: 'Column holder', uz: 'Ustun ushlagich' }
+      },
+      {
+        code: 'class="col-md-4"',
+        name: { en: 'Medium Breakpoint Column', uz: "O'rta Ekran Ustuni" },
+        purpose: { en: 'Takes 4 out of 12 columns (1/3rd width) on medium+ screens.', uz: "O'rta va katta ekranlarda 12 ta ustundan 4 tasini (1/3 qismini) egallaydi." },
+        role: { en: 'One-third fraction', uz: "Uchdan bir bo'lak" }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'container',
+        name: { en: 'Container Class', uz: 'Konteyner Klassi' },
+        description: { en: 'Standard max-width responsive wrapper.', uz: `Standart maksimal kenglikli responsiv o'rovchi.` }
+      },
+      {
+        code: 'row',
+        name: { en: 'Row Class', uz: 'Qator Klassi' },
+        description: { en: 'Flex container for 12-column grid tracks.', uz: '12 ustunli setka uchun flex qatori.' }
+      },
+      {
+        code: 'col-md-*',
+        name: { en: 'Column Span', uz: 'Ustun Kengligi' },
+        description: { en: 'Assigns 1 to 12 column units on medium screens.', uz: "O'rta ekranlarda 1 dan 12 gacha ustun bo'lagini belgilaydi." }
+      }
+    ],
+    quickTags: [
+      'class="container"',
+      'class="row g-2"',
+      'class="col-12 col-md-4"'
+    ],
+    challenge: {
+      mission: {
+        en: 'Build the 3-column layout using container, row, and col-12 col-md-4 classes!',
+        uz: 'container, row va col-12 col-md-4 klasslaridan foydalanib 3 ustunli tartibni quring!'
+      },
+      hint: {
+        en: 'Ensure container, row, and col- classes are all present in the HTML.',
+        uz: 'HTML da container, row va col- klasslari borligiga ishonch hosil qiling.'
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: code => code.includes('container') && code.includes('row') && code.includes('col-'),
+          message: 'Use container, row, and col-* classes!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Bootstrap Grid is like a clock with 12 hours: you divide the 12 hours between your friends (4 + 4 + 4 = 12)!',
+        uz: "Bootstrap Grid 12 soatlik soatga o'xshaydi: siz 12 soatni 3 do'stingizga teng bo'lib berasiz (4 + 4 + 4 = 12)!"
+      },
+      discussionQuestions: [
+        {
+          en: 'How many col-md-6 boxes fit into one row? (Exactly two, because 6 + 6 = 12!)',
+          uz: "Bitta qatorga nechta col-md-6 sig'adi? (Aynan ikkita, chunki 6 + 6 = 12!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Adding col classes without wrapping them inside a .row parent.',
+          uz: "col klasslarini .row o'rovisiz ishlatish."
+        }
+      ],
+      funActivity: {
+        en: 'Try col-md-6 to make 2 columns, or col-md-3 to make 4 equal columns!',
+        uz: "col-md-6 qilib 2 ta, yoki col-md-3 qilib 4 ta teng ustun yasab ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 31: Bootstrap Components
+  // ==========================================
+  {
+    id: 'theme-31-bootstrap-components',
+    module: 'bootstrap',
+    title: {
+      en: 'Theme 31: Bootstrap Components (Cards, Badges & Alerts)',
+      uz: '31-Mavzu: Bootstrap Komponentlari (Kartalar, Nishonlar va Ogohlantirishlar)'
+    },
+    icon: '🎴',
+    tag: 'class="card" | class="btn btn-primary" | class="badge"',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Bootstrap gives you an entire toy chest of pre-styled UI components! With ready-made classes like **card** (container), **badge bg-success rounded-pill** (online indicator), **btn btn-primary** (sleek button), and **alert alert-primary** (notification), you can build polished SaaS and gaming web apps in minutes!',
+        uz: "Bootstrap sizga tayyor bezatilgan UI komponentlar xazinasini beradi! Tayyor **card** (karta), **badge bg-success rounded-pill** (yashil nishon), **btn btn-primary** (chiroyli tugma) va **alert alert-primary** (ogohlantirish) klasslari bilan bir necha daqiqada ajoyib ilovalar qurasiz!"
+      },
+      whatIsATag: {
+        en: 'Combine **card** with **card-header**, **card-body**, and Bootstrap utility classes to structure information cleanly!',
+        uz: "**card** ni **card-header**, **card-body** va Bootstrap klasslari bilan birlashtirib, ma'lumotlarni chiroyli tartiblang!"
+      }
+    },
+    summary: {
+      en: 'Master foundational Bootstrap UI building blocks: structured cards, status pill badges, alerts, and buttons.',
+      uz: "Asosiy Bootstrap UI bloklarini o'rganing: tuzilmali kartalar, status nishonlari, ogohlantirishlar va tugmalar."
+    },
+    story: {
+      en: 'Build the Starship Flagship Captain status card featuring a live ONLINE status badge, a mission alert, and a launch button!',
+      uz: 'Yulduz kemasi sardorining status kartasini quring: jonli ONLINE nishoni, missiya ogohlantirishi va start tugmasi!'
+    },
+    initialCode: `<!-- Bootstrap 5 Modern Card Component -->
+<div class="card" style="max-width: 320px; margin: 20px auto;">
+  <div class="card-header d-flex justify-content-between">
+    <span>🛡️ HERO STATUS</span>
+    <span class="badge bg-success rounded-pill">ONLINE</span>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Commander Nova</h5>
+    <p class="card-text">Flagship captain with 100% hyperspace clearance.</p>
+    <div class="alert alert-primary">
+      ⚡ Warp Drive Ready!
+    </div>
+    <!-- Step: Add class="btn btn-primary" to the button! -->
+    <button class="btn btn-primary">Launch Shuttle 🚀</button>
+  </div>
+</div>`,
+    targetCode: `<!-- Bootstrap 5 Modern Card Component -->
+<div class="card" style="max-width: 320px; margin: 20px auto;">
+  <div class="card-header d-flex justify-content-between">
+    <span>🛡️ HERO STATUS</span>
+    <span class="badge bg-success rounded-pill">ONLINE</span>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Commander Nova</h5>
+    <p class="card-text">Flagship captain with 100% hyperspace clearance.</p>
+    <div class="alert alert-primary">
+      ⚡ Warp Drive Ready!
+    </div>
+    <button class="btn btn-primary">Launch Shuttle 🚀</button>
+  </div>
+</div>`,
+    targetDescription: {
+      en: 'A polished Bootstrap card complete with a rounded-pill badge, alert box, and action button!',
+      uz: "Yumaloq nishon, ogohlantirish qutisi va harakat tugmasiga ega to'liq bezatilgan Bootstrap kartasi!"
+    },
+    anatomy: [
+      {
+        code: 'class="card"',
+        name: { en: 'Bootstrap Card', uz: 'Bootstrap Kartasi' },
+        purpose: { en: 'Flexible container with borders, shadows, and rounded corners.', uz: 'Hoshiyali, soyali va yumaloq burchakli moslashuvchan konteyner.' },
+        role: { en: 'Card container', uz: "Karta o'rovi" }
+      },
+      {
+        code: 'class="badge bg-success"',
+        name: { en: 'Success Badge', uz: 'Muvaffaqiyat Nishoni' },
+        purpose: { en: 'Displays high-visibility status or counter labels.', uz: "Yuqori ko'rinuvchan status yoki hisoblagich yorliqlarini ko'rsatadi." },
+        role: { en: 'Status badge', uz: 'Status nishoni' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'card-header / card-body',
+        name: { en: 'Card Sections', uz: "Karta Bo'limlari" },
+        description: { en: 'Separates titles, content, and actions inside cards.', uz: "Karta ichidagi sarlavha va kontentni ajratadi." }
+      },
+      {
+        code: 'alert alert-*',
+        name: { en: 'Alert Box', uz: 'Ogohlantirish Qutisi' },
+        description: { en: 'Colored notification banner for user feedback.', uz: 'Foydalanuvchi uchun rangli xabar paneli.' }
+      }
+    ],
+    quickTags: [
+      'class="card"',
+      'class="badge bg-success rounded-pill"',
+      'class="alert alert-primary"',
+      'class="btn btn-primary"'
+    ],
+    challenge: {
+      mission: {
+        en: 'Use Bootstrap card, btn, and badge classes to build the hero status card!',
+        uz: 'Bootstrap card, btn va badge klasslaridan foydalanib qahramon status kartasini quring!'
+      },
+      hint: {
+        en: 'Check that card, btn, and badge classes are all included in your code.',
+        uz: 'Kodingizda card, btn va badge klasslari borligini tekshiring.'
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: code => code.includes('card') && code.includes('btn') && code.includes('badge'),
+          message: 'Include card, btn, and badge classes!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Bootstrap components are like pre-cut wooden blocks for building a treehouse: everything fits together smoothly on the first try!',
+        uz: "Bootstrap komponentlari daraxt uyi qurish uchun oldindan tayyorlab qo'yilgan yog'och bloklarga o'xshaydi: birinchi urinishdayoq hammasi mos tushadi!"
+      },
+      discussionQuestions: [
+        {
+          en: 'Why do modern web frameworks use color names like primary, success, and danger? (So semantic meanings are clear to all developers!)',
+          uz: "Nega freymvorklar primary, success, danger kabi nomlarni ishlatadi? (Dasturchilar rangning ma'nosini darhol tushunishlari uchun!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Writing class="btn" without specifying a variant like class="btn btn-primary".',
+          uz: `btn-primary ni qo'shmasdan faqat class="btn" yozib qo'yish.`
+        }
+      ],
+      funActivity: {
+        en: 'Change btn-primary to btn-danger or btn-success to see the color theme transform!',
+        uz: "btn-primary ni btn-danger yoki btn-success ga almashtirib ranglar o'zgarishini ko'ring!"
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 32: Bootstrap Responsive Navbar
+  // ==========================================
+  {
+    id: 'theme-32-bootstrap-ui',
+    module: 'bootstrap',
+    title: {
+      en: 'Theme 32: Bootstrap Responsive Navbar (Header & Navigation)',
+      uz: '32-Mavzu: Bootstrap Moslashuvchan Navbar (Sarlavha va Menyu)'
+    },
+    icon: '🧭',
+    tag: '<nav class="navbar navbar-dark bg-dark">',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Every major website — from Discord and YouTube to Roblox — has a polished top navigation bar! With Bootstrap\'s **navbar** system, you get a branded logo on the left, interactive menu links in the center, and a call-to-action button on the right!',
+        uz: "Discord va YouTube dan tortib Robloxgacha barcha yirik saytlarning yuqorisida ajoyib navigatsiya paneli bo'ladi! Bootstrap ning **navbar** tizimi bilan chapda brend logotipi, o'rtada menyu havolalari va o'ngda harakat tugmasi joylashadi!"
+      },
+      whatIsATag: {
+        en: '<nav class="navbar navbar-dark bg-dark"> sets up a sleek dark header. <a class="navbar-brand"> holds your game logo, and <a class="nav-link active"> highlights current pages!',
+        uz: `<nav class="navbar navbar-dark bg-dark"> zamonaviy qorong'u panel ochadi. <a class="navbar-brand"> logotipni, <a class="nav-link active"> esa faol menyuni belgilaydi!`
+      }
+    },
+    summary: {
+      en: 'Construct a dark gamer navigation header featuring brand logo, navigation pills, and an action button.',
+      uz: "Brend logotipi, menyu tugmalari va harakat tugmasiga ega zamonaviy o'yin sarlavha panelini quring."
+    },
+    story: {
+      en: 'Build the official CodeCraft OS top navigation bar so players can effortlessly switch between Home, Missions, and Leaderboard!',
+      uz: "O'yinchilar Home, Missions va Leaderboard bo'limlari orasida qulay o'tishlari uchun CodeCraft OS rasmiy navigatsiya panelini quring!"
+    },
+    initialCode: `<!-- Bootstrap 5 Dark Gaming Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <span>👾</span> CodeCraft OS
+  </a>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Missions</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Leaderboard</a></li>
+  </ul>
+  <button class="btn btn-outline-info btn-sm">Connect 💳</button>
+</nav>`,
+    targetCode: `<!-- Bootstrap 5 Dark Gaming Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <span>👾</span> CodeCraft OS
+  </a>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Missions</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Leaderboard</a></li>
+  </ul>
+  <button class="btn btn-outline-info btn-sm">Connect 💳</button>
+</nav>`,
+    targetDescription: {
+      en: 'A production-grade dark navigation header with an active home pill, navigation links, and a glowing connect button!',
+      uz: "Faol home tugmasi, menyu havolalari va ulanish tugmasiga ega professional qorong'u navigatsiya paneli!"
+    },
+    anatomy: [
+      {
+        code: '<nav class="navbar navbar-dark bg-dark">',
+        name: { en: 'Navbar Container', uz: 'Navbar Konteyneri' },
+        purpose: { en: 'Defines the dark responsive navigation bar wrapper.', uz: "Qorong'u moslashuvchan navigatsiya paneli o'rovini belgilaydi." },
+        role: { en: 'Header bar', uz: 'Sarlavha paneli' }
+      },
+      {
+        code: '<a class="navbar-brand">',
+        name: { en: 'Navbar Brand', uz: 'Navbar Brendi' },
+        purpose: { en: 'Displays prominent app logo and name.', uz: "Ilovaning ko'zga tashlanuvchi logotipi va nomini ko'rsatadi." },
+        role: { en: 'Logo anchor', uz: 'Logotip havolasi' }
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'navbar-nav / nav-item / nav-link',
+        name: { en: 'Navbar Menu System', uz: 'Navbar Menyu Tizimi' },
+        description: { en: 'List structure for organized header links.', uz: "Tartibli sarlavha havolalari uchun ro'yxat tuzilishi." }
+      }
+    ],
+    quickTags: [
+      '<nav class="navbar navbar-dark bg-dark">',
+      '<a class="navbar-brand" href="#">',
+      '<a class="nav-link active" href="#">'
+    ],
+    challenge: {
+      mission: {
+        en: 'Use navbar, navbar-brand, and nav-link to create the CodeCraft OS navigation header!',
+        uz: 'navbar, navbar-brand va nav-link klasslaridan foydalanib CodeCraft OS navigatsiya sarlavhasini quring!'
+      },
+      hint: {
+        en: 'Ensure your code includes the <nav class="navbar ..."> and <a class="nav-link"> tags.',
+        uz: 'Kodingizda <nav class="navbar ..."> va <a class="nav-link"> teglari borligiga ishonch hosil qiling.'
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: code => code.includes('navbar') && code.includes('navbar-brand') && code.includes('nav-link'),
+          message: 'Include navbar, navbar-brand, and nav-link in your navigation bar!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'The navbar is like the dashboard of an airplane cockpit: you always know where you are and can steer to any destination in one click!',
+        uz: "Navbar samolyot kabinasidagi boshqaruv paneliga o'xshaydi: qayerda turganingizni doim bilasiz va bir bosishda istalgan manzilga borasiz!"
+      },
+      discussionQuestions: [
+        {
+          en: 'Why do navbars stay at the top of web pages? (Because human eyes naturally scan the top of a page first!)',
+          uz: "Nega navbarlar har doim tepada turadi? (Chunki inson ko'zi tabiiy ravishda birinchi bo'lib sahifaning yuqori qismiga qaraydi!)"
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting the nav-link class on <a> tags so they look like plain blue links.',
+          uz: "<a> teglariga nav-link klassini qo'shishni unutib, ularni oddiy ko'k havola qilib qo'yish."
+        }
+      ],
+      funActivity: {
+        en: 'Add a new nav-item like "Shop 🛒" or "Settings ⚙️" to the menu!',
+        uz: `Menyuga "Shop 🛒" yoki "Settings ⚙️" kabi yangi havola qo'shib ko'ring!`
+      }
+    }
   }
 ];
 
@@ -4159,7 +5478,8 @@ function validateChallenge(code, rules = []) {
 
       case 'custom': {
         try {
-          passed = !!rule.check(code);
+          const fn = rule.check || rule.fn;
+          passed = typeof fn === 'function' ? !!fn(code) : false;
         } catch {
           passed = false;
         }
@@ -8125,6 +9445,801 @@ function renderFiltersLab(container, lesson, isUz) {
   }, isUz);
 }
 
+
+// ==========================================
+// THEME 25: Overflow Lab
+// ==========================================
+function renderOverflowLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { overflowType: 'auto', boxHeight: 140 },
+    steps: [
+      {
+        title: { en: '1. overflow: visible (Spilling Spillover)', uz: '1. overflow: visible (Toshib Ketish)' },
+        code: '.terminal-box {\n  height: 100px;\n  overflow: visible;\n}',
+        explanation: {
+          en: 'Step 1: With overflow: visible, content that is larger than the container spills over and covers other page elements!',
+          uz: "1-Qadam: overflow: visible bo'lganda, qutiga sig'magan matn toshib chiqadi va boshqa elementlarni to'sib qo'yadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #ef4444; border-radius: 10px; width: 260px; height: 90px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: visible; position: relative;">
+              <div>🛰️ [SYS] Satellite Link: Online</div>
+              <div>⚡ [PWR] Reactor Core: 99%</div>
+              <div style="color: #ef4444; font-weight: bold;">👾 [SPILL] Alien Signal detected outside!</div>
+              <div style="color: #ef4444; font-weight: bold;">🚨 [SPILL] Words exploding across screen!</div>
+              <div style="color: #ef4444; font-weight: bold;">🏁 [SPILL] Uncontained telemetry logs!</div>
+            </div>
+            <div style="margin-top: 50px; background: rgba(239, 68, 68, 0.15); border: 1px dashed #ef4444; padding: 6px 12px; border-radius: 6px; font-size: 11px; color: #fca5a5;">
+              ⚠️ Next element is covered by spilled text!
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. overflow: hidden (Laser Cut)', uz: '2. overflow: hidden (Lazer Qirqish)' },
+        code: '.terminal-box {\n  height: 100px;\n  overflow: hidden;\n}',
+        explanation: {
+          en: 'Step 2: overflow: hidden cleanly chops off anything poking beyond the rounded borders like a laser razor!',
+          uz: "2-Qadam: overflow: hidden chegaradan toshgan har qanday narsani lazerdek toza qirqib yashiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 10px; width: 260px; height: 90px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: hidden;">
+              <div>🛰️ [SYS] Satellite Link: Online</div>
+              <div>⚡ [PWR] Reactor Core: 99%</div>
+              <div>👾 [WARN] Alien Signal Detected!</div>
+              <div>🛡️ [DEF] Shield Matrix: Active</div>
+              <div>🚀 [NAV] Warp Coordinates Locked</div>
+            </div>
+            <div style="margin-top: 15px; color: #94a3b8; font-size: 11px;">
+              ✂️ Extra items are clipped off safely.
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. overflow-y: scroll (Elevator)', uz: '3. overflow-y: scroll (Skroll Lifti)' },
+        code: '.terminal-box {\n  height: 130px;\n  overflow-y: scroll;\n}',
+        explanation: {
+          en: 'Step 3: overflow-y: scroll adds a vertical scrollbar so users can easily read through all 100+ telemetry logs!',
+          uz: "3-Qadam: overflow-y: scroll vertikal skrollbar qo'shib, 100+ xabarlarni erkin o'qish imkonini beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 10px; width: 260px; height: 130px; padding: 10px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow-y: scroll;" class="custom-cyber-scrollbar">
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛰️ [SYS] Sat Link Online</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">⚡ [PWR] Reactor Core 99%</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">👾 [WARN] Signal Detected</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛡️ [DEF] Shield Active</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🚀 [NAV] Warp Locked</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🏁 [SYS] Ready to Jump!</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Cyber Terminal', uz: '4. Interaktiv Kiber Terminal' },
+        code: (s) => `.terminal-box {\n  height: ${s.boxHeight}px;\n  overflow: ${s.overflowType};\n}`,
+        explanation: {
+          en: 'Step 4: Interactive Master Lab! Change overflow modes and adjust the terminal box height to watch live physics.',
+          uz: "4-Qadam: Interaktiv master laboratoriya! Overflow turlarini va balandlikni o'zgartirib jonli fizikani kuzating."
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${['visible', 'hidden', 'scroll', 'auto'].map(m => `
+                  <button class="btn-sm btn-pill ${s.overflowType === m ? 'active' : ''}" data-mode="${m}">
+                    overflow: ${m}
+                  </button>
+                `).join('')}
+              </div>
+              <div>
+                <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                  <span>Height:</span>
+                  <strong>${s.boxHeight}px</strong>
+                </label>
+                <input type="range" class="evolution-range-input" min="70" max="200" value="${s.boxHeight}" id="input-height" />
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-mode]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              onUpdate({ overflowType: btn.getAttribute('data-mode') });
+            });
+          });
+          mount.querySelector('#input-height')?.addEventListener('input', (e) => {
+            onUpdate({ boxHeight: parseInt(e.target.value) });
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div style="background: #090d16; border: 2px solid #38bdf8; border-radius: 12px; width: 280px; height: ${s.boxHeight}px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 11px; overflow: ${s.overflowType}; transition: height 0.15s ease;" class="custom-cyber-scrollbar">
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛰️ [SYS] Sat Link Online</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">⚡ [PWR] Reactor Core 99%</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">👾 [WARN] Alien Signal Detected</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🛡️ [DEF] Shield Active</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🚀 [NAV] Warp Locked</div>
+              <div style="padding: 4px; background: rgba(56,189,248,0.1); margin-bottom: 4px; border-radius: 4px;">🏁 [SYS] Ready to Jump!</div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 26: Gradients Lab
+// ==========================================
+function renderGradientsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { angle: 135, type: 'linear', c1: '#ff007a', c2: '#7928ca' },
+    steps: [
+      {
+        title: { en: '1. Flat Solid Color', uz: '1. Oddiy Yagona Rang' },
+        code: '.box { background: #ff007a; }',
+        explanation: {
+          en: 'Step 1: A flat solid color has zero transition or depth.',
+          uz: "1-Qadam: Oddiy yagona rangda chuqurlik yoki o'tishlar yo'q."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: #ff007a; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.4);"></div>`;
+        }
+      },
+      {
+        title: { en: '2. Linear Gradient (Angle)', uz: '2. Chiziqli Gradient (Burchak)' },
+        code: '.box {\n  background: linear-gradient(135deg, #ff007a, #7928ca);\n}',
+        explanation: {
+          en: 'Step 2: linear-gradient blends colors smoothly along a directional angle (135 degrees)!',
+          uz: "2-Qadam: linear-gradient ranglarni diagonal burchak (135 gradus) bo'ylab silliq qorishtiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: linear-gradient(135deg, #ff007a, #7928ca); border-radius: 12px; box-shadow: 0 8px 24px rgba(255,0,122,0.4); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">NEBULA</div>`;
+        }
+      },
+      {
+        title: { en: '3. Radial Cosmic Sphere', uz: '3. Radial Kosmik Shar' },
+        code: '.orb {\n  background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%);\n  border-radius: 50%;\n}',
+        explanation: {
+          en: 'Step 3: radial-gradient radiates colors outward from a focal point, turning a 2D circle into a glowing 3D energy orb!',
+          uz: "3-Qadam: radial-gradient markazdan tashqariga nur sochib, oddiy aylanani 3D energiya shariga aylantiradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="width: 130px; height: 130px; background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); border-radius: 50%; box-shadow: 0 0 30px #00f2fe; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ORB</div>`;
+        }
+      },
+      {
+        title: { en: '4. Master Gradient Mixer', uz: '4. Master Gradient Mikser' },
+        code: (s) => s.type === 'linear' 
+          ? `.nebula {\n  background: linear-gradient(${s.angle}deg, ${s.c1}, ${s.c2});\n}`
+          : `.nebula {\n  background: radial-gradient(circle, ${s.c1} 0%, ${s.c2} 80%);\n}`,
+        explanation: {
+          en: 'Step 4: Rotate the angle slider and change color shades to discover infinite cosmic palettes!',
+          uz: "4-Qadam: Burchak slayderini aylantiring va ranglarni almashtirib cheksiz kosmik palitralarni kashf eting!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px;">
+                <button class="btn-sm btn-pill ${s.type === 'linear' ? 'active' : ''}" id="btn-linear">Linear</button>
+                <button class="btn-sm btn-pill ${s.type === 'radial' ? 'active' : ''}" id="btn-radial">Radial</button>
+              </div>
+              ${s.type === 'linear' ? `
+                <div>
+                  <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                    <span>Angle:</span>
+                    <strong>${s.angle}°</strong>
+                  </label>
+                  <input type="range" class="evolution-range-input" min="0" max="360" value="${s.angle}" id="input-angle" />
+                </div>
+              ` : ''}
+              <div style="display: flex; gap: 10px;">
+                <label style="font-size: 11px; color: #94a3b8;">C1: <input type="color" value="${s.c1}" id="input-c1" style="background: none; border: none; cursor: pointer;" /></label>
+                <label style="font-size: 11px; color: #94a3b8;">C2: <input type="color" value="${s.c2}" id="input-c2" style="background: none; border: none; cursor: pointer;" /></label>
+              </div>
+            </div>
+          `;
+          mount.querySelector('#btn-linear')?.addEventListener('click', () => onUpdate({ type: 'linear' }));
+          mount.querySelector('#btn-radial')?.addEventListener('click', () => onUpdate({ type: 'radial' }));
+          mount.querySelector('#input-angle')?.addEventListener('input', (e) => onUpdate({ angle: parseInt(e.target.value) }));
+          mount.querySelector('#input-c1')?.addEventListener('input', (e) => onUpdate({ c1: e.target.value }));
+          mount.querySelector('#input-c2')?.addEventListener('input', (e) => onUpdate({ c2: e.target.value }));
+        },
+        renderStage(stage, s) {
+          const bg = s.type === 'linear'
+            ? `linear-gradient(${s.angle}deg, ${s.c1}, ${s.c2})`
+            : `radial-gradient(circle at 35% 35%, ${s.c1} 0%, ${s.c2} 80%)`;
+          stage.innerHTML = `
+            <div style="width: 140px; height: 140px; background: ${bg}; border-radius: ${s.type === 'radial' ? '50%' : '16px'}; box-shadow: 0 0 35px ${s.c1}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 13px; letter-spacing: 1px;">
+              ${s.type.toUpperCase()}
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 27: Media Queries Lab
+// ==========================================
+function renderMediaQueriesLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { simulatedWidth: 850 },
+    steps: [
+      {
+        title: { en: '1. Wide Desktop (3 Columns)', uz: '1. Kompyuter (3 Ustun)' },
+        code: '.squad { display: flex; gap: 12px; }',
+        explanation: {
+          en: 'Step 1: On wide laptop screens, 3 hero cards fit side-by-side with ease.',
+          uz: "1-Qadam: Keng kompyuter ekranlarida 3 ta qahramon yonma-yon a'lo darajada sig'adi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; gap: 8px; width: 300px; padding: 10px; background: #0f172a; border-radius: 8px;">
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">🥷 Ninja</div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">⚡ Mage</div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 10px; color: white;">🤖 Mech</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. Squished Phone View', uz: "2. Siqilgan Telefon Ko'rinishi" },
+        code: '/* Squeezed on mobile without media queries! */',
+        explanation: {
+          en: 'Step 2: Without media queries, cards get tiny and unreadable on pocket smartphones!',
+          uz: "2-Qadam: Media query bo'lmasa, telefonlarda kartalar siqilib kichiklashib ketadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; gap: 4px; width: 140px; padding: 6px; background: #0f172a; border: 1px dashed #ef4444; border-radius: 8px;">
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">🥷 Nin</div>
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">⚡ Mag</div>
+              <div style="flex: 1; background: #1e293b; padding: 4px; text-align: center; font-size: 7px; color: white;">🤖 Mec</div>
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #fca5a5;">⚠️ Text squashed and unreadable!</div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. @media (max-width: 768px)', uz: '3. @media (max-width: 768px)' },
+        code: '@media (max-width: 768px) {\n  .squad { flex-direction: column; }\n}',
+        explanation: {
+          en: 'Step 3: The media query detects mobile screens and stacks cards vertically for easy scrolling!',
+          uz: "3-Qadam: Media query mobil ekranni aniqlaydi va qulay o'qish uchun kartalarni vertikal terib beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 150px; padding: 10px; background: #0f172a; border-radius: 8px; border: 2px solid #38bdf8;">
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">🥷 Shadow Ninja</div>
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">⚡ Thunder Mage</div>
+              <div style="background: #1e293b; padding: 6px; text-align: center; border-radius: 4px; font-size: 10px; color: white;">🤖 Mech Knight</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Live Screen Width Simulator', uz: '4. Jonli Ekran Kengligi Simulyatori' },
+        code: (s) => `/* Simulated Width: ${s.simulatedWidth}px */\n@media (max-width: 768px) {\n  .squad { flex-direction: column; }\n}`,
+        explanation: {
+          en: 'Step 4: Slide the viewport width below 768px to watch the layout magically transform in real-time!',
+          uz: "4-Qadam: Slayderni 768px dan pastga tushiring va kartalar qanday qilib darhol vertikal o'tishini ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
+                <span style="color: #94a3b8;">Screen Width:</span>
+                <span style="color: ${s.simulatedWidth < 768 ? '#38bdf8' : '#10b981'}; font-weight: bold;">
+                  ${s.simulatedWidth}px ${s.simulatedWidth < 768 ? '📱 MOBILE' : '💻 DESKTOP'}
+                </span>
+              </div>
+              <input type="range" class="evolution-range-input" min="360" max="1100" value="${s.simulatedWidth}" id="sim-width" />
+            </div>
+          `;
+          mount.querySelector('#sim-width')?.addEventListener('input', (e) => onUpdate({ simulatedWidth: parseInt(e.target.value) }));
+        },
+        renderStage(stage, s) {
+          const isMobile = s.simulatedWidth < 768;
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: ${isMobile ? 'column' : 'row'}; gap: 8px; width: ${isMobile ? '160px' : '290px'}; padding: 12px; background: #0f172a; border-radius: 10px; border: 2px solid ${isMobile ? '#38bdf8' : '#10b981'}; transition: all 0.2s ease;">
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>🥷</div>
+                <strong>Ninja</strong>
+              </div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>⚡</div>
+                <strong>Mage</strong>
+              </div>
+              <div style="flex: 1; background: #1e293b; padding: 8px; text-align: center; border-radius: 6px; font-size: 11px; color: white;">
+                <div>🤖</div>
+                <strong>Mech</strong>
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 28: Web Fonts & SVG Icons Lab
+// ==========================================
+function renderWebFontsIconsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { font: 'Orbitron', spacing: 3, iconColor: '#f59e0b' },
+    steps: [
+      {
+        title: { en: '1. Default System Font', uz: '1. Standart Shrift' },
+        code: '.title { font-family: serif; }',
+        explanation: {
+          en: 'Step 1: Plain generic browser fonts look ordinary and lack personality.',
+          uz: "1-Qadam: Standart brauzer shriftlari oddiy va zerikarli ko'rinadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="font-family: serif; font-size: 20px; color: white; padding: 20px; background: #0f172a; border-radius: 8px;">CYBER GUILD</div>`;
+        }
+      },
+      {
+        title: { en: '2. Google Font (Orbitron)', uz: '2. Google Font (Orbitron)' },
+        code: '.title {\n  font-family: \'Orbitron\', monospace;\n  letter-spacing: 3px;\n}',
+        explanation: {
+          en: 'Step 2: Connecting a cyber web font gives instant cinematic gaming prestige!',
+          uz: "2-Qadam: Kiber veb shrift ulash sarlavhaga video o'yinlardek nufuzli ko'rinish beradi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="font-family: 'Orbitron', monospace, sans-serif; letter-spacing: 3px; font-size: 18px; color: #38bdf8; padding: 20px; background: #0f172a; border-radius: 8px;">CYBER GUILD</div>`;
+        }
+      },
+      {
+        title: { en: '3. Vector SVG Badge', uz: '3. Vektor SVG Nishon' },
+        code: '<svg viewBox="0 0 24 24">\n  <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />\n</svg>',
+        explanation: {
+          en: 'Step 3: SVG draws infinite-resolution vector art that never gets blurry.',
+          uz: "3-Qadam: SVG cheksiz tiniqlikdagi vektor tasvirlarni chizadi va xiralashmaydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="text-align: center; padding: 20px; background: #0f172a; border: 2px solid #38bdf8; border-radius: 12px; width: 220px;">
+              <svg style="width: 44px; height: 44px; fill: #f59e0b; filter: drop-shadow(0 0 10px rgba(245,158,11,0.6));" viewBox="0 0 24 24">
+                <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+              </svg>
+              <div style="font-family: 'Orbitron', monospace; letter-spacing: 2px; color: #38bdf8; font-weight: bold; margin-top: 6px;">CYBER GUILD</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Typography & Icon Studio', uz: '4. Tipografiya va Ikonka Studiyasi' },
+        code: (s) => `.guild-title {\n  font-family: '${s.font}', monospace;\n  letter-spacing: ${s.spacing}px;\n}\n.svg-star { fill: ${s.iconColor}; }`,
+        explanation: {
+          en: 'Step 4: Switch fonts, adjust letter spacing, and repaint the vector crest live!',
+          uz: "4-Qadam: Shriftlarni almashtiring, harflar oralig'ini sozlang va vektor nishonni qayta bo'yang!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${['Orbitron', 'Press Start 2P', 'Courier New', 'sans-serif'].map(f => `
+                  <button class="btn-sm btn-pill ${s.font === f ? 'active' : ''}" data-font="${f}">${f}</button>
+                `).join('')}
+              </div>
+              <div>
+                <label style="font-size: 11px; color: #94a3b8; display: flex; justify-content: space-between;">
+                  <span>Spacing:</span>
+                  <strong>${s.spacing}px</strong>
+                </label>
+                <input type="range" class="evolution-range-input" min="0" max="8" value="${s.spacing}" id="input-spacing" />
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-font]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ font: btn.getAttribute('data-font') }));
+          });
+          mount.querySelector('#input-spacing')?.addEventListener('input', (e) => onUpdate({ spacing: parseInt(e.target.value) }));
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div style="text-align: center; padding: 20px; background: #0f172a; border: 2px solid #38bdf8; border-radius: 14px; width: 240px; box-shadow: 0 0 25px rgba(56,189,248,0.25);">
+              <svg style="width: 44px; height: 44px; fill: ${s.iconColor}; filter: drop-shadow(0 0 10px ${s.iconColor});" viewBox="0 0 24 24">
+                <polygon points="12,2 15,8 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,8" />
+              </svg>
+              <div style="font-family: '${s.font}', monospace, sans-serif; letter-spacing: ${s.spacing}px; color: #38bdf8; font-weight: 800; font-size: 15px; margin-top: 8px;">
+                CYBER GUILD
+              </div>
+              <p style="color: #94a3b8; font-size: 11px; margin: 4px 0 0;">Rank: Grand Champion ⭐</p>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 29: Third-Party Animations Lab
+// ==========================================
+function renderThirdPartyAnimationsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { effect: 'animate__bounceIn' },
+    steps: [
+      {
+        title: { en: '1. Static Card', uz: '1. Qimirlamaydigan Karta' },
+        code: '<div class="chest">💎 REWARD</div>',
+        explanation: {
+          en: 'Step 1: Without animation classes, elements appear abruptly without fanfare.',
+          uz: "1-Qadam: Animatsiya klasslarisiz elementlar birdaniga jonsiz paydo bo'ladi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="background: #1e293b; padding: 18px 24px; border-radius: 12px; border: 1px solid #334155; text-align: center; color: white;">💎 REWARD</div>`;
+        }
+      },
+      {
+        title: { en: '2. animate__bounceIn', uz: '2. animate__bounceIn (Sakrash)' },
+        code: '<div class="chest animate__animated animate__bounceIn">\n  💎 REWARD\n</div>',
+        explanation: {
+          en: 'Step 2: Adding animate__bounceIn gives an elastic superhero pop celebration!',
+          uz: "2-Qadam: animate__bounceIn qo'shilsa, element elastik superqahramondek sakrab sahnaga chiqadi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div class="animate__animated animate__bounceIn" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; padding: 18px 24px; border-radius: 12px; text-align: center; color: white; box-shadow: 0 0 25px rgba(245,158,11,0.4);">💎 VICTORY REWARD!</div>`;
+        }
+      },
+      {
+        title: { en: '3. animate__pulse (Loop)', uz: '3. animate__pulse (Puls Takrori)' },
+        code: '<div class="chest animate__animated animate__pulse">\n  💎 REWARD\n</div>',
+        explanation: {
+          en: 'Step 3: animate__pulse keeps the element throbbing like a beating power core!',
+          uz: "3-Qadam: animate__pulse elementni quvvat o'zagidek to'xtovsiz urib turishga majbur qiladi!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div class="animate__animated animate__pulse" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; padding: 18px 24px; border-radius: 12px; text-align: center; color: white; box-shadow: 0 0 25px rgba(245,158,11,0.4);">💎 +500 CYBER CRYSTALS</div>`;
+        }
+      },
+      {
+        title: { en: '4. Interactive Trigger Board', uz: '4. Interaktiv Effekt Doskasi' },
+        code: (s) => `<div class="chest animate__animated ${s.effect}">\n  💎 VICTORY!\n</div>`,
+        explanation: {
+          en: 'Step 4: Click any animation trigger button to test battle-tested Animate.css effects live!',
+          uz: "4-Qadam: Istalgan animatsiya tugmasini bosing va Animate.css effektlarini jonli sinab ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              ${['animate__bounceIn', 'animate__pulse', 'animate__fadeInUp', 'animate__zoomIn', 'animate__glow'].map(fx => `
+                <button class="btn-sm btn-pill ${s.effect === fx ? 'active' : ''}" data-fx="${fx}">
+                  ${fx.replace('animate__', '')}
+                </button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-fx]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ effect: btn.getAttribute('data-fx') }));
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <div key="${Date.now()}" class="animate__animated ${s.effect}" style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #f59e0b; border-radius: 14px; padding: 20px 30px; text-align: center; color: white; box-shadow: 0 0 30px rgba(245,158,11,0.4);">
+              <span style="font-size: 40px; display: block; margin-bottom: 6px;">💎</span>
+              <strong style="font-size: 15px;">VICTORY REWARD!</strong>
+              <div style="color: #cbd5e1; font-size: 12px; margin-top: 4px;">+500 Cyber Crystals</div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 30: Bootstrap Grid Lab
+// ==========================================
+function renderBootstrapGridLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { cols: 3 },
+    steps: [
+      {
+        title: { en: '1. Raw Unaligned Divs', uz: '1. Setkasiz Oddiy Divlar' },
+        code: '<div>Card 1</div><div>Card 2</div><div>Card 3</div>',
+        explanation: {
+          en: 'Step 1: Normal divs stack vertically taking 100% width each without columns.',
+          uz: "1-Qadam: Oddiy divlar har biri 100% kenglik olib faqat ustma-ust tushadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 240px;">
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 1</div>
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 2</div>
+              <div style="background: #334155; padding: 6px; text-align: center; color: white; border-radius: 4px; font-size: 11px;">Box 3</div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '2. Bootstrap .container & .row', uz: '2. .container va .row' },
+        code: '<div class="container">\n  <div class="row">...</div>\n</div>',
+        explanation: {
+          en: 'Step 2: .container centers the content and .row creates the 12-unit horizontal flex track.',
+          uz: "2-Qadam: .container kontentni markazga oladi, .row esa 12 birlikli gorizontal yo'lni ochadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="border: 2px dashed #38bdf8; padding: 12px; border-radius: 8px; width: 280px; text-align: center; color: #38bdf8; font-size: 11px;">
+              📦 .container > .row (12 units available)
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Three .col-md-4 Columns', uz: '3. Uchta .col-md-4 Ustun' },
+        code: '<div class="row">\n  <div class="col-12 col-md-4">Card 1</div>\n  <div class="col-12 col-md-4">Card 2</div>\n  <div class="col-12 col-md-4">Card 3</div>\n</div>',
+        explanation: {
+          en: 'Step 3: 4 + 4 + 4 = 12! Three columns fit perfectly side-by-side on desktop screens.',
+          uz: "3-Qadam: 4 + 4 + 4 = 12! Uchta ustun kompyuter ekranida yonma-yon a'lo darajada joylashadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="container" style="max-width: 300px;">
+              <div class="row g-2">
+                <div class="col-4"><div style="background: #3b82f6; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+                <div class="col-4"><div style="background: #10b981; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+                <div class="col-4"><div style="background: #a855f7; padding: 10px; border-radius: 6px; text-align: center; color: white; font-size: 11px; font-weight: bold;">Col 4</div></div>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Dynamic 12-Column Calculator', uz: '4. Dinamik 12 Ustunli Kalkulyator' },
+        code: (s) => `<div class="row">\n  <!-- Each column takes ${12 / s.cols} of 12 units (${s.cols} columns total) -->\n  <div class="col-${12 / s.cols}">...</div>\n</div>`,
+        explanation: {
+          en: 'Step 4: Switch column configurations to see how Bootstrap mathematically divides the 12-unit row!',
+          uz: "4-Qadam: Ustunlar sonini o'zgartiring va Bootstrap 12 birlikni qanday matematik bo'lishini ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              ${[2, 3, 4, 6].map(n => `
+                <button class="btn-sm btn-pill ${s.cols === n ? 'active' : ''}" data-n="${n}">
+                  ${n} Columns (col-${12/n})
+                </button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-n]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ cols: parseInt(btn.getAttribute('data-n')) }));
+          });
+        },
+        renderStage(stage, s) {
+          const colors = ['#3b82f6', '#10b981', '#a855f7', '#f59e0b', '#ec4899', '#06b6d4'];
+          const items = Array.from({ length: s.cols }, (_, i) => `
+            <div class="col-${12 / s.cols}">
+              <div style="background: ${colors[i % colors.length]}; padding: 10px 4px; border-radius: 6px; text-align: center; color: white; font-size: 10px; font-weight: bold;">
+                col-${12 / s.cols}
+              </div>
+            </div>
+          `).join('');
+          stage.innerHTML = `
+            <div class="container" style="max-width: 320px;">
+              <div class="row g-2">
+                ${items}
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 31: Bootstrap Components Lab
+// ==========================================
+function renderBootstrapComponentsLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { badgeStatus: 'ONLINE', alertType: 'primary' },
+    steps: [
+      {
+        title: { en: '1. Unstyled Box', uz: '1. Bezaklarsiz Quti' },
+        code: '<div>Commander Nova</div>',
+        explanation: {
+          en: 'Step 1: Without UI components, content is just raw text without visual hierarchy.',
+          uz: "1-Qadam: UI komponentlarsiz matn shunchaki jonsiz va tekis ko'rinadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<div style="color: white; padding: 15px; background: #0f172a; border-radius: 6px; width: 220px;">Commander Nova - Captain</div>`;
+        }
+      },
+      {
+        title: { en: '2. .card & .card-body', uz: '2. .card va .card-body' },
+        code: '<div class="card">\n  <div class="card-body">...</div>\n</div>',
+        explanation: {
+          en: 'Step 2: Bootstrap card adds shadow depth, clean borders, and organized spacing.',
+          uz: "2-Qadam: Bootstrap card qutiga soya, chiroyli chegara va toza masofalar qo'shadi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="card" style="width: 240px; margin: 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title">Commander Nova</h5>
+                <p class="card-text">Flagship captain with 100% clearance.</p>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Badges, Alerts & Buttons', uz: '3. Nishonlar, Ogohlantirish va Tugma' },
+        code: '<span class="badge bg-success rounded-pill">ONLINE</span>\n<div class="alert alert-primary">Ready!</div>\n<button class="btn btn-primary">Launch</button>',
+        explanation: {
+          en: 'Step 3: Combine status badges, colored alert banners, and action buttons!',
+          uz: "3-Qadam: Status nishonlari, rangli ogohlantirish qutilari va start tugmasini birlashtiring!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div class="card" style="width: 250px; margin: 0 auto;">
+              <div class="card-header d-flex justify-content-between" style="display: flex; justify-content: space-between;">
+                <span>🛡️ STATUS</span>
+                <span class="badge bg-success rounded-pill">ONLINE</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title" style="margin-top: 0;">Commander Nova</h5>
+                <div class="alert alert-primary" style="padding: 6px 10px; font-size: 11px; margin-bottom: 10px;">⚡ Warp Core Ready!</div>
+                <button class="btn btn-primary btn-sm">Launch Shuttle 🚀</button>
+              </div>
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Component Studio', uz: '4. Interaktiv Komponent Studiyasi' },
+        code: (s) => `<div class="card">\n  <div class="card-header">\n    <span class="badge bg-success rounded-pill">${s.badgeStatus}</span>\n  </div>\n  <div class="card-body">\n    <div class="alert alert-${s.alertType}">Alert Active</div>\n  </div>\n</div>`,
+        explanation: {
+          en: 'Step 4: Customize component badges and alert styles live with one click!',
+          uz: "4-Qadam: Nishon va ogohlantirish uslublarini bir bosish bilan jonli o'zgartiring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 6px;">
+                ${['ONLINE', 'AWAY', 'IN BATTLE'].map(status => `
+                  <button class="btn-sm btn-pill ${s.badgeStatus === status ? 'active' : ''}" data-status="${status}">${status}</button>
+                `).join('')}
+              </div>
+              <div style="display: flex; gap: 6px;">
+                ${['primary', 'success', 'warning', 'danger'].map(type => `
+                  <button class="btn-sm btn-pill ${s.alertType === type ? 'active' : ''}" data-type="${type}">alert-${type}</button>
+                `).join('')}
+              </div>
+            </div>
+          `;
+          mount.querySelectorAll('[data-status]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ badgeStatus: btn.getAttribute('data-status') }));
+          });
+          mount.querySelectorAll('[data-type]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ alertType: btn.getAttribute('data-type') }));
+          });
+        },
+        renderStage(stage, s) {
+          const badgeClass = s.badgeStatus === 'ONLINE' ? 'bg-success' : s.badgeStatus === 'AWAY' ? 'bg-warning' : 'bg-danger';
+          stage.innerHTML = `
+            <div class="card" style="width: 250px; margin: 0 auto;">
+              <div class="card-header" style="display: flex; justify-content: space-between;">
+                <span>🛡️ NOVA</span>
+                <span class="badge ${badgeClass} rounded-pill">${s.badgeStatus}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title" style="margin-top: 0; font-size: 15px;">Starship Captain</h5>
+                <div class="alert alert-${s.alertType}" style="padding: 6px 10px; font-size: 11px; margin-bottom: 10px;">
+                  Status: ${s.alertType.toUpperCase()} mode
+                </div>
+                <button class="btn btn-${s.alertType === 'warning' ? 'warning' : 'primary'} btn-sm">Take Action 🚀</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
+// ==========================================
+// THEME 32: Bootstrap UI / Navbar Lab
+// ==========================================
+function renderBootstrapUiLab(container, lesson, isUz) {
+  createStepfulLab(container, {
+    initialState: { brand: 'CodeCraft OS', activeTab: 'Home' },
+    steps: [
+      {
+        title: { en: '1. Raw Bullet List', uz: "1. Oddiy Nuqtali Ro'yxat" },
+        code: '<ul><li>Home</li><li>Missions</li><li>Scores</li></ul>',
+        explanation: {
+          en: 'Step 1: Standard lists look like documents rather than modern app navigation.',
+          uz: "1-Qadam: Oddiy ro'yxatlar ilova menyusiga emas, hujjatga o'xshaydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `<ul style="color: white; font-size: 12px; padding-left: 20px;"><li>Home</li><li>Missions</li><li>Scores</li></ul>`;
+        }
+      },
+      {
+        title: { en: '2. .navbar .navbar-dark .bg-dark', uz: "2. Qorong'u Navbar Konteyneri" },
+        code: '<nav class="navbar navbar-dark bg-dark">\n  ...\n</nav>',
+        explanation: {
+          en: 'Step 2: .navbar wraps the header in a sleek dark container with built-in flex alignment.',
+          uz: "2-Qadam: .navbar sarlavhani zamonaviy qorong'u flex konteyneriga o'raydi."
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <div style="background: #0f172a; border: 1px solid #1e293b; padding: 10px 16px; border-radius: 8px; width: 280px; color: #38bdf8; font-weight: bold; font-size: 12px;">
+              🧭 Navigation Container (Ready for Links)
+            </div>
+          `;
+        }
+      },
+      {
+        title: { en: '3. Brand & Nav Links', uz: '3. Brend va Menyu Havolalari' },
+        code: '<a class="navbar-brand">👾 OS</a>\n<ul class="navbar-nav">\n  <li><a class="nav-link active">Home</a></li>\n</ul>',
+        explanation: {
+          en: 'Step 3: Brand logo on the left, pill menu links in the middle, and status buttons on the right!',
+          uz: "3-Qadam: Chapda logotip, o'rtada menyu havolalari va o'ngda tugma!"
+        },
+        renderStage(stage) {
+          stage.innerHTML = `
+            <nav class="navbar navbar-dark bg-dark" style="width: 290px; padding: 8px 12px; margin: 0 auto;">
+              <a class="navbar-brand" style="font-size: 13px;" href="#"><span>👾</span> CodeCraft</a>
+              <ul class="navbar-nav" style="gap: 4px;">
+                <li><a class="nav-link active" style="font-size: 11px;" href="#">Home</a></li>
+                <li><a class="nav-link" style="font-size: 11px;" href="#">Quests</a></li>
+              </ul>
+              <button class="btn btn-outline-info btn-sm" style="font-size: 10px; padding: 2px 6px;">Connect</button>
+            </nav>
+          `;
+        }
+      },
+      {
+        title: { en: '4. Interactive Header Simulator', uz: '4. Interaktiv Sarlavha Simulyatori' },
+        code: (s) => `<nav class="navbar navbar-dark bg-dark">\n  <a class="navbar-brand">${s.brand}</a>\n  <a class="nav-link ${s.activeTab === 'Home' ? 'active' : ''}">Home</a>\n  <a class="nav-link ${s.activeTab === 'Quests' ? 'active' : ''}">Quests</a>\n</nav>`,
+        explanation: {
+          en: 'Step 4: Click nav tabs in the preview to test active state transitions live!',
+          uz: "4-Qadam: Prevyudagi menyu tugmalarini bosib faol holat o'tishlarini jonli sinab ko'ring!"
+        },
+        renderControls(mount, s, onUpdate) {
+          mount.innerHTML = `
+            <div style="display: flex; gap: 6px;">
+              ${['Home', 'Quests', 'Rankings', 'Vault'].map(tab => `
+                <button class="btn-sm btn-pill ${s.activeTab === tab ? 'active' : ''}" data-tab="${tab}">${tab}</button>
+              `).join('')}
+            </div>
+          `;
+          mount.querySelectorAll('[data-tab]').forEach(btn => {
+            btn.addEventListener('click', () => onUpdate({ activeTab: btn.getAttribute('data-tab') }));
+          });
+        },
+        renderStage(stage, s) {
+          stage.innerHTML = `
+            <nav class="navbar navbar-dark bg-dark" style="width: 300px; padding: 8px 12px; margin: 0 auto;">
+              <a class="navbar-brand" style="font-size: 13px;" href="#"><span>👾</span> ${s.brand}</a>
+              <ul class="navbar-nav" style="gap: 4px;">
+                ${['Home', 'Quests', 'Rankings'].map(tab => `
+                  <li>
+                    <a class="nav-link ${s.activeTab === tab ? 'active' : ''}" style="font-size: 11px; cursor: pointer;" href="#">
+                      ${tab}
+                    </a>
+                  </li>
+                `).join('')}
+              </ul>
+              <button class="btn btn-outline-info btn-sm" style="font-size: 10px; padding: 2px 6px;">💳</button>
+            </nav>
+          `;
+        }
+      }
+    ]
+  }, isUz);
+}
+
 // Fallback Default Lab
 function renderDefaultLab(container, lesson, isUz) {
   container.innerHTML = `
@@ -8164,7 +10279,15 @@ function renderTopicLab(container, lesson, lang = 'en') {
     'theme-21-grid': renderGridTopicLab,
     'theme-22-position': renderPositionLab,
     'theme-23-transitions': renderTransitionsLab,
-    'theme-24-filters': renderFiltersLab
+    'theme-24-filters': renderFiltersLab,
+    'theme-25-overflow': renderOverflowLab,
+    'theme-26-gradients': renderGradientsLab,
+    'theme-27-media-queries': renderMediaQueriesLab,
+    'theme-28-web-fonts-icons': renderWebFontsIconsLab,
+    'theme-29-third-party-animations': renderThirdPartyAnimationsLab,
+    'theme-30-bootstrap-grid': renderBootstrapGridLab,
+    'theme-31-bootstrap-components': renderBootstrapComponentsLab,
+    'theme-32-bootstrap-ui': renderBootstrapUiLab
   };
 
   const renderer = renderers[lesson.id] || renderDefaultLab;
@@ -8556,6 +10679,60 @@ function wrapForPreview(snippet) {
       background: rgba(91, 95, 199, 0.25);
       color: #f1f5f9;
     }
+    /* Offline Bootstrap 5 Essentials */
+    *, *::before, *::after { box-sizing: border-box; }
+    .container, .container-fluid { width: 100%; padding-right: 12px; padding-left: 12px; margin: 0 auto; max-width: 100%; }
+    .row { display: flex; flex-wrap: wrap; margin-right: -8px; margin-left: -8px; }
+    .row > * { box-sizing: border-box; flex-shrink: 0; width: 100%; max-width: 100%; padding-right: 8px; padding-left: 8px; }
+    .col { flex: 1 0 0%; }
+    .col-12 { flex: 0 0 auto; width: 100%; }
+    .col-6 { flex: 0 0 auto; width: 50%; }
+    .col-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-3 { flex: 0 0 auto; width: 25%; }
+    @media (min-width: 768px) {
+      .col-md-6 { flex: 0 0 auto; width: 50%; }
+      .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+      .col-md-3 { flex: 0 0 auto; width: 25%; }
+      .col-md-12 { flex: 0 0 auto; width: 100%; }
+    }
+    .card { position: relative; display: flex; flex-direction: column; background: #1a1e2d; border: 1px solid #2e384d; border-radius: 12px; overflow: hidden; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .card-header { padding: 10px 14px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #2e384d; font-weight: 700; color: #38bdf8; }
+    .card-body { padding: 14px; }
+    .card-title { margin-top: 0; margin-bottom: 6px; font-size: 17px; font-weight: 700; color: #fff; }
+    .card-text { margin-bottom: 10px; color: #cbd5e1; font-size: 14px; }
+    .btn { display: inline-block; font-weight: 600; text-align: center; cursor: pointer; border: 1px solid transparent; padding: 8px 14px; font-size: 13px; border-radius: 8px; transition: all 0.2s; }
+    .btn-primary { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+    .btn-success { background: #10b981; color: #fff; border-color: #10b981; }
+    .btn-danger { background: #ef4444; color: #fff; border-color: #ef4444; }
+    .btn-warning { background: #f59e0b; color: #000; border-color: #f59e0b; }
+    .btn-outline-primary { background: transparent; color: #38bdf8; border-color: #38bdf8; }
+    .badge { display: inline-block; padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 6px; color: #fff; }
+    .rounded-pill { border-radius: 50rem !important; }
+    .bg-primary { background: #3b82f6 !important; color: #fff !important; }
+    .bg-success { background: #10b981 !important; color: #fff !important; }
+    .bg-danger { background: #ef4444 !important; color: #fff !important; }
+    .bg-warning { background: #f59e0b !important; color: #000 !important; }
+    .alert { padding: 10px 14px; border-radius: 8px; margin-bottom: 12px; font-size: 13px; }
+    .alert-primary { background: rgba(59,130,246,0.15); border: 1px solid #3b82f6; color: #93c5fd; }
+    .alert-success { background: rgba(16,185,129,0.15); border: 1px solid #10b981; color: #6ee7b7; }
+    .alert-warning { background: rgba(245,158,11,0.15); border: 1px solid #f59e0b; color: #fde047; }
+    .navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 8px; margin-bottom: 16px; background: #0f172a; border: 1px solid #1e293b; }
+    .navbar-brand { font-size: 16px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .navbar-nav { display: flex; list-style: none; padding: 0; margin: 0; gap: 6px; }
+    .nav-link { padding: 5px 10px; color: #94a3b8; text-decoration: none; font-size: 13px; border-radius: 5px; }
+    .nav-link.active, .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    /* Third Party & Animation Helpers */
+    .animate__animated { animation-duration: 1s; animation-fill-mode: both; }
+    .animate__bounceIn { animation-name: bounceIn; }
+    .animate__pulse { animation-name: pulse; animation-iteration-count: infinite; }
+    .animate__fadeInUp { animation-name: fadeInUp; }
+    @keyframes bounceIn { 0% { opacity: 0; transform: scale3d(0.3,0.3,0.3); } 20% { transform: scale3d(1.1,1.1,1.1); } 40% { transform: scale3d(0.9,0.9,0.9); } 60% { opacity: 1; transform: scale3d(1.03,1.03,1.03); } 80% { transform: scale3d(0.97,0.97,0.97); } 100% { opacity: 1; transform: scale3d(1,1,1); } }
+    @keyframes pulse { 0% { transform: scale3d(1,1,1); } 50% { transform: scale3d(1.08,1.08,1.08); } 100% { transform: scale3d(1,1,1); } }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translate3d(0,30px,0); } 100% { opacity: 1; transform: translate3d(0,0,0); } }
+    /* Custom Scrollbar for overflow demos */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #07090e; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
   </style>
 </head>
 <body>
