@@ -48,7 +48,15 @@ export const UI_TEXT = {
     colName: 'Name',
     colMeaning: 'Meaning (What It Does)',
     doneBtn: 'Got it!',
-    langToggleBtn: '🇺🇿 O\'zbekcha'
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    labBoxModelTitle: '📦 Box Model Playground',
+    labFlexboxTitle: '🧩 Flexbox LEGO Playground',
+    labColorTitle: '🎨 Color & Gradient Mixer',
+    labGridTitle: '🏁 CSS Grid 2D World'
   },
   uz: {
     appTitle: 'CodeCraft',
@@ -94,7 +102,15 @@ export const UI_TEXT = {
     colName: 'Nomi',
     colMeaning: 'Vazifasi (Nima ish qiladi)',
     doneBtn: 'Tushundim!',
-    langToggleBtn: '🇬🇧 English'
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    labBoxModelTitle: '📦 Box Model Maydonchasi',
+    labFlexboxTitle: '🧩 Flexbox Konstruktori',
+    labColorTitle: '🎨 Rang va Gradient Mikseri',
+    labGridTitle: '🏁 CSS Grid 2D Dunyosi'
   }
 };
 

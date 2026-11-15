@@ -18,10 +18,16 @@ import { t, UI_TEXT } from './modules/i18n.js';
 import { playSound } from './modules/audio.js';
 import { triggerConfetti } from './modules/confetti.js';
 import { TEMPLATES, downloadHtmlFile } from './modules/sandbox.js';
+import { renderBoxModelLab } from './labs/boxModelLab.js';
+import { renderFlexboxLab } from './labs/flexboxLab.js';
+import { renderColorLab } from './labs/colorLab.js';
+import { renderGridLab } from './labs/gridLab.js';
+import { speakText, stopSpeaking, isSpeaking } from './modules/speech.js';
 
 // Application State
 let state = loadStateFromStorage();
-let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
+let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
 
@@ -80,6 +86,7 @@ function cacheElements() {
   elements.btnTheme = document.getElementById('btn-theme');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
+  elements.btnLabs = document.getElementById('btn-labs');
   elements.btnSandbox = document.getElementById('btn-sandbox');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
@@ -93,12 +100,15 @@ function cacheElements() {
 
 function attachGlobalListeners() {
   function switchLang(lang) {
+    stopSpeaking();
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -116,6 +126,8 @@ function attachGlobalListeners() {
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -149,10 +161,27 @@ function attachGlobalListeners() {
     }
   });
 
+  // Visual Interactive Labs toggle
+  elements.btnLabs?.addEventListener('click', () => {
+    stopSpeaking();
+    currentView = currentView === 'labs' ? 'lesson' : 'labs';
+    elements.btnLabs.classList.toggle('active', currentView === 'labs');
+    elements.btnSandbox?.classList.remove('active');
+    playSound('click', state.audioEnabled);
+
+    if (currentView === 'labs') {
+      renderLabsView();
+    } else {
+      renderLessonView();
+    }
+  });
+
   // Free Sandbox toggle
   elements.btnSandbox?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = currentView === 'sandbox' ? 'lesson' : 'sandbox';
     elements.btnSandbox.classList.toggle('active', currentView === 'sandbox');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
 
     if (currentView === 'sandbox') {
@@ -164,8 +193,10 @@ function attachGlobalListeners() {
 
   // Brand click -> Return to lessons
   document.querySelector('.brand')?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = 'lesson';
     elements.btnSandbox?.classList.remove('active');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
     selectLesson(LESSONS[0].id);
   });
@@ -240,8 +271,10 @@ function renderSidebar() {
   items.forEach(item => {
     item.addEventListener('click', () => {
       const lessonId = item.getAttribute('data-lesson-id');
+      stopSpeaking();
       currentView = 'lesson';
       elements.btnSandbox?.classList.remove('active');
+      elements.btnLabs?.classList.remove('active');
       playSound('click', state.audioEnabled);
       selectLesson(lessonId);
     });
@@ -249,6 +282,10 @@ function renderSidebar() {
 }
 
 export function selectLesson(lessonId) {
+  stopSpeaking();
+  currentView = 'lesson';
+  elements.btnSandbox?.classList.remove('active');
+  elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
   currentCode = lesson.initialCode;
@@ -386,6 +423,9 @@ function renderLessonView() {
           <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
         </div>
         <div class="mission-quick-actions">
+          <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
+            🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
+          </button>
           <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
             ${escapeHtml(t('hintBtn', state.lang))}
           </button>
@@ -414,6 +454,18 @@ function renderLessonView() {
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
         </div>
+
+        <!-- Quick Tag Insertion Bar -->
+        ${lesson.quickTags && lesson.quickTags.length > 0 ? `
+          <div class="editor-quick-tags-bar">
+            <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
+            <div class="quick-tags-chips">
+              ${lesson.quickTags.map(tag => `
+                <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
@@ -601,6 +653,34 @@ function setupLessonListeners(lesson) {
   // Check code
   document.getElementById('btn-verify-mission')?.addEventListener('click', () => {
     handleChallengeVerification(lesson);
+  });
+
+  // Quick Tag Insert Chips (1-click insert directly at cursor)
+  const insertChips = document.querySelectorAll('.tag-insert-chip');
+  insertChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.getAttribute('data-insert');
+      insertTextAtCursor(textarea, tag);
+      playSound('click', state.audioEnabled);
+    });
+  });
+
+  // Read Aloud / Voice Narrator
+  const btnRead = document.getElementById('btn-read-mission');
+  btnRead?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    if (isSpeaking()) {
+      stopSpeaking();
+      btnRead.classList.remove('speaking');
+      btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+    } else {
+      btnRead.classList.add('speaking');
+      btnRead.textContent = `⏹️ ${t('stopSpeechBtn', state.lang)}`;
+      speakText(localize(lesson.challenge.mission, state.lang), state.lang, () => {
+        btnRead.classList.remove('speaking');
+        btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+      });
+    }
   });
 }
 
@@ -841,6 +921,71 @@ function showTryAgainModal(feedback) {
 
   document.body.appendChild(modal);
   modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => modal.remove());
+}
+
+// ===================================================================
+// Interactive Visual Labs Hub (Box Model, Flexbox, Color, Grid)
+// ===================================================================
+function renderLabsView() {
+  stopSpeaking();
+  elements.workspaceStage.innerHTML = `
+    <div class="labs-view-wrapper">
+      <div class="lesson-banner">
+        <div>
+          <div class="banner-meta">
+            <span class="badge-module">INTERACTIVE PLAYGROUNDS</span>
+          </div>
+          <h2 class="banner-title">${escapeHtml(t('labsBtn', state.lang))}</h2>
+          <p class="banner-summary">
+            ${state.lang === 'uz'
+              ? 'Tugmalar va slayderlarni surib, CSS qanday ishlashini jonli tomosha qiling va tayyor kodni bitta bosishda nusxalang!'
+              : 'Slide controls, click buttons, and watch CSS physics unfold in real-time! Copy generated code with one click.'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Lab Switcher Navigation -->
+      <div class="labs-nav-bar">
+        <button class="labs-tab-btn ${currentLab === 'box' ? 'active' : ''}" data-lab="box">
+          ${escapeHtml(t('labBoxModelTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'flexbox' ? 'active' : ''}" data-lab="flexbox">
+          ${escapeHtml(t('labFlexboxTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'color' ? 'active' : ''}" data-lab="color">
+          ${escapeHtml(t('labColorTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'grid' ? 'active' : ''}" data-lab="grid">
+          ${escapeHtml(t('labGridTitle', state.lang))}
+        </button>
+      </div>
+
+      <!-- Active Lab Container -->
+      <div id="active-lab-stage"></div>
+    </div>
+  `;
+
+  const stage = document.getElementById('active-lab-stage');
+  function loadActiveLab() {
+    if (!stage) return;
+    if (currentLab === 'box') renderBoxModelLab(stage);
+    else if (currentLab === 'flexbox') renderFlexboxLab(stage);
+    else if (currentLab === 'color') renderColorLab(stage);
+    else if (currentLab === 'grid') renderGridLab(stage);
+  }
+
+  const tabBtns = elements.workspaceStage.querySelectorAll('.labs-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLab = btn.getAttribute('data-lab');
+      playSound('click', state.audioEnabled);
+      loadActiveLab();
+    });
+  });
+
+  loadActiveLab();
 }
 
 // ===================================================================

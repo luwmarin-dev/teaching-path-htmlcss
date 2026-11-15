@@ -26,6 +26,7 @@ const sandboxCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/
 const boxModelLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/boxModelLab.js'), 'utf-8'));
 const flexboxLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/flexboxLab.js'), 'utf-8'));
 const colorLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/colorLab.js'), 'utf-8'));
+const gridLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/gridLab.js'), 'utf-8'));
 const appCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/app.js'), 'utf-8'));
 
 const cssCode = fs.readFileSync(path.join(rootDir, 'public/css/style.css'), 'utf-8');
@@ -69,6 +70,9 @@ const bundledJs = `/**
 
   // --- Color Lab Module ---
   ${colorLabCode}
+
+  // --- Grid Lab Module ---
+  ${gridLabCode}
 
   // --- Main App Controller ---
   ${appCode}

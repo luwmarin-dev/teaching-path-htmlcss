@@ -1233,6 +1233,493 @@ body {
   .app-sidebar {
     width: 240px;
   }
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================================
+   Quick Tag Insertion Bar above code editor
+   =================================================================== */
+.editor-quick-tags-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.quick-tags-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.quick-tags-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.tag-insert-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--accent-cyan);
+  font-family: var(--font-code);
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.tag-insert-chip:hover {
+  background: rgba(91, 95, 199, 0.2);
+  border-color: var(--primary);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.tag-insert-chip:active {
+  transform: translateY(1px);
+}
+
+/* ===================================================================
+   Read Aloud Speech Button in Mission Spotlight Card
+   =================================================================== */
+.btn-mission-read {
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.btn-mission-read:hover {
+  background: rgba(45, 212, 191, 0.22);
+  border-color: var(--accent-cyan);
+  color: #ffffff;
+}
+
+.btn-mission-read.speaking {
+  background: #ff5e7e;
+  color: #ffffff;
+  border-color: #ff5e7e;
+  animation: pulse-read 1s infinite alternate;
+}
+
+@keyframes pulse-read {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 94, 126, 0.4); }
+  100% { transform: scale(1.04); box-shadow: 0 0 12px rgba(255, 94, 126, 0.6); }
+}
+
+/* ===================================================================
+   Visual Labs View Styles (Box Model, Flexbox, Color, Grid)
+   =================================================================== */
+.labs-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.labs-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.labs-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.labs-tab-btn:hover {
+  color: var(--text-main);
+  border-color: var(--primary);
+}
+
+.labs-tab-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(91, 95, 199, 0.35);
+}
+
+.lab-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.lab-header {
+  margin-bottom: 20px;
+}
+
+.lab-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--text-main);
+}
+
+.lab-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.lab-controls {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ctrl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-margin { background: #ff9f43; }
+.dot-border { background: #fbc531; }
+.dot-padding { background: #2ed573; }
+.dot-radius { background: #00d2d3; }
+
+.control-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.btn-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-pill:hover {
+  color: var(--text-main);
+  border-color: var(--primary);
+}
+
+.btn-pill.active {
+  background: rgba(91, 95, 199, 0.25);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.color-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.preset-btn {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.preset-btn:hover {
+  transform: scale(1.05);
+}
+
+.color-input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-card);
+  cursor: pointer;
+}
+
+.lab-code-output {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.lab-code-output .code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.lab-code-output pre {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--accent-cyan);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.btn-sm {
+  background: rgba(91, 95, 199, 0.2);
+  border: 1px solid var(--primary);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lab-stage {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 32px;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Box Model Visual Layers */
+.box-layer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: padding 0.1s ease;
+}
+
+.layer-margin {
+  background: rgba(255, 159, 67, 0.15);
+  border: 2px dashed #ff9f43;
+}
+
+.layer-border {
+  background: rgba(251, 197, 49, 0.25);
+  border: 2px solid #fbc531;
+}
+
+.layer-padding {
+  background: rgba(46, 213, 115, 0.2);
+  border: 2px dashed #2ed573;
+}
+
+.layer-content {
+  background: #141722;
+  border: 1px solid var(--border-color);
+  padding: 24px 32px;
+  border-radius: 8px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.layer-tag {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+.tag-margin { color: #ff9f43; }
+.tag-border { color: #fbc531; }
+.tag-padding { color: #2ed573; }
+.tag-content { color: var(--text-muted); }
+
+/* Flexbox Visual Stage */
+.flex-stage {
+  display: flex;
+  width: 100%;
+  min-height: 280px;
+  background: #141722;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.flex-creature {
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.creature-icon {
+  font-size: 32px;
+}
+
+/* Color Preview Card */
+.color-preview-card {
+  width: 320px;
+  min-height: 240px;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;
+}
+
+.color-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: rgba(0,0,0,0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.color-card-body h4 {
+  font-size: 24px;
+  margin: 12px 0 6px;
+  color: #ffffff;
+}
+
+.color-card-body p {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+  color: #ffffff;
+}
+
+.color-card-button {
+  background: #ffffff;
+  color: #0b0d13;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* CSS Grid Board */
+.grid-board {
+  width: 100%;
+  max-width: 500px;
+  transition: all 0.2s ease;
+}
+
+.grid-slot {
+  background: #141722;
+  border: 2px solid #5b5fc7;
+  border-radius: 12px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.slot-icon {
+  font-size: 32px;
+}
+
+.slot-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 
 </style>
@@ -1279,6 +1766,11 @@ body {
       <!-- Teacher Tips Toggle -->
       <button id="btn-teacher" class="btn-header btn-icon-only" title="Toggle Parent/Teacher coaching tips">
         🧑‍🏫
+      </button>
+
+      <!-- Visual Interactive Labs (Box Model, Flexbox, Color Mixer, Grid Toy) -->
+      <button id="btn-labs" class="btn-header" title="Visual Interactive Labs">
+        🧪 Visual Labs
       </button>
 
       <!-- More Tools (Labs & Free Sandbox) -->
@@ -5308,7 +5800,15 @@ const UI_TEXT = {
     colName: 'Name',
     colMeaning: 'Meaning (What It Does)',
     doneBtn: 'Got it!',
-    langToggleBtn: '🇺🇿 O\'zbekcha'
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    labBoxModelTitle: '📦 Box Model Playground',
+    labFlexboxTitle: '🧩 Flexbox LEGO Playground',
+    labColorTitle: '🎨 Color & Gradient Mixer',
+    labGridTitle: '🏁 CSS Grid 2D World'
   },
   uz: {
     appTitle: 'CodeCraft',
@@ -5354,7 +5854,15 @@ const UI_TEXT = {
     colName: 'Nomi',
     colMeaning: 'Vazifasi (Nima ish qiladi)',
     doneBtn: 'Tushundim!',
-    langToggleBtn: '🇬🇧 English'
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    labBoxModelTitle: '📦 Box Model Maydonchasi',
+    labFlexboxTitle: '🧩 Flexbox Konstruktori',
+    labColorTitle: '🎨 Rang va Gradient Mikseri',
+    labGridTitle: '🏁 CSS Grid 2D Dunyosi'
   }
 };
 
@@ -5897,32 +6405,44 @@ function triggerConfetti(canvasElement) {
 
 let currentUtterance = null;
 
-function speakText(text, onEndCallback = null) {
+function speakText(text, lang = 'en', onEndCallback = null) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
     console.warn('Speech synthesis not supported in this environment');
+    if (onEndCallback) onEndCallback();
     return;
   }
 
   // Stop any ongoing speech
   window.speechSynthesis.cancel();
 
-  if (!text) return;
+  if (!text) {
+    if (onEndCallback) onEndCallback();
+    return;
+  }
 
-  // Clean HTML tags or formatting
+  // Clean HTML tags or markdown formatting
   const plainText = text.replace(/<[^>]+>/g, '').replace(/[#*`_]/g, '');
 
   const utterance = new SpeechSynthesisUtterance(plainText);
   utterance.rate = 0.95; // slightly slower, clear for kids
-  utterance.pitch = 1.1; // friendly, upbeat
+  utterance.pitch = 1.05; // friendly, upbeat
+  utterance.lang = lang === 'uz' ? 'uz-UZ' : 'en-US';
 
-  // Pick a friendly English voice if available
-  const voices = window.speechSynthesis.getVoices();
-  const friendlyVoice = voices.find(
-    v => (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Natural') || v.name.includes('Zira')) && v.lang.startsWith('en')
-  ) || voices.find(v => v.lang.startsWith('en'));
-
-  if (friendlyVoice) {
-    utterance.voice = friendlyVoice;
+  // Find best matching voice
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (voices.length > 0) {
+    let bestVoice = null;
+    if (lang === 'uz') {
+      bestVoice = voices.find(v => v.lang.startsWith('uz')) || voices.find(v => v.lang.startsWith('ru'));
+    }
+    if (!bestVoice) {
+      bestVoice = voices.find(
+        v => (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Natural') || v.name.includes('Zira')) && v.lang.startsWith('en')
+      ) || voices.find(v => v.lang.startsWith('en'));
+    }
+    if (bestVoice) {
+      utterance.voice = bestVoice;
+    }
   }
 
   utterance.onend = () => {
@@ -6527,6 +7047,151 @@ color: white;</code></pre>
 }
 
 
+  // --- Grid Lab Module ---
+  /**
+ * Interactive CSS Grid Lab
+ * A hands-on visual toy where kids can switch columns and gap
+ * and see a 2D game inventory or matrix snap into place with live CSS output!
+ */
+
+function renderGridLab(container) {
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="lab-container">
+      <div class="lab-header">
+        <h3>🏁 The CSS Grid 2D World</h3>
+        <p>Command your 2D game inventory! Switch columns and slide the gap to watch items snap into place!</p>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Controls -->
+        <div class="lab-controls">
+          <div class="control-group">
+            <label><strong>grid-template-columns (Columns)</strong></label>
+            <div class="btn-pill-group" id="grid-col-group">
+              <button class="btn-pill" data-cols="1">1 Column</button>
+              <button class="btn-pill" data-cols="2">2 Columns</button>
+              <button class="btn-pill active" data-cols="3">3 Columns</button>
+              <button class="btn-pill" data-cols="4">4 Columns</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label><strong>gap (Spacing Between Boxes)</strong>: <span id="val-grid-gap">16px</span></label>
+            <input type="range" id="slider-grid-gap" min="0" max="40" value="16" />
+          </div>
+
+          <div class="control-group">
+            <label><strong>Theme Accent Color</strong></label>
+            <div class="btn-pill-group" id="grid-theme-group">
+              <button class="btn-pill active" data-color="#5b5fc7" style="border-color: #5b5fc7;">Cyber Indigo</button>
+              <button class="btn-pill" data-color="#2dd4bf" style="border-color: #2dd4bf;">Emerald Glow</button>
+              <button class="btn-pill" data-color="#ff5e7e" style="border-color: #ff5e7e;">Neon Rose</button>
+              <button class="btn-pill" data-color="#fbbf24" style="border-color: #fbbf24;">Sun Gold</button>
+            </div>
+          </div>
+
+          <div class="lab-code-output">
+            <div class="code-header">
+              <span>Generated CSS</span>
+              <button id="btn-copy-grid-css" class="btn-sm">📋 Copy CSS</button>
+            </div>
+            <pre><code id="grid-css-code">.game-inventory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Stage Preview -->
+        <div class="lab-stage">
+          <div class="grid-board" id="grid-board">
+            <div class="grid-slot"><span class="slot-icon">🗡️</span><span class="slot-label">Sword</span></div>
+            <div class="grid-slot"><span class="slot-icon">🛡️</span><span class="slot-label">Shield</span></div>
+            <div class="grid-slot"><span class="slot-icon">🧪</span><span class="slot-label">Potion</span></div>
+            <div class="grid-slot"><span class="slot-icon">💎</span><span class="slot-label">Diamond</span></div>
+            <div class="grid-slot"><span class="slot-icon">🏹</span><span class="slot-label">Bow</span></div>
+            <div class="grid-slot"><span class="slot-icon">👑</span><span class="slot-label">Crown</span></div>
+            <div class="grid-slot"><span class="slot-icon">🔮</span><span class="slot-label">Crystal</span></div>
+            <div class="grid-slot"><span class="slot-icon">🪙</span><span class="slot-label">Coins</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  let currentCols = 3;
+  let currentGap = 16;
+  let currentAccent = '#5b5fc7';
+
+  const board = container.querySelector('#grid-board');
+  const codeEl = container.querySelector('#grid-css-code');
+  const gapVal = container.querySelector('#val-grid-gap');
+  const gapSlider = container.querySelector('#slider-grid-gap');
+  const copyBtn = container.querySelector('#btn-copy-grid-css');
+
+  function updateGrid() {
+    if (!board) return;
+    board.style.display = 'grid';
+    board.style.gridTemplateColumns = `repeat(${currentCols}, 1fr)`;
+    board.style.gap = `${currentGap}px`;
+
+    const slots = board.querySelectorAll('.grid-slot');
+    slots.forEach(s => {
+      s.style.borderColor = currentAccent;
+      s.style.boxShadow = `0 4px 15px ${currentAccent}22`;
+    });
+
+    if (codeEl) {
+      codeEl.textContent = `.game-inventory {\n  display: grid;\n  grid-template-columns: repeat(${currentCols}, 1fr);\n  gap: ${currentGap}px;\n}`;
+    }
+  }
+
+  // Column pills
+  const colPills = container.querySelectorAll('#grid-col-group .btn-pill');
+  colPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      colPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCols = parseInt(pill.getAttribute('data-cols'), 10) || 3;
+      updateGrid();
+    });
+  });
+
+  // Gap slider
+  gapSlider?.addEventListener('input', (e) => {
+    currentGap = e.target.value;
+    if (gapVal) gapVal.textContent = `${currentGap}px`;
+    updateGrid();
+  });
+
+  // Theme accent pills
+  const themePills = container.querySelectorAll('#grid-theme-group .btn-pill');
+  themePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      themePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentAccent = pill.getAttribute('data-color') || '#5b5fc7';
+      updateGrid();
+    });
+  });
+
+  // Copy button
+  copyBtn?.addEventListener('click', () => {
+    if (codeEl) {
+      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+        copyBtn.textContent = '✅ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy CSS'; }, 1800);
+      });
+    }
+  });
+
+  updateGrid();
+}
+
+
   // --- Main App Controller ---
   /**
  * CodeCraft Kids Main Application Controller
@@ -6541,9 +7206,15 @@ color: white;</code></pre>
 
 
 
+
+
+
+
+
 // Application State
 let state = loadStateFromStorage();
-let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
+let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
 
@@ -6602,6 +7273,7 @@ function cacheElements() {
   elements.btnTheme = document.getElementById('btn-theme');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
+  elements.btnLabs = document.getElementById('btn-labs');
   elements.btnSandbox = document.getElementById('btn-sandbox');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
@@ -6615,12 +7287,15 @@ function cacheElements() {
 
 function attachGlobalListeners() {
   function switchLang(lang) {
+    stopSpeaking();
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -6638,6 +7313,8 @@ function attachGlobalListeners() {
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -6671,10 +7348,27 @@ function attachGlobalListeners() {
     }
   });
 
+  // Visual Interactive Labs toggle
+  elements.btnLabs?.addEventListener('click', () => {
+    stopSpeaking();
+    currentView = currentView === 'labs' ? 'lesson' : 'labs';
+    elements.btnLabs.classList.toggle('active', currentView === 'labs');
+    elements.btnSandbox?.classList.remove('active');
+    playSound('click', state.audioEnabled);
+
+    if (currentView === 'labs') {
+      renderLabsView();
+    } else {
+      renderLessonView();
+    }
+  });
+
   // Free Sandbox toggle
   elements.btnSandbox?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = currentView === 'sandbox' ? 'lesson' : 'sandbox';
     elements.btnSandbox.classList.toggle('active', currentView === 'sandbox');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
 
     if (currentView === 'sandbox') {
@@ -6686,8 +7380,10 @@ function attachGlobalListeners() {
 
   // Brand click -> Return to lessons
   document.querySelector('.brand')?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = 'lesson';
     elements.btnSandbox?.classList.remove('active');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
     selectLesson(LESSONS[0].id);
   });
@@ -6762,8 +7458,10 @@ function renderSidebar() {
   items.forEach(item => {
     item.addEventListener('click', () => {
       const lessonId = item.getAttribute('data-lesson-id');
+      stopSpeaking();
       currentView = 'lesson';
       elements.btnSandbox?.classList.remove('active');
+      elements.btnLabs?.classList.remove('active');
       playSound('click', state.audioEnabled);
       selectLesson(lessonId);
     });
@@ -6771,6 +7469,10 @@ function renderSidebar() {
 }
 
 function selectLesson(lessonId) {
+  stopSpeaking();
+  currentView = 'lesson';
+  elements.btnSandbox?.classList.remove('active');
+  elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
   currentCode = lesson.initialCode;
@@ -6908,6 +7610,9 @@ function renderLessonView() {
           <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
         </div>
         <div class="mission-quick-actions">
+          <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
+            🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
+          </button>
           <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
             ${escapeHtml(t('hintBtn', state.lang))}
           </button>
@@ -6936,6 +7641,18 @@ function renderLessonView() {
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
         </div>
+
+        <!-- Quick Tag Insertion Bar -->
+        ${lesson.quickTags && lesson.quickTags.length > 0 ? `
+          <div class="editor-quick-tags-bar">
+            <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
+            <div class="quick-tags-chips">
+              ${lesson.quickTags.map(tag => `
+                <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
@@ -7123,6 +7840,34 @@ function setupLessonListeners(lesson) {
   // Check code
   document.getElementById('btn-verify-mission')?.addEventListener('click', () => {
     handleChallengeVerification(lesson);
+  });
+
+  // Quick Tag Insert Chips (1-click insert directly at cursor)
+  const insertChips = document.querySelectorAll('.tag-insert-chip');
+  insertChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.getAttribute('data-insert');
+      insertTextAtCursor(textarea, tag);
+      playSound('click', state.audioEnabled);
+    });
+  });
+
+  // Read Aloud / Voice Narrator
+  const btnRead = document.getElementById('btn-read-mission');
+  btnRead?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    if (isSpeaking()) {
+      stopSpeaking();
+      btnRead.classList.remove('speaking');
+      btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+    } else {
+      btnRead.classList.add('speaking');
+      btnRead.textContent = `⏹️ ${t('stopSpeechBtn', state.lang)}`;
+      speakText(localize(lesson.challenge.mission, state.lang), state.lang, () => {
+        btnRead.classList.remove('speaking');
+        btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+      });
+    }
   });
 }
 
@@ -7363,6 +8108,71 @@ function showTryAgainModal(feedback) {
 
   document.body.appendChild(modal);
   modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => modal.remove());
+}
+
+// ===================================================================
+// Interactive Visual Labs Hub (Box Model, Flexbox, Color, Grid)
+// ===================================================================
+function renderLabsView() {
+  stopSpeaking();
+  elements.workspaceStage.innerHTML = `
+    <div class="labs-view-wrapper">
+      <div class="lesson-banner">
+        <div>
+          <div class="banner-meta">
+            <span class="badge-module">INTERACTIVE PLAYGROUNDS</span>
+          </div>
+          <h2 class="banner-title">${escapeHtml(t('labsBtn', state.lang))}</h2>
+          <p class="banner-summary">
+            ${state.lang === 'uz'
+              ? 'Tugmalar va slayderlarni surib, CSS qanday ishlashini jonli tomosha qiling va tayyor kodni bitta bosishda nusxalang!'
+              : 'Slide controls, click buttons, and watch CSS physics unfold in real-time! Copy generated code with one click.'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Lab Switcher Navigation -->
+      <div class="labs-nav-bar">
+        <button class="labs-tab-btn ${currentLab === 'box' ? 'active' : ''}" data-lab="box">
+          ${escapeHtml(t('labBoxModelTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'flexbox' ? 'active' : ''}" data-lab="flexbox">
+          ${escapeHtml(t('labFlexboxTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'color' ? 'active' : ''}" data-lab="color">
+          ${escapeHtml(t('labColorTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'grid' ? 'active' : ''}" data-lab="grid">
+          ${escapeHtml(t('labGridTitle', state.lang))}
+        </button>
+      </div>
+
+      <!-- Active Lab Container -->
+      <div id="active-lab-stage"></div>
+    </div>
+  `;
+
+  const stage = document.getElementById('active-lab-stage');
+  function loadActiveLab() {
+    if (!stage) return;
+    if (currentLab === 'box') renderBoxModelLab(stage);
+    else if (currentLab === 'flexbox') renderFlexboxLab(stage);
+    else if (currentLab === 'color') renderColorLab(stage);
+    else if (currentLab === 'grid') renderGridLab(stage);
+  }
+
+  const tabBtns = elements.workspaceStage.querySelectorAll('.labs-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLab = btn.getAttribute('data-lab');
+      playSound('click', state.audioEnabled);
+      loadActiveLab();
+    });
+  });
+
+  loadActiveLab();
 }
 
 // ===================================================================

@@ -3992,7 +3992,15 @@ const UI_TEXT = {
     colName: 'Name',
     colMeaning: 'Meaning (What It Does)',
     doneBtn: 'Got it!',
-    langToggleBtn: '🇺🇿 O\'zbekcha'
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    labBoxModelTitle: '📦 Box Model Playground',
+    labFlexboxTitle: '🧩 Flexbox LEGO Playground',
+    labColorTitle: '🎨 Color & Gradient Mixer',
+    labGridTitle: '🏁 CSS Grid 2D World'
   },
   uz: {
     appTitle: 'CodeCraft',
@@ -4038,7 +4046,15 @@ const UI_TEXT = {
     colName: 'Nomi',
     colMeaning: 'Vazifasi (Nima ish qiladi)',
     doneBtn: 'Tushundim!',
-    langToggleBtn: '🇬🇧 English'
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    labBoxModelTitle: '📦 Box Model Maydonchasi',
+    labFlexboxTitle: '🧩 Flexbox Konstruktori',
+    labColorTitle: '🎨 Rang va Gradient Mikseri',
+    labGridTitle: '🏁 CSS Grid 2D Dunyosi'
   }
 };
 
@@ -4581,32 +4597,44 @@ function triggerConfetti(canvasElement) {
 
 let currentUtterance = null;
 
-function speakText(text, onEndCallback = null) {
+function speakText(text, lang = 'en', onEndCallback = null) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
     console.warn('Speech synthesis not supported in this environment');
+    if (onEndCallback) onEndCallback();
     return;
   }
 
   // Stop any ongoing speech
   window.speechSynthesis.cancel();
 
-  if (!text) return;
+  if (!text) {
+    if (onEndCallback) onEndCallback();
+    return;
+  }
 
-  // Clean HTML tags or formatting
+  // Clean HTML tags or markdown formatting
   const plainText = text.replace(/<[^>]+>/g, '').replace(/[#*`_]/g, '');
 
   const utterance = new SpeechSynthesisUtterance(plainText);
   utterance.rate = 0.95; // slightly slower, clear for kids
-  utterance.pitch = 1.1; // friendly, upbeat
+  utterance.pitch = 1.05; // friendly, upbeat
+  utterance.lang = lang === 'uz' ? 'uz-UZ' : 'en-US';
 
-  // Pick a friendly English voice if available
-  const voices = window.speechSynthesis.getVoices();
-  const friendlyVoice = voices.find(
-    v => (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Natural') || v.name.includes('Zira')) && v.lang.startsWith('en')
-  ) || voices.find(v => v.lang.startsWith('en'));
-
-  if (friendlyVoice) {
-    utterance.voice = friendlyVoice;
+  // Find best matching voice
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (voices.length > 0) {
+    let bestVoice = null;
+    if (lang === 'uz') {
+      bestVoice = voices.find(v => v.lang.startsWith('uz')) || voices.find(v => v.lang.startsWith('ru'));
+    }
+    if (!bestVoice) {
+      bestVoice = voices.find(
+        v => (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Natural') || v.name.includes('Zira')) && v.lang.startsWith('en')
+      ) || voices.find(v => v.lang.startsWith('en'));
+    }
+    if (bestVoice) {
+      utterance.voice = bestVoice;
+    }
   }
 
   utterance.onend = () => {
@@ -5211,6 +5239,151 @@ color: white;</code></pre>
 }
 
 
+  // --- Grid Lab Module ---
+  /**
+ * Interactive CSS Grid Lab
+ * A hands-on visual toy where kids can switch columns and gap
+ * and see a 2D game inventory or matrix snap into place with live CSS output!
+ */
+
+function renderGridLab(container) {
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="lab-container">
+      <div class="lab-header">
+        <h3>🏁 The CSS Grid 2D World</h3>
+        <p>Command your 2D game inventory! Switch columns and slide the gap to watch items snap into place!</p>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Controls -->
+        <div class="lab-controls">
+          <div class="control-group">
+            <label><strong>grid-template-columns (Columns)</strong></label>
+            <div class="btn-pill-group" id="grid-col-group">
+              <button class="btn-pill" data-cols="1">1 Column</button>
+              <button class="btn-pill" data-cols="2">2 Columns</button>
+              <button class="btn-pill active" data-cols="3">3 Columns</button>
+              <button class="btn-pill" data-cols="4">4 Columns</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label><strong>gap (Spacing Between Boxes)</strong>: <span id="val-grid-gap">16px</span></label>
+            <input type="range" id="slider-grid-gap" min="0" max="40" value="16" />
+          </div>
+
+          <div class="control-group">
+            <label><strong>Theme Accent Color</strong></label>
+            <div class="btn-pill-group" id="grid-theme-group">
+              <button class="btn-pill active" data-color="#5b5fc7" style="border-color: #5b5fc7;">Cyber Indigo</button>
+              <button class="btn-pill" data-color="#2dd4bf" style="border-color: #2dd4bf;">Emerald Glow</button>
+              <button class="btn-pill" data-color="#ff5e7e" style="border-color: #ff5e7e;">Neon Rose</button>
+              <button class="btn-pill" data-color="#fbbf24" style="border-color: #fbbf24;">Sun Gold</button>
+            </div>
+          </div>
+
+          <div class="lab-code-output">
+            <div class="code-header">
+              <span>Generated CSS</span>
+              <button id="btn-copy-grid-css" class="btn-sm">📋 Copy CSS</button>
+            </div>
+            <pre><code id="grid-css-code">.game-inventory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Stage Preview -->
+        <div class="lab-stage">
+          <div class="grid-board" id="grid-board">
+            <div class="grid-slot"><span class="slot-icon">🗡️</span><span class="slot-label">Sword</span></div>
+            <div class="grid-slot"><span class="slot-icon">🛡️</span><span class="slot-label">Shield</span></div>
+            <div class="grid-slot"><span class="slot-icon">🧪</span><span class="slot-label">Potion</span></div>
+            <div class="grid-slot"><span class="slot-icon">💎</span><span class="slot-label">Diamond</span></div>
+            <div class="grid-slot"><span class="slot-icon">🏹</span><span class="slot-label">Bow</span></div>
+            <div class="grid-slot"><span class="slot-icon">👑</span><span class="slot-label">Crown</span></div>
+            <div class="grid-slot"><span class="slot-icon">🔮</span><span class="slot-label">Crystal</span></div>
+            <div class="grid-slot"><span class="slot-icon">🪙</span><span class="slot-label">Coins</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  let currentCols = 3;
+  let currentGap = 16;
+  let currentAccent = '#5b5fc7';
+
+  const board = container.querySelector('#grid-board');
+  const codeEl = container.querySelector('#grid-css-code');
+  const gapVal = container.querySelector('#val-grid-gap');
+  const gapSlider = container.querySelector('#slider-grid-gap');
+  const copyBtn = container.querySelector('#btn-copy-grid-css');
+
+  function updateGrid() {
+    if (!board) return;
+    board.style.display = 'grid';
+    board.style.gridTemplateColumns = `repeat(${currentCols}, 1fr)`;
+    board.style.gap = `${currentGap}px`;
+
+    const slots = board.querySelectorAll('.grid-slot');
+    slots.forEach(s => {
+      s.style.borderColor = currentAccent;
+      s.style.boxShadow = `0 4px 15px ${currentAccent}22`;
+    });
+
+    if (codeEl) {
+      codeEl.textContent = `.game-inventory {\n  display: grid;\n  grid-template-columns: repeat(${currentCols}, 1fr);\n  gap: ${currentGap}px;\n}`;
+    }
+  }
+
+  // Column pills
+  const colPills = container.querySelectorAll('#grid-col-group .btn-pill');
+  colPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      colPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCols = parseInt(pill.getAttribute('data-cols'), 10) || 3;
+      updateGrid();
+    });
+  });
+
+  // Gap slider
+  gapSlider?.addEventListener('input', (e) => {
+    currentGap = e.target.value;
+    if (gapVal) gapVal.textContent = `${currentGap}px`;
+    updateGrid();
+  });
+
+  // Theme accent pills
+  const themePills = container.querySelectorAll('#grid-theme-group .btn-pill');
+  themePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      themePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentAccent = pill.getAttribute('data-color') || '#5b5fc7';
+      updateGrid();
+    });
+  });
+
+  // Copy button
+  copyBtn?.addEventListener('click', () => {
+    if (codeEl) {
+      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+        copyBtn.textContent = '✅ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy CSS'; }, 1800);
+      });
+    }
+  });
+
+  updateGrid();
+}
+
+
   // --- Main App Controller ---
   /**
  * CodeCraft Kids Main Application Controller
@@ -5225,9 +5398,15 @@ color: white;</code></pre>
 
 
 
+
+
+
+
+
 // Application State
 let state = loadStateFromStorage();
-let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
+let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
 
@@ -5286,6 +5465,7 @@ function cacheElements() {
   elements.btnTheme = document.getElementById('btn-theme');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
+  elements.btnLabs = document.getElementById('btn-labs');
   elements.btnSandbox = document.getElementById('btn-sandbox');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
@@ -5299,12 +5479,15 @@ function cacheElements() {
 
 function attachGlobalListeners() {
   function switchLang(lang) {
+    stopSpeaking();
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -5322,6 +5505,8 @@ function attachGlobalListeners() {
     applyStateToUI();
     if (currentView === 'sandbox') {
       renderSandboxView();
+    } else if (currentView === 'labs') {
+      renderLabsView();
     } else {
       renderLessonView();
     }
@@ -5355,10 +5540,27 @@ function attachGlobalListeners() {
     }
   });
 
+  // Visual Interactive Labs toggle
+  elements.btnLabs?.addEventListener('click', () => {
+    stopSpeaking();
+    currentView = currentView === 'labs' ? 'lesson' : 'labs';
+    elements.btnLabs.classList.toggle('active', currentView === 'labs');
+    elements.btnSandbox?.classList.remove('active');
+    playSound('click', state.audioEnabled);
+
+    if (currentView === 'labs') {
+      renderLabsView();
+    } else {
+      renderLessonView();
+    }
+  });
+
   // Free Sandbox toggle
   elements.btnSandbox?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = currentView === 'sandbox' ? 'lesson' : 'sandbox';
     elements.btnSandbox.classList.toggle('active', currentView === 'sandbox');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
 
     if (currentView === 'sandbox') {
@@ -5370,8 +5572,10 @@ function attachGlobalListeners() {
 
   // Brand click -> Return to lessons
   document.querySelector('.brand')?.addEventListener('click', () => {
+    stopSpeaking();
     currentView = 'lesson';
     elements.btnSandbox?.classList.remove('active');
+    elements.btnLabs?.classList.remove('active');
     playSound('click', state.audioEnabled);
     selectLesson(LESSONS[0].id);
   });
@@ -5446,8 +5650,10 @@ function renderSidebar() {
   items.forEach(item => {
     item.addEventListener('click', () => {
       const lessonId = item.getAttribute('data-lesson-id');
+      stopSpeaking();
       currentView = 'lesson';
       elements.btnSandbox?.classList.remove('active');
+      elements.btnLabs?.classList.remove('active');
       playSound('click', state.audioEnabled);
       selectLesson(lessonId);
     });
@@ -5455,6 +5661,10 @@ function renderSidebar() {
 }
 
 function selectLesson(lessonId) {
+  stopSpeaking();
+  currentView = 'lesson';
+  elements.btnSandbox?.classList.remove('active');
+  elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
   currentCode = lesson.initialCode;
@@ -5592,6 +5802,9 @@ function renderLessonView() {
           <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
         </div>
         <div class="mission-quick-actions">
+          <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
+            🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
+          </button>
           <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
             ${escapeHtml(t('hintBtn', state.lang))}
           </button>
@@ -5620,6 +5833,18 @@ function renderLessonView() {
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
         </div>
+
+        <!-- Quick Tag Insertion Bar -->
+        ${lesson.quickTags && lesson.quickTags.length > 0 ? `
+          <div class="editor-quick-tags-bar">
+            <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
+            <div class="quick-tags-chips">
+              ${lesson.quickTags.map(tag => `
+                <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
@@ -5807,6 +6032,34 @@ function setupLessonListeners(lesson) {
   // Check code
   document.getElementById('btn-verify-mission')?.addEventListener('click', () => {
     handleChallengeVerification(lesson);
+  });
+
+  // Quick Tag Insert Chips (1-click insert directly at cursor)
+  const insertChips = document.querySelectorAll('.tag-insert-chip');
+  insertChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.getAttribute('data-insert');
+      insertTextAtCursor(textarea, tag);
+      playSound('click', state.audioEnabled);
+    });
+  });
+
+  // Read Aloud / Voice Narrator
+  const btnRead = document.getElementById('btn-read-mission');
+  btnRead?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    if (isSpeaking()) {
+      stopSpeaking();
+      btnRead.classList.remove('speaking');
+      btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+    } else {
+      btnRead.classList.add('speaking');
+      btnRead.textContent = `⏹️ ${t('stopSpeechBtn', state.lang)}`;
+      speakText(localize(lesson.challenge.mission, state.lang), state.lang, () => {
+        btnRead.classList.remove('speaking');
+        btnRead.textContent = `🔊 ${t('readAloudBtn', state.lang)}`;
+      });
+    }
   });
 }
 
@@ -6047,6 +6300,71 @@ function showTryAgainModal(feedback) {
 
   document.body.appendChild(modal);
   modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => modal.remove());
+}
+
+// ===================================================================
+// Interactive Visual Labs Hub (Box Model, Flexbox, Color, Grid)
+// ===================================================================
+function renderLabsView() {
+  stopSpeaking();
+  elements.workspaceStage.innerHTML = `
+    <div class="labs-view-wrapper">
+      <div class="lesson-banner">
+        <div>
+          <div class="banner-meta">
+            <span class="badge-module">INTERACTIVE PLAYGROUNDS</span>
+          </div>
+          <h2 class="banner-title">${escapeHtml(t('labsBtn', state.lang))}</h2>
+          <p class="banner-summary">
+            ${state.lang === 'uz'
+              ? 'Tugmalar va slayderlarni surib, CSS qanday ishlashini jonli tomosha qiling va tayyor kodni bitta bosishda nusxalang!'
+              : 'Slide controls, click buttons, and watch CSS physics unfold in real-time! Copy generated code with one click.'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Lab Switcher Navigation -->
+      <div class="labs-nav-bar">
+        <button class="labs-tab-btn ${currentLab === 'box' ? 'active' : ''}" data-lab="box">
+          ${escapeHtml(t('labBoxModelTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'flexbox' ? 'active' : ''}" data-lab="flexbox">
+          ${escapeHtml(t('labFlexboxTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'color' ? 'active' : ''}" data-lab="color">
+          ${escapeHtml(t('labColorTitle', state.lang))}
+        </button>
+        <button class="labs-tab-btn ${currentLab === 'grid' ? 'active' : ''}" data-lab="grid">
+          ${escapeHtml(t('labGridTitle', state.lang))}
+        </button>
+      </div>
+
+      <!-- Active Lab Container -->
+      <div id="active-lab-stage"></div>
+    </div>
+  `;
+
+  const stage = document.getElementById('active-lab-stage');
+  function loadActiveLab() {
+    if (!stage) return;
+    if (currentLab === 'box') renderBoxModelLab(stage);
+    else if (currentLab === 'flexbox') renderFlexboxLab(stage);
+    else if (currentLab === 'color') renderColorLab(stage);
+    else if (currentLab === 'grid') renderGridLab(stage);
+  }
+
+  const tabBtns = elements.workspaceStage.querySelectorAll('.labs-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLab = btn.getAttribute('data-lab');
+      playSound('click', state.audioEnabled);
+      loadActiveLab();
+    });
+  });
+
+  loadActiveLab();
 }
 
 // ===================================================================
