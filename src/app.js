@@ -473,12 +473,8 @@ function updateLivePreview() {
   const iframe = document.getElementById('live-iframe');
   if (!iframe) return;
 
-  const doc = iframe.contentDocument || iframe.contentWindow?.document;
-  if (!doc) return;
-
-  doc.open();
-  doc.write(currentCode);
-  doc.close();
+  // Use srcdoc for 100% reliable local file:// execution without cross-origin errors
+  iframe.srcdoc = currentCode;
 }
 
 function setupPreviewTabs(lesson) {
@@ -514,11 +510,8 @@ function setupPreviewTabs(lesson) {
       </div>
     `;
     const targetIframe = document.getElementById('target-iframe');
-    const doc = targetIframe.contentDocument || targetIframe.contentWindow?.document;
-    if (doc) {
-      doc.open();
-      doc.write(lesson.targetCode);
-      doc.close();
+    if (targetIframe) {
+      targetIframe.srcdoc = lesson.targetCode;
     }
     playSound('click', state.audioEnabled);
   });
@@ -541,11 +534,8 @@ function setupPreviewTabs(lesson) {
     `;
     updateLivePreview();
     const targetIframe = document.getElementById('target-iframe');
-    const doc = targetIframe.contentDocument || targetIframe.contentWindow?.document;
-    if (doc) {
-      doc.open();
-      doc.write(lesson.targetCode);
-      doc.close();
+    if (targetIframe) {
+      targetIframe.srcdoc = lesson.targetCode;
     }
     playSound('click', state.audioEnabled);
   });
@@ -708,12 +698,8 @@ function renderSandboxView() {
   const lineNumbers = document.getElementById('sb-line-numbers');
 
   function updateSbPreview() {
-    const doc = iframe.contentDocument || iframe.contentWindow?.document;
-    if (doc) {
-      doc.open();
-      doc.write(textarea.value);
-      doc.close();
-    }
+    iframe.srcdoc = textarea.value;
+
     // Update lines
     const lines = textarea.value.split('\n').length;
     let numHtml = '';

@@ -4,18 +4,15 @@ An interactive, kid-friendly learning platform and visual coding studio designed
 
 ---
 
-## 🚀 Quick Start (1-Click Launch)
+## 🚀 100% Pure HTML/JS (Zero Node.js & Zero Localhost Required!)
 
-### On Windows:
-Double-click **`start.bat`** in this folder!  
-It will automatically launch the local server and open your default browser to `http://localhost:3000`.
+You do **NOT** need to install Node.js, run servers, or configure anything!
 
-### Via Terminal:
-```bash
-npm start
-# or
-node server.js
-```
+### To Run:
+1. **Just double-click `index.html`** in this folder! It will open directly in Chrome, Edge, Firefox, or Safari.
+2. (Or double-click `start.bat` on Windows).
+
+> 💡 **Teacher Pro-Tip**: You can copy `index.html` onto a USB flash drive or email it to your kids' laptops or school computers. Since all code, curriculum, styles, and audio synthesizers are 100% self-contained, it runs completely offline anywhere with zero installation!
 
 ### Run Automated Tests & Coverage:
 ```bash

@@ -1,7 +1,5 @@
 @echo off
-title CodeCraft Kids - HTML and CSS Adventure
-echo ======================================================
-echo 👾 Starting CodeCraft Kids Platform...
-echo ======================================================
-node server.js
-pause
+title CodeCraft Kids
+echo Opening CodeCraft Kids in your default browser...
+start "" "index.html"
+exit
