@@ -5430,99 +5430,125 @@ function createStepfulLab(container, def, isUz) {
   let currentStep = 0;
   let customState = { ...(def.initialState || {}) };
 
-  function render() {
-    const step = def.steps[currentStep];
+  // Render outer shell once:
+  container.innerHTML = `
+    <div class="topic-lab-wrapper">
+      <div class="topic-lab-controls">
+        <div class="evolution-slider-panel">
+          <div class="slider-meta-row">
+            <div class="slider-title-tag">
+              <span>🎚️</span>
+              <span>${isUz ? "Evolyutsiya Slayderi" : "Evolution Slider"}</span>
+            </div>
+            <div class="slider-current-stage">
+              <span class="stage-num-badge" id="badge-stage-num">1 / ${totalSteps}</span>
+              <strong class="stage-name" id="badge-stage-name">${isUz ? def.steps[0].title.uz : def.steps[0].title.en}</strong>
+            </div>
+          </div>
 
-    container.innerHTML = `
-      <div class="topic-lab-wrapper">
-        <div class="topic-lab-controls">
-          <div class="lab-stepper">
-            <div class="stepper-track">
+          <div class="slider-track-container">
+            <input 
+              type="range" 
+              id="evolution-range-slider" 
+              class="evolution-range-input" 
+              min="0" 
+              max="${totalSteps - 1}" 
+              value="0" 
+              step="1"
+            />
+            <div class="slider-stops-bar" id="slider-stops-bar">
               ${def.steps.map((s, idx) => `
-                <button class="step-btn ${idx === currentStep ? 'active' : ''} ${idx < currentStep ? 'completed' : ''}" data-step="${idx}">
-                  <span class="step-circle">${idx + 1}</span>
-                  <span class="step-label">${isUz ? s.title.uz : s.title.en}</span>
-                </button>
-                ${idx < totalSteps - 1 ? '<span class="step-arrow-divider">➔</span>' : ''}
+                <div class="slider-stop-point ${idx === 0 ? 'active' : ''}" data-step="${idx}">
+                  <div class="stop-dot">${idx + 1}</div>
+                  <div class="stop-title">${isUz ? s.title.uz : s.title.en}</div>
+                </div>
               `).join('')}
             </div>
-            <div class="stepper-nav-row">
-              <button class="btn-step-nav" id="btn-prev-step" ${currentStep === 0 ? 'disabled' : ''}>
-                ⬅️ ${isUz ? 'Oldingi' : 'Previous'}
-              </button>
-              <span class="step-indicator-text">${currentStep + 1} / ${totalSteps}</span>
-              <button class="btn-step-nav" id="btn-next-step" ${currentStep === totalSteps - 1 ? 'disabled' : ''}>
-                ${isUz ? 'Keyingi Qadam' : 'Next Step'} ➡️
-              </button>
-            </div>
-          </div>
-
-          <div class="topic-lab-status" id="lab-status">
-            ${isUz ? step.explanation.uz : step.explanation.en}
-          </div>
-
-          <div id="step-custom-controls"></div>
-
-          <div class="lab-code-output">
-            <div class="code-header">
-              <span>${isUz ? 'Jonli Kod:' : 'Live Code:'}</span>
-              <button id="btn-copy-lab" class="btn-sm">📋 Copy</button>
-            </div>
-            <pre><code id="lab-code"></code></pre>
           </div>
         </div>
 
-        <div class="topic-lab-stage" id="lab-stage"></div>
+        <div class="topic-lab-status" id="lab-status"></div>
+
+        <div id="step-custom-controls"></div>
+
+        <div class="lab-code-output">
+          <div class="code-header">
+            <span>${isUz ? 'Jonli Kod:' : 'Live Code:'}</span>
+            <button id="btn-copy-lab" class="btn-sm">📋 Copy</button>
+          </div>
+          <pre><code id="lab-code"></code></pre>
+        </div>
       </div>
-    `;
 
-    // Code & Stage update
-    const stageEl = container.querySelector('#lab-stage');
-    const codeEl = container.querySelector('#lab-code');
-    const controlsMount = container.querySelector('#step-custom-controls');
+      <div class="topic-lab-stage" id="lab-stage"></div>
+    </div>
+  `;
 
-    function update() {
-      const codeStr = typeof step.code === 'function' ? step.code(customState, isUz) : step.code;
-      codeEl.textContent = codeStr;
-      step.renderStage(stageEl, customState, isUz);
-    }
+  const slider = container.querySelector('#evolution-range-slider');
+  const badgeNum = container.querySelector('#badge-stage-num');
+  const badgeName = container.querySelector('#badge-stage-name');
+  const stopsBar = container.querySelector('#slider-stops-bar');
+  const statusEl = container.querySelector('#lab-status');
+  const controlsMount = container.querySelector('#step-custom-controls');
+  const codeEl = container.querySelector('#lab-code');
+  const stageEl = container.querySelector('#lab-stage');
 
+  function update() {
+    const step = def.steps[currentStep];
+
+    // 1. Update slider & badges
+    slider.value = currentStep;
+    badgeNum.textContent = `${currentStep + 1} / ${totalSteps}`;
+    badgeName.textContent = isUz ? step.title.uz : step.title.en;
+
+    // 2. Update stop dots
+    stopsBar.querySelectorAll('.slider-stop-point').forEach((pt, idx) => {
+      pt.classList.toggle('active', idx === currentStep);
+      pt.classList.toggle('passed', idx < currentStep);
+    });
+
+    // 3. Update status explanation
+    statusEl.innerHTML = isUz ? step.explanation.uz : step.explanation.en;
+
+    // 4. Update custom controls if any on this step
+    controlsMount.innerHTML = '';
     if (step.renderControls) {
-      step.renderControls(controlsMount, customState, () => {
-        update();
-      }, isUz);
+      step.renderControls(controlsMount, customState, updateCodeAndStage, isUz);
     }
 
-    update();
-    setupCopyBtn(container, '#lab-code', '#btn-copy-lab');
-
-    // Stepper navigation listeners
-    container.querySelector('#btn-prev-step')?.addEventListener('click', () => {
-      if (currentStep > 0) {
-        currentStep--;
-        render();
-      }
-    });
-
-    container.querySelector('#btn-next-step')?.addEventListener('click', () => {
-      if (currentStep < totalSteps - 1) {
-        currentStep++;
-        render();
-      }
-    });
-
-    container.querySelectorAll('.step-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = parseInt(btn.getAttribute('data-step'), 10);
-        if (!isNaN(target) && target !== currentStep) {
-          currentStep = target;
-          render();
-        }
-      });
-    });
+    // 5. Update code and stage
+    updateCodeAndStage();
   }
 
-  render();
+  function updateCodeAndStage() {
+    const step = def.steps[currentStep];
+    const codeStr = typeof step.code === 'function' ? step.code(customState, isUz) : step.code;
+    codeEl.textContent = codeStr;
+    step.renderStage(stageEl, customState, isUz);
+  }
+
+  // Slider input listener (scrubbing)
+  slider.addEventListener('input', (e) => {
+    const val = parseInt(e.target.value, 10);
+    if (!isNaN(val) && val !== currentStep) {
+      currentStep = val;
+      update();
+    }
+  });
+
+  // Click on stop point
+  stopsBar.querySelectorAll('.slider-stop-point').forEach(pt => {
+    pt.addEventListener('click', () => {
+      const target = parseInt(pt.getAttribute('data-step'), 10);
+      if (!isNaN(target) && target !== currentStep) {
+        currentStep = target;
+        update();
+      }
+    });
+  });
+
+  setupCopyBtn(container, '#lab-code', '#btn-copy-lab');
+  update();
 }
 
 // ===================================================================
