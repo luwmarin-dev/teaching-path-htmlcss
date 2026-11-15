@@ -7,40 +7,52 @@
   --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-code: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
 
-  /* Default Calm Dark Theme (Eye-friendly Slate/Navy) */
-  --bg-app: #13141f;
-  --bg-sidebar: #171826;
-  --bg-card: #1c1e2f;
-  --bg-surface: #23263b;
-  --bg-code: #0f1019;
+  /* Eye-friendly Calm Slate Theme (Soft Midnight, Zero Glare) */
+  --bg-app: #0b0d13;
+  --bg-sidebar: #0f121a;
+  --bg-card: #141722;
+  --bg-surface: #1a1f2e;
+  --bg-code: #080a0f;
   
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-code: #f1f5f9;
+  --text-main: #cbd5e1;
+  --text-muted: #788699;
+  --text-code: #e2e8f0;
 
-  --primary: #7c6cf7;
-  --primary-hover: #6957ea;
-  --primary-light: rgba(124, 108, 247, 0.15);
+  --primary: #5b5fc7;
+  --primary-hover: #4e52b3;
+  --primary-light: rgba(91, 95, 199, 0.12);
   
-  --accent-teal: #2dd4bf;
-  --accent-pink: #f472b6;
-  --accent-amber: #fbbf24;
-  --accent-green: #34d399;
-  --accent-red: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-pink: #ec4899;
+  --accent-amber: #eab308;
+  --accent-green: #22c55e;
+  --accent-red: #ef4444;
 
-  --border-color: #2b2e47;
-  --border-focus: #7c6cf7;
+  --border-color: #1e2433;
+  --border-focus: #5b5fc7;
 
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.6);
 
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-full: 9999px;
 
-  --header-height: 58px;
+  --header-height: 54px;
+}
+
+/* Deep OLED Pure Black Mode */
+[data-theme="oled"] {
+  --bg-app: #000000;
+  --bg-sidebar: #050608;
+  --bg-card: #0a0c10;
+  --bg-surface: #10131a;
+  --bg-code: #000000;
+  --border-color: #161a24;
+  --text-main: #b8c2cc;
+  --text-muted: #64748b;
 }
 
 * {
@@ -136,6 +148,67 @@ body {
   align-items: center;
   gap: 6px;
   transition: all 0.2s;
+}
+
+.btn-icon-only {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.btn-link-tags {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--accent-teal);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.btn-link-tags:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Dual Language Segmented Control */
+.lang-switcher {
+  display: flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2px;
+  gap: 2px;
+}
+
+.lang-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.lang-tab:hover {
+  color: var(--text-main);
+}
+
+.lang-tab.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(91, 95, 199, 0.4);
 }
 
 .btn-header:hover {
@@ -428,11 +501,11 @@ body {
    STEP-BY-STEP CODE BREAKDOWN (What Each Specific Piece Does)
    =================================================================== */
 .step-breakdown-card {
-  margin: 16px 24px 0;
+  margin: 14px 24px 0;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
+  padding: 16px 20px;
   box-shadow: var(--shadow-sm);
 }
 
@@ -440,18 +513,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+}
+
+.step-header-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .step-card-header h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
-  color: var(--accent-teal);
+  color: var(--text-main);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: 0.6px;
+}
+
+.step-count-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
 }
 
 .step-grid {
@@ -467,57 +553,103 @@ body {
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  transition: transform 0.2s;
+  gap: 8px;
+  transition: border-color 0.15s;
 }
 
 .step-item:hover {
-  transform: translateY(-2px);
   border-color: var(--primary);
 }
 
-.step-part-row {
+.step-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.step-code-chip {
-  font-family: var(--font-code);
-  font-size: 13px;
-  font-weight: 700;
+.step-num-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--accent-amber);
-  background: var(--bg-code);
-  padding: 3px 8px;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  padding: 2px 6px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .step-role-badge {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--primary);
   background: var(--primary-light);
   padding: 2px 7px;
   border-radius: var(--radius-full);
 }
 
-.step-explanation {
-  font-size: 13px;
-  color: var(--text-main);
-  line-height: 1.4;
-}
-
-.step-effect {
-  font-size: 12px;
-  color: var(--accent-teal);
-  font-weight: 700;
+.step-code-focus {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 2px;
+}
+
+.step-code-chip {
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: var(--bg-code);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  word-break: break-all;
+}
+
+.step-explanation {
+  font-size: 12.5px;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.step-result-box {
+  background: var(--bg-code);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step-result-heading {
+  font-size: 11.5px;
+  color: var(--accent-teal);
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  line-height: 1.35;
+}
+
+.step-visual-render {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  font-size: 12px;
+  color: var(--text-main);
+}
+
+.mini-canvas {
+  width: 100%;
+  text-align: center;
+  font-size: 12.5px;
 }
 
 /* ===================================================================
@@ -725,7 +857,7 @@ body {
   flex: 1;
   position: relative;
   min-height: 280px;
-  background: #0f1019;
+  background: var(--bg-code);
   display: flex;
 }
 
@@ -733,7 +865,8 @@ body {
   width: 100%;
   height: 100%;
   border: none;
-  background: #ffffff;
+  background: var(--bg-code);
+  color: var(--text-main);
 }
 
 .target-view-container {
@@ -754,6 +887,116 @@ body {
 
 .target-explanation-box strong {
   color: var(--accent-amber);
+}
+
+/* ===================================================================
+   HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor)
+   =================================================================== */
+.mission-spotlight-card {
+  margin: 16px 24px 0;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(91, 95, 199, 0.16));
+  border: 2px solid #f59e0b;
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  box-shadow: 0 4px 24px rgba(245, 158, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mission-spotlight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mission-spotlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.24);
+  border: 1px solid #f59e0b;
+  color: #fbbf24;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.mission-pulse-dot {
+  width: 9px;
+  height: 9px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f59e0b;
+  animation: pulseMission 1.5s infinite;
+}
+
+@keyframes pulseMission {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #fbbf24; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.mission-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-mission-hint {
+  background: var(--bg-surface);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-mission-hint:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+.btn-mission-verify {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0b0d13;
+  border: none;
+  padding: 9px 22px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: all 0.15s;
+}
+
+.btn-mission-verify:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+}
+
+.mission-spotlight-body {
+  background: rgba(11, 13, 19, 0.75);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+.mission-spotlight-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.55;
+  letter-spacing: 0.2px;
 }
 
 /* ===================================================================

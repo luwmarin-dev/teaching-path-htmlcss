@@ -89,15 +89,54 @@ console.log('✅ Generated public/js/codecraft.js');
 // 2. Generate 100% self-contained index.html from template
 const templateHtml = fs.readFileSync(path.join(rootDir, 'index.template.html'), 'utf-8');
 
-let selfContainedHtml = templateHtml.replace(
-  '<!-- INLINE_CSS_PLACEHOLDER -->',
-  () => `<style>\n/* Inlined Stylesheet */\n${cssCode}\n</style>`
-);
+function createStandaloneHtml(defaultLang, customTitle) {
+  let html = templateHtml.replace(
+    '<!-- INLINE_CSS_PLACEHOLDER -->',
+    () => `<style>\n/* Inlined Stylesheet */\n${cssCode}\n</style>`
+  );
 
-selfContainedHtml = selfContainedHtml.replace(
-  '<!-- INLINE_JS_PLACEHOLDER -->',
-  () => `<script>\n${bundledJs}\n</script>`
-);
+  let langBootCode = '';
+  if (defaultLang === 'uz') {
+    langBootCode = `
+    // Force Uzbek default for this dedicated edition
+    state = setLanguage(state, 'uz');
+    saveStateToStorage(state);
+    `;
+    html = html.replace('<html lang="en">', '<html lang="uz">');
+  } else if (defaultLang === 'en') {
+    langBootCode = `
+    // Force English default for this dedicated edition
+    state = setLanguage(state, 'en');
+    saveStateToStorage(state);
+    `;
+    html = html.replace('<html lang="en">', '<html lang="en">');
+  }
 
-fs.writeFileSync(path.join(rootDir, 'index.html'), selfContainedHtml, 'utf-8');
-console.log('✅ Generated 100% self-contained index.html (runs purely by double-clicking without Node!)');
+  if (customTitle) {
+    html = html.replace(/<title>.*?<\/title>/, `<title>${customTitle}</title>`);
+  }
+
+  const customizedJs = bundledJs.replace(
+    'initApp();',
+    `${langBootCode}\n    initApp();`
+  );
+
+  html = html.replace(
+    '<!-- INLINE_JS_PLACEHOLDER -->',
+    () => `<script>\n${customizedJs}\n</script>`
+  );
+
+  return html;
+}
+
+// A. Main index.html (Default with dual switcher)
+fs.writeFileSync(path.join(rootDir, 'index.html'), createStandaloneHtml(null), 'utf-8');
+console.log('✅ Generated index.html (Main standalone with working dual switcher)');
+
+// B. Dedicated Uzbek Edition: index_uz.html
+fs.writeFileSync(path.join(rootDir, 'index_uz.html'), createStandaloneHtml('uz', "CodeCraft 👾 Bolalar uchun HTML va CSS (O'zbekcha)"), 'utf-8');
+console.log("✅ Generated index_uz.html (Dedicated 100% pure Uzbek version)");
+
+// C. Dedicated English Edition: index_en.html
+fs.writeFileSync(path.join(rootDir, 'index_en.html'), createStandaloneHtml('en', "CodeCraft 👾 HTML & CSS for Kids (English)"), 'utf-8');
+console.log("✅ Generated index_en.html (Dedicated 100% pure English version)");

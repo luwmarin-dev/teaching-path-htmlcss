@@ -75,6 +75,9 @@ function cacheElements() {
   elements.app = document.body;
   elements.starCount = document.getElementById('star-count');
   elements.btnLang = document.getElementById('btn-lang');
+  elements.btnLangUz = document.getElementById('btn-lang-uz');
+  elements.btnLangEn = document.getElementById('btn-lang-en');
+  elements.btnTheme = document.getElementById('btn-theme');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnSandbox = document.getElementById('btn-sandbox');
@@ -89,6 +92,22 @@ function cacheElements() {
 }
 
 function attachGlobalListeners() {
+  function switchLang(lang) {
+    state = setLanguage(state, lang);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+    applyStateToUI();
+    if (currentView === 'sandbox') {
+      renderSandboxView();
+    } else {
+      renderLessonView();
+    }
+  }
+
+  // Dual Segmented Switcher
+  elements.btnLangUz?.addEventListener('click', () => switchLang('uz'));
+  elements.btnLangEn?.addEventListener('click', () => switchLang('en'));
+
   // Language Toggle (English <-> Uzbek)
   elements.btnLang?.addEventListener('click', () => {
     state = toggleLanguage(state);
@@ -102,11 +121,19 @@ function attachGlobalListeners() {
     }
   });
 
+  // Theme Toggle (Calm Dark <-> OLED Black)
+  elements.btnTheme?.addEventListener('click', () => {
+    state.theme = state.theme === 'oled' ? 'dark' : 'oled';
+    saveStateToStorage(state);
+    applyTheme();
+    playSound('click', state.audioEnabled);
+  });
+
   // Audio toggle
   elements.btnAudio?.addEventListener('click', () => {
     state.audioEnabled = !state.audioEnabled;
     saveStateToStorage(state);
-    elements.btnAudio.textContent = state.audioEnabled ? t('soundOn', state.lang) : t('soundOff', state.lang);
+    elements.btnAudio.textContent = state.audioEnabled ? '🔊' : '🔇';
     playSound('click', state.audioEnabled);
   });
 
@@ -144,20 +171,31 @@ function attachGlobalListeners() {
   });
 }
 
+function applyTheme() {
+  const theme = state.theme || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  if (elements.btnTheme) {
+    elements.btnTheme.textContent = theme === 'oled' ? '🌑' : '🌙';
+    elements.btnTheme.title = theme === 'oled' ? 'Switch to Calm Dark Mode' : 'Switch to Deep OLED Night';
+  }
+}
+
 function applyStateToUI() {
+  applyTheme();
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
+  if (elements.btnLangUz) elements.btnLangUz.classList.toggle('active', state.lang === 'uz');
+  if (elements.btnLangEn) elements.btnLangEn.classList.toggle('active', state.lang === 'en');
   if (elements.btnLang) {
     elements.btnLang.textContent = state.lang === 'uz' ? '🇬🇧 English' : '🇺🇿 O\'zbekcha';
   }
   if (elements.btnTeacher) {
     elements.btnTeacher.classList.toggle('active', state.teacherMode);
-    elements.btnTeacher.textContent = t('teacherTips', state.lang);
   }
   if (elements.btnAudio) {
-    elements.btnAudio.textContent = state.audioEnabled ? t('soundOn', state.lang) : t('soundOff', state.lang);
+    elements.btnAudio.textContent = state.audioEnabled ? '🔊' : '🔇';
   }
   if (elements.btnSandbox) {
-    elements.btnSandbox.textContent = t('freeSandbox', state.lang);
+    elements.btnSandbox.textContent = '🛠️ Sandbox';
   }
   updateProgressUI();
   renderSidebar();
@@ -223,8 +261,15 @@ export function selectLesson(lessonId) {
 /**
  * Wraps bare student snippets cleanly so kids never have to write HTML boilerplate!
  */
-function wrapForPreview(snippet) {
+export function wrapForPreview(snippet) {
   if (snippet.includes('<!DOCTYPE') || snippet.includes('<html')) {
+    // If full document does not specify a background, inject dark canvas style to prevent blinding white flashes
+    if (!snippet.includes('background:') && !snippet.includes('background-color:')) {
+      if (snippet.includes('<head>')) {
+        return snippet.replace('<head>', '<head><style>body { background-color: #0b0d13; color: #cbd5e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>');
+      }
+      return `<style>body { background-color: #0b0d13; color: #cbd5e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>${snippet}`;
+    }
     return snippet;
   }
 
@@ -237,14 +282,14 @@ function wrapForPreview(snippet) {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 24px;
-      background: #0f1019;
-      color: #f1f5f9;
+      background: #0b0d13;
+      color: #cbd5e1;
       line-height: 1.6;
     }
-    h1, h2, h3, h4 { margin-top: 0; color: #ffffff; }
+    h1, h2, h3, h4 { margin-top: 0; color: #f1f5f9; }
     p { margin-bottom: 16px; color: #cbd5e1; }
     button {
-      background: #7c6cf7;
+      background: #5b5fc7;
       color: #ffffff;
       border: none;
       padding: 10px 18px;
@@ -254,12 +299,26 @@ function wrapForPreview(snippet) {
       font-weight: 700;
       margin-right: 8px;
       margin-bottom: 8px;
+      transition: background 0.15s;
     }
-    button:hover { background: #6957ea; }
+    button:hover { background: #4e52b3; }
     ul, ol { padding-left: 24px; margin-bottom: 16px; }
     li { margin-bottom: 6px; }
     a { color: #38bdf8; text-decoration: underline; }
     img { max-width: 100%; height: auto; border-radius: 8px; }
+    table {
+      border-collapse: collapse;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+    th, td {
+      border: 1px solid #334155;
+      padding: 8px 12px;
+    }
+    th {
+      background: rgba(91, 95, 199, 0.25);
+      color: #f1f5f9;
+    }
   </style>
 </head>
 <body>
@@ -285,17 +344,12 @@ function renderLessonView() {
           <span class="badge-module">${escapeHtml(lesson.module.toUpperCase())}</span>
           <span class="badge-tags">${escapeHtml(lesson.tag)}</span>
           ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${escapeHtml(t('completedTag', state.lang))}</span>` : ''}
+          <button id="btn-tag-list" class="btn-link-tags" title="${escapeHtml(t('listOfTags', state.lang))}">
+            ${escapeHtml(t('listOfTags', state.lang))}
+          </button>
         </div>
         <h2 class="banner-title">${lesson.icon} ${escapeHtml(localize(lesson.title, state.lang))}</h2>
         <p class="banner-summary">${formatProse(localize(lesson.summary, state.lang))}</p>
-      </div>
-      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <button id="btn-start-practice" class="btn-header" style="background: var(--primary); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 108, 247, 0.4);" title="${escapeHtml(t('startPractice', state.lang))}">
-          ${escapeHtml(t('startPractice', state.lang))}
-        </button>
-        <button id="btn-tag-list" class="btn-header" style="background: rgba(124, 108, 247, 0.2); color: #c8d3f5; border-color: var(--primary); font-weight: 800;">
-          ${escapeHtml(t('listOfTags', state.lang))}
-        </button>
       </div>
     </div>
 
@@ -321,11 +375,31 @@ function renderLessonView() {
     <!-- STEP 1: In Human Language (Plain explanation for kids) -->
     ${renderHumanIntro(lesson)}
 
-    <!-- STEP 2: Tag Showcase (Simple examples: <b>, <i>, <u>, etc.) -->
-    ${renderTagShowcase(lesson)}
-
-    <!-- STEP 3: Step-by-Step Anatomy (Opening vs Closing & What each part does to the result) -->
+    <!-- STEP 2: Step-by-Step Anatomy (Only the pieces of code for this theme & their exact visual results) -->
     ${renderAnatomySection(lesson)}
+
+    <!-- HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor) -->
+    <div class="mission-spotlight-card">
+      <div class="mission-spotlight-header">
+        <div class="mission-spotlight-badge">
+          <span class="mission-pulse-dot"></span>
+          <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
+        </div>
+        <div class="mission-quick-actions">
+          <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
+            ${escapeHtml(t('hintBtn', state.lang))}
+          </button>
+          <button id="btn-verify-mission" class="btn-mission-verify" title="${escapeHtml(t('checkCodeBtn', state.lang))}">
+            ${escapeHtml(t('checkCodeBtn', state.lang))}
+          </button>
+        </div>
+      </div>
+      <div class="mission-spotlight-body">
+        <div class="mission-spotlight-text">
+          ${formatProse(localize(lesson.challenge.mission, state.lang))}
+        </div>
+      </div>
+    </div>
 
     <!-- Editor & Live Preview Split -->
     <div class="editor-stage-split">
@@ -339,12 +413,6 @@ function renderLessonView() {
             <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
-        </div>
-
-        <!-- Quick Tag Shortcuts -->
-        <div class="quick-tags-bar">
-          <span class="quick-tag-label">${escapeHtml(t('tagsLabel', state.lang))}</span>
-          ${lesson.quickTags.map(tg => `<button class="tag-chip" data-tag="${escapeHtml(tg)}">${escapeHtml(tg)}</button>`).join('')}
         </div>
 
         <!-- Code Editor -->
@@ -363,25 +431,12 @@ function renderLessonView() {
           <div class="preview-tabs">
             <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
-            <button id="tab-side" class="prev-tab-btn">${escapeHtml(t('compareTab', state.lang))}</button>
           </div>
         </div>
 
         <div id="preview-container" class="preview-wrapper">
           <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
-      </div>
-    </div>
-
-    <!-- Bottom Action Dock -->
-    <div class="mission-dock">
-      <div>
-        <div class="mission-tag">${escapeHtml(t('missionTag', state.lang))}</div>
-        <div class="mission-text">${formatProse(localize(lesson.challenge.mission, state.lang))}</div>
-      </div>
-      <div class="mission-actions">
-        <button id="btn-hint" class="btn-hint">${escapeHtml(t('hintBtn', state.lang))}</button>
-        <button id="btn-verify-mission" class="btn-verify">${escapeHtml(t('checkCodeBtn', state.lang))}</button>
       </div>
     </div>
   `;
@@ -435,19 +490,30 @@ function renderAnatomySection(lesson) {
   return `
     <div class="step-breakdown-card">
       <div class="step-card-header">
-        <h3>${escapeHtml(t('stepBreakdownHeader', state.lang))}</h3>
+        <div class="step-header-text">
+          <span style="font-size: 16px;">🧩</span>
+          <h3>${escapeHtml(t('stepBreakdownHeader', state.lang))}</h3>
+        </div>
+        <span class="step-count-pill">${lesson.anatomy.length} ${escapeHtml(state.lang === 'uz' ? 'qadam' : 'steps')}</span>
       </div>
       <div class="step-grid">
-        ${lesson.anatomy.map(step => `
+        ${lesson.anatomy.map((step, idx) => `
           <div class="step-item">
-            <div class="step-part-row">
-              <span class="step-code-chip">${escapeHtml(step.part)}</span>
+            <div class="step-top-row">
+              <span class="step-num-badge">${escapeHtml(state.lang === 'uz' ? (idx + 1) + '-Qadam' : 'Step ' + (idx + 1))}</span>
               <span class="step-role-badge">${escapeHtml(localize(step.role, state.lang))}</span>
             </div>
+            <div class="step-code-focus">
+              <code class="step-code-chip">${escapeHtml(step.part)}</code>
+            </div>
             <div class="step-explanation">${formatProse(localize(step.explanation, state.lang))}</div>
-            <div class="step-effect">
-              <span>👉</span>
-              <span><strong>${escapeHtml(t('resultCallout', state.lang))}</strong> ${formatProse(localize(step.effect, state.lang))}</span>
+            <div class="step-result-box">
+              <div class="step-result-heading">
+                <span>👉</span>
+                <strong>${escapeHtml(t('resultCallout', state.lang))}</strong>
+                <span>${formatProse(localize(step.effect, state.lang))}</span>
+              </div>
+              ${step.visualPreview ? `<div class="step-visual-render">${step.visualPreview}</div>` : ''}
             </div>
           </div>
         `).join('')}
