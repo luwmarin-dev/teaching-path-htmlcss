@@ -21,7 +21,8 @@ import {
   loadProfileState,
   deleteStudentProfile,
   exportClassroomBackup,
-  importClassroomBackup
+  importClassroomBackup,
+  CLASS_SHIFTS
 } from '../src/modules/state.js';
 
 describe('State Management', () => {
@@ -227,5 +228,12 @@ describe('State Management', () => {
 
     const passLogin = loginStudentProfile(s.profile.id, '1234', mockStorage);
     assert.equal(passLogin.success, true);
+  });
+
+  it('defines the three teacher lab shifts with exact schedules (10:30-12:00, 14:00-15:30, 15:30-17:00)', () => {
+    assert.equal(CLASS_SHIFTS.length, 3);
+    assert.ok(CLASS_SHIFTS[0].value.includes('10:30') && CLASS_SHIFTS[0].value.includes('12:00'));
+    assert.ok(CLASS_SHIFTS[1].value.includes('14:00') && CLASS_SHIFTS[1].value.includes('15:30'));
+    assert.ok(CLASS_SHIFTS[2].value.includes('15:30') && CLASS_SHIFTS[2].value.includes('17:00'));
   });
 });

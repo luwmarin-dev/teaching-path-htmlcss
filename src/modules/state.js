@@ -9,11 +9,17 @@ const PROFILES_INDEX_KEY = 'codecraft_kids_profiles_index_v2';
 const ACTIVE_PROFILE_ID_KEY = 'codecraft_kids_active_profile_id_v2';
 const PROFILE_STATE_PREFIX = 'codecraft_kids_profile_state_';
 
+export const CLASS_SHIFTS = [
+  { id: 'shift-1', labelUz: '1-Smena (10:30 – 12:00)', labelEn: 'Shift 1 (10:30 – 12:00)', value: '1-Smena (10:30 - 12:00)', time: '10:30 - 12:00' },
+  { id: 'shift-2', labelUz: '2-Smena (14:00 – 15:30)', labelEn: 'Shift 2 (14:00 – 15:30)', value: '2-Smena (14:00 - 15:30)', time: '14:00 - 15:30' },
+  { id: 'shift-3', labelUz: '3-Smena (15:30 – 17:00)', labelEn: 'Shift 3 (15:30 – 17:00)', value: '3-Smena (15:30 - 17:00)', time: '15:30 - 17:00' }
+];
+
 export function createInitialState() {
   return {
     studentName: 'Code Cadet',
     studentAvatar: '🚀',
-    shift: '1-Smena (09:00 - 11:00)',
+    shift: '1-Smena (10:30 - 12:00)',
     profileId: 'prof_default',
     stars: 0,
     completedLessons: [],
@@ -186,7 +192,7 @@ export function listStudentProfiles(storage = null) {
         const defaultProfile = {
           id: 'prof_default',
           name: legacy.studentName || 'Code Cadet',
-          shift: legacy.shift || '1-Smena (09:00 - 11:00)',
+          shift: legacy.shift || '1-Smena (10:30 - 12:00)',
           avatar: legacy.studentAvatar || '🚀',
           pin: '',
           createdAt: Date.now(),
@@ -239,7 +245,7 @@ export function registerStudentProfile({ name, shift, avatar, pin }, storage = n
   const profiles = listStudentProfiles(store);
 
   const cleanName = (name || '').trim() || 'Code Cadet';
-  const cleanShift = shift || '1-Smena (09:00 - 11:00)';
+  const cleanShift = shift || '1-Smena (10:30 - 12:00)';
   const cleanAvatar = avatar || '🚀';
   const cleanPin = (pin || '').trim();
 

@@ -12,7 +12,8 @@ import {
   deleteStudentProfile,
   loadProfileState,
   exportClassroomBackup,
-  importClassroomBackup
+  importClassroomBackup,
+  CLASS_SHIFTS
 } from './state.js';
 import { t, escapeHtml } from './i18n.js';
 import { LESSONS } from './curriculum.js';
@@ -23,6 +24,8 @@ export function openStudentPortalModal({ state, onProfileSwitched, playSound, de
   const isUz = state.lang === 'uz';
   let activeTab = defaultTab;
   let selectedAvatar = '🚀';
+  let selectedShiftFilter = 'all';
+  let defaultRegShift = '1-Smena (10:30 - 12:00)';
 
   const modal = document.createElement('div');
   modal.className = 'modal-overlay';
@@ -81,45 +84,85 @@ export function openStudentPortalModal({ state, onProfileSwitched, playSound, de
         `;
       }
 
-      return `
-        <div class="student-cards-grid">
-          ${profiles.map(p => {
-            const pState = loadProfileState(p.id);
-            const total = LESSONS.length;
-            const completed = pState.completedLessons ? pState.completedLessons.length : 0;
-            const pct = Math.round((completed / total) * 100);
-            const isActive = p.id === activeId;
+      const countAll = profiles.length;
+      const count1 = profiles.filter(p => (p.shift || '').includes('1-Smena') || (p.shift || '').includes('10:30')).length;
+      const count2 = profiles.filter(p => (p.shift || '').includes('2-Smena') || (p.shift || '').includes('14:00')).length;
+      const count3 = profiles.filter(p => (p.shift || '').includes('3-Smena') || (p.shift || '').includes('15:30')).length;
 
-            return `
-              <div class="student-profile-card ${isActive ? 'active-card' : ''}" data-profile-id="${p.id}">
-                <div class="card-avatar-col">
-                  <span class="card-avatar">${escapeHtml(p.avatar || '🚀')}</span>
-                  ${p.pin ? '<span class="pin-protected-badge" title="PIN bilan himoyalangan">🔒 PIN</span>' : ''}
-                </div>
-                <div class="card-info-col">
-                  <div class="card-name-row">
-                    <strong class="card-student-name">${escapeHtml(p.name)}</strong>
-                    ${isActive ? `<span class="badge-active-tag">${isUz ? 'Faol' : 'Active'}</span>` : ''}
-                  </div>
-                  <div class="card-shift-tag">🕒 ${escapeHtml(p.shift || '1-Smena')}</div>
-                  <div class="card-progress-bar-wrap">
-                    <div class="card-progress-bar-fill" style="width: ${pct}%;"></div>
-                  </div>
-                  <div class="card-stats-row">
-                    <span>📚 ${completed}/${total} (${pct}%)</span>
-                    <span>⭐ ${pState.stars || 0}</span>
-                    <span>🏆 ${pState.badges ? pState.badges.length : 0}</span>
-                  </div>
-                </div>
-                <div class="card-action-col">
-                  <button class="btn-card-select ${isActive ? 'btn-selected' : ''}" data-id="${p.id}">
-                    ${isActive ? (isUz ? '✅ Tanlangan' : '✅ Active') : (isUz ? '👉 Kirish' : '👉 Login')}
-                  </button>
-                </div>
-              </div>
-            `;
-          }).join('')}
+      let filteredProfiles = profiles;
+      if (selectedShiftFilter === '1') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('1-Smena') || (p.shift || '').includes('10:30'));
+      } else if (selectedShiftFilter === '2') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('2-Smena') || (p.shift || '').includes('14:00'));
+      } else if (selectedShiftFilter === '3') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('3-Smena') || (p.shift || '').includes('15:30'));
+      }
+
+      return `
+        <div class="portal-shift-pills-bar">
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === 'all' ? 'active' : ''}" data-filter-shift="all">
+            👥 ${isUz ? "Barcha Smenalar" : "All Shifts"} (${countAll})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '1' ? 'active' : ''}" data-filter-shift="1">
+            🕒 1-Smena (10:30 – 12:00) (${count1})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '2' ? 'active' : ''}" data-filter-shift="2">
+            🕒 2-Smena (14:00 – 15:30) (${count2})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '3' ? 'active' : ''}" data-filter-shift="3">
+            🕒 3-Smena (15:30 – 17:00) (${count3})
+          </button>
         </div>
+
+        ${filteredProfiles.length === 0 ? `
+          <div class="portal-empty-state" style="padding: 24px;">
+            <span style="font-size: 36px;">🕒</span>
+            <h4>${isUz ? "Ushbu smenada hozircha o'quvchilar yo'q" : "No students found in this shift"}</h4>
+            <p>${isUz ? "Ushbu smenadagi o'quvchini ro'yxatdan o'tkazish uchun quyidagi tugmani bosing." : "Click below to register a new student for this shift schedule."}</p>
+            <button class="btn-modal btn-modal-primary" id="btn-add-to-shift" style="margin-top: 10px;">
+              ➕ ${isUz ? "Shu smenaga o'quvchi qo'shish" : "Add Student to this Shift"}
+            </button>
+          </div>
+        ` : `
+          <div class="student-cards-grid">
+            ${filteredProfiles.map(p => {
+              const pState = loadProfileState(p.id);
+              const total = LESSONS.length;
+              const completed = pState.completedLessons ? pState.completedLessons.length : 0;
+              const pct = Math.round((completed / total) * 100);
+              const isActive = p.id === activeId;
+
+              return `
+                <div class="student-profile-card ${isActive ? 'active-card' : ''}" data-profile-id="${p.id}">
+                  <div class="card-avatar-col">
+                    <span class="card-avatar">${escapeHtml(p.avatar || '🚀')}</span>
+                    ${p.pin ? '<span class="pin-protected-badge" title="PIN bilan himoyalangan">🔒 PIN</span>' : ''}
+                  </div>
+                  <div class="card-info-col">
+                    <div class="card-name-row">
+                      <strong class="card-student-name">${escapeHtml(p.name)}</strong>
+                      ${isActive ? `<span class="badge-active-tag">${isUz ? 'Faol' : 'Active'}</span>` : ''}
+                    </div>
+                    <div class="card-shift-tag">🕒 ${escapeHtml(p.shift || '1-Smena (10:30 - 12:00)')}</div>
+                    <div class="card-progress-bar-wrap">
+                      <div class="card-progress-bar-fill" style="width: ${pct}%;"></div>
+                    </div>
+                    <div class="card-stats-row">
+                      <span>📚 ${completed}/${total} (${pct}%)</span>
+                      <span>⭐ ${pState.stars || 0}</span>
+                      <span>🏆 ${pState.badges ? pState.badges.length : 0}</span>
+                    </div>
+                  </div>
+                  <div class="card-action-col">
+                    <button class="btn-card-select ${isActive ? 'btn-selected' : ''}" data-id="${p.id}">
+                      ${isActive ? (isUz ? '✅ Tanlangan' : '✅ Active') : (isUz ? '👉 Kirish' : '👉 Login')}
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `}
       `;
     }
 
@@ -133,12 +176,11 @@ export function openStudentPortalModal({ state, onProfileSwitched, playSound, de
           </div>
 
           <div class="form-row">
-            <label for="reg-shift"><strong>${isUz ? "Dars Smenasi / Guruh:" : "Class Shift / Group:"}</strong></label>
+            <label for="reg-shift"><strong>${isUz ? "Dars Smenasi / Vaqti:" : "Class Shift Schedule:"}</strong></label>
             <select id="reg-shift" class="lab-select">
-              <option value="1-Smena (09:00 - 11:00)">1-Smena (09:00 - 11:00)</option>
-              <option value="2-Smena (11:00 - 13:00)">2-Smena (11:00 - 13:00)</option>
-              <option value="3-Smena (14:00 - 16:00)">3-Smena (14:00 - 16:00)</option>
-              <option value="4-Smena (16:00 - 18:00)">4-Smena (16:00 - 18:00)</option>
+              <option value="1-Smena (10:30 - 12:00)" ${defaultRegShift.includes('10:30') ? 'selected' : ''}>1-Smena (10:30 – 12:00)</option>
+              <option value="2-Smena (14:00 - 15:30)" ${defaultRegShift.includes('14:00') ? 'selected' : ''}>2-Smena (14:00 – 15:30)</option>
+              <option value="3-Smena (15:30 - 17:00)" ${defaultRegShift.includes('15:30') ? 'selected' : ''}>3-Smena (15:30 – 17:00)</option>
             </select>
           </div>
 
@@ -254,6 +296,23 @@ export function openStudentPortalModal({ state, onProfileSwitched, playSound, de
     modal.querySelector('#tab-btn-register')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
     modal.querySelector('#tab-btn-backup')?.addEventListener('click', () => { activeTab = 'backup'; renderModalContent(); });
     modal.querySelector('#btn-go-to-reg')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
+
+    // Shift filter pills
+    modal.querySelectorAll('.portal-shift-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedShiftFilter = btn.getAttribute('data-filter-shift') || 'all';
+        renderModalContent();
+      });
+    });
+
+    // Add student to specific shift button
+    modal.querySelector('#btn-add-to-shift')?.addEventListener('click', () => {
+      if (selectedShiftFilter === '1') defaultRegShift = '1-Smena (10:30 - 12:00)';
+      else if (selectedShiftFilter === '2') defaultRegShift = '2-Smena (14:00 - 15:30)';
+      else if (selectedShiftFilter === '3') defaultRegShift = '3-Smena (15:30 - 17:00)';
+      activeTab = 'register';
+      renderModalContent();
+    });
 
     // Select student in login tab
     modal.querySelectorAll('.btn-card-select').forEach(btn => {
