@@ -244,7 +244,13 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- STEP-BY-STEP CODE BREAKDOWN: What Every Part Does to the Result -->
+    <!-- STEP 1: In Human Language (Plain explanation for kids) -->
+    ${renderHumanIntro(lesson)}
+
+    <!-- STEP 2: Tag Showcase (Simple examples: <b>, <i>, <u>, etc.) -->
+    ${renderTagShowcase(lesson)}
+
+    <!-- STEP 3: Step-by-Step Anatomy (Opening vs Closing & What each part does to the result) -->
     ${renderAnatomySection(lesson)}
 
     <!-- Editor & Live Preview Split -->
@@ -309,6 +315,41 @@ function renderLessonView() {
   setupLessonListeners(lesson);
   updateLivePreview();
   updateLineNumbers();
+}
+
+function renderHumanIntro(lesson) {
+  if (!lesson.humanIntro) return '';
+
+  return `
+    <div class="human-intro-card">
+      <div class="human-intro-item">
+        <h4>💡 In Human Language: What is this?</h4>
+        <p>${lesson.humanIntro.whatIsIt}</p>
+      </div>
+      <div class="human-intro-item">
+        <h4>🥪 The Secret Tag Sandwich: Opening vs Closing</h4>
+        <p>${lesson.humanIntro.whatIsATag}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderTagShowcase(lesson) {
+  if (!lesson.tagShowcase || lesson.tagShowcase.length === 0) return '';
+
+  return `
+    <div class="tag-showcase-bar">
+      <span class="showcase-label">🏷️ Simple Tags to Know:</span>
+      <div class="showcase-chips">
+        ${lesson.tagShowcase.map(t => `
+          <div class="showcase-chip" title="${t.meaning}">
+            <code>${escapeHtml(t.tag)}</code>
+            <span>${t.meaning}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
 }
 
 function renderAnatomySection(lesson) {

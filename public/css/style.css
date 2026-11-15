@@ -321,6 +321,95 @@ body {
 }
 
 /* ===================================================================
+   Human Intro Card (Plain explanation for kids)
+   =================================================================== */
+.human-intro-card {
+  margin: 14px 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.human-intro-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+.human-intro-item h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent-teal);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.human-intro-item p {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* ===================================================================
+   Tag Showcase Bar (Simple tags gallery: <b>, <i>, <u>, etc.)
+   =================================================================== */
+.tag-showcase-bar {
+  margin: 12px 24px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.showcase-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+  white-space: nowrap;
+}
+
+.showcase-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.showcase-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.showcase-chip code {
+  font-family: var(--font-code);
+  font-weight: 700;
+  color: var(--accent-teal);
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.showcase-chip span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ===================================================================
    STEP-BY-STEP CODE BREAKDOWN (What Each Specific Piece Does)
    =================================================================== */
 .step-breakdown-card {

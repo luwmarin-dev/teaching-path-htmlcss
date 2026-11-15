@@ -336,6 +336,95 @@ body {
 }
 
 /* ===================================================================
+   Human Intro Card (Plain explanation for kids)
+   =================================================================== */
+.human-intro-card {
+  margin: 14px 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.human-intro-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+.human-intro-item h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent-teal);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.human-intro-item p {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* ===================================================================
+   Tag Showcase Bar (Simple tags gallery: <b>, <i>, <u>, etc.)
+   =================================================================== */
+.tag-showcase-bar {
+  margin: 12px 24px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.showcase-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+  white-space: nowrap;
+}
+
+.showcase-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.showcase-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.showcase-chip code {
+  font-family: var(--font-code);
+  font-weight: 700;
+  color: var(--accent-teal);
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.showcase-chip span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ===================================================================
    STEP-BY-STEP CODE BREAKDOWN (What Each Specific Piece Does)
    =================================================================== */
 .step-breakdown-card {
@@ -896,8 +985,12 @@ body {
   // --- Curriculum Module ---
   /**
  * CodeCraft Kids Curriculum Data
- * Focused, bite-sized snippets without boilerplate clutter.
- * Each theme breaks down the code step-by-step and demonstrates exactly what each piece does to the result.
+ * Standardized 5-step pedagogy for every theme:
+ * 1. Human Language Explanation (Kids analogy)
+ * 2. Anatomy & Tag Breakdown (Opening vs Closing tag difference)
+ * 3. Rich Tag Showcase (e.g. <b>, <i>, <u>, <mark>, <s>)
+ * 4. Step-by-step "What It Does to the Result"
+ * 5. Interactive Practice Mission
  */
 
 const MODULES = [
@@ -920,83 +1013,192 @@ const MODULES = [
 
 const LESSONS = [
   // ==========================================
-  // HTML LESSON 1: Headings & Paragraphs
+  // TOPIC 1: What is HTML & What is a Tag?
   // ==========================================
   {
-    id: 'html-headings',
+    id: 'html-intro-tags',
     module: 'html',
-    title: 'Big Headings & Paragraphs',
-    icon: '👑',
-    tag: '<h1>, <h2>, <p>',
-    summary: 'Make bold headlines and normal story text.',
-    story: 'Think of <h1> like a giant newspaper headline. <p> is for normal storybook sentences.',
-    // Focused snippet ONLY - no boilerplate!
-    initialCode: `<h1>🦖 Dinosaur King</h1>
-<p>The mightiest lizard in the whole jungle!</p>`,
-    targetCode: `<h1>🦖 Dinosaur King</h1>
-<h2>The Ruler of Jurassic Valley</h2>
-<p>The mightiest lizard in the whole jungle!</p>`,
-    targetDescription: '1. A huge bold title: "🦖 Dinosaur King"\n2. A medium subtitle: "The Ruler of Jurassic Valley"\n3. A normal paragraph describing the dinosaur.',
+    title: 'What is HTML & What is a Tag?',
+    icon: '🏷️',
+    tag: '<tag> ... </tag>',
+    humanIntro: {
+      whatIsIt: 'HTML stands for "HyperText Markup Language", but in human language, it is simply the **secret language of web pages**! Just like you build a LEGO castle brick by brick, a web page is built using little instructions called **Tags**.',
+      whatIsATag: 'A **Tag** is a special magic sticker that tells the computer how to treat words. Tags almost always come in pairs like a sandwich: an **Opening Tag** at the start, and a **Closing Tag** at the end with a secret slash `/`!'
+    },
+    summary: 'Learn what HTML is in human language, and discover how opening and closing tags work.',
+    story: 'Think of tags like bookends or sandwich buns. The opening bun <tag> says "Start the effect!", your words go in the middle, and the closing bun </tag> with a slash / says "Stop the effect!"',
+    initialCode: `<p>
+  My pet robot is <b>super strong</b>, <i>lightning fast</i>, and <u>totally waterproof</u>!
+</p>`,
+    targetCode: `<p>
+  My pet robot is <b>super strong</b>, <i>lightning fast</i>, <u>totally waterproof</u>, and loves <mark>golden pizza</mark>!
+</p>`,
+    targetDescription: 'A sentence where:\n• "super strong" is bolded with <b>\n• "lightning fast" is slanted (italic) with <i>\n• "totally waterproof" is underlined with <u>\n• "golden pizza" is highlighted in bright yellow with <mark>',
     anatomy: [
       {
-        part: '<h1>',
+        part: '<b>',
         role: 'Opening Tag',
-        explanation: 'Tells the browser: "Start making text gigantic and bold!"',
-        effect: 'Makes text huge & bold'
+        explanation: 'Notice the angle brackets < >. Tells the browser: "Start making words BOLD right now!"',
+        effect: 'Starts bold text'
       },
       {
-        part: '🦖 Dinosaur King',
+        part: 'super strong',
         role: 'Content',
-        explanation: 'The actual words and emojis you want the reader to see.',
-        effect: 'Appears directly on the screen'
+        explanation: 'The actual words sitting inside the tag sandwich.',
+        effect: 'Appears as the text'
       },
       {
-        part: '</h1>',
+        part: '</b>',
         role: 'Closing Tag',
-        explanation: 'Notice the slash /. It tells the browser: "Stop! The giant heading ends here."',
-        effect: 'Prevents the next text from being huge'
+        explanation: 'The secret slash / means STOP! Tells the browser: "Stop making text bold; go back to normal."',
+        effect: 'Stops bolding from spreading'
       },
       {
-        part: '<p> ... </p>',
-        role: 'Paragraph Tag',
-        explanation: 'Short for Paragraph. Keeps sentences grouped with cozy reading space.',
-        effect: 'Normal text size with top & bottom spacing'
+        part: '<i> ... </i>',
+        role: 'Italic Tag',
+        explanation: 'Slants words to make them stylish or emphasize them.',
+        effect: 'Slanted italic text'
+      },
+      {
+        part: '<u> ... </u>',
+        role: 'Underline Tag',
+        explanation: 'Draws a neat line directly underneath the words.',
+        effect: 'Underlined text'
+      },
+      {
+        part: '<mark> ... </mark>',
+        role: 'Highlighter Tag',
+        explanation: 'Like swiping a neon yellow highlighter marker across your words.',
+        effect: 'Yellow highlight background'
       }
     ],
-    quickTags: ['<h1>', '</h1>', '<h2>', '</h2>', '<p>', '</p>'],
+    tagShowcase: [
+      { tag: '<b>word</b>', meaning: 'Bold (heavy and strong)' },
+      { tag: '<i>word</i>', meaning: 'Italic (slanted and fast)' },
+      { tag: '<u>word</u>', meaning: 'Underline (line drawn underneath)' },
+      { tag: '<mark>word</mark>', meaning: 'Highlighter (bright yellow marker)' },
+      { tag: '<s>word</s>', meaning: 'Strikethrough (line crossing through a word)' }
+    ],
+    quickTags: ['<b>', '</b>', '<i>', '</i>', '<u>', '</u>', '<mark>', '</mark>', '<s>', '</s>'],
     challenge: {
-      mission: 'Add an <h2> subtitle right below the <h1> that says: "The Ruler of Jurassic Valley"',
-      hint: 'Type <h2>The Ruler of Jurassic Valley</h2> under the <h1> line.',
+      mission: 'Add <mark>golden pizza</mark> to the sentence so "golden pizza" is highlighted!',
+      hint: 'Type and loves <mark>golden pizza</mark> right before the closing </p> tag!',
       rules: [
         {
           type: 'hasTag',
-          tag: 'h2',
-          message: 'Add an <h2> subtitle tag!'
+          tag: 'mark',
+          message: 'Add the <mark> highlighter tag!'
         },
         {
           type: 'tagContainsText',
-          tag: 'h2',
-          pattern: /Jurassic Valley/i,
-          message: 'The <h2> must say "The Ruler of Jurassic Valley"!'
+          tag: 'mark',
+          pattern: /pizza/i,
+          message: 'The <mark> tag should highlight "golden pizza"!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Heading tags are like megaphone volume: <h1> is the loudest megaphone, <h2> is normal volume, <p> is normal talking.',
+      analogy: 'Tags are like sandwich buns. Opening <tag> is the top bun, your words are the cheese/patty, closing </tag> is the bottom bun. If you forget the bottom bun, the whole page gets messy!',
       discussionQuestions: [
-        'What would happen if you removed the </h1> closing slash?',
-        'When would you use <h2> instead of <h1>?'
+        'What is the only difference between an opening tag and a closing tag? (The forward slash /!)',
+        'What happens if you forget to close a <b> tag? (Everything on the whole page turns bold!)'
       ],
       commonMistakes: [
-        'Forgetting the closing slash in </h1>',
-        'Typing <h7> (HTML only goes up to <h6>)'
+        'Using backslash \\ instead of forward slash / in closing tags',
+        'Forgetting the closing tag entirely'
       ],
-      funActivity: 'Say a sentence in your <h1> booming voice, then in a normal <p> voice!'
+      funActivity: 'Have the child hold up their left hand for <opening> and right hand with a crossed finger / for </closing>!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 2: Buttons & Clicks
+  // TOPIC 2: Headings & Megaphones
+  // ==========================================
+  {
+    id: 'html-headings',
+    module: 'html',
+    title: 'Headings & Sizes (H1 to H6)',
+    icon: '👑',
+    tag: '<h1> to <h6>',
+    humanIntro: {
+      whatIsIt: 'In human language, a **Heading** is like a chapter title or a giant newspaper headline. It helps readers know what the topic is about before they read the small words.',
+      whatIsATag: 'HTML gives you **6 heading levels**, from <h1> (the loudest megaphone) down to <h6> (a tiny whisper). The number tells the browser how big and important the title is!'
+    },
+    summary: 'Learn how heading tags change volume and size, from huge <h1> to medium <h2> and small <h3>.',
+    story: 'Think of <h1> like a giant billboard on a highway. <h2> is a street sign. <p> is a paragraph in a book.',
+    initialCode: `<h1>🦖 T-Rex Valley</h1>
+<h2>King of the Prehistoric Jungle</h2>
+<p>He has tiny arms, but a giant roar!</p>`,
+    targetCode: `<h1>🦖 T-Rex Valley</h1>
+<h2>King of the Prehistoric Jungle</h2>
+<h3>Top Speed: 25 MPH</h3>
+<p>He has tiny arms, but a giant roar!</p>`,
+    targetDescription: '1. A huge bold title: "🦖 T-Rex Valley"\n2. A medium subtitle: "King of the Prehistoric Jungle"\n3. A smaller <h3> stat: "Top Speed: 25 MPH"\n4. A normal paragraph describing the dinosaur.',
+    anatomy: [
+      {
+        part: '<h1>',
+        role: 'Level 1 Heading',
+        explanation: 'The biggest, most important title on the entire page. Use it for the main name.',
+        effect: 'Huge, thick, bold text'
+      },
+      {
+        part: '<h2>',
+        role: 'Level 2 Subtitle',
+        explanation: 'Slightly smaller than <h1>. Perfect for section names or subtitles.',
+        effect: 'Medium-large bold text'
+      },
+      {
+        part: '<h3>',
+        role: 'Level 3 Heading',
+        explanation: 'Smaller still. Great for mini stats, player stats, or sub-topics.',
+        effect: 'Small bold headline'
+      },
+      {
+        part: '<p>',
+        role: 'Paragraph Tag',
+        explanation: 'Short for Paragraph. Regular everyday sentences to read.',
+        effect: 'Normal reading text with spacing'
+      }
+    ],
+    tagShowcase: [
+      { tag: '<h1>Title</h1>', meaning: 'Giant title (Main billboard)' },
+      { tag: '<h2>Subtitle</h2>', meaning: 'Medium title (Chapter headline)' },
+      { tag: '<h3>Sub-heading</h3>', meaning: 'Smaller headline (Section badge)' },
+      { tag: '<p>Sentence</p>', meaning: 'Normal sentence paragraph' }
+    ],
+    quickTags: ['<h1>', '</h1>', '<h2>', '</h2>', '<h3>', '</h3>', '<p>', '</p>'],
+    challenge: {
+      mission: 'Add an <h3> heading that says: "Top Speed: 25 MPH" right under the <h2> line!',
+      hint: 'Type <h3>Top Speed: 25 MPH</h3> between <h2> and <p>.',
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'h3',
+          message: 'Add an <h3> heading tag!'
+        },
+        {
+          type: 'tagContainsText',
+          tag: 'h3',
+          pattern: /25\s*mph/i,
+          message: 'The <h3> must say "Top Speed: 25 MPH"!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'Headings are like volume knobs: 1 is loudest blast, 6 is quietest whisper.',
+      discussionQuestions: [
+        'Is <h1> bigger or is <h6> bigger? (1 is biggest, 6 is smallest!)',
+        'Why shouldn\'t every sentence on a website be an <h1>?'
+      ],
+      commonMistakes: [
+        'Typing <h7> or <h8> (HTML headings only go up to 6)'
+      ],
+      funActivity: 'Have the kid say the <h1> text in a deep roaring giant voice, and <h6> in a tiny mouse squeak!'
+    }
+  },
+
+  // ==========================================
+  // TOPIC 3: Clickable Action Buttons
   // ==========================================
   {
     id: 'html-buttons',
@@ -1004,8 +1206,12 @@ const LESSONS = [
     title: 'Clickable Action Buttons',
     icon: '🔘',
     tag: '<button onclick="...">',
-    summary: 'Make buttons that do things when clicked.',
-    story: 'Buttons turn a static page into an interactive game! When you click, something happens.',
+    humanIntro: {
+      whatIsIt: 'In human language, a **Button** is the steering wheel and arcade controller of the web! Without buttons, a website is just flat paper. With buttons, you can jump, cast spells, and trigger surprises.',
+      whatIsATag: 'The `<button>` tag creates a physical-looking 3D box you can press with your mouse. The special attribute `onclick` tells the computer what reaction to perform when a finger or mouse clicks it!'
+    },
+    summary: 'Make real clickable buttons and attach fun pop-up reactions using onclick.',
+    story: 'Every arcade machine has buttons. In HTML, a button wraps words inside <button>words</button>. Add onclick="alert(\'Boing!\')" to make it react!',
     initialCode: `<button onclick="alert('⚡ Lightning Zap!')">
   ⚡ Cast Spell
 </button>`,
@@ -1016,32 +1222,42 @@ const LESSONS = [
 <button onclick="alert('🍕 Pizza Delivered!')">
   🍕 Order Food
 </button>`,
-    targetDescription: 'Two clickable buttons side-by-side. Clicking "Cast Spell" pops up a zap alert. Clicking "Order Food" pops up a pizza delivery alert.',
+    targetDescription: 'Two clickable buttons side-by-side. Clicking "Cast Spell" pops up a lightning zap alert. Clicking "Order Food" pops up a pizza delivery alert.',
     anatomy: [
       {
-        part: '<button>',
+        part: '<button',
         role: 'Button Tag',
-        explanation: 'Draws a clickable button box with borders and click feedback.',
+        explanation: 'Draws a clickable box with smooth edges that depresses when clicked.',
         effect: 'Creates a clickable button'
       },
       {
         part: 'onclick="..."',
-        role: 'Event Attribute',
-        explanation: 'Tells the button what to do when clicked (e.g. alert a message).',
-        effect: 'Triggers a pop-up alert'
+        role: 'Click Action',
+        explanation: 'Tells the browser what code to run when a user presses the button.',
+        effect: 'Runs code on click'
+      },
+      {
+        part: 'alert(\'...\')',
+        role: 'Popup Message',
+        explanation: 'Opens a friendly pop-up dialogue box on the screen.',
+        effect: 'Displays popup alert'
       },
       {
         part: '⚡ Cast Spell',
-        role: 'Label Text',
-        explanation: 'The words and icons written on the face of the button.',
-        effect: 'Appears inside the button'
+        role: 'Button Face',
+        explanation: 'The words and emojis visible on the button.',
+        effect: 'Labels the button'
       },
       {
         part: '</button>',
         role: 'Closing Tag',
-        explanation: 'Closes the button definition.',
+        explanation: 'Finishes the button.',
         effect: 'Ends the button boundary'
       }
+    ],
+    tagShowcase: [
+      { tag: '<button>Click</button>', meaning: 'Standard clickable button' },
+      { tag: 'onclick="alert(\'Hi\')"', meaning: 'Reacts with a pop-up alert' }
     ],
     quickTags: ['<button>', '</button>', 'onclick="alert(\'Boing!\')"', '⚡', '🍕'],
     challenge: {
@@ -1061,30 +1277,33 @@ const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'Buttons are like elevator buttons: you push them and an action occurs.',
+      analogy: 'A button is like a doorbell. When you push it, the bell rings inside the house.',
       discussionQuestions: [
-        'What button in your favorite game is your favorite to mash?',
-        'What else can a button do besides showing an alert?'
+        'What button in your favorite video game is most important to press?',
+        'Can you put an emoji inside a button?'
       ],
       commonMistakes: [
-        'Mismatched quotes inside onclick="alert(\'...\')"',
-        'Spelling "button" with a single "t"'
+        'Mismatched quotes inside onclick="alert(\'...\')"'
       ],
-      funActivity: 'Invent the funniest alert sound or popup message you can think of!'
+      funActivity: 'Type a silly secret message into the alert and click it!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 3: Images & Pets
+  // TOPIC 4: Pictures & Void Tags
   // ==========================================
   {
     id: 'html-images',
     module: 'html',
-    title: 'Pictures & Virtual Pets',
+    title: 'Pictures & The Void Tag Secret',
     icon: '🖼️',
     tag: '<img src="" alt="" width="">',
-    summary: 'Bring your page to life with pictures and drawings.',
-    story: 'Pictures need an address (src) to find the file and an alt description in case the image fails to load.',
+    humanIntro: {
+      whatIsIt: 'In human language, an **Image** tag is like sticking a sticker onto a poster. Instead of writing text, you show a photo or drawing.',
+      whatIsATag: 'Fun secret: `<img>` is a **Void Tag**! It has NO closing `</img>`! Why? Because you cannot put words inside a picture — the picture stands by itself! You tell it where the picture lives using `src` (source).'
+    },
+    summary: 'Learn how to show pictures on a page and discover why <img> is a self-closing void tag.',
+    story: 'Pictures need an address (src) to find the image file, and width to decide how big or small to draw it.',
     initialCode: `<img 
   src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
   alt="Cute fluffy puppy" 
@@ -1095,32 +1314,37 @@ const LESSONS = [
   alt="Cute fluffy puppy wearing glasses" 
   width="260"
 >`,
-    targetDescription: 'A crisp photo of an adorable golden puppy wearing glasses, resized to 260 pixels wide.',
+    targetDescription: 'A sharp, charming photo of a golden puppy wearing glasses, resized to 260 pixels wide.',
     anatomy: [
       {
         part: '<img',
-        role: 'Image Tag',
-        explanation: 'Tells the browser to display an image (it is self-closing, no </img> needed!).',
-        effect: 'Places an image on screen'
+        role: 'Image Tag (Void)',
+        explanation: 'Tells the browser to display an image. It is self-closing — no </img> needed!',
+        effect: 'Places an image on the page'
       },
       {
         part: 'src="..."',
-        role: 'Source Attribute',
+        role: 'Source URL',
         explanation: 'Short for Source. The web link or file path where the picture lives.',
         effect: 'Loads the picture from the link'
       },
       {
         part: 'alt="..."',
         role: 'Alternative Text',
-        explanation: 'Describes the picture for screen readers and if internet is slow.',
-        effect: 'Shows description if image is broken'
+        explanation: 'Describes the photo in case internet is slow or for screen readers.',
+        effect: 'Helpful text description'
       },
       {
         part: 'width="180"',
-        role: 'Size Attribute',
-        explanation: 'Controls how many pixels wide the image appears on the screen.',
-        effect: 'Controls the image size'
+        role: 'Width in Pixels',
+        explanation: 'Controls how wide the picture looks on screen.',
+        effect: 'Resizes the image'
       }
+    ],
+    tagShowcase: [
+      { tag: '<img src="..." alt="...">', meaning: 'Image sticker (no closing tag)' },
+      { tag: 'src="link"', meaning: 'Where the photo lives' },
+      { tag: 'width="200"', meaning: 'Sets size in pixels' }
     ],
     quickTags: ['<img src="" alt="" width="200">', 'src=""', 'alt=""', 'width="260"'],
     challenge: {
@@ -1140,102 +1364,20 @@ const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'src is like the address of your friend\'s house. alt is like telling a friend on the phone what the picture looks like.',
+      analogy: '<img> is like a photo sticker on a poster: you stick it on, but you don\'t need to wrap it with anything.',
       discussionQuestions: [
         'Why does <img> NOT have a closing </img> tag like <p> does?',
-        'What happens if you type the wrong web address in src?'
+        'What does src stand for? (Source)'
       ],
       commonMistakes: [
-        'Spelling src as "scr"',
-        'Forgetting quotes around the link'
+        'Spelling src as "scr" (the #1 kid typo!)'
       ],
-      funActivity: 'Change width to 50 and then 400 to see the puppy shrink and grow!'
+      funActivity: 'Try setting width to 400 and watch the puppy get huge!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 4: Links & Portals
-  // ==========================================
-  {
-    id: 'html-links',
-    module: 'html',
-    title: 'Secret Teleport Links',
-    icon: '🌐',
-    tag: '<a href="" target="_blank">',
-    summary: 'Create clickable doors that take visitors to other websites.',
-    story: 'The web is connected by hyperlinks. The <a> tag stands for "Anchor", and href is the destination portal.',
-    initialCode: `<p>
-  🚀 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
-</p>`,
-    targetCode: `<p>
-  🚀 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
-</p>
-<p>
-  🪐 Teleport to 
-  <a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>!
-</p>`,
-    targetDescription: 'Two clickable blue links with space emojis. Clicking "Planet Mars" or "Planet Saturn" opens their Wikipedia page in a new tab.',
-    anatomy: [
-      {
-        part: '<a',
-        role: 'Anchor Tag',
-        explanation: 'Short for Anchor. Creates a link to another page or site.',
-        effect: 'Makes text clickable'
-      },
-      {
-        part: 'href="..."',
-        role: 'Destination Portal',
-        explanation: 'Hypertext REFerence: the exact website address where the link teleports.',
-        effect: 'Points to target URL'
-      },
-      {
-        part: 'target="_blank"',
-        role: 'New Tab Flag',
-        explanation: 'Tells the browser to open the link in a fresh, new tab.',
-        effect: 'Prevents losing current page'
-      },
-      {
-        part: 'Planet Mars',
-        role: 'Clickable Words',
-        explanation: 'The blue underlined words that the user clicks on.',
-        effect: 'Turns blue & underlined'
-      }
-    ],
-    quickTags: ['<a href="" target="_blank">', '</a>', 'target="_blank"'],
-    challenge: {
-      mission: 'Add a second link teleporting to "Planet Saturn"!',
-      hint: '<a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => (code.match(/<a\s/gi) || []).length >= 2,
-          message: 'Add at least TWO <a> link tags!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /saturn/i.test(code),
-          message: 'One link must mention Saturn!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Links are like teleportation portals in Minecraft: step into the text and land in a new dimension.',
-      discussionQuestions: [
-        'Why does the mouse cursor turn into a pointing hand 👆 over links?',
-        'What does href stand for?'
-      ],
-      commonMistakes: [
-        'Spelling href as "herf"',
-        'Putting the words outside of the <a> tag'
-      ],
-      funActivity: 'Hover over links and watch the pointer hand appear!'
-    }
-  },
-
-  // ==========================================
-  // HTML LESSON 5: Lists & Inventories
+  // TOPIC 5: Lists & Checklists
   // ==========================================
   {
     id: 'html-lists',
@@ -1243,8 +1385,12 @@ const LESSONS = [
     title: 'Treasure Lists & Inventories',
     icon: '📜',
     tag: '<ul>, <ol>, <li>',
-    summary: 'Organize items with bullet points or numbers.',
-    story: 'Use <ul> for bullet lists (when order does not matter) and <ol> for numbered lists (1, 2, 3). Each item is an <li>.',
+    humanIntro: {
+      whatIsIt: 'In human language, a **List** is how we organize items cleanly — like an RPG backpack inventory, a grocery list, or high score leaderboard.',
+      whatIsATag: 'HTML gives you two list containers: `<ul>` for bullet dots (Unordered) and `<ol>` for numbers 1, 2, 3 (Ordered). Every single item inside gets wrapped in `<li>` (List Item)!'
+    },
+    summary: 'Organize items using bullet dots <ul> or numbered rankings <ol>.',
+    story: '<ul> is like your toy box where toys are scattered. <ol> is like a race podium: 1st, 2nd, 3rd place. Each item needs an <li> tag.',
     initialCode: `<ul>
   <li>Wooden Sword 🗡️</li>
   <li>Health Potion 🧪</li>
@@ -1256,32 +1402,37 @@ const LESSONS = [
   <li>Golden Apple 🍏</li>
   <li>Dragon Shield 🛡️</li>
 </ul>`,
-    targetDescription: 'A clean bullet-point checklist showing 4 adventure inventory items: Sword, Potion, Golden Apple, and Dragon Shield.',
+    targetDescription: 'A clean bullet-point list showing 4 inventory items: Wooden Sword, Health Potion, Golden Apple, and Dragon Shield.',
     anatomy: [
       {
         part: '<ul>',
         role: 'Unordered List',
-        explanation: 'Short for Unordered List. Creates a list with bullet dots.',
+        explanation: 'Creates a list where items have bullet points.',
         effect: 'Wraps items in bullet points'
       },
       {
         part: '<li>',
         role: 'List Item',
-        explanation: 'Short for List Item. Every single item in the list needs an <li> wrapper.',
-        effect: 'Creates a bullet item line'
+        explanation: 'Short for List Item. Every single item needs its own <li> tag.',
+        effect: 'Creates a single bullet row'
       },
       {
         part: 'Dragon Shield 🛡️',
         role: 'Item Text',
-        explanation: 'The name of the item or task.',
+        explanation: 'The name of the item or quest task.',
         effect: 'Displays next to the bullet'
       },
       {
         part: '</li>',
-        role: 'Closing Item',
-        explanation: 'Finishes this item line so the next item starts on a new row.',
+        role: 'Closing Item Tag',
+        explanation: 'Ends this item row so the next item starts on a new line.',
         effect: 'Closes the list row'
       }
+    ],
+    tagShowcase: [
+      { tag: '<ul> ... </ul>', meaning: 'Bullet-point list' },
+      { tag: '<ol> ... </ol>', meaning: 'Numbered list (1, 2, 3)' },
+      { tag: '<li> ... </li>', meaning: 'Single list item row' }
     ],
     quickTags: ['<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>'],
     challenge: {
@@ -1306,30 +1457,33 @@ const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: '<ul> is like your toy box where toys are scattered. <ol> is like a race podium: 1st, 2nd, 3rd place.',
+      analogy: '<ul> is like ingredients in a salad. <ol> is like steps in a recipe where order matters.',
       discussionQuestions: [
-        'What happens if you change <ul> to <ol>? Try it in the editor!',
+        'What happens if you change <ul> to <ol>?',
         'Can you put an emoji inside an <li>?'
       ],
       commonMistakes: [
-        'Typing list items without <li> tags',
-        'Forgetting the closing </ul>'
+        'Typing list text without <li> tags'
       ],
-      funActivity: 'Switch <ul> to <ol> and watch the bullets instantly turn into numbers 1, 2, 3!'
+      funActivity: 'Change <ul> to <ol> and watch the bullets magically turn into numbers!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 1: Text Color & Background
+  // TOPIC 6: CSS Colors & Paint
   // ==========================================
   {
     id: 'css-colors',
     module: 'css',
-    title: 'Text Color & Backgrounds',
+    title: 'CSS Paint: Text Color & Background',
     icon: '🎨',
     tag: 'color, background-color',
-    summary: 'Paint your text with vibrant colors and backgrounds.',
-    story: 'In CSS, "color" changes the words, while "background-color" paints the box behind the words.',
+    humanIntro: {
+      whatIsIt: 'In human language, **CSS** is the clothes, spray paint, and cape you put on your HTML skeleton! Without CSS, pages are plain black and white.',
+      whatIsATag: 'In CSS, `color` paints the words themselves, while `background-color` paints the canvas behind the words. You can use color names like `gold` or secret Hex codes like `#2dd4bf`!'
+    },
+    summary: 'Transform dull words into glowing neon with color and background-color.',
+    story: 'h1 { color: #2dd4bf; } tells the browser: "Find all <h1> tags and color their letters cyan!"',
     initialCode: `<style>
   h1 {
     color: #ff757f;
@@ -1353,13 +1507,13 @@ const LESSONS = [
       {
         part: 'h1 { ... }',
         role: 'CSS Selector',
-        explanation: 'Chooses which HTML element to paint. Here it chooses all <h1> tags.',
+        explanation: 'Chooses which HTML element to paint. Here it picks all <h1> tags.',
         effect: 'Applies styles to <h1>'
       },
       {
         part: 'color: #ff757f;',
         role: 'Text Color',
-        explanation: 'Paints the letters themselves. Hex #ff757f is coral pink.',
+        explanation: 'Paints the actual letters. Hex #ff757f is coral pink.',
         effect: 'Changes the letter color'
       },
       {
@@ -1375,6 +1529,11 @@ const LESSONS = [
         effect: 'Separates style rules'
       }
     ],
+    tagShowcase: [
+      { tag: 'color: hotpink;', meaning: 'Paints the letters' },
+      { tag: 'background-color: navy;', meaning: 'Paints the box behind the letters' },
+      { tag: 'padding: 12px;', meaning: 'Adds breathing room inside the box' }
+    ],
     quickTags: ['color: #2dd4bf;', 'color: #ff757f;', 'color: gold;', 'background-color: #111827;'],
     challenge: {
       mission: 'Change the h1 color to "#2dd4bf" (cyber teal)!',
@@ -1389,7 +1548,7 @@ const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'color is the crayon for your words. background-color is the colored paper you are drawing on.',
+      analogy: 'color is the colored pencil for writing words. background-color is the colored paper you write on.',
       discussionQuestions: [
         'What happens if you type color: gold; instead of a hex code?',
         'Why does every CSS rule need a semicolon ; at the end?'
@@ -1398,103 +1557,25 @@ const LESSONS = [
         'Missing the # sign before hex colors',
         'Forgetting the semicolon at the end of the line'
       ],
-      funActivity: 'Try typing color: hotpink; or color: lime; and watch it change immediately!'
+      funActivity: 'Try color: hotpink; or color: lime; and watch it change immediately!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 2: Font Size & Text Shadows
-  // ==========================================
-  {
-    id: 'css-fonts',
-    module: 'css',
-    title: 'Font Size & Neon Glow',
-    icon: '🔤',
-    tag: 'font-size, text-shadow',
-    summary: 'Make words gigantic and make them glow like neon lights.',
-    story: 'font-size controls how tall letters stand. text-shadow shines a colored glow behind the letters.',
-    initialCode: `<style>
-  .title {
-    font-size: 32px;
-    color: #ffffff;
-    text-shadow: 0 0 10px #f472b6;
-  }
-</style>
-
-<div class="title">NEON NIGHTS</div>`,
-    targetCode: `<style>
-  .title {
-    font-size: 48px;
-    color: #ffffff;
-    text-shadow: 0 0 15px #f472b6, 0 0 30px #f472b6;
-  }
-</style>
-
-<div class="title">NEON NIGHTS</div>`,
-    targetDescription: 'The words "NEON NIGHTS" appear in a gigantic 48px size radiating a vivid hot-pink neon glow in the dark!',
-    anatomy: [
-      {
-        part: '.title',
-        role: 'Class Selector',
-        explanation: 'Targets any element that has class="title". The dot . stands for class.',
-        effect: 'Selects class="title"'
-      },
-      {
-        part: 'font-size: 48px;',
-        role: 'Letter Height',
-        explanation: 'Sets how many pixels tall the letters are. 48px makes it gigantic!',
-        effect: 'Enlarges the letters'
-      },
-      {
-        part: 'text-shadow: 0 0 15px #f472b6;',
-        role: 'Neon Glow',
-        explanation: 'Horizontal blur, vertical blur, blur radius (15px), and glow color.',
-        effect: 'Creates neon halo glow'
-      }
-    ],
-    quickTags: ['font-size: 48px;', 'text-shadow: 0 0 20px #f472b6;', 'letter-spacing: 4px;'],
-    challenge: {
-      mission: 'Make the .title font-size "48px" and increase the text-shadow glow!',
-      hint: 'Change font-size: 32px; to font-size: 48px;',
-      rules: [
-        {
-          type: 'hasCssProperty',
-          property: 'font-size',
-          valuePattern: /48px/i,
-          message: 'Set font-size to 48px!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'text-shadow',
-          message: 'Keep the text-shadow glow!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'text-shadow is like shining a colored flashlight behind your letters onto a bedroom wall.',
-      discussionQuestions: [
-        'What does "px" stand for? (Pixels — tiny light dots on the screen)',
-        'What happens if you increase blur from 10px to 30px?'
-      ],
-      commonMistakes: [
-        'Writing "48 px" with a space between number and px (they must touch!)',
-        'Leaving out the dot . in the class selector'
-      ],
-      funActivity: 'Set font-size: 80px to see words explode across the preview!'
-    }
-  },
-
-  // ==========================================
-  // CSS LESSON 3: The Secret Box Model
+  // TOPIC 7: The Secret Box Model
   // ==========================================
   {
     id: 'css-box-model',
     module: 'css',
-    title: 'Padding vs Border vs Margin',
+    title: 'The Secret Box Model (Padding & Border)',
     icon: '📦',
     tag: 'padding, border, margin',
-    summary: 'The secret 3-layer cushion of every web element.',
-    story: 'Padding is bubble wrap inside the box. Border is the cardboard wall. Margin is personal space outside.',
+    humanIntro: {
+      whatIsIt: 'In human language, every single element on a web page lives inside an invisible **3-layer sandwich box**.',
+      whatIsATag: '1. **Padding** is bubble wrap on the inside.\n2. **Border** is the cardboard wall.\n3. **Margin** is personal space on the outside!'
+    },
+    summary: 'Master the 3 layers: inside cushion (padding), wall (border), and personal space (margin).',
+    story: 'Padding gives text room to breathe inside. Border draws a solid wall. Margin keeps other boxes away.',
     initialCode: `<style>
   .box {
     background-color: #1e2030;
@@ -1547,6 +1628,11 @@ const LESSONS = [
         effect: 'Pushes neighboring elements away'
       }
     ],
+    tagShowcase: [
+      { tag: 'padding: 20px;', meaning: 'Inside cushion (bubble wrap)' },
+      { tag: 'border: 3px solid cyan;', meaning: 'Outer wall (thickness + color)' },
+      { tag: 'margin: 20px;', meaning: 'Outside breathing space' }
+    ],
     quickTags: ['padding: 24px;', 'border: 4px solid #2dd4bf;', 'margin: 20px;', 'border-radius: 12px;'],
     challenge: {
       mission: 'Set padding to "24px" and change the border to "4px solid #2dd4bf"!',
@@ -1581,15 +1667,19 @@ const LESSONS = [
   },
 
   // ==========================================
-  // CSS LESSON 4: Rounded Corners & Circles
+  // TOPIC 8: Rounded Corners & Circles
   // ==========================================
   {
     id: 'css-shapes',
     module: 'css',
     title: 'Rounded Corners & Avatar Circles',
     icon: '🔮',
-    tag: 'border-radius: 50%, pills',
-    summary: 'Turn sharp square corners into smooth curved pebbles and circles.',
+    tag: 'border-radius: 50%',
+    humanIntro: {
+      whatIsIt: 'In human language, computers love sharp, pointy corners, but humans love smooth, friendly curves!',
+      whatIsATag: '`border-radius` curves the sharp 90-degree corners. If you set `border-radius: 50%` on a square, the corners curve so much it morphs into a **perfect circle**!'
+    },
+    summary: 'Turn sharp square corners into smooth curved pebbles and circular avatar badges.',
     story: 'border-radius rounds sharp corners. border-radius: 50% turns an exact square into a perfect circle!',
     initialCode: `<style>
   .avatar {
@@ -1635,6 +1725,10 @@ const LESSONS = [
         effect: 'Turns the square into a circle'
       }
     ],
+    tagShowcase: [
+      { tag: 'border-radius: 12px;', meaning: 'Gentle phone app icon corner' },
+      { tag: 'border-radius: 50%;', meaning: 'Exact circle (on square items)' }
+    ],
     quickTags: ['border-radius: 50%;', 'border-radius: 20px;', 'border-radius: 12px;'],
     challenge: {
       mission: 'Set border-radius: 50% on the .avatar to make it a circle!',
@@ -1658,337 +1752,6 @@ const LESSONS = [
         'Typing 50px instead of 50% (pixels curve corners slightly; percent makes a circle)'
       ],
       funActivity: 'Try border-radius: 20px to see an iPhone app icon shape!'
-    }
-  },
-
-  // ==========================================
-  // CSS LESSON 5: Flexbox Alignment
-  // ==========================================
-  {
-    id: 'css-flexbox',
-    module: 'css',
-    title: 'Flexbox: Snapping Items in Line',
-    icon: '🧩',
-    tag: 'display: flex, justify-content',
-    summary: 'Line up buttons and cards side-by-side like LEGO bricks.',
-    story: 'Normally elements stack on top of each other. display: flex makes them snap into a horizontal row!',
-    initialCode: `<style>
-  .row {
-    background: #1e2030;
-    padding: 16px;
-    /* Add flex superpowers here! */
-  }
-  .item {
-    background: #fbbf24;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px 18px;
-    border-radius: 8px;
-    margin: 4px;
-  }
-</style>
-
-<div class="row">
-  <div class="item">🤖 Bot</div>
-  <div class="item">🐱 Cat</div>
-  <div class="item">🚀 Rocket</div>
-</div>`,
-    targetCode: `<style>
-  .row {
-    background: #1e2030;
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  .item {
-    background: #fbbf24;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px 18px;
-    border-radius: 8px;
-  }
-</style>
-
-<div class="row">
-  <div class="item">🤖 Bot</div>
-  <div class="item">🐱 Cat</div>
-  <div class="item">🚀 Rocket</div>
-</div>`,
-    targetDescription: 'The 3 team member badges snap from a vertical column into a horizontal row, neatly centered with 16px gap spacing.',
-    anatomy: [
-      {
-        part: 'display: flex;',
-        role: 'Flex Superpower',
-        explanation: 'Snaps all child elements into a single horizontal row.',
-        effect: 'Puts items side-by-side'
-      },
-      {
-        part: 'justify-content: center;',
-        role: 'Lineup Position',
-        explanation: 'Centers all the items together in the middle of the row.',
-        effect: 'Centers items horizontally'
-      },
-      {
-        part: 'gap: 16px;',
-        role: 'Spacer',
-        explanation: 'Creates clean breathing room between each item without messy margins.',
-        effect: 'Adds equal space between items'
-      }
-    ],
-    quickTags: ['display: flex;', 'justify-content: center;', 'justify-content: space-between;', 'gap: 16px;'],
-    challenge: {
-      mission: 'Add display: flex;, justify-content: center;, and gap: 16px; inside .row!',
-      hint: 'Inside .row { ... }, write display: flex; justify-content: center; gap: 16px;',
-      rules: [
-        {
-          type: 'hasCssProperty',
-          property: 'display',
-          valuePattern: /flex/i,
-          message: 'Set display: flex; on .row!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'justify-content',
-          valuePattern: /center|space-between|space-around/i,
-          message: 'Add justify-content: center; on .row!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Flexbox is like a magnetic train track: cars immediately latch together in a neat row.',
-      discussionQuestions: [
-        'What happens if you change justify-content to space-between?',
-        'Does display: flex go on the parent container or the child item?'
-      ],
-      commonMistakes: [
-        'Putting display: flex on .item instead of the parent .row'
-      ],
-      funActivity: 'Try justify-content: space-between to push the rocket and robot to opposite walls!'
-    }
-  },
-
-  // ==========================================
-  // CSS LESSON 6: Hover & Zoom
-  // ==========================================
-  {
-    id: 'css-hover',
-    module: 'css',
-    title: 'Hover Powers & Zoom',
-    icon: '✨',
-    tag: ':hover, transform: scale',
-    summary: 'Make buttons pop and grow bigger when mouse hovers over them.',
-    story: 'The :hover pseudo-class activates styles only when the cursor moves over the element.',
-    initialCode: `<style>
-  .btn {
-    background: #f87171;
-    color: white;
-    font-size: 18px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  /* Add hover rule here! */
-</style>
-
-<button class="btn">⚡ Power Up</button>`,
-    targetCode: `<style>
-  .btn {
-    background: #f87171;
-    color: white;
-    font-size: 18px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  .btn:hover {
-    transform: scale(1.15);
-    background: #ef4444;
-  }
-</style>
-
-<button class="btn">⚡ Power Up</button>`,
-    targetDescription: 'When your mouse pointer hovers over the red button, it smoothly zooms 15% larger like a video game action button!',
-    anatomy: [
-      {
-        part: '.btn:hover',
-        role: 'Hover State',
-        explanation: 'Applies these styles only while the mouse is hovering over the button.',
-        effect: 'Triggers on mouse over'
-      },
-      {
-        part: 'transform: scale(1.15);',
-        role: 'Zoom Scale',
-        explanation: 'Multiplies the size by 1.15 (15% larger).',
-        effect: 'Makes the button grow'
-      },
-      {
-        part: 'transition: transform 0.2s;',
-        role: 'Smooth Animation',
-        explanation: 'Makes the growth take 0.2 seconds smoothly instead of jumping instantly.',
-        effect: 'Smooths the motion'
-      }
-    ],
-    quickTags: ['.btn:hover {', 'transform: scale(1.15);', 'background: #ef4444;', '}'],
-    challenge: {
-      mission: 'Add a .btn:hover rule that sets transform: scale(1.15);!',
-      hint: 'Write .btn:hover { transform: scale(1.15); }',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => /:hover/i.test(code),
-          message: 'Add the :hover selector!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'transform',
-          valuePattern: /scale/i,
-          message: 'Add transform: scale(...) inside the :hover rule!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: ':hover is like a puppy that wags its tail when you reach out your hand.',
-      discussionQuestions: [
-        'What would happen if you forgot transition? (It would snap abruptly)',
-        'What does scale(1.3) do compared to scale(0.9)?'
-      ],
-      commonMistakes: [
-        'Putting a space between .btn and :hover (.btn:hover must touch!)'
-      ],
-      funActivity: 'Try transform: rotate(10deg) scale(1.2) to make the button tilt playfully!'
-    }
-  },
-
-  // ==========================================
-  // PROJECT 1: Superhero Trading Card
-  // ==========================================
-  {
-    id: 'proj-superhero-card',
-    module: 'projects',
-    title: 'Project 1: Superhero ID Card',
-    icon: '🦸',
-    tag: 'Full Mini-Project',
-    summary: 'Combine your skills into a collectible hero card.',
-    story: 'Build a trading card featuring an avatar, name, power badge, and superpower button.',
-    initialCode: `<style>
-  .card {
-    background: #1e2030;
-    color: white;
-    padding: 24px;
-    border-radius: 16px;
-    text-align: center;
-    max-width: 260px;
-    border: 2px solid #7c6cf7;
-  }
-  .avatar { font-size: 55px; }
-  .badge {
-    background: #7c6cf7;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-  }
-</style>
-
-<div class="card">
-  <div class="avatar">⚡</div>
-  <h2>Captain Volt</h2>
-  <span class="badge">Power: 9999</span>
-  <p>Guardian of the Cyber Grid</p>
-</div>`,
-    targetCode: `<style>
-  .card {
-    background: #1e2030;
-    color: white;
-    padding: 24px;
-    border-radius: 16px;
-    text-align: center;
-    max-width: 260px;
-    border: 2px solid #7c6cf7;
-  }
-  .avatar { font-size: 55px; }
-  .badge {
-    background: #7c6cf7;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-    display: inline-block;
-    margin: 4px;
-  }
-  button {
-    background: #7c6cf7;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-</style>
-
-<div class="card">
-  <div class="avatar">⚡</div>
-  <h2>Captain Volt</h2>
-  <span class="badge">Power: 9999</span>
-  <span class="badge">Element: Lightning</span>
-  <p>Guardian of the Cyber Grid</p>
-  <button onclick="alert('⚡ 1,000,000 VOLTS UNLEASHED!')">Activate Superpower</button>
-</div>`,
-    targetDescription: 'A sleek collectible trading card with Captain Volt\'s avatar, two power badges ("Power: 9999" and "Element: Lightning"), and a superpower trigger button.',
-    anatomy: [
-      {
-        part: '.card',
-        role: 'Container',
-        explanation: 'Groups all hero info inside a single box with padding and rounded corners.',
-        effect: 'Frames the entire trading card'
-      },
-      {
-        part: '<span class="badge">',
-        role: 'Stat Pill',
-        explanation: 'Displays mini power statistics in pill badges.',
-        effect: 'Creates a colored stat pill'
-      },
-      {
-        part: '<button onclick="...">',
-        role: 'Action Trigger',
-        explanation: 'Clickable move button that alerts the superhero battle cry.',
-        effect: 'Triggers superpower alert'
-      }
-    ],
-    quickTags: ['<span class="badge">', '<button onclick="alert(\'Zap!\')">', 'border-radius: 16px;'],
-    challenge: {
-      mission: 'Add a second badge ("Element: Lightning") and a button that unleashes a superpower alert!',
-      hint: 'Add <span class="badge">Element: Lightning</span> and <button onclick="alert(\'Zap!\')">Activate Superpower</button>',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => (code.match(/class\s*=\s*["']badge["']/gi) || []).length >= 2,
-          message: 'Add at least TWO <span class="badge"> badges!'
-        },
-        {
-          type: 'hasTag',
-          tag: 'button',
-          message: 'Add an action button!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Like Pokémon or sports cards: an avatar image, power numbers, and signature moves.',
-      discussionQuestions: [
-        'How would you change this into your pet or favorite anime character?',
-        'What color would an Ice or Fire superhero use?'
-      ],
-      commonMistakes: [
-        'Putting the button outside the .card container'
-      ],
-      funActivity: 'Customize the card with the kid\'s name and their secret superpower!'
     }
   }
 ];
@@ -3381,7 +3144,13 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- STEP-BY-STEP CODE BREAKDOWN: What Every Part Does to the Result -->
+    <!-- STEP 1: In Human Language (Plain explanation for kids) -->
+    ${renderHumanIntro(lesson)}
+
+    <!-- STEP 2: Tag Showcase (Simple examples: <b>, <i>, <u>, etc.) -->
+    ${renderTagShowcase(lesson)}
+
+    <!-- STEP 3: Step-by-Step Anatomy (Opening vs Closing & What each part does to the result) -->
     ${renderAnatomySection(lesson)}
 
     <!-- Editor & Live Preview Split -->
@@ -3446,6 +3215,41 @@ function renderLessonView() {
   setupLessonListeners(lesson);
   updateLivePreview();
   updateLineNumbers();
+}
+
+function renderHumanIntro(lesson) {
+  if (!lesson.humanIntro) return '';
+
+  return `
+    <div class="human-intro-card">
+      <div class="human-intro-item">
+        <h4>💡 In Human Language: What is this?</h4>
+        <p>${lesson.humanIntro.whatIsIt}</p>
+      </div>
+      <div class="human-intro-item">
+        <h4>🥪 The Secret Tag Sandwich: Opening vs Closing</h4>
+        <p>${lesson.humanIntro.whatIsATag}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderTagShowcase(lesson) {
+  if (!lesson.tagShowcase || lesson.tagShowcase.length === 0) return '';
+
+  return `
+    <div class="tag-showcase-bar">
+      <span class="showcase-label">🏷️ Simple Tags to Know:</span>
+      <div class="showcase-chips">
+        ${lesson.tagShowcase.map(t => `
+          <div class="showcase-chip" title="${t.meaning}">
+            <code>${escapeHtml(t.tag)}</code>
+            <span>${t.meaning}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
 }
 
 function renderAnatomySection(lesson) {
