@@ -11,17 +11,24 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 describe('Visual Labs and Pedagogical Enhancements', () => {
-  it('has all 4 visual interactive labs implemented', () => {
+  it('has dedicated topic visual labs implemented for all 24 themes', () => {
+    assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/topicLabs.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/boxModelLab.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/flexboxLab.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/colorLab.js')), true);
     assert.equal(fs.existsSync(path.join(rootDir, 'src/labs/gridLab.js')), true);
+
+    const topicLabsContent = fs.readFileSync(path.join(rootDir, 'src/labs/topicLabs.js'), 'utf-8');
+    for (const lesson of LESSONS) {
+      assert.equal(topicLabsContent.includes(lesson.id), true, `Topic lab missing for ${lesson.id}`);
+    }
   });
 
-  it('includes Visual Labs button and views in index.html', () => {
+  it('includes Per-Topic Visual Lab button and views in index.html', () => {
     const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf-8');
-    assert.equal(html.includes('id="btn-labs"'), true);
-    assert.equal(html.includes('renderLabsView'), true);
+    assert.equal(html.includes('btn-topic-lab'), true);
+    assert.equal(html.includes('renderTopicLab'), true);
+    assert.equal(html.includes('openTopicLabModal'), true);
     assert.equal(html.includes('renderBoxModelLab'), true);
     assert.equal(html.includes('renderFlexboxLab'), true);
     assert.equal(html.includes('renderColorLab'), true);
@@ -40,12 +47,12 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
     const uzHtml = fs.readFileSync(path.join(rootDir, 'index_uz.html'), 'utf-8');
     const enHtml = fs.readFileSync(path.join(rootDir, 'index_en.html'), 'utf-8');
 
-    assert.equal(uzHtml.includes('id="btn-labs"'), true);
-    assert.equal(uzHtml.includes('renderLabsView'), true);
+    assert.equal(uzHtml.includes('btn-topic-lab'), true);
+    assert.equal(uzHtml.includes('renderTopicLab'), true);
     assert.equal(uzHtml.includes('theme-24-filters'), true);
 
-    assert.equal(enHtml.includes('id="btn-labs"'), true);
-    assert.equal(enHtml.includes('renderLabsView'), true);
+    assert.equal(enHtml.includes('btn-topic-lab'), true);
+    assert.equal(enHtml.includes('renderTopicLab'), true);
     assert.equal(enHtml.includes('theme-24-filters'), true);
   });
 

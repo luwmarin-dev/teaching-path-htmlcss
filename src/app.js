@@ -22,6 +22,7 @@ import { renderBoxModelLab } from './labs/boxModelLab.js';
 import { renderFlexboxLab } from './labs/flexboxLab.js';
 import { renderColorLab } from './labs/colorLab.js';
 import { renderGridLab } from './labs/gridLab.js';
+import { renderTopicLab } from './labs/topicLabs.js';
 import { speakText, stopSpeaking, isSpeaking } from './modules/speech.js';
 
 // Application State
@@ -381,6 +382,9 @@ function renderLessonView() {
           <span class="badge-module">${escapeHtml(lesson.module.toUpperCase())}</span>
           <span class="badge-tags">${escapeHtml(lesson.tag)}</span>
           ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${escapeHtml(t('completedTag', state.lang))}</span>` : ''}
+          <button id="btn-topic-lab" class="btn-topic-lab" title="${escapeHtml(t('topicLabBtn', state.lang))}">
+            ${escapeHtml(t('topicLabBtn', state.lang))}
+          </button>
           <button id="btn-tag-list" class="btn-link-tags" title="${escapeHtml(t('listOfTags', state.lang))}">
             ${escapeHtml(t('listOfTags', state.lang))}
           </button>
@@ -640,6 +644,12 @@ function setupLessonListeners(lesson) {
     openTagListModal(lesson);
   });
 
+  // Dedicated Per-Topic Visual Lab Button
+  document.getElementById('btn-topic-lab')?.addEventListener('click', () => {
+    openTopicLabModal(lesson);
+  });
+
+
   // Preview Tabs
   setupPreviewTabs(lesson);
 
@@ -844,6 +854,45 @@ function openTagListModal(lesson) {
   const close = () => modal.remove();
   modal.querySelector('#btn-close-tag-modal')?.addEventListener('click', close);
   modal.querySelector('#btn-close-tag-modal-bottom')?.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+}
+
+export function openTopicLabModal(lesson) {
+  playSound('click', state.audioEnabled);
+
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card topic-lab-modal-card">
+      <div class="topic-lab-modal-header">
+        <h3 class="topic-lab-modal-heading">
+          <span>🧪</span> ${escapeHtml(t('topicLabModalTitle', state.lang))}: ${escapeHtml(localize(lesson.title, state.lang))}
+        </h3>
+        <button id="btn-close-topic-lab-modal" class="btn-close-modal" title="Close">✕</button>
+      </div>
+
+      <div class="topic-lab-modal-body" id="topic-lab-mount"></div>
+
+      <div class="topic-lab-modal-footer">
+        <button id="btn-close-topic-lab-bottom" class="btn-modal btn-modal-primary">
+          🚀 ${escapeHtml(t('doneBtn', state.lang))}
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const mountPoint = modal.querySelector('#topic-lab-mount');
+  if (mountPoint) {
+    renderTopicLab(mountPoint, lesson, state.lang);
+  }
+
+  const close = () => modal.remove();
+  modal.querySelector('#btn-close-topic-lab-modal')?.addEventListener('click', close);
+  modal.querySelector('#btn-close-topic-lab-bottom')?.addEventListener('click', close);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) close();
   });

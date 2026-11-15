@@ -56,7 +56,11 @@ export const UI_TEXT = {
     labBoxModelTitle: '📦 Box Model Playground',
     labFlexboxTitle: '🧩 Flexbox LEGO Playground',
     labColorTitle: '🎨 Color & Gradient Mixer',
-    labGridTitle: '🏁 CSS Grid 2D World'
+    labGridTitle: '🏁 CSS Grid 2D World',
+    topicLabBtn: '🧪 Visual Lab',
+    topicLabModalTitle: 'Interactive Visual Lab',
+    topicLabEffectLabel: 'Effect on Scene:',
+    topicLabGeneratedCode: 'Live Generated Code'
   },
   uz: {
     appTitle: 'CodeCraft',
@@ -110,7 +114,11 @@ export const UI_TEXT = {
     labBoxModelTitle: '📦 Box Model Maydonchasi',
     labFlexboxTitle: '🧩 Flexbox Konstruktori',
     labColorTitle: '🎨 Rang va Gradient Mikseri',
-    labGridTitle: '🏁 CSS Grid 2D Dunyosi'
+    labGridTitle: '🏁 CSS Grid 2D Dunyosi',
+    topicLabBtn: '🧪 Vizual Laboratoriya',
+    topicLabModalTitle: 'Interaktiv Vizual Laboratoriya',
+    topicLabEffectLabel: 'Sahnaga ta\'siri:',
+    topicLabGeneratedCode: 'Jonli Yaratilgan Kod'
   }
 };
 
