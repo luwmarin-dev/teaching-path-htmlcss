@@ -11,6 +11,8 @@ export function validateChallenge(code, rules = []) {
     };
   }
 
+  // Strip HTML comments so instructions inside comments don't trigger false passes
+  const codeWithoutComments = code.replace(/<!--[\s\S]*?-->/g, '');
   const feedback = [];
 
   for (const rule of rules) {
@@ -19,14 +21,14 @@ export function validateChallenge(code, rules = []) {
     switch (rule.type) {
       case 'hasTag': {
         const tagRegex = new RegExp(`<\\s*${rule.tag}(\\s+[^>]*)?>`, 'i');
-        passed = tagRegex.test(code);
+        passed = tagRegex.test(codeWithoutComments);
         break;
       }
 
       case 'hasAttribute': {
         // Looks for <tag ... attr="..." or attr='...' or attr>
         const attrRegex = new RegExp(`<\\s*${rule.tag}[^>]*\\s+${rule.attribute}(?:\\s*=\\s*["'][^"']*["'])?[^>]*>`, 'i');
-        passed = attrRegex.test(code);
+        passed = attrRegex.test(codeWithoutComments);
         break;
       }
 
@@ -36,7 +38,7 @@ export function validateChallenge(code, rules = []) {
         const escapedProp = rule.property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const cssRegex = new RegExp(`${escapedProp}\\s*:\\s*([^;}"']+)`, 'gi');
         let match;
-        while ((match = cssRegex.exec(code)) !== null) {
+        while ((match = cssRegex.exec(codeWithoutComments)) !== null) {
           const val = match[1].trim();
           if (!rule.valuePattern) {
             passed = true;
@@ -57,7 +59,7 @@ export function validateChallenge(code, rules = []) {
       case 'tagContainsText': {
         // Matches <tag ...>content</tag>
         const tagContentRegex = new RegExp(`<\\s*${rule.tag}[^>]*>([\\s\\S]*?)<\\s*\\/\\s*${rule.tag}\\s*>`, 'i');
-        const match = tagContentRegex.exec(code);
+        const match = tagContentRegex.exec(codeWithoutComments);
         if (match) {
           const innerText = match[1].replace(/<[^>]+>/g, '').trim();
           if (rule.pattern instanceof RegExp) {
