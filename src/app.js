@@ -250,7 +250,7 @@ function renderSidebar() {
     const modLessons = LESSONS.filter(l => l.module === mod.id);
     if (modLessons.length === 0) return;
 
-    html += `<div class="nav-section-title">${localize(mod.title, state.lang)}</div>`;
+    html += `<div class="nav-section-title">${escapeHtml(localize(mod.title, state.lang))}</div>`;
     html += `<ul class="lesson-list">`;
     modLessons.forEach(lesson => {
       const isCompleted = isLessonCompleted(state, lesson.id);
@@ -258,7 +258,7 @@ function renderSidebar() {
       html += `
         <li class="lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-lesson-id="${lesson.id}">
           <span class="lesson-item-icon">${lesson.icon}</span>
-          <span class="lesson-item-text">${localize(lesson.title, state.lang)}</span>
+          <span class="lesson-item-text">${escapeHtml(localize(lesson.title, state.lang))}</span>
         </li>
       `;
     });

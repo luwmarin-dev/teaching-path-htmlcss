@@ -1643,8 +1643,8 @@ const LESSONS = [
     id: 'theme-11-links',
     module: 'full-powers',
     title: {
-      en: 'Theme 11: Links & Web Portals (<a>)',
-      uz: '11-Mavzu: Havolalar va Sayt Portallari (<a>)'
+      en: 'Theme 11: Links & Web Portals (Portals)',
+      uz: '11-Mavzu: Havolalar va Sayt Portallari (Portallar)'
     },
     icon: '🌐',
     tag: '<a href="...">, target="_blank"',
@@ -1755,8 +1755,8 @@ const LESSONS = [
     id: 'theme-12-lists',
     module: 'full-powers',
     title: {
-      en: 'Theme 12: Bullet & Numbered Lists (<ul>, <ol>, <li>)',
-      uz: '12-Mavzu: Ro\'yxatlar (<ul>, <ol>, <li>)'
+      en: 'Theme 12: Bullet & Numbered Lists (Lists)',
+      uz: '12-Mavzu: Ro\'yxatlar (Tartibli va Tartibsiz)'
     },
     icon: '📝',
     tag: '<ul>, <ol>, <li>',
@@ -2922,8 +2922,8 @@ Jetpack Shoes`,
     id: 'theme-20-details',
     module: 'modern-mastery',
     title: {
-      en: 'Theme 20: Accordion Secrets (<details> & <summary>)',
-      uz: '20-Mavzu: Ochiluvchi Sirli Quti (<details> va <summary>)'
+      en: 'Theme 20: Accordion Secrets (Details & Summary)',
+      uz: '20-Mavzu: Ochiluvchi Sirli Quti (Details va Summary)'
     },
     icon: '🗝️',
     tag: '<details>, <summary>',
@@ -5629,7 +5629,7 @@ function renderSidebar() {
     const modLessons = LESSONS.filter(l => l.module === mod.id);
     if (modLessons.length === 0) return;
 
-    html += `<div class="nav-section-title">${localize(mod.title, state.lang)}</div>`;
+    html += `<div class="nav-section-title">${escapeHtml(localize(mod.title, state.lang))}</div>`;
     html += `<ul class="lesson-list">`;
     modLessons.forEach(lesson => {
       const isCompleted = isLessonCompleted(state, lesson.id);
@@ -5637,7 +5637,7 @@ function renderSidebar() {
       html += `
         <li class="lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-lesson-id="${lesson.id}">
           <span class="lesson-item-icon">${lesson.icon}</span>
-          <span class="lesson-item-text">${localize(lesson.title, state.lang)}</span>
+          <span class="lesson-item-text">${escapeHtml(localize(lesson.title, state.lang))}</span>
         </li>
       `;
     });

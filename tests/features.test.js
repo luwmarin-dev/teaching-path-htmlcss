@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LESSONS, MODULES } from '../src/modules/curriculum.js';
+import { escapeHtml, localize } from '../src/app.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,5 +47,38 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
     assert.equal(enHtml.includes('id="btn-labs"'), true);
     assert.equal(enHtml.includes('renderLabsView'), true);
     assert.equal(enHtml.includes('theme-24-filters'), true);
+  });
+
+  it('renders sidebar cleanly with exactly 24 un-nested list items in both languages', () => {
+    ['en', 'uz'].forEach(lang => {
+      let html = '';
+      MODULES.forEach(mod => {
+        const modLessons = LESSONS.filter(l => l.module === mod.id);
+        if (modLessons.length === 0) return;
+        html += `<div class="nav-section-title">${escapeHtml(localize(mod.title, lang))}</div>`;
+        html += `<ul class="lesson-list">`;
+        modLessons.forEach(lesson => {
+          html += `
+            <li class="lesson-item" data-lesson-id="${lesson.id}">
+              <span class="lesson-item-icon">${lesson.icon}</span>
+              <span class="lesson-item-text">${escapeHtml(localize(lesson.title, lang))}</span>
+            </li>
+          `;
+        });
+        html += `</ul>`;
+      });
+
+      const openLi = (html.match(/<li\b/g) || []).length;
+      const closeLi = (html.match(/<\/li>/g) || []).length;
+      assert.equal(openLi, 24, `Expected 24 <li> for ${lang}`);
+      assert.equal(closeLi, 24, `Expected 24 </li> for ${lang}`);
+
+      // Ensure no raw unescaped < or > inside lesson titles
+      for (const lesson of LESSONS) {
+        const titleStr = localize(lesson.title, lang);
+        assert.equal(titleStr.includes('<'), false, `Lesson ${lesson.id} has raw < in title`);
+        assert.equal(titleStr.includes('>'), false, `Lesson ${lesson.id} has raw > in title`);
+      }
+    });
   });
 });
