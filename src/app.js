@@ -40,6 +40,30 @@ export function localize(val, lang = 'en') {
   return String(val);
 }
 
+export function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
+ * Formats educational markdown and escapes dangerous HTML to prevent DOM table corruption.
+ * Safely converts `code` to <code class="inline-code">, **bold** to <strong>, *italic* to <em>, and newlines to <br>.
+ */
+export function formatProse(str) {
+  if (str === null || str === undefined) return '';
+  const text = String(str);
+  return escapeHtml(text)
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+}
+
 export function initApp() {
   cacheElements();
   attachGlobalListeners();
@@ -258,38 +282,38 @@ function renderLessonView() {
     <div class="lesson-banner">
       <div>
         <div class="banner-meta">
-          <span class="badge-module">${lesson.module.toUpperCase()}</span>
-          <span class="badge-tags">${lesson.tag}</span>
-          ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${t('completedTag', state.lang)}</span>` : ''}
+          <span class="badge-module">${escapeHtml(lesson.module.toUpperCase())}</span>
+          <span class="badge-tags">${escapeHtml(lesson.tag)}</span>
+          ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${escapeHtml(t('completedTag', state.lang))}</span>` : ''}
         </div>
-        <h2 class="banner-title">${lesson.icon} ${localize(lesson.title, state.lang)}</h2>
-        <p class="banner-summary">${localize(lesson.summary, state.lang)}</p>
+        <h2 class="banner-title">${lesson.icon} ${escapeHtml(localize(lesson.title, state.lang))}</h2>
+        <p class="banner-summary">${formatProse(localize(lesson.summary, state.lang))}</p>
       </div>
       <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <button id="btn-start-practice" class="btn-header" style="background: var(--primary); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 108, 247, 0.4);" title="${t('startPractice', state.lang)}">
-          ${t('startPractice', state.lang)}
+        <button id="btn-start-practice" class="btn-header" style="background: var(--primary); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 108, 247, 0.4);" title="${escapeHtml(t('startPractice', state.lang))}">
+          ${escapeHtml(t('startPractice', state.lang))}
         </button>
         <button id="btn-tag-list" class="btn-header" style="background: rgba(124, 108, 247, 0.2); color: #c8d3f5; border-color: var(--primary); font-weight: 800;">
-          ${t('listOfTags', state.lang)}
+          ${escapeHtml(t('listOfTags', state.lang))}
         </button>
       </div>
     </div>
 
     <!-- Teacher Coaching Playbook (Toggleable) -->
     <div id="teacher-playbook-box" class="teacher-playbook" style="${state.teacherMode ? 'display:block' : 'display:none'}">
-      <h4>${t('teacherTips', state.lang)}</h4>
+      <h4>${escapeHtml(t('teacherTips', state.lang))}</h4>
       <div class="teacher-playbook-grid">
         <div class="teacher-item">
           <strong>💡 Kid Analogy:</strong>
-          <span>${localize(lesson.teacherGuide.analogy, state.lang)}</span>
+          <span>${formatProse(localize(lesson.teacherGuide.analogy, state.lang))}</span>
         </div>
         <div class="teacher-item">
           <strong>🗣️ Question to Ask Aloud:</strong>
-          <span>${localize(lesson.teacherGuide.discussionQuestions?.[0], state.lang)}</span>
+          <span>${formatProse(localize(lesson.teacherGuide.discussionQuestions?.[0], state.lang))}</span>
         </div>
         <div class="teacher-item">
           <strong>⚠️ Watch Out For:</strong>
-          <span>${localize(lesson.teacherGuide.commonMistakes?.[0], state.lang)}</span>
+          <span>${formatProse(localize(lesson.teacherGuide.commonMistakes?.[0], state.lang))}</span>
         </div>
       </div>
     </div>
@@ -309,24 +333,24 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>💻</span> ${t('codeEditorTitle', state.lang)}
+            <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
-            <button id="btn-reset-code" class="btn-tool" title="${t('resetCode', state.lang)}">${t('resetCode', state.lang)}</button>
-            <button id="btn-copy-code" class="btn-tool" title="${t('copyBtn', state.lang)}">${t('copyBtn', state.lang)}</button>
+            <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
+            <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
         </div>
 
         <!-- Quick Tag Shortcuts -->
         <div class="quick-tags-bar">
-          <span class="quick-tag-label">${t('tagsLabel', state.lang)}</span>
-          ${lesson.quickTags.map(t => `<button class="tag-chip" data-tag="${t}">${escapeHtml(t)}</button>`).join('')}
+          <span class="quick-tag-label">${escapeHtml(t('tagsLabel', state.lang))}</span>
+          ${lesson.quickTags.map(tg => `<button class="tag-chip" data-tag="${escapeHtml(tg)}">${escapeHtml(tg)}</button>`).join('')}
         </div>
 
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
           <div id="line-numbers" class="editor-line-numbers">1</div>
-          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${currentCode}</textarea>
+          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(currentCode)}</textarea>
         </div>
       </div>
 
@@ -334,12 +358,12 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>👁️</span> ${t('browserPreviewTitle', state.lang)}
+            <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">${t('yourResultTab', state.lang)}</button>
-            <button id="tab-target" class="prev-tab-btn">${t('targetGoalTab', state.lang)}</button>
-            <button id="tab-side" class="prev-tab-btn">${t('compareTab', state.lang)}</button>
+            <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
+            <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+            <button id="tab-side" class="prev-tab-btn">${escapeHtml(t('compareTab', state.lang))}</button>
           </div>
         </div>
 
@@ -352,12 +376,12 @@ function renderLessonView() {
     <!-- Bottom Action Dock -->
     <div class="mission-dock">
       <div>
-        <div class="mission-tag">${t('missionTag', state.lang)}</div>
-        <div class="mission-text">${localize(lesson.challenge.mission, state.lang)}</div>
+        <div class="mission-tag">${escapeHtml(t('missionTag', state.lang))}</div>
+        <div class="mission-text">${formatProse(localize(lesson.challenge.mission, state.lang))}</div>
       </div>
       <div class="mission-actions">
-        <button id="btn-hint" class="btn-hint">${t('hintBtn', state.lang)}</button>
-        <button id="btn-verify-mission" class="btn-verify">${t('checkCodeBtn', state.lang)}</button>
+        <button id="btn-hint" class="btn-hint">${escapeHtml(t('hintBtn', state.lang))}</button>
+        <button id="btn-verify-mission" class="btn-verify">${escapeHtml(t('checkCodeBtn', state.lang))}</button>
       </div>
     </div>
   `;
@@ -373,12 +397,12 @@ function renderHumanIntro(lesson) {
   return `
     <div class="human-intro-card">
       <div class="human-intro-item">
-        <h4>${t('humanLanguageHeader', state.lang)}</h4>
-        <p>${localize(lesson.humanIntro.whatIsIt, state.lang)}</p>
+        <h4>${escapeHtml(t('humanLanguageHeader', state.lang))}</h4>
+        <p>${formatProse(localize(lesson.humanIntro.whatIsIt, state.lang))}</p>
       </div>
       <div class="human-intro-item">
-        <h4>${t('tagSandwichHeader', state.lang)}</h4>
-        <p>${localize(lesson.humanIntro.whatIsATag, state.lang)}</p>
+        <h4>${escapeHtml(t('tagSandwichHeader', state.lang))}</h4>
+        <p>${formatProse(localize(lesson.humanIntro.whatIsATag, state.lang))}</p>
       </div>
     </div>
   `;
@@ -389,13 +413,13 @@ function renderTagShowcase(lesson) {
 
   return `
     <div class="tag-showcase-bar">
-      <span class="showcase-label">${t('tagShowcaseHeader', state.lang)}</span>
+      <span class="showcase-label">${escapeHtml(t('tagShowcaseHeader', state.lang))}</span>
       <div class="showcase-chips">
-        ${lesson.tagShowcase.map(t => {
-          const meaningStr = localize(t.meaning, state.lang);
+        ${lesson.tagShowcase.map(tItem => {
+          const meaningStr = formatProse(localize(tItem.meaning, state.lang));
           return `
-          <div class="showcase-chip" title="${meaningStr}">
-            <code>${escapeHtml(t.tag)}</code>
+          <div class="showcase-chip" title="${escapeHtml(localize(tItem.meaning, state.lang))}">
+            <code>${escapeHtml(tItem.tag)}</code>
             <span>${meaningStr}</span>
           </div>
         `;
@@ -411,30 +435,25 @@ function renderAnatomySection(lesson) {
   return `
     <div class="step-breakdown-card">
       <div class="step-card-header">
-        <h3>${t('stepBreakdownHeader', state.lang)}</h3>
+        <h3>${escapeHtml(t('stepBreakdownHeader', state.lang))}</h3>
       </div>
       <div class="step-grid">
         ${lesson.anatomy.map(step => `
           <div class="step-item">
             <div class="step-part-row">
               <span class="step-code-chip">${escapeHtml(step.part)}</span>
-              <span class="step-role-badge">${localize(step.role, state.lang)}</span>
+              <span class="step-role-badge">${escapeHtml(localize(step.role, state.lang))}</span>
             </div>
-            <div class="step-explanation">${localize(step.explanation, state.lang)}</div>
+            <div class="step-explanation">${formatProse(localize(step.explanation, state.lang))}</div>
             <div class="step-effect">
               <span>👉</span>
-              <span><strong>${t('resultCallout', state.lang)}</strong> ${localize(step.effect, state.lang)}</span>
+              <span><strong>${escapeHtml(t('resultCallout', state.lang))}</strong> ${formatProse(localize(step.effect, state.lang))}</span>
             </div>
           </div>
         `).join('')}
       </div>
     </div>
   `;
-}
-
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function setupLessonListeners(lesson) {
@@ -577,8 +596,8 @@ function setupPreviewTabs(lesson) {
     previewContainer.innerHTML = `
       <div class="target-view-container">
         <div class="target-explanation-box">
-          <strong>${t('targetExplanationTitle', state.lang)}</strong>
-          <p style="margin: 4px 0 0; white-space: pre-line;">${localize(lesson.targetDescription, state.lang)}</p>
+          <strong>${escapeHtml(t('targetExplanationTitle', state.lang))}</strong>
+          <p style="margin: 4px 0 0; white-space: pre-line;">${formatProse(localize(lesson.targetDescription, state.lang))}</p>
         </div>
         <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
       </div>
@@ -625,22 +644,22 @@ function openTagListModal(lesson) {
     <div class="modal-card tag-list-modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
         <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-          <span>📋</span> ${t('tagListModalTitle', state.lang)}: ${localize(lesson.title, state.lang)}
+          <span>📋</span> ${escapeHtml(t('tagListModalTitle', state.lang))}: ${escapeHtml(localize(lesson.title, state.lang))}
         </h3>
         <button id="btn-close-tag-modal" style="font-size: 16px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px;">✕</button>
       </div>
 
       <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">
-        ${t('tagListDesc', state.lang)}
+        ${formatProse(t('tagListDesc', state.lang))}
       </p>
 
       <div class="tag-list-table-wrapper">
         <table class="tag-list-table">
           <thead>
             <tr>
-              <th style="width: 32%;">${t('colCode', state.lang)}</th>
-              <th style="width: 25%;">${t('colName', state.lang)}</th>
-              <th>${t('colMeaning', state.lang)}</th>
+              <th style="width: 32%;">${escapeHtml(t('colCode', state.lang))}</th>
+              <th style="width: 25%;">${escapeHtml(t('colName', state.lang))}</th>
+              <th>${escapeHtml(t('colMeaning', state.lang))}</th>
             </tr>
           </thead>
           <tbody>
@@ -649,8 +668,8 @@ function openTagListModal(lesson) {
                 <td>
                   <code class="tag-code-pill" title="Click to copy" data-code="${escapeHtml(tg.code)}">${escapeHtml(tg.code)}</code>
                 </td>
-                <td style="font-weight: 700; color: var(--accent-amber);">${localize(tg.name, state.lang)}</td>
-                <td style="color: var(--text-main); font-size: 12px;">${localize(tg.description, state.lang)}</td>
+                <td style="font-weight: 700; color: var(--accent-amber);">${formatProse(localize(tg.name, state.lang))}</td>
+                <td style="color: var(--text-main); font-size: 12px;">${formatProse(localize(tg.description, state.lang))}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -658,7 +677,7 @@ function openTagListModal(lesson) {
       </div>
 
       <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
-        <button id="btn-close-tag-modal-bottom" class="btn-modal btn-modal-primary">${t('doneBtn', state.lang)}</button>
+        <button id="btn-close-tag-modal-bottom" class="btn-modal btn-modal-primary">${escapeHtml(t('doneBtn', state.lang))}</button>
       </div>
     </div>
   `;

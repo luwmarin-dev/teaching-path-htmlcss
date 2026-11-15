@@ -135,10 +135,10 @@ export const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'Tags are like sandwich buns. Opening <tag> is the top bun, your words are the cheese/patty, closing </tag> is the bottom bun. If you forget the bottom bun, the whole page gets messy!',
+      analogy: 'Tags are like sandwich buns. Opening `<tag>` is the top bun, your words are the cheese/patty, closing `</tag>` is the bottom bun. If you forget the bottom bun, the whole page gets messy!',
       discussionQuestions: [
         'What is the only difference between an opening tag and a closing tag? (The forward slash /!)',
-        'What happens if you forget to close a <b> tag? (Everything on the whole page turns bold!)'
+        'What happens if you forget to close a `<b>` tag? (Everything on the whole page turns bold!)'
       ],
       commonMistakes: [
         'Using backslash \\ instead of forward slash / in closing tags',
@@ -248,14 +248,14 @@ export const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'Human anatomy: DocType is your birth certificate. <html> is your skin. <head> is your brain (thoughts inside). <body> is your arms and legs (what people see).',
+      analogy: 'Human anatomy: `<!DOCTYPE>` is your birth certificate. `<html>` is your skin. `<head>` is your brain (thoughts inside). `<body>` is your arms and legs (what people see).',
       discussionQuestions: [
         'Why doesn\'t text inside the <head> show up on the white page?',
-        'What would happen if you wrote words outside the <body> tags?'
+        'What would happen if you wrote words outside the `<body>` tags?'
       ],
       commonMistakes: [
-        'Putting visible words inside <head> instead of <body>',
-        'Forgetting the closing </body> or </html> tags'
+        'Putting visible words inside `<head>` instead of `<body>`',
+        'Forgetting the closing `</body>` or `</html>` tags'
       ],
       funActivity: 'Touch your head for <head> and touch your chest for <body>!'
     }
@@ -274,8 +274,8 @@ export const LESSONS = [
       whatIsIt: 'In human language, a **Table** is a neat grid of boxes with rows and columns — just like an Excel spreadsheet, a school class timetable, or a video game high-score leaderboard!',
       whatIsATag: 'HTML builds tables row-by-row:\n1. `<table>` is the outer grid frame.\n2. `<tr>` stands for **Table Row** (a horizontal line across).\n3. `<th>` stands for **Table Header** (bold titles for column headers).\n4. `<td>` stands for **Table Data** (regular boxes holding player names, numbers, or stats)!'
     },
-    summary: 'Build clean grids and leaderboards using <table>, <tr> (rows), <th> (headers), and <td> (data cells).',
-    story: 'Think of <tr> like a train track. Each track holds train cars: <th> for the engine/header cars, and <td> for the passenger data cars.',
+    summary: 'Build clean grids and leaderboards using `<table>`, `<tr>` (rows), `<th>` (headers), and `<td>` (data cells).',
+    story: 'Think of `<tr>` like a train track. Each track holds train cars: `<th>` for the engine/header cars, and `<td>` for the passenger data cars.',
     initialCode: `<table border="1" cellpadding="8">
   <tr>
     <th>Rank</th>
@@ -385,16 +385,16 @@ export const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'A table is like a waffle or an ice cube tray. <tr> is one row of ice compartments. <td> is each individual ice pocket.',
+      analogy: 'A table is like a waffle or an ice cube tray. `<tr>` is one row of ice compartments. `<td>` is each individual ice pocket.',
       discussionQuestions: [
-        'What is the difference between <th> (header) and <td> (data)?',
-        'Why do all <td> and <th> cells have to be wrapped inside a <tr> row?'
+        'What is the difference between `<th>` (header) and `<td>` (data)?',
+        'Why do all `<td>` and `<th>` cells have to be wrapped inside a `<tr>` row?'
       ],
       commonMistakes: [
-        'Putting <td> directly inside <table> without wrapping it in a <tr> row',
-        'Having a different number of <td> cells in different rows'
+        'Putting `<td>` directly inside `<table>` without wrapping it in a `<tr>` row',
+        'Having a different number of `<td>` cells in different rows'
       ],
-      funActivity: 'Draw a 2x2 grid on paper and label the rows (tr) and boxes (td) with a pencil!'
+      funActivity: 'Draw a 2x2 grid on paper and label the rows (`<tr>`) and boxes (`<td>`) with a pencil!'
     }
   },
 
