@@ -223,6 +223,11 @@ function renderLessonView() {
         <h2 class="banner-title">${lesson.icon} ${lesson.title}</h2>
         <p class="banner-summary">${lesson.summary}</p>
       </div>
+      <div>
+        <button id="btn-tag-list" class="btn-header" style="background: rgba(124, 108, 247, 0.2); color: #c8d3f5; border-color: var(--primary); font-weight: 800;">
+          📋 List of Tags
+        </button>
+      </div>
     </div>
 
     <!-- Teacher Coaching Playbook (Toggleable) -->
@@ -433,6 +438,11 @@ function setupLessonListeners(lesson) {
     setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
   });
 
+  // List of Tags Button
+  document.getElementById('btn-tag-list')?.addEventListener('click', () => {
+    openTagListModal(lesson);
+  });
+
   // Preview Tabs
   setupPreviewTabs(lesson);
 
@@ -541,6 +551,75 @@ function setupPreviewTabs(lesson) {
       targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
     }
     playSound('click', state.audioEnabled);
+  });
+}
+
+function openTagListModal(lesson) {
+  if (!lesson.listOfTags || lesson.listOfTags.length === 0) return;
+  playSound('click', state.audioEnabled);
+
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card tag-list-modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+          <span>📋</span> List of Tags: ${lesson.title}
+        </h3>
+        <button id="btn-close-tag-modal" style="font-size: 16px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px;">✕</button>
+      </div>
+
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">
+        Here are all the codes and tags you learn in this theme. Click any code chip to copy it!
+      </p>
+
+      <div class="tag-list-table-wrapper">
+        <table class="tag-list-table">
+          <thead>
+            <tr>
+              <th style="width: 32%;">Code / Tag</th>
+              <th style="width: 25%;">Name</th>
+              <th>Meaning (What It Does)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${lesson.listOfTags.map(t => `
+              <tr>
+                <td>
+                  <code class="tag-code-pill" title="Click to copy" data-code="${escapeHtml(t.code)}">${escapeHtml(t.code)}</code>
+                </td>
+                <td style="font-weight: 700; color: var(--accent-amber);">${t.name}</td>
+                <td style="color: var(--text-main); font-size: 12px;">${t.description}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
+        <button id="btn-close-tag-modal-bottom" class="btn-modal btn-modal-primary">Done</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.querySelectorAll('.tag-code-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const code = pill.getAttribute('data-code');
+      navigator.clipboard?.writeText(code);
+      const originalText = pill.textContent;
+      pill.textContent = '✅ Copied!';
+      setTimeout(() => { pill.textContent = originalText; }, 1200);
+      playSound('click', state.audioEnabled);
+    });
+  });
+
+  const close = () => modal.remove();
+  modal.querySelector('#btn-close-tag-modal')?.addEventListener('click', close);
+  modal.querySelector('#btn-close-tag-modal-bottom')?.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
   });
 }
 

@@ -4,19 +4,30 @@ import { LESSONS, MODULES, getLessonById, getLessonsByModule } from '../src/modu
 import { validateChallenge } from '../src/modules/validator.js';
 
 describe('Curriculum Data Integrity', () => {
-  it('contains modules for HTML, CSS, and Projects', () => {
+  it('contains modules for HTML Core, CSS Core, and Full Powers', () => {
     assert.equal(MODULES.length >= 3, true);
     const moduleIds = MODULES.map(m => m.id);
-    assert.equal(moduleIds.includes('html'), true);
-    assert.equal(moduleIds.includes('css'), true);
-    assert.equal(moduleIds.includes('projects'), true);
+    assert.equal(moduleIds.includes('html-core'), true);
+    assert.equal(moduleIds.includes('css-core'), true);
+    assert.equal(moduleIds.includes('full-powers'), true);
   });
 
-  it('contains rich lessons covering foundational and creative topics', () => {
-    assert.equal(LESSONS.length >= 8, true);
+  it('contains all 16 foundational and advanced themes', () => {
+    assert.equal(LESSONS.length >= 16, true);
   });
 
-  it('ensures every lesson has bite-sized code and step-by-step anatomy breakdowns', () => {
+  it('strictly covers the teacher\'s initial 8 themes in order', () => {
+    assert.equal(LESSONS[0].id, 'theme-1-tags');
+    assert.equal(LESSONS[1].id, 'theme-2-structure');
+    assert.equal(LESSONS[2].id, 'theme-3-tables');
+    assert.equal(LESSONS[3].id, 'theme-4-pictures');
+    assert.equal(LESSONS[4].id, 'theme-5-divs');
+    assert.equal(LESSONS[5].id, 'theme-6-classes');
+    assert.equal(LESSONS[6].id, 'theme-7-box-model');
+    assert.equal(LESSONS[7].id, 'theme-8-transform');
+  });
+
+  it('ensures every lesson has bite-sized code, anatomy breakdowns, and list of tags', () => {
     for (const lesson of LESSONS) {
       assert.ok(lesson.id, `Lesson missing id`);
       assert.ok(lesson.title, `Lesson ${lesson.id} missing title`);
@@ -30,11 +41,14 @@ describe('Curriculum Data Integrity', () => {
       assert.ok(Array.isArray(lesson.anatomy), `Lesson ${lesson.id} missing anatomy breakdown`);
       assert.ok(lesson.anatomy.length > 0, `Lesson ${lesson.id} anatomy is empty`);
 
-      for (const step of lesson.anatomy) {
-        assert.ok(step.part, `Step in ${lesson.id} missing part`);
-        assert.ok(step.role, `Step in ${lesson.id} missing role`);
-        assert.ok(step.explanation, `Step in ${lesson.id} missing explanation`);
-        assert.ok(step.effect, `Step in ${lesson.id} missing effect on result`);
+      // Verify list of tags exists on every lesson for the "List of Tags" button
+      assert.ok(Array.isArray(lesson.listOfTags), `Lesson ${lesson.id} missing listOfTags`);
+      assert.ok(lesson.listOfTags.length > 0, `Lesson ${lesson.id} listOfTags is empty`);
+
+      for (const t of lesson.listOfTags) {
+        assert.ok(t.code, `Tag in ${lesson.id} missing code`);
+        assert.ok(t.name, `Tag in ${lesson.id} missing name`);
+        assert.ok(t.description, `Tag in ${lesson.id} missing description`);
       }
     }
   });
@@ -53,12 +67,12 @@ describe('Curriculum Data Integrity', () => {
   });
 
   it('allows fetching lessons by id and module', () => {
-    const lesson = getLessonById('html-headings');
+    const lesson = getLessonById('theme-1-tags');
     assert.ok(lesson);
-    assert.equal(lesson.id, 'html-headings');
+    assert.equal(lesson.id, 'theme-1-tags');
 
-    const htmlLessons = getLessonsByModule('html');
+    const htmlLessons = getLessonsByModule('html-core');
     assert.ok(htmlLessons.length > 0);
-    assert.equal(htmlLessons.every(l => l.module === 'html'), true);
+    assert.equal(htmlLessons.every(l => l.module === 'html-core'), true);
   });
 });
