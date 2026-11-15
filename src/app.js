@@ -1,6 +1,6 @@
 /**
  * CodeCraft Kids Main Application Controller
- * Orchestrates lessons, live execution, validation, labs, audio, and state.
+ * Focused, uncluttered, step-by-step educational interface.
  */
 
 import { MODULES, LESSONS, getLessonById } from './modules/curriculum.js';
@@ -10,22 +10,16 @@ import {
   completeLesson,
   isLessonCompleted,
   saveStateToStorage,
-  loadStateFromStorage,
-  setStudentProfile,
-  setTheme
+  loadStateFromStorage
 } from './modules/state.js';
 import { playSound } from './modules/audio.js';
 import { triggerConfetti } from './modules/confetti.js';
-import { speakText, stopSpeaking, isSpeaking } from './modules/speech.js';
-import { renderBoxModelLab } from './labs/boxModelLab.js';
-import { renderFlexboxLab } from './labs/flexboxLab.js';
-import { renderColorLab } from './labs/colorLab.js';
 import { TEMPLATES, downloadHtmlFile } from './modules/sandbox.js';
 
 // Application State
 let state = loadStateFromStorage();
-let currentView = 'lesson'; // 'lesson' | 'lab-box' | 'lab-flex' | 'lab-color' | 'sandbox'
-let activePreviewTab = 'live'; // 'live' | 'target' | 'split'
+let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
 
 // DOM Elements Cache
@@ -35,20 +29,15 @@ export function initApp() {
   cacheElements();
   attachGlobalListeners();
   applyStateToUI();
-  selectLesson(state.currentLessonId || 'html-bones');
+  selectLesson(state.currentLessonId || LESSONS[0].id);
 }
 
 function cacheElements() {
   elements.app = document.body;
-  elements.studentName = document.getElementById('student-name');
-  elements.studentAvatar = document.getElementById('student-avatar');
   elements.starCount = document.getElementById('star-count');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
-  elements.btnTheme = document.getElementById('btn-theme');
   elements.btnSandbox = document.getElementById('btn-sandbox');
-  elements.btnLabs = document.getElementById('btn-labs');
-  elements.labsDropdown = document.getElementById('labs-dropdown');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
   elements.progressFill = document.getElementById('progress-fill');
@@ -73,81 +62,35 @@ function attachGlobalListeners() {
     saveStateToStorage(state);
     elements.btnTeacher.classList.toggle('active', state.teacherMode);
     playSound('click', state.audioEnabled);
-    renderLessonView();
+    const box = document.getElementById('teacher-playbook-box');
+    if (box) {
+      box.style.display = state.teacherMode ? 'block' : 'none';
+    }
   });
 
-  // Theme toggle
-  elements.btnTheme?.addEventListener('click', () => {
-    const themes = ['candy', 'arcade', 'space'];
-    const nextIdx = (themes.indexOf(state.theme) + 1) % themes.length;
-    state = setTheme(state, themes[nextIdx]);
-    saveStateToStorage(state);
-    applyTheme();
-    playSound('click', state.audioEnabled);
-  });
-
-  // Profile avatar/name modal trigger
-  document.getElementById('student-badge-btn')?.addEventListener('click', openProfileModal);
-
-  // Sandbox Mode trigger
+  // Free Sandbox toggle
   elements.btnSandbox?.addEventListener('click', () => {
-    currentView = 'sandbox';
+    currentView = currentView === 'sandbox' ? 'lesson' : 'sandbox';
+    elements.btnSandbox.classList.toggle('active', currentView === 'sandbox');
     playSound('click', state.audioEnabled);
-    renderSandboxView();
-  });
 
-  // Labs dropdown trigger
-  elements.btnLabs?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    elements.labsDropdown?.classList.toggle('show');
-  });
-
-  document.addEventListener('click', () => {
-    elements.labsDropdown?.classList.remove('show');
-  });
-
-  document.getElementById('lab-opt-box')?.addEventListener('click', () => {
-    currentView = 'lab-box';
-    playSound('click', state.audioEnabled);
-    renderLabView('box');
-  });
-
-  document.getElementById('lab-opt-flex')?.addEventListener('click', () => {
-    currentView = 'lab-flex';
-    playSound('click', state.audioEnabled);
-    renderLabView('flex');
-  });
-
-  document.getElementById('lab-opt-color')?.addEventListener('click', () => {
-    currentView = 'lab-color';
-    playSound('click', state.audioEnabled);
-    renderLabView('color');
+    if (currentView === 'sandbox') {
+      renderSandboxView();
+    } else {
+      renderLessonView();
+    }
   });
 
   // Brand click -> Return to lessons
   document.querySelector('.brand')?.addEventListener('click', () => {
     currentView = 'lesson';
+    elements.btnSandbox?.classList.remove('active');
     playSound('click', state.audioEnabled);
-    renderLessonView();
+    selectLesson(LESSONS[0].id);
   });
 }
 
-function applyTheme() {
-  elements.app.setAttribute('data-theme', state.theme);
-  const themeLabels = {
-    candy: '🍬 Theme: Candy',
-    arcade: '🕹️ Theme: Arcade',
-    space: '🌌 Theme: Space'
-  };
-  if (elements.btnTheme) {
-    elements.btnTheme.textContent = themeLabels[state.theme] || '🎨 Theme';
-  }
-}
-
 function applyStateToUI() {
-  applyTheme();
-  if (elements.studentName) elements.studentName.textContent = state.studentName;
-  if (elements.studentAvatar) elements.studentAvatar.textContent = state.studentAvatar;
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
   if (elements.btnTeacher) elements.btnTeacher.classList.toggle('active', state.teacherMode);
   if (elements.btnAudio) elements.btnAudio.textContent = state.audioEnabled ? '🔊 Sound: ON' : '🔇 Sound: OFF';
@@ -161,7 +104,7 @@ function updateProgressUI() {
   const percent = Math.round((completed / total) * 100);
 
   if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
-  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} Finished (${percent}%)`;
+  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} Lessons (${percent}%)`;
 }
 
 function renderSidebar() {
@@ -169,8 +112,10 @@ function renderSidebar() {
 
   let html = '';
   MODULES.forEach(mod => {
-    html += `<div class="nav-section-title">${mod.title}</div>`;
     const modLessons = LESSONS.filter(l => l.module === mod.id);
+    if (modLessons.length === 0) return;
+
+    html += `<div class="nav-section-title">${mod.title}</div>`;
     html += `<ul class="lesson-list">`;
     modLessons.forEach(lesson => {
       const isCompleted = isLessonCompleted(state, lesson.id);
@@ -187,12 +132,12 @@ function renderSidebar() {
 
   elements.sidebarLessonList.innerHTML = html;
 
-  // Attach click listeners to sidebar items
   const items = elements.sidebarLessonList.querySelectorAll('.lesson-item');
   items.forEach(item => {
     item.addEventListener('click', () => {
       const lessonId = item.getAttribute('data-lesson-id');
       currentView = 'lesson';
+      elements.btnSandbox?.classList.remove('active');
       playSound('click', state.audioEnabled);
       selectLesson(lessonId);
     });
@@ -209,6 +154,54 @@ export function selectLesson(lessonId) {
   renderLessonView();
 }
 
+/**
+ * Wraps bare student snippets cleanly so kids never have to write HTML boilerplate!
+ */
+function wrapForPreview(snippet) {
+  if (snippet.includes('<!DOCTYPE') || snippet.includes('<html')) {
+    return snippet;
+  }
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #0f1019;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 { margin-top: 0; color: #ffffff; }
+    p { margin-bottom: 16px; color: #cbd5e1; }
+    button {
+      background: #7c6cf7;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    button:hover { background: #6957ea; }
+    ul, ol { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 6px; }
+    a { color: #38bdf8; text-decoration: underline; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  ${snippet}
+</body>
+</html>`;
+}
+
 // ===================================================================
 // Lesson View Rendering
 // ===================================================================
@@ -221,79 +214,56 @@ function renderLessonView() {
   elements.workspaceStage.innerHTML = `
     <!-- Lesson Header Banner -->
     <div class="lesson-banner">
-      <div class="banner-main">
+      <div>
         <div class="banner-meta">
           <span class="badge-module">${lesson.module.toUpperCase()}</span>
           <span class="badge-tags">${lesson.tag}</span>
-          ${isCompleted ? '<span style="color: #2ed573; font-weight: 800; font-size: 13px;">✅ Completed!</span>' : ''}
+          ${isCompleted ? '<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">✅ Completed!</span>' : ''}
         </div>
         <h2 class="banner-title">${lesson.icon} ${lesson.title}</h2>
         <p class="banner-summary">${lesson.summary}</p>
       </div>
-      <div class="banner-controls">
-        <button id="btn-read-aloud" class="btn-pill-action">
-          🔊 Read Aloud
-        </button>
-        <button id="btn-toggle-teacher-box" class="btn-pill-action ${state.teacherMode ? 'active' : ''}">
-          🧑‍🏫 Teacher Tips
-        </button>
-      </div>
     </div>
 
-    <!-- Teacher / Parent Playbook (Shown if Teacher Mode is active) -->
+    <!-- Teacher Coaching Playbook (Toggleable) -->
     <div id="teacher-playbook-box" class="teacher-playbook" style="${state.teacherMode ? 'display:block' : 'display:none'}">
-      <h4>🧑‍🏫 Teacher & Parent Secret Playbook</h4>
+      <h4>🧑‍🏫 Teacher Coaching Guide</h4>
       <div class="teacher-playbook-grid">
         <div class="teacher-item">
-          <strong>💡 Kid-Friendly Analogy:</strong>
+          <strong>💡 Kid Analogy:</strong>
           <span>${lesson.teacherGuide.analogy}</span>
         </div>
         <div class="teacher-item">
-          <strong>🗣️ Questions to Ask Aloud:</strong>
-          <ul>
-            ${lesson.teacherGuide.discussionQuestions.map(q => `<li>${q}</li>`).join('')}
-          </ul>
+          <strong>🗣️ Question to Ask Aloud:</strong>
+          <span>${lesson.teacherGuide.discussionQuestions[0] || ''}</span>
         </div>
         <div class="teacher-item">
           <strong>⚠️ Watch Out For:</strong>
-          <ul>
-            ${lesson.teacherGuide.commonMistakes.map(m => `<li>${m}</li>`).join('')}
-          </ul>
-        </div>
-        <div class="teacher-item">
-          <strong>🎉 Fun Real-World Activity:</strong>
-          <span>${lesson.teacherGuide.funActivity}</span>
+          <span>${lesson.teacherGuide.commonMistakes[0] || ''}</span>
         </div>
       </div>
     </div>
 
-    <!-- Story Card -->
-    <div class="lesson-story-card">
-      <div class="story-icon">${lesson.icon}</div>
-      <div class="story-body">
-        <h3>The Story & How It Works</h3>
-        <p>${lesson.story}</p>
-      </div>
-    </div>
+    <!-- STEP-BY-STEP CODE BREAKDOWN: What Every Part Does to the Result -->
+    ${renderAnatomySection(lesson)}
 
-    <!-- Editor & Dual Preview Split View -->
+    <!-- Editor & Live Preview Split -->
     <div class="editor-stage-split">
       <!-- Left: Code Studio -->
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>💻</span> Code Studio
+            <span>💻</span> Code (Edit Here)
           </div>
           <div class="pane-tools">
-            <button id="btn-format-code" class="btn-tool" title="Format indentation">🪄 Tidy</button>
-            <button id="btn-reset-code" class="btn-tool" title="Reset to starter code">🔄 Reset</button>
+            <button id="btn-reset-code" class="btn-tool" title="Reset back to example">🔄 Reset</button>
             <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 Copy</button>
           </div>
         </div>
 
-        <!-- Quick Tags Chips -->
+        <!-- Quick Tag Shortcuts -->
         <div class="quick-tags-bar">
-          <span class="quick-tag-label">Quick Tags:</span>
+          <span class="quick-tag-label">Tags:</span>
           ${lesson.quickTags.map(t => `<button class="tag-chip" data-tag="${t}">${escapeHtml(t)}</button>`).join('')}
         </div>
 
@@ -308,10 +278,10 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>👁️</span> Result Preview
+            <span>👁️</span> What the Browser Draws
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">Live Result</button>
+            <button id="tab-live" class="prev-tab-btn active">Your Result</button>
             <button id="tab-target" class="prev-tab-btn">🎯 Target Goal</button>
             <button id="tab-side" class="prev-tab-btn">⚖️ Compare</button>
           </div>
@@ -323,14 +293,14 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- Bottom Sticky Mission Dock -->
+    <!-- Bottom Action Dock -->
     <div class="mission-dock">
-      <div class="mission-info">
-        <div class="mission-tag">🎯 Mission Challenge</div>
+      <div>
+        <div class="mission-tag">🎯 Mission</div>
         <div class="mission-text">${lesson.challenge.mission}</div>
       </div>
       <div class="mission-actions">
-        <button id="btn-hint" class="btn-hint">💡 Need a Hint?</button>
+        <button id="btn-hint" class="btn-hint">💡 Hint</button>
         <button id="btn-verify-mission" class="btn-verify">🚀 Check My Code!</button>
       </div>
     </div>
@@ -341,22 +311,47 @@ function renderLessonView() {
   updateLineNumbers();
 }
 
+function renderAnatomySection(lesson) {
+  if (!lesson.anatomy || lesson.anatomy.length === 0) return '';
+
+  return `
+    <div class="step-breakdown-card">
+      <div class="step-card-header">
+        <h3>🔍 Step-by-Step Breakdown: What Each Part Does to the Result</h3>
+      </div>
+      <div class="step-grid">
+        ${lesson.anatomy.map(step => `
+          <div class="step-item">
+            <div class="step-part-row">
+              <span class="step-code-chip">${escapeHtml(step.part)}</span>
+              <span class="step-role-badge">${step.role}</span>
+            </div>
+            <div class="step-explanation">${step.explanation}</div>
+            <div class="step-effect">
+              <span>👉</span>
+              <span><strong>Result:</strong> ${step.effect}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
 function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function setupLessonListeners(lesson) {
   const textarea = document.getElementById('code-textarea');
-  const lineNumbers = document.getElementById('line-numbers');
 
-  // Input & Code updates
   textarea?.addEventListener('input', () => {
     currentCode = textarea.value;
     updateLivePreview();
     updateLineNumbers();
   });
 
-  // Tab key indent support
+  // Tab indent
   textarea?.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -370,7 +365,7 @@ function setupLessonListeners(lesson) {
     }
   });
 
-  // Quick Tag insert chips
+  // Quick Tag chips
   const tagChips = document.querySelectorAll('.tag-chip');
   tagChips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -380,18 +375,16 @@ function setupLessonListeners(lesson) {
     });
   });
 
-  // Reset Button
+  // Reset
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    if (confirm('Reset your code back to the starting example?')) {
-      textarea.value = lesson.initialCode;
-      currentCode = lesson.initialCode;
-      updateLivePreview();
-      updateLineNumbers();
-      playSound('click', state.audioEnabled);
-    }
+    textarea.value = lesson.initialCode;
+    currentCode = lesson.initialCode;
+    updateLivePreview();
+    updateLineNumbers();
+    playSound('click', state.audioEnabled);
   });
 
-  // Copy Button
+  // Copy
   document.getElementById('btn-copy-code')?.addEventListener('click', () => {
     navigator.clipboard?.writeText(textarea.value);
     const btn = document.getElementById('btn-copy-code');
@@ -399,46 +392,16 @@ function setupLessonListeners(lesson) {
     setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
   });
 
-  // Format Code Button
-  document.getElementById('btn-format-code')?.addEventListener('click', () => {
-    textarea.value = tidyHtml(textarea.value);
-    currentCode = textarea.value;
-    updateLivePreview();
-    updateLineNumbers();
-    playSound('click', state.audioEnabled);
-  });
-
-  // Read Aloud Button
-  const btnRead = document.getElementById('btn-read-aloud');
-  btnRead?.addEventListener('click', () => {
-    if (isSpeaking()) {
-      stopSpeaking();
-      btnRead.textContent = '🔊 Read Aloud';
-    } else {
-      btnRead.textContent = '⏹️ Stop Voice';
-      speakText(`${lesson.title}. ${lesson.summary}. ${lesson.story}. Mission: ${lesson.challenge.mission}`, () => {
-        btnRead.textContent = '🔊 Read Aloud';
-      });
-    }
-  });
-
-  // Teacher Box Toggle
-  document.getElementById('btn-toggle-teacher-box')?.addEventListener('click', () => {
-    const box = document.getElementById('teacher-playbook-box');
-    const isVisible = box.style.display !== 'none';
-    box.style.display = isVisible ? 'none' : 'block';
-  });
-
-  // Preview Tabs: Live vs Target Goal vs Side-by-Side
+  // Preview Tabs
   setupPreviewTabs(lesson);
 
-  // Hint Button
+  // Hint
   document.getElementById('btn-hint')?.addEventListener('click', () => {
     playSound('click', state.audioEnabled);
-    alert(`💡 MISSION HINT:\n\n${lesson.challenge.hint}`);
+    alert(`💡 HINT:\n\n${lesson.challenge.hint}`);
   });
 
-  // Check My Code Button
+  // Check code
   document.getElementById('btn-verify-mission')?.addEventListener('click', () => {
     handleChallengeVerification(lesson);
   });
@@ -473,8 +436,7 @@ function updateLivePreview() {
   const iframe = document.getElementById('live-iframe');
   if (!iframe) return;
 
-  // Use srcdoc for 100% reliable local file:// execution without cross-origin errors
-  iframe.srcdoc = currentCode;
+  iframe.srcdoc = wrapForPreview(currentCode);
 }
 
 function setupPreviewTabs(lesson) {
@@ -504,14 +466,14 @@ function setupPreviewTabs(lesson) {
       <div class="target-view-container">
         <div class="target-explanation-box">
           <strong>🎯 What the Result Should Look Like:</strong>
-          <p>${lesson.targetDescription}</p>
+          <p style="margin: 4px 0 0; white-space: pre-line;">${lesson.targetDescription}</p>
         </div>
         <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
       </div>
     `;
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = lesson.targetCode;
+      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
     }
     playSound('click', state.audioEnabled);
   });
@@ -522,12 +484,12 @@ function setupPreviewTabs(lesson) {
     activePreviewTab = 'side';
     previewContainer.innerHTML = `
       <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%;">
-        <div style="border-right: 2px solid var(--border-color); display: flex; flex-direction: column;">
-          <div style="background: #eef2f7; padding: 6px 12px; font-size: 11px; font-weight: 800; color: #475569;">YOUR LIVE CODE</div>
+        <div style="border-right: 1px solid var(--border-color); display: flex; flex-direction: column;">
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">YOUR RESULT</div>
           <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
         <div style="display: flex; flex-direction: column;">
-          <div style="background: #eef2f7; padding: 6px 12px; font-size: 11px; font-weight: 800; color: #475569;">TARGET GOAL</div>
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">TARGET GOAL</div>
           <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
       </div>
@@ -535,7 +497,7 @@ function setupPreviewTabs(lesson) {
     updateLivePreview();
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = lesson.targetCode;
+      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
     }
     playSound('click', state.audioEnabled);
   });
@@ -548,7 +510,6 @@ function handleChallengeVerification(lesson) {
     playSound('success', state.audioEnabled);
     triggerConfetti(elements.confettiCanvas);
 
-    // Update state with completion and award stars
     const previousCompleted = isLessonCompleted(state, lesson.id);
     state = completeLesson(state, lesson.id, 3);
     saveStateToStorage(state);
@@ -572,29 +533,24 @@ function showCelebrationModal(lesson, wasAlreadyCompleted) {
       <div class="modal-icon">🎉</div>
       <h3 class="modal-title">MISSION COMPLETE!</h3>
       <div class="modal-body">
-        <p>Awesome job, <strong>${state.studentName}</strong>! You mastered <strong>${lesson.title}</strong>!</p>
-        <p style="margin-top: 10px; font-size: 16px; color: #f59f00; font-weight: 800;">
+        <p>Awesome! You mastered <strong>${lesson.title}</strong>!</p>
+        <p style="margin-top: 8px; font-size: 15px; color: var(--accent-amber); font-weight: 800;">
           ${wasAlreadyCompleted ? '⭐ Mission verified again!' : '+3 STARS EARNED! ⭐⭐⭐'}
         </p>
       </div>
       <div class="modal-actions">
-        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">Stay Here & Play</button>
-        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">Next Quest ➡️</button>` : ''}
+        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">Stay Here</button>
+        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">Next Lesson ➡️</button>` : ''}
       </div>
     </div>
   `;
 
   document.body.appendChild(modal);
 
-  modal.querySelector('#btn-modal-close')?.addEventListener('click', () => {
-    modal.remove();
-  });
-
+  modal.querySelector('#btn-modal-close')?.addEventListener('click', () => modal.remove());
   modal.querySelector('#btn-modal-next')?.addEventListener('click', () => {
     modal.remove();
-    if (nextLesson) {
-      selectLesson(nextLesson.id);
-    }
+    if (nextLesson) selectLesson(nextLesson.id);
   });
 }
 
@@ -604,10 +560,10 @@ function showTryAgainModal(feedback) {
   modal.innerHTML = `
     <div class="modal-card">
       <div class="modal-icon">🧐</div>
-      <h3 class="modal-title" style="color: #ff4757;">Almost There!</h3>
+      <h3 class="modal-title" style="color: var(--accent-red);">Almost There!</h3>
       <div class="modal-body">
-        <p>Your code is so close! Here is what your robot needs:</p>
-        <div style="background: #ffe3e3; border-radius: 8px; padding: 12px; margin-top: 10px; color: #c92a2a; text-align: left; font-weight: bold;">
+        <p>Take a quick look at your code:</p>
+        <div style="background: rgba(248, 113, 113, 0.15); border-radius: 8px; padding: 10px; margin-top: 8px; color: var(--accent-red); text-align: left; font-weight: bold; font-size: 12px;">
           ${feedback.map(f => `<div>• ${f}</div>`).join('')}
         </div>
       </div>
@@ -618,26 +574,7 @@ function showTryAgainModal(feedback) {
   `;
 
   document.body.appendChild(modal);
-
-  modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => {
-    modal.remove();
-  });
-}
-
-// ===================================================================
-// Interactive Labs Views
-// ===================================================================
-function renderLabView(type) {
-  elements.workspaceStage.innerHTML = `<div id="lab-mount-point"></div>`;
-  const mount = document.getElementById('lab-mount-point');
-
-  if (type === 'box') {
-    renderBoxModelLab(mount);
-  } else if (type === 'flex') {
-    renderFlexboxLab(mount);
-  } else if (type === 'color') {
-    renderColorLab(mount);
-  }
+  modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => modal.remove());
 }
 
 // ===================================================================
@@ -646,33 +583,32 @@ function renderLabView(type) {
 function renderSandboxView() {
   elements.workspaceStage.innerHTML = `
     <div class="lesson-banner">
-      <div class="banner-main">
+      <div>
         <div class="banner-meta">
-          <span class="badge-module" style="background: #ffd32a; color: #1e272e;">CREATIVE MODE</span>
+          <span class="badge-module">FREE PLAY</span>
         </div>
         <h2 class="banner-title">🚀 Free Coding Sandbox</h2>
-        <p class="banner-summary">Build anything you can imagine! Pick a starter template or start from scratch, then download your real website file!</p>
+        <p class="banner-summary">Build whatever you want! Download your real webpage when you're done.</p>
       </div>
-      <div class="banner-controls">
-        <button id="btn-download-html" class="btn-pill-action active" style="background: #2ed573; border-color: #2ed573;">
-          💾 Download My Website (.html)
+      <div>
+        <button id="btn-download-html" class="btn-header" style="background: var(--accent-green); color: #000; border: none; font-weight: 800;">
+          💾 Download .html
         </button>
       </div>
     </div>
 
-    <!-- Template Selector Bar -->
-    <div style="background: var(--bg-card); border-bottom: 2px solid var(--border-color); padding: 12px 28px; display: flex; align-items: center; gap: 12px; overflow-x: auto;">
-      <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-muted); white-space: nowrap;">Starter Templates:</span>
-      ${TEMPLATES.map(t => `<button class="btn-pill btn-tpl" data-tpl="${t.id}">${t.name}</button>`).join('')}
+    <!-- Template Pills -->
+    <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 8px 24px; display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">Templates:</span>
+      ${TEMPLATES.map(t => `<button class="tag-chip btn-tpl" data-tpl="${t.id}">${t.name}</button>`).join('')}
     </div>
 
     <!-- Sandbox Split View -->
     <div class="editor-stage-split">
       <div class="pane-card">
         <div class="pane-header">
-          <div class="pane-title"><span>💻</span> Sandbox Code</div>
+          <div class="pane-title"><span>💻</span> HTML &amp; CSS Code</div>
           <div class="pane-tools">
-            <button id="btn-sb-format" class="btn-tool">🪄 Tidy</button>
             <button id="btn-sb-copy" class="btn-tool">📋 Copy</button>
           </div>
         </div>
@@ -698,15 +634,13 @@ function renderSandboxView() {
   const lineNumbers = document.getElementById('sb-line-numbers');
 
   function updateSbPreview() {
-    iframe.srcdoc = textarea.value;
+    iframe.srcdoc = wrapForPreview(textarea.value);
 
-    // Update lines
     const lines = textarea.value.split('\n').length;
     let numHtml = '';
     for (let i = 1; i <= Math.max(lines, 1); i++) numHtml += `${i}<br>`;
     lineNumbers.innerHTML = numHtml;
 
-    // Auto save
     state.customSandboxCode = textarea.value;
     saveStateToStorage(state);
   }
@@ -737,7 +671,7 @@ function renderSandboxView() {
   });
 
   document.getElementById('btn-download-html')?.addEventListener('click', () => {
-    downloadHtmlFile('my-awesome-site.html', textarea.value);
+    downloadHtmlFile('my-creation.html', wrapForPreview(textarea.value));
     playSound('badge', state.audioEnabled);
   });
 
@@ -748,90 +682,7 @@ function renderSandboxView() {
     setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
   });
 
-  document.getElementById('btn-sb-format')?.addEventListener('click', () => {
-    textarea.value = tidyHtml(textarea.value);
-    updateSbPreview();
-    playSound('click', state.audioEnabled);
-  });
-
   updateSbPreview();
-}
-
-// ===================================================================
-// Student Profile Avatar / Name Modal
-// ===================================================================
-function openProfileModal() {
-  const avatars = ['🚀', '🐱', '🤖', '🦖', '🦄', '⚡', '👾', '🍕', '👑', '🦸'];
-
-  const modal = document.createElement('div');
-  modal.className = 'modal-overlay';
-  modal.innerHTML = `
-    <div class="modal-card">
-      <h3 class="modal-title">Student Profile</h3>
-      <div class="modal-body">
-        <p style="margin-bottom: 12px;">Pick your avatar:</p>
-        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-          ${avatars.map(a => `<button class="btn-avatar-choice" style="font-size: 30px; background: none; border: 2px solid var(--border-color); border-radius: 12px; cursor: pointer; padding: 6px 10px;">${a}</button>`).join('')}
-        </div>
-        <p style="margin-bottom: 6px;">Your Coder Name:</p>
-        <input type="text" id="input-cadet-name" value="${state.studentName}" style="padding: 10px 14px; font-size: 16px; border-radius: 8px; border: 2px solid var(--border-color); width: 80%; text-align: center; font-weight: bold;" />
-      </div>
-      <div class="modal-actions">
-        <button id="btn-save-profile" class="btn-modal btn-modal-primary">Save Profile</button>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  let selectedAvatar = state.studentAvatar;
-  const avatarBtns = modal.querySelectorAll('.btn-avatar-choice');
-  avatarBtns.forEach(btn => {
-    if (btn.textContent === selectedAvatar) btn.style.borderColor = 'var(--primary)';
-    btn.addEventListener('click', () => {
-      avatarBtns.forEach(b => b.style.borderColor = 'var(--border-color)');
-      btn.style.borderColor = 'var(--primary)';
-      selectedAvatar = btn.textContent;
-    });
-  });
-
-  modal.querySelector('#btn-save-profile')?.addEventListener('click', () => {
-    const input = modal.querySelector('#input-cadet-name');
-    const newName = input.value.trim() || 'Code Cadet';
-    state = setStudentProfile(state, { name: newName, avatar: selectedAvatar });
-    saveStateToStorage(state);
-    applyStateToUI();
-    modal.remove();
-    playSound('badge', state.audioEnabled);
-  });
-}
-
-function tidyHtml(html) {
-  let formatted = '';
-  let indent = 0;
-  const lines = html.replace(/>\s*</g, '>\n<').split('\n');
-
-  lines.forEach(line => {
-    line = line.trim();
-    if (!line) return;
-
-    if (line.match(/^<\/\w/) || line.match(/^<\/style>/)) {
-      indent = Math.max(0, indent - 1);
-    }
-
-    formatted += '  '.repeat(indent) + line + '\n';
-
-    if (
-      line.match(/^<[a-z0-9]+/i) &&
-      !line.match(/^<(img|input|br|hr|meta|link)/i) &&
-      !line.match(/<\/[a-z0-9]+>/i) &&
-      !line.endsWith('/>')
-    ) {
-      indent++;
-    }
-  });
-
-  return formatted.trim();
 }
 
 // Auto-boot on load

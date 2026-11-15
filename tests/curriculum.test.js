@@ -13,25 +13,29 @@ describe('Curriculum Data Integrity', () => {
   });
 
   it('contains rich lessons covering foundational and creative topics', () => {
-    assert.equal(LESSONS.length >= 15, true);
+    assert.equal(LESSONS.length >= 8, true);
   });
 
-  it('ensures every lesson has required educational fields', () => {
+  it('ensures every lesson has bite-sized code and step-by-step anatomy breakdowns', () => {
     for (const lesson of LESSONS) {
       assert.ok(lesson.id, `Lesson missing id`);
       assert.ok(lesson.title, `Lesson ${lesson.id} missing title`);
       assert.ok(lesson.module, `Lesson ${lesson.id} missing module`);
       assert.ok(lesson.icon, `Lesson ${lesson.id} missing icon`);
-      assert.ok(lesson.story, `Lesson ${lesson.id} missing story`);
       assert.ok(lesson.initialCode, `Lesson ${lesson.id} missing initialCode`);
       assert.ok(lesson.targetCode, `Lesson ${lesson.id} missing targetCode`);
       assert.ok(lesson.targetDescription, `Lesson ${lesson.id} missing targetDescription`);
       assert.ok(lesson.teacherGuide, `Lesson ${lesson.id} missing teacherGuide`);
-      assert.ok(lesson.teacherGuide.analogy, `Lesson ${lesson.id} missing teacher analogy`);
-      assert.ok(Array.isArray(lesson.teacherGuide.discussionQuestions), `Lesson ${lesson.id} missing discussionQuestions`);
       assert.ok(lesson.challenge, `Lesson ${lesson.id} missing challenge`);
-      assert.ok(lesson.challenge.mission, `Lesson ${lesson.id} missing challenge.mission`);
-      assert.ok(Array.isArray(lesson.challenge.rules), `Lesson ${lesson.id} missing challenge.rules`);
+      assert.ok(Array.isArray(lesson.anatomy), `Lesson ${lesson.id} missing anatomy breakdown`);
+      assert.ok(lesson.anatomy.length > 0, `Lesson ${lesson.id} anatomy is empty`);
+
+      for (const step of lesson.anatomy) {
+        assert.ok(step.part, `Step in ${lesson.id} missing part`);
+        assert.ok(step.role, `Step in ${lesson.id} missing role`);
+        assert.ok(step.explanation, `Step in ${lesson.id} missing explanation`);
+        assert.ok(step.effect, `Step in ${lesson.id} missing effect on result`);
+      }
     }
   });
 
@@ -49,9 +53,9 @@ describe('Curriculum Data Integrity', () => {
   });
 
   it('allows fetching lessons by id and module', () => {
-    const lesson = getLessonById('html-bones');
+    const lesson = getLessonById('html-headings');
     assert.ok(lesson);
-    assert.equal(lesson.id, 'html-bones');
+    assert.equal(lesson.id, 'html-headings');
 
     const htmlLessons = getLessonsByModule('html');
     assert.ok(htmlLessons.length > 0);

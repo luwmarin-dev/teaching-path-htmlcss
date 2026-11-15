@@ -8,278 +8,236 @@
   // --- Curriculum Module ---
   /**
  * CodeCraft Kids Curriculum Data
- * Comprehensive HTML & CSS topics with stories, code examples, target visualizations,
- * challenge missions, and teacher/parent guides.
+ * Focused, bite-sized snippets without boilerplate clutter.
+ * Each theme breaks down the code step-by-step and demonstrates exactly what each piece does to the result.
  */
 
 const MODULES = [
   {
     id: 'html',
-    title: '🦴 Module 1: The HTML Skeleton',
-    tagline: 'Build the bones and structure of your web world',
-    color: '#ff4757'
+    title: '🦴 HTML: The Building Blocks',
+    tagline: 'Learn tags, text, buttons, and images one piece at a time'
   },
   {
     id: 'css',
-    title: '🎨 Module 2: The CSS Magic Paint',
-    tagline: 'Add colors, fonts, costumes, and animations',
-    color: '#2ed573'
+    title: '🎨 CSS: The Style & Color',
+    tagline: 'Colors, fonts, padding, corners, and alignment'
   },
   {
     id: 'projects',
-    title: '🚀 Module 3: Epic Mini-Projects',
-    tagline: 'Combine your superpowers to build real playable pages',
-    color: '#1e90ff'
+    title: '🚀 Mini-Projects',
+    tagline: 'Put pieces together into real cards and dashboards'
   }
 ];
 
 const LESSONS = [
   // ==========================================
-  // HTML LESSON 1: The Skeleton
-  // ==========================================
-  {
-    id: 'html-bones',
-    module: 'html',
-    title: 'The Body & The Bones',
-    icon: '🦴',
-    tag: '<html>, <head>, <body>',
-    summary: 'Every web page is like a human body: a head for its thoughts and a body for everything you see!',
-    story: `Think of a web page like a friendly robot. 
-The <html> tag is the robot's metal shell.
-The <head> tag is its brain (where it remembers its title and secret instructions).
-The <body> tag is where its eyes, arms, and heart live — whatever you put inside the <body> shows up on the screen!`,
-    tagsExplored: ['<!DOCTYPE html>', '<html>', '<head>', '<title>', '<body>'],
-    quickTags: ['<!DOCTYPE html>', '<html>', '</html>', '<body>', '</body>', '<title>', '</title>'],
-    initialCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>My First World</title>
-  </head>
-  <body>
-    Hello human! This is inside the robot's body.
-  </body>
-</html>`,
-    targetCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Super Robot Station</title>
-  </head>
-  <body>
-    Hello human! Welcome to the Super Robot Station! Beep boop!
-  </body>
-</html>`,
-    targetDescription: `You will see a clean web page that displays:
-"Hello human! Welcome to the Super Robot Station! Beep boop!"
-The browser tab at the very top will show the title "Super Robot Station".`,
-    challenge: {
-      mission: 'Add the words "Beep boop!" inside the <body> so the robot speaks to you!',
-      hint: 'Type "Beep boop!" right after the word "body" inside the <body> tag!',
-      rules: [
-        {
-          type: 'hasTag',
-          tag: 'body',
-          message: 'Make sure you keep the <body> and </body> tags!'
-        },
-        {
-          type: 'tagContainsText',
-          tag: 'body',
-          pattern: /beep boop/i,
-          message: 'Add "Beep boop!" inside the <body> tag.'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'HTML is the skeleton bones. CSS is the superhero outfit. JavaScript is the muscles that make it move.',
-      discussionQuestions: [
-        'What would happen if we put words outside of the <body> tags?',
-        'Why does a website need a <title> even though it is not inside the page body?'
-      ],
-      commonMistakes: [
-        'Forgetting the closing slash </tag>. Explain that tags are like open and closed sandwich buns.',
-        'Putting visible text inside <head> instead of <body>.'
-      ],
-      funActivity: 'Ask the kid to touch their head for <head> and their torso for <body>!'
-    }
-  },
-
-  // ==========================================
-  // HTML LESSON 2: Headings & Paragraphs
+  // HTML LESSON 1: Headings & Paragraphs
   // ==========================================
   {
     id: 'html-headings',
     module: 'html',
-    title: 'Gigantic Headings & Secret Words',
+    title: 'Big Headings & Paragraphs',
     icon: '👑',
-    tag: '<h1> - <h6>, <p>, <strong>, <em>',
-    summary: 'Make bold headlines like a newspaper and write stories with paragraphs!',
-    story: `Headings are like megaphone volume! 
-<h1> is the loudest, giant megaphone! 
-<h2> is a normal megaphone.
-<h6> is a quiet mouse whisper!
-<p> is for normal paragraph sentences.
-You can also make words <strong>SUPER BOLD</strong> or <em>magically slanted (italic)</em>!`,
-    tagsExplored: ['<h1>', '<h2>', '<h3>', '<p>', '<strong>', '<em>', '<mark>'],
-    quickTags: ['<h1>', '</h1>', '<h2>', '</h2>', '<p>', '</p>', '<strong>', '</strong>', '<em>', '</em>', '<mark>', '</mark>'],
-    initialCode: `<h1>Dinosaur Kingdom</h1>
-<p>Once upon a time, a T-Rex wanted to learn how to code.</p>
-<p>He had tiny arms, but a <strong>big brain</strong>!</p>`,
-    targetCode: `<h1>Dinosaur Kingdom</h1>
-<h2>The Tale of Rex the Coder</h2>
-<p>Once upon a time, a T-Rex wanted to learn how to code.</p>
-<p>He had tiny arms, but a <strong>big brain</strong>!</p>
-<p>His favorite snack was <mark>cyber pizza</mark>!</p>`,
-    targetDescription: `You will see:
-1. A huge bold title: "Dinosaur Kingdom"
-2. A medium bold subtitle: "The Tale of Rex the Coder"
-3. Two paragraphs of text with "big brain" in strong bold and "cyber pizza" highlighted in glowing yellow marker.`,
+    tag: '<h1>, <h2>, <p>',
+    summary: 'Make bold headlines and normal story text.',
+    story: 'Think of <h1> like a giant newspaper headline. <p> is for normal storybook sentences.',
+    // Focused snippet ONLY - no boilerplate!
+    initialCode: `<h1>🦖 Dinosaur King</h1>
+<p>The mightiest lizard in the whole jungle!</p>`,
+    targetCode: `<h1>🦖 Dinosaur King</h1>
+<h2>The Ruler of Jurassic Valley</h2>
+<p>The mightiest lizard in the whole jungle!</p>`,
+    targetDescription: '1. A huge bold title: "🦖 Dinosaur King"\n2. A medium subtitle: "The Ruler of Jurassic Valley"\n3. A normal paragraph describing the dinosaur.',
+    anatomy: [
+      {
+        part: '<h1>',
+        role: 'Opening Tag',
+        explanation: 'Tells the browser: "Start making text gigantic and bold!"',
+        effect: 'Makes text huge & bold'
+      },
+      {
+        part: '🦖 Dinosaur King',
+        role: 'Content',
+        explanation: 'The actual words and emojis you want the reader to see.',
+        effect: 'Appears directly on the screen'
+      },
+      {
+        part: '</h1>',
+        role: 'Closing Tag',
+        explanation: 'Notice the slash /. It tells the browser: "Stop! The giant heading ends here."',
+        effect: 'Prevents the next text from being huge'
+      },
+      {
+        part: '<p> ... </p>',
+        role: 'Paragraph Tag',
+        explanation: 'Short for Paragraph. Keeps sentences grouped with cozy reading space.',
+        effect: 'Normal text size with top & bottom spacing'
+      }
+    ],
+    quickTags: ['<h1>', '</h1>', '<h2>', '</h2>', '<p>', '</p>'],
     challenge: {
-      mission: 'Add an <h2> subtitle with the text "The Tale of Rex the Coder" and highlight "cyber pizza" with <mark>!',
-      hint: 'Use <h2>The Tale of Rex the Coder</h2> right below the <h1> tag.',
+      mission: 'Add an <h2> subtitle right below the <h1> that says: "The Ruler of Jurassic Valley"',
+      hint: 'Type <h2>The Ruler of Jurassic Valley</h2> under the <h1> line.',
       rules: [
         {
           type: 'hasTag',
           tag: 'h2',
-          message: 'Add an <h2> tag for the subtitle!'
+          message: 'Add an <h2> subtitle tag!'
         },
         {
           type: 'tagContainsText',
           tag: 'h2',
-          pattern: /The Tale of Rex the Coder/i,
-          message: 'The <h2> must contain "The Tale of Rex the Coder"!'
-        },
-        {
-          type: 'hasTag',
-          tag: 'mark',
-          message: 'Use a <mark> tag to highlight cyber pizza!'
+          pattern: /Jurassic Valley/i,
+          message: 'The <h2> must say "The Ruler of Jurassic Valley"!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Headings are like book chapter titles. Paragraphs are the storybook sentences.',
+      analogy: 'Heading tags are like megaphone volume: <h1> is the loudest megaphone, <h2> is normal volume, <p> is normal talking.',
       discussionQuestions: [
-        'Can you guess what <h3>, <h4>, and <h5> look like? Try typing them!',
-        'Why would you use <strong> instead of just typing in ALL CAPS?'
+        'What would happen if you removed the </h1> closing slash?',
+        'When would you use <h2> instead of <h1>?'
       ],
       commonMistakes: [
-        'Typing <h7> or <h8> (Remind them HTML only goes up to <h6>!).',
-        'Forgetting the closing </h1> tag, which makes the whole page gigantic.'
+        'Forgetting the closing slash in </h1>',
+        'Typing <h7> (HTML only goes up to <h6>)'
       ],
-      funActivity: 'Have the kid say a sentence in their <h1> voice (deep & booming) then in an <h6> voice (tiny squeak)!'
+      funActivity: 'Say a sentence in your <h1> booming voice, then in a normal <p> voice!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 3: Buttons & Clickables
+  // HTML LESSON 2: Buttons & Clicks
   // ==========================================
   {
     id: 'html-buttons',
     module: 'html',
-    title: 'Super Action Buttons',
+    title: 'Clickable Action Buttons',
     icon: '🔘',
-    tag: '<button>, <input>',
-    summary: 'Make buttons that invite people to press them and click!',
-    story: `Buttons are the steering wheel of the internet! 
-When you click a button in a game, your hero jumps. 
-In HTML, a <button> makes a clickable box. 
-You can even add a secret magic trick: onclick="alert('Yay!')" pops up a message!`,
-    tagsExplored: ['<button>', '<input type="text">', '<input type="color">'],
-    quickTags: ['<button>', '</button>', 'onclick="alert(\'BOOM!\')"', '<input type="text">', '<input type="color">'],
-    initialCode: `<h2>The Magic Lab</h2>
-<p>What happens when you press the secret button?</p>
-
-<button onclick="alert('⚡ Lightning bolt launched!')">
-  Launch Lightning
+    tag: '<button onclick="...">',
+    summary: 'Make buttons that do things when clicked.',
+    story: 'Buttons turn a static page into an interactive game! When you click, something happens.',
+    initialCode: `<button onclick="alert('⚡ Lightning Zap!')">
+  ⚡ Cast Spell
 </button>`,
-    targetCode: `<h2>The Magic Lab</h2>
-<p>What happens when you press the secret button?</p>
-
-<button onclick="alert('⚡ Lightning bolt launched!')">
-  Launch Lightning
+    targetCode: `<button onclick="alert('⚡ Lightning Zap!')">
+  ⚡ Cast Spell
 </button>
 
-<button onclick="alert('🍕 Free Pizza Delivered!')">
-  Order Pizza
+<button onclick="alert('🍕 Pizza Delivered!')">
+  🍕 Order Food
 </button>`,
-    targetDescription: `You will see two clickable buttons:
-1. "Launch Lightning" — clicking it triggers a pop-up alert: "⚡ Lightning bolt launched!"
-2. "Order Pizza" — clicking it triggers a pop-up alert: "🍕 Free Pizza Delivered!"`,
+    targetDescription: 'Two clickable buttons side-by-side. Clicking "Cast Spell" pops up a zap alert. Clicking "Order Food" pops up a pizza delivery alert.',
+    anatomy: [
+      {
+        part: '<button>',
+        role: 'Button Tag',
+        explanation: 'Draws a clickable button box with borders and click feedback.',
+        effect: 'Creates a clickable button'
+      },
+      {
+        part: 'onclick="..."',
+        role: 'Event Attribute',
+        explanation: 'Tells the button what to do when clicked (e.g. alert a message).',
+        effect: 'Triggers a pop-up alert'
+      },
+      {
+        part: '⚡ Cast Spell',
+        role: 'Label Text',
+        explanation: 'The words and icons written on the face of the button.',
+        effect: 'Appears inside the button'
+      },
+      {
+        part: '</button>',
+        role: 'Closing Tag',
+        explanation: 'Closes the button definition.',
+        effect: 'Ends the button boundary'
+      }
+    ],
+    quickTags: ['<button>', '</button>', 'onclick="alert(\'Boing!\')"', '⚡', '🍕'],
     challenge: {
-      mission: 'Add a second <button> that says "Order Pizza" and alerts "🍕 Free Pizza Delivered!" when clicked!',
-      hint: '<button onclick="alert(\'🍕 Free Pizza Delivered!\')">Order Pizza</button>',
+      mission: 'Add a second button that says "🍕 Order Food" and alerts "🍕 Pizza Delivered!" when clicked!',
+      hint: '<button onclick="alert(\'🍕 Pizza Delivered!\')">🍕 Order Food</button>',
       rules: [
-        {
-          type: 'hasTag',
-          tag: 'button',
-          message: 'Keep the button tag!'
-        },
         {
           type: 'custom',
           check: (code) => (code.match(/<button/gi) || []).length >= 2,
-          message: 'You need at least TWO buttons on the page!'
+          message: 'Add a second <button> tag!'
         },
         {
           type: 'custom',
           check: (code) => /pizza/i.test(code),
-          message: 'One button should mention "Pizza"!'
+          message: 'One button should mention Pizza!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Buttons are like elevator buttons or arcade buttons. When you press them, something happens!',
+      analogy: 'Buttons are like elevator buttons: you push them and an action occurs.',
       discussionQuestions: [
-        'What button in your favorite video game is most important?',
-        'How does the browser know what to do when you click it?'
+        'What button in your favorite game is your favorite to mash?',
+        'What else can a button do besides showing an alert?'
       ],
       commonMistakes: [
-        'Mismatched quotes inside the alert (e.g. alert("alert(\'hi\')")). Explain single quotes vs double quotes.',
-        'Spelling "button" with one "t".'
+        'Mismatched quotes inside onclick="alert(\'...\')"',
+        'Spelling "button" with a single "t"'
       ],
-      funActivity: 'Let the kid invent the funniest alert message they can think of and click it.'
+      funActivity: 'Invent the funniest alert sound or popup message you can think of!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 4: Pictures & Monsters
+  // HTML LESSON 3: Images & Pets
   // ==========================================
   {
     id: 'html-images',
     module: 'html',
-    title: 'Pictures, Pets & Monsters',
+    title: 'Pictures & Virtual Pets',
     icon: '🖼️',
     tag: '<img src="" alt="" width="">',
-    summary: 'Bring your website to life with photos, drawings, and stickers!',
-    story: `A picture is worth a thousand lines of code! 
-In HTML, the <img> tag has two superpower attributes:
-1. src (Source): Where the photo lives (like an address).
-2. alt (Alternative Text): A friendly description for people who cannot see the picture or if the internet is slow.
-Fun fact: <img> is a "void" tag! It closes itself — no </img> needed!`,
-    tagsExplored: ['<img src="" alt="">', 'width=""', 'height=""'],
-    quickTags: ['<img src="" alt="" width="150">', 'src=""', 'alt=""', 'width="200"'],
-    initialCode: `<h2>My Virtual Pet</h2>
-<p>Meet Pixel the Space Pup!</p>
-
-<img 
+    summary: 'Bring your page to life with pictures and drawings.',
+    story: 'Pictures need an address (src) to find the file and an alt description in case the image fails to load.',
+    initialCode: `<img 
   src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
-  alt="Cute fluffy puppy wearing glasses" 
-  width="200"
+  alt="Cute fluffy puppy" 
+  width="180"
 >`,
-    targetCode: `<h2>My Virtual Pet</h2>
-<p>Meet Pixel the Space Pup!</p>
-
-<img 
+    targetCode: `<img 
   src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
   alt="Cute fluffy puppy wearing glasses" 
-  width="250"
->
-<p>Favorite trick: Catching floating cyber-bones!</p>`,
-    targetDescription: `You will see:
-1. Title: "My Virtual Pet"
-2. A sharp, adorable photo of a golden puppy looking through glasses.
-3. The image has a width of 250 pixels.
-4. A caption below: "Favorite trick: Catching floating cyber-bones!"`,
+  width="260"
+>`,
+    targetDescription: 'A crisp photo of an adorable golden puppy wearing glasses, resized to 260 pixels wide.',
+    anatomy: [
+      {
+        part: '<img',
+        role: 'Image Tag',
+        explanation: 'Tells the browser to display an image (it is self-closing, no </img> needed!).',
+        effect: 'Places an image on screen'
+      },
+      {
+        part: 'src="..."',
+        role: 'Source Attribute',
+        explanation: 'Short for Source. The web link or file path where the picture lives.',
+        effect: 'Loads the picture from the link'
+      },
+      {
+        part: 'alt="..."',
+        role: 'Alternative Text',
+        explanation: 'Describes the picture for screen readers and if internet is slow.',
+        effect: 'Shows description if image is broken'
+      },
+      {
+        part: 'width="180"',
+        role: 'Size Attribute',
+        explanation: 'Controls how many pixels wide the image appears on the screen.',
+        effect: 'Controls the image size'
+      }
+    ],
+    quickTags: ['<img src="" alt="" width="200">', 'src=""', 'alt=""', 'width="260"'],
     challenge: {
-      mission: 'Change the width of the puppy image to "250" and add a paragraph about his favorite trick!',
-      hint: 'Look for width="200" and change it to width="250". Then add <p>Favorite trick: ...</p>',
+      mission: 'Change the width of the puppy image to "260" pixels!',
+      hint: 'Find width="180" and change the number to 260.',
       rules: [
         {
           type: 'hasTag',
@@ -287,108 +245,109 @@ Fun fact: <img> is a "void" tag! It closes itself — no </img> needed!`,
           message: 'Keep the <img> tag!'
         },
         {
-          type: 'hasAttribute',
-          tag: 'img',
-          attribute: 'alt',
-          message: 'Always keep an alt attribute on your image!'
-        },
-        {
           type: 'custom',
-          check: (code) => /width\s*=\s*["']?250["']?/i.test(code),
-          message: 'Set width="250" on the <img> tag!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /favorite trick/i.test(code),
-          message: 'Add a sentence mentioning the puppy\'s favorite trick!'
+          check: (code) => /width\s*=\s*["']?260["']?/i.test(code),
+          message: 'Set width="260" on the image!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'src is like the GPS coordinate of the picture. alt is like telling a friend on the phone what the picture looks like.',
+      analogy: 'src is like the address of your friend\'s house. alt is like telling a friend on the phone what the picture looks like.',
       discussionQuestions: [
-        'Why does <img> not have a closing </img> tag like <p> does?',
-        'What would happen if the image link was broken? What would the screen show?'
+        'Why does <img> NOT have a closing </img> tag like <p> does?',
+        'What happens if you type the wrong web address in src?'
       ],
       commonMistakes: [
-        'Spelling src as "scr". This is the #1 kid mistake in HTML!',
-        'Leaving out the quotation marks around the URL.'
+        'Spelling src as "scr"',
+        'Forgetting quotes around the link'
       ],
-      funActivity: 'Intentionally misspell the src link so the kid can see the alt text appear on screen!'
+      funActivity: 'Change width to 50 and then 400 to see the puppy shrink and grow!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 5: Secret Portals (Links)
+  // HTML LESSON 4: Links & Portals
   // ==========================================
   {
     id: 'html-links',
     module: 'html',
-    title: 'Secret Portals (Hyperlinks)',
+    title: 'Secret Teleport Links',
     icon: '🌐',
     tag: '<a href="" target="_blank">',
-    summary: 'Connect your page to the whole world with magical teleportation doors!',
-    story: `Why is the web called the "Web"? 
-Because billions of pages are tied together with links!
-The <a> tag stands for "Anchor".
-The href attribute stands for "Hypertext REFerence" (the destination portal).
-If you add target="_blank", it opens in a brand new tab!`,
-    tagsExplored: ['<a href="">', 'target="_blank"'],
-    quickTags: ['<a href="https://wikipedia.org" target="_blank">', '</a>', 'target="_blank"'],
-    initialCode: `<h2>Intergalactic Travel Agency</h2>
-<p>Choose your destination planet:</p>
-
-<p>
+    summary: 'Create clickable doors that take visitors to other websites.',
+    story: 'The web is connected by hyperlinks. The <a> tag stands for "Anchor", and href is the destination portal.',
+    initialCode: `<p>
   🚀 Teleport to 
   <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
 </p>`,
-    targetCode: `<h2>Intergalactic Travel Agency</h2>
-<p>Choose your destination planet:</p>
-
-<p>
+    targetCode: `<p>
   🚀 Teleport to 
   <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Planet Mars</a>!
 </p>
-
 <p>
   🪐 Teleport to 
   <a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>!
 </p>`,
-    targetDescription: `You will see two blue underlined links with spaceship emojis:
-1. "Planet Mars" linking to Wikipedia's Mars page in a new tab.
-2. "Planet Saturn" linking to Wikipedia's Saturn page in a new tab.`,
+    targetDescription: 'Two clickable blue links with space emojis. Clicking "Planet Mars" or "Planet Saturn" opens their Wikipedia page in a new tab.',
+    anatomy: [
+      {
+        part: '<a',
+        role: 'Anchor Tag',
+        explanation: 'Short for Anchor. Creates a link to another page or site.',
+        effect: 'Makes text clickable'
+      },
+      {
+        part: 'href="..."',
+        role: 'Destination Portal',
+        explanation: 'Hypertext REFerence: the exact website address where the link teleports.',
+        effect: 'Points to target URL'
+      },
+      {
+        part: 'target="_blank"',
+        role: 'New Tab Flag',
+        explanation: 'Tells the browser to open the link in a fresh, new tab.',
+        effect: 'Prevents losing current page'
+      },
+      {
+        part: 'Planet Mars',
+        role: 'Clickable Words',
+        explanation: 'The blue underlined words that the user clicks on.',
+        effect: 'Turns blue & underlined'
+      }
+    ],
+    quickTags: ['<a href="" target="_blank">', '</a>', 'target="_blank"'],
     challenge: {
-      mission: 'Add a new link to "Planet Saturn" with target="_blank" so astronauts can travel there!',
+      mission: 'Add a second link teleporting to "Planet Saturn"!',
       hint: '<a href="https://en.wikipedia.org/wiki/Saturn" target="_blank">Planet Saturn</a>',
       rules: [
         {
           type: 'custom',
           check: (code) => (code.match(/<a\s/gi) || []).length >= 2,
-          message: 'Add at least TWO links (<a> tags) to the page!'
+          message: 'Add at least TWO <a> link tags!'
         },
         {
           type: 'custom',
           check: (code) => /saturn/i.test(code),
-          message: 'Make one of your links teleport to Saturn!'
+          message: 'One link must mention Saturn!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Links are like teleportation portals in Minecraft or Roblox. You step into the text and land in another dimension!',
+      analogy: 'Links are like teleportation portals in Minecraft: step into the text and land in a new dimension.',
       discussionQuestions: [
-        'Why are links blue and underlined by default in almost every browser?',
-        'What does href mean?'
+        'Why does the mouse cursor turn into a pointing hand 👆 over links?',
+        'What does href stand for?'
       ],
       commonMistakes: [
-        'Spelling href as "herf" or "hef".',
-        'Putting the words outside the <a> tag so nothing is clickable.'
+        'Spelling href as "herf"',
+        'Putting the words outside of the <a> tag'
       ],
-      funActivity: 'Show them how hovering over a link changes the mouse cursor into a little pointing hand 👆.'
+      funActivity: 'Hover over links and watch the pointer hand appear!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 6: Treasure Lists
+  // HTML LESSON 5: Lists & Inventories
   // ==========================================
   {
     id: 'html-lists',
@@ -396,303 +355,244 @@ If you add target="_blank", it opens in a brand new tab!`,
     title: 'Treasure Lists & Inventories',
     icon: '📜',
     tag: '<ul>, <ol>, <li>',
-    summary: 'Organize your RPG gaming inventory, grocery lists, and top scores!',
-    story: `Whenever you make a checklist or gaming inventory, HTML has two special list types:
-1. <ul> = Unordered List (bullet points! Great for items where order doesn't matter).
-2. <ol> = Ordered List (1, 2, 3! Great for recipes, race rankings, or step-by-step instructions).
-Inside either list, every single item gets wrapped in <li> (List Item)!`,
-    tagsExplored: ['<ul>', '<ol>', '<li>'],
-    quickTags: ['<ul>', '</ul>', '<ol>', '</ol>', '<li>', '</li>'],
-    initialCode: `<h2>🎒 Hero Backpack Inventory</h2>
-<ul>
+    summary: 'Organize items with bullet points or numbers.',
+    story: 'Use <ul> for bullet lists (when order does not matter) and <ol> for numbered lists (1, 2, 3). Each item is an <li>.',
+    initialCode: `<ul>
   <li>Wooden Sword 🗡️</li>
   <li>Health Potion 🧪</li>
   <li>Golden Apple 🍏</li>
 </ul>`,
-    targetCode: `<h2>🎒 Hero Backpack Inventory</h2>
-<ul>
+    targetCode: `<ul>
   <li>Wooden Sword 🗡️</li>
   <li>Health Potion 🧪</li>
   <li>Golden Apple 🍏</li>
   <li>Dragon Shield 🛡️</li>
-</ul>
-
-<h3>🏆 Top Quest Rank</h3>
-<ol>
-  <li>Defeat the Slime King</li>
-  <li>Find the Secret Key</li>
-</ol>`,
-    targetDescription: `You will see:
-1. A bulleted list with 4 inventory items (Sword, Potion, Golden Apple, Dragon Shield).
-2. A numbered list with 1. Defeat the Slime King and 2. Find the Secret Key.`,
+</ul>`,
+    targetDescription: 'A clean bullet-point checklist showing 4 adventure inventory items: Sword, Potion, Golden Apple, and Dragon Shield.',
+    anatomy: [
+      {
+        part: '<ul>',
+        role: 'Unordered List',
+        explanation: 'Short for Unordered List. Creates a list with bullet dots.',
+        effect: 'Wraps items in bullet points'
+      },
+      {
+        part: '<li>',
+        role: 'List Item',
+        explanation: 'Short for List Item. Every single item in the list needs an <li> wrapper.',
+        effect: 'Creates a bullet item line'
+      },
+      {
+        part: 'Dragon Shield 🛡️',
+        role: 'Item Text',
+        explanation: 'The name of the item or task.',
+        effect: 'Displays next to the bullet'
+      },
+      {
+        part: '</li>',
+        role: 'Closing Item',
+        explanation: 'Finishes this item line so the next item starts on a new row.',
+        effect: 'Closes the list row'
+      }
+    ],
+    quickTags: ['<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>'],
     challenge: {
-      mission: 'Add a 4th inventory item "Dragon Shield 🛡️" to the <ul>, then create an <ol> ordered list with at least 2 quest steps!',
-      hint: 'Add <li>Dragon Shield 🛡️</li>, then write <ol><li>Step 1</li><li>Step 2</li></ol>',
+      mission: 'Add a 4th inventory item to the list: "Dragon Shield 🛡️"!',
+      hint: 'Add <li>Dragon Shield 🛡️</li> right before </ul>.',
       rules: [
         {
           type: 'hasTag',
           tag: 'ul',
-          message: 'Keep the <ul> tag for the backpack inventory!'
-        },
-        {
-          type: 'hasTag',
-          tag: 'ol',
-          message: 'Add an <ol> numbered list for the quest steps!'
+          message: 'Keep the <ul> tag!'
         },
         {
           type: 'custom',
           check: (code) => /Dragon Shield/i.test(code),
-          message: 'Add the Dragon Shield to your inventory list items!'
+          message: 'Add "Dragon Shield 🛡️" as a list item!'
         },
         {
           type: 'custom',
-          check: (code) => (code.match(/<li/gi) || []).length >= 5,
-          message: 'Make sure you have at least 5 <li> items in total!'
+          check: (code) => (code.match(/<li/gi) || []).length >= 4,
+          message: 'You need at least 4 <li> items!'
         }
       ]
     },
     teacherGuide: {
-      analogy: '<ul> is like your toy box where everything is mixed in. <ol> is like a race podium (1st place, 2nd place, 3rd place).',
+      analogy: '<ul> is like your toy box where toys are scattered. <ol> is like a race podium: 1st, 2nd, 3rd place.',
       discussionQuestions: [
-        'When would you use numbers instead of bullet points in real life?',
-        'Can you put a list inside another list? (Try it!)'
+        'What happens if you change <ul> to <ol>? Try it in the editor!',
+        'Can you put an emoji inside an <li>?'
       ],
       commonMistakes: [
-        'Putting text directly inside <ul> without an <li> wrapper.',
-        'Confusing <ul> (Unordered) with <ol> (Ordered).'
+        'Typing list items without <li> tags',
+        'Forgetting the closing </ul>'
       ],
-      funActivity: 'Have the kid write down their top 3 favorite video games as an <ol> list.'
+      funActivity: 'Switch <ul> to <ol> and watch the bullets instantly turn into numbers 1, 2, 3!'
     }
   },
 
   // ==========================================
-  // HTML LESSON 7: Secret Boxes & Divs
-  // ==========================================
-  {
-    id: 'html-boxes',
-    module: 'html',
-    title: 'Secret Boxes & Card Containers',
-    icon: '📦',
-    tag: '<div>, <span>, class=""',
-    summary: 'Group things together into cards and packages with <div>!',
-    story: `How do websites build cards, sidebars, and popup windows? 
-With <div>! 
-<div> stands for "Division" or "Divider", but you can think of it as an invisible cardboard box. 
-You pack a heading, a photo, and a button inside a <div> box, and give it a nickname with class="card". Then CSS can paint the whole box at once!`,
-    tagsExplored: ['<div>', '<span>', 'class=""', 'id=""'],
-    quickTags: ['<div class="card">', '</div>', '<span>', '</span>', 'class="badge"'],
-    initialCode: `<div class="card">
-  <h2>⚡ Speedster Flash</h2>
-  <p>Power level: <span>Over 9000</span></p>
-  <button>Upgrade Hero</button>
-</div>`,
-    targetCode: `<div class="card">
-  <h2>⚡ Speedster Flash</h2>
-  <p>Power level: <span class="badge">Over 9000</span></p>
-  <p>Element: Fire 🔥</p>
-  <button>Upgrade Hero</button>
-</div>`,
-    targetDescription: `You will see a structured hero profile card containing:
-1. Title: "⚡ Speedster Flash"
-2. Power level with a badge
-3. Element: Fire 🔥
-4. An "Upgrade Hero" button, all neatly grouped inside a single container box.`,
-    challenge: {
-      mission: 'Add a new paragraph inside the <div> box: "<p>Element: Fire 🔥</p>" and give the span class="badge"!',
-      hint: 'Type <p>Element: Fire 🔥</p> before the button tag, and add class="badge" to the <span> tag.',
-      rules: [
-        {
-          type: 'hasTag',
-          tag: 'div',
-          message: 'Keep the <div> wrapper!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /fire/i.test(code),
-          message: 'Add the Element: Fire inside the card!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /class\s*=\s*["']badge["']/i.test(code),
-          message: 'Add class="badge" to the <span> tag!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: '<div> is like a bento lunch box or a LEGO bin. It holds items together so you can carry them as one piece.',
-      discussionQuestions: [
-        'What is the difference between a <div> (big block box) and a <span> (inline word tag)?',
-        'Why do we give classes to elements?'
-      ],
-      commonMistakes: [
-        'Nesting divs without closing them, causing weird layout tangles.',
-        'Spelling class as "clas" or "clase".'
-      ],
-      funActivity: 'Show how moving the <div> moves everything inside it at the same time.'
-    }
-  },
-
-  // ==========================================
-  // CSS LESSON 1: Colors & Magic Paint
+  // CSS LESSON 1: Text Color & Background
   // ==========================================
   {
     id: 'css-colors',
     module: 'css',
-    title: 'Color Power & Gradients',
+    title: 'Text Color & Backgrounds',
     icon: '🎨',
-    tag: 'color, background, hex #ff007f',
-    summary: 'Turn dull gray text into blazing neon, rainbow gradients, and dark mode wonders!',
-    story: `Welcome to CSS — "Cascading Style Sheets"! 
-If HTML is the bones, CSS is the glitter, spray paint, and superhero cape!
-With CSS, you can color text with color: hotpink;
-And you can paint backgrounds with background: linear-gradient(...)!
-Computers understand color names (like crimson or gold) AND secret Hex codes (like #ff4757)!`,
-    tagsExplored: ['color', 'background-color', 'background: linear-gradient(...)', 'hex codes'],
-    quickTags: ['color: hotpink;', 'color: #2ed573;', 'background-color: #2f3542;', 'background: linear-gradient(45deg, #ff4757, #ff6b81);'],
+    tag: 'color, background-color',
+    summary: 'Paint your text with vibrant colors and backgrounds.',
+    story: 'In CSS, "color" changes the words, while "background-color" paints the box behind the words.',
     initialCode: `<style>
-  body {
-    background-color: #1e272e;
-    color: white;
-    font-family: sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
   h1 {
-    color: gold;
+    color: #ff757f;
+    background-color: #1e2030;
+    padding: 12px;
   }
 </style>
 
-<h1>✨ Cyber Arcade ✨</h1>
-<p>Choose your glowing token color!</p>`,
+<h1>✨ Cyber Arcade ✨</h1>`,
     targetCode: `<style>
-  body {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    font-family: sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
   h1 {
-    color: #ff007f;
-  }
-  p {
-    color: #00f2fe;
+    color: #2dd4bf;
+    background-color: #1e2030;
+    padding: 12px;
   }
 </style>
 
-<h1>✨ Cyber Arcade ✨</h1>
-<p>Choose your glowing token color!</p>`,
-    targetDescription: `You will see a deep space twilight background with a smooth gradient from midnight blue to teal, a blazing neon magenta title ("✨ Cyber Arcade ✨"), and bright cyan text below.`,
+<h1>✨ Cyber Arcade ✨</h1>`,
+    targetDescription: 'A dark slate card containing the title "✨ Cyber Arcade ✨" glowing in bright mint cyan (#2dd4bf).',
+    anatomy: [
+      {
+        part: 'h1 { ... }',
+        role: 'CSS Selector',
+        explanation: 'Chooses which HTML element to paint. Here it chooses all <h1> tags.',
+        effect: 'Applies styles to <h1>'
+      },
+      {
+        part: 'color: #ff757f;',
+        role: 'Text Color',
+        explanation: 'Paints the letters themselves. Hex #ff757f is coral pink.',
+        effect: 'Changes the letter color'
+      },
+      {
+        part: 'background-color: #1e2030;',
+        role: 'Box Background',
+        explanation: 'Paints the background area behind the letters dark navy.',
+        effect: 'Paints the card background'
+      },
+      {
+        part: '; (semicolon)',
+        role: 'Rule Terminator',
+        explanation: 'Like a period at the end of a sentence. Tells CSS this property is finished.',
+        effect: 'Separates style rules'
+      }
+    ],
+    quickTags: ['color: #2dd4bf;', 'color: #ff757f;', 'color: gold;', 'background-color: #111827;'],
     challenge: {
-      mission: 'Change the h1 color to "#ff007f" (hot magenta) and set the paragraph color to "#00f2fe" (cyber cyan)!',
-      hint: 'In the <style> section, write h1 { color: #ff007f; } and p { color: #00f2fe; }',
+      mission: 'Change the h1 color to "#2dd4bf" (cyber teal)!',
+      hint: 'In h1 { ... }, change color: #ff757f; to color: #2dd4bf;',
       rules: [
         {
           type: 'hasCssProperty',
           property: 'color',
-          valuePattern: /#ff007f|rgb\(255,\s*0,\s*127\)|magenta/i,
-          message: 'Set the h1 color to #ff007f!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'color',
-          valuePattern: /#00f2fe|cyan/i,
-          message: 'Set the paragraph color to #00f2fe!'
+          valuePattern: /#2dd4bf|teal|cyan/i,
+          message: 'Set the h1 color to #2dd4bf!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Hex codes are like secret recipes for color. The first two letters are Red, next two are Green, last two are Blue (RGB)!',
+      analogy: 'color is the crayon for your words. background-color is the colored paper you are drawing on.',
       discussionQuestions: [
-        'What happens if you type color: red; instead of a hex code?',
-        'Can you guess what #ffffff and #000000 mean?'
+        'What happens if you type color: gold; instead of a hex code?',
+        'Why does every CSS rule need a semicolon ; at the end?'
       ],
       commonMistakes: [
-        'Forgetting the semicolon ; at the end of each CSS property.',
-        'Forgetting the # sign before a hex code.'
+        'Missing the # sign before hex colors',
+        'Forgetting the semicolon at the end of the line'
       ],
-      funActivity: 'Show them how #ff0000 is pure red, #00ff00 is pure green, and #0000ff is pure blue.'
+      funActivity: 'Try typing color: hotpink; or color: lime; and watch it change immediately!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 2: Fonts & Typography
+  // CSS LESSON 2: Font Size & Text Shadows
   // ==========================================
   {
     id: 'css-fonts',
     module: 'css',
-    title: 'Epic Typography & Text Shadows',
+    title: 'Font Size & Neon Glow',
     icon: '🔤',
-    tag: 'font-family, font-size, text-shadow',
-    summary: 'Make words look like comic books, futuristic computer terminals, or neon street signs!',
-    story: `Fonts give your words personality! 
-A scary haunted house needs a spooky font. 
-A sci-fi spaceship needs a sharp, robotic font.
-With font-size you can make text gigantic (like 48px).
-And with text-shadow, you can make your letters glow like neon lights in the dark!`,
-    tagsExplored: ['font-family', 'font-size', 'font-weight', 'text-shadow', 'letter-spacing'],
-    quickTags: ['font-family: cursive;', 'font-size: 40px;', 'text-shadow: 0 0 10px #ff4757;', 'letter-spacing: 4px;'],
+    tag: 'font-size, text-shadow',
+    summary: 'Make words gigantic and make them glow like neon lights.',
+    story: 'font-size controls how tall letters stand. text-shadow shines a colored glow behind the letters.',
     initialCode: `<style>
-  body {
-    background-color: #2f3542;
-    text-align: center;
-    padding: 30px;
-    font-family: sans-serif;
-  }
-  .neon-title {
-    color: #ffffff;
+  .title {
     font-size: 32px;
-  }
-</style>
-
-<h1 class="neon-title">NEON NIGHTS</h1>
-<p style="color: #a4b0be;">Welcome to the cyber boulevard</p>`,
-    targetCode: `<style>
-  body {
-    background-color: #2f3542;
-    text-align: center;
-    padding: 30px;
-    font-family: sans-serif;
-  }
-  .neon-title {
     color: #ffffff;
-    font-size: 48px;
-    letter-spacing: 6px;
-    text-shadow: 0 0 10px #ff4757, 0 0 20px #ff6b81, 0 0 30px #ff4757;
+    text-shadow: 0 0 10px #f472b6;
   }
 </style>
 
-<h1 class="neon-title">NEON NIGHTS</h1>
-<p style="color: #a4b0be;">Welcome to the cyber boulevard</p>`,
-    targetDescription: `You will see a dark slate background with a huge 48px title "NEON NIGHTS" spaced out with 6px letter-spacing, radiating a vivid red-pink glowing neon text shadow!`,
+<div class="title">NEON NIGHTS</div>`,
+    targetCode: `<style>
+  .title {
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 0 0 15px #f472b6, 0 0 30px #f472b6;
+  }
+</style>
+
+<div class="title">NEON NIGHTS</div>`,
+    targetDescription: 'The words "NEON NIGHTS" appear in a gigantic 48px size radiating a vivid hot-pink neon glow in the dark!',
+    anatomy: [
+      {
+        part: '.title',
+        role: 'Class Selector',
+        explanation: 'Targets any element that has class="title". The dot . stands for class.',
+        effect: 'Selects class="title"'
+      },
+      {
+        part: 'font-size: 48px;',
+        role: 'Letter Height',
+        explanation: 'Sets how many pixels tall the letters are. 48px makes it gigantic!',
+        effect: 'Enlarges the letters'
+      },
+      {
+        part: 'text-shadow: 0 0 15px #f472b6;',
+        role: 'Neon Glow',
+        explanation: 'Horizontal blur, vertical blur, blur radius (15px), and glow color.',
+        effect: 'Creates neon halo glow'
+      }
+    ],
+    quickTags: ['font-size: 48px;', 'text-shadow: 0 0 20px #f472b6;', 'letter-spacing: 4px;'],
     challenge: {
-      mission: 'Make the .neon-title font-size "48px" and give it a glowing text-shadow with "#ff4757"!',
-      hint: 'Add font-size: 48px; and text-shadow: 0 0 15px #ff4757; inside the .neon-title rule!',
+      mission: 'Make the .title font-size "48px" and increase the text-shadow glow!',
+      hint: 'Change font-size: 32px; to font-size: 48px;',
       rules: [
         {
           type: 'hasCssProperty',
           property: 'font-size',
           valuePattern: /48px/i,
-          message: 'Set font-size to 48px in .neon-title!'
+          message: 'Set font-size to 48px!'
         },
         {
           type: 'hasCssProperty',
           property: 'text-shadow',
-          message: 'Add a text-shadow property to create a glow!'
+          message: 'Keep the text-shadow glow!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'text-shadow is like shining a flashlight behind your letters onto a wall.',
+      analogy: 'text-shadow is like shining a colored flashlight behind your letters onto a bedroom wall.',
       discussionQuestions: [
-        'What does px stand for? (Pixels — tiny dots on the screen!)',
-        'Why do video games use big, blocky fonts instead of cursive handwriting fonts?'
+        'What does "px" stand for? (Pixels — tiny light dots on the screen)',
+        'What happens if you increase blur from 10px to 30px?'
       ],
       commonMistakes: [
-        'Writing "48 px" with a space between 48 and px. CSS units must touch the number!',
-        'Missing the blur amount in text-shadow.'
+        'Writing "48 px" with a space between number and px (they must touch!)',
+        'Leaving out the dot . in the class selector'
       ],
-      funActivity: 'Count how many pixels wide the monitor screen is (e.g. 1920x1080).'
+      funActivity: 'Set font-size: 80px to see words explode across the preview!'
     }
   },
 
@@ -702,403 +602,358 @@ And with text-shadow, you can make your letters glow like neon lights in the dar
   {
     id: 'css-box-model',
     module: 'css',
-    title: 'The Secret Box Model',
+    title: 'Padding vs Border vs Margin',
     icon: '📦',
-    tag: 'margin, border, padding, width',
-    summary: 'Every HTML element lives in an invisible 4-layer box! Learn the secret sandwich.',
-    story: `The Box Model is the most important secret in all of web design!
-Imagine you are packing a valuable crystal trophy into a shipping box:
-1. Content: The crystal trophy itself (your text or picture).
-2. Padding: Bubble wrap inside the box to protect the trophy from hitting the walls!
-3. Border: The sturdy cardboard walls of the box!
-4. Margin: The empty personal space around your box so nobody bumps into it!`,
-    tagsExplored: ['margin', 'border', 'padding', 'width', 'box-sizing'],
-    quickTags: ['padding: 20px;', 'margin: 30px auto;', 'border: 4px solid #2ed573;', 'border-radius: 16px;'],
+    tag: 'padding, border, margin',
+    summary: 'The secret 3-layer cushion of every web element.',
+    story: 'Padding is bubble wrap inside the box. Border is the cardboard wall. Margin is personal space outside.',
     initialCode: `<style>
-  body {
-    background-color: #f1f2f6;
-    padding: 20px;
-    font-family: sans-serif;
-  }
   .box {
-    background-color: white;
-    /* Bubble wrap inside */
+    background-color: #1e2030;
+    color: #ffffff;
+    /* Inside bubble wrap */
     padding: 10px;
-    /* Wall */
-    border: 2px solid #747d8c;
-    /* Personal space outside */
+    /* Cardboard wall */
+    border: 2px solid #64748b;
+    /* Outside personal space */
     margin: 10px;
   }
 </style>
 
 <div class="box">
   <h3>I am in a box!</h3>
-  <p>Change my padding and margin to see me grow!</p>
+  <p>Increase my padding and border to make me cozy!</p>
 </div>`,
     targetCode: `<style>
-  body {
-    background-color: #f1f2f6;
-    padding: 20px;
-    font-family: sans-serif;
-  }
   .box {
-    background-color: white;
-    padding: 30px;
-    border: 4px solid #2ed573;
-    margin: 40px auto;
-    max-width: 350px;
-    border-radius: 16px;
+    background-color: #1e2030;
+    color: #ffffff;
+    padding: 24px;
+    border: 4px solid #2dd4bf;
+    margin: 20px;
   }
 </style>
 
 <div class="box">
   <h3>I am in a box!</h3>
-  <p>Change my padding and margin to see me grow!</p>
+  <p>Increase my padding and border to make me cozy!</p>
 </div>`,
-    targetDescription: `You will see a clean card centered on the screen with a bright emerald green border (4px solid), generous cozy padding (30px) giving the text lots of breathing room, and 40px margin spacing it nicely.`,
+    targetDescription: 'A centered navy box with a thick 4px bright cyan border and cozy 24px padding giving the text breathing room.',
+    anatomy: [
+      {
+        part: 'padding: 24px;',
+        role: 'Inside Cushion',
+        explanation: 'Bubble wrap inside the box so text does not bump against the border walls.',
+        effect: 'Expands breathing room inside'
+      },
+      {
+        part: 'border: 4px solid #2dd4bf;',
+        role: 'The Wall',
+        explanation: 'Thickness (4px), pattern (solid), and color (#2dd4bf) of the outer wall.',
+        effect: 'Draws a solid cyan wall'
+      },
+      {
+        part: 'margin: 20px;',
+        role: 'Outside Space',
+        explanation: 'Personal space outside the box so other elements stay away.',
+        effect: 'Pushes neighboring elements away'
+      }
+    ],
+    quickTags: ['padding: 24px;', 'border: 4px solid #2dd4bf;', 'margin: 20px;', 'border-radius: 12px;'],
     challenge: {
-      mission: 'Increase the padding to "30px" and change the border to "4px solid #2ed573"!',
-      hint: 'In .box, change padding: 30px; and border: 4px solid #2ed573;',
+      mission: 'Set padding to "24px" and change the border to "4px solid #2dd4bf"!',
+      hint: 'In .box, set padding: 24px; and border: 4px solid #2dd4bf;',
       rules: [
         {
           type: 'hasCssProperty',
           property: 'padding',
-          valuePattern: /30px/i,
-          message: 'Set padding to 30px on .box!'
+          valuePattern: /24px/i,
+          message: 'Set padding to 24px!'
         },
         {
           type: 'hasCssProperty',
           property: 'border',
-          valuePattern: /4px.*#2ed573|4px.*green/i,
-          message: 'Set border to 4px solid #2ed573 on .box!'
+          valuePattern: /4px.*#2dd4bf|4px.*teal/i,
+          message: 'Set border to 4px solid #2dd4bf!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Padding is inside cushion (fluff in your coat). Margin is personal space outside (arms length so no one touches you).',
+      analogy: 'Padding is thick stuffing inside your coat. Margin is your arms stretched out asking friends for personal space.',
       discussionQuestions: [
-        'If you want a button to be bigger to click on, do you change padding or margin?',
-        'What happens if you set margin to auto?'
+        'If you want a button to be bigger and easier to tap, do you increase padding or margin?',
+        'What happens if you remove padding: 0?'
       ],
       commonMistakes: [
-        'Confusing padding (inside) with margin (outside).',
-        'Forgetting "solid" in the border property (e.g. border: 4px #2ed573 won\'t show without solid!).'
+        'Confusing padding (inside) with margin (outside)',
+        'Leaving out the word "solid" in the border rule'
       ],
-      funActivity: 'Stand up and have the kid put on a thick coat (padding) and stretch arms out (margin)!'
+      funActivity: 'Set padding: 60px to watch the box puff up like a marshmallow!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 4: Rounded Corners & Shapes
+  // CSS LESSON 4: Rounded Corners & Circles
   // ==========================================
   {
     id: 'css-shapes',
     module: 'css',
-    title: 'Rounded Corners & Magic Badges',
+    title: 'Rounded Corners & Avatar Circles',
     icon: '🔮',
-    tag: 'border-radius, 50%, pills',
-    summary: 'Turn sharp square boxes into smooth pebbles, pills, and perfect round avatar circles!',
-    story: `Computers love sharp corners, but humans love smooth, friendly curves!
-The secret spell is border-radius.
-- border-radius: 8px gives a gentle phone-app curve.
-- border-radius: 30px turns a button into a smooth pill shape.
-- border-radius: 50% turns an exact square into a PERFECT CIRCLE!`,
-    tagsExplored: ['border-radius: 8px', 'border-radius: 50%', 'pill buttons'],
-    quickTags: ['border-radius: 50%;', 'border-radius: 25px;', 'overflow: hidden;'],
+    tag: 'border-radius: 50%, pills',
+    summary: 'Turn sharp square corners into smooth curved pebbles and circles.',
+    story: 'border-radius rounds sharp corners. border-radius: 50% turns an exact square into a perfect circle!',
     initialCode: `<style>
-  body {
-    background: #dfe4ea;
-    text-align: center;
-    font-family: sans-serif;
-    padding: 30px;
-  }
   .avatar {
-    width: 120px;
-    height: 120px;
-    background-color: #ff6b81;
-    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    background: #ff757f;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
-    border: 4px solid white;
-    /* Make me a circle! */
-    border-radius: 0px;
-  }
-  .pill-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 12px 28px;
-    background: #70a1ff;
-    color: white;
-    border: none;
-    font-size: 16px;
-    /* Make me a pill! */
+    font-size: 40px;
+    /* Turn me into a circle! */
     border-radius: 0px;
   }
 </style>
 
-<div class="avatar">🐱</div>
-<button class="pill-btn">Add Friend</button>`,
+<div class="avatar">🐱</div>`,
     targetCode: `<style>
-  body {
-    background: #dfe4ea;
-    text-align: center;
-    font-family: sans-serif;
-    padding: 30px;
-  }
   .avatar {
-    width: 120px;
-    height: 120px;
-    background-color: #ff6b81;
-    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    background: #ff757f;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
-    border: 4px solid white;
+    font-size: 40px;
     border-radius: 50%;
   }
-  .pill-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 12px 28px;
-    background: #70a1ff;
-    color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 30px;
-  }
 </style>
 
-<div class="avatar">🐱</div>
-<button class="pill-btn">Add Friend</button>`,
-    targetDescription: `You will see a perfectly round bubblegum pink circle (border-radius: 50%) with a cute kitten emoji inside, and below it a sleek smooth pill-shaped button (border-radius: 30px) that says "Add Friend".`,
+<div class="avatar">🐱</div>`,
+    targetDescription: 'A perfectly round coral pink avatar badge with a cute cat emoji in the center.',
+    anatomy: [
+      {
+        part: 'width: 100px; height: 100px;',
+        role: 'Square Dimensions',
+        explanation: 'Equal width and height makes an exact square.',
+        effect: 'Creates a square box'
+      },
+      {
+        part: 'border-radius: 50%;',
+        role: 'Circle Spell',
+        explanation: 'Curves the 4 corners so much that the square morphs into a circle.',
+        effect: 'Turns the square into a circle'
+      }
+    ],
+    quickTags: ['border-radius: 50%;', 'border-radius: 20px;', 'border-radius: 12px;'],
     challenge: {
-      mission: 'Make the avatar a perfect circle with border-radius: 50% and make the button a pill with border-radius: 30px!',
-      hint: 'In .avatar set border-radius: 50%; and in .pill-btn set border-radius: 30px;',
+      mission: 'Set border-radius: 50% on the .avatar to make it a circle!',
+      hint: 'Change border-radius: 0px; to border-radius: 50%;',
       rules: [
         {
           type: 'hasCssProperty',
           property: 'border-radius',
           valuePattern: /50%/i,
-          message: 'Set border-radius: 50% on .avatar to make it a circle!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'border-radius',
-          valuePattern: /30px|25px/i,
-          message: 'Set border-radius: 30px on .pill-btn!'
+          message: 'Set border-radius: 50% on .avatar!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Imagine taking sandpaper to the sharp edges of a wooden block until it becomes smooth and round.',
+      analogy: 'Imagine taking sandpaper to the 4 sharp corners of a wooden block until it becomes a ball.',
       discussionQuestions: [
         'Why does 50% make a square into a circle?',
-        'Look around at your favorite apps (YouTube, Discord, Roblox). Are buttons sharp or rounded?'
+        'What shape happens if the width is 200px and height is 100px?'
       ],
       commonMistakes: [
-        'Using 50px instead of 50% on a square. (Explain the difference between fixed pixels and percentages).',
-        'Forgetting the % sign.'
+        'Typing 50px instead of 50% (pixels curve corners slightly; percent makes a circle)'
       ],
-      funActivity: 'Ask the kid to try setting border-radius: 10px, 20px, 100px to watch it morph.'
+      funActivity: 'Try border-radius: 20px to see an iPhone app icon shape!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 5: Flexbox Superpowers
+  // CSS LESSON 5: Flexbox Alignment
   // ==========================================
   {
     id: 'css-flexbox',
     module: 'css',
-    title: 'Flexbox: The LEGO Snap System',
+    title: 'Flexbox: Snapping Items in Line',
     icon: '🧩',
-    tag: 'display: flex, justify-content, gap',
-    summary: 'Line up buttons, emojis, and cards side-by-side like magic LEGO blocks!',
-    story: `Before Flexbox, putting three items side-by-side was a nightmare! 
-Now, all you do is whisper display: flex; to the parent box, and BOOM! 
-All the children snap into a neat row like ducks in a line.
-- justify-content: center puts them right in the middle!
-- justify-content: space-between spreads them across the screen!
-- gap: 20px puts equal air space between each block!`,
-    tagsExplored: ['display: flex', 'justify-content', 'align-items', 'gap', 'flex-direction'],
-    quickTags: ['display: flex;', 'justify-content: center;', 'justify-content: space-between;', 'align-items: center;', 'gap: 20px;'],
+    tag: 'display: flex, justify-content',
+    summary: 'Line up buttons and cards side-by-side like LEGO bricks.',
+    story: 'Normally elements stack on top of each other. display: flex makes them snap into a horizontal row!',
     initialCode: `<style>
-  body {
-    background: #1e272e;
-    color: white;
-    font-family: sans-serif;
-    padding: 30px;
-    text-align: center;
+  .row {
+    background: #1e2030;
+    padding: 16px;
+    /* Add flex superpowers here! */
   }
-  .lego-row {
-    background: #485460;
-    padding: 20px;
-    border-radius: 12px;
-    /* Add flex powers here! */
-  }
-  .block {
-    background: #ffa801;
-    color: black;
+  .item {
+    background: #fbbf24;
+    color: #000000;
     font-weight: bold;
-    font-size: 24px;
-    padding: 15px 25px;
+    padding: 10px 18px;
     border-radius: 8px;
-    margin: 5px;
+    margin: 4px;
   }
 </style>
 
-<h2>🎮 Arcade Team Roster</h2>
-<div class="lego-row">
-  <div class="block">🤖 Bot</div>
-  <div class="block">🐱 Cat</div>
-  <div class="block">🚀 Rocket</div>
+<div class="row">
+  <div class="item">🤖 Bot</div>
+  <div class="item">🐱 Cat</div>
+  <div class="item">🚀 Rocket</div>
 </div>`,
     targetCode: `<style>
-  body {
-    background: #1e272e;
-    color: white;
-    font-family: sans-serif;
-    padding: 30px;
-    text-align: center;
-  }
-  .lego-row {
-    background: #485460;
-    padding: 20px;
-    border-radius: 12px;
+  .row {
+    background: #1e2030;
+    padding: 16px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
   }
-  .block {
-    background: #ffa801;
-    color: black;
+  .item {
+    background: #fbbf24;
+    color: #000000;
     font-weight: bold;
-    font-size: 24px;
-    padding: 15px 25px;
+    padding: 10px 18px;
     border-radius: 8px;
   }
 </style>
 
-<h2>🎮 Arcade Team Roster</h2>
-<div class="lego-row">
-  <div class="block">🤖 Bot</div>
-  <div class="block">🐱 Cat</div>
-  <div class="block">🚀 Rocket</div>
+<div class="row">
+  <div class="item">🤖 Bot</div>
+  <div class="item">🐱 Cat</div>
+  <div class="item">🚀 Rocket</div>
 </div>`,
-    targetDescription: `Instead of the 3 team member blocks stacking vertically on top of each other, they will snap into a neat horizontal row, perfectly centered side-by-side with a nice 20px gap between them!`,
+    targetDescription: 'The 3 team member badges snap from a vertical column into a horizontal row, neatly centered with 16px gap spacing.',
+    anatomy: [
+      {
+        part: 'display: flex;',
+        role: 'Flex Superpower',
+        explanation: 'Snaps all child elements into a single horizontal row.',
+        effect: 'Puts items side-by-side'
+      },
+      {
+        part: 'justify-content: center;',
+        role: 'Lineup Position',
+        explanation: 'Centers all the items together in the middle of the row.',
+        effect: 'Centers items horizontally'
+      },
+      {
+        part: 'gap: 16px;',
+        role: 'Spacer',
+        explanation: 'Creates clean breathing room between each item without messy margins.',
+        effect: 'Adds equal space between items'
+      }
+    ],
+    quickTags: ['display: flex;', 'justify-content: center;', 'justify-content: space-between;', 'gap: 16px;'],
     challenge: {
-      mission: 'Add display: flex;, justify-content: center;, and gap: 20px; inside .lego-row!',
-      hint: 'Inside .lego-row { ... }, add display: flex; justify-content: center; gap: 20px;',
+      mission: 'Add display: flex;, justify-content: center;, and gap: 16px; inside .row!',
+      hint: 'Inside .row { ... }, write display: flex; justify-content: center; gap: 16px;',
       rules: [
         {
           type: 'hasCssProperty',
           property: 'display',
           valuePattern: /flex/i,
-          message: 'Set display: flex; on .lego-row!'
+          message: 'Set display: flex; on .row!'
         },
         {
           type: 'hasCssProperty',
           property: 'justify-content',
           valuePattern: /center|space-between|space-around/i,
-          message: 'Add justify-content (like center) to .lego-row!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'gap',
-          message: 'Add a gap property (e.g. gap: 20px;) to space the blocks!'
+          message: 'Add justify-content: center; on .row!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Flexbox is like a magnetic train track. As soon as you turn the magnet on (display: flex), all the train cars latch together in a line.',
+      analogy: 'Flexbox is like a magnetic train track: cars immediately latch together in a neat row.',
       discussionQuestions: [
-        'What happens if you change flex-direction to column?',
-        'What does space-between do compared to center?'
+        'What happens if you change justify-content to space-between?',
+        'Does display: flex go on the parent container or the child item?'
       ],
       commonMistakes: [
-        'Putting display: flex on the child (.block) instead of the parent container (.lego-row).',
-        'Spelling justify-content as "justify-items".'
+        'Putting display: flex on .item instead of the parent .row'
       ],
-      funActivity: 'Have kids line up toys or pencils on the table and show how justify-content rearranges them.'
+      funActivity: 'Try justify-content: space-between to push the rocket and robot to opposite walls!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 6: Hover Powers & Transitions
+  // CSS LESSON 6: Hover & Zoom
   // ==========================================
   {
     id: 'css-hover',
     module: 'css',
-    title: 'Hover Powers & Micro-Interactions',
+    title: 'Hover Powers & Zoom',
     icon: '✨',
-    tag: ':hover, transform: scale, transition',
-    summary: 'Make buttons pop, glow, and spring to life when the mouse hovers over them!',
-    story: `Have you ever noticed how in games when your mouse hovers over an item, it shines, jiggles, or grows bigger?
-In CSS, we use the magical pseudo-class: :hover!
-And to make the movement silky smooth instead of teleporting instantly, we add transition: transform 0.3s ease;!
-transform: scale(1.15) makes it grow 15% larger!`,
-    tagsExplored: [':hover', 'transform: scale()', 'transition: all 0.3s ease', 'cursor: pointer'],
-    quickTags: [':hover', 'transform: scale(1.15);', 'transition: all 0.3s ease;', 'box-shadow: 0 10px 20px rgba(0,0,0,0.2);'],
+    tag: ':hover, transform: scale',
+    summary: 'Make buttons pop and grow bigger when mouse hovers over them.',
+    story: 'The :hover pseudo-class activates styles only when the cursor moves over the element.',
     initialCode: `<style>
-  body {
-    background: #2c3e50;
-    text-align: center;
-    padding: 40px;
-    font-family: sans-serif;
-  }
-  .power-btn {
-    background: #e74c3c;
+  .btn {
+    background: #f87171;
     color: white;
-    font-size: 22px;
-    padding: 16px 36px;
+    font-size: 18px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 14px;
+    border-radius: 10px;
     cursor: pointer;
-    /* Add transition here so it grows smoothly! */
     transition: transform 0.2s;
   }
-  /* Write the :hover rule here! */
+  /* Add hover rule here! */
 </style>
 
-<button class="power-btn">
-  ⚡ Power Up!
-</button>`,
+<button class="btn">⚡ Power Up</button>`,
     targetCode: `<style>
-  body {
-    background: #2c3e50;
-    text-align: center;
-    padding: 40px;
-    font-family: sans-serif;
-  }
-  .power-btn {
-    background: #e74c3c;
+  .btn {
+    background: #f87171;
     color: white;
-    font-size: 22px;
-    padding: 16px 36px;
+    font-size: 18px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 14px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s;
   }
-  .power-btn:hover {
-    transform: scale(1.2);
-    background: #ff5252;
-    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.6);
+  .btn:hover {
+    transform: scale(1.15);
+    background: #ef4444;
   }
 </style>
 
-<button class="power-btn">
-  ⚡ Power Up!
-</button>`,
-    targetDescription: `When you move your mouse cursor over the red button, it smoothly zooms 20% bigger (scale 1.2), brightens its shade, and casts a gorgeous neon red glow shadow! When the mouse moves away, it gently shrinks back.`,
+<button class="btn">⚡ Power Up</button>`,
+    targetDescription: 'When your mouse pointer hovers over the red button, it smoothly zooms 15% larger like a video game action button!',
+    anatomy: [
+      {
+        part: '.btn:hover',
+        role: 'Hover State',
+        explanation: 'Applies these styles only while the mouse is hovering over the button.',
+        effect: 'Triggers on mouse over'
+      },
+      {
+        part: 'transform: scale(1.15);',
+        role: 'Zoom Scale',
+        explanation: 'Multiplies the size by 1.15 (15% larger).',
+        effect: 'Makes the button grow'
+      },
+      {
+        part: 'transition: transform 0.2s;',
+        role: 'Smooth Animation',
+        explanation: 'Makes the growth take 0.2 seconds smoothly instead of jumping instantly.',
+        effect: 'Smooths the motion'
+      }
+    ],
+    quickTags: ['.btn:hover {', 'transform: scale(1.15);', 'background: #ef4444;', '}'],
     challenge: {
-      mission: 'Create a .power-btn:hover rule that sets transform: scale(1.2); and changes the background!',
-      hint: '.power-btn:hover { transform: scale(1.2); background: #ff5252; }',
+      mission: 'Add a .btn:hover rule that sets transform: scale(1.15);!',
+      hint: 'Write .btn:hover { transform: scale(1.15); }',
       rules: [
         {
           type: 'custom',
           check: (code) => /:hover/i.test(code),
-          message: 'Add the :hover selector to your CSS!'
+          message: 'Add the :hover selector!'
         },
         {
           type: 'hasCssProperty',
@@ -1109,204 +964,84 @@ transform: scale(1.15) makes it grow 15% larger!`,
       ]
     },
     teacherGuide: {
-      analogy: ':hover is like a pet that wags its tail when you reach out your hand to pet it.',
+      analogy: ':hover is like a puppy that wags its tail when you reach out your hand.',
       discussionQuestions: [
-        'What would happen if you forgot transition? (It would snap instantly without smooth animation!)',
-        'Can you rotate a button on hover? Try transform: rotate(10deg);!'
+        'What would happen if you forgot transition? (It would snap abruptly)',
+        'What does scale(1.3) do compared to scale(0.9)?'
       ],
       commonMistakes: [
-        'Putting a space between the class name and the colon (e.g. .power-btn :hover with a space means something else!).',
-        'Spelling transition as "transistion".'
+        'Putting a space between .btn and :hover (.btn:hover must touch!)'
       ],
-      funActivity: 'Try transform: rotate(-10deg) scale(1.2) to make the button playfully tilt!'
+      funActivity: 'Try transform: rotate(10deg) scale(1.2) to make the button tilt playfully!'
     }
   },
 
   // ==========================================
-  // CSS LESSON 7: Animations & Wobbles
-  // ==========================================
-  {
-    id: 'css-animations',
-    module: 'css',
-    title: 'Alive & Bouncing: Keyframe Animations',
-    icon: '🎈',
-    tag: '@keyframes, animation, infinite',
-    summary: 'Make elements bounce, float, pulse, and dance on their own continuously!',
-    story: `Why wait for a mouse hover when your elements can dance all by themselves?
-With @keyframes, you become an animator like at Pixar or Disney!
-You define:
-- 0%: How the element starts.
-- 50%: What it looks like halfway through.
-- 100%: How it finishes.
-Then you attach it: animation: float 2s infinite ease-in-out;!`,
-    tagsExplored: ['@keyframes', 'animation', 'infinite', 'alternate'],
-    quickTags: ['@keyframes bounce {', 'animation: bounce 1.5s infinite;', 'transform: translateY(-20px);'],
-    initialCode: `<style>
-  body {
-    background: #0c2461;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    margin: 0;
-  }
-  .alien {
-    font-size: 70px;
-    /* Hook up the animation here! */
-  }
-  /* Write @keyframes bounce here! */
-</style>
-
-<div class="alien">👾</div>`,
-    targetCode: `<style>
-  body {
-    background: #0c2461;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    margin: 0;
-  }
-  .alien {
-    font-size: 70px;
-    animation: bounce 1s infinite alternate ease-in-out;
-  }
-  @keyframes bounce {
-    0% {
-      transform: translateY(0px) scale(1);
-    }
-    100% {
-      transform: translateY(-30px) scale(1.1);
-    }
-  }
-</style>
-
-<div class="alien">👾</div>`,
-    targetDescription: `You will see a purple alien invader 👾 continuously floating up and down in space, bouncing smoothly like it is floating in zero gravity!`,
-    challenge: {
-      mission: 'Add the @keyframes bounce animation and attach animation: bounce 1s infinite alternate; to .alien!',
-      hint: 'Define @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-30px); } } and set animation on .alien!',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => /@keyframes\s+bounce/i.test(code),
-          message: 'Define the @keyframes bounce rule!'
-        },
-        {
-          type: 'hasCssProperty',
-          property: 'animation',
-          valuePattern: /bounce/i,
-          message: 'Attach the bounce animation to .alien!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Keyframes are like flipbook drawings. You draw frame 1, frame 2, frame 3, and flip them super fast to make it move.',
-      discussionQuestions: [
-        'What does infinite mean in animation? (It loops forever without stopping!)',
-        'What happens if you change 1s to 0.2s or 5s?'
-      ],
-      commonMistakes: [
-        'Mismatched animation name in @keyframes and the animation property.',
-        'Leaving off the time unit (writing 1 instead of 1s).'
-      ],
-      funActivity: 'Change 1s to 0.1s and watch the alien vibrate like it drank 5 cups of espresso!'
-    }
-  },
-
-  // ==========================================
-  // PROJECT 1: Superhero / Monster ID Card
+  // PROJECT 1: Superhero Trading Card
   // ==========================================
   {
     id: 'proj-superhero-card',
     module: 'projects',
-    title: 'Project 1: Superhero / Pet ID Card',
+    title: 'Project 1: Superhero ID Card',
     icon: '🦸',
     tag: 'Full Mini-Project',
-    summary: 'Put all your superpowers together: create a collectible trading card for a superhero or mythical pet!',
-    story: `Time to show off your real coding chops! 
-In this project, you will build a complete, collectible trading card featuring an avatar, superhero title, power stats badges, and an interactive superpower button.`,
-    tagsExplored: ['Full HTML + CSS integration', 'Flexbox layout', 'Card styling', 'Hover glow'],
-    quickTags: ['<div class="card">', '<span class="badge">', 'border-radius: 20px;', 'box-shadow: 0 10px 30px rgba(...)'],
+    summary: 'Combine your skills into a collectible hero card.',
+    story: 'Build a trading card featuring an avatar, name, power badge, and superpower button.',
     initialCode: `<style>
-  body {
-    background: #1a1a2e;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  }
   .card {
-    background: #16213e;
+    background: #1e2030;
     color: white;
-    padding: 25px;
-    border-radius: 15px;
+    padding: 24px;
+    border-radius: 16px;
     text-align: center;
-    max-width: 280px;
+    max-width: 260px;
+    border: 2px solid #7c6cf7;
   }
-  .avatar {
-    font-size: 60px;
+  .avatar { font-size: 55px; }
+  .badge {
+    background: #7c6cf7;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
   }
 </style>
 
 <div class="card">
   <div class="avatar">⚡</div>
   <h2>Captain Volt</h2>
+  <span class="badge">Power: 9999</span>
   <p>Guardian of the Cyber Grid</p>
 </div>`,
     targetCode: `<style>
-  body {
-    background: #1a1a2e;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  }
   .card {
-    background: linear-gradient(145deg, #16213e, #0f3460);
+    background: #1e2030;
     color: white;
-    padding: 30px;
-    border-radius: 20px;
+    padding: 24px;
+    border-radius: 16px;
     text-align: center;
-    max-width: 280px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(233, 69, 96, 0.4);
-    border: 2px solid #e94560;
-    transition: transform 0.3s;
+    max-width: 260px;
+    border: 2px solid #7c6cf7;
   }
-  .card:hover {
-    transform: translateY(-8px);
-  }
-  .avatar {
-    font-size: 65px;
-    background: rgba(233, 69, 96, 0.2);
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-  }
+  .avatar { font-size: 55px; }
   .badge {
-    background: #e94560;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
+    background: #7c6cf7;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
     font-weight: bold;
     display: inline-block;
-    margin: 5px;
+    margin: 4px;
   }
   button {
-    background: #e94560;
+    background: #7c6cf7;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 </style>
 
@@ -1318,323 +1053,60 @@ In this project, you will build a complete, collectible trading card featuring a
   <p>Guardian of the Cyber Grid</p>
   <button onclick="alert('⚡ 1,000,000 VOLTS UNLEASHED!')">Activate Superpower</button>
 </div>`,
-    targetDescription: `You will see a high-tech glowing trading card with rounded corners, a circular avatar container with a lightning bolt, two power stat pills ("Power: 9999" and "Element: Lightning"), and a glowing button that unleashes a superpower alert when clicked!`,
+    targetDescription: 'A sleek collectible trading card with Captain Volt\'s avatar, two power badges ("Power: 9999" and "Element: Lightning"), and a superpower trigger button.',
+    anatomy: [
+      {
+        part: '.card',
+        role: 'Container',
+        explanation: 'Groups all hero info inside a single box with padding and rounded corners.',
+        effect: 'Frames the entire trading card'
+      },
+      {
+        part: '<span class="badge">',
+        role: 'Stat Pill',
+        explanation: 'Displays mini power statistics in pill badges.',
+        effect: 'Creates a colored stat pill'
+      },
+      {
+        part: '<button onclick="...">',
+        role: 'Action Trigger',
+        explanation: 'Clickable move button that alerts the superhero battle cry.',
+        effect: 'Triggers superpower alert'
+      }
+    ],
+    quickTags: ['<span class="badge">', '<button onclick="alert(\'Zap!\')">', 'border-radius: 16px;'],
     challenge: {
-      mission: 'Add two <span class="badge"> badges for power stats and a button that activates the hero\'s superpower with an alert!',
-      hint: 'Add <span class="badge">Power: 9999</span> and <button onclick="alert(\'⚡ Zap!\')">Activate Superpower</button>',
+      mission: 'Add a second badge ("Element: Lightning") and a button that unleashes a superpower alert!',
+      hint: 'Add <span class="badge">Element: Lightning</span> and <button onclick="alert(\'Zap!\')">Activate Superpower</button>',
       rules: [
         {
           type: 'custom',
           check: (code) => (code.match(/class\s*=\s*["']badge["']/gi) || []).length >= 2,
-          message: 'Add at least TWO <span class="badge"> elements to the card!'
+          message: 'Add at least TWO <span class="badge"> badges!'
         },
         {
           type: 'hasTag',
           tag: 'button',
-          message: 'Add an action button to activate the superpower!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /onclick/i.test(code),
-          message: 'Add an onclick alert to your button!'
+          message: 'Add an action button!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'Trading cards like Pokémon or sports cards have an image, a rank, HP/power stats, and special moves. That is exactly what we modeled with HTML and CSS!',
+      analogy: 'Like Pokémon or sports cards: an avatar image, power numbers, and signature moves.',
       discussionQuestions: [
-        'How would you change this into your favorite anime or gaming character?',
-        'What colors make a card feel "rare" or "legendary"?'
+        'How would you change this into your pet or favorite anime character?',
+        'What color would an Ice or Fire superhero use?'
       ],
       commonMistakes: [
-        'Placing the badges outside of the card container.',
-        'Not setting display: inline-block or padding on the badge.'
+        'Putting the button outside the .card container'
       ],
-      funActivity: 'Have the kid customize the hero\'s name, emoji, and superpower shout!'
-    }
-  },
-
-  // ==========================================
-  // PROJECT 2: Yummy Pizza Restaurant Menu
-  // ==========================================
-  {
-    id: 'proj-pizza-menu',
-    module: 'projects',
-    title: 'Project 2: Yummy Pizza Restaurant',
-    icon: '🍕',
-    tag: 'Interactive Menu',
-    summary: 'Build a restaurant menu with pizza choices, prices, and an order counter!',
-    story: `Welcome to Luigi & Pixel\'s Pizzeria! 
-People are hungry and want to see the menu with yummy toppings, prices, and a button to place an order.
-You will combine lists, borders, flexbox, and buttons!`,
-    tagsExplored: ['Lists', 'Flexbox layout', 'Badges', 'Button actions'],
-    quickTags: ['<div class="menu-item">', '<span class="price">$12</span>', 'display: flex;', 'justify-content: space-between;'],
-    initialCode: `<style>
-  body {
-    background: #fffa65;
-    font-family: 'Comic Sans MS', sans-serif;
-    padding: 20px;
-  }
-  .menu {
-    background: white;
-    max-width: 320px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 16px;
-    border: 4px dashed #ff4d4d;
-  }
-  h1 { text-align: center; color: #ff4d4d; }
-  .item {
-    margin: 15px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px dotted #ccc;
-  }
-</style>
-
-<div class="menu">
-  <h1>🍕 Luigi\'s Pizza</h1>
-  <div class="item">
-    <strong>Pepperoni Blast</strong>
-    <p>Loaded with spicy pepperoni & gooey cheese</p>
-  </div>
-</div>`,
-    targetCode: `<style>
-  body {
-    background: #fffa65;
-    font-family: 'Comic Sans MS', sans-serif;
-    padding: 20px;
-  }
-  .menu {
-    background: white;
-    max-width: 340px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 16px;
-    border: 4px dashed #ff4d4d;
-  }
-  h1 { text-align: center; color: #ff4d4d; }
-  .item {
-    margin: 15px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px dotted #ccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .order-btn {
-    background: #2ed573;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .price {
-    color: #ff4757;
-    font-weight: bold;
-  }
-</style>
-
-<div class="menu">
-  <h1>🍕 Luigi\'s Pizza</h1>
-  <div class="item">
-    <div>
-      <strong>Pepperoni Blast</strong>
-      <div class="price">$12</div>
-    </div>
-    <button class="order-btn" onclick="alert('🍕 1 Pepperoni Pizza added to cart!')">Order</button>
-  </div>
-  <div class="item">
-    <div>
-      <strong>Cheese Volcano 🧀</strong>
-      <div class="price">$10</div>
-    </div>
-    <button class="order-btn" onclick="alert('🧀 1 Cheese Volcano added to cart!')">Order</button>
-  </div>
-</div>`,
-    targetDescription: `You will see a cute red-and-white restaurant menu framed with a festive dashed red border. Two pizza items (Pepperoni Blast and Cheese Volcano) with prices ($12, $10) are listed side-by-side with bright green "Order" buttons that trigger cart notifications!`,
-    challenge: {
-      mission: 'Add a second pizza ("Cheese Volcano") and give each item an Order button with an onclick alert!',
-      hint: 'Duplicate the .item div, change the text to Cheese Volcano, and include the <button class="order-btn">Order</button>!',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => (code.match(/class\s*=\s*["']item["']/gi) || []).length >= 2,
-          message: 'Have at least two pizza items on the menu!'
-        },
-        {
-          type: 'custom',
-          check: (code) => (code.match(/<button/gi) || []).length >= 2,
-          message: 'Add an Order button for each pizza item!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /Cheese/i.test(code),
-          message: 'Add the Cheese Volcano pizza to the menu!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Every online food ordering app (DoorDash, UberEats) is built using these exact same HTML list cards and CSS buttons.',
-      discussionQuestions: [
-        'How could you add a button to remove a pizza from the cart?',
-        'What dessert would you add to this menu?'
-      ],
-      commonMistakes: [
-        'Forgetting to wrap the title and price in a div so flexbox can align the button to the right.',
-        'Broken quotation marks in the alert handler.'
-      ],
-      funActivity: 'Have the kid make up silly pizza toppings like "Marshmallow Gummy Bear Pizza"!'
-    }
-  },
-
-  // ==========================================
-  // PROJECT 3: Cyber Space Station Panel
-  // ==========================================
-  {
-    id: 'proj-space-station',
-    module: 'projects',
-    title: 'Project 3: Cyber Space Station',
-    icon: '🚀',
-    tag: 'Sci-Fi Dashboard',
-    summary: 'Build a sci-fi rocket control dashboard with status indicators, radar, and launch triggers!',
-    story: `Ground control to Major Coder! 
-You are programming the cockpit monitor of the starship Artemis. 
-It needs glowing telemetry stats, fuel bars, and a big red "IGNITION" launch button.`,
-    tagsExplored: ['CSS Gradients', 'Glow effects', 'Status bars', 'Animations'],
-    quickTags: ['<div class="gauge">', 'background: #00d2d3;', 'box-shadow: 0 0 15px #00d2d3;', '@keyframes pulse {'],
-    initialCode: `<style>
-  body {
-    background: #0a0a14;
-    color: #00d2d3;
-    font-family: 'Courier New', monospace;
-    padding: 30px;
-    text-align: center;
-  }
-  .dashboard {
-    border: 2px solid #00d2d3;
-    border-radius: 16px;
-    padding: 20px;
-    max-width: 320px;
-    margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0, 210, 211, 0.3);
-  }
-  .status {
-    font-size: 18px;
-    margin: 15px 0;
-  }
-</style>
-
-<div class="dashboard">
-  <h2>🚀 STARSHIP APOLLO</h2>
-  <div class="status">SYSTEM: ONLINE</div>
-</div>`,
-    targetCode: `<style>
-  body {
-    background: #0a0a14;
-    color: #00d2d3;
-    font-family: 'Courier New', monospace;
-    padding: 30px;
-    text-align: center;
-  }
-  .dashboard {
-    border: 2px solid #00d2d3;
-    border-radius: 16px;
-    padding: 25px;
-    max-width: 320px;
-    margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0, 210, 211, 0.4);
-    background: rgba(0, 210, 211, 0.05);
-  }
-  .status {
-    font-size: 16px;
-    margin: 12px 0;
-    color: #54a0ff;
-  }
-  .progress-bar {
-    background: #222f3e;
-    height: 16px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 15px 0;
-  }
-  .fill {
-    background: #1dd1a1;
-    width: 85%;
-    height: 100%;
-    box-shadow: 0 0 10px #1dd1a1;
-  }
-  .launch-btn {
-    background: #ee5253;
-    color: white;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ee5253;
-    transition: transform 0.2s;
-  }
-  .launch-btn:hover {
-    transform: scale(1.08);
-  }
-</style>
-
-<div class="dashboard">
-  <h2>🚀 STARSHIP APOLLO</h2>
-  <div class="status">WARP DRIVE: READY</div>
-  <div class="status">FUEL LEVEL: 85%</div>
-  <div class="progress-bar">
-    <div class="fill"></div>
-  </div>
-  <button class="launch-btn" onclick="alert('🚀 BLASTOFF! Entering Hyperspace!')">LAUNCH ROCKET</button>
-</div>`,
-    targetDescription: `You will see a futuristic sci-fi cockpit control interface:
-1. Cyan glowing dashboard frame with monospaced terminal font.
-2. Warp drive & Fuel telemetry readout.
-3. An emerald green glowing progress bar showing 85% fuel level.
-4. A red glowing "LAUNCH ROCKET" button that blasts off with a hyperspace alert!`,
-    challenge: {
-      mission: 'Add a fuel level progress bar and a red .launch-btn that triggers a BLASTOFF alert!',
-      hint: 'Add <div class="progress-bar"><div class="fill"></div></div> and <button class="launch-btn" onclick="alert(\'Blastoff!\')">LAUNCH</button>',
-      rules: [
-        {
-          type: 'custom',
-          check: (code) => /progress-bar/i.test(code),
-          message: 'Add the progress-bar container for the fuel gauge!'
-        },
-        {
-          type: 'hasTag',
-          tag: 'button',
-          message: 'Add the LAUNCH ROCKET button!'
-        },
-        {
-          type: 'custom',
-          check: (code) => /blastoff|launch/i.test(code),
-          message: 'Button should mention Launch or Blastoff!'
-        }
-      ]
-    },
-    teacherGuide: {
-      analogy: 'Real space shuttle consoles use visual indicators like progress bars and warning lights to help astronauts make decisions fast.',
-      discussionQuestions: [
-        'How would you change the fuel bar from green to flashing red when fuel is low?',
-        'What other spaceship instruments can you build?'
-      ],
-      commonMistakes: [
-        'Setting width on .progress-bar instead of .fill.',
-        'Not setting overflow: hidden on the parent bar.'
-      ],
-      funActivity: 'Do a 5-4-3-2-1 countdown aloud before clicking the LAUNCH button!'
+      funActivity: 'Customize the card with the kid\'s name and their secret superpower!'
     }
   }
 ];
 
 function getLessonById(id) {
-  return LESSONS.find(l => l.id === id) || null;
+  return LESSONS.find(l => l.id === id) || LESSONS[0];
 }
 
 function getLessonsByModule(moduleId) {
@@ -2783,12 +2255,8 @@ color: white;</code></pre>
   // --- Main App Controller ---
   /**
  * CodeCraft Kids Main Application Controller
- * Orchestrates lessons, live execution, validation, labs, audio, and state.
+ * Focused, uncluttered, step-by-step educational interface.
  */
-
-
-
-
 
 
 
@@ -2799,8 +2267,8 @@ color: white;</code></pre>
 
 // Application State
 let state = loadStateFromStorage();
-let currentView = 'lesson'; // 'lesson' | 'lab-box' | 'lab-flex' | 'lab-color' | 'sandbox'
-let activePreviewTab = 'live'; // 'live' | 'target' | 'split'
+let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
 
 // DOM Elements Cache
@@ -2810,20 +2278,15 @@ function initApp() {
   cacheElements();
   attachGlobalListeners();
   applyStateToUI();
-  selectLesson(state.currentLessonId || 'html-bones');
+  selectLesson(state.currentLessonId || LESSONS[0].id);
 }
 
 function cacheElements() {
   elements.app = document.body;
-  elements.studentName = document.getElementById('student-name');
-  elements.studentAvatar = document.getElementById('student-avatar');
   elements.starCount = document.getElementById('star-count');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
-  elements.btnTheme = document.getElementById('btn-theme');
   elements.btnSandbox = document.getElementById('btn-sandbox');
-  elements.btnLabs = document.getElementById('btn-labs');
-  elements.labsDropdown = document.getElementById('labs-dropdown');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
   elements.progressFill = document.getElementById('progress-fill');
@@ -2848,81 +2311,35 @@ function attachGlobalListeners() {
     saveStateToStorage(state);
     elements.btnTeacher.classList.toggle('active', state.teacherMode);
     playSound('click', state.audioEnabled);
-    renderLessonView();
+    const box = document.getElementById('teacher-playbook-box');
+    if (box) {
+      box.style.display = state.teacherMode ? 'block' : 'none';
+    }
   });
 
-  // Theme toggle
-  elements.btnTheme?.addEventListener('click', () => {
-    const themes = ['candy', 'arcade', 'space'];
-    const nextIdx = (themes.indexOf(state.theme) + 1) % themes.length;
-    state = setTheme(state, themes[nextIdx]);
-    saveStateToStorage(state);
-    applyTheme();
-    playSound('click', state.audioEnabled);
-  });
-
-  // Profile avatar/name modal trigger
-  document.getElementById('student-badge-btn')?.addEventListener('click', openProfileModal);
-
-  // Sandbox Mode trigger
+  // Free Sandbox toggle
   elements.btnSandbox?.addEventListener('click', () => {
-    currentView = 'sandbox';
+    currentView = currentView === 'sandbox' ? 'lesson' : 'sandbox';
+    elements.btnSandbox.classList.toggle('active', currentView === 'sandbox');
     playSound('click', state.audioEnabled);
-    renderSandboxView();
-  });
 
-  // Labs dropdown trigger
-  elements.btnLabs?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    elements.labsDropdown?.classList.toggle('show');
-  });
-
-  document.addEventListener('click', () => {
-    elements.labsDropdown?.classList.remove('show');
-  });
-
-  document.getElementById('lab-opt-box')?.addEventListener('click', () => {
-    currentView = 'lab-box';
-    playSound('click', state.audioEnabled);
-    renderLabView('box');
-  });
-
-  document.getElementById('lab-opt-flex')?.addEventListener('click', () => {
-    currentView = 'lab-flex';
-    playSound('click', state.audioEnabled);
-    renderLabView('flex');
-  });
-
-  document.getElementById('lab-opt-color')?.addEventListener('click', () => {
-    currentView = 'lab-color';
-    playSound('click', state.audioEnabled);
-    renderLabView('color');
+    if (currentView === 'sandbox') {
+      renderSandboxView();
+    } else {
+      renderLessonView();
+    }
   });
 
   // Brand click -> Return to lessons
   document.querySelector('.brand')?.addEventListener('click', () => {
     currentView = 'lesson';
+    elements.btnSandbox?.classList.remove('active');
     playSound('click', state.audioEnabled);
-    renderLessonView();
+    selectLesson(LESSONS[0].id);
   });
 }
 
-function applyTheme() {
-  elements.app.setAttribute('data-theme', state.theme);
-  const themeLabels = {
-    candy: '🍬 Theme: Candy',
-    arcade: '🕹️ Theme: Arcade',
-    space: '🌌 Theme: Space'
-  };
-  if (elements.btnTheme) {
-    elements.btnTheme.textContent = themeLabels[state.theme] || '🎨 Theme';
-  }
-}
-
 function applyStateToUI() {
-  applyTheme();
-  if (elements.studentName) elements.studentName.textContent = state.studentName;
-  if (elements.studentAvatar) elements.studentAvatar.textContent = state.studentAvatar;
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
   if (elements.btnTeacher) elements.btnTeacher.classList.toggle('active', state.teacherMode);
   if (elements.btnAudio) elements.btnAudio.textContent = state.audioEnabled ? '🔊 Sound: ON' : '🔇 Sound: OFF';
@@ -2936,7 +2353,7 @@ function updateProgressUI() {
   const percent = Math.round((completed / total) * 100);
 
   if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
-  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} Finished (${percent}%)`;
+  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} Lessons (${percent}%)`;
 }
 
 function renderSidebar() {
@@ -2944,8 +2361,10 @@ function renderSidebar() {
 
   let html = '';
   MODULES.forEach(mod => {
-    html += `<div class="nav-section-title">${mod.title}</div>`;
     const modLessons = LESSONS.filter(l => l.module === mod.id);
+    if (modLessons.length === 0) return;
+
+    html += `<div class="nav-section-title">${mod.title}</div>`;
     html += `<ul class="lesson-list">`;
     modLessons.forEach(lesson => {
       const isCompleted = isLessonCompleted(state, lesson.id);
@@ -2962,12 +2381,12 @@ function renderSidebar() {
 
   elements.sidebarLessonList.innerHTML = html;
 
-  // Attach click listeners to sidebar items
   const items = elements.sidebarLessonList.querySelectorAll('.lesson-item');
   items.forEach(item => {
     item.addEventListener('click', () => {
       const lessonId = item.getAttribute('data-lesson-id');
       currentView = 'lesson';
+      elements.btnSandbox?.classList.remove('active');
       playSound('click', state.audioEnabled);
       selectLesson(lessonId);
     });
@@ -2984,6 +2403,54 @@ function selectLesson(lessonId) {
   renderLessonView();
 }
 
+/**
+ * Wraps bare student snippets cleanly so kids never have to write HTML boilerplate!
+ */
+function wrapForPreview(snippet) {
+  if (snippet.includes('<!DOCTYPE') || snippet.includes('<html')) {
+    return snippet;
+  }
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #0f1019;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 { margin-top: 0; color: #ffffff; }
+    p { margin-bottom: 16px; color: #cbd5e1; }
+    button {
+      background: #7c6cf7;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    button:hover { background: #6957ea; }
+    ul, ol { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 6px; }
+    a { color: #38bdf8; text-decoration: underline; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  ${snippet}
+</body>
+</html>`;
+}
+
 // ===================================================================
 // Lesson View Rendering
 // ===================================================================
@@ -2996,79 +2463,56 @@ function renderLessonView() {
   elements.workspaceStage.innerHTML = `
     <!-- Lesson Header Banner -->
     <div class="lesson-banner">
-      <div class="banner-main">
+      <div>
         <div class="banner-meta">
           <span class="badge-module">${lesson.module.toUpperCase()}</span>
           <span class="badge-tags">${lesson.tag}</span>
-          ${isCompleted ? '<span style="color: #2ed573; font-weight: 800; font-size: 13px;">✅ Completed!</span>' : ''}
+          ${isCompleted ? '<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">✅ Completed!</span>' : ''}
         </div>
         <h2 class="banner-title">${lesson.icon} ${lesson.title}</h2>
         <p class="banner-summary">${lesson.summary}</p>
       </div>
-      <div class="banner-controls">
-        <button id="btn-read-aloud" class="btn-pill-action">
-          🔊 Read Aloud
-        </button>
-        <button id="btn-toggle-teacher-box" class="btn-pill-action ${state.teacherMode ? 'active' : ''}">
-          🧑‍🏫 Teacher Tips
-        </button>
-      </div>
     </div>
 
-    <!-- Teacher / Parent Playbook (Shown if Teacher Mode is active) -->
+    <!-- Teacher Coaching Playbook (Toggleable) -->
     <div id="teacher-playbook-box" class="teacher-playbook" style="${state.teacherMode ? 'display:block' : 'display:none'}">
-      <h4>🧑‍🏫 Teacher & Parent Secret Playbook</h4>
+      <h4>🧑‍🏫 Teacher Coaching Guide</h4>
       <div class="teacher-playbook-grid">
         <div class="teacher-item">
-          <strong>💡 Kid-Friendly Analogy:</strong>
+          <strong>💡 Kid Analogy:</strong>
           <span>${lesson.teacherGuide.analogy}</span>
         </div>
         <div class="teacher-item">
-          <strong>🗣️ Questions to Ask Aloud:</strong>
-          <ul>
-            ${lesson.teacherGuide.discussionQuestions.map(q => `<li>${q}</li>`).join('')}
-          </ul>
+          <strong>🗣️ Question to Ask Aloud:</strong>
+          <span>${lesson.teacherGuide.discussionQuestions[0] || ''}</span>
         </div>
         <div class="teacher-item">
           <strong>⚠️ Watch Out For:</strong>
-          <ul>
-            ${lesson.teacherGuide.commonMistakes.map(m => `<li>${m}</li>`).join('')}
-          </ul>
-        </div>
-        <div class="teacher-item">
-          <strong>🎉 Fun Real-World Activity:</strong>
-          <span>${lesson.teacherGuide.funActivity}</span>
+          <span>${lesson.teacherGuide.commonMistakes[0] || ''}</span>
         </div>
       </div>
     </div>
 
-    <!-- Story Card -->
-    <div class="lesson-story-card">
-      <div class="story-icon">${lesson.icon}</div>
-      <div class="story-body">
-        <h3>The Story & How It Works</h3>
-        <p>${lesson.story}</p>
-      </div>
-    </div>
+    <!-- STEP-BY-STEP CODE BREAKDOWN: What Every Part Does to the Result -->
+    ${renderAnatomySection(lesson)}
 
-    <!-- Editor & Dual Preview Split View -->
+    <!-- Editor & Live Preview Split -->
     <div class="editor-stage-split">
       <!-- Left: Code Studio -->
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>💻</span> Code Studio
+            <span>💻</span> Code (Edit Here)
           </div>
           <div class="pane-tools">
-            <button id="btn-format-code" class="btn-tool" title="Format indentation">🪄 Tidy</button>
-            <button id="btn-reset-code" class="btn-tool" title="Reset to starter code">🔄 Reset</button>
+            <button id="btn-reset-code" class="btn-tool" title="Reset back to example">🔄 Reset</button>
             <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 Copy</button>
           </div>
         </div>
 
-        <!-- Quick Tags Chips -->
+        <!-- Quick Tag Shortcuts -->
         <div class="quick-tags-bar">
-          <span class="quick-tag-label">Quick Tags:</span>
+          <span class="quick-tag-label">Tags:</span>
           ${lesson.quickTags.map(t => `<button class="tag-chip" data-tag="${t}">${escapeHtml(t)}</button>`).join('')}
         </div>
 
@@ -3083,10 +2527,10 @@ function renderLessonView() {
       <div class="pane-card">
         <div class="pane-header">
           <div class="pane-title">
-            <span>👁️</span> Result Preview
+            <span>👁️</span> What the Browser Draws
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">Live Result</button>
+            <button id="tab-live" class="prev-tab-btn active">Your Result</button>
             <button id="tab-target" class="prev-tab-btn">🎯 Target Goal</button>
             <button id="tab-side" class="prev-tab-btn">⚖️ Compare</button>
           </div>
@@ -3098,14 +2542,14 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- Bottom Sticky Mission Dock -->
+    <!-- Bottom Action Dock -->
     <div class="mission-dock">
-      <div class="mission-info">
-        <div class="mission-tag">🎯 Mission Challenge</div>
+      <div>
+        <div class="mission-tag">🎯 Mission</div>
         <div class="mission-text">${lesson.challenge.mission}</div>
       </div>
       <div class="mission-actions">
-        <button id="btn-hint" class="btn-hint">💡 Need a Hint?</button>
+        <button id="btn-hint" class="btn-hint">💡 Hint</button>
         <button id="btn-verify-mission" class="btn-verify">🚀 Check My Code!</button>
       </div>
     </div>
@@ -3116,22 +2560,47 @@ function renderLessonView() {
   updateLineNumbers();
 }
 
+function renderAnatomySection(lesson) {
+  if (!lesson.anatomy || lesson.anatomy.length === 0) return '';
+
+  return `
+    <div class="step-breakdown-card">
+      <div class="step-card-header">
+        <h3>🔍 Step-by-Step Breakdown: What Each Part Does to the Result</h3>
+      </div>
+      <div class="step-grid">
+        ${lesson.anatomy.map(step => `
+          <div class="step-item">
+            <div class="step-part-row">
+              <span class="step-code-chip">${escapeHtml(step.part)}</span>
+              <span class="step-role-badge">${step.role}</span>
+            </div>
+            <div class="step-explanation">${step.explanation}</div>
+            <div class="step-effect">
+              <span>👉</span>
+              <span><strong>Result:</strong> ${step.effect}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
 function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function setupLessonListeners(lesson) {
   const textarea = document.getElementById('code-textarea');
-  const lineNumbers = document.getElementById('line-numbers');
 
-  // Input & Code updates
   textarea?.addEventListener('input', () => {
     currentCode = textarea.value;
     updateLivePreview();
     updateLineNumbers();
   });
 
-  // Tab key indent support
+  // Tab indent
   textarea?.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -3145,7 +2614,7 @@ function setupLessonListeners(lesson) {
     }
   });
 
-  // Quick Tag insert chips
+  // Quick Tag chips
   const tagChips = document.querySelectorAll('.tag-chip');
   tagChips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -3155,18 +2624,16 @@ function setupLessonListeners(lesson) {
     });
   });
 
-  // Reset Button
+  // Reset
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    if (confirm('Reset your code back to the starting example?')) {
-      textarea.value = lesson.initialCode;
-      currentCode = lesson.initialCode;
-      updateLivePreview();
-      updateLineNumbers();
-      playSound('click', state.audioEnabled);
-    }
+    textarea.value = lesson.initialCode;
+    currentCode = lesson.initialCode;
+    updateLivePreview();
+    updateLineNumbers();
+    playSound('click', state.audioEnabled);
   });
 
-  // Copy Button
+  // Copy
   document.getElementById('btn-copy-code')?.addEventListener('click', () => {
     navigator.clipboard?.writeText(textarea.value);
     const btn = document.getElementById('btn-copy-code');
@@ -3174,46 +2641,16 @@ function setupLessonListeners(lesson) {
     setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
   });
 
-  // Format Code Button
-  document.getElementById('btn-format-code')?.addEventListener('click', () => {
-    textarea.value = tidyHtml(textarea.value);
-    currentCode = textarea.value;
-    updateLivePreview();
-    updateLineNumbers();
-    playSound('click', state.audioEnabled);
-  });
-
-  // Read Aloud Button
-  const btnRead = document.getElementById('btn-read-aloud');
-  btnRead?.addEventListener('click', () => {
-    if (isSpeaking()) {
-      stopSpeaking();
-      btnRead.textContent = '🔊 Read Aloud';
-    } else {
-      btnRead.textContent = '⏹️ Stop Voice';
-      speakText(`${lesson.title}. ${lesson.summary}. ${lesson.story}. Mission: ${lesson.challenge.mission}`, () => {
-        btnRead.textContent = '🔊 Read Aloud';
-      });
-    }
-  });
-
-  // Teacher Box Toggle
-  document.getElementById('btn-toggle-teacher-box')?.addEventListener('click', () => {
-    const box = document.getElementById('teacher-playbook-box');
-    const isVisible = box.style.display !== 'none';
-    box.style.display = isVisible ? 'none' : 'block';
-  });
-
-  // Preview Tabs: Live vs Target Goal vs Side-by-Side
+  // Preview Tabs
   setupPreviewTabs(lesson);
 
-  // Hint Button
+  // Hint
   document.getElementById('btn-hint')?.addEventListener('click', () => {
     playSound('click', state.audioEnabled);
-    alert(`💡 MISSION HINT:\n\n${lesson.challenge.hint}`);
+    alert(`💡 HINT:\n\n${lesson.challenge.hint}`);
   });
 
-  // Check My Code Button
+  // Check code
   document.getElementById('btn-verify-mission')?.addEventListener('click', () => {
     handleChallengeVerification(lesson);
   });
@@ -3248,8 +2685,7 @@ function updateLivePreview() {
   const iframe = document.getElementById('live-iframe');
   if (!iframe) return;
 
-  // Use srcdoc for 100% reliable local file:// execution without cross-origin errors
-  iframe.srcdoc = currentCode;
+  iframe.srcdoc = wrapForPreview(currentCode);
 }
 
 function setupPreviewTabs(lesson) {
@@ -3279,14 +2715,14 @@ function setupPreviewTabs(lesson) {
       <div class="target-view-container">
         <div class="target-explanation-box">
           <strong>🎯 What the Result Should Look Like:</strong>
-          <p>${lesson.targetDescription}</p>
+          <p style="margin: 4px 0 0; white-space: pre-line;">${lesson.targetDescription}</p>
         </div>
         <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
       </div>
     `;
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = lesson.targetCode;
+      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
     }
     playSound('click', state.audioEnabled);
   });
@@ -3297,12 +2733,12 @@ function setupPreviewTabs(lesson) {
     activePreviewTab = 'side';
     previewContainer.innerHTML = `
       <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%;">
-        <div style="border-right: 2px solid var(--border-color); display: flex; flex-direction: column;">
-          <div style="background: #eef2f7; padding: 6px 12px; font-size: 11px; font-weight: 800; color: #475569;">YOUR LIVE CODE</div>
+        <div style="border-right: 1px solid var(--border-color); display: flex; flex-direction: column;">
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">YOUR RESULT</div>
           <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
         <div style="display: flex; flex-direction: column;">
-          <div style="background: #eef2f7; padding: 6px 12px; font-size: 11px; font-weight: 800; color: #475569;">TARGET GOAL</div>
+          <div style="background: var(--bg-surface); padding: 4px 10px; font-size: 10px; font-weight: 800; color: var(--text-muted);">TARGET GOAL</div>
           <iframe id="target-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
         </div>
       </div>
@@ -3310,7 +2746,7 @@ function setupPreviewTabs(lesson) {
     updateLivePreview();
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = lesson.targetCode;
+      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
     }
     playSound('click', state.audioEnabled);
   });
@@ -3323,7 +2759,6 @@ function handleChallengeVerification(lesson) {
     playSound('success', state.audioEnabled);
     triggerConfetti(elements.confettiCanvas);
 
-    // Update state with completion and award stars
     const previousCompleted = isLessonCompleted(state, lesson.id);
     state = completeLesson(state, lesson.id, 3);
     saveStateToStorage(state);
@@ -3347,29 +2782,24 @@ function showCelebrationModal(lesson, wasAlreadyCompleted) {
       <div class="modal-icon">🎉</div>
       <h3 class="modal-title">MISSION COMPLETE!</h3>
       <div class="modal-body">
-        <p>Awesome job, <strong>${state.studentName}</strong>! You mastered <strong>${lesson.title}</strong>!</p>
-        <p style="margin-top: 10px; font-size: 16px; color: #f59f00; font-weight: 800;">
+        <p>Awesome! You mastered <strong>${lesson.title}</strong>!</p>
+        <p style="margin-top: 8px; font-size: 15px; color: var(--accent-amber); font-weight: 800;">
           ${wasAlreadyCompleted ? '⭐ Mission verified again!' : '+3 STARS EARNED! ⭐⭐⭐'}
         </p>
       </div>
       <div class="modal-actions">
-        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">Stay Here & Play</button>
-        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">Next Quest ➡️</button>` : ''}
+        <button id="btn-modal-close" class="btn-modal btn-modal-secondary">Stay Here</button>
+        ${nextLesson ? `<button id="btn-modal-next" class="btn-modal btn-modal-primary">Next Lesson ➡️</button>` : ''}
       </div>
     </div>
   `;
 
   document.body.appendChild(modal);
 
-  modal.querySelector('#btn-modal-close')?.addEventListener('click', () => {
-    modal.remove();
-  });
-
+  modal.querySelector('#btn-modal-close')?.addEventListener('click', () => modal.remove());
   modal.querySelector('#btn-modal-next')?.addEventListener('click', () => {
     modal.remove();
-    if (nextLesson) {
-      selectLesson(nextLesson.id);
-    }
+    if (nextLesson) selectLesson(nextLesson.id);
   });
 }
 
@@ -3379,10 +2809,10 @@ function showTryAgainModal(feedback) {
   modal.innerHTML = `
     <div class="modal-card">
       <div class="modal-icon">🧐</div>
-      <h3 class="modal-title" style="color: #ff4757;">Almost There!</h3>
+      <h3 class="modal-title" style="color: var(--accent-red);">Almost There!</h3>
       <div class="modal-body">
-        <p>Your code is so close! Here is what your robot needs:</p>
-        <div style="background: #ffe3e3; border-radius: 8px; padding: 12px; margin-top: 10px; color: #c92a2a; text-align: left; font-weight: bold;">
+        <p>Take a quick look at your code:</p>
+        <div style="background: rgba(248, 113, 113, 0.15); border-radius: 8px; padding: 10px; margin-top: 8px; color: var(--accent-red); text-align: left; font-weight: bold; font-size: 12px;">
           ${feedback.map(f => `<div>• ${f}</div>`).join('')}
         </div>
       </div>
@@ -3393,26 +2823,7 @@ function showTryAgainModal(feedback) {
   `;
 
   document.body.appendChild(modal);
-
-  modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => {
-    modal.remove();
-  });
-}
-
-// ===================================================================
-// Interactive Labs Views
-// ===================================================================
-function renderLabView(type) {
-  elements.workspaceStage.innerHTML = `<div id="lab-mount-point"></div>`;
-  const mount = document.getElementById('lab-mount-point');
-
-  if (type === 'box') {
-    renderBoxModelLab(mount);
-  } else if (type === 'flex') {
-    renderFlexboxLab(mount);
-  } else if (type === 'color') {
-    renderColorLab(mount);
-  }
+  modal.querySelector('#btn-modal-retry')?.addEventListener('click', () => modal.remove());
 }
 
 // ===================================================================
@@ -3421,33 +2832,32 @@ function renderLabView(type) {
 function renderSandboxView() {
   elements.workspaceStage.innerHTML = `
     <div class="lesson-banner">
-      <div class="banner-main">
+      <div>
         <div class="banner-meta">
-          <span class="badge-module" style="background: #ffd32a; color: #1e272e;">CREATIVE MODE</span>
+          <span class="badge-module">FREE PLAY</span>
         </div>
         <h2 class="banner-title">🚀 Free Coding Sandbox</h2>
-        <p class="banner-summary">Build anything you can imagine! Pick a starter template or start from scratch, then download your real website file!</p>
+        <p class="banner-summary">Build whatever you want! Download your real webpage when you're done.</p>
       </div>
-      <div class="banner-controls">
-        <button id="btn-download-html" class="btn-pill-action active" style="background: #2ed573; border-color: #2ed573;">
-          💾 Download My Website (.html)
+      <div>
+        <button id="btn-download-html" class="btn-header" style="background: var(--accent-green); color: #000; border: none; font-weight: 800;">
+          💾 Download .html
         </button>
       </div>
     </div>
 
-    <!-- Template Selector Bar -->
-    <div style="background: var(--bg-card); border-bottom: 2px solid var(--border-color); padding: 12px 28px; display: flex; align-items: center; gap: 12px; overflow-x: auto;">
-      <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-muted); white-space: nowrap;">Starter Templates:</span>
-      ${TEMPLATES.map(t => `<button class="btn-pill btn-tpl" data-tpl="${t.id}">${t.name}</button>`).join('')}
+    <!-- Template Pills -->
+    <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 8px 24px; display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">Templates:</span>
+      ${TEMPLATES.map(t => `<button class="tag-chip btn-tpl" data-tpl="${t.id}">${t.name}</button>`).join('')}
     </div>
 
     <!-- Sandbox Split View -->
     <div class="editor-stage-split">
       <div class="pane-card">
         <div class="pane-header">
-          <div class="pane-title"><span>💻</span> Sandbox Code</div>
+          <div class="pane-title"><span>💻</span> HTML &amp; CSS Code</div>
           <div class="pane-tools">
-            <button id="btn-sb-format" class="btn-tool">🪄 Tidy</button>
             <button id="btn-sb-copy" class="btn-tool">📋 Copy</button>
           </div>
         </div>
@@ -3473,15 +2883,13 @@ function renderSandboxView() {
   const lineNumbers = document.getElementById('sb-line-numbers');
 
   function updateSbPreview() {
-    iframe.srcdoc = textarea.value;
+    iframe.srcdoc = wrapForPreview(textarea.value);
 
-    // Update lines
     const lines = textarea.value.split('\n').length;
     let numHtml = '';
     for (let i = 1; i <= Math.max(lines, 1); i++) numHtml += `${i}<br>`;
     lineNumbers.innerHTML = numHtml;
 
-    // Auto save
     state.customSandboxCode = textarea.value;
     saveStateToStorage(state);
   }
@@ -3512,7 +2920,7 @@ function renderSandboxView() {
   });
 
   document.getElementById('btn-download-html')?.addEventListener('click', () => {
-    downloadHtmlFile('my-awesome-site.html', textarea.value);
+    downloadHtmlFile('my-creation.html', wrapForPreview(textarea.value));
     playSound('badge', state.audioEnabled);
   });
 
@@ -3523,90 +2931,7 @@ function renderSandboxView() {
     setTimeout(() => { btn.textContent = '📋 Copy'; }, 1500);
   });
 
-  document.getElementById('btn-sb-format')?.addEventListener('click', () => {
-    textarea.value = tidyHtml(textarea.value);
-    updateSbPreview();
-    playSound('click', state.audioEnabled);
-  });
-
   updateSbPreview();
-}
-
-// ===================================================================
-// Student Profile Avatar / Name Modal
-// ===================================================================
-function openProfileModal() {
-  const avatars = ['🚀', '🐱', '🤖', '🦖', '🦄', '⚡', '👾', '🍕', '👑', '🦸'];
-
-  const modal = document.createElement('div');
-  modal.className = 'modal-overlay';
-  modal.innerHTML = `
-    <div class="modal-card">
-      <h3 class="modal-title">Student Profile</h3>
-      <div class="modal-body">
-        <p style="margin-bottom: 12px;">Pick your avatar:</p>
-        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-          ${avatars.map(a => `<button class="btn-avatar-choice" style="font-size: 30px; background: none; border: 2px solid var(--border-color); border-radius: 12px; cursor: pointer; padding: 6px 10px;">${a}</button>`).join('')}
-        </div>
-        <p style="margin-bottom: 6px;">Your Coder Name:</p>
-        <input type="text" id="input-cadet-name" value="${state.studentName}" style="padding: 10px 14px; font-size: 16px; border-radius: 8px; border: 2px solid var(--border-color); width: 80%; text-align: center; font-weight: bold;" />
-      </div>
-      <div class="modal-actions">
-        <button id="btn-save-profile" class="btn-modal btn-modal-primary">Save Profile</button>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  let selectedAvatar = state.studentAvatar;
-  const avatarBtns = modal.querySelectorAll('.btn-avatar-choice');
-  avatarBtns.forEach(btn => {
-    if (btn.textContent === selectedAvatar) btn.style.borderColor = 'var(--primary)';
-    btn.addEventListener('click', () => {
-      avatarBtns.forEach(b => b.style.borderColor = 'var(--border-color)');
-      btn.style.borderColor = 'var(--primary)';
-      selectedAvatar = btn.textContent;
-    });
-  });
-
-  modal.querySelector('#btn-save-profile')?.addEventListener('click', () => {
-    const input = modal.querySelector('#input-cadet-name');
-    const newName = input.value.trim() || 'Code Cadet';
-    state = setStudentProfile(state, { name: newName, avatar: selectedAvatar });
-    saveStateToStorage(state);
-    applyStateToUI();
-    modal.remove();
-    playSound('badge', state.audioEnabled);
-  });
-}
-
-function tidyHtml(html) {
-  let formatted = '';
-  let indent = 0;
-  const lines = html.replace(/>\s*</g, '>\n<').split('\n');
-
-  lines.forEach(line => {
-    line = line.trim();
-    if (!line) return;
-
-    if (line.match(/^<\/\w/) || line.match(/^<\/style>/)) {
-      indent = Math.max(0, indent - 1);
-    }
-
-    formatted += '  '.repeat(indent) + line + '\n';
-
-    if (
-      line.match(/^<[a-z0-9]+/i) &&
-      !line.match(/^<(img|input|br|hr|meta|link)/i) &&
-      !line.match(/<\/[a-z0-9]+>/i) &&
-      !line.endsWith('/>')
-    ) {
-      indent++;
-    }
-  });
-
-  return formatted.trim();
 }
 
 // Auto-boot on load

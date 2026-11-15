@@ -3,133 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeCraft Kids 👾 HTML & CSS Educational Adventure</title>
+  <title>CodeCraft 👾 Step-by-Step HTML &amp; CSS</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
 
-  <!-- Google Fonts: Outfit for friendly UI, Fira Code for clean syntax -->
+  <!-- Google Fonts: Outfit for clean legibility, Fira Code for code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- INLINE_CSS_PLACEHOLDER -->
-
-  <style>
-    /* Dropdown helper */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      margin-top: 8px;
-      background-color: var(--bg-card);
-      min-width: 220px;
-      border: 2px solid var(--border-color);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      z-index: 150;
-      padding: 6px;
-    }
-    .dropdown-content.show {
-      display: block;
-      animation: slideDown 0.2s ease;
-    }
-    .dropdown-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .dropdown-item:hover {
-      background-color: var(--primary-light);
-      color: var(--primary);
-    }
-  </style>
 </head>
-<body data-theme="candy">
+<body>
 
   <!-- Confetti Canvas Overlay -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- Top App Navigation -->
+  <!-- Clean, Uncluttered Header -->
   <header class="app-header">
-    <div class="brand" title="Return to lessons">
-      <span class="brand-mascot">👾</span>
+    <div class="brand" title="Return to first lesson">
+      <span class="brand-icon">👾</span>
       <div class="brand-text">
-        <h1>CodeCraft Kids</h1>
-        <span>HTML &amp; CSS Adventure</span>
+        <h1>CodeCraft</h1>
+        <span>HTML &amp; CSS for Kids</span>
       </div>
     </div>
 
     <div class="header-actions">
-      <!-- Stars & Student Badge -->
-      <div class="stat-pill" id="star-count" title="Total Stars Earned">⭐ 0</div>
-      
-      <div class="student-badge" id="student-badge-btn" title="Click to change your avatar and name!">
-        <span id="student-avatar" style="font-size: 20px;">🚀</span>
-        <span id="student-name">Code Cadet</span>
-      </div>
+      <!-- Star Counter -->
+      <div class="stat-pill" id="star-count" title="Stars Earned">⭐ 0</div>
 
-      <!-- Feature Buttons -->
-      <button id="btn-sandbox" class="nav-btn nav-btn-highlight" title="Free creative scratchpad">
+      <!-- Teacher Tips Toggle -->
+      <button id="btn-teacher" class="btn-header" title="Toggle Parent/Teacher coaching tips">
+        🧑‍🏫 Teacher Tips
+      </button>
+
+      <!-- Sound Toggle -->
+      <button id="btn-audio" class="btn-header" title="Mute/Unmute sound">
+        🔊 Sound
+      </button>
+
+      <!-- More Tools (Labs & Free Sandbox) -->
+      <button id="btn-sandbox" class="btn-header" title="Free creative scratchpad">
         🚀 Free Sandbox
-      </button>
-
-      <!-- Labs Dropdown -->
-      <div class="dropdown">
-        <button id="btn-labs" class="nav-btn" title="Interactive visual playgrounds">
-          🧪 Visual Labs ▾
-        </button>
-        <div id="labs-dropdown" class="dropdown-content">
-          <div class="dropdown-item" id="lab-opt-box">
-            <span style="font-size: 18px;">📦</span>
-            <span>The Box Model Toy</span>
-          </div>
-          <div class="dropdown-item" id="lab-opt-flex">
-            <span style="font-size: 18px;">🧩</span>
-            <span>Flexbox LEGO Lab</span>
-          </div>
-          <div class="dropdown-item" id="lab-opt-color">
-            <span style="font-size: 18px;">🎨</span>
-            <span>Color &amp; Gradient Mixer</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Teacher Mode Switch -->
-      <button id="btn-teacher" class="nav-btn" title="Reveal teacher secret playbook with analogies and questions">
-        🧑‍🏫 Teacher Mode
-      </button>
-
-      <!-- Audio Toggle -->
-      <button id="btn-audio" class="nav-btn" title="Mute/Unmute sound effects">
-        🔊 Sound: ON
-      </button>
-
-      <!-- Theme Switch -->
-      <button id="btn-theme" class="nav-btn" title="Switch theme color">
-        🍬 Theme: Candy
       </button>
     </div>
   </header>
 
-  <!-- Main App Workspace Layout -->
+  <!-- Main App Layout -->
   <div class="app-layout">
     <!-- Left Navigation Sidebar -->
     <aside class="app-sidebar">
-      <div class="sidebar-progress">
+      <div class="sidebar-header">
         <div class="progress-header">
-          <span>Quest Progress</span>
-          <span id="progress-text">0 / 12 Finished (0%)</span>
+          <span>Your Progress</span>
+          <span id="progress-text">0 / 8 Lessons</span>
         </div>
         <div class="progress-track">
           <div id="progress-fill" class="progress-fill"></div>
@@ -137,13 +64,13 @@
       </div>
 
       <nav id="sidebar-lesson-list">
-        <!-- Injected dynamically by app.js -->
+        <!-- Injected dynamically -->
       </nav>
     </aside>
 
-    <!-- Main Dynamic Workspace Stage -->
+    <!-- Main Workspace Stage -->
     <main id="workspace-stage" class="workspace-stage">
-      <!-- Injected dynamically by app.js -->
+      <!-- Injected dynamically -->
     </main>
   </div>
 
