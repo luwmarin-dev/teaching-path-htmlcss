@@ -1,0 +1,20 @@
+{
+  "name": "codecraft-js",
+  "version": "1.0.0",
+  "description": "CodeCraft JavaScript for Kids - 100% Offline Interactive Coding School",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "javascript",
+    "kids",
+    "offline",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT"
+}

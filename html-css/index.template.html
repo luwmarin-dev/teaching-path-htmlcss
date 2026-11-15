@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCraft 👾 Step-by-Step HTML &amp; CSS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+
+  <!-- Google Fonts: Outfit for clean legibility, Fira Code for code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- INLINE_CSS_PLACEHOLDER -->
+</head>
+<body>
+
+  <!-- Confetti Canvas Overlay -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Clean, Uncluttered Header -->
+  <header class="app-header">
+    <div class="brand" title="Return to first lesson">
+      <span class="brand-icon">👾</span>
+      <div class="brand-text">
+        <h1>CodeCraft</h1>
+        <span>HTML &amp; CSS for Kids</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Offline Student Profile & Shift Pill -->
+      <button id="btn-student-profile" class="student-profile-header-pill" title="O'quvchini almashtirish / Switch student shift">
+        <span class="pill-avatar" id="header-student-avatar">🚀</span>
+        <div class="pill-meta">
+          <span class="pill-name" id="header-student-name">Code Cadet</span>
+          <span class="pill-shift" id="header-student-shift">1-Smena</span>
+        </div>
+        <div class="pill-progress-track">
+          <div class="pill-progress-fill" id="header-student-progress-fill" style="width: 0%;"></div>
+        </div>
+        <span class="pill-progress-pct" id="header-student-progress-pct">0/24</span>
+        <span class="pill-switch-icon">🔄</span>
+      </button>
+
+      <!-- Star Counter -->
+      <div class="stat-pill" id="star-count" title="Stars Earned">⭐ 0</div>
+
+      <!-- Dual Language Segmented Switcher (Instant Uzbek / English) -->
+      <div class="lang-switcher" title="Tilni tanlash / Select Language">
+        <button id="btn-lang-uz" class="lang-tab" title="O'zbek tiliga o'tish">
+          🇺🇿 O'zbekcha
+        </button>
+        <button id="btn-lang-en" class="lang-tab" title="Switch to English">
+          🇬🇧 English
+        </button>
+      </div>
+
+      <!-- Theme Switcher (Calm Dark / OLED Night) -->
+      <button id="btn-theme" class="btn-header btn-icon-only" title="Toggle Theme (Calm Dark / Deep OLED Night)">
+        🌙
+      </button>
+
+      <!-- Sound Toggle -->
+      <button id="btn-audio" class="btn-header btn-icon-only" title="Mute/Unmute sound">
+        🔊
+      </button>
+
+      <!-- Teacher Tips Toggle -->
+      <button id="btn-teacher" class="btn-header btn-icon-only" title="Toggle Parent/Teacher coaching tips">
+        🧑‍🏫
+      </button>
+
+      <!-- Free Creative Sandbox -->
+      <button id="btn-sandbox" class="btn-header" title="Free creative scratchpad">
+        🛠️ Sandbox
+      </button>
+    </div>
+  </header>
+
+  <!-- Main App Layout -->
+  <div class="app-layout">
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="progress-header">
+          <span>Your Progress</span>
+          <span id="progress-text">0 / 8 Lessons</span>
+        </div>
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <nav id="sidebar-lesson-list">
+        <!-- Injected dynamically -->
+      </nav>
+    </aside>
+
+    <!-- Main Workspace Stage -->
+    <main id="workspace-stage" class="workspace-stage">
+      <!-- Injected dynamically -->
+    </main>
+  </div>
+
+  <!-- INLINE_JS_PLACEHOLDER -->
+</body>
+</html>

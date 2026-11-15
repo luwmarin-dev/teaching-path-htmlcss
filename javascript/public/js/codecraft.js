@@ -1,0 +1,3785 @@
+/**
+ * CodeCraft JS (Kids) - Standalone Offline Bundle
+ * Runs 100% offline via file:// protocol directly in any browser with ZERO Node.js or web server.
+ */
+(function() {
+  'use strict';
+
+  // --- Curriculum Module ---
+  /**
+ * JavaScript for Kids (CodeCraft JS) Curriculum
+ * 24 Foundational, Intermediate, and Practical Topics
+ * Bilingual (Uzbek & English), 100% Offline, Hands-On
+ */
+
+const MODULES = [
+  {
+    id: 'mod-js-basics',
+    title: { uz: "1. JS Boshlanishi va O'zgaruvchilar (1 - 6)", en: "1. JS Basics & Variables (Themes 1 - 6)" },
+    color: '#3b82f6',
+    icon: '🚀'
+  },
+  {
+    id: 'mod-js-logic',
+    title: { uz: "2. Mantiq, Shartlar va Funksiyalar (7 - 12)", en: "2. Logic, Conditions & Functions (Themes 7 - 12)" },
+    color: '#10b981',
+    icon: '🧠'
+  },
+  {
+    id: 'mod-js-data',
+    title: { uz: "3. Massivlar, Tsikllar va Obyektlar (13 - 18)", en: "3. Arrays, Loops & Objects (Themes 13 - 18)" },
+    color: '#f59e0b',
+    icon: '🎒'
+  },
+  {
+    id: 'mod-js-dom',
+    title: { uz: "4. Jonli Veb Sahifa va Mini-O'yinlar (19 - 24)", en: "4. Interactive DOM & Mini-Games (Themes 19 - 24)" },
+    color: '#8b5cf6',
+    icon: '🎮'
+  }
+];
+
+const LESSONS = [
+  // THEME 1
+  {
+    id: 'js-1-console',
+    module: 'mod-js-basics',
+    icon: '💬',
+    title: { uz: "1-Mavzu: console.log() va alert() — Salom Dunyo!", en: "Theme 1: console.log() & alert() — Hello World!" },
+    concept: {
+      uz: "JavaScript kompyuter bilan gaplashish tilidir. console.log() orqali maxfiy konsol oynasiga xabar chiqaramiz, alert() esa ekranda chiroyli xabar oynachasini ochadi.",
+      en: "JavaScript is the language of computer action. console.log() prints messages to the secret developer console, while alert() pops up a friendly dialog."
+    },
+    humanLanguage: {
+      uz: "Tasavvur qiling, kompyuter sizning buyruqlaringizni bajaruvchi robot. console.log('Salom!') desangiz, u o'z daftariga 'Salom!' deb yozadi.",
+      en: "Imagine your computer is a robot eager to speak. Saying console.log('Hello!') tells the robot to write 'Hello!' in its developer notebook."
+    },
+    secretSandwich: {
+      uz: "Sehrli formula: console.log('Sizning matningiz'); — doimo qavs () ichiga qo'shtirnoq '' bilan matn solasiz va oxiriga nuqta-vergul ; qo'yasiz!",
+      en: "Magic formula: console.log('Your text'); — always wrap strings inside quotes '' and parentheses (), ending with a semicolon ;!"
+    },
+    stepBreakdown: [
+      {
+        part: "console.log()",
+        explanation: { uz: "Konsolga chop etish buyrug'i", en: "Command to print to developer console" },
+        visualResult: { uz: "Brauzer konsolida ko'rinadi", en: "Prints line in the console" }
+      },
+      {
+        part: '"Salom, Dunyo!"',
+        explanation: { uz: "Chiqarmoqchi bo'lgan matn (String)", en: "The message text string to output" },
+        visualResult: { uz: "Ekranda matn paydo bo'ladi", en: "Text displays in output" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'console.log()', name: { uz: "Konsolga yozish", en: "Print to console" }, meaning: { uz: "Xabarlarni dasturchilar konsoliga chiqaradi", en: "Outputs message to console" } },
+      { tag: 'alert()', name: { uz: "Ogohlantirish oynasi", en: "Alert Popup" }, meaning: { uz: "Ekranda qalqib chiquvchi oyna ochadi", en: "Shows popup window" } }
+    ],
+    mission: {
+      uz: 'Konsolga "Salom, Dunyo!" xabarini console.log() orqali chiqaring.',
+      en: 'Print "Salom, Dunyo!" or "Hello, World!" to the console using console.log().'
+    },
+    initialCode: '// 1-Mavzu: Salom Dunyo\n// Quyiga kodingizni yozing:\n',
+    targetCode: 'console.log("Salom, Dunyo!");',
+    hints: [
+      { uz: 'console.log("Salom, Dunyo!"); deb yozing.', en: 'Type: console.log("Salom, Dunyo!");' }
+    ],
+    validate: (code) => {
+      if (!/console\.log\s*\(/.test(code)) return { passed: false, message: "console.log() buyrug'idan foydalaning!" };
+      if (!/["'`].+["'`]/.test(code)) return { passed: false, message: "Qo'shtirnoq ichiga matn kiriting!" };
+      return { passed: true, message: "Ajoyib! Birinchi JavaScript kodingiz muvaffaqiyatli ishladi! 🎉" };
+    }
+  },
+
+  // THEME 2
+  {
+    id: 'js-2-variables',
+    module: 'mod-js-basics',
+    icon: '📦',
+    title: { uz: "2-Mavzu: let va const — Sehrli Qutilar (O'zgaruvchilar)", en: "Theme 2: let & const — Magic Boxes (Variables)" },
+    concept: {
+      uz: "O'zgaruvchi — bu kompyuter xotirasidagi nomlangan quti. let o'zgaruvchan quti (ballar, tangalar), const esa o'zgarmas quti (ism, tug'ilgan yil).",
+      en: "A variable is a labeled storage box in memory. Use let for values that change (score, coins), and const for fixed constants (name, ID)."
+    },
+    humanLanguage: {
+      uz: "O'yindagi tangalar soni o'zgarib turadi, shuning uchun let coins = 10; deymiz. O'yinchi ismi esa o'zgarmaydi: const name = 'Ali';",
+      en: "Your score keeps increasing so you use let score = 100;. Your player hero name stays fixed so you use const hero = 'Knight';"
+    },
+    secretSandwich: {
+      uz: "let qutiNomi = qiymat; — qutiga nom bering va unga istalgan narsani joylang.",
+      en: "let boxName = value; — name your box and assign something into it."
+    },
+    stepBreakdown: [
+      {
+        part: "let score = 100;",
+        explanation: { uz: "score nomli o'zgaruvchiga 100 sonini saqlash", en: "Storing number 100 in box named score" },
+        visualResult: { uz: "Xotirada score: 100 paydo bo'ladi", en: "Memory holds score = 100" }
+      },
+      {
+        part: 'const playerName = "Ali";',
+        explanation: { uz: "O'zgarmas doimiy ism yaratish", en: "Creating a permanent constant string" },
+        visualResult: { uz: 'playerName: "Ali" saqlanadi', en: "Memory holds fixed playerName" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'let', name: { uz: "O'zgaruvchan quti", en: "Mutable variable" }, meaning: { uz: "Qiymatini keyinroq o'zgartirish mumkin", en: "Value can change later" } },
+      { tag: 'const', name: { uz: "Doimiy quti", en: "Constant variable" }, meaning: { uz: "Bir marta beriladi va o'zgarmaydi", en: "Fixed value that never changes" } }
+    ],
+    mission: {
+      uz: "score nomli let o'zgaruvchi (100) va playerName nomli const o'zgaruvchi ('Ali') yarating.",
+      en: "Create a let variable named score set to 100, and a const named playerName set to 'Ali'."
+    },
+    initialCode: '// 2-Mavzu: O\'zgaruvchilar\nlet score = 100;\n// playerName nomli const yarating:\n',
+    targetCode: 'let score = 100;\nconst playerName = "Ali";\nconsole.log(playerName, score);',
+    hints: [
+      { uz: 'const playerName = "Ali"; deb yozing.', en: 'Write: const playerName = "Ali";' }
+    ],
+    validate: (code) => {
+      if (!/let\s+score\s*=/.test(code)) return { passed: false, message: "let score = 100; yarating!" };
+      if (!/const\s+playerName\s*=/.test(code)) return { passed: false, message: "const playerName = 'Ali'; yarating!" };
+      return { passed: true, message: "Qoyil! O'zgaruvchi qutilar bilan ishlashni o'rgandingiz! 📦⭐" };
+    }
+  },
+
+  // THEME 3
+  {
+    id: 'js-3-types',
+    module: 'mod-js-basics',
+    icon: '🏷️',
+    title: { uz: "3-Mavzu: Ma'lumot Turlari — String, Number, Boolean", en: "Theme 3: Data Types — String, Number, Boolean" },
+    concept: {
+      uz: "JavaScriptda qutilar ichida har xil narsalar bo'lishi mumkin: Matn (String), Son (Number) va Rost/Yolg'on (Boolean: true/false).",
+      en: "Variables can store different types of data: Text strings, numbers, and booleans (true/false switches)."
+    },
+    humanLanguage: {
+      uz: "O'yinchi ismi matn: 'Super Ali'. O'yinchi bosqichi son: 5. O'yinchi tirikmi? Ha yoki yo'q: true yoki false.",
+      en: "A hero name is text: 'Mega Knight'. Hero level is a number: 5. Is hero alive? Yes or No: true or false."
+    },
+    secretSandwich: {
+      uz: "String: 'matn' | Number: 42 | Boolean: true yoki false",
+      en: "String: 'text' | Number: 42 | Boolean: true or false"
+    },
+    stepBreakdown: [
+      {
+        part: 'let hero = "Botir";',
+        explanation: { uz: "String (matnli ma'lumot)", en: "String type text" },
+        visualResult: { uz: "Matn saqlanadi", en: "Text stored" }
+      },
+      {
+        part: "let level = 5;",
+        explanation: { uz: "Number (sonli ma'lumot)", en: "Number type integer" },
+        visualResult: { uz: "Son saqlanadi", en: "Number stored" }
+      },
+      {
+        part: "let isAlive = true;",
+        explanation: { uz: "Boolean (ha/yo'q bayrog'i)", en: "Boolean flag true/false" },
+        visualResult: { uz: "Mantiqiy holat saqlanadi", en: "Boolean state stored" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'String', name: { uz: "Matn turi", en: "String type" }, meaning: { uz: "Qo'shtirnoq ichidagi belgilar", en: "Characters inside quotes" } },
+      { tag: 'Number', name: { uz: "Son turi", en: "Number type" }, meaning: { uz: "Butun yoki o'nli sonlar", en: "Integers or floating numbers" } },
+      { tag: 'Boolean', name: { uz: "Mantiq turi", en: "Boolean type" }, meaning: { uz: "Faqat true yoki false bo'ladi", en: "Either true or false" } }
+    ],
+    mission: {
+      uz: "hero (matn), level (son), va isAlive (true) o'zgaruvchilarini yarating.",
+      en: "Create variables hero (string), level (number), and isAlive (boolean true)."
+    },
+    initialCode: 'let hero = "Botir";\nlet level = 5;\n// isAlive o\'zgaruvchisini true qilib qo\'shing:\n',
+    targetCode: 'let hero = "Botir";\nlet level = 5;\nlet isAlive = true;\nconsole.log(hero, level, isAlive);',
+    hints: [
+      { uz: "let isAlive = true; deb yozing.", en: "Type: let isAlive = true;" }
+    ],
+    validate: (code) => {
+      if (!/isAlive\s*=\s*true/.test(code)) return { passed: false, message: "isAlive = true deb yozing!" };
+      return { passed: true, message: "Zo'r! Barcha ma'lumot turlarini to'g'ri qo'lladingiz! 🏷️✨" };
+    }
+  },
+
+  // THEME 4
+  {
+    id: 'js-4-math',
+    module: 'mod-js-basics',
+    icon: '➕',
+    title: { uz: "4-Mavzu: Matematik Amallar — Hisob-Kitob (+, -, *, /, %)", en: "Theme 4: Math Operators — Calculations (+, -, *, /, %)" },
+    concept: {
+      uz: "JavaScript ajoyib kalkulyatordir. + qo'shadi, - ayiradi, * ko'paytiradi, / bo'ladi va % qoldiqni topadi.",
+      en: "JavaScript is a super calculator: + adds, - subtracts, * multiplies, / divides, and % gives remainder."
+    },
+    humanLanguage: {
+      uz: "10 ta tangangiz bor edi, ajdahodan 5 ta yutib oldingiz: coins = coins + 5; Endi jami tangalarni 2 ga ko'paytiring!",
+      en: "You had 10 coins, won 5 from a dragon: coins = coins + 5; Now multiply the total by 2!"
+    },
+    secretSandwich: {
+      uz: "+ qo'shish | - ayirish | * ko'paytirish | / bo'lish | % qoldiq",
+      en: "+ add | - subtract | * multiply | / divide | % modulo remainder"
+    },
+    stepBreakdown: [
+      {
+        part: "coins + 5",
+        explanation: { uz: "Tangalarga 5 qo'shish", en: "Add 5 coins" },
+        visualResult: { uz: "15 bo'ladi", en: "Becomes 15" }
+      },
+      {
+        part: "coins * 2",
+        explanation: { uz: "2 barobar ko'paytirish", en: "Double the coins" },
+        visualResult: { uz: "30 bo'ladi", en: "Becomes 30" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '+', name: { uz: "Qo'shish", en: "Addition" }, meaning: { uz: "Sonlarni qo'shadi", en: "Adds numbers" } },
+      { tag: '*', name: { uz: "Ko'paytirish", en: "Multiplication" }, meaning: { uz: "Sonlarni ko'paytiradi", en: "Multiplies numbers" } }
+    ],
+    mission: {
+      uz: "coins o'zgaruvchisiga 5 qo'shing va let total = coins * 2; hisoblang.",
+      en: "Add 5 to coins, then calculate let total = coins * 2;."
+    },
+    initialCode: 'let coins = 10;\n// 5 ta tanga qo\'shing:\ncoins = coins + 5;\n// total ni coins * 2 deb hisoblang:\n',
+    targetCode: 'let coins = 10;\ncoins = coins + 5;\nlet total = coins * 2;\nconsole.log(total);',
+    hints: [
+      { uz: "let total = coins * 2; deb yozing.", en: "Type: let total = coins * 2;" }
+    ],
+    validate: (code) => {
+      if (!/total\s*=\s*coins\s*\*\s*2/.test(code)) return { passed: false, message: "let total = coins * 2; hisoblang!" };
+      return { passed: true, message: "Mukammal! Hisob-kitoblar to'g'ri bajarildi! ➕⭐" };
+    }
+  },
+
+  // THEME 5
+  {
+    id: 'js-5-strings',
+    module: 'mod-js-basics',
+    icon: '✨',
+    title: { uz: "5-Mavzu: Sehrli Matnlar — Template Literals (`${}`)", en: "Theme 5: Template Literals — Magic Text (`${}`)" },
+    concept: {
+      uz: "Backtick (`) belgilari va ${o'zgaruvchi} yordamida matnlar ichiga o'zgaruvchilarni osonlik bilan joylashtirish mumkin.",
+      en: "Using backticks (`) and ${variable}, you can embed variables cleanly inside any sentence."
+    },
+    humanLanguage: {
+      uz: "Oldin 'Salom ' + name + '!' deb yozish qiyin edi. Endi esa: `Salom ${name}! Ball: ${score}` deb juda chiroyli yozamiz.",
+      en: "Instead of clunky string concatenation, simply use: `Hello ${name}! You have ${score} stars!`."
+    },
+    secretSandwich: {
+      uz: "`Matn ${o'zgaruvchi} davomi` — klaviaturadagi Esc tugmasi ostidagi ` belgisi.",
+      en: "`Sentence ${variable} goes here` — use backticks ` below the Esc key."
+    },
+    stepBreakdown: [
+      {
+        part: "`...`",
+        explanation: { uz: "Backtick matn chegarasi", en: "Backtick string wrapper" },
+        visualResult: { uz: "Yagona matn yaratadi", en: "Creates interpolated string" }
+      },
+      {
+        part: "${player}",
+        explanation: { uz: "O'zgaruvchi qiymatini matn ichiga quyish", en: "Injects variable into string" },
+        visualResult: { uz: "O'yinchining haqiqiy ismi chiqadi", en: "Outputs actual player name" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '` `', name: { uz: "Backtick", en: "Backtick" }, meaning: { uz: "Ko'p qatorli va sehrli matn", en: "Template string literal" } },
+      { tag: '${}', name: { uz: "Interpolatsiya", en: "Interpolation" }, meaning: { uz: "Matn ichiga o'zgaruvchini joylaydi", en: "Injects JS expression" } }
+    ],
+    mission: {
+      uz: 'message o\'zgaruvchisiga `Salom, ${player}!` ko\'rinishida matn tuzing va konsolga chiqaring.',
+      en: 'Create message = `Salom, ${player}!` using backticks and log it.'
+    },
+    initialCode: 'let player = "Sherzod";\n// message o\'zgaruvchisini backtick bilan tuzing:\n',
+    targetCode: 'let player = "Sherzod";\nlet message = `Salom, ${player}!`;\nconsole.log(message);',
+    hints: [
+      { uz: 'let message = `Salom, ${player}!`; deb yozing.', en: 'Write: let message = `Salom, ${player}!`;' }
+    ],
+    validate: (code) => {
+      if (!code.includes('`') || !code.includes('${player}')) return { passed: false, message: "Backtick (`) va ${player} dan foydalaning!" };
+      return { passed: true, message: "Ajoyib sehrli matn! Buni bilish juda muhim! ✨" };
+    }
+  },
+
+  // THEME 6
+  {
+    id: 'js-6-prompt',
+    module: 'mod-js-basics',
+    icon: '❓',
+    title: { uz: "6-Mavzu: Foydalanuvchidan Ma'lumot Olish — prompt() va confirm()", en: "Theme 6: User Input — prompt() & confirm()" },
+    concept: {
+      uz: "prompt() foydalanuvchidan klaviatura orqali matn so'raydi, confirm() esa Ha/Yo'q (Ok/Cancel) tugmasini chiqaradi.",
+      en: "prompt() asks the user to type in an answer, while confirm() asks a Yes/No question."
+    },
+    humanLanguage: {
+      uz: "O'yin boshida qahramon nomini so'rash uchun prompt('Isming nima?') buyrug'i ishlatiladi.",
+      en: "Ask the player's name at the start of a quest with prompt('What is your name?')."
+    },
+    secretSandwich: {
+      uz: "let javob = prompt('Savol matni'); — olingan javob o'zgaruvchida saqlanadi.",
+      en: "let answer = prompt('Question'); — store their answer in a variable."
+    },
+    stepBreakdown: [
+      {
+        part: 'prompt("Ismingiz?")',
+        explanation: { uz: "Savol oynasini chiqarish", en: "Show question prompt" },
+        visualResult: { uz: "Kiritish maydoni paydo bo'ladi", en: "Input box appears" }
+      },
+      {
+        part: 'alert("Xush kelibsiz!")',
+        explanation: { uz: "Salomlashish xabari", en: "Welcome popup" },
+        visualResult: { uz: "Ekranda xabar chiqadi", en: "Displays popup alert" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'prompt()', name: { uz: "Matn kiritish oynasi", en: "Text Input Prompt" }, meaning: { uz: "Foydalanuvchidan javob oladi", en: "Gets input string" } },
+      { tag: 'confirm()', name: { uz: "Tasdiqlash oynasi", en: "Confirm Dialog" }, meaning: { uz: "Ok yoki Cancel qaytaradi (true/false)", en: "Returns true or false" } }
+    ],
+    mission: {
+      uz: 'userName o\'zgaruvchisiga prompt("Ismingiz?") natijasini oling va alert("Xush kelibsiz!") chiqaring.',
+      en: 'Store prompt("Ismingiz?") in userName and call alert("Xush kelibsiz!").'
+    },
+    initialCode: '// 6-Mavzu: prompt va alert\nlet userName = prompt("Ismingiz nima?");\n// alert bilan salom bering:\n',
+    targetCode: 'let userName = prompt("Ismingiz nima?");\nalert("Xush kelibsiz!");',
+    hints: [
+      { uz: 'alert("Xush kelibsiz!"); deb yozing.', en: 'Type: alert("Xush kelibsiz!");' }
+    ],
+    validate: (code) => {
+      if (!/prompt\s*\(/.test(code)) return { passed: false, message: "prompt() dan foydalaning!" };
+      if (!/alert\s*\(/.test(code)) return { passed: false, message: "alert() dan foydalaning!" };
+      return { passed: true, message: "Super! Foydalanuvchi bilan muloqot qilishni o'rgandingiz! ❓🎉" };
+    }
+  },
+
+  // THEME 7
+  {
+    id: 'js-7-if-else',
+    module: 'mod-js-logic',
+    icon: '🔀',
+    title: { uz: "7-Mavzu: Shartlar — if va else (Qarorlar Qabul Qilish)", en: "Theme 7: Conditions — if & else (Decision Making)" },
+    concept: {
+      uz: "Kompyuter ham xuddi biz kabi qaror qabul qiladi. Agar (if) shart to'g'ri bo'lsa bitta ishni, aks holda (else) boshqa ishni bajaradi.",
+      en: "The if statement lets your code branch: if a condition is true do this, else do that."
+    },
+    humanLanguage: {
+      uz: "Agar yomg'ir yog'sa — soyabon ol. Aks holda — ko'zoynak taq. Dasturlashda bu if va else dir!",
+      en: "If score >= 10: Winner! Else: Try again! This is the foundation of game logic."
+    },
+    secretSandwich: {
+      uz: "if (shart) { ... } else { ... } — shart doimo qavs () ichida, harakatlar esa jingalak qavs {} ichida bo'ladi.",
+      en: "if (condition) { ... } else { ... } — conditions in (), action block in {}."
+    },
+    stepBreakdown: [
+      {
+        part: "if (score >= 10)",
+        explanation: { uz: "Shartni tekshirish", en: "Evaluate condition" },
+        visualResult: { uz: "Rost bo'lsa if bloki ishlaydi", en: "Executes block if true" }
+      },
+      {
+        part: "else { ... }",
+        explanation: { uz: "Aks holda ishlovchi blok", en: "Fallback block" },
+        visualResult: { uz: "Yolg'on bo'lsa else bloki ishlaydi", en: "Executes if false" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'if', name: { uz: "Agar sharti", en: "If statement" }, meaning: { uz: "Shart rost bo'lsa kodni yurgizadi", en: "Runs if true" } },
+      { tag: 'else', name: { uz: "Aks holda", en: "Else statement" }, meaning: { uz: "Shart yolg'on bo'lsa yurgizadi", en: "Runs if false" } }
+    ],
+    mission: {
+      uz: 'if (score >= 10) bo\'lsa "G\'alaba!", aks holda "Davom eting!" deb konsolga chiqaring.',
+      en: 'If score >= 10 log "G\'alaba!", else log "Davom eting!".'
+    },
+    initialCode: 'let score = 12;\nif (score >= 10) {\n  console.log("G\'alaba!");\n} else {\n  // else qismiga yozing:\n}\n',
+    targetCode: 'let score = 12;\nif (score >= 10) {\n  console.log("G\'alaba!");\n} else {\n  console.log("Davom eting!");\n}',
+    hints: [
+      { uz: 'else blokiga console.log("Davom eting!"); deb yozing.', en: 'Inside else write: console.log("Davom eting!");' }
+    ],
+    validate: (code) => {
+      if (!/if\s*\([^)]+\)/.test(code)) return { passed: false, message: "if shartini yozing!" };
+      if (!/else\s*\{/.test(code)) return { passed: false, message: "else blokini yozing!" };
+      return { passed: true, message: "Qaror qabul qilish mexanizmi tayyor! 🔀⭐" };
+    }
+  },
+
+  // THEME 8
+  {
+    id: 'js-8-comparison',
+    module: 'mod-js-logic',
+    icon: '⚖️',
+    title: { uz: "8-Mavzu: Taqqoslash va Mantiq — ===, >, <, &&, ||", en: "Theme 8: Comparisons & Logic — ===, >, <, &&, ||" },
+    concept: {
+      uz: "=== aynan tenglikni tekshiradi. && (VA) ikkala shart ham to'g'ri bo'lishini talab qiladi, || (YOKI) esa kamida bittasi to'g'ri bo'lsa kifoya.",
+      en: "=== checks strict equality. && (AND) requires both sides to be true, while || (OR) requires at least one."
+    },
+    humanLanguage: {
+      uz: "Xazinani ochish uchun: kalit bor bo'lishi kerak VA daraja 2 dan katta bo'lishi kerak (hasKey && level >= 2).",
+      en: "To unlock the vault: must have key AND level >= 2 (hasKey && level >= 2)."
+    },
+    secretSandwich: {
+      uz: "&& = Ikkalasi ham rost bo'lsin | || = Bittasi rost bo'lsa yetadi | === = Tengmi?",
+      en: "&& = Both must be true | || = Either can be true | === = Exactly equal"
+    },
+    stepBreakdown: [
+      {
+        part: "hasKey === true",
+        explanation: { uz: "Kalit borligini tekshirish", en: "Check if key is held" },
+        visualResult: { uz: "true yoki false beradi", en: "Yields boolean" }
+      },
+      {
+        part: "&& level >= 2",
+        explanation: { uz: "VA daraja kamida 2 bo'lsin", en: "AND level is at least 2" },
+        visualResult: { uz: "Ikkala shart tekshiriladi", en: "Both verified" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '&&', name: { uz: "Mantiqiy VA", en: "Logical AND" }, meaning: { uz: "Har ikki shart ham rost bo'lishi shart", en: "Both conditions required" } },
+      { tag: '||', name: { uz: "Mantiqiy YOKI", en: "Logical OR" }, meaning: { uz: "Kamida bitta shart rost bo'lsa kifoya", en: "Either condition suffices" } }
+    ],
+    mission: {
+      uz: 'hasKey === true && level >= 2 shartini if orqali tekshirib "Eshik ochildi!" deb chiqaring.',
+      en: 'Check if (hasKey === true && level >= 2) and log "Eshik ochildi!".'
+    },
+    initialCode: 'let hasKey = true;\nlet level = 3;\n// if da && operatoridan foydalaning:\n',
+    targetCode: 'let hasKey = true;\nlet level = 3;\nif (hasKey === true && level >= 2) {\n  console.log("Eshik ochildi!");\n}',
+    hints: [
+      { uz: 'if (hasKey === true && level >= 2) deb yozing.', en: 'Write: if (hasKey === true && level >= 2)' }
+    ],
+    validate: (code) => {
+      if (!/&&/.test(code)) return { passed: false, message: "&& (VA) operatoridan foydalaning!" };
+      return { passed: true, message: "Mantiqiy taqqoslash to'g'ri ishlamoqda! ⚖️🚪" };
+    }
+  },
+
+  // THEME 9
+  {
+    id: 'js-9-else-if',
+    module: 'mod-js-logic',
+    icon: '🚥',
+    title: { uz: "9-Mavzu: Ko'p Shartli Tanlov — else if (Baholash Tizimi)", en: "Theme 9: Multiple Branches — else if (Grading System)" },
+    concept: {
+      uz: "Agar tanlovlar 2 tadan ko'p bo'lsa, else if yordamida zanjirli shartlar tuzamiz: 90 dan oshsa A'lo, 70 dan oshsa Yaxshi, aks holda Harakat qiling.",
+      en: "When you have three or more outcomes, chain them with else if: >90 Great, >70 Good, else Keep Trying."
+    },
+    humanLanguage: {
+      uz: "Svetafor: Qizil bo'lsa — to'xta. Sariq bo'lsa — tayyorlan. Yashil bo'lsa — yur. Buni else if bilan kodlaymiz!",
+      en: "Traffic light: If red stop, else if yellow wait, else if green go."
+    },
+    secretSandwich: {
+      uz: "if (...) { } else if (...) { } else { }",
+      en: "if (...) { } else if (...) { } else { }"
+    },
+    stepBreakdown: [
+      {
+        part: "else if (grade >= 70)",
+        explanation: { uz: "Ikkinchi ehtimoliy shart", en: "Second possible branch" },
+        visualResult: { uz: "Birinchi shart bajarilmasa tekshiradi", en: "Checked if first fails" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'else if', name: { uz: "Yana bir shart", en: "Else If" }, meaning: { uz: "Qo'shimcha shartlarni tekshiradi", en: "Additional branch condition" } }
+    ],
+    mission: {
+      uz: 'grade 90 dan katta bo\'lsa "A\'lo!", 70 dan katta bo\'lsa "Yaxshi!" deb else if yordamida yozing.',
+      en: 'Use else if to check if grade >= 90 log "A\'lo!", else if grade >= 70 log "Yaxshi!".'
+    },
+    initialCode: 'let grade = 85;\nif (grade >= 90) {\n  console.log("A\'lo!");\n} else if (grade >= 70) {\n  // Shu yerga yozing:\n}\n',
+    targetCode: 'let grade = 85;\nif (grade >= 90) {\n  console.log("A\'lo!");\n} else if (grade >= 70) {\n  console.log("Yaxshi!");\n}',
+    hints: [
+      { uz: 'else if ichiga console.log("Yaxshi!"); yozing.', en: 'Inside else if write: console.log("Yaxshi!");' }
+    ],
+    validate: (code) => {
+      if (!/else\s+if/.test(code)) return { passed: false, message: "else if operatoridan foydalaning!" };
+      return { passed: true, message: "Ko'p shartli zanjir bekamu-ko'st ishlamoqda! 🚥🎉" };
+    }
+  },
+
+  // THEME 10
+  {
+    id: 'js-10-functions',
+    module: 'mod-js-logic',
+    icon: '🪄',
+    title: { uz: "10-Mavzu: Funksiyalar — Qayta Ishlatiluvchi Sehrli Buyruqlar", en: "Theme 10: Functions — Reusable Magic Spells" },
+    concept: {
+      uz: "Funksiya — bu bitta nom ostida saqlangan buyruqlar to'plami. Uni bir marta yozib, ming marta chaqirib ishlatish mumkin!",
+      en: "A function is a packaged magic spell. Write the steps once, then cast it whenever you need by name!"
+    },
+    humanLanguage: {
+      uz: "Har safar sakrash uchun 10 qator kod yozmaysiz. jump() degan bitta funksiya tuzib, kerak bo'lganda chaqirasiz.",
+      en: "Instead of re-writing 10 lines to jump, create function jump() and call it anytime."
+    },
+    secretSandwich: {
+      uz: "function nom() { buyruqlar } va chaqirish: nom();",
+      en: "function name() { code } and invoke: name();"
+    },
+    stepBreakdown: [
+      {
+        part: "function sayHello()",
+        explanation: { uz: "Funksiya nomini e'lon qilish", en: "Declare function name" },
+        visualResult: { uz: "Sehrli buyruq xotiraga kiritiladi", en: "Function defined in memory" }
+      },
+      {
+        part: "sayHello();",
+        explanation: { uz: "Funksiyani chaqirish va ishga tushirish", en: "Invoke and execute function" },
+        visualResult: { uz: "Ichidagi barcha kodlar bajariladi", en: "Runs the function body" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'function', name: { uz: "Funksiya kalit so'zi", en: "Function Keyword" }, meaning: { uz: "Yangi funksiya e'lon qiladi", en: "Declares a reusable function" } },
+      { tag: '()', name: { uz: "Chaqirish qavslari", en: "Invocation Parentheses" }, meaning: { uz: "Funksiyani darhol ishga tushiradi", en: "Triggers the function execution" } }
+    ],
+    mission: {
+      uz: "sayHello nomli funksiya yarating va uni sayHello(); deb chaqiring.",
+      en: "Declare function sayHello() that logs a message, and call it."
+    },
+    initialCode: '// 10-Mavzu: Funksiya\nfunction sayHello() {\n  console.log("Salom, Dasturchi!");\n}\n// Funksiyani chaqiring:\n',
+    targetCode: 'function sayHello() {\n  console.log("Salom, Dasturchi!");\n}\nsayHello();',
+    hints: [
+      { uz: "sayHello(); deb yozing.", en: "Write: sayHello();" }
+    ],
+    validate: (code) => {
+      if (!/function\s+sayHello\s*\(/.test(code)) return { passed: false, message: "function sayHello() yarating!" };
+      if (!/sayHello\s*\(\s*\)/.test(code)) return { passed: false, message: "sayHello() deb chaqiring!" };
+      return { passed: true, message: "Sehrli funksiyangiz muvaffaqiyatli ishga tushdi! 🪄⭐" };
+    }
+  },
+
+  // THEME 11
+  {
+    id: 'js-11-params-return',
+    module: 'mod-js-logic',
+    icon: '📥',
+    title: { uz: "11-Mavzu: Parametrlar va Natija Qaytarish (return)", en: "Theme 11: Parameters & Return Values" },
+    concept: {
+      uz: "Funksiyaga ma'lumot berib yuborish mumkin (parametrlar: a, b), va funksiya natijani orqaga qaytarishi mumkin (return).",
+      en: "Functions can take input ingredients (parameters) and return a cooked result back using return."
+    },
+    humanLanguage: {
+      uz: "Sharbat chiqargichga olma solsangiz (parametr), u sizga olma sharbati qaytaradi (return).",
+      en: "A juice maker takes oranges (input parameters) and returns fresh orange juice (return)."
+    },
+    secretSandwich: {
+      uz: "function add(a, b) { return a + b; }",
+      en: "function add(a, b) { return a + b; }"
+    },
+    stepBreakdown: [
+      {
+        part: "(a, b)",
+        explanation: { uz: "Funksiya qabul qiladigan parametrlar", en: "Input parameters" },
+        visualResult: { uz: "Ichkariga uzatiladi", en: "Passed into function" }
+      },
+      {
+        part: "return a + b;",
+        explanation: { uz: "Natijani chaqiruvchiga qaytarish", en: "Return the computed sum" },
+        visualResult: { uz: "Natija hosil bo'ladi", en: "Returns the value" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'return', name: { uz: "Qaytarish buyrug'i", en: "Return statement" }, meaning: { uz: "Funksiyadan natija qaytaradi va uni tugatadi", en: "Sends value back to caller" } }
+    ],
+    mission: {
+      uz: "add(a, b) funksiyasi ichida return a + b; qiling va let result = add(10, 20); deb chaqiring.",
+      en: "Return a + b in function add(a, b) and assign let result = add(10, 20);."
+    },
+    initialCode: 'function add(a, b) {\n  // Natijani qaytaring:\n}\nlet result = add(10, 20);\nconsole.log(result);',
+    targetCode: 'function add(a, b) {\n  return a + b;\n}\nlet result = add(10, 20);\nconsole.log(result);',
+    hints: [
+      { uz: "return a + b; deb yozing.", en: "Write: return a + b;" }
+    ],
+    validate: (code) => {
+      if (!/return\s+a\s*\+\s*b/.test(code)) return { passed: false, message: "return a + b; deb yozing!" };
+      return { passed: true, message: "Juda puxta! Parametr va return bilan ishlashni o'zlashtirdingiz! 📥💎" };
+    }
+  },
+
+  // THEME 12
+  {
+    id: 'js-12-arrow-functions',
+    module: 'mod-js-logic',
+    icon: '🏹',
+    title: { uz: "12-Mavzu: Arrow Funksiyalar — Zamonaviy Qisqa Yozuv (() => {})", en: "Theme 12: Arrow Functions — Modern Syntax (() => {})" },
+    concept: {
+      uz: "Zamonaviy JavaScriptda funksiyalarni kamon o'qi ko'rinishida => qisqa va chiroyli yozish mumkin.",
+      en: "Arrow functions give you a sleek, concise syntax using the fat arrow operator =>."
+    },
+    humanLanguage: {
+      uz: "function so'zini yozish o'rniga (n) => n * 2 deb juda tez va chiroyli yozamiz.",
+      en: "Instead of typing the long word function, write (n) => n * 2 like a ninja."
+    },
+    secretSandwich: {
+      uz: "const nom = (parametr) => natija;",
+      en: "const name = (param) => result;"
+    },
+    stepBreakdown: [
+      {
+        part: "=>",
+        explanation: { uz: "Arrow (kamon o'qi) operatori", en: "Fat arrow operator" },
+        visualResult: { uz: "Qisqa funksiya hosil qiladi", en: "Produces concise function" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '=>', name: { uz: "Arrow operatori", en: "Arrow operator" }, meaning: { uz: "Yangi ixcham funksiya sintaksisi", en: "Concise function token" } }
+    ],
+    mission: {
+      uz: "const double = (n) => n * 2; arrow funksiyasini yozing va konsolga double(5) ni chiqaring.",
+      en: "Write const double = (n) => n * 2; and log double(5)."
+    },
+    initialCode: '// 12-Mavzu: Arrow Funksiya\n// double nomli arrow funksiya yozing:\n',
+    targetCode: 'const double = (n) => n * 2;\nconsole.log(double(5));',
+    hints: [
+      { uz: "const double = (n) => n * 2; deb yozing.", en: "Type: const double = (n) => n * 2;" }
+    ],
+    validate: (code) => {
+      if (!/=>/.test(code)) return { passed: false, message: "=> arrow belgisidan foydalaning!" };
+      if (!/double/.test(code)) return { passed: false, message: "double nomli funksiya yarating!" };
+      return { passed: true, message: "Kamon o'qi kabi tezkor! Arrow funksiyalar bo'yicha mutaxassissiz! 🏹⚡" };
+    }
+  },
+
+  // THEME 13
+  {
+    id: 'js-13-arrays',
+    module: 'mod-js-data',
+    icon: '🎒',
+    title: { uz: "13-Mavzu: Massivlar — Sehrli Ryukzak va Ro'yxatlar ([])", en: "Theme 13: Arrays — Magic Inventory & Lists ([])" },
+    concept: {
+      uz: "Massiv (Array) — bu bitta o'zgaruvchi ichida ko'plab buyumlarni ro'yxat qilib saqlash usulidir. Kvadrat qavs [] bilan yoziladi.",
+      en: "An array stores a list of items inside square brackets []. Each item has a position index starting from 0."
+    },
+    humanLanguage: {
+      uz: "O'yindagi ryukzagingizda: ['Qilich', 'Qalqon', 'Sehrli Idish'] bor. Birinchisi doimo 0-raqamdan boshlanadi: ryukzak[0] = 'Qilich'!",
+      en: "In your gamer backpack: ['Sword', 'Shield', 'Potion']. Arrays count starting at 0: backpack[0] is 'Sword'!"
+    },
+    secretSandwich: {
+      uz: "let ro'yxat = [1-element, 2-element, 3-element]; va chaqirish: ro'yxat[0]",
+      en: "let list = ['item1', 'item2', 'item3']; and access: list[0]"
+    },
+    stepBreakdown: [
+      {
+        part: '["Qilich", "Qalqon"]',
+        explanation: { uz: "Kvadrat qavs ichidagi ro'yxat", en: "List elements inside brackets" },
+        visualResult: { uz: "Xotirada tartiblangan ro'yxat", en: "Ordered list in memory" }
+      },
+      {
+        part: "inventory[0]",
+        explanation: { uz: "Nolinchi (birinchi) elementni olish", en: "Get first element at index 0" },
+        visualResult: { uz: '"Qilich" qiymati olinadi', en: 'Retrieves "Qilich"' }
+      }
+    ],
+    tagShowcase: [
+      { tag: '[]', name: { uz: "Kvadrat qavslar", en: "Square Brackets" }, meaning: { uz: "Massiv yaratadi va indeks bo'yicha oladi", en: "Defines array and accesses index" } },
+      { tag: '.length', name: { uz: "Uzunlik xususiyati", en: "Length property" }, meaning: { uz: "Massivda nechta element borligini aytadi", en: "Counts total elements" } }
+    ],
+    mission: {
+      uz: "inventory nomli massiv tuzing va console.log(inventory[0]); qilib birinchi buyumni chiqaring.",
+      en: "Create an inventory array with 3 items and log inventory[0]."
+    },
+    initialCode: 'let inventory = ["Qilich", "Qalqon", "Sehrli Idish"];\n// Birinchi elementni konsolga chiqaring:\n',
+    targetCode: 'let inventory = ["Qilich", "Qalqon", "Sehrli Idish"];\nconsole.log(inventory[0]);',
+    hints: [
+      { uz: "console.log(inventory[0]); deb yozing.", en: "Write: console.log(inventory[0]);" }
+    ],
+    validate: (code) => {
+      if (!/\[.*?\]/.test(code)) return { passed: false, message: "[] massiv qavslarini yozing!" };
+      if (!/inventory\s*\[\s*0\s*\]/.test(code)) return { passed: false, message: "inventory[0] orqali birinchi elementni oling!" };
+      return { passed: true, message: "Zo'r! Birinchi massivingiz va uning 0-indeksini zabt etdingiz! 🎒⭐" };
+    }
+  },
+
+  // THEME 14
+  {
+    id: 'js-14-array-methods',
+    module: 'mod-js-data',
+    icon: '🛠️',
+    title: { uz: "14-Mavzu: Massiv Metodlari — push() va pop() (Qo'shish va Olish)", en: "Theme 14: Array Methods — push() & pop()" },
+    concept: {
+      uz: "push() massivning oxiriga yangi buyum qo'shadi, pop() esa oxirgi buyumni sug'urib oladi.",
+      en: "push() adds a new item to the end of your list, while pop() removes the last item."
+    },
+    humanLanguage: {
+      uz: "Ryukzakka yangi qurol topib soldingiz: inventory.push('Kamon'). Bitta o'q ishlatdingiz: inventory.pop().",
+      en: "You looted a bow: inventory.push('Bow'). You fired your last arrow: arrows.pop()."
+    },
+    secretSandwich: {
+      uz: "massiv.push('yangi'); — qo'shish | massiv.pop(); — oxirgisini olish",
+      en: "array.push('new'); — append | array.pop(); — remove last"
+    },
+    stepBreakdown: [
+      {
+        part: '.push("Robot")',
+        explanation: { uz: "Oxiriga yangi element qo'shadi", en: "Appends item to array end" },
+        visualResult: { uz: "Massiv kattalashadi", en: "Array size expands" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '.push()', name: { uz: "Qo'shish metodi", en: "Push method" }, meaning: { uz: "Oxiriga element qo'shadi", en: "Adds item to end" } },
+      { tag: '.pop()', name: { uz: "Olib tashlash metodi", en: "Pop method" }, meaning: { uz: "Oxirgi elementni o'chiradi", en: "Removes last item" } }
+    ],
+    mission: {
+      uz: 'toys massiviga toys.push("Robot"); qilib yangi o\'yinchoq qo\'shing va toys.length ni chiqaring.',
+      en: 'Add "Robot" to toys using toys.push("Robot"); and log toys.length.'
+    },
+    initialCode: 'let toys = ["Mashina", "Koptok"];\n// push yordamida "Robot" qo\'shing:\n',
+    targetCode: 'let toys = ["Mashina", "Koptok"];\ntoys.push("Robot");\nconsole.log(toys.length);',
+    hints: [
+      { uz: 'toys.push("Robot"); deb yozing.', en: 'Write: toys.push("Robot");' }
+    ],
+    validate: (code) => {
+      if (!/toys\.push\s*\(/.test(code)) return { passed: false, message: "toys.push() dan foydalaning!" };
+      return { passed: true, message: "Ajoyib! Massivga yangi element qo'shildi! 🛠️🎉" };
+    }
+  },
+
+  // THEME 15
+  {
+    id: 'js-15-for-loop',
+    module: 'mod-js-data',
+    icon: '🔁',
+    title: { uz: "15-Mavzu: Takrorlash Mashinasi — for Tsikli", en: "Theme 15: Repetition Machine — The for Loop" },
+    concept: {
+      uz: "Bir xil ishni 100 marta qo'lda yozmaysiz. for tsikli kompyuterga bir necha qator kodni kerakli martagacha chaqmoqdek tez takrorlatadi.",
+      en: "Never write repetitive code by hand. The for loop repeats code as many times as you command in milliseconds."
+    },
+    humanLanguage: {
+      uz: "Stadionda 5 marta yugurish: 1-aylana, 2-aylana, 3-aylana... for (let i = 1; i <= 5; i++) xuddi shu sanagichdir!",
+      en: "Running 5 laps around the track: 1, 2, 3, 4, 5. for (let i = 1; i <= 5; i++) does the exact lap counting!"
+    },
+    secretSandwich: {
+      uz: "for (boshlanish; shart; qadam) { takrorlanuvchi kod }",
+      en: "for (start; condition; step) { code to repeat }"
+    },
+    stepBreakdown: [
+      {
+        part: "let i = 1;",
+        explanation: { uz: "Sanagichning boshlanishi", en: "Loop counter starting point" },
+        visualResult: { uz: "i = 1 bo'ladi", en: "i begins at 1" }
+      },
+      {
+        part: "i <= 5;",
+        explanation: { uz: "Takrorlanish chegarasi", en: "Loop limit condition" },
+        visualResult: { uz: "5 ga yetguncha aylanadi", en: "Runs until 5" }
+      },
+      {
+        part: "i++",
+        explanation: { uz: "Har aylanganda i ga 1 qo'shish", en: "Increment i by 1 each lap" },
+        visualResult: { uz: "1, 2, 3, 4, 5 bo'lib oshadi", en: "Steps forward" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'for', name: { uz: "For tsikli", en: "For loop" }, meaning: { uz: "Belgilangan miqdorda takrorlaydi", en: "Repeats code for set counts" } },
+      { tag: 'i++', name: { uz: "Inkrement (1 qo'shish)", en: "Increment operator" }, meaning: { uz: "Sanagichni bittaga oshiradi", en: "Adds 1 to number" } }
+    ],
+    mission: {
+      uz: "for tsikli yordamida 1 dan 5 gacha sonlarni console.log(i); qilib konsolga chiqaring.",
+      en: "Use a for loop to log numbers from 1 to 5."
+    },
+    initialCode: '// 15-Mavzu: for tsikli\n// 1 dan 5 gacha sanang:\n',
+    targetCode: 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}',
+    hints: [
+      { uz: "for (let i = 1; i <= 5; i++) { console.log(i); } deb yozing.", en: "Type: for (let i = 1; i <= 5; i++) { console.log(i); }" }
+    ],
+    validate: (code) => {
+      if (!/for\s*\(/.test(code)) return { passed: false, message: "for tsiklini yozing!" };
+      if (!/i\+\+/.test(code) && !/i\s*\+=\s*1/.test(code)) return { passed: false, message: "i++ inkrementidan foydalaning!" };
+      return { passed: true, message: "Ajoyib takrorlash mashinasi! 5 ta qadam sanaldi! 🔁⭐" };
+    }
+  },
+
+  // THEME 16
+  {
+    id: 'js-16-while-loop',
+    module: 'mod-js-data',
+    icon: '⏳',
+    title: { uz: "16-Mavzu: Shartli Takrorlash — while Tsikli", en: "Theme 16: Conditional Repetition — The while Loop" },
+    concept: {
+      uz: "while tsikli 'modomiki shart to'g'ri ekan, takrorla' degan ma'noni beradi. Masalan, energiyamiz bor ekan, yuguramiz.",
+      en: "The while loop runs as long as its condition holds true: while (energy > 0) keep running!"
+    },
+    humanLanguage: {
+      uz: "Telefon quvvati 0 dan katta ekan, o'yin o'ynayverasiz. Har daqiqada quvvat 1 taga kamayadi: battery--.",
+      en: "As long as battery > 0, your game continues. Each round battery decreases by 1."
+    },
+    secretSandwich: {
+      uz: "while (shart) { kod; shartni_o'zgartirish; } — diqqat: o'zgaruvchini kamaytirishni unutmang!",
+      en: "while (condition) { code; update; } — always change state to avoid infinite freezes!"
+    },
+    stepBreakdown: [
+      {
+        part: "while (energy > 0)",
+        explanation: { uz: "Energiya borligini tekshirish", en: "Check remaining energy" },
+        visualResult: { uz: "0 bo'lganda to'xtaydi", en: "Stops when 0" }
+      },
+      {
+        part: "energy--;",
+        explanation: { uz: "Energiyani 1 taga kamaytirish", en: "Decrease energy by 1" },
+        visualResult: { uz: "Energiya kamayib boradi", en: "Counts down" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'while', name: { uz: "While tsikli", en: "While loop" }, meaning: { uz: "Shart rost bo'lguncha aylanadi", en: "Runs while condition is true" } },
+      { tag: '--', name: { uz: "Dekrement (1 ayirish)", en: "Decrement operator" }, meaning: { uz: "Sonni bittaga kamaytiradi", en: "Subtracts 1" } }
+    ],
+    mission: {
+      uz: "while (energy > 0) tsiklida console.log(energy); chiqaring va energy--; bilan kamaytiring.",
+      en: "In a while loop log energy and decrease it with energy--;."
+    },
+    initialCode: 'let energy = 3;\nwhile (energy > 0) {\n  // energy ni chiqaring va kamaytiring:\n}\n',
+    targetCode: 'let energy = 3;\nwhile (energy > 0) {\n  console.log(energy);\n  energy--;\n}',
+    hints: [
+      { uz: "console.log(energy); energy--; deb yozing.", en: "Write: console.log(energy); energy--;" }
+    ],
+    validate: (code) => {
+      if (!/while\s*\(/.test(code)) return { passed: false, message: "while tsiklidan foydalaning!" };
+      if (!/energy--/.test(code) && !/energy\s*-=\s*1/.test(code)) return { passed: false, message: "energy--; bilan qiymatni kamaytiring!" };
+      return { passed: true, message: "Vaqt va shartlar bo'yicha mukammal tsikl tuzildi! ⏳🎉" };
+    }
+  },
+
+  // THEME 17
+  {
+    id: 'js-17-objects',
+    module: 'mod-js-data',
+    icon: '👤',
+    title: { uz: "17-Mavzu: Obyektlar — Qahramon Xususiyatlari ({})", en: "Theme 17: Objects — Hero Character Sheets ({})" },
+    concept: {
+      uz: "Obyekt — bu bitta narsaning barcha xususiyatlarini (nomi, kuchi, joni) bitta joyda jingalak qavs {} ichida saqlashdir.",
+      en: "An object packs key-value properties describing a real-world entity inside curly braces {}."
+    },
+    humanLanguage: {
+      uz: "RPG o'yindagi qahramoningiz: { name: 'Alpomish', hp: 100, power: 50 }. Jonini bilmoqchimisiz? hero.hp deysiz!",
+      en: "Your superhero profile: { name: 'Flash', speed: 999, hp: 100 }. Access speed with hero.speed!"
+    },
+    secretSandwich: {
+      uz: "let obyekt = { kalit: 'qiymat', son: 10 }; va chaqirish: obyekt.kalit",
+      en: "let obj = { key: 'value', num: 10 }; and access: obj.key"
+    },
+    stepBreakdown: [
+      {
+        part: '{ name: "Alpomish" }',
+        explanation: { uz: "Kalit va qiymat juftligi", en: "Key-value property" },
+        visualResult: { uz: "Obyekt xossasi saqlanadi", en: "Property saved" }
+      },
+      {
+        part: "hero.name",
+        explanation: { uz: "Nuqta orqali xususiyatni o'qish", en: "Dot notation property access" },
+        visualResult: { uz: '"Alpomish" chiqadi', en: 'Reads "Alpomish"' }
+      }
+    ],
+    tagShowcase: [
+      { tag: '{}', name: { uz: "Jingalak qavslar", en: "Curly Braces" }, meaning: { uz: "Yangi obyekt yaratadi", en: "Creates an object literal" } },
+      { tag: '.', name: { uz: "Nuqta operatori", en: "Dot operator" }, meaning: { uz: "Obyekt ichidagi xususiyatni chaqiradi", en: "Accesses object properties" } }
+    ],
+    mission: {
+      uz: "hero obyektida name, hp (100), va power (50) xususiyatlarini yarating va console.log(hero.name); qiling.",
+      en: "Create a hero object with name, hp, power properties and log hero.name."
+    },
+    initialCode: 'let hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\n// Qahramon nomini konsolga chiqaring:\n',
+    targetCode: 'let hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\nconsole.log(hero.name);',
+    hints: [
+      { uz: "console.log(hero.name); deb yozing.", en: "Type: console.log(hero.name);" }
+    ],
+    validate: (code) => {
+      if (!/hero\s*=\s*\{/.test(code)) return { passed: false, message: "hero obyektini yarating!" };
+      if (!/hero\.name/.test(code)) return { passed: false, message: "hero.name orqali nomni chaqiring!" };
+      return { passed: true, message: "Super qahramon pasporti tayyor! Obyektlar ajoyib! 👤💎" };
+    }
+  },
+
+  // THEME 18
+  {
+    id: 'js-18-array-objects',
+    module: 'mod-js-data',
+    icon: '🏪',
+    title: { uz: "18-Mavzu: O'yin Do'koni — Obyektlar Massivi", en: "Theme 18: Game Shop — Array of Objects" },
+    concept: {
+      uz: "Massiv va Obyektlarni birlashtirsak, butun boshli o'yin do'koni yoki maktab o'quvchilari bazasini yaratishimiz mumkin!",
+      en: "Combining arrays and objects lets you build real databases like a Game Shop or Student Directory."
+    },
+    humanLanguage: {
+      uz: "Do'konda ko'plab mahsulotlar bor. Har bir mahsulot bitta obyekt: [{ name: 'Olma', price: 5 }, { name: 'Suv', price: 2 }].",
+      en: "An inventory of items: each shop item is an object inside one parent list array."
+    },
+    secretSandwich: {
+      uz: "let shop = [ { name: '...', price: ... }, { name: '...', price: ... } ];",
+      en: "let shop = [ { name: '...', price: ... }, { name: '...', price: ... } ];"
+    },
+    stepBreakdown: [
+      {
+        part: "shop[0].name",
+        explanation: { uz: "Birinchi mahsulotning nomini olish", en: "Access name of first shop item" },
+        visualResult: { uz: '"Olma" qiymati olinadi', en: 'Returns "Olma"' }
+      }
+    ],
+    tagShowcase: [
+      { tag: '[{}]', name: { uz: "Obyektlar massivi", en: "Array of objects" }, meaning: { uz: "Murakkab ma'lumotlar to'plami", en: "Structured record database" } }
+    ],
+    mission: {
+      uz: "shop massividan birinchi mahsulot nomini console.log(shop[0].name); qilib chiqaring.",
+      en: "Log the name of the first shop item using console.log(shop[0].name);."
+    },
+    initialCode: 'let shop = [\n  { name: "Olma", price: 5 },\n  { name: "Sehrli Suv", price: 20 }\n];\n// Birinchi mahsulot nomini chiqaring:\n',
+    targetCode: 'let shop = [\n  { name: "Olma", price: 5 },\n  { name: "Sehrli Suv", price: 20 }\n];\nconsole.log(shop[0].name);',
+    hints: [
+      { uz: "console.log(shop[0].name); deb yozing.", en: "Write: console.log(shop[0].name);" }
+    ],
+    validate: (code) => {
+      if (!/shop\[0\]\.name/.test(code)) return { passed: false, message: "shop[0].name orqali nomni oling!" };
+      return { passed: true, message: "Haqiqiy o'yin do'koni ma'lumotlar bazasi tayyor! 🏪⭐" };
+    }
+  },
+
+  // THEME 19
+  {
+    id: 'js-19-dom-select',
+    module: 'mod-js-dom',
+    icon: '🎯',
+    title: { uz: "19-Mavzu: Sahifani Boshqarish — querySelector()", en: "Theme 19: Finding Elements — querySelector()" },
+    concept: {
+      uz: "DOM (Document Object Model) — bu HTML sahifaning JavaScriptdagi ko'rinishi. querySelector('#id') yordamida sahifadagi istalgan tugma yoki matnni ushlab olamiz!",
+      en: "The DOM lets JavaScript talk to HTML. document.querySelector('#id') grabs any element on screen so you can control it."
+    },
+    humanLanguage: {
+      uz: "HTML — bu skelet. JavaScript — bu miya. Miya skeletning qo'lini qimirlatish uchun avval uni ushlab olishi (querySelector) kerak!",
+      en: "HTML is the body, JS is the brain. Before the brain can move a hand, it locates it with querySelector."
+    },
+    secretSandwich: {
+      uz: "const element = document.querySelector('#elementId');",
+      en: "const element = document.querySelector('#elementId');"
+    },
+    stepBreakdown: [
+      {
+        part: 'document.querySelector("#title")',
+        explanation: { uz: "id si title bo'lgan elementni topish", en: "Find element with id='title'" },
+        visualResult: { uz: "HTML elementi o'zgaruvchiga olinadi", en: "Grabs HTML element" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'querySelector', name: { uz: "Elementni topuvchi", en: "Query selector" }, meaning: { uz: "CSS selektori bo'yicha elementni topadi", en: "Selects matching element" } },
+      { tag: 'document', name: { uz: "Veb sahifa hujjati", en: "HTML Document" }, meaning: { uz: "Butun sahifaning boshqaruv obyekti", en: "Root document object" } }
+    ],
+    mission: {
+      uz: 'document.querySelector("#title") orqali sarlavhani oling va console.log(title.textContent); qiling.',
+      en: 'Select #title with document.querySelector and log title.textContent.'
+    },
+    initialCode: '// 19-Mavzu: querySelector\nconst title = document.querySelector("#title");\n// title ning textContent xususiyatini chiqaring:\n',
+    targetCode: 'const title = document.querySelector("#title");\nconsole.log(title.textContent);',
+    hints: [
+      { uz: "console.log(title.textContent); deb yozing.", en: "Write: console.log(title.textContent);" }
+    ],
+    validate: (code) => {
+      if (!/querySelector\s*\(/.test(code)) return { passed: false, message: "document.querySelector() dan foydalaning!" };
+      return { passed: true, message: "Element ushlab olindi! Endi sahifani boshqara olasiz! 🎯🎉" };
+    }
+  },
+
+  // THEME 20
+  {
+    id: 'js-20-dom-modify',
+    module: 'mod-js-dom',
+    icon: '🎨',
+    title: { uz: "20-Mavzu: Matn va Rangni O'zgartirish — textContent va style", en: "Theme 20: Changing Text & Colors — textContent & style" },
+    concept: {
+      uz: "Ushlab olingan elementning yozuvini .textContent orqali, ko'rinishini esa .style.color yoki .style.backgroundColor orqali o'zgartiramiz!",
+      en: "Modify what the element says using .textContent, and change its visual CSS using .style properties."
+    },
+    humanLanguage: {
+      uz: "Sehrli tayoqcha bilan tegdingiz: box.textContent = 'Sehrlandi!'; box.style.backgroundColor = 'gold';",
+      en: "Like a wizard spell: box.textContent = 'Magical!'; box.style.backgroundColor = 'gold';"
+    },
+    secretSandwich: {
+      uz: "element.textContent = 'yangi matn'; | element.style.xossa = 'qiymat';",
+      en: "element.textContent = 'new text'; | element.style.property = 'value';"
+    },
+    stepBreakdown: [
+      {
+        part: 'box.textContent = "Yangi Matn"',
+        explanation: { uz: "Element ichidagi matnni almashtiradi", en: "Updates element text" },
+        visualResult: { uz: "Ekranda matn yangilanadi", en: "Screen text updates" }
+      },
+      {
+        part: 'box.style.color = "gold"',
+        explanation: { uz: "CSS matn rangini o'zgartiradi", en: "Changes CSS text color" },
+        visualResult: { uz: "Yozuv oltin rangga kiradi", en: "Text turns gold" }
+      }
+    ],
+    tagShowcase: [
+      { tag: '.textContent', name: { uz: "Matn tarkibi", en: "Text content" }, meaning: { uz: "Element ichidagi matnni o'zgartiradi", en: "Sets text content" } },
+      { tag: '.style', name: { uz: "Uslub xususiyati", en: "Style property" }, meaning: { uz: "CSS dizaynini jonli o'zgartiradi", en: "Mutates CSS styles" } }
+    ],
+    mission: {
+      uz: 'box elementining textContent ini "Sehrli Quti!" va style.backgroundColor ini "gold" qilib o\'zgartiring.',
+      en: 'Set box.textContent = "Sehrli Quti!" and box.style.backgroundColor = "gold".'
+    },
+    initialCode: 'const box = document.querySelector("#box");\n// box ning textContent va style.backgroundColor ini o\'zgartiring:\n',
+    targetCode: 'const box = document.querySelector("#box");\nbox.textContent = "Sehrli Quti!";\nbox.style.backgroundColor = "gold";',
+    hints: [
+      { uz: 'box.textContent = "Sehrli Quti!"; box.style.backgroundColor = "gold"; deb yozing.', en: "Set box.textContent and box.style.backgroundColor." }
+    ],
+    validate: (code) => {
+      if (!/box\.textContent\s*=/.test(code)) return { passed: false, message: "box.textContent ni o'zgartiring!" };
+      if (!/box\.style\.backgroundColor\s*=/.test(code) && !/box\.style\.background\s*=/.test(code)) return { passed: false, message: "box.style.backgroundColor ni o'zgartiring!" };
+      return { passed: true, message: "Sahifadagi quti bir zumda sehrlandi! 🎨✨" };
+    }
+  },
+
+  // THEME 21
+  {
+    id: 'js-21-events',
+    module: 'mod-js-dom',
+    icon: '⚡',
+    title: { uz: "21-Mavzu: Hodisalar — addEventListener('click') (Jonli Tugma)", en: "Theme 21: Events — addEventListener('click') (Live Button)" },
+    concept: {
+      uz: "Foydalanuvchi tugmani bosganda, sichqonchani yurgizganda yoki klaviaturani bosganda hodisa (Event) sodir bo'ladi. addEventListener shu hodisani poylaydi!",
+      en: "When a user clicks, moves the mouse, or presses a key, an event fires. addEventListener listens for it and acts!"
+    },
+    humanLanguage: {
+      uz: "Tugmaga qo'riqchi qo'ydik: 'Qachonki seni bossalar (click), darhol ovoz chiqar yoki rangni o'zgartir!'",
+      en: "Setting a watcher on a button: 'Whenever someone clicks you, celebrate and update the game!'"
+    },
+    secretSandwich: {
+      uz: "element.addEventListener('click', () => { bajariladigan ish });",
+      en: "element.addEventListener('click', () => { action to do });"
+    },
+    stepBreakdown: [
+      {
+        part: '.addEventListener("click", ...)',
+        explanation: { uz: "Bosilish hodisasini eshitish", en: "Listen for user click" },
+        visualResult: { uz: "Foydalanuvchi bosganda ishlaydi", en: "Fires when clicked" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'addEventListener', name: { uz: "Hodisani tinglovchi", en: "Event Listener" }, meaning: { uz: "Tugma bosilishini kutib turadi", en: "Attaches trigger listener" } },
+      { tag: '"click"', name: { uz: "Chertish hodisasi", en: "Click event" }, meaning: { uz: "Sichqoncha bilan bosilganda yuz beradi", en: "Mouse click trigger" } }
+    ],
+    mission: {
+      uz: 'btn ga "click" hodisasini qo\'shing va bosilganda btn.textContent = "BOSILDI! 🎉"; bo\'lsin.',
+      en: 'Add a "click" event listener to btn that sets btn.textContent = "BOSILDI! 🎉".'
+    },
+    initialCode: 'const btn = document.querySelector("#btn");\n// addEventListener orqali "click" hodisasini poylang:\n',
+    targetCode: 'const btn = document.querySelector("#btn");\nbtn.addEventListener("click", () => {\n  btn.textContent = "BOSILDI! 🎉";\n});',
+    hints: [
+      { uz: 'btn.addEventListener("click", () => { btn.textContent = "BOSILDI! 🎉"; }); deb yozing.', en: "Type the click event listener." }
+    ],
+    validate: (code) => {
+      if (!/addEventListener\s*\(\s*["']click["']/.test(code)) return { passed: false, message: "addEventListener('click', ...) dan foydalaning!" };
+      return { passed: true, message: "Interaktivlik cho'qqisi! Tugma jonlandi! ⚡🎉" };
+    }
+  },
+
+  // THEME 22
+  {
+    id: 'js-22-timers',
+    module: 'mod-js-dom',
+    icon: '⏰',
+    title: { uz: "22-Mavzu: Taymerlar — setTimeout() va setInterval()", en: "Theme 22: Timers — setTimeout() & setInterval()" },
+    concept: {
+      uz: "setTimeout(funksiya, ms) ma'lum vaqt kutib bir marta ishlaydi. setInterval(funksiya, ms) esa har belgilangan vaqtda tinimsiz qaytariladi.",
+      en: "setTimeout runs once after a delay in milliseconds. setInterval repeats continuously every set interval."
+    },
+    humanLanguage: {
+      uz: "1 soniya = 1000 millisoniya (ms). setTimeout bilan 2000 ms (2 soniya) kutib o'yinni boshlash mumkin!",
+      en: "1000 milliseconds = 1 second. Use setTimeout to wait 2 seconds before launching fireworks!"
+    },
+    secretSandwich: {
+      uz: "setTimeout(() => { ... }, 2000); — 2 soniyadan keyin ishlaydi.",
+      en: "setTimeout(() => { ... }, 2000); — runs after 2000 ms."
+    },
+    stepBreakdown: [
+      {
+        part: "setTimeout(..., 2000)",
+        explanation: { uz: "2 soniya (2000 ms) kechiktirish", en: "Delay by 2000 ms" },
+        visualResult: { uz: "Vaqt o'tib xabar chiqadi", en: "Triggers after delay" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'setTimeout()', name: { uz: "Kechiktiruvchi taymer", en: "Timeout timer" }, meaning: { uz: "Belgilangan vaqt o'tgach 1 marta ishlaydi", en: "Runs once after delay" } },
+      { tag: 'setInterval()', name: { uz: "Davriy taymer", en: "Interval timer" }, meaning: { uz: "Har belgilangan vaqtda takrorlanadi", en: "Repeats every interval" } }
+    ],
+    mission: {
+      uz: 'setTimeout orqali 2000 millisoniyadan so\'ng console.log("Vaqt tugadi! ⏰"); xabarini chiqaring.',
+      en: 'Use setTimeout to log "Vaqt tugadi! ⏰" after 2000 ms.'
+    },
+    initialCode: '// 22-Mavzu: setTimeout taymer\n// 2 soniya (2000 ms) kutuvchi taymer yozing:\n',
+    targetCode: 'setTimeout(() => {\n  console.log("Vaqt tugadi! ⏰");\n}, 2000);',
+    hints: [
+      { uz: 'setTimeout(() => { console.log("Vaqt tugadi! ⏰"); }, 2000); deb yozing.', en: "Type the setTimeout statement." }
+    ],
+    validate: (code) => {
+      if (!/setTimeout\s*\(/.test(code)) return { passed: false, message: "setTimeout() dan foydalaning!" };
+      if (!/2000/.test(code)) return { passed: false, message: "2000 ms (2 soniya) kiriting!" };
+      return { passed: true, message: "Vaqt nazoratchisi! Taymer ajoyib ishladi! ⏰⭐" };
+    }
+  },
+
+  // THEME 23
+  {
+    id: 'js-23-math-random',
+    module: 'mod-js-dom',
+    icon: '🎲',
+    title: { uz: "23-Mavzu: Tasodifiy Sonlar va O'yin Oshiqlari — Math.random()", en: "Theme 23: Random Numbers & Dice — Math.random()" },
+    concept: {
+      uz: "Math.random() 0 dan 1 gacha tasodifiy son beradi. Math.floor() esa uni yaxlitlaydi. Bu o'yinlarda zar tashlash, dushmanni tasodifiy joylashtirish uchun kerak!",
+      en: "Math.random() generates random floats. Multiplied and rounded with Math.floor(), it rolls dice from 1 to 6!"
+    },
+    humanLanguage: {
+      uz: "Nardadagi oshiqni tashladingiz: 1 dan 6 gacha son chiqadi! Math.floor(Math.random() * 6) + 1 xuddi shu zar toshidir.",
+      en: "Rolling a 6-sided die: Math.floor(Math.random() * 6) + 1 picks a random number from 1 to 6."
+    },
+    secretSandwich: {
+      uz: "let dice = Math.floor(Math.random() * 6) + 1;",
+      en: "let dice = Math.floor(Math.random() * 6) + 1;"
+    },
+    stepBreakdown: [
+      {
+        part: "Math.random() * 6",
+        explanation: { uz: "0 dan 5.99 gacha tasodifiy son", en: "Random float between 0 and 5.99" },
+        visualResult: { uz: "Tasodifiy qiymat", en: "Random multiplier" }
+      },
+      {
+        part: "Math.floor(...) + 1",
+        explanation: { uz: "Pastga yaxlitlab 1 qo'shish", en: "Round down and shift +1" },
+        visualResult: { uz: "1 dan 6 gacha butun son", en: "Integer between 1 and 6" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'Math.random()', name: { uz: "Tasodifiy generator", en: "Random generator" }, meaning: { uz: "Tasodifiy o'nli son qaytaradi", en: "Generates random float" } },
+      { tag: 'Math.floor()', name: { uz: "Pastga yaxlitlash", en: "Floor rounding" }, meaning: { uz: "O'nli sonni pastki butunga aylantiradi", en: "Rounds down to integer" } }
+    ],
+    mission: {
+      uz: "dice nomli o'zgaruvchida 1 dan 6 gacha tasodifiy son hosil qiling va console.log(dice); qiling.",
+      en: "Generate a random number 1 to 6 in dice and log it."
+    },
+    initialCode: '// 23-Mavzu: O\'yin Zari (Dice)\n// 1 dan 6 gacha tasodifiy son hosil qiling:\n',
+    targetCode: 'let dice = Math.floor(Math.random() * 6) + 1;\nconsole.log(dice);',
+    hints: [
+      { uz: "let dice = Math.floor(Math.random() * 6) + 1; deb yozing.", en: "Write: let dice = Math.floor(Math.random() * 6) + 1;" }
+    ],
+    validate: (code) => {
+      if (!/Math\.random\s*\(\s*\)/.test(code)) return { passed: false, message: "Math.random() dan foydalaning!" };
+      if (!/Math\.floor\s*\(/.test(code)) return { passed: false, message: "Math.floor() orqali yaxlitlang!" };
+      return { passed: true, message: "Zar tashlandi! Tasodifiy sonlar sizga bo'ysundi! 🎲🎉" };
+    }
+  },
+
+  // THEME 24
+  {
+    id: 'js-24-clicker-game',
+    module: 'mod-js-dom',
+    icon: '🏆',
+    title: { uz: "24-Mavzu: Super Mini-Loyiha — Jonli Kliker O'yini (Clicker Game)", en: "Theme 24: Grand Project — Interactive Clicker Game" },
+    concept: {
+      uz: "Barcha o'rganganlarimizni birlashtiramiz: o'zgaruvchi (count), querySelector, addEventListener, textContent va shart (if)!",
+      en: "Bring it all together: variables (count), DOM selectors, click listeners, text updates, and winning conditions!"
+    },
+    humanLanguage: {
+      uz: "Tugmani bosganda hisob oshadi. Agar hisob 10 ga yetsa — 'Siz g'olib bo'ldingiz!' deb tabriklaymiz!",
+      en: "Every click increments your score. Reach 10 clicks to win the championship trophy!"
+    },
+    secretSandwich: {
+      uz: "count++; countEl.textContent = count; if (count === 10) alert('Yutdingiz!');",
+      en: "count++; countEl.textContent = count; if (count === 10) alert('Winner!');"
+    },
+    stepBreakdown: [
+      {
+        part: "count++;",
+        explanation: { uz: "Hisobni 1 taga oshirish", en: "Increment score" },
+        visualResult: { uz: "1, 2, 3... bo'lib o'sadi", en: "Score goes up" }
+      },
+      {
+        part: "countEl.textContent = count;",
+        explanation: { uz: "Ekranda hisobni yangilash", en: "Update DOM score" },
+        visualResult: { uz: "Ekranda ko'rinadi", en: "Displayed on page" }
+      },
+      {
+        part: "if (count === 10)",
+        explanation: { uz: "G'alaba shartini tekshirish", en: "Check victory condition" },
+        visualResult: { uz: "10 bo'lganda sovrin beradi", en: "Triggers victory" }
+      }
+    ],
+    tagShowcase: [
+      { tag: 'Clicker Game', name: { uz: "Kliker O'yini", en: "Clicker Game" }, meaning: { uz: "To'liq interaktiv brauzer o'yini", en: "Complete browser mini-game" } }
+    ],
+    mission: {
+      uz: 'clickBtn bosilganda count ni oshiring, countEl.textContent ga chiqaring va count === 10 bo\'lsa alert("G\'alaba!"); qiling.',
+      en: 'On clickBtn click, increment count, update countEl.textContent, and alert("G\'alaba!") when count === 10.'
+    },
+    initialCode: 'let count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  // count ni oshiring, ekranga chiqaring va 10 bo\'lsa alert qiling:\n});',
+    targetCode: 'let count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  count++;\n  countEl.textContent = count;\n  if (count === 10) {\n    alert("G\'alaba! 🏆");\n  }\n});',
+    hints: [
+      { uz: 'count++; countEl.textContent = count; if (count === 10) alert("G\'alaba! 🏆"); deb yozing.', en: "Increment count, set countEl.textContent, and check if count === 10." }
+    ],
+    validate: (code) => {
+      if (!/count\+\+/.test(code) && !/count\s*\+=\s*1/.test(code)) return { passed: false, message: "count++ bilan hisobni oshiring!" };
+      if (!/countEl\.textContent\s*=/.test(code)) return { passed: false, message: "countEl.textContent ga hisobni chiqaring!" };
+      if (!/if\s*\(\s*count/.test(code)) return { passed: false, message: "if (count === 10) shartini tekshiring!" };
+      return { passed: true, message: "MUBORAKBOD ETAMIZ! SIZ JAVASCRIPT KURSINI TO'LIQ BITIRIB, O'Z O'YININGIZNI YARATDINGIZ! 🏆🎉🚀" };
+    }
+  }
+];
+
+function getLessonById(id) {
+  return LESSONS.find(l => l.id === id) || null;
+}
+
+function getLessonsByModule(modId) {
+  return LESSONS.filter(l => l.module === modId);
+}
+
+
+  // --- i18n Module ---
+  /**
+ * Internationalization (i18n) Module: English (EN) & Uzbek (UZ) for CodeCraft JS
+ */
+
+const UI_TEXT = {
+  en: {
+    appTitle: 'CodeCraft JS',
+    appSubtitle: 'JavaScript for Kids',
+    startPractice: '🚀 Start Practice',
+    resetCode: '🔄 Reset to Start',
+    listOfTags: '📋 List of Commands',
+    teacherTips: '🧑‍🏫 Teacher Tips',
+    soundOn: '🔊 Sound: ON',
+    soundOff: '🔇 Sound: OFF',
+    freeSandbox: '🚀 Free Sandbox',
+    lessonPrefix: 'Theme',
+    yourProgress: 'Your Progress',
+    completedTag: '✅ Completed!',
+    humanLanguageHeader: '💡 In Human Language: What is this?',
+    tagSandwichHeader: '🥪 The Secret Formula: How to Write It',
+    tagShowcaseHeader: '🏷️ Simple Commands & Keywords to Know:',
+    stepBreakdownHeader: '🔍 Step-by-Step Breakdown: What Each Part Does to the Result',
+    resultCallout: 'Result:',
+    codeEditorTitle: 'JS Code (Edit Here)',
+    tagsLabel: 'Keywords:',
+    browserPreviewTitle: 'Live Preview & Console Output',
+    yourResultTab: 'Console & Output',
+    targetGoalTab: '🎯 Target Goal',
+    compareTab: '⚖️ Compare',
+    targetExplanationTitle: '🎯 What the Result Should Look Like:',
+    missionTag: '🎯 Mission',
+    hintBtn: '💡 Hint',
+    checkCodeBtn: '🚀 Check My Code!',
+    runCodeBtn: '▶️ Run Code',
+    copyBtn: '📋 Copy',
+    copiedMsg: '✅ Copied!',
+    tidyBtn: '🪄 Tidy',
+    clearConsoleBtn: '🧹 Clear Console',
+    modalCompleteTitle: 'MISSION COMPLETE!',
+    starsEarnedMsg: '+3 STARS EARNED! ⭐⭐⭐',
+    stayHereBtn: 'Stay Here',
+    nextLessonBtn: 'Next Lesson ➡️',
+    tryAgainTitle: 'Almost There!',
+    tryAgainBody: 'Take a quick look at your code:',
+    retryBtn: 'Let Me Try Again! 💪',
+    tagListModalTitle: 'List of Commands & Keywords',
+    tagListDesc: 'Here are all the JavaScript commands and keywords in this theme. Click any chip to copy it!',
+    colCode: 'Command / Code',
+    colName: 'Name',
+    colMeaning: 'Meaning (What It Does)',
+    doneBtn: 'Got it!',
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    topicLabBtn: '🧪 Visual Lab',
+    topicLabModalTitle: 'Interactive JS Visual Lab',
+    topicLabEffectLabel: 'Stage Effect on State:',
+    topicLabGeneratedCode: 'Live Generated Code'
+  },
+  uz: {
+    appTitle: 'CodeCraft JS',
+    appSubtitle: 'Bolalar uchun JavaScript',
+    startPractice: '🚀 Mashqni Boshlash',
+    resetCode: '🔄 Boshiga Qaytish',
+    listOfTags: '📋 Buyruqlar Ro\'yxati',
+    teacherTips: '🧑‍🏫 O\'qituvchiga Maslahat',
+    soundOn: '🔊 Ovoz: YONIQ',
+    soundOff: '🔇 Ovoz: O\'CHIQ',
+    freeSandbox: '🚀 Erkin Qumloq (Sandbox)',
+    lessonPrefix: 'Mavzu',
+    yourProgress: 'Sizning Natijangiz',
+    completedTag: '✅ Bajarildi!',
+    humanLanguageHeader: '💡 Odam Tilida: Bu nima o\'zi?',
+    tagSandwichHeader: '🥪 Sehrli Formula: Qanday yoziladi?',
+    tagShowcaseHeader: '🏷️ Bilib olish kerak bo\'lgan buyruqlar va kalit so\'zlar:',
+    stepBreakdownHeader: '🔍 Qadamma-qadam tahlil: Har bir belgi natijaga qanday ta\'sir qiladi?',
+    resultCallout: 'Natija:',
+    codeEditorTitle: 'JS Kod (Shu yerda tahrirlang)',
+    tagsLabel: 'Kalit so\'zlar:',
+    browserPreviewTitle: 'Jonli Natija va Konsol Oynasi',
+    yourResultTab: 'Konsol va Natija',
+    targetGoalTab: '🎯 Maqsad natijasi',
+    compareTab: '⚖️ Taqqoslash',
+    targetExplanationTitle: '🎯 Natija qanday ko\'rinishi kerak:',
+    missionTag: '🎯 Vazifa',
+    hintBtn: '💡 Maslahat',
+    checkCodeBtn: '🚀 Kodimni tekshirish!',
+    runCodeBtn: '▶️ Ishga tushirish',
+    copyBtn: '📋 Nusxalash',
+    copiedMsg: '✅ Nusxalandi!',
+    tidyBtn: '🪄 Tartiblash',
+    clearConsoleBtn: '🧹 Konsolni tozalash',
+    modalCompleteTitle: 'VAZIFA BAJARILDI!',
+    starsEarnedMsg: '+3 YULDUZCHA YUTIB OLDINGIZ! ⭐⭐⭐',
+    stayHereBtn: 'Shu yerda qolish',
+    nextLessonBtn: 'Keyingi dars ➡️',
+    tryAgainTitle: 'Juda yaqin keldingiz!',
+    tryAgainBody: 'Kodingizga yana bir bor e\'tibor bering:',
+    retryBtn: 'Qayta urinib ko\'rish! 💪',
+    tagListModalTitle: 'Buyruqlar va Kalit So\'zlar Ro\'yxati',
+    tagListDesc: 'Ushbu mavzuda o\'rganiladigan barcha buyruqlar. Nusxalash uchun istalgan kod ustiga bosing!',
+    colCode: 'Buyruq / Kod',
+    colName: 'Nomi',
+    colMeaning: 'Vazifasi (Nima ish qiladi)',
+    doneBtn: 'Tushundim!',
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    topicLabBtn: '🧪 Vizual Laboratoriya',
+    topicLabModalTitle: 'Interaktiv JS Vizual Laboratoriya',
+    topicLabEffectLabel: 'Holatga ta\'siri:',
+    topicLabGeneratedCode: 'Jonli Yaratilgan Kod'
+  }
+};
+
+function t(key, lang = 'en') {
+  const currentLang = (lang === 'uz') ? 'uz' : 'en';
+  return UI_TEXT[currentLang]?.[key] || UI_TEXT.en[key] || key;
+}
+
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+
+  // --- State Module ---
+  /**
+ * State Management Module for CodeCraft JS (Kids)
+ * Pure immutable state transitions for progress, badges, preferences,
+ * and offline multi-student shift profile management.
+ */
+
+const STORAGE_KEY = 'codecraft_js_kids_v1_state';
+const PROFILES_INDEX_KEY = 'codecraft_js_kids_profiles_index_v2';
+const ACTIVE_PROFILE_ID_KEY = 'codecraft_js_kids_active_profile_id_v2';
+const PROFILE_STATE_PREFIX = 'codecraft_js_kids_profile_state_';
+
+const CLASS_SHIFTS = [
+  { id: 'shift-1', labelUz: '1-Smena (10:30 – 12:00)', labelEn: 'Shift 1 (10:30 – 12:00)', value: '1-Smena (10:30 - 12:00)', time: '10:30 - 12:00' },
+  { id: 'shift-2', labelUz: '2-Smena (14:00 – 15:30)', labelEn: 'Shift 2 (14:00 – 15:30)', value: '2-Smena (14:00 - 15:30)', time: '14:00 - 15:30' },
+  { id: 'shift-3', labelUz: '3-Smena (15:30 – 17:00)', labelEn: 'Shift 3 (15:30 – 17:00)', value: '3-Smena (15:30 - 17:00)', time: '15:30 - 17:00' }
+];
+
+function createInitialState() {
+  return {
+    studentName: 'JS Ninja',
+    studentAvatar: '⚡',
+    shift: '1-Smena (10:30 - 12:00)',
+    profileId: 'prof_default',
+    stars: 0,
+    completedLessons: [],
+    badges: [],
+    currentLessonId: 'js-1-console',
+    teacherMode: false,
+    audioEnabled: true,
+    lang: 'en', // 'en' | 'uz'
+    theme: 'dark',
+    customSandboxCode: `// CodeCraft JS Free Sandbox
+console.log("Xush kelibsiz!");
+let score = 0;
+for (let i = 1; i <= 5; i++) {
+  console.log("Yulduzcha #" + i + " ⭐");
+}
+`
+  };
+}
+
+function completeLesson(state, lessonId, starsEarned = 3) {
+  if (state.completedLessons.includes(lessonId)) {
+    return state;
+  }
+
+  const updatedCompleted = [...state.completedLessons, lessonId];
+  const updatedStars = state.stars + starsEarned;
+  let updatedBadges = [...state.badges];
+
+  if (updatedCompleted.length >= 1 && !updatedBadges.includes('apprentice')) {
+    updatedBadges.push('apprentice');
+  }
+  if (updatedCompleted.length >= 5 && !updatedBadges.includes('star-coder')) {
+    updatedBadges.push('star-coder');
+  }
+  if (updatedCompleted.length >= 10 && !updatedBadges.includes('master-crafter')) {
+    updatedBadges.push('master-crafter');
+  }
+  if (updatedCompleted.length >= 24 && !updatedBadges.includes('js-wizard')) {
+    updatedBadges.push('js-wizard');
+  }
+
+  return {
+    ...state,
+    completedLessons: updatedCompleted,
+    stars: updatedStars,
+    badges: updatedBadges
+  };
+}
+
+function isLessonCompleted(state, lessonId) {
+  return state.completedLessons.includes(lessonId);
+}
+
+function getTotalStars(state) {
+  return state.stars;
+}
+
+function unlockBadge(state, badgeId) {
+  if (state.badges.includes(badgeId)) {
+    return state;
+  }
+  return {
+    ...state,
+    badges: [...state.badges, badgeId]
+  };
+}
+
+function toggleTeacherMode(state) {
+  return {
+    ...state,
+    teacherMode: !state.teacherMode
+  };
+}
+
+function toggleAudio(state) {
+  return {
+    ...state,
+    audioEnabled: !state.audioEnabled
+  };
+}
+
+function toggleLanguage(state) {
+  return {
+    ...state,
+    lang: state.lang === 'en' ? 'uz' : 'en'
+  };
+}
+
+function setLanguage(state, lang) {
+  return {
+    ...state,
+    lang: lang === 'uz' ? 'uz' : 'en'
+  };
+}
+
+function setStudentProfile(state, { name, avatar }) {
+  return {
+    ...state,
+    studentName: name !== undefined ? name : state.studentName,
+    studentAvatar: avatar !== undefined ? avatar : state.studentAvatar
+  };
+}
+
+function setTheme(state, theme) {
+  return {
+    ...state,
+    theme: theme === 'light' ? 'light' : 'dark'
+  };
+}
+
+/* ==========================================================================
+   OFFLINE MULTI-STUDENT PROFILE & SHIFT PERSISTENCE (LocalStorage)
+   ========================================================================== */
+
+function listStudentProfiles(storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.getItem) return [];
+
+    const raw = store.getItem(PROFILES_INDEX_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+
+    // Auto-migrate from legacy single state if present
+    const legacyRaw = store.getItem(STORAGE_KEY);
+    if (legacyRaw) {
+      try {
+        const legacy = JSON.parse(legacyRaw);
+        const defaultProfile = {
+          id: 'prof_default',
+          name: legacy.studentName || 'JS Ninja',
+          shift: legacy.shift || '1-Smena (10:30 - 12:00)',
+          avatar: legacy.studentAvatar || '⚡',
+          pin: '',
+          createdAt: Date.now(),
+          lastActiveAt: Date.now()
+        };
+        const profiles = [defaultProfile];
+        if (store.setItem) {
+          store.setItem(PROFILES_INDEX_KEY, JSON.stringify(profiles));
+          store.setItem(ACTIVE_PROFILE_ID_KEY, 'prof_default');
+          store.setItem(PROFILE_STATE_PREFIX + 'prof_default', JSON.stringify({
+            ...legacy,
+            profileId: 'prof_default',
+            shift: defaultProfile.shift
+          }));
+        }
+        return profiles;
+      } catch (err) {}
+    }
+  } catch (e) {
+    console.warn('Error reading student profiles:', e);
+  }
+  return [];
+}
+
+function getActiveProfileId(storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.getItem) {
+      const id = store.getItem(ACTIVE_PROFILE_ID_KEY);
+      if (id) return id;
+    }
+    const profiles = listStudentProfiles(store);
+    return profiles.length > 0 ? profiles[0].id : 'prof_default';
+  } catch (e) {
+    return 'prof_default';
+  }
+}
+
+function setActiveProfileId(profileId, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.setItem) {
+      store.setItem(ACTIVE_PROFILE_ID_KEY, profileId);
+    }
+  } catch (e) {}
+}
+
+function registerStudentProfile({ name, shift, avatar, pin }, storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+
+  const cleanName = (name || '').trim() || 'JS Ninja';
+  const cleanShift = shift || '1-Smena (10:30 - 12:00)';
+  const cleanAvatar = avatar || '⚡';
+  const cleanPin = (pin || '').trim();
+
+  const id = 'prof_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+  const newProfile = {
+    id,
+    name: cleanName,
+    shift: cleanShift,
+    avatar: cleanAvatar,
+    pin: cleanPin,
+    createdAt: Date.now(),
+    lastActiveAt: Date.now()
+  };
+
+  const freshState = {
+    ...createInitialState(),
+    profileId: id,
+    studentName: cleanName,
+    studentAvatar: cleanAvatar,
+    shift: cleanShift,
+    stars: 0,
+    completedLessons: [],
+    badges: []
+  };
+
+  const updatedProfiles = [...profiles, newProfile];
+
+  if (store && store.setItem) {
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(updatedProfiles));
+    store.setItem(ACTIVE_PROFILE_ID_KEY, id);
+    store.setItem(PROFILE_STATE_PREFIX + id, JSON.stringify(freshState));
+    store.setItem(STORAGE_KEY, JSON.stringify(freshState));
+  }
+
+  return { profile: newProfile, state: freshState };
+}
+
+function loginStudentProfile(profileId, pin = '', storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+  const target = profiles.find(p => p.id === profileId);
+
+  if (!target) {
+    return { success: false, error: 'NOT_FOUND' };
+  }
+
+  if (target.pin && target.pin !== pin) {
+    return { success: false, error: 'INCORRECT_PIN' };
+  }
+
+  // Update last active
+  const updatedProfiles = profiles.map(p => {
+    if (p.id === profileId) {
+      return { ...p, lastActiveAt: Date.now() };
+    }
+    return p;
+  });
+
+  if (store && store.setItem) {
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(updatedProfiles));
+    store.setItem(ACTIVE_PROFILE_ID_KEY, profileId);
+  }
+
+  const loadedState = loadProfileState(profileId, store);
+  if (store && store.setItem) {
+    store.setItem(STORAGE_KEY, JSON.stringify(loadedState));
+  }
+
+  return { success: true, profile: target, state: loadedState };
+}
+
+function loadProfileState(profileId, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.getItem) return createInitialState();
+
+    const raw = store.getItem(PROFILE_STATE_PREFIX + profileId);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return {
+        ...createInitialState(),
+        ...parsed,
+        profileId
+      };
+    }
+  } catch (e) {
+    console.warn(`Error loading profile state ${profileId}:`, e);
+  }
+  return createInitialState();
+}
+
+function saveProfileState(profileId, state, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.setItem) {
+      const toSave = {
+        ...state,
+        profileId
+      };
+      store.setItem(PROFILE_STATE_PREFIX + profileId, JSON.stringify(toSave));
+    }
+  } catch (e) {
+    console.warn(`Error saving profile state ${profileId}:`, e);
+  }
+}
+
+function deleteStudentProfile(profileId, storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  if (!store) return false;
+
+  const profiles = listStudentProfiles(store);
+  const filtered = profiles.filter(p => p.id !== profileId);
+
+  if (store.setItem) {
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(filtered));
+  }
+  if (store.removeItem) {
+    store.removeItem(PROFILE_STATE_PREFIX + profileId);
+  }
+
+  const activeId = getActiveProfileId(store);
+  if (activeId === profileId) {
+    const fallbackId = filtered.length > 0 ? filtered[0].id : 'prof_default';
+    setActiveProfileId(fallbackId, store);
+  }
+  return true;
+}
+
+function exportClassroomBackup(storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+  const backup = {
+    app: 'CodeCraft_JS_Offline',
+    version: '2.0',
+    exportedAt: new Date().toISOString(),
+    profiles: profiles.map(p => {
+      const pState = loadProfileState(p.id, store);
+      return {
+        profile: p,
+        state: pState
+      };
+    })
+  };
+  return JSON.stringify(backup, null, 2);
+}
+
+function importClassroomBackup(jsonString, storage = null) {
+  try {
+    const data = JSON.parse(jsonString);
+    if (!data || !Array.isArray(data.profiles)) {
+      return { success: false, error: 'INVALID_BACKUP_FORMAT' };
+    }
+
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.setItem) return { success: false, error: 'NO_STORAGE' };
+
+    const existingProfiles = listStudentProfiles(store);
+    const existingIds = new Set(existingProfiles.map(p => p.id));
+
+    let importedCount = 0;
+    const mergedProfiles = [...existingProfiles];
+
+    for (const item of data.profiles) {
+      if (!item.profile || !item.profile.id) continue;
+      const p = item.profile;
+      const s = item.state || createInitialState();
+
+      if (!existingIds.has(p.id)) {
+        mergedProfiles.push(p);
+        existingIds.add(p.id);
+      }
+      store.setItem(PROFILE_STATE_PREFIX + p.id, JSON.stringify(s));
+      importedCount++;
+    }
+
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(mergedProfiles));
+    return { success: true, count: importedCount };
+  } catch (e) {
+    return { success: false, error: e.message };
+  }
+}
+
+function saveStateToStorage(state, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.setItem) {
+      store.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (state.profileId) {
+        saveProfileState(state.profileId, state, store);
+      }
+    }
+  } catch (e) {
+    console.warn('Could not save state to storage:', e);
+  }
+}
+
+function loadStateFromStorage(storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.getItem) {
+      return createInitialState();
+    }
+
+    const activeId = getActiveProfileId(store);
+    if (activeId) {
+      const pState = loadProfileState(activeId, store);
+      if (pState && pState.studentName) {
+        return pState;
+      }
+    }
+
+    const saved = store.getItem(STORAGE_KEY);
+    if (!saved) {
+      return createInitialState();
+    }
+
+    const parsed = JSON.parse(saved);
+    return {
+      ...createInitialState(),
+      ...parsed
+    };
+  } catch (e) {
+    console.warn('Could not load state from storage:', e);
+    return createInitialState();
+  }
+}
+
+
+  // --- Audio Module ---
+  /**
+ * Audio Synthesizer Module
+ * Uses Web Audio API to create joyful retro game sound effects.
+ * 100% offline, zero audio assets required!
+ */
+
+let audioCtx = null;
+
+function getAudioContext() {
+  if (typeof window === 'undefined') return null;
+  if (!audioCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      audioCtx = new AudioContextClass();
+    }
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function playSound(type = 'click', isEnabled = true) {
+  if (!isEnabled) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+
+    switch (type) {
+      case 'click': {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.05);
+
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.06);
+        break;
+      }
+
+      case 'star': {
+        // High sparkling bell chime
+        [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const start = now + (i * 0.06);
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, start);
+
+          gain.gain.setValueAtTime(0.12, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.3);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.35);
+        });
+        break;
+      }
+
+      case 'success': {
+        // Joyful fanfare: C - E - G - high C
+        const notes = [
+          { f: 523.25, d: 0.1 },  // C5
+          { f: 659.25, d: 0.1 },  // E5
+          { f: 783.99, d: 0.12 }, // G5
+          { f: 1046.5, d: 0.35 }  // C6
+        ];
+        let offset = 0;
+        notes.forEach(({ f, d }) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const t = now + offset;
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, t);
+
+          gain.gain.setValueAtTime(0.2, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + d);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + d + 0.05);
+
+          offset += d * 0.85;
+        });
+        break;
+      }
+
+      case 'tryAgain': {
+        // Playful cartoon "boing"
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.exponentialRampToValueAtTime(150, now + 0.25);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.26);
+        break;
+      }
+
+      case 'badge': {
+        // Power-up ascending flourish
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.4);
+
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.46);
+        break;
+      }
+    }
+  } catch (e) {
+    console.debug('Audio error:', e);
+  }
+}
+
+
+  // --- Confetti Module ---
+  /**
+ * Confetti Celebration Engine
+ * Renders colorful stars, confetti ribbons, and sparkles on canvas.
+ */
+
+function triggerConfetti(canvasElement) {
+  if (!canvasElement) return;
+
+  const ctx = canvasElement.getContext('2d');
+  if (!ctx) return;
+
+  const width = (canvasElement.width = window.innerWidth);
+  const height = (canvasElement.height = window.innerHeight);
+
+  const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#9b59b6', '#e056fd', '#00d2d3'];
+  const particles = [];
+  const particleCount = 120;
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: width / 2,
+      y: height / 2 + 50,
+      vx: (Math.random() - 0.5) * 18,
+      vy: (Math.random() - 0.8) * 22,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      vRot: (Math.random() - 0.5) * 12,
+      opacity: 1,
+      shape: Math.random() > 0.4 ? 'rect' : 'star'
+    });
+  }
+
+  let animationFrameId;
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    let activeCount = 0;
+
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.45; // gravity
+      p.vx *= 0.98; // air resistance
+      p.rotation += p.vRot;
+      p.opacity -= 0.009; // fade out
+
+      if (p.opacity > 0 && p.y < height + 50) {
+        activeCount++;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = Math.max(0, p.opacity);
+        ctx.fillStyle = p.color;
+
+        if (p.shape === 'rect') {
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.6);
+        } else {
+          // Draw mini star
+          ctx.beginPath();
+          for (let s = 0; s < 5; s++) {
+            ctx.lineTo(
+              Math.cos(((18 + s * 72) * Math.PI) / 180) * p.size,
+              -Math.sin(((18 + s * 72) * Math.PI) / 180) * p.size
+            );
+            ctx.lineTo(
+              Math.cos(((54 + s * 72) * Math.PI) / 180) * (p.size / 2),
+              -Math.sin(((54 + s * 72) * Math.PI) / 180) * (p.size / 2)
+            );
+          }
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+    }
+
+    if (activeCount > 0) {
+      animationFrameId = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, width, height);
+      cancelAnimationFrame(animationFrameId);
+    }
+  }
+
+  render();
+}
+
+
+  // --- Speech Module ---
+  /**
+ * Speech Narrator Module
+ * Uses Web Speech API to read lessons and challenge missions aloud to kids.
+ */
+
+let currentUtterance = null;
+
+function speakText(text, lang = 'en', onEndCallback = null) {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    console.warn('Speech synthesis not supported in this environment');
+    if (onEndCallback) onEndCallback();
+    return;
+  }
+
+  // Stop any ongoing speech
+  window.speechSynthesis.cancel();
+
+  if (!text) {
+    if (onEndCallback) onEndCallback();
+    return;
+  }
+
+  // Clean HTML tags or markdown formatting
+  const plainText = text.replace(/<[^>]+>/g, '').replace(/[#*`_]/g, '');
+
+  const utterance = new SpeechSynthesisUtterance(plainText);
+  utterance.rate = 0.95; // slightly slower, clear for kids
+  utterance.pitch = 1.05; // friendly, upbeat
+  utterance.lang = lang === 'uz' ? 'uz-UZ' : 'en-US';
+
+  // Find best matching voice
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (voices.length > 0) {
+    let bestVoice = null;
+    if (lang === 'uz') {
+      bestVoice = voices.find(v => v.lang.startsWith('uz')) || voices.find(v => v.lang.startsWith('ru'));
+    }
+    if (!bestVoice) {
+      bestVoice = voices.find(
+        v => (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Natural') || v.name.includes('Zira')) && v.lang.startsWith('en')
+      ) || voices.find(v => v.lang.startsWith('en'));
+    }
+    if (bestVoice) {
+      utterance.voice = bestVoice;
+    }
+  }
+
+  utterance.onend = () => {
+    currentUtterance = null;
+    if (onEndCallback) onEndCallback();
+  };
+
+  utterance.onerror = () => {
+    currentUtterance = null;
+    if (onEndCallback) onEndCallback();
+  };
+
+  currentUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
+
+function stopSpeaking() {
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    currentUtterance = null;
+  }
+}
+
+function isSpeaking() {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return false;
+  return window.speechSynthesis.speaking;
+}
+
+
+  // --- Sandbox Module ---
+  /**
+ * JavaScript Free Sandbox Starter Templates for Kids
+ * 100% Offline, ready-to-play mini-games and experiments.
+ */
+
+const JS_STARTER_TEMPLATES = [
+  {
+    id: 'template-clicker',
+    name: { uz: "🏆 Kliker Mini-O'yini", en: "🏆 Clicker Mini-Game" },
+    desc: { uz: "Tugmani bosib ochko to'plash va 20 ballga yetganda g'alaba qilish!", en: "Click to gain points and win at 20 clicks!" },
+    code: `// 🏆 Super Kliker O'yini
+let score = 0;
+const countEl = document.querySelector("#count");
+const clickBtn = document.querySelector("#click-btn");
+const box = document.querySelector("#box");
+
+box.textContent = "O'yinni Boshlang! 🚀";
+
+clickBtn.addEventListener("click", () => {
+  score++;
+  countEl.textContent = score;
+  
+  if (score % 2 === 0) {
+    box.style.backgroundColor = "#10b981";
+    box.textContent = "Super! +1 ⭐";
+  } else {
+    box.style.backgroundColor = "#8b5cf6";
+    box.textContent = "Davom eting! 🔥";
+  }
+
+  if (score === 20) {
+    alert("G'ALABA! SIZ 20 BALL TO'PLADINGIZ! 🏆🎉");
+    box.style.backgroundColor = "gold";
+    box.textContent = "CHEMPION! 👑";
+  }
+});
+`
+  },
+  {
+    id: 'template-dice',
+    name: { uz: "🎲 O'yin Kubigi (Dice Roller)", en: "🎲 Dice Roller Simulator" },
+    desc: { uz: "Tugmani bosib 1 dan 6 gacha tasodifiy son chiqaruvchi zar!", en: "Roll a random die 1 to 6 every time you click!" },
+    code: `// 🎲 O'yin Kubigi (Zar) Simulyatori
+const btn = document.querySelector("#btn");
+const box = document.querySelector("#box");
+
+btn.textContent = "Zar Tashlash 🎲";
+box.textContent = "Kubik tayyor!";
+
+btn.addEventListener("click", () => {
+  let dice = Math.floor(Math.random() * 6) + 1;
+  const diceIcons = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+  
+  box.textContent = \`\${diceIcons[dice - 1]} Son: \${dice}\`;
+  box.style.fontSize = "22px";
+  box.style.backgroundColor = dice === 6 ? "gold" : "#3b82f6";
+  
+  console.log("Tushgan zar:", dice);
+});
+`
+  },
+  {
+    id: 'template-disco',
+    name: { uz: "🌈 Rangli Disko Chiroqlar", en: "🌈 Color Disco Light Show" },
+    desc: { uz: "setInterval taymeri orqali fon ranglarini har soniyada o'zgartirish!", en: "Automatic color changing light show using setInterval!" },
+    code: `// 🌈 Rangli Disko Chiroqlar
+const box = document.querySelector("#box");
+const colors = ["#ef4444", "#f97316", "#eab308", "#10b981", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899"];
+let index = 0;
+
+box.textContent = "DISKO! 🪩";
+box.style.color = "white";
+
+setInterval(() => {
+  box.style.backgroundColor = colors[index];
+  index = (index + 1) % colors.length;
+}, 500);
+
+console.log("Disko chiroqlar yoqildi! 🎶");
+`
+  }
+];
+
+function getStarterTemplateById(id) {
+  return JS_STARTER_TEMPLATES.find(t => t.id === id) || JS_STARTER_TEMPLATES[0];
+}
+
+
+  // --- Classroom Module ---
+  /**
+ * Classroom Multi-Student & Shift Portal Module for CodeCraft JS
+ * 100% Offline LocalStorage student management for computer labs with shifts.
+ * Runs on Windows 7, 8, 10 with ZERO internet, servers, or database installations.
+ */
+
+
+
+
+
+function openStudentPortalModal({ state, onProfileSwitched, playSound, defaultTab = 'login' }) {
+  playSound?.('click', state.audioEnabled);
+
+  const isUz = state.lang === 'uz';
+  let activeTab = defaultTab;
+  let selectedAvatar = '⚡';
+  let selectedShiftFilter = 'all';
+  let defaultRegShift = '1-Smena (10:30 - 12:00)';
+
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'student-portal-modal';
+
+  function renderModalContent() {
+    const profiles = listStudentProfiles();
+    const activeId = getActiveProfileId();
+
+    modal.innerHTML = `
+      <div class="modal-card student-portal-card">
+        <div class="student-portal-header">
+          <div class="portal-header-left">
+            <span class="portal-icon">⚡</span>
+            <div>
+              <h3 class="portal-title">${isUz ? "CodeCraft JS: O'quvchilar & Smenalar Portali" : "CodeCraft JS: Student Profiles & Shifts"}</h3>
+              <p class="portal-subtitle">${isUz ? "100% Oflayn: Ma'lumotlar ushbu kompyuterda xavfsiz saqlanadi" : "100% Offline: Data stored permanently on this PC"}</p>
+            </div>
+          </div>
+          <button id="btn-close-portal" class="btn-close-modal" title="Close">✕</button>
+        </div>
+
+        <div class="portal-tabs-nav">
+          <button class="portal-tab-btn ${activeTab === 'login' ? 'active' : ''}" id="tab-btn-login">
+            👤 ${isUz ? "O'quvchini Tanlash (Kirish)" : "Login / Select Student"} (${profiles.length})
+          </button>
+          <button class="portal-tab-btn ${activeTab === 'register' ? 'active' : ''}" id="tab-btn-register">
+            ➕ ${isUz ? "Yangi O'quvchi (Ro'yxatdan o'tish)" : "New Student (Register)"}
+          </button>
+          <button class="portal-tab-btn ${activeTab === 'backup' ? 'active' : ''}" id="tab-btn-backup">
+            💾 ${isUz ? "Fleshka & O'qituvchi Boshqaruvi" : "USB Backup & Teacher Tools"}
+          </button>
+        </div>
+
+        <div class="portal-body" id="portal-tab-body">
+          ${renderTabBody(profiles, activeId)}
+        </div>
+      </div>
+    `;
+
+    attachEvents();
+  }
+
+  function renderTabBody(profiles, activeId) {
+    if (activeTab === 'login') {
+      if (profiles.length === 0) {
+        return `
+          <div class="portal-empty-state">
+            <span style="font-size: 48px;">🎒</span>
+            <h4>${isUz ? "Hali hech qanday o'quvchi ro'yxatdan o'tmagan" : "No students registered on this computer yet"}</h4>
+            <p>${isUz ? "Darsni boshlash uchun yangi o'quvchini ro'yxatdan o'tkazing." : "Register a new student to start tracking their progress."}</p>
+            <button id="btn-go-to-reg" class="btn-modal btn-modal-primary" style="margin-top: 12px;">
+              ➕ ${isUz ? "Yangi O'quvchi Qo'shish" : "Add First Student"}
+            </button>
+          </div>
+        `;
+      }
+
+      const countAll = profiles.length;
+      const count1 = profiles.filter(p => (p.shift || '').includes('1-Smena') || (p.shift || '').includes('10:30')).length;
+      const count2 = profiles.filter(p => (p.shift || '').includes('2-Smena') || (p.shift || '').includes('14:00')).length;
+      const count3 = profiles.filter(p => (p.shift || '').includes('3-Smena') || (p.shift || '').includes('15:30')).length;
+
+      let filteredProfiles = profiles;
+      if (selectedShiftFilter === '1') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('1-Smena') || (p.shift || '').includes('10:30'));
+      } else if (selectedShiftFilter === '2') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('2-Smena') || (p.shift || '').includes('14:00'));
+      } else if (selectedShiftFilter === '3') {
+        filteredProfiles = profiles.filter(p => (p.shift || '').includes('3-Smena') || (p.shift || '').includes('15:30'));
+      }
+
+      return `
+        <div class="portal-shift-pills-bar">
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === 'all' ? 'active' : ''}" data-filter-shift="all">
+            👥 ${isUz ? "Barcha Smenalar" : "All Shifts"} (${countAll})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '1' ? 'active' : ''}" data-filter-shift="1">
+            🕒 1-Smena (10:30 – 12:00) (${count1})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '2' ? 'active' : ''}" data-filter-shift="2">
+            🕒 2-Smena (14:00 – 15:30) (${count2})
+          </button>
+          <button type="button" class="portal-shift-pill ${selectedShiftFilter === '3' ? 'active' : ''}" data-filter-shift="3">
+            🕒 3-Smena (15:30 – 17:00) (${count3})
+          </button>
+        </div>
+
+        ${filteredProfiles.length === 0 ? `
+          <div class="portal-empty-state" style="padding: 24px;">
+            <span style="font-size: 36px;">🕒</span>
+            <h4>${isUz ? "Ushbu smenada hozircha o'quvchilar yo'q" : "No students found in this shift"}</h4>
+            <p>${isUz ? "Ushbu smenadagi o'quvchini ro'yxatdan o'tkazish uchun quyidagi tugmani bosing." : "Click below to register a new student for this shift schedule."}</p>
+            <button class="btn-modal btn-modal-primary" id="btn-add-to-shift" style="margin-top: 10px;">
+              ➕ ${isUz ? "Shu smenaga o'quvchi qo'shish" : "Add Student to this Shift"}
+            </button>
+          </div>
+        ` : `
+          <div class="student-cards-grid">
+            ${filteredProfiles.map(p => {
+              const pState = loadProfileState(p.id);
+              const total = LESSONS.length;
+              const completed = pState.completedLessons ? pState.completedLessons.length : 0;
+              const pct = Math.round((completed / total) * 100);
+              const isActive = p.id === activeId;
+
+              return `
+                <div class="student-profile-card ${isActive ? 'active-card' : ''}" data-profile-id="${p.id}">
+                  <div class="card-avatar-col">
+                    <span class="card-avatar">${escapeHtml(p.avatar || '⚡')}</span>
+                    ${p.pin ? '<span class="pin-protected-badge" title="PIN bilan himoyalangan">🔒 PIN</span>' : ''}
+                  </div>
+                  <div class="card-info-col">
+                    <div class="card-name-row">
+                      <strong class="card-student-name">${escapeHtml(p.name)}</strong>
+                      ${isActive ? `<span class="badge-active-tag">${isUz ? 'Faol' : 'Active'}</span>` : ''}
+                    </div>
+                    <div class="card-shift-tag">🕒 ${escapeHtml(p.shift || '1-Smena (10:30 - 12:00)')}</div>
+                    <div class="card-progress-bar-wrap">
+                      <div class="card-progress-bar-fill" style="width: ${pct}%;"></div>
+                    </div>
+                    <div class="card-stats-row">
+                      <span>📚 ${completed}/${total} (${pct}%)</span>
+                      <span>⭐ ${pState.stars || 0}</span>
+                      <span>🏆 ${pState.badges ? pState.badges.length : 0}</span>
+                    </div>
+                  </div>
+                  <div class="card-action-col">
+                    <button class="btn-card-select ${isActive ? 'btn-selected' : ''}" data-id="${p.id}">
+                      ${isActive ? (isUz ? '✅ Tanlangan' : '✅ Active') : (isUz ? '👉 Kirish' : '👉 Login')}
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `}
+      `;
+    }
+
+    if (activeTab === 'register') {
+      const avatars = ['⚡', '🤖', '🚀', '🦊', '🦁', '🐼', '💎', '⭐', '🎮', '🦄'];
+      return `
+        <form class="portal-form" id="form-register-student">
+          <div class="form-row">
+            <label for="reg-name"><strong>${isUz ? "O'quvchi Ismi va Familiyasi:" : "Student Full Name:"}</strong></label>
+            <input type="text" id="reg-name" class="lab-input-text" placeholder="${isUz ? 'Masalan: Ali Karimov' : 'e.g. Alex Johnson'}" required autofocus />
+          </div>
+
+          <div class="form-row">
+            <label for="reg-shift"><strong>${isUz ? "Dars Smenasi / Vaqti:" : "Class Shift Schedule:"}</strong></label>
+            <select id="reg-shift" class="lab-select">
+              <option value="1-Smena (10:30 - 12:00)" ${defaultRegShift.includes('10:30') ? 'selected' : ''}>1-Smena (10:30 – 12:00)</option>
+              <option value="2-Smena (14:00 - 15:30)" ${defaultRegShift.includes('14:00') ? 'selected' : ''}>2-Smena (14:00 – 15:30)</option>
+              <option value="3-Smena (15:30 - 17:00)" ${defaultRegShift.includes('15:30') ? 'selected' : ''}>3-Smena (15:30 – 17:00)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label><strong>${isUz ? "Qahramoningizni Tanlang (Avatar):" : "Choose Your Avatar:"}</strong></label>
+            <div class="avatar-picker-row">
+              ${avatars.map(av => `
+                <button type="button" class="avatar-pick-btn ${av === selectedAvatar ? 'selected' : ''}" data-avatar="${av}">
+                  ${av}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="reg-pin"><strong>${isUz ? "Maxfiy PIN-kod (Ixtiyoriy 4 ta raqam):" : "Secret PIN (Optional 4 digits):"}</strong></label>
+            <input type="password" id="reg-pin" class="lab-input-text" maxlength="4" placeholder="${isUz ? 'Boshqalar kirmasligi uchun (ixtiyoriy)' : 'Prevent others from accessing (optional)'}" />
+            <small style="color: var(--text-muted); font-size: 11px;">
+              ${isUz ? "Agar kiritmasangiz, o'quvchi 1 ta bosishda erkin kira oladi." : "If empty, student can log in instantly with 1 click."}
+            </small>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn-modal btn-modal-primary" style="padding: 12px 24px; font-size: 14px;">
+              🚀 ${isUz ? "Ro'yxatdan O'tish va Boshlash" : "Register & Start Practice"}
+            </button>
+          </div>
+        </form>
+      `;
+    }
+
+    if (activeTab === 'backup') {
+      return `
+        <div class="portal-backup-panel">
+          <div class="backup-info-card">
+            <h4>💾 ${isUz ? "O'qituvchi Uchun: Fleshkaga Saqlash & O'tkazish" : "Teacher Tools: USB Backup & Transfer"}</h4>
+            <p>${isUz ? "Ushbu kompyuterdagi barcha JavaScript o'quvchilari ro'yxati va ularning yulduzchalarini fleshkaga fayl qilib saqlab oling. Boshqa kompyuterga bir zumda yuklashingiz mumkin." : "Export all student accounts and their progress into a single file to keep backups on USB or transfer students between offline lab PCs."}</p>
+          </div>
+
+          <div class="backup-actions-grid">
+            <div class="backup-action-box">
+              <span style="font-size: 32px;">💾</span>
+              <strong>${isUz ? "Fleshkaga Saqlash" : "Export to USB"}</strong>
+              <p style="font-size: 11px; color: var(--text-muted);">${isUz ? "Barcha o'quvchilar progressini bitta .json faylga yuklab oladi." : "Downloads a complete .json file with all student profiles & stars."}</p>
+              <button id="btn-export-backup" class="btn-modal btn-modal-primary">
+                💾 ${isUz ? "Faylni Yuklab Olish (.json)" : "Download Backup (.json)"}
+              </button>
+            </div>
+
+            <div class="backup-action-box">
+              <span style="font-size: 32px;">📂</span>
+              <strong>${isUz ? "Fleshkadan Yuklash" : "Import from USB"}</strong>
+              <p style="font-size: 11px; color: var(--text-muted);">${isUz ? "Boshqa kompyuterdan saqlangan .json faylni ushbu kompyuterga qo'shadi." : "Restores or merges students from a .json backup file into this PC."}</p>
+              <input type="file" id="file-import-backup" accept=".json" style="display: none;" />
+              <button id="btn-trigger-import" class="btn-modal" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: white;">
+                📂 ${isUz ? "Faylni Tanlash..." : "Choose File..."}
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <h4 style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">
+              ${isUz ? "Ushbu Kompyuterdagi O'quvchilar Ro'yxati:" : "Registered Students on this PC:"}
+            </h4>
+            <div class="backup-students-table-wrap">
+              <table class="tag-list-table">
+                <thead>
+                  <tr>
+                    <th>${isUz ? "O'quvchi" : "Student"}</th>
+                    <th>${isUz ? "Smena" : "Shift"}</th>
+                    <th>${isUz ? "Bajarilgan" : "Completed"}</th>
+                    <th>⭐</th>
+                    <th>${isUz ? "Amal" : "Action"}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${profiles.map(p => {
+                    const pState = loadProfileState(p.id);
+                    return `
+                      <tr>
+                        <td><strong>${escapeHtml(p.avatar || '⚡')} ${escapeHtml(p.name)}</strong></td>
+                        <td>${escapeHtml(p.shift || '1-Smena (10:30 - 12:00)')}</td>
+                        <td>${pState.completedLessons ? pState.completedLessons.length : 0} / ${LESSONS.length}</td>
+                        <td>⭐ ${pState.stars || 0}</td>
+                        <td>
+                          <button class="btn-delete-student" data-del-id="${p.id}" title="${isUz ? 'Profilni o\'chirish' : 'Delete profile'}">
+                            🗑️
+                          </button>
+                        </td>
+                      </tr>
+                    `;
+                  }).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    return '';
+  }
+
+  function attachEvents() {
+    // Close button
+    modal.querySelector('#btn-close-portal')?.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    // Tab buttons
+    modal.querySelector('#tab-btn-login')?.addEventListener('click', () => { activeTab = 'login'; renderModalContent(); });
+    modal.querySelector('#tab-btn-register')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
+    modal.querySelector('#tab-btn-backup')?.addEventListener('click', () => { activeTab = 'backup'; renderModalContent(); });
+    modal.querySelector('#btn-go-to-reg')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
+
+    // Shift filter pills
+    modal.querySelectorAll('.portal-shift-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedShiftFilter = btn.getAttribute('data-filter-shift') || 'all';
+        renderModalContent();
+      });
+    });
+
+    // Add student to specific shift button
+    modal.querySelector('#btn-add-to-shift')?.addEventListener('click', () => {
+      if (selectedShiftFilter === '1') defaultRegShift = '1-Smena (10:30 - 12:00)';
+      else if (selectedShiftFilter === '2') defaultRegShift = '2-Smena (14:00 - 15:30)';
+      else if (selectedShiftFilter === '3') defaultRegShift = '3-Smena (15:30 - 17:00)';
+      activeTab = 'register';
+      renderModalContent();
+    });
+
+    // Select student in login tab
+    modal.querySelectorAll('.btn-card-select').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const profiles = listStudentProfiles();
+        const p = profiles.find(x => x.id === id);
+        if (!p) return;
+
+        let pin = '';
+        if (p.pin) {
+          pin = prompt(isUz ? "Maxfiy 4 xonali PIN-kodni kiriting:" : "Enter your 4-digit secret PIN:");
+          if (pin === null) return;
+        }
+
+        const res = loginStudentProfile(id, pin);
+        if (res.success) {
+          playSound?.('success', true);
+          onProfileSwitched?.(res.state, res.profile);
+          modal.remove();
+        } else {
+          playSound?.('tryAgain', true);
+          alert(isUz ? "❌ PIN-kod noto'g'ri kiritildi!" : "❌ Incorrect PIN!");
+        }
+      });
+    });
+
+    // Avatar pickers in register tab
+    modal.querySelectorAll('.avatar-pick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedAvatar = btn.getAttribute('data-avatar');
+        modal.querySelectorAll('.avatar-pick-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+
+    // Form submit for registration
+    modal.querySelector('#form-register-student')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = modal.querySelector('#reg-name')?.value;
+      const shift = modal.querySelector('#reg-shift')?.value;
+      const pin = modal.querySelector('#reg-pin')?.value;
+
+      const { profile, state: freshState } = registerStudentProfile({
+        name,
+        shift,
+        avatar: selectedAvatar,
+        pin
+      });
+
+      playSound?.('success', true);
+      onProfileSwitched?.(freshState, profile);
+      modal.remove();
+    });
+
+    // Export to USB JSON file
+    modal.querySelector('#btn-export-backup')?.addEventListener('click', () => {
+      const backupJson = exportClassroomBackup();
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const filename = `codecraft_js_backup_${dateStr}.json`;
+
+      const blob = new Blob([backupJson], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      playSound?.('click', true);
+    });
+
+    // Trigger Import file input
+    const fileInput = modal.querySelector('#file-import-backup');
+    modal.querySelector('#btn-trigger-import')?.addEventListener('click', () => {
+      fileInput?.click();
+    });
+
+    fileInput?.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        const text = evt.target?.result;
+        const res = importClassroomBackup(text);
+        if (res.success) {
+          playSound?.('success', true);
+          alert(isUz ? `✅ ${res.count} ta o'quvchi ma'lumotlari muvaffaqiyatli yuklandi!` : `✅ ${res.count} student profiles imported successfully!`);
+          renderModalContent();
+        } else {
+          playSound?.('tryAgain', true);
+          alert(isUz ? "❌ Faylni o'qishda xatolik yuz berdi." : "❌ Failed to parse backup file.");
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Delete student profile in backup tab
+    modal.querySelectorAll('.btn-delete-student').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-del-id');
+        const confirmMsg = isUz ? "Haqiqatan ham ushbu o'quvchi profilini o'chirmoqchimisiz?" : "Are you sure you want to delete this student profile?";
+        if (confirm(confirmMsg)) {
+          deleteStudentProfile(id);
+          playSound?.('click', true);
+          renderModalContent();
+        }
+      });
+    });
+  }
+
+  renderModalContent();
+  document.body.appendChild(modal);
+}
+
+
+  // --- Labs Module ---
+  /**
+ * Visual Labs Module for CodeCraft JS (All 24 Topics)
+ * Interactive 4-stage slider visualizer:
+ * Stage 1: Clean canvas / Initial state
+ * Stage 2: Command / Keyword injected
+ * Stage 3: Data / Parameters configured
+ * Stage 4: Live interactive animated execution
+ */
+
+
+
+const TOPIC_LABS = {
+  'js-1-console': {
+    title: { uz: "💬 Konsol & Alert Simulyatori", en: "💬 Console & Alert Simulator" },
+    desc: { uz: "console.log() va alert() kompyuter bilan qanday gaplashishini bosqichma-bosqich ko'ring.", en: "See step-by-step how console.log and alert talk to the computer." },
+    stages: [
+      {
+        name: { uz: "1. Sukunat (Bo'sh Konsol)", en: "1. Silence (Empty Console)" },
+        code: `// Hali hech narsa yozilmagan\n// Konsol bo'm-bo'sh turibdi`,
+        effect: { uz: "Dastur ishga tushmagan, konsolda hech qanday xabar yo'q.", en: "No command sent, console is completely empty." },
+        renderVisual: () => `<div style="background:#090d16; border-radius:10px; padding:20px; font-family:monospace; color:#64748b; border:1px solid #1e293b;">&gt; Console is ready and waiting...</div>`
+      },
+      {
+        name: { uz: "2. Buyruq Yozildi", en: "2. Command Typed" },
+        code: `console.log; // Buyruq kiritildi, lekin hali chaqirilmadi`,
+        effect: { uz: "Kompyuter console.log buyrug'ini tanidi.", en: "Computer recognizes the console.log reference." },
+        renderVisual: () => `<div style="background:#090d16; border-radius:10px; padding:20px; font-family:monospace; color:#38bdf8; border:1px solid #0284c7;">&gt; ƒ log() { [native code] }</div>`
+      },
+      {
+        name: { uz: "3. Matn Yuklandi", en: "3. Text Added" },
+        code: `console.log("Salom, Dunyo!");`,
+        effect: { uz: "Xabar konsolga jo'natildi va chop etildi.", en: "Message dispatched and printed to developer console." },
+        renderVisual: () => `<div style="background:#090d16; border-radius:10px; padding:20px; font-family:monospace; color:#4ade80; border:1px solid #22c55e;">&gt; "Salom, Dunyo!" ✨</div>`
+      },
+      {
+        name: { uz: "4. Jonli Alert Qalqib Chiqishi", en: "4. Interactive Alert Popup" },
+        code: `alert("Salom, Yosh Dasturchi! 🚀");`,
+        effect: { uz: "Ekranda chiroyli qalqib chiquvchi oyna paydo bo'ldi!", en: "A friendly modal alert dialogue pops up on screen!" },
+        renderVisual: () => `
+          <div style="background:rgba(59,130,246,0.15); border:2px solid #3b82f6; border-radius:14px; padding:24px; text-align:center; box-shadow:0 10px 30px rgba(59,130,246,0.3); animation:pulse 2s infinite;">
+            <div style="font-size:36px; margin-bottom:8px;">🔔</div>
+            <strong style="color:white; font-size:16px;">Salom, Yosh Dasturchi! 🚀</strong>
+            <div style="margin-top:14px;"><button style="background:#3b82f6; color:white; border:none; padding:6px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">OK</button></div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  'js-2-variables': {
+    title: { uz: "📦 Sehrli Qutilar Simulyatori", en: "📦 Magic Storage Boxes Simulator" },
+    desc: { uz: "let va const o'zgaruvchilari kompyuter xotirasida qanday joylashishini kuzating.", en: "Watch how let and const store values in computer memory." },
+    stages: [
+      {
+        name: { uz: "1. Bo'sh Xotira", en: "1. Empty Memory" },
+        code: `// Xotirada hali o'zgaruvchilar yo'q`,
+        effect: { uz: "Kompyuter xotirasida bo'sh joy turibdi.", en: "Memory space is empty." },
+        renderVisual: () => `<div style="display:flex; justify-content:center; gap:20px;"><div style="border:2px dashed #475569; border-radius:12px; padding:20px 30px; color:#64748b;">[ Bo'sh Quti ]</div></div>`
+      },
+      {
+        name: { uz: "2. Qutiga Nom Berildi (let score)", en: "2. Box Labeled (let score)" },
+        code: `let score; // Qutining nomi bor, lekin ichi bo'sh (undefined)`,
+        effect: { uz: "score nomli quti ochildi, uning qiymati hozircha undefined.", en: "Variable box labeled 'score', value is undefined." },
+        renderVisual: () => `<div style="display:flex; justify-content:center;"><div style="background:#1e293b; border:2px solid #94a3b8; border-radius:12px; padding:16px 24px; text-align:center;"><span style="color:#94a3b8; font-size:12px;">QUTI NOMI:</span><h4 style="color:#f8fafc; margin:4px 0;">score</h4><span style="color:#64748b;">undefined</span></div></div>`
+      },
+      {
+        name: { uz: "3. Qiymat Solindi (score = 100)", en: "3. Value Inserted (score = 100)" },
+        code: `let score = 100; // Qutiga 100 soni solindi`,
+        effect: { uz: "score qutisiga 100 solindi.", en: "Score box now contains 100." },
+        renderVisual: () => `<div style="display:flex; justify-content:center;"><div style="background:#0f172a; border:2px solid #38bdf8; border-radius:12px; padding:16px 30px; text-align:center; box-shadow:0 0 20px rgba(56,189,248,0.3);"><span style="color:#38bdf8; font-size:12px;">LET: O'ZGARUVCHAN</span><h3 style="color:#38bdf8; margin:4px 0;">score: 100</h3><span style="color:#4ade80;">💎 100 Ball</span></div></div>`
+      },
+      {
+        name: { uz: "4. const Bilan O'zgarmas Quti", en: "4. Sealed Box with const" },
+        code: `const playerName = "Ali"; // Qulf solingan doimiy quti`,
+        effect: { uz: "playerName qulflangan quti bo'ldi, uni boshqa o'zgartirib bo'lmaydi!", en: "playerName is securely locked and can never be mutated!" },
+        renderVisual: () => `
+          <div style="display:flex; justify-content:center; gap:20px;">
+            <div style="background:#0f172a; border:2px solid #38bdf8; border-radius:12px; padding:14px 20px; text-align:center;"><span style="color:#38bdf8;">📦 let score: 100</span></div>
+            <div style="background:#0f172a; border:2px solid #a855f7; border-radius:12px; padding:14px 20px; text-align:center; box-shadow:0 0 20px rgba(168,85,247,0.3);"><span style="color:#c084fc;">🔒 const playerName: "Ali"</span></div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  'js-15-for-loop': {
+    title: { uz: "🔁 for Tsikli Takrorlash Mashinasi", en: "🔁 for Loop Machine" },
+    desc: { uz: "for (let i = 1; i <= 5; i++) har bir aylanishda nima qilishini jonli ko'ring.", en: "Watch each iteration of a for loop generate items on the fly." },
+    stages: [
+      {
+        name: { uz: "1. Boshlanish (i = 1)", en: "1. Start (i = 1)" },
+        code: `for (let i = 1; i <= 5; i++) { /* 1-qadam */ }`,
+        effect: { uz: "Tsikl boshlandi, i = 1.", en: "Loop initiated with i = 1." },
+        renderVisual: () => `<div style="display:flex; gap:10px; justify-content:center;"><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #1</div></div>`
+      },
+      {
+        name: { uz: "2. Aylanish (i = 2)", en: "2. Lap (i = 2)" },
+        code: `// i++ ishga tushdi, i = 2 bo'ldi`,
+        effect: { uz: "Ikkinchi yulduzcha generatsiya qilindi.", en: "Second star generated." },
+        renderVisual: () => `<div style="display:flex; gap:10px; justify-content:center;"><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #1</div><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #2</div></div>`
+      },
+      {
+        name: { uz: "3. O'rtasi (i = 3 va 4)", en: "3. Middle (i = 3 & 4)" },
+        code: `// i <= 5 sharti hali ham to'g'ri (true)`,
+        effect: { uz: "Tsikl jadal aylanmoqda, 4 ta element tayyor.", en: "Loop running swiftly, 4 items produced." },
+        renderVisual: () => `<div style="display:flex; gap:10px; justify-content:center;"><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #1</div><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #2</div><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #3</div><div style="background:#3b82f6; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #4</div></div>`
+      },
+      {
+        name: { uz: "4. Marra (i = 5)", en: "4. Finished (i = 5)" },
+        code: `// i = 6 bo'lganda shart buziladi va tsikl to'xtaydi`,
+        effect: { uz: "Barcha 5 ta yulduzcha bir zumda tayyor bo'ldi!", en: "All 5 stars generated in milliseconds!" },
+        renderVisual: () => `<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;"><div style="background:#10b981; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #1</div><div style="background:#10b981; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #2</div><div style="background:#10b981; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #3</div><div style="background:#10b981; color:white; padding:12px 18px; border-radius:8px; font-weight:bold;">⭐ #4</div><div style="background:#10b981; color:white; padding:12px 18px; border-radius:8px; font-weight:bold; box-shadow:0 0 15px #10b981;">⭐ #5 🎉</div></div>`
+      }
+    ]
+  },
+
+  'js-24-clicker-game': {
+    title: { uz: "🏆 Jonli Kliker O'yini Simulyatori", en: "🏆 Live Clicker Game Simulator" },
+    desc: { uz: "Tugmani bosganda count oshishi va g'alaba shartini bosqichma-bosqich ko'ring.", en: "See the click counter advance towards victory stage by stage." },
+    stages: [
+      {
+        name: { uz: "1. Boshlang'ich Holat (count = 0)", en: "1. Start State (count = 0)" },
+        code: `let count = 0;`,
+        effect: { uz: "Hisob nolga teng, o'yin kutmoqda.", en: "Count at 0, ready for user interaction." },
+        renderVisual: () => `<div style="text-align:center;"><div style="font-size:36px; font-weight:bold; color:#94a3b8; margin-bottom:10px;">0 / 10</div><button style="background:#475569; color:white; border:none; padding:10px 24px; border-radius:8px; font-weight:bold;">BOSING 👆</button></div>`
+      },
+      {
+        name: { uz: "2. Birinchi Chertishlar (count = 3)", en: "2. First Clicks (count = 3)" },
+        code: `count++; countEl.textContent = count;`,
+        effect: { uz: "O'yinchi 3 marta bosdi.", en: "Player clicked 3 times." },
+        renderVisual: () => `<div style="text-align:center;"><div style="font-size:36px; font-weight:bold; color:#38bdf8; margin-bottom:10px;">3 / 10</div><button style="background:#0284c7; color:white; border:none; padding:10px 24px; border-radius:8px; font-weight:bold;">BOSING 👆</button></div>`
+      },
+      {
+        name: { uz: "3. G'alabaga Yaqin (count = 8)", en: "3. Almost There (count = 8)" },
+        code: `if (count === 10) { /* deyarli yetdi */ }`,
+        effect: { uz: "Yana 2 ta bosilsa sovrin ochiladi!", en: "Only 2 more clicks until victory!" },
+        renderVisual: () => `<div style="text-align:center;"><div style="font-size:42px; font-weight:bold; color:#f59e0b; margin-bottom:10px; animation:bounce 1s infinite;">8 / 10 🔥</div><button style="background:#d97706; color:white; border:none; padding:12px 28px; border-radius:8px; font-weight:bold; font-size:16px;">TEZROQ BOSING! ⚡</button></div>`
+      },
+      {
+        name: { uz: "4. G'ALABA! (count = 10)", en: "4. VICTORY! (count = 10)" },
+        code: `alert("G'alaba! 🏆 Siz yutdingiz!");`,
+        effect: { uz: "G'alaba sharti bajarildi, kubok topshirildi!", en: "Winning condition satisfied! Trophy awarded!" },
+        renderVisual: () => `
+          <div style="text-align:center; background:linear-gradient(135deg, rgba(234,179,8,0.2), rgba(168,85,247,0.2)); border:2px solid #eab308; border-radius:14px; padding:20px;">
+            <div style="font-size:48px;">🏆</div>
+            <h3 style="color:#eab308; margin:8px 0;">G'ALABA! (10 / 10)</h3>
+            <p style="color:#cbd5e1; margin:0;">Tabriklaymiz, siz to'liq interaktiv o'yin yaratdingiz!</p>
+          </div>
+        `
+      }
+    ]
+  }
+};
+
+// Generates fallback 4-stage visual lab for any theme not individually customized
+function getTopicLab(lessonId, lesson) {
+  if (TOPIC_LABS[lessonId]) return TOPIC_LABS[lessonId];
+
+  const titleText = lesson ? (lesson.title.uz || lesson.title.en) : lessonId;
+  const targetCode = lesson ? lesson.targetCode : '// code';
+
+  return {
+    title: { uz: `🧪 ${titleText} Laboratoriyasi`, en: `🧪 ${titleText} Visual Lab` },
+    desc: { uz: "Ushbu JavaScript mavzusining 4 bosqichli evolyutsiyasi.", en: "4-stage evolutionary progression of this JavaScript topic." },
+    stages: [
+      {
+        name: { uz: "1. Boshlang'ich Holat", en: "1. Initial State" },
+        code: `// 1-Bosqich: Boshlang'ich holat\n// O'zgaruvchilar va kod tayyorlanmoqda...`,
+        effect: { uz: "Dastlabki bo'sh maydon.", en: "Clean starting state before execution." },
+        renderVisual: () => `<div style="background:#0b0f19; border:1px solid #1e293b; border-radius:10px; padding:24px; text-align:center; color:#64748b;">⏳ Tayyorgarlik holati...</div>`
+      },
+      {
+        name: { uz: "2. Sintaksis Kiritildi", en: "2. Syntax Declared" },
+        code: `// 2-Bosqich: Kalit so'z va qoidalar e'lon qilindi\n${targetCode.split('\\n')[0]}`,
+        effect: { uz: "Asosiy buyruq kompyuter xotirasiga kiritildi.", en: "Primary keyword loaded into memory." },
+        renderVisual: () => `<div style="background:#0b0f19; border:1px solid #0284c7; border-radius:10px; padding:24px; text-align:center; color:#38bdf8;">⚙️ Buyruq tanildi va kutmoqda...</div>`
+      },
+      {
+        name: { uz: "3. Mantiq & Ma'lumot Birlashtirildi", en: "3. Data & Logic Injected" },
+        code: `// 3-Bosqich: Barcha parametrlar to'liq berildi\n${targetCode}`,
+        effect: { uz: "Barcha parametrlar va mantiqiy hisob-kitoblar ulandi.", en: "All parameters connected to memory." },
+        renderVisual: () => `<div style="background:#0b0f19; border:1px solid #a855f7; border-radius:10px; padding:24px; text-align:center; color:#c084fc;">⚡ Natija hisoblanmoqda...</div>`
+      },
+      {
+        name: { uz: "4. Jonli Natija & Bajarilish", en: "4. Live Execution" },
+        code: targetCode,
+        effect: { uz: "Kod to'liq ishga tushdi va kutilgan natija berildi!", en: "Code executed successfully with verified outcome!" },
+        renderVisual: () => `<div style="background:rgba(16,185,129,0.1); border:1px solid #10b981; border-radius:10px; padding:24px; text-align:center; color:#4ade80;"><span style="font-size:28px;">✨</span><br/><strong>Muvaffaqiyatli Bajarildi!</strong></div>`
+      }
+    ]
+  };
+}
+
+function openTopicLabModal(lessonId, lesson, state, playSound) {
+  playSound?.('click', state.audioEnabled);
+
+  const lab = getTopicLab(lessonId, lesson);
+  const isUz = state.lang === 'uz';
+  let currentStageIndex = 0;
+
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'topic-lab-modal';
+
+  function renderContent() {
+    const stage = lab.stages[currentStageIndex];
+
+    modal.innerHTML = `
+      <div class="modal-card topic-lab-modal-card">
+        <div class="topic-lab-header">
+          <div class="topic-lab-header-left">
+            <span class="topic-lab-icon">🧪</span>
+            <div>
+              <h3 class="topic-lab-title">${escapeHtml(isUz ? lab.title.uz : lab.title.en)}</h3>
+              <p class="topic-lab-subtitle">${escapeHtml(isUz ? lab.desc.uz : lab.desc.en)}</p>
+            </div>
+          </div>
+          <button id="btn-close-topic-lab" class="btn-close-modal" title="Close">✕</button>
+        </div>
+
+        <div class="topic-lab-body">
+          <div class="lab-stage-slider-wrap">
+            <div class="lab-slider-labels">
+              ${lab.stages.map((st, i) => `
+                <button type="button" class="lab-stage-label-btn ${i === currentStageIndex ? 'active' : ''}" data-stage-idx="${i}">
+                  <span class="step-num">${i + 1}</span>
+                  <span class="step-txt">${escapeHtml(isUz ? st.name.uz : st.name.en)}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="lab-slider-track-container">
+              <input type="range" id="lab-stage-slider" class="lab-stage-range" min="0" max="${lab.stages.length - 1}" step="1" value="${currentStageIndex}" />
+            </div>
+          </div>
+
+          <div class="topic-lab-split">
+            <div class="topic-lab-preview-pane">
+              <div class="topic-lab-pane-title">⚡ ${isUz ? "Jonli Vizual Sahna" : "Live Visual Stage"}</div>
+              <div class="topic-lab-scene-container" id="topic-lab-scene">
+                ${stage.renderVisual()}
+              </div>
+              <div class="stage-effect-callout">
+                <strong>${isUz ? "Holatga ta'siri:" : "Effect on State:"}</strong>
+                <span>${escapeHtml(isUz ? stage.effect.uz : stage.effect.en)}</span>
+              </div>
+            </div>
+
+            <div class="topic-lab-code-pane">
+              <div class="topic-lab-pane-title">💻 ${isUz ? "Ushbu Bosqichdagi Kod" : "Code at this Stage"}</div>
+              <pre class="topic-lab-code-block"><code>${escapeHtml(stage.code)}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-lab-footer">
+          <button id="btn-stage-prev" class="btn-modal" ${currentStageIndex === 0 ? 'disabled' : ''} style="background:var(--bg-surface); border:1px solid var(--border-color); color:white;">
+            ⬅️ ${isUz ? "Oldingi Bosqich" : "Previous Stage"}
+          </button>
+          <span style="font-size:13px; font-weight:700; color:var(--text-muted);">
+            ${isUz ? "Bosqich" : "Stage"} ${currentStageIndex + 1} / ${lab.stages.length}
+          </span>
+          <button id="btn-stage-next" class="btn-modal btn-modal-primary" ${currentStageIndex === lab.stages.length - 1 ? 'disabled' : ''}>
+            ${isUz ? "Keyingi Bosqich" : "Next Stage"} ➡️
+          </button>
+        </div>
+      </div>
+    `;
+
+    attachEvents();
+  }
+
+  function attachEvents() {
+    modal.querySelector('#btn-close-topic-lab')?.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    const slider = modal.querySelector('#lab-stage-slider');
+    slider?.addEventListener('input', (e) => {
+      currentStageIndex = parseInt(e.target.value, 10);
+      playSound?.('click', state.audioEnabled);
+      renderContent();
+    });
+
+    modal.querySelectorAll('.lab-stage-label-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-stage-idx'), 10);
+        currentStageIndex = idx;
+        playSound?.('click', state.audioEnabled);
+        renderContent();
+      });
+    });
+
+    modal.querySelector('#btn-stage-prev')?.addEventListener('click', () => {
+      if (currentStageIndex > 0) {
+        currentStageIndex--;
+        playSound?.('click', state.audioEnabled);
+        renderContent();
+      }
+    });
+
+    modal.querySelector('#btn-stage-next')?.addEventListener('click', () => {
+      if (currentStageIndex < lab.stages.length - 1) {
+        currentStageIndex++;
+        playSound?.('click', state.audioEnabled);
+        renderContent();
+      }
+    });
+  }
+
+  renderContent();
+  document.body.appendChild(modal);
+}
+
+
+  // --- Runner Module ---
+  /**
+ * JavaScript Code Runner & Virtual Console
+ * Safely executes kid JavaScript inside an iframe sandbox, captures console logs,
+ * intercepts alerts/prompts gracefully, and returns outputs.
+ */
+
+function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
+  const logs = [];
+
+  function appendLog(type, args) {
+    const text = args.map(arg => {
+      if (typeof arg === 'object' && arg !== null) {
+        try { return JSON.stringify(arg); } catch (e) { return String(arg); }
+      }
+      return String(arg);
+    }).join(' ');
+    logs.push({ type, text, time: new Date().toLocaleTimeString() });
+  }
+
+  // Pre-configured mini HTML environment inside iframe so DOM tasks (querySelector, etc.) work!
+  const sandboxHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      padding: 16px;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    #box {
+      width: 140px;
+      height: 70px;
+      background: #3b82f6;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 12px 0;
+      transition: all 0.3s ease;
+      color: #0f172a;
+    }
+    button {
+      background: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #count {
+      font-size: 28px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-left: 10px;
+    }
+    .hud-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="title">CodeCraft JS Sandbox ⚡</h2>
+  <div id="box">Sehrli Quti</div>
+  <div class="hud-row">
+    <button id="btn">Meni Bosing!</button>
+    <button id="click-btn">O'yin Tugmasi (Clicker)</button>
+    <span>Hisob: <span id="count">0</span></span>
+  </div>
+
+  <' + 'script>
+    // Console interceptor
+    window._capturedLogs = [];
+    ['log', 'warn', 'error', 'info'].forEach(method => {
+      const orig = console[method];
+      console[method] = function(...args) {
+        window._capturedLogs.push({ method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) });
+        window.parent.postMessage({ type: 'CONSOLE_LOG', method, text: args.join(' ') }, '*');
+        if (orig) orig.apply(console, args);
+      };
+    });
+
+    // Alert & Prompt interceptors
+    window.alert = function(msg) {
+      window._capturedLogs.push({ method: 'alert', args: [msg] });
+      window.parent.postMessage({ type: 'CONSOLE_ALERT', text: String(msg) }, '*');
+    };
+
+    window.prompt = function(msg, def) {
+      const res = window.parent.prompt ? window.parent.prompt(msg, def || '') : (def || 'Ali');
+      window._capturedLogs.push({ method: 'prompt', args: [msg, '->', res] });
+      return res;
+    };
+  <' + '/script>
+</body>
+</html>`;
+
+  return new Promise((resolve) => {
+    if (!livePreviewFrame) {
+      // Node or headless test fallback
+      try {
+        const consoleCapture = [];
+        const mockConsole = {
+          log: (...a) => consoleCapture.push(a.join(' ')),
+          warn: (...a) => consoleCapture.push('[WARN] ' + a.join(' ')),
+          error: (...a) => consoleCapture.push('[ERROR] ' + a.join(' '))
+        };
+        const mockDocument = {
+          querySelector: (sel) => ({
+            textContent: 'Sample Text',
+            style: {},
+            addEventListener: () => {}
+          })
+        };
+        const fn = new Function('console', 'document', 'alert', 'prompt', code);
+        fn(mockConsole, mockDocument, (m) => consoleCapture.push('[ALERT] ' + m), () => 'Ali');
+        return resolve({ success: true, logs: consoleCapture });
+      } catch (err) {
+        return resolve({ success: false, error: err.message, logs: [] });
+      }
+    }
+
+    livePreviewFrame.srcdoc = sandboxHtml;
+    livePreviewFrame.onload = () => {
+      try {
+        const win = livePreviewFrame.contentWindow;
+        win.eval(code);
+        setTimeout(() => {
+          resolve({
+            success: true,
+            logs: win._capturedLogs || []
+          });
+        }, 50);
+      } catch (err) {
+        resolve({
+          success: false,
+          error: err.message,
+          logs: []
+        });
+      }
+    };
+  });
+}
+
+
+  // --- Main App Controller ---
+  /**
+ * CodeCraft JS (JavaScript for Kids) Main Application Controller
+ * Step-by-step interactive JavaScript learning environment.
+ * 100% Offline with Live Virtual Console, 4-Stage Labs, and Shift Management.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+// Application State
+let state = loadStateFromStorage();
+let currentView = 'lesson'; // 'lesson' | 'sandbox'
+let currentCode = '';
+let consoleLogs = [];
+
+// DOM Elements Cache
+const elements = {};
+
+function localize(val, lang = 'en') {
+  if (val === null || val === undefined) return '';
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object') {
+    return val[lang] || val.en || Object.values(val)[0] || '';
+  }
+  return String(val);
+}
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatProse(str) {
+  if (str === null || str === undefined) return '';
+  const text = String(str);
+  return escapeHtml(text)
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+}
+
+function initApp() {
+  cacheElements();
+  attachGlobalListeners();
+  applyStateToUI();
+  selectLesson(state.currentLessonId || LESSONS[0].id);
+}
+
+function cacheElements() {
+  elements.app = document.body;
+  elements.starCount = document.getElementById('star-count');
+  elements.btnLangUz = document.getElementById('btn-lang-uz');
+  elements.btnLangEn = document.getElementById('btn-lang-en');
+  elements.btnTheme = document.getElementById('btn-theme');
+  elements.btnAudio = document.getElementById('btn-audio');
+  elements.btnTeacher = document.getElementById('btn-teacher');
+  elements.btnSandbox = document.getElementById('btn-sandbox');
+  elements.btnStudentProfile = document.getElementById('btn-student-profile');
+
+  elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
+  elements.progressFill = document.getElementById('progress-fill');
+  elements.progressText = document.getElementById('progress-text');
+  elements.workspaceStage = document.getElementById('workspace-stage');
+  elements.confettiCanvas = document.getElementById('confetti-canvas');
+}
+
+function attachGlobalListeners() {
+  // Student Shift Profile & Classroom Portal
+  elements.btnStudentProfile?.addEventListener('click', () => {
+    openStudentPortalModal({
+      state,
+      onProfileSwitched: (newState, profile) => {
+        state = newState;
+        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        saveStateToStorage(state);
+        applyStateToUI();
+        selectLesson(state.currentLessonId || LESSONS[0].id);
+      },
+      playSound
+    });
+  });
+
+  function switchLang(lang) {
+    stopSpeaking();
+    state = setLanguage(state, lang);
+    saveStateToStorage(state);
+    applyStateToUI();
+    if (currentView === 'lesson') {
+      selectLesson(state.currentLessonId);
+    } else {
+      renderSandboxWorkspace();
+    }
+  }
+
+  elements.btnLangUz?.addEventListener('click', () => switchLang('uz'));
+  elements.btnLangEn?.addEventListener('click', () => switchLang('en'));
+
+  elements.btnTheme?.addEventListener('click', () => {
+    const isOled = document.body.getAttribute('data-theme') === 'oled';
+    state.theme = isOled ? 'dark' : 'oled';
+    saveStateToStorage(state);
+    applyTheme();
+    playSound('click', state.audioEnabled);
+  });
+
+  elements.btnAudio?.addEventListener('click', () => {
+    state.audioEnabled = !state.audioEnabled;
+    saveStateToStorage(state);
+    applyStateToUI();
+    playSound('click', state.audioEnabled);
+  });
+
+  elements.btnTeacher?.addEventListener('click', () => {
+    state.teacherMode = !state.teacherMode;
+    saveStateToStorage(state);
+    applyStateToUI();
+    playSound('click', state.audioEnabled);
+  });
+
+  elements.btnSandbox?.addEventListener('click', () => {
+    stopSpeaking();
+    currentView = 'sandbox';
+    elements.btnSandbox.classList.add('active');
+    playSound('click', state.audioEnabled);
+    renderSandboxWorkspace();
+  });
+
+  // Global listener for messages from iframe sandbox
+  window.addEventListener('message', (e) => {
+    if (!e.data) return;
+    if (e.data.type === 'CONSOLE_LOG') {
+      addConsoleLine(e.data.method, e.data.text);
+    } else if (e.data.type === 'CONSOLE_ALERT') {
+      addConsoleLine('alert', '🔔 ALERT: ' + e.data.text);
+      playSound('star', state.audioEnabled);
+    }
+  });
+}
+
+function applyTheme() {
+  if (state.theme === 'oled') {
+    document.body.setAttribute('data-theme', 'oled');
+    if (elements.btnTheme) elements.btnTheme.textContent = '☀️';
+  } else {
+    document.body.removeAttribute('data-theme');
+    if (elements.btnTheme) elements.btnTheme.textContent = '🌙';
+  }
+}
+
+function applyStateToUI() {
+  applyTheme();
+
+  const avatarEl = document.getElementById('header-student-avatar');
+  if (avatarEl) avatarEl.textContent = state.studentAvatar || '⚡';
+  const nameEl = document.getElementById('header-student-name');
+  if (nameEl) nameEl.textContent = state.studentName || 'JS Ninja';
+  const shiftEl = document.getElementById('header-student-shift');
+  if (shiftEl) shiftEl.textContent = state.shift || '1-Smena (10:30 - 12:00)';
+
+  const totalLessonsCount = LESSONS.length;
+  const completedCount = state.completedLessons ? state.completedLessons.length : 0;
+  const pPct = Math.round((completedCount / totalLessonsCount) * 100);
+  const fillEl = document.getElementById('header-student-progress-fill');
+  if (fillEl) fillEl.style.width = `${pPct}%`;
+  const pctEl = document.getElementById('header-student-progress-pct');
+  if (pctEl) pctEl.textContent = `${completedCount}/${totalLessonsCount}`;
+
+  if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
+  if (elements.btnLangUz) elements.btnLangUz.classList.toggle('active', state.lang === 'uz');
+  if (elements.btnLangEn) elements.btnLangEn.classList.toggle('active', state.lang === 'en');
+  if (elements.btnAudio) elements.btnAudio.textContent = state.audioEnabled ? '🔊' : '🔇';
+  if (elements.btnTeacher) elements.btnTeacher.classList.toggle('active', state.teacherMode);
+
+  renderSidebar();
+  updateProgressSummary();
+}
+
+function updateProgressSummary() {
+  const total = LESSONS.length;
+  const completed = state.completedLessons.length;
+  const percent = Math.round((completed / total) * 100);
+
+  if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
+  const unitName = state.lang === 'uz' ? 'Mavzular' : 'Lessons';
+  if (elements.progressText) elements.progressText.textContent = `${completed} / ${total} ${unitName} (${percent}%)`;
+}
+
+function renderSidebar() {
+  if (!elements.sidebarLessonList) return;
+
+  let html = '';
+  MODULES.forEach(mod => {
+    const modLessons = LESSONS.filter(l => l.module === mod.id);
+    if (modLessons.length === 0) return;
+
+    html += `<div class="nav-section-title">${escapeHtml(localize(mod.title, state.lang))}</div>`;
+    html += `<ul class="lesson-list">`;
+    modLessons.forEach(lesson => {
+      const isCompleted = isLessonCompleted(state, lesson.id);
+      const isActive = currentView === 'lesson' && state.currentLessonId === lesson.id;
+      html += `
+        <li class="lesson-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-lesson-id="${lesson.id}">
+          <span class="lesson-item-icon">${lesson.icon}</span>
+          <span class="lesson-item-text">${escapeHtml(localize(lesson.title, state.lang))}</span>
+        </li>
+      `;
+    });
+    html += `</ul>`;
+  });
+
+  elements.sidebarLessonList.innerHTML = html;
+
+  const items = elements.sidebarLessonList.querySelectorAll('.lesson-item');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const lessonId = item.getAttribute('data-lesson-id');
+      stopSpeaking();
+      currentView = 'lesson';
+      elements.btnSandbox?.classList.remove('active');
+      playSound('click', state.audioEnabled);
+      selectLesson(lessonId);
+    });
+  });
+}
+
+function selectLesson(lessonId) {
+  stopSpeaking();
+  currentView = 'lesson';
+  elements.btnSandbox?.classList.remove('active');
+  const lesson = getLessonById(lessonId) || LESSONS[0];
+  state.currentLessonId = lesson.id;
+  currentCode = lesson.initialCode;
+  consoleLogs = [];
+  saveStateToStorage(state);
+
+  renderSidebar();
+  renderLessonWorkspace(lesson);
+}
+
+function addConsoleLine(type, text) {
+  consoleLogs.push({ type, text, time: new Date().toLocaleTimeString() });
+  const body = document.getElementById('js-console-body');
+  if (!body) return;
+
+  const line = document.createElement('div');
+  line.className = `console-line console-line-${type}`;
+  line.innerHTML = `
+    <span class="console-line-time">${new Date().toLocaleTimeString()}</span>
+    <span class="console-line-text">${escapeHtml(text)}</span>
+  `;
+  body.appendChild(line);
+  body.scrollTop = body.scrollHeight;
+}
+
+function renderLessonWorkspace(lesson) {
+  if (!elements.workspaceStage) return;
+
+  const isUz = state.lang === 'uz';
+  const isCompleted = isLessonCompleted(state, lesson.id);
+
+  elements.workspaceStage.innerHTML = `
+    <div class="lesson-workspace">
+      <!-- Top Educational Brief (Pedagogy) -->
+      <section class="pedagogy-brief-card" id="pedagogy-card">
+        <div class="brief-header-row">
+          <div class="brief-title-wrap">
+            <span class="brief-icon">${lesson.icon}</span>
+            <div>
+              <h2 class="brief-title">${escapeHtml(localize(lesson.title, state.lang))}</h2>
+              <span class="badge-tag">${isCompleted ? t('completedTag', state.lang) : t('missionTag', state.lang)}</span>
+            </div>
+          </div>
+          <div class="brief-actions">
+            <!-- Visual Lab Button -->
+            <button id="btn-open-topic-lab" class="btn-brief-action btn-lab-highlight" title="${isUz ? 'Mavzu Vizual Laboratoriyasini ochish' : 'Open Topic Visual Lab'}">
+              🧪 ${t('topicLabBtn', state.lang)}
+            </button>
+            <!-- Speech Narrator -->
+            <button id="btn-read-aloud" class="btn-brief-action" title="${isUz ? 'Ovozli o\'qish' : 'Read Aloud'}">
+              🔊 ${t('readAloudBtn', state.lang)}
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. In Human Language -->
+        <div class="brief-section human-language-box">
+          <div class="section-badge">💡 ${t('humanLanguageHeader', state.lang)}</div>
+          <p class="section-body">${formatProse(localize(lesson.humanLanguage, state.lang))}</p>
+        </div>
+
+        <!-- 2. Secret Formula -->
+        <div class="brief-section formula-box">
+          <div class="section-badge">🥪 ${t('tagSandwichHeader', state.lang)}</div>
+          <p class="section-body">${formatProse(localize(lesson.secretSandwich, state.lang))}</p>
+        </div>
+
+        <!-- 3. Step Breakdown Table -->
+        <div class="brief-section breakdown-box">
+          <div class="section-badge">🔍 ${t('stepBreakdownHeader', state.lang)}</div>
+          <div class="breakdown-table-wrapper">
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>${isUz ? "Qism / Buyruq" : "Part / Code"}</th>
+                  <th>${isUz ? "Nimani anglatadi?" : "What does it do?"}</th>
+                  <th>${isUz ? "Natijaga ta'siri" : "Visual Effect on Result"}</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${lesson.stepBreakdown.map(step => `
+                  <tr>
+                    <td><code class="code-chip insertable" data-insert="${escapeHtml(step.part)}">${escapeHtml(step.part)}</code></td>
+                    <td>${formatProse(localize(step.explanation, state.lang))}</td>
+                    <td><span class="step-res-tag">${escapeHtml(localize(step.visualResult, state.lang))}</span></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. Quick Keywords Row -->
+        <div class="brief-section quick-tags-box">
+          <div class="quick-tags-header">
+            <span>${t('tagShowcaseHeader', state.lang)}</span>
+            <small style="color:var(--text-muted); font-size:11px;">(${t('insertTagHint', state.lang)})</small>
+          </div>
+          <div class="quick-tags-chips">
+            ${lesson.tagShowcase.map(item => `
+              <button type="button" class="tag-chip-btn insertable" data-insert="${escapeHtml(item.tag)}" title="${escapeHtml(localize(item.meaning, state.lang))}">
+                <code>${escapeHtml(item.tag)}</code>
+                <span>${escapeHtml(localize(item.name, state.lang))}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Mission Prompt -->
+        <div class="mission-callout">
+          <strong>🎯 ${t('missionTag', state.lang)}:</strong>
+          <span>${formatProse(localize(lesson.mission, state.lang))}</span>
+        </div>
+      </section>
+
+      <!-- Bottom Interactive Code Editor & Live Console Workspace -->
+      <section class="editor-preview-split">
+        <!-- Left: Code Editor Pane -->
+        <div class="editor-pane">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span>💻 ${t('codeEditorTitle', state.lang)}</span>
+            </div>
+            <div class="pane-actions">
+              <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 ${t('copyBtn', state.lang)}</button>
+              <button id="btn-tidy-code" class="btn-tool" title="Format code">🪄 ${t('tidyBtn', state.lang)}</button>
+              <button id="btn-reset-code" class="btn-tool" title="Reset code">🔄 ${t('resetCode', state.lang)}</button>
+            </div>
+          </div>
+
+          <div class="editor-wrapper">
+            <textarea id="code-editor" class="code-editor" spellcheck="false" autocomplete="off" autofocus>${escapeHtml(currentCode)}</textarea>
+          </div>
+
+          <div class="editor-footer">
+            <button id="btn-hint" class="btn-action btn-hint">💡 ${t('hintBtn', state.lang)}</button>
+            <div style="display:flex; gap:8px;">
+              <button id="btn-run-code" class="btn-run-code">▶️ ${t('runCodeBtn', state.lang)}</button>
+              <button id="btn-check-code" class="btn-action btn-primary">🚀 ${t('checkCodeBtn', state.lang)}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Live Output & Virtual Console Pane -->
+        <div class="preview-pane">
+          <div class="js-console-container">
+            <div class="js-console-header">
+              <div class="js-console-title">🖥️ ${t('liveConsoleTitle', state.lang)}</div>
+              <button id="btn-clear-console" class="btn-tool">${t('clearConsoleBtn', state.lang)}</button>
+            </div>
+
+            <div class="js-console-body" id="js-console-body">
+              <div class="console-line console-line-log">
+                <span class="console-line-time">System</span>
+                <span class="console-line-text">&gt; CodeCraft JS Sandbox Ready ⚡</span>
+              </div>
+            </div>
+
+            <!-- Bottom Iframe for Interactive DOM elements -->
+            <div style="height: 160px; border-top: 1px solid var(--border-color); background: #000;">
+              <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  `;
+
+  attachLessonEvents(lesson);
+  // Auto-run initial preview
+  runCurrentCode();
+}
+
+function attachLessonEvents(lesson) {
+  const editor = document.getElementById('code-editor');
+  const btnRun = document.getElementById('btn-run-code');
+  const btnCheck = document.getElementById('btn-check-code');
+  const btnHint = document.getElementById('btn-hint');
+  const btnReset = document.getElementById('btn-reset-code');
+  const btnTidy = document.getElementById('btn-tidy-code');
+  const btnCopy = document.getElementById('btn-copy-code');
+  const btnClearConsole = document.getElementById('btn-clear-console');
+  const btnTopicLab = document.getElementById('btn-open-topic-lab');
+  const btnReadAloud = document.getElementById('btn-read-aloud');
+
+  // Editor typing
+  editor?.addEventListener('input', (e) => {
+    currentCode = e.target.value;
+  });
+
+  // Tab key indentation support in textarea
+  editor?.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const start = editor.selectionStart;
+      const end = editor.selectionEnd;
+      editor.value = editor.value.substring(0, start) + '  ' + editor.value.substring(end);
+      editor.selectionStart = editor.selectionEnd = start + 2;
+      currentCode = editor.value;
+    }
+  });
+
+  // Run Code
+  btnRun?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    runCurrentCode();
+  });
+
+  // Check Code
+  btnCheck?.addEventListener('click', () => {
+    runCurrentCode();
+    const result = lesson.validate(currentCode);
+    if (result.passed) {
+      playSound('success', state.audioEnabled);
+      triggerConfetti(elements.confettiCanvas);
+      state = completeLesson(state, lesson.id, 3);
+      saveStateToStorage(state);
+      applyStateToUI();
+      showSuccessModal(lesson);
+    } else {
+      playSound('tryAgain', state.audioEnabled);
+      showTryAgainModal(lesson, result.message);
+    }
+  });
+
+  // Clear console
+  btnClearConsole?.addEventListener('click', () => {
+    const body = document.getElementById('js-console-body');
+    if (body) body.innerHTML = '';
+  });
+
+  // Hint
+  btnHint?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    const hintText = localize(lesson.hints[0], state.lang);
+    alert('💡 Maslahat / Hint:\n\n' + hintText);
+  });
+
+  // Reset
+  btnReset?.addEventListener('click', () => {
+    if (confirm(state.lang === 'uz' ? 'Kodingizni boshiga qaytarmoqchimisiz?' : 'Reset code to start?')) {
+      playSound('click', state.audioEnabled);
+      currentCode = lesson.initialCode;
+      if (editor) editor.value = currentCode;
+      runCurrentCode();
+    }
+  });
+
+  // Tidy
+  btnTidy?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    currentCode = currentCode.trim();
+    if (editor) editor.value = currentCode;
+  });
+
+  // Copy
+  btnCopy?.addEventListener('click', () => {
+    navigator.clipboard?.writeText(currentCode);
+    playSound('click', state.audioEnabled);
+    btnCopy.textContent = '✅ ' + t('copiedMsg', state.lang);
+    setTimeout(() => {
+      btnCopy.textContent = '📋 ' + t('copyBtn', state.lang);
+    }, 1500);
+  });
+
+  // Open Topic Visual Lab Modal
+  btnTopicLab?.addEventListener('click', () => {
+    openTopicLabModal(lesson.id, lesson, state, playSound);
+  });
+
+  // Speech narrator
+  btnReadAloud?.addEventListener('click', () => {
+    if (isSpeaking()) {
+      stopSpeaking();
+      btnReadAloud.textContent = '🔊 ' + t('readAloudBtn', state.lang);
+    } else {
+      const speechNarrative = `${localize(lesson.title, state.lang)}. ${localize(lesson.concept, state.lang)}. ${localize(lesson.humanLanguage, state.lang)}. ${localize(lesson.mission, state.lang)}`;
+      btnReadAloud.textContent = '⏹️ ' + t('stopSpeechBtn', state.lang);
+      speakText(speechNarrative, state.lang, () => {
+        btnReadAloud.textContent = '🔊 ' + t('readAloudBtn', state.lang);
+      });
+    }
+  });
+
+  // Insertable tag chips
+  document.querySelectorAll('.insertable').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const textToInsert = chip.getAttribute('data-insert');
+      if (!editor || !textToInsert) return;
+
+      const start = editor.selectionStart;
+      const end = editor.selectionEnd;
+      editor.value = editor.value.substring(0, start) + textToInsert + editor.value.substring(end);
+      editor.selectionStart = editor.selectionEnd = start + textToInsert.length;
+      editor.focus();
+      currentCode = editor.value;
+      playSound('click', state.audioEnabled);
+    });
+  });
+}
+
+function runCurrentCode() {
+  const frame = document.getElementById('live-preview-frame');
+  const consoleBody = document.getElementById('js-console-body');
+  if (frame) {
+    executeJsInSandbox(currentCode, consoleBody, frame).then(res => {
+      if (!res.success && res.error) {
+        addConsoleLine('error', '❌ Xatolik (Error): ' + res.error);
+        playSound('tryAgain', state.audioEnabled);
+      }
+    });
+  }
+}
+
+function showSuccessModal(lesson) {
+  const isUz = state.lang === 'uz';
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <span class="modal-icon">🎉</span>
+      <h3 class="modal-title">${t('modalCompleteTitle', state.lang)}</h3>
+      <p class="modal-body">${t('starsEarnedMsg', state.lang)}</p>
+      <div class="modal-actions">
+        <button id="btn-stay" class="btn-modal" style="background:var(--bg-surface); border:1px solid var(--border-color); color:white;">${t('stayHereBtn', state.lang)}</button>
+        <button id="btn-next" class="btn-modal btn-modal-primary">${t('nextLessonBtn', state.lang)}</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.querySelector('#btn-stay')?.addEventListener('click', () => modal.remove());
+  modal.querySelector('#btn-next')?.addEventListener('click', () => {
+    modal.remove();
+    const currIdx = LESSONS.findIndex(l => l.id === lesson.id);
+    if (currIdx < LESSONS.length - 1) {
+      selectLesson(LESSONS[currIdx + 1].id);
+    }
+  });
+}
+
+function showTryAgainModal(lesson, errorMsg) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <span class="modal-icon">💡</span>
+      <h3 class="modal-title">${t('tryAgainTitle', state.lang)}</h3>
+      <p class="modal-body" style="color:#f87171; font-weight:bold;">${escapeHtml(errorMsg)}</p>
+      <div class="modal-actions">
+        <button id="btn-retry" class="btn-modal btn-modal-primary">${t('retryBtn', state.lang)}</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.querySelector('#btn-retry')?.addEventListener('click', () => modal.remove());
+}
+
+function renderSandboxWorkspace() {
+  if (!elements.workspaceStage) return;
+  const isUz = state.lang === 'uz';
+
+  elements.workspaceStage.innerHTML = `
+    <div class="sandbox-workspace">
+      <div class="sandbox-toolbar">
+        <div>
+          <h3>🚀 ${t('freeSandbox', state.lang)}</h3>
+          <p style="color:var(--text-muted); font-size:12px; margin:2px 0 0;">${isUz ? "Erkin kod yozing yoki quyidagi tayyor shablonlarni tanlang" : "Write free code or select starter templates"}</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          ${JS_STARTER_TEMPLATES.map(tpl => `
+            <button class="btn-tool btn-template-pick" data-tpl="${tpl.id}">
+              ${escapeHtml(localize(tpl.name, state.lang))}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="editor-preview-split" style="margin-top:16px;">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span>💻 Sandbox Editor</span>
+            <button id="btn-run-sandbox" class="btn-run-code">▶️ ${t('runCodeBtn', state.lang)}</button>
+          </div>
+          <div class="editor-wrapper">
+            <textarea id="sandbox-editor" class="code-editor">${escapeHtml(state.customSandboxCode)}</textarea>
+          </div>
+        </div>
+
+        <div class="preview-pane">
+          <div class="js-console-container">
+            <div class="js-console-header">
+              <div class="js-console-title">🖥️ ${t('liveConsoleTitle', state.lang)}</div>
+            </div>
+            <div class="js-console-body" id="js-console-body">
+              <div class="console-line console-line-log">
+                <span class="console-line-time">System</span>
+                <span class="console-line-text">&gt; Free Sandbox Ready ⚡</span>
+              </div>
+            </div>
+            <div style="height: 180px; border-top: 1px solid var(--border-color); background: #000;">
+              <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const sbEditor = document.getElementById('sandbox-editor');
+  sbEditor?.addEventListener('input', (e) => {
+    state.customSandboxCode = e.target.value;
+    saveStateToStorage(state);
+  });
+
+  document.getElementById('btn-run-sandbox')?.addEventListener('click', () => {
+    currentCode = state.customSandboxCode;
+    runCurrentCode();
+  });
+
+  document.querySelectorAll('.btn-template-pick').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-tpl');
+      const tpl = JS_STARTER_TEMPLATES.find(x => x.id === id);
+      if (tpl && confirm(isUz ? "Ushbu shablonni yuklamoqchimisiz?" : "Load this template?")) {
+        state.customSandboxCode = tpl.code;
+        saveStateToStorage(state);
+        if (sbEditor) sbEditor.value = tpl.code;
+        currentCode = tpl.code;
+        runCurrentCode();
+      }
+    });
+  });
+
+  currentCode = state.customSandboxCode;
+  runCurrentCode();
+}
+
+// Auto-boot if running in browser
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', () => {
+    initApp();
+  });
+}
+
+
+  // Boot on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+})();

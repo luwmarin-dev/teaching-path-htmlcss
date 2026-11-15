@@ -1,0 +1,3933 @@
+/**
+ * CodeCraft Kids Curriculum Data
+ * Comprehensive HTML & CSS sequence:
+ * Theme 1: HTML Tags (Entry, Opening vs Closing, simple tags)
+ * Theme 2: Document Structure (DocType, Head, Body, HTML)
+ * Theme 3: Tables (table, tr, th, td)
+ * Theme 4: Pictures (img, src, alt, width)
+ * Theme 5: Basic Divs & Borders (div, border, entry to styling)
+ * Theme 6: Classes for Divs (class="", .name, styling power)
+ * Theme 7: Margin and Padding (cushion vs outside space)
+ * Theme 8: Basic Transform (rotate, scale, translate)
+ * Theme 9: Flexbox (display: flex, justify-content, gap)
+ * Theme 10: Buttons & Clicks (button, onclick)
+ * Theme 11: Links & Portals (a, href, target="_blank")
+ * Theme 12: Lists (ul, ol, li)
+ * Theme 13: Colors & Gradients (color, background-color, hex)
+ * Theme 14: Fonts & Glows (font-size, text-shadow)
+ * Theme 15: Rounded Corners & Circles (border-radius: 50%)
+ * Theme 16: Keyframe Animations (@keyframes, infinite bounce)
+ */
+
+export const MODULES = [
+  {
+    id: 'html-core',
+    title: {
+      en: '🦴 HTML Core (Themes 1 - 5)',
+      uz: '🦴 Asosiy HTML (1 - 5 Mavzular)'
+    },
+    tagline: {
+      en: 'Tags, document structure, tables, images, and basic divs',
+      uz: 'Teglar, hujjat tuzilishi, jadvallar, rasmlar va divlar'
+    }
+  },
+  {
+    id: 'css-core',
+    title: {
+      en: '🎨 CSS Styling (Themes 6 - 8)',
+      uz: '🎨 CSS Bezaklari (6 - 8 Mavzular)'
+    },
+    tagline: {
+      en: 'Classes, margin & padding, and 2D transforms',
+      uz: 'Klasslar, margin va padding, hamda 2D transform'
+    }
+  },
+  {
+    id: 'full-powers',
+    title: {
+      en: '⚡ Layout & Components (Themes 9 - 16)',
+      uz: '⚡ Tartib va Komponentlar (9 - 16 Mavzular)'
+    },
+    tagline: {
+      en: 'Flexbox, buttons, links, colors, shapes, and animations',
+      uz: 'Flexbox, tugmalar, havolalar, ranglar, shakllar va animatsiyalar'
+    }
+  },
+  {
+    id: 'modern-mastery',
+    title: {
+      en: '🚀 Modern Mastery (Themes 17 - 24)',
+      uz: '🚀 Zamonaviy Mahorat (17 - 24 Mavzular)'
+    },
+    tagline: {
+      en: 'Inputs, audio, video, accordions, CSS grid, positioning, transitions, and filters',
+      uz: 'Inputlar, audio, video, akkordeon, CSS grid, joylashuv, animatsiyali o\'tishlar va filtrlar'
+    }
+  }
+];
+
+export const LESSONS = [
+  // ==========================================
+  // THEME 1: HTML Tags
+  // ==========================================
+  {
+    id: 'theme-1-tags',
+    module: 'html-core',
+    title: {
+      en: 'Theme 1: HTML Tags & The Sandwich Secret',
+      uz: '1-Mavzu: HTML Teglar va Sehrli Sendvich'
+    },
+    icon: '🏷️',
+    tag: '<tag> ... </tag>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'HTML stands for "HyperText Markup Language", but in human language, it is simply the **secret language of web pages**! Web pages are built using little instructions called **Tags**.',
+        uz: 'HTML oddiy inson tilida — **veb-sahifalarning maxfiy tilidir**! Veb-sahifalar **Teglar** deb ataluvchi kichik ko\'rsatmalar yordamida quriladi.'
+      },
+      whatIsATag: {
+        en: 'A **Tag** is a special magic sticker that tells the computer how to treat words. Tags almost always come in pairs like a sandwich: an **Opening Tag** at the start (<tag>), and a **Closing Tag** at the end with a secret slash (</tag>)!',
+        uz: '**Teg** — bu so\'zlarni qanday ko\'rsatishni kompyuterga aytadigan sehrli stikerdir. Teglar xuddi sendvich kabi deyarli doim juft bo\'lib keladi: boshida **Ochuvchi teg** (<tag>) va oxirida sirli slesh belgili **Yopuvchi teg** (</tag>)!'
+      }
+    },
+    summary: {
+      en: 'Discover what HTML is in human language, how opening and closing tags work, and explore simple everyday tags.',
+      uz: 'HTML nima ekanligini oddiy tilda bilib oling, ochuvchi va yopuvchi teglar qanday ishlashini o\'rganing.'
+    },
+    story: {
+      en: 'Think of tags like sandwich buns. The opening bun <tag> says "Start the effect!", your words go in the middle, and the closing bun </tag> with a slash / says "Stop the effect!"',
+      uz: 'Teglarni sendvich nonlariga o\'xshating. Boshidagi <tag> noni "Sehrni boshla!" deydi, so\'zlar o\'rtada turadi, oxiridagi sleshli </tag> noni esa "Sehrni to\'xtat!" deydi.'
+    },
+    initialCode: `<p>
+  My pet robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!
+</p>`,
+    targetCode: `<p>
+  My pet robot is <b>super strong</b>, <i>lightning fast</i>, <u>waterproof</u>, and loves <mark>golden pizza</mark>!
+</p>`,
+    targetDescription: {
+      en: 'A sentence where:\n• "super strong" is bolded with <b>\n• "lightning fast" is slanted with <i>\n• "waterproof" is underlined with <u>\n• "golden pizza" is highlighted with <mark>',
+      uz: '"super strong" qalin <b>, "lightning fast" yotiq <i>, "waterproof" tagiga chizilgan <u> va "golden pizza" sariq rangda <mark> bilan yoritilgan jumla.'
+    },
+    anatomy: [
+      {
+        part: '<b>',
+        role: { en: 'Opening Tag', uz: 'Ochuvchi teg' },
+        explanation: {
+          en: 'Notice the angle brackets < >. Tells the browser: "Start making words BOLD right now!"',
+          uz: 'Burchakli qavslarga e\'tibor bering. Brauzerga: "Hozirdan boshlab so\'zlarni QALIN qil!" deydi.'
+        },
+        effect: {
+          en: 'Starts bold text',
+          uz: 'Qalin matnni boshlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">Normal ➔ <strong style="color:#ffffff; font-weight:800;">Bold Text</strong></div>'
+      },
+      {
+        part: 'super strong',
+        role: { en: 'Content', uz: 'Matn qismi' },
+        explanation: {
+          en: 'The actual words sitting inside the tag sandwich.',
+          uz: 'Teg sendvichining o\'rtasida joylashgan haqiqiy so\'zlar.'
+        },
+        effect: {
+          en: 'Appears as the text',
+          uz: 'Matn sifatida ko\'rinadi'
+        },
+        visualPreview: '<div class="mini-canvas">📝 "super strong"</div>'
+      },
+      {
+        part: '</b>',
+        role: { en: 'Closing Tag', uz: 'Yopuvchi teg' },
+        explanation: {
+          en: 'The secret slash / means STOP! Tells the browser: "Stop making text bold; go back to normal."',
+          uz: 'Maxfiy slesh / belgisi TO\'XTAT degani! Brauzerga: "Qalinlashtirishni to\'xtat, odatiy holatga qayt" deydi.'
+        },
+        effect: {
+          en: 'Stops bolding from spreading',
+          uz: 'Qalinlik tarqalishini to\'xtatadi'
+        },
+        visualPreview: '<div class="mini-canvas">🛑 / Stop Command</div>'
+      },
+      {
+        part: '<i> ... </i>',
+        role: { en: 'Italic Tag', uz: 'Kursiv teg' },
+        explanation: {
+          en: 'Slants words to make them stylish or emphasize speed.',
+          uz: 'So\'zlarni chiroyli yoki tezkor ko\'rsatish uchun yotiq qiladi.'
+        },
+        effect: {
+          en: 'Slanted italic text',
+          uz: 'Yotiq matn'
+        },
+        visualPreview: '<div class="mini-canvas">Normal ➔ <em style="color:#38bdf8;">Slanted Italic</em></div>'
+      },
+      {
+        part: '<u> ... </u>',
+        role: { en: 'Underline Tag', uz: 'Tagiga chizish tegi' },
+        explanation: {
+          en: 'Draws a neat line directly underneath the words.',
+          uz: 'So\'zlarning tagiga toza chiziq tortadi.'
+        },
+        effect: {
+          en: 'Underlined text',
+          uz: 'Tagiga chizilgan matn'
+        },
+        visualPreview: '<div class="mini-canvas">Normal ➔ <u style="text-decoration: underline wavy #2dd4bf;">Underlined Text</u></div>'
+      },
+      {
+        part: '<mark> ... </mark>',
+        role: { en: 'Highlighter Tag', uz: 'Marker tegi' },
+        explanation: {
+          en: 'Like swiping a neon yellow highlighter marker across your words.',
+          uz: 'So\'zlar ustidan yorqin sariq marker yurgazganga o\'xshaydi.'
+        },
+        effect: {
+          en: 'Yellow highlight background',
+          uz: 'Sariq fonli yorqin matn'
+        },
+        visualPreview: '<div class="mini-canvas">Normal ➔ <mark style="background:#fbbf24; color:#0f1117; font-weight:bold; padding:2px 6px; border-radius:4px;">Highlighted</mark></div>'
+      }
+    ],
+    listOfTags: [
+      { code: '<b> ... </b>', name: 'Bold Tag', description: 'Makes words thick, heavy, and bold', exampleHtml: '<b>Super Strong</b>' },
+      { code: '<i> ... </i>', name: 'Italic Tag', description: 'Slants words to make them stylish or emphasize them', exampleHtml: '<i>Lightning Fast</i>' },
+      { code: '<u> ... </u>', name: 'Underline Tag', description: 'Draws a clean line directly underneath words', exampleHtml: '<u>Waterproof</u>' },
+      { code: '<mark> ... </mark>', name: 'Highlighter Tag', description: 'Swipes a bright neon-yellow highlighter marker behind text', exampleHtml: '<mark>Golden Pizza</mark>' },
+      { code: '<s> ... </s>', name: 'Strikethrough Tag', description: 'Crosses words out with a horizontal strike line', exampleHtml: '<s>Old Secret</s>' },
+      { code: '<small> ... </small>', name: 'Small Tag', description: 'Shrinks words down like a tiny whisper', exampleHtml: '<small>tiny secret</small>' },
+      { code: '<strong> ... </strong>', name: 'Strong Tag', description: 'Shows strong importance (displays in bold)', exampleHtml: '<strong>Warning!</strong>' },
+      { code: '<em> ... </em>', name: 'Emphasis Tag', description: 'Emphasizes words in reading voice (displays slanted)', exampleHtml: '<em>Listen carefully</em>' },
+      { code: '<p> ... </p>', name: 'Paragraph Tag', description: 'Groups normal sentences with comfortable reading space', exampleHtml: '<p>A simple story sentence.</p>' }
+    ],
+    tagShowcase: [
+      { tag: '<b>word</b>', meaning: 'Bold (heavy and strong)' },
+      { tag: '<i>word</i>', meaning: 'Italic (slanted and fast)' },
+      { tag: '<u>word</u>', meaning: 'Underline (line drawn underneath)' },
+      { tag: '<mark>word</mark>', meaning: 'Highlighter (bright yellow marker)' },
+      { tag: '<s>word</s>', meaning: 'Strikethrough (line crossing through)' }
+    ],
+    quickTags: ['<b>', '</b>', '<i>', '</i>', '<u>', '</u>', '<mark>', '</mark>', '<s>', '</s>'],
+    challenge: {
+      mission: {
+        en: 'Add <mark>golden pizza</mark> to the sentence so "golden pizza" is highlighted in bright yellow!',
+        uz: 'Jumlaga <mark>golden pizza</mark> tegi qo\'shing, shunda "golden pizza" yorqin sariq rangda yorishadi!'
+      },
+      hint: { en: 'Wrap the words "golden pizza" between an opening <mark> tag and closing </mark> tag!', uz: '"golden pizza" so\'zlarini ochuvchi <mark> va yopuvchi </mark> teglari orasiga oling!' },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'mark',
+          message: 'Add the <mark> highlighter tag!'
+        },
+        {
+          type: 'tagContainsText',
+          tag: 'mark',
+          pattern: /pizza/i,
+          message: 'The <mark> tag should highlight "golden pizza"!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'Tags are like sandwich buns. Opening `<tag>` is the top bun, your words are the cheese/patty, closing `</tag>` is the bottom bun. If you forget the bottom bun, the whole page gets messy!',
+      discussionQuestions: [
+        'What is the only difference between an opening tag and a closing tag? (The forward slash /!)',
+        'What happens if you forget to close a `<b>` tag? (Everything on the whole page turns bold!)'
+      ],
+      commonMistakes: [
+        'Using backslash \\ instead of forward slash / in closing tags',
+        'Forgetting the closing tag entirely'
+      ],
+      funActivity: 'Have the child hold up their left hand for <opening> and right hand with a crossed finger / for </closing>!'
+    }
+  },
+
+  // ==========================================
+  // THEME 2: Document Structure
+  // ==========================================
+  {
+    id: 'theme-2-structure',
+    module: 'html-core',
+    title: {
+      en: 'Theme 2: Document Structure (DocType, Head, Body)',
+      uz: '2-Mavzu: Hujjat Tuzilishi (DocType, Head, Body)'
+    },
+    icon: '🏛️',
+    tag: '<!DOCTYPE>, <html>, <head>, <body>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, every full web page is like a **Human Body or Robot Blueprint**! It has a declaration of what it is, a head for its brain, and a body for everything you can see.',
+        uz: 'Oddiy tilda aytganda, har bir to\'liq veb-sahifa **Odam tanasi yoki Robot chizmasiga** o\'xshaydi! Unda pasport, bosh (miya) va hamma ko\'radigan tana qismlari mavjud.'
+      },
+      whatIsATag: {
+        en: '1. `<!DOCTYPE html>` tells the browser: "I am a modern HTML5 document!"\n2. `<html>` is the outer container wrapping the whole document.\n3. `<head>` is the brain: stores invisible info like the browser tab `<title>`.\n4. `<body>` is the physical body: holds all visible headings, paragraphs, buttons, and pictures!',
+        uz: '1. `<!DOCTYPE html>` — brauzerga: "Men zamonaviy HTML5 hujjatiman!" deydi.\n2. `<html>` — butun sahifani o\'rab turuvchi bosh qobiq.\n3. `<head>` — miya qismi: brauzer yorlig\'idagi sarlavha (<title>) va sozlamalarni saqlaydi.\n4. `<body>` — ko\'rinadigan tana: barcha sarlavhalar, matnlar, tugmalar va rasmlar shu yerda yashaydi!'
+      }
+    },
+    summary: {
+      en: 'Learn the master skeleton of every real web page: DocType, <html>, <head>, and <body>.',
+      uz: 'Har qanday haqiqiy veb-sahifaning bosh skeletini o\'rganing: DocType, <html>, <head> va <body>.'
+    },
+    story: {
+      en: 'Think of <!DOCTYPE html> as your passport. <html> is your house. <head> is the address plaque on the front door (for title and settings). <body> is the living room where your furniture and guests actually sit!',
+      uz: '<!DOCTYPE html> — sizning pasportingiz. <html> — uyingiz. <head> — eshikdagi manzil lavhasi. <body> — mehmonlar o\'tiradigan xona!'
+    },
+    initialCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Secret Base</title>
+  </head>
+  <body>
+    <h1>🚀 Welcome to Space Base!</h1>
+    <p>All astronauts report to the cockpit.</p>
+  </body>
+</html>`,
+    targetCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Secret Base</title>
+  </head>
+  <body>
+    <h1>🚀 Welcome to Space Base!</h1>
+    <p>All astronauts report to the cockpit.</p>
+    <p>Mission Status: <b>Ready for Launch</b></p>
+  </body>
+</html>`,
+    targetDescription: 'A complete, well-formed HTML document:\n• Browser tab title set to "My Secret Base"\n• <h1> title inside <body>: "🚀 Welcome to Space Base!"\n• Two paragraphs, with "Ready for Launch" bolded inside the body.',
+    anatomy: [
+      {
+        part: '<!DOCTYPE html>',
+        role: { en: 'DocType Declaration', uz: 'DocType e\'loni' },
+        explanation: {
+          en: 'Tells the browser: "Attention! This document is written in modern HTML5."',
+          uz: 'Brauzerga: "Diqqat! Ushbu hujjat zamonaviy HTML5 da yozilgan" deydi.'
+        },
+        effect: {
+          en: 'Ensures modern standards mode',
+          uz: 'Zamonaviy standartlar rejimini faollashtiradi'
+        },
+        visualPreview: '<div class="mini-canvas">📄 Modern HTML5 Passport</div>'
+      },
+      {
+        part: '<html> ... </html>',
+        role: { en: 'Root Container', uz: 'Asosiy qobiq' },
+        explanation: {
+          en: 'The master container. Every single tag on the page lives inside this shell.',
+          uz: 'Bosh qobiq. Sahifadagi barcha teglar ushbu qobiq ichida yashaydi.'
+        },
+        effect: {
+          en: 'Wraps the entire webpage',
+          uz: 'Butun sahifani o\'rab turadi'
+        },
+        visualPreview: '<div class="mini-canvas">🌐 Master Root Shell</div>'
+      },
+      {
+        part: '<head> ... </head>',
+        role: { en: 'Brain / Metadata', uz: 'Miya / Sozlamalar' },
+        explanation: {
+          en: 'Invisible head of the page. Holds the page title, fonts, and settings.',
+          uz: 'Sahifaning ko\'rinmas miya qismi: sarlavha va sozlamalarni saqlaydi.'
+        },
+        effect: {
+          en: 'Sets browser tab title & settings',
+          uz: 'Brauzer yorlig\'i va sozlamalarini belgilaydi'
+        },
+        visualPreview: '<div class="mini-canvas">🧠 Invisible Brain (Tab Title & Settings)</div>'
+      },
+      {
+        part: '<title> ... </title>',
+        role: { en: 'Tab Title', uz: 'Yorliq sarlavhasi' },
+        explanation: {
+          en: 'The name that appears on the browser tab at the very top of your screen.',
+          uz: 'Brauzerning eng yuqori qismidagi yorliqda ko\'rinadigan nom.'
+        },
+        effect: {
+          en: 'Shows title in browser tab',
+          uz: 'Yorliqda sarlavhani ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas">🏷️ [ Tab: My Secret Base ]</div>'
+      },
+      {
+        part: '<body> ... </body>',
+        role: { en: 'Visible Body', uz: 'Ko\'rinadigan tana' },
+        explanation: {
+          en: 'The visible page! Whatever you put between <body> and </body> appears on the screen.',
+          uz: 'Ko\'rinadigan sahifa! <body> ichiga nima qo\'ysangiz, ekranda paydo bo\'ladi.'
+        },
+        effect: {
+          en: 'Renders all visible content on screen',
+          uz: 'Ekranda barcha ko\'rinadigan narsalarni chizadi'
+        },
+        visualPreview: '<div class="mini-canvas">🖥️ Visible Canvas on Screen</div>'
+      }
+    ],
+    listOfTags: [
+      { code: '<!DOCTYPE html>', name: 'DocType', description: 'Tells browser this is modern HTML5 (goes on line 1)', exampleHtml: '<!DOCTYPE html>' },
+      { code: '<html> ... </html>', name: 'HTML Shell', description: 'The outer root container wrapping the entire document', exampleHtml: '<html>...</html>' },
+      { code: '<head> ... </head>', name: 'Head (Brain)', description: 'Stores invisible page information, tab title, and meta tags', exampleHtml: '<head><title>Tab</title></head>' },
+      { code: '<title> ... </title>', name: 'Page Title', description: 'The text that displays on the browser\'s top tab', exampleHtml: '<title>My Cool Page</title>' },
+      { code: '<body> ... </body>', name: 'Body', description: 'The container for EVERYTHING visible to the user on the screen', exampleHtml: '<body><h1>Visible</h1></body>' }
+    ],
+    tagShowcase: [
+      { tag: '<!DOCTYPE html>', meaning: 'Passport: Modern HTML5' },
+      { tag: '<html>', meaning: 'The big outer shell' },
+      { tag: '<head>', meaning: 'Brain: Tab title & settings' },
+      { tag: '<body>', meaning: 'Body: Everything you see' }
+    ],
+    quickTags: ['<!DOCTYPE html>', '<html>', '</html>', '<head>', '</head>', '<title>', '</title>', '<body>', '</body>'],
+    challenge: {
+      mission: {
+        en: 'Add a new paragraph inside the <body> that says: "Mission Status: <b>Ready for Launch</b>"!',
+        uz: '<body> ichiga "Mission Status: <b>Ready for Launch</b>" degan yangi paragraf qo\'shing!'
+      },
+      hint: { en: 'Inside <body>, create a new <p> tag and wrap "Ready for Launch" in <b> and </b>.', uz: '<body> ichida yangi <p> oching va "Ready for Launch" ni <b> va </b> teglari orasiga oling.' },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'body',
+          message: 'Keep the <body> container!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /Ready for Launch/i.test(code),
+          message: 'Add "Mission Status: Ready for Launch" inside the body!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'Human anatomy: `<!DOCTYPE>` is your birth certificate. `<html>` is your skin. `<head>` is your brain (thoughts inside). `<body>` is your arms and legs (what people see).',
+      discussionQuestions: [
+        'Why doesn\'t text inside the <head> show up on the white page?',
+        'What would happen if you wrote words outside the `<body>` tags?'
+      ],
+      commonMistakes: [
+        'Putting visible words inside `<head>` instead of `<body>`',
+        'Forgetting the closing `</body>` or `</html>` tags'
+      ],
+      funActivity: 'Touch your head for <head> and touch your chest for <body>!'
+    }
+  },
+
+  // ==========================================
+  // THEME 3: Tables
+  // ==========================================
+  {
+    id: 'theme-3-tables',
+    module: 'html-core',
+    title: {
+      en: 'Theme 3: Tables & Grids (Rows and Cells)',
+      uz: '3-Mavzu: Jadvallar va Kataklar (Qatorlar va Kataklar)'
+    },
+    icon: '📊',
+    tag: '<table>, <tr>, <th>, <td>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, a **Table** is a neat grid of boxes with rows and columns — just like an Excel spreadsheet or a video game high-score leaderboard!',
+        uz: 'Oddiy tilda aytganda, **Jadval** — bu kataklardan iborat toza panjara — xuddi dars jadvali yoki o\'yinlardagi peshqadamlar ro\'yxati kabi!'
+      },
+      whatIsATag: {
+        en: 'HTML builds tables row-by-row:\n1. `<table>` is the outer grid frame.\n2. `<tr>` stands for **Table Row** (a horizontal line across).\n3. `<th>` stands for **Table Header** (bold titles for column headers).\n4. `<td>` stands for **Table Data** (regular boxes holding player names, numbers, or stats)!',
+        uz: 'HTML jadvallarni qadamma-qadam quradi:\n1. `<table>` — jadvalning tashqi ramkasi.\n2. `<tr>` — **Table Row** (gorizontal qator).\n3. `<th>` — **Table Header** (ustun sarlavhasi, qalin yozuvda).\n4. `<td>` — **Table Data** (oddiy ma\'lumot katagi)!'
+      }
+    },
+    summary: {
+      en: 'Build clean grids and leaderboards using `<table>`, `<tr>` (rows), `<th>` (headers), and `<td>` (data cells).',
+      uz: '<table>, <tr> (qatorlar), <th> (sarlavhalar) va <td> (kataklar) yordamida jadvallar va reytinglar tuzing.'
+    },
+    story: {
+      en: 'Think of `<tr>` like a train track. Each track holds train cars: `<th>` for the engine/header cars, and `<td>` for the passenger data cars.',
+      uz: '`<tr>` ni poyezd relsiga o\'xshating: `<th>` — boshlovchi lokomotiv vagoni, `<td>` — yo\'lovchilar vagoni.'
+    },
+    initialCode: `<table border="1" cellpadding="8">
+  <tr>
+    <th>Rank</th>
+    <th>Player</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>🥇 1st</td>
+    <td>PixelCat</td>
+    <td>9,900</td>
+  </tr>
+  <tr>
+    <td>🥈 2nd</td>
+    <td>CyberBot</td>
+    <td>8,450</td>
+  </tr>
+</table>`,
+    targetCode: `<table border="1" cellpadding="8">
+  <tr>
+    <th>Rank</th>
+    <th>Player</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>🥇 1st</td>
+    <td>PixelCat</td>
+    <td>9,900</td>
+  </tr>
+  <tr>
+    <td>🥈 2nd</td>
+    <td>CyberBot</td>
+    <td>8,450</td>
+  </tr>
+  <tr>
+    <td>🥉 3rd</td>
+    <td>DragonBoy</td>
+    <td>7,800</td>
+  </tr>
+</table>`,
+    targetDescription: 'A clean 3-column game leaderboard grid with border lines:\n• Header Row (bold): Rank | Player | Score\n• Row 1: 🥇 1st | PixelCat | 9,900\n• Row 2: 🥈 2nd | CyberBot | 8,450\n• Row 3: 🥉 3rd | DragonBoy | 7,800',
+    anatomy: [
+      {
+        part: '<table>',
+        role: { en: 'Table Container', uz: 'Jadval qobig\'i' },
+        explanation: {
+          en: 'Creates the outer grid structure.',
+          uz: 'Tashqi jadval panjarasini yaratadi.'
+        },
+        effect: {
+          en: 'Initializes the table grid',
+          uz: 'Jadval panjarasini boshlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">⊞ Outer Grid Table Frame</div>'
+      },
+      {
+        part: '<tr>',
+        role: { en: 'Table Row', uz: 'Jadval qatori' },
+        explanation: {
+          en: 'Short for Table Row. Creates one horizontal row of boxes from left to right.',
+          uz: 'Table Row (Jadval qatori). Chapdan o\'ngga bitta gorizontal qator hosil qiladi.'
+        },
+        effect: {
+          en: 'Starts a horizontal row',
+          uz: 'Gorizontal qatorni boshlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">➔ Horizontal Row (Left to Right) ➔</div>'
+      },
+      {
+        part: '<th>',
+        role: { en: 'Table Header Cell', uz: 'Sarlavha katagi' },
+        explanation: {
+          en: 'Short for Table Header. Bold, centered title cell for a column.',
+          uz: 'Table Header (Sarlavha katagi). Ustun uchun qalin va markazlashtirilgan nom.'
+        },
+        effect: {
+          en: 'Bold header column title',
+          uz: 'Qalin sarlavha katagi'
+        },
+        visualPreview: '<div class="mini-canvas"><strong>🏷️ Bold Centered Header</strong></div>'
+      },
+      {
+        part: '<td>',
+        role: { en: 'Table Data Cell', uz: 'Ma\'lumot katagi' },
+        explanation: {
+          en: 'Short for Table Data. A regular grid box holding values or text.',
+          uz: 'Table Data (Ma\'lumot katagi). Matn yoki raqamni saqlovchi oddiy katak.'
+        },
+        effect: {
+          en: 'Standard data cell box',
+          uz: 'Oddiy ma\'lumot katagi'
+        },
+        visualPreview: '<div class="mini-canvas">📦 Standard Data Cell Box</div>'
+      },
+      {
+        part: 'border="1"',
+        role: { en: 'Border Attribute', uz: 'Chegara atributi' },
+        explanation: {
+          en: 'Draws visible grid lines around every box in the table.',
+          uz: 'Jadvaldagi har bir katak atrofida ko\'rinadigan chiziqlar chizadi.'
+        },
+        effect: {
+          en: 'Shows visible grid lines',
+          uz: 'Kataklar orasidagi chiziqlarni ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas">▦ Visible Grid Lines (border="1")</div>'
+      }
+    ],
+    listOfTags: [
+      { code: '<table> ... </table>', name: 'Table', description: 'The outer container frame for a grid/table', exampleHtml: '<table border="1"><tr><td>Cell</td></tr></table>' },
+      { code: '<tr> ... </tr>', name: 'Table Row', description: 'Creates one horizontal line of cells across the table', exampleHtml: '<tr><td>A</td><td>B</td></tr>' },
+      { code: '<th> ... </th>', name: 'Table Header', description: 'Bold title cell at the top of a column', exampleHtml: '<th>Name</th>' },
+      { code: '<td> ... </td>', name: 'Table Data', description: 'Standard data cell box holding facts or numbers', exampleHtml: '<td>100</td>' },
+      { code: 'border="1"', name: 'Border Attribute', description: 'Draws solid grid lines around table cells', exampleHtml: 'border="1"' },
+      { code: 'cellpadding="8"', name: 'Cell Padding', description: 'Adds breathing room cushion inside each cell box', exampleHtml: 'cellpadding="8"' }
+    ],
+    tagShowcase: [
+      { tag: '<table>', meaning: 'The whole grid' },
+      { tag: '<tr>', meaning: 'One horizontal row' },
+      { tag: '<th>', meaning: 'Bold column title' },
+      { tag: '<td>', meaning: 'Data box inside a row' }
+    ],
+    quickTags: ['<table>', '</table>', '<tr>', '</tr>', '<th>', '</th>', '<td>', '</td>'],
+    challenge: {
+      mission: {
+        en: 'Add a 3rd place row for "🥉 3rd", player "DragonBoy", and score "7,800"!',
+        uz: '"🥉 3rd", o\'yinchi "DragonBoy" va ochko "7,800" uchun 3-o\'rin qatorini qo\'shing!'
+      },
+      hint: { en: 'Create a new <tr> row before </table>, and add three <td> cells inside for the medal, player, and score.', uz: '</table> oldidan yangi <tr> qator oching va ichiga 3 ta <td> katak qo\'shing.' },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'table',
+          message: 'Keep the <table> grid!'
+        },
+        {
+          type: 'custom',
+          check: (code) => (code.match(/<tr/gi) || []).length >= 4,
+          message: 'You need at least 4 rows (1 header row + 3 player rows)!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /DragonBoy/i.test(code),
+          message: 'Add DragonBoy as the 3rd player in the table!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'A table is like a waffle or an ice cube tray. `<tr>` is one row of ice compartments. `<td>` is each individual ice pocket.',
+      discussionQuestions: [
+        'What is the difference between `<th>` (header) and `<td>` (data)?',
+        'Why do all `<td>` and `<th>` cells have to be wrapped inside a `<tr>` row?'
+      ],
+      commonMistakes: [
+        'Putting `<td>` directly inside `<table>` without wrapping it in a `<tr>` row',
+        'Having a different number of `<td>` cells in different rows'
+      ],
+      funActivity: 'Draw a 2x2 grid on paper and label the rows (`<tr>`) and boxes (`<td>`) with a pencil!'
+    }
+  },
+
+  // ==========================================
+  // THEME 4: Pictures
+  // ==========================================
+  {
+    id: 'theme-4-pictures',
+    module: 'html-core',
+    title: {
+      en: 'Theme 4: Pictures & Void Tags',
+      uz: '4-Mavzu: Rasmlar va Yopilmas Teglar'
+    },
+    icon: '🖼️',
+    tag: '<img src="" alt="" width="">',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, an **Image** tag is like sticking a sticker onto a poster. Instead of writing text, you show a photo or drawing.',
+        uz: 'Oddiy tilda aytganda, **Rasm** tegi plakatga stiker yopishtirishga o\'xshaydi. Matn yozish o\'rniga fotosurat yoki chizilgan rasm ko\'rsatasiz.'
+      },
+      whatIsATag: {
+        en: 'Fun secret: `<img>` is a **Void Tag**! It has NO closing `</img>`! Why? Because you cannot put words inside a picture — the picture stands by itself! You tell it where the picture lives using `src` (source).',
+        uz: 'Qiziqarli sir: `<img>` — bu **Bo\'sh (Void) teg**! Uning yopiluvchi `</img>` jufti YO\'Q! Nega? Chunki rasmning ichiga matn joylay olmaysiz — rasm o\'zi alohida turadi! Rasm qayerdaligini `src` (manba) atributi orqali aytasiz.'
+      }
+    },
+    summary: {
+      en: 'Learn how to show pictures on a page and discover why <img> is a self-closing void tag.',
+      uz: 'Sahifada rasmlar ko\'rsatishni va nima uchun <img> tegi yopiluvchi juftga ega emasligini o\'rganing.'
+    },
+    story: {
+      en: 'Pictures need an address (src) to find the image file, and width to decide how big or small to draw it.',
+      uz: 'Rasmlarga manzil (src) va uni qanchalik katta yoki kichik chizish uchun kenglik (width) kerak bo\'ladi.'
+    },
+    initialCode: `<img 
+  src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
+  alt="Cute fluffy puppy" 
+  width="180"
+>`,
+    targetCode: `<img 
+  src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
+  alt="Cute fluffy puppy wearing glasses" 
+  width="260"
+>`,
+    targetDescription: 'A sharp, charming photo of a golden puppy wearing glasses, resized to 260 pixels wide.',
+    anatomy: [
+      {
+        part: '<img',
+        role: 'Image Tag (Void)',
+        explanation: 'Tells the browser to display an image. It is self-closing — no </img> needed!',
+        effect: 'Places an image on the page'
+      },
+      {
+        part: 'src="..."',
+        role: 'Source URL',
+        explanation: 'Short for Source. The web link or file path where the picture lives.',
+        effect: 'Loads the picture from the link'
+      },
+      {
+        part: 'alt="..."',
+        role: 'Alternative Text',
+        explanation: 'Describes the photo in case internet is slow or for screen readers.',
+        effect: 'Helpful text description'
+      },
+      {
+        part: 'width="180"',
+        role: 'Width in Pixels',
+        explanation: 'Controls how wide the picture looks on screen.',
+        effect: 'Resizes the image'
+      }
+    ],
+    listOfTags: [
+      { code: '<img src="...">', name: 'Image', description: 'Displays a picture or photo on screen (self-closing)', exampleHtml: '<img src="cat.png" alt="Cat" width="80">' },
+      { code: 'src="..."', name: 'Source Attribute', description: 'The web address or file path where the image is stored', exampleHtml: 'src="https://example.com/pet.jpg"' },
+      { code: 'alt="..."', name: 'Alt Description', description: 'Explains what the image shows if it fails to load', exampleHtml: 'alt="Happy Puppy"' },
+      { code: 'width="..."', name: 'Width', description: 'Sets the width of the image in pixels (e.g. 200)', exampleHtml: 'width="200"' },
+      { code: 'height="..."', name: 'Height', description: 'Sets the height of the image in pixels', exampleHtml: 'height="150"' }
+    ],
+    tagShowcase: [
+      { tag: '<img src="..." alt="...">', meaning: 'Image sticker (no closing tag)' },
+      { tag: 'src="link"', meaning: 'Where the photo lives' },
+      { tag: 'width="200"', meaning: 'Sets size in pixels' }
+    ],
+    quickTags: ['<img src="" alt="" width="200">', 'src=""', 'alt=""', 'width="260"'],
+    challenge: {
+      mission: {
+        en: 'Change the width of the puppy image to "260" pixels!',
+        uz: 'Kuchukcha rasmining kengligini (width) "260" pikselga o\'zgartiring!'
+      },
+      hint: { en: 'Find the width attribute on the <img> tag and increase its pixel value.', uz: '<img> tegining width atributini toping va son qiymatini oshiring.' },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'img',
+          message: 'Keep the <img> tag!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /width\s*=\s*["']?260["']?/i.test(code),
+          message: 'Set width="260" on the image!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: '<img> is like a photo sticker on a poster: you stick it on, but you don\'t need to wrap it with anything.',
+      discussionQuestions: [
+        'Why does <img> NOT have a closing </img> tag like <p> does?',
+        'What does src stand for? (Source)'
+      ],
+      commonMistakes: [
+        'Spelling src as "scr" (the #1 kid typo!)'
+      ],
+      funActivity: 'Try setting width to 400 and watch the puppy get huge!'
+    }
+  },
+
+  // ==========================================
+  // THEME 5: Basic Divs & Borders
+  // ==========================================
+  {
+    id: 'theme-5-divs',
+    module: 'html-core',
+    title: {
+      en: 'Theme 5: Basic Divs & Border Style',
+      uz: '5-Mavzu: Asosiy Divlar va Chegara Uslubi'
+    },
+    icon: '📦',
+    tag: '<div>, style="border: ..."',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, a `<div>` is an **invisible cardboard box**! It lets you pack words, buttons, and pictures together into one package.',
+        uz: 'Oddiy tilda aytganda, `<div>` — bu **ko\'rinmas karton quti**! U so\'zlar, tugmalar va rasmlarni bitta qutiga joylash imkonini beradi.'
+      },
+      whatIsATag: {
+        en: 'By itself, a `<div>` is completely invisible. But when you give it basic styling like `style="border: 3px solid cyan;"`, it draws a sturdy box wall around everything inside!',
+        uz: 'O\'z holicha `<div>` butunlay ko\'rinmas. Lekin unga `style="border: 3px solid cyan;"` kabi bezak bersangiz, u ichidagi narsalar atrofida chiroyli devor chizadi!'
+      }
+    },
+    summary: {
+      en: 'Group things together using <div> and draw solid borders to create real cards.',
+      uz: '<div> yordamida elementlarni guruhlang va mustahkam chegaralar chizib haqiqiy kartochkalar yasang.'
+    },
+    story: {
+      en: 'Think of <div> like a lunchbox or bento box. You can pack a sandwich, juice, and fruit inside. When you move the lunchbox, everything inside moves together!',
+      uz: '<div> ni tushlik qutisiga o\'xshating: sendvich, sharbat va mevani ichiga solasiz. Qutini ko\'chirganingizda, ichidagi hamma narsa birga ko\'chadi!'
+    },
+    initialCode: `<div style="border: 2px dashed #64748b; padding: 16px;">
+  <h3>Secret Chest</h3>
+  <p>Contains 100 gold coins!</p>
+</div>`,
+    targetCode: `<div style="border: 4px solid #2dd4bf; padding: 16px;">
+  <h3>Secret Chest</h3>
+  <p>Contains 100 gold coins!</p>
+</div>`,
+    targetDescription: 'A solid card with a bright mint cyan (4px solid #2dd4bf) border wall neatly wrapping the title and text.',
+    anatomy: [
+      {
+        part: '<div>',
+        role: { en: 'Divider Box', uz: 'Bo\'linma qutisi' },
+        explanation: {
+          en: 'Short for Division. Creates an invisible container box.',
+          uz: 'Division so\'zining qisqartmasi. Ko\'rinmas quti konteyner yasaydi.'
+        },
+        effect: {
+          en: 'Groups items together',
+          uz: 'Elementlarni birga guruhlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">📦 Card Container Box</div>'
+      },
+      {
+        part: 'style="..."',
+        role: { en: 'Style Attribute', uz: 'Uslub atributi' },
+        explanation: {
+          en: 'Allows you to write quick CSS styling rules right on the tag.',
+          uz: 'Tegning o\'zida tezkor CSS bezak qoidalarini yozish imkonini beradi.'
+        },
+        effect: {
+          en: 'Applies inline design',
+          uz: 'Ichki bezakni qo\'llaydi'
+        },
+        visualPreview: '<div class="mini-canvas">🎨 Applies CSS Properties Directly</div>'
+      },
+      {
+        part: 'border: 4px solid #2dd4bf;',
+        role: { en: 'Border Wall', uz: 'Chegara devori' },
+        explanation: {
+          en: 'Thickness (4px), line type (solid), and color (#2dd4bf).',
+          uz: 'Qalinlik (4px), chiziq turi (solid - tekis) va rang (#2dd4bf - och ko\'k).'
+        },
+        effect: {
+          en: 'Draws a solid cyan box wall',
+          uz: 'Quti atrofida tekis och ko\'k devor chizadi'
+        },
+        visualPreview: '<div class="mini-canvas"><span style="border: 2px solid #2dd4bf; padding: 2px 8px; border-radius: 4px;">Solid Border Wall</span></div>'
+      },
+      {
+        part: '</div>',
+        role: { en: 'Closing Box', uz: 'Qutini yopish' },
+        explanation: {
+          en: 'Closes the cardboard box.',
+          uz: 'Karton qutining qopqog\'ini yopadi.'
+        },
+        effect: {
+          en: 'Finishes the container',
+          uz: 'Konteynerni tugatadi'
+        },
+        visualPreview: '<div class="mini-canvas">🔒 Closes Container Shell</div>'
+      }
+    ],
+    listOfTags: [
+      { code: '<div> ... </div>', name: 'Div Box', description: 'An empty container box to group items together', exampleHtml: '<div style="border: 1px solid white;">Box</div>' },
+      { code: 'border: 2px solid cyan;', name: 'Solid Border', description: 'Draws a solid colored wall around the box', exampleHtml: '<div style="border: 2px solid #2dd4bf;">Wall</div>' },
+      { code: 'border: 2px dashed red;', name: 'Dashed Border', description: 'Draws a dashed treasure-map line around the box', exampleHtml: '<div style="border: 2px dashed red;">Dashed</div>' },
+      { code: 'style="..."', name: 'Style Attribute', description: 'Attaches CSS styles directly onto an HTML element', exampleHtml: 'style="color: red;"' }
+    ],
+    tagShowcase: [
+      { tag: '<div> ... </div>', meaning: 'The cardboard box' },
+      { tag: 'border: 3px solid cyan;', meaning: 'Solid wall line' },
+      { tag: 'border: 3px dashed gold;', meaning: 'Dashed line' }
+    ],
+    quickTags: ['<div>', '</div>', 'style="border: 4px solid #2dd4bf;"', 'border: 4px solid #2dd4bf;'],
+    challenge: {
+      mission: {
+        en: 'Change the border of the div box to "4px solid #2dd4bf" (solid cyan)!',
+        uz: 'Div qutisining chegarasini (border) "4px solid #2dd4bf" (och ko\'k chiziq) qilib o\'zgartiring!'
+      },
+      hint: { en: 'Inside style="...", set border to 4px thickness, solid style, and the #2dd4bf cyan color.', uz: 'style="..." ichida border xususiyatini 4px, solid va #2dd4bf qilib belgilang.' },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'div',
+          message: 'Keep the <div> tag!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'border',
+          valuePattern: /4px.*solid.*#2dd4bf|4px.*solid.*teal/i,
+          message: 'Set border to 4px solid #2dd4bf!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: '<div> is like a bento box: you put food in compartments. The border is the hard plastic rim.',
+      discussionQuestions: [
+        'What would happen if you removed </div> at the end?',
+        'Can you put an image and a button inside the same <div> box?'
+      ],
+      commonMistakes: [
+        'Forgetting "solid" in the border style (border: 4px cyan won\'t draw without a style keyword like solid!)'
+      ],
+      funActivity: 'Try border: 6px dotted pink; to see polka-dot borders!'
+    }
+  },
+
+  // ==========================================
+  // THEME 6: Classes for Divs
+  // ==========================================
+  {
+    id: 'theme-6-classes',
+    module: 'css-core',
+    title: {
+      en: 'Theme 6: Classes for Divs (The Power of .class)',
+      uz: '6-Mavzu: Divlar uchun Klasslar (.nom kuchi)'
+    },
+    icon: '⚡',
+    tag: 'class="card", .card { ... }',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, a **Class** is a nickname or superpower badge you give to elements! Instead of re-typing styles 100 times, you name your style `.card` and give `class="card"` to any box.',
+        uz: 'Oddiy inson tilida, **Klass** — bu elementlarga beriladigan laqab yoki nishondir! Uslublarni 100 marta qayta yozish o\'rniga, `.card` deb nomlaysiz va istalgan qutiga `class="card"` berasiz.'
+      },
+      whatIsATag: {
+        en: 'In HTML, you write `class="super-box"`. In CSS, you target it with a period dot: `.super-box { ... }`. The dot `.` stands for class!',
+        uz: 'HTML da: `class="super-box"` deb yozasiz. CSS da: nom oldiga nuqta qo\'yasiz: `.super-box { ... }`. Nuqta `.` klass belgisidir!'
+      }
+    },
+    summary: 'Give nicknames to your boxes with class="..." and style multiple cards at once using CSS classes.',
+    story: 'Imagine uniforms in a soccer team. Instead of telling each player what jersey to wear, you say: "Team Blue wears blue jerseys!" That is what a class does.',
+    initialCode: `<style>
+  /* In CSS, a dot . means class */
+  .badge {
+    background: #7c6cf7;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+</style>
+
+<div>
+  <h3>Player Profile</h3>
+  <!-- Give this span class="badge" -->
+  <span>Level: 99</span>
+</div>`,
+    targetCode: `<style>
+  .badge {
+    background: #7c6cf7;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+</style>
+
+<div>
+  <h3>Player Profile</h3>
+  <span class="badge">Level: 99</span>
+  <span class="badge">Rank: Master</span>
+</div>`,
+    targetDescription: 'A player profile containing two purple badge pills ("Level: 99" and "Rank: Master") both sharing the exact same `.badge` class styling.',
+    anatomy: [
+      {
+        part: 'class="badge"',
+        role: { en: 'Class Name', uz: 'Klass nomi' },
+        explanation: {
+          en: 'Labels this element with the "badge" nickname.',
+          uz: 'Ushbu elementga "badge" laqabli klass yorlig\'ini yopishtiradi.'
+        },
+        effect: {
+          en: 'Attaches the class nickname',
+          uz: 'Klass laqabini biriktiradi'
+        },
+        visualPreview: '<div class="mini-canvas">🏷️ [ class="badge" ]</div>'
+      },
+      {
+        part: '.badge { ... }',
+        role: { en: 'Class Selector', uz: 'Klass selektori' },
+        explanation: {
+          en: 'In CSS, the period . tells the browser: "Find every element with class=\'badge\' and paint it!"',
+          uz: 'CSS da nuqta . belgisi brauzerga: "class=\'badge\' bo\'lgan har bir elementni top va bo\'ya!" deydi.'
+        },
+        effect: {
+          en: 'Selects all elements with that class',
+          uz: 'Shu klassga ega barcha elementlarni tanlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">🎯 Targets All Elements With That Class</div>'
+      },
+      {
+        part: 'background: #7c6cf7;',
+        role: { en: 'Shared Color', uz: 'Umumiy rang' },
+        explanation: {
+          en: 'Paints all badge elements bright purple at once.',
+          uz: 'Barcha nishon elementlarini birdaniga yorqin binafsharang qiladi.'
+        },
+        effect: {
+          en: 'Styles all badges simultaneously',
+          uz: 'Barcha nishonlarni bir vaqtda bezatadi'
+        },
+        visualPreview: '<div class="mini-canvas"><span style="background: #5b5fc7; color: white; padding: 2px 8px; border-radius: 6px; font-size: 11px;">Level: 99</span> <span style="background: #5b5fc7; color: white; padding: 2px 8px; border-radius: 6px; font-size: 11px;">Rank: Master</span></div>'
+      }
+    ],
+    listOfTags: [
+      { code: 'class="name"', name: 'Class Attribute', description: 'Gives a reusable nickname to any HTML tag', exampleHtml: '<div class="card">Card</div>' },
+      { code: '.name { ... }', name: 'Class Selector', description: 'CSS selector starting with a dot . targeting that class', exampleHtml: '.card { color: red; }' },
+      { code: 'id="name"', name: 'ID Attribute', description: 'A unique name for a single unique element (# in CSS)', exampleHtml: '<div id="main-boss">Boss</div>' }
+    ],
+    tagShowcase: [
+      { tag: 'class="hero"', meaning: 'HTML nickname' },
+      { tag: '.hero { ... }', meaning: 'CSS rule for that nickname (dot .)' }
+    ],
+    quickTags: ['class="badge"', '<span class="badge">', '</span>', '.badge {'],
+    challenge: {
+      mission: {
+        en: 'Add class="badge" to the Level 99 span, and add a second span for "Rank: Master" with class="badge"!',
+        uz: 'Level 99 span tegiga class="badge" qo\'shing va "Rank: Master" uchun ham xuddi shu klassli ikkinchi span yarating!'
+      },
+      hint: { en: 'Add class="badge" to the span, and create a second span using the same class.', uz: 'span tegiga class="badge" qo\'shing va xuddi shu klass bilan ikkinchi span yarating.' },
+      rules: [
+        {
+          type: 'custom',
+          check: (code) => (code.match(/class\s*=\s*["']badge["']/gi) || []).length >= 2,
+          message: 'Give class="badge" to at least TWO elements!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /Rank/i.test(code),
+          message: 'Add the Rank: Master badge!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'A class is like a team uniform. You give 11 players the "Lions" uniform, and they all wear the same yellow jersey.',
+      discussionQuestions: [
+        'Why does CSS use a dot . before class names? (To tell the browser it\'s a class and not a tag name)',
+        'Can one page have 50 elements with the same class? (Yes, that\'s the superpower!)'
+      ],
+      commonMistakes: [
+        'Putting a dot inside the HTML attribute (e.g. class=".badge" is wrong, write class="badge")'
+      ],
+      funActivity: 'Add a 3rd badge with your favorite superhero stat!'
+    }
+  },
+
+  // ==========================================
+  // THEME 7: Margin and Padding
+  // ==========================================
+  {
+    id: 'theme-7-box-model',
+    module: 'css-core',
+    title: {
+      en: 'Theme 7: Margin vs Padding (The Secret Cushion)',
+      uz: '7-Mavzu: Margin va Padding (Ichki yostiqcha va Tashqi masofa)'
+    },
+    icon: '📦',
+    tag: 'padding: 20px;, margin: 20px;',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **Padding** is bubble wrap on the inside, and **Margin** is personal space on the outside!',
+        uz: 'Oddiy tilda aytganda, **Padding** — bu quti ichidagi yumshoq yostiqcha, **Margin** esa qutidan tashqaridagi shaxsiy masofadir!'
+      },
+      whatIsATag: {
+        en: '• `padding: 24px;` puffs up the inside so text does not bump into walls.\n• `margin: 30px;` pushes neighboring boxes away so nobody bumps into you.',
+        uz: '• `padding: 24px;` ichki qismni kengaytiradi, shunda matn devorlarga tegib ketmaydi.\n• `margin: 30px;` qo\'shni qutilarni uzoqlashtiradi, shunda hech kim sizga tegmaydi.'
+      }
+    },
+    summary: {
+      en: 'Master the difference between inside breathing room (padding) and outside space (margin).',
+      uz: 'Ichki qulay masofa (padding) va tashqi shaxsiy masofa (margin) orasidagi farqni o\'rganing.'
+    },
+    story: {
+      en: 'Padding is thick stuffing inside your coat. Margin is your arms stretched out asking friends for personal space.',
+      uz: 'Padding — kiyimingiz ichidagi qalin astar. Margin — do\'stlaringiz bilan oradagi shaxsiy masofa.'
+    },
+    initialCode: `<style>
+  .box {
+    background-color: #1e2030;
+    color: #ffffff;
+    border: 3px solid #2dd4bf;
+    /* Inside bubble wrap */
+    padding: 8px;
+    /* Outside personal space */
+    margin: 8px;
+  }
+</style>
+
+<div class="box">
+  <h3>I am in a box!</h3>
+  <p>Increase my padding and margin to make me cozy!</p>
+</div>`,
+    targetCode: `<style>
+  .box {
+    background-color: #1e2030;
+    color: #ffffff;
+    border: 3px solid #2dd4bf;
+    padding: 24px;
+    margin: 30px;
+  }
+</style>
+
+<div class="box">
+  <h3>I am in a box!</h3>
+  <p>Increase my padding and margin to make me cozy!</p>
+</div>`,
+    targetDescription: 'A spacious navy card with cozy 24px padding giving the text room to breathe inside, and generous 30px margin pushing it away from the edges.',
+    anatomy: [
+      {
+        part: 'padding: 24px;',
+        role: { en: 'Inside Cushion', uz: 'Ichki yostiqcha' },
+        explanation: {
+          en: 'Bubble wrap inside the box so text does not bump against the border walls.',
+          uz: 'Quti ichidagi yostiqcha, shunda matn chegara devorlariga urilmaydi.'
+        },
+        effect: {
+          en: 'Expands breathing room inside box',
+          uz: 'Quti ichidagi nafas olish masofasini kengaytiradi'
+        },
+        visualPreview: '<div class="mini-canvas"><span style="background: rgba(45,212,191,0.15); border: 1px dashed #2dd4bf; padding: 4px 12px; border-radius: 4px;">🛋️ 24px Inside Cushion</span></div>'
+      },
+      {
+        part: 'border: 3px solid #2dd4bf;',
+        role: { en: 'The Wall', uz: 'Chegara devori' },
+        explanation: {
+          en: 'Draws a solid cyan wall around the box.',
+          uz: 'Quti atrofida mustahkam och ko\'k devor chizadi.'
+        },
+        effect: {
+          en: 'Visible box boundary',
+          uz: 'Qutining ko\'rinuvchi chegarasi'
+        },
+        visualPreview: '<div class="mini-canvas"><span style="border: 2px solid #2dd4bf; padding: 2px 8px; border-radius: 4px;">🧱 Solid Boundary Wall</span></div>'
+      },
+      {
+        part: 'margin: 30px;',
+        role: { en: 'Outside Space', uz: 'Tashqi shaxsiy masofa' },
+        explanation: {
+          en: 'Personal space outside the box pushing other elements away.',
+          uz: 'Qutidan tashqaridagi shaxsiy masofa, boshqa elementlarni itaradi.'
+        },
+        effect: {
+          en: 'Pushes neighboring elements away',
+          uz: 'Qo\'shni elementlarni tashqaridan itaradi'
+        },
+        visualPreview: '<div class="mini-canvas">↔️ 30px Outside Personal Space ↔️</div>'
+      }
+    ],
+    listOfTags: [
+      { code: 'padding: 24px;', name: 'Padding', description: 'Inside bubble wrap cushioning between text and the border', exampleHtml: '<div style="padding: 15px; border: 1px solid white;">Cushioned</div>' },
+      { code: 'margin: 30px;', name: 'Margin', description: 'Personal space outside pushing neighboring elements away', exampleHtml: '<div style="margin: 10px; background: #2dd4bf; color: black; padding: 4px;">Spaced</div>' },
+      { code: 'margin: 0 auto;', name: 'Margin Auto', description: 'Automatically centers a box horizontally in the middle of the screen', exampleHtml: 'margin: 0 auto;' }
+    ],
+    tagShowcase: [
+      { tag: 'padding: 20px;', meaning: 'Inside cushion (bubble wrap)' },
+      { tag: 'margin: 20px;', meaning: 'Outside breathing space' }
+    ],
+    quickTags: ['padding: 24px;', 'margin: 30px;', 'margin: 0 auto;'],
+    challenge: {
+      mission: {
+        en: 'Set padding to "24px" and margin to "30px" on .box!',
+        uz: '.box klassida padding ni "24px" va margin ni "30px" qilib belgilang!'
+      },
+      hint: { en: 'Update padding on .box to create inside cushion, and margin to create outside space.', uz: '.box klassida ichki masofani padding, tashqi masofani margin bilan oshiring.' },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'padding',
+          valuePattern: /24px/i,
+          message: 'Set padding to 24px!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'margin',
+          valuePattern: /30px/i,
+          message: 'Set margin to 30px!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: 'Padding is thick stuffing inside your coat. Margin is your arms stretched out asking friends for personal space.',
+      discussionQuestions: [
+        'If you want a button to be bigger and easier to tap, do you increase padding or margin?',
+        'What happens if you remove padding: 0?'
+      ],
+      commonMistakes: [
+        'Confusing padding (inside) with margin (outside)'
+      ],
+      funActivity: 'Set padding: 60px to watch the box puff up like a marshmallow!'
+    }
+  },
+
+  // ==========================================
+  // THEME 8: Basic Transform
+  // ==========================================
+  {
+    id: 'theme-8-transform',
+    module: 'css-core',
+    title: {
+      en: 'Theme 8: Basic Transform (Rotate, Scale, Move)',
+      uz: '8-Mavzu: Asosiy Transform (Aylantirish, Kattalashtirish, Surish)'
+    },
+    icon: '🌀',
+    tag: 'transform: rotate(), scale(), translateY()',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **Transform** is the acrobatics spell of CSS! It lets you spin elements like a wheel, tilt them like a ramp, zoom them like a magnifying glass, or make them jump.',
+        uz: 'Oddiy tilda aytganda, **Transform** bu CSS ning akrobatika sehridir! U elementlarni g\'ildirakdek aylantirish, kattalashtirish yoki sakratish imkonini beradi.'
+      },
+      whatIsATag: {
+        en: '1. `rotate(15deg)` spins an element by degrees.\n2. `scale(1.2)` zooms an element (1.2 is 20% bigger!).\n3. `translateY(-15px)` lifts an element upward into the air.',
+        uz: '1. `rotate(15deg)` elementni burchak bo\'yicha aylantiradi.\n2. `scale(1.2)` elementni 20% ga kattalashtiradi.\n3. `translateY(-15px)` elementni havoga ko\'taradi.'
+      }
+    },
+    summary: {
+      en: 'Make elements spin, zoom, and tilt with CSS transform powers.',
+      uz: 'CSS transform yordamida elementlarni aylantiring, kattalashtiring va suring.'
+    },
+    story: {
+      en: 'You have three ready boxes waiting on your screen. Use transform to move each one with a different acrobatics spell!',
+      uz: 'Ekranda uchta tayyor quti kutib turibdi. Har biriga alohida transform sehrini qo\'llang!'
+    },
+    initialCode: `<style>
+  .box-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 30px;
+  }
+  .box {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+  }
+  .box-1 {
+    background: #ff5e7e;
+    /* Step 1: Use transform: rotate(15deg); on Box 1 */
+    transform: rotate(0deg);
+  }
+  .box-2 {
+    background: #4facfe;
+    /* Step 2: Use transform: scale(1.2); on Box 2 */
+    transform: scale(1);
+  }
+  .box-3 {
+    background: #43e97b;
+    /* Step 3: Use transform: translateY(-15px); on Box 3 */
+    transform: translateY(0px);
+  }
+</style>
+
+<div class="box-container">
+  <div class="box box-1">1</div>
+  <div class="box box-2">2</div>
+  <div class="box box-3">3</div>
+</div>`,
+    targetCode: `<style>
+  .box-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 30px;
+  }
+  .box {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+  }
+  .box-1 {
+    background: #ff5e7e;
+    transform: rotate(15deg);
+  }
+  .box-2 {
+    background: #4facfe;
+    transform: scale(1.2);
+  }
+  .box-3 {
+    background: #43e97b;
+    transform: translateY(-15px);
+  }
+</style>
+
+<div class="box-container">
+  <div class="box box-1">1</div>
+  <div class="box box-2">2</div>
+  <div class="box box-3">3</div>
+</div>`,
+    targetDescription: {
+      en: 'Three colorful boxes side-by-side: Box 1 tilted 15 degrees, Box 2 zoomed 20% larger, and Box 3 floating 15px upward.',
+      uz: 'Yonma-yon uchta rangli quti: 1-quti 15 darajaga burilgan, 2-quti 20% ga kattalashgan va 3-quti 15px yuqoriga ko\'tarilgan.'
+    },
+    anatomy: [
+      {
+        part: 'transform: rotate(15deg);',
+        role: { en: 'Rotation Angle', uz: 'Burish burchagi' },
+        explanation: {
+          en: 'Spins the element clockwise around its center by 15 degrees.',
+          uz: 'Elementni o\'z markazi atrofida soat strelkasi bo\'yicha 15 darajaga aylantiradi.'
+        },
+        effect: {
+          en: 'Tilts the box diagonally by 15°',
+          uz: 'Qutini diagonaliga 15° buradi'
+        },
+        visualPreview: '<div class="mini-canvas"><div style="display:inline-block; transform: rotate(15deg); background:#ff5e7e; color:#fff; padding:4px 10px; border-radius:6px; font-weight:bold; font-size:12px;">🔄 Box 1: Tilted 15°</div></div>'
+      },
+      {
+        part: 'transform: scale(1.2);',
+        role: { en: 'Zoom Multiplier', uz: 'Kattalashtirish koeffitsienti' },
+        explanation: {
+          en: 'Scales the element up to 1.2x (20% bigger than normal size).',
+          uz: 'Elementni 1.2 barobar (20% ga) kattalashtiradi.'
+        },
+        effect: {
+          en: 'Enlarges the box by 20%',
+          uz: 'Qutini 20% ga kattalashtiradi'
+        },
+        visualPreview: '<div class="mini-canvas"><div style="display:inline-block; transform: scale(1.15); background:#4facfe; color:#fff; padding:4px 10px; border-radius:6px; font-weight:bold; font-size:12px;">🔍 Box 2: 20% Bigger</div></div>'
+      },
+      {
+        part: 'transform: translateY(-15px);',
+        role: { en: 'Vertical Move', uz: 'Vertikal surish' },
+        explanation: {
+          en: 'Shifts the element up (negative) or down (positive) along the Y axis.',
+          uz: 'Elementni Y o\'qi bo\'ylab yuqoriga (manfiy) yoki pastga (musbat) suradi.'
+        },
+        effect: {
+          en: 'Floats the box 15px upward',
+          uz: 'Qutini 15px yuqoriga ko\'taradi'
+        },
+        visualPreview: '<div class="mini-canvas"><div style="display:inline-block; transform: translateY(-4px); background:#43e97b; color:#fff; padding:4px 10px; border-radius:6px; font-weight:bold; font-size:12px;">⬆️ Box 3: Floated Up</div></div>'
+      }
+    ],
+    listOfTags: [
+      { code: 'transform: rotate(15deg);', name: { en: 'Rotate', uz: 'Aylantirish' }, description: { en: 'Spins an element clockwise by specified degrees', uz: 'Elementni berilgan darajaga aylantiradi' }, exampleHtml: '<div style="transform: rotate(15deg); background: #ff5e7e; color: white; display: inline-block; padding: 4px;">Rotated</div>' },
+      { code: 'transform: scale(1.2);', name: { en: 'Scale (Zoom)', uz: 'Kattalashtirish' }, description: { en: 'Multiplies size (1.2 is 20% larger, 0.8 is 20% smaller)', uz: 'Hajmini ko\'paytiradi (1.2 kattaroq, 0.8 kichikroq)' }, exampleHtml: '<div style="transform: scale(1.2); background: #4facfe; color: white; display: inline-block; padding: 4px;">Zoomed</div>' },
+      { code: 'transform: translateY(-15px);', name: { en: 'Translate Y', uz: 'Vertikal ko\'chirish' }, description: { en: 'Shifts an element up (-15px) or down (+15px)', uz: 'Elementni yuqoriga yoki pastga siljitadi' }, exampleHtml: 'transform: translateY(-15px);' }
+    ],
+    tagShowcase: [
+      { tag: 'transform: rotate(15deg);', meaning: { en: 'Tilt like a badge', uz: 'Nishon kabi qiyalatish' } },
+      { tag: 'transform: scale(1.2);', meaning: { en: 'Zoom 20% larger', uz: '20% kattalashtirish' } },
+      { tag: 'transform: translateY(-15px);', meaning: { en: 'Jump into the air', uz: 'Havoga sakrash' } }
+    ],
+    quickTags: ['transform: rotate(15deg);', 'transform: scale(1.2);', 'transform: translateY(-15px);'],
+    challenge: {
+      mission: {
+        en: 'Move the 3 ready boxes! Rotate .box-1 by 15deg, zoom .box-2 with scale(1.2), and float .box-3 with translateY(-15px)!',
+        uz: 'Tayyor 3 ta qutini harakatlantiring! .box-1 ni rotate(15deg) bilan buring, .box-2 ni scale(1.2) bilan kattalashtiring, .box-3 ni translateY(-15px) bilan suring!'
+      },
+      hint: {
+        en: 'In each CSS class, set transform with the specific acrobatic move: rotate(15deg) for .box-1, scale(1.2) for .box-2, and translateY(-15px) for .box-3.',
+        uz: 'Har bir CSS klass ichida transform xususiyatini o\'rnating: .box-1 uchun rotate(15deg), .box-2 uchun scale(1.2) va .box-3 uchun translateY(-15px).'
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: (code) => /rotate\s*\(\s*15deg\s*\)/i.test(code),
+          message: 'Tilt .box-1 with transform: rotate(15deg);'
+        },
+        {
+          type: 'custom',
+          check: (code) => /scale\s*\(\s*1\.2\s*\)/i.test(code),
+          message: 'Zoom .box-2 with transform: scale(1.2);'
+        },
+        {
+          type: 'custom',
+          check: (code) => /translateY\s*\(\s*-15px\s*\)/i.test(code),
+          message: 'Float .box-3 with transform: translateY(-15px);'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Transform is like holding three toy blocks: you tilt the first, hold a magnifying glass to the second, and lift the third off the table.',
+        uz: 'Transform uchta o\'yinchoq qutiga o\'xshaydi: birinchisini burasiz, ikkinchisini kattalashtirasiz, uchinchisini esa stoldan yuqoriga ko\'tarasiz.'
+      },
+      discussionQuestions: [
+        'What does a negative degree do? (Rotates counter-clockwise!)',
+        'What happens if you scale by 2? (It doubles in size!)'
+      ],
+      commonMistakes: [
+        'Writing 15 instead of 15deg (degrees must have deg!)'
+      ],
+      funActivity: 'Try rotate(180deg) on Box 1 to see the number 1 turn completely upside down!'
+    }
+  },
+
+  // ==========================================
+// ==========================================
+  // THEME 9: Flexbox Superpowers
+  // ==========================================
+  {
+    id: 'theme-9-flexbox',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 9: Flexbox (Snapping Items in Line)',
+      uz: '9-Mavzu: Flexbox (Elementlarni Bir Qatorga Terish)'
+    },
+    icon: '🧩',
+    tag: 'display: flex, justify-content, gap',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **Flexbox** is the LEGO snap system of web layout! Without it, elements stack vertically like pancakes.',
+        uz: 'Oddiy tilda **Flexbox** — bu veb-sahifa elementlarini xuddi LEGO g\'ishtlari kabi bir tekis teruvchi tizimdir! Usiz hamma narsa ustma-ust tushib qoladi.'
+      },
+      whatIsATag: {
+        en: 'When you whisper `display: flex;` to a parent box, all the children inside snap into a neat horizontal row like ducks in a line!',
+        uz: 'Katta qutiga `display: flex;` deb yozsangiz, uning ichidagi barcha bolalar bir tekis gorizontal qatorga tiziladi!'
+      }
+    },
+    summary: {
+      en: 'Line up buttons, badges, and cards side-by-side with display: flex, justify-content, and gap.',
+      uz: 'Tugmalar, nishonlar va kartochkalarni display: flex, justify-content va gap yordamida yonma-yon joylashtiring.'
+    },
+    story: {
+      en: 'Before flexbox, putting items side-by-side was hard. display: flex makes it instant!',
+      uz: 'Flexboxdan oldin elementlarni yonma-yon qo\'yish juda qiyin edi. display: flex buni bir zumda osonlashtiradi!'
+    },
+    initialCode: `<style>
+  .badge-row {
+    background: #1c1e2f;
+    padding: 20px;
+    border-radius: 12px;
+    /* Add flexbox powers here! */
+  }
+  .badge {
+    background: #7c6cf7;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+
+<div class="badge-row">
+  <div class="badge">⭐ Hero</div>
+  <div class="badge">⚡ Legend</div>
+  <div class="badge">🔥 Master</div>
+</div>`,
+    targetCode: `<style>
+  .badge-row {
+    background: #1c1e2f;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  .badge {
+    background: #7c6cf7;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+
+<div class="badge-row">
+  <div class="badge">⭐ Hero</div>
+  <div class="badge">⚡ Legend</div>
+  <div class="badge">🔥 Master</div>
+</div>`,
+    targetDescription: {
+      en: 'Three hero badges side-by-side centered with neat 16px space between them.',
+      uz: 'O\'rtaga chiroyli tekislangan va orasida 16px masofa bo\'lgan 3 ta qahramon nishonlari.'
+    },
+    anatomy: [
+      {
+        part: 'display: flex;',
+        role: { en: 'Flex Activation', uz: 'Flexni faollashtirish' },
+        explanation: { en: 'Tells the parent: "Snap all children into a horizontal row!"', uz: 'Ona qutiga: "Barcha bolalarni gorizontal qatorga tiz!" deb buyuradi.' },
+        effect: { en: 'Snaps items side-by-side', uz: 'Elementlarni yonma-yon teradi' }
+      },
+      {
+        part: 'justify-content: center;',
+        role: { en: 'Horizontal Alignment', uz: 'Gorizontal tekislash' },
+        explanation: { en: 'Centers the group of items in the middle of the screen.', uz: 'Elementlar guruhini sahifaning qoq o\'rtasiga joylashtiradi.' },
+        effect: { en: 'Centers items horizontally', uz: 'Markazga tekislaydi' }
+      },
+      {
+        part: 'gap: 16px;',
+        role: { en: 'Space Between', uz: 'Oraliq masofa' },
+        explanation: { en: 'Puts neat breathing room between each badge without tricky margins.', uz: 'Elementlar orasiga 16px bo\'shliq qo\'yadi.' },
+        effect: { en: 'Even spacing between children', uz: 'Elementlar orasida bo\'shliq' }
+      }
+    ],
+    listOfTags: [
+      { code: 'display: flex;', name: { en: 'Flex Container', uz: 'Flex Idish' }, description: { en: 'Lines up all child items horizontally in one row', uz: 'Ichidagi bolalarni bir qatorga yonma-yon teradi' } },
+      { code: 'justify-content: center;', name: { en: 'Center Alignment', uz: 'Markazga tekislash' }, description: { en: 'Centers items horizontally inside the flex container', uz: 'Elementlarni gorizontal bo\'yicha o\'rtaga suradi' } },
+      { code: 'gap: 16px;', name: { en: 'Gap Spacing', uz: 'Oraliq masofa' }, description: { en: 'Adds clean space between all child items', uz: 'Bolalar orasiga bir xil masofa qo\'shadi' } }
+    ],
+    tagShowcase: [
+      { tag: 'display: flex;', meaning: { en: 'Snap into row', uz: 'Qatorga tizish' } },
+      { tag: 'gap: 16px;', meaning: { en: 'Space between', uz: 'Oraliq masofa' } },
+      { tag: 'justify-content: center;', meaning: { en: 'Center items', uz: 'O\'rtaga joylash' } }
+    ],
+    quickTags: ['display: flex;', 'gap: 16px;', 'justify-content: center;'],
+    challenge: {
+      mission: {
+        en: 'Add display: flex; and gap: 16px; to .badge-row to arrange the badges side-by-side!',
+        uz: '.badge-row ga display: flex; va gap: 16px; qo\'shib nishonlarni yonma-yon qilib tering!'
+      },
+      hint: {
+        en: 'Turn on flexbox with display: flex; and space out the items with gap: 16px;',
+        uz: '.badge-row { ... } ichiga display: flex; va gap: 16px; yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'display',
+          valuePattern: /flex/i,
+          message: 'Add display: flex; to .badge-row!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'gap',
+          valuePattern: /16px/i,
+          message: 'Add gap: 16px; to .badge-row!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'A row of ducklings following their mom in a neat straight line.',
+        uz: 'Ona o\'rdak ortidan bitta tekis qatorda yurgan o\'rdakchalar.'
+      },
+      discussionQuestions: [
+        { en: 'What happened to the badges before flex? (They stacked vertically!)', uz: 'Flexdan oldin nishonlar qanday edi? (Ustma-ust tushgan edi!)' }
+      ],
+      commonMistakes: [
+        { en: 'Adding display: flex to the badge instead of badge-row', uz: 'display: flex ni badge-row ga emas, badge ga yozish' }
+      ],
+      funActivity: {
+        en: 'Try justify-content: space-between; to push them to opposite walls!',
+        uz: 'justify-content: space-between; qilib ko\'ring va nishonlar chetlarga surilishini tomosha qiling!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 10: Buttons & Hover Effects
+  // ==========================================
+  {
+    id: 'theme-10-buttons',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 10: Buttons & Hover Glows (:hover)',
+      uz: '10-Mavzu: Tugmalar va Sichqoncha Effekti (:hover)'
+    },
+    icon: '🔘',
+    tag: '<button>, :hover, cursor: pointer',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Buttons are the steering wheel of the internet! When kids press a button, games launch and rockets blast off.',
+        uz: 'Tugmalar — butun internetning boshqaruv rulidir! Tugma bosilganda o\'yinlar ochiladi va raketalar uchadi.'
+      },
+      whatIsATag: {
+        en: '`<button>` creates the clickable surface, and `:hover` adds magic visual feedback when your mouse glides over it!',
+        uz: '`<button>` bosiladigan tugma yasaydi, `:hover` esa sichqoncha ustiga kelganda rangini porlatadi!'
+      }
+    },
+    summary: {
+      en: 'Build interactive buttons that light up and lift off when hovered over.',
+      uz: 'Sichqoncha borganda yorishib ko\'tariladigan interaktiv tugmalar yarating.'
+    },
+    story: {
+      en: 'A plain button is okay, but a button with :hover feels alive like a real video game control!',
+      uz: 'Oddiy tugma ham yaxshi, lekin :hover bilan u haqiqiy video o\'yindagidek jonlanadi!'
+    },
+    initialCode: `<style>
+  .magic-btn {
+    background: #7c6cf7;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  /* Add hover power below! */
+</style>
+
+<div style="text-align: center; padding: 40px;">
+  <button class="magic-btn">✨ Hover Over Me!</button>
+</div>`,
+    targetCode: `<style>
+  .magic-btn {
+    background: #7c6cf7;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .magic-btn:hover {
+    background: #2dd4bf;
+    transform: scale(1.1);
+  }
+</style>
+
+<div style="text-align: center; padding: 40px;">
+  <button class="magic-btn">✨ Hover Over Me!</button>
+</div>`,
+    targetDescription: {
+      en: 'A stylish button that turns teal (#2dd4bf) and pops 10% larger (scale(1.1)) when the mouse hovers over it.',
+      uz: 'Sichqoncha ustiga borganda yashil-ko\'k (#2dd4bf) rangga kirib, 10% kattalashadigan ajoyib tugma.'
+    },
+    anatomy: [
+      {
+        part: '<button> ... </button>',
+        role: { en: 'Button Element', uz: 'Tugma elementi' },
+        explanation: { en: 'Creates an interactive clickable button in HTML.', uz: 'HTML da bosiladigan tugma yaratadi.' },
+        effect: { en: 'Clickable button', uz: 'Bosiladigan tugma' }
+      },
+      {
+        part: '.magic-btn:hover',
+        role: { en: 'Hover State', uz: 'Hover holati' },
+        explanation: { en: 'The colon :hover applies special styles ONLY when the mouse pointer is hovering.', uz: 'Faqat sichqoncha ustiga kelganda qo\'llanadigan maxsus stil.' },
+        effect: { en: 'Styles on mouseover', uz: 'Sichqoncha kelganda o\'zgaradi' }
+      }
+    ],
+    listOfTags: [
+      { code: '<button> ... </button>', name: { en: 'Button Tag', uz: 'Tugma tegi' }, description: { en: 'Creates a clickable pressable button', uz: 'Bosiladigan tugma hosil qiladi' } },
+      { code: ':hover', name: { en: 'Hover Selector', uz: 'Hover selektori' }, description: { en: 'Styles elements only when mouse hovers over them', uz: 'Sichqoncha kelgandagina elementga ta\'sir qiladi' } },
+      { code: 'cursor: pointer;', name: { en: 'Pointer Cursor', uz: 'Qo\'lcha kursor' }, description: { en: 'Turns arrow cursor into a clicking hand', uz: 'Sichqoncha strelkasini bosish qo\'lchasiga aylantiradi' } }
+    ],
+    tagShowcase: [
+      { tag: '<button>', meaning: { en: 'Clickable button', uz: 'Bosiladigan tugma' } },
+      { tag: ':hover', meaning: { en: 'React on mouseover', uz: 'Sichqonchaga javob berish' } }
+    ],
+    quickTags: ['.magic-btn:hover {', 'background: #2dd4bf;', 'transform: scale(1.1);'],
+    challenge: {
+      mission: {
+        en: 'Add a .magic-btn:hover rule with background: #2dd4bf; and transform: scale(1.1);',
+        uz: '.magic-btn:hover ga background: #2dd4bf; va transform: scale(1.1); qo\'shing!'
+      },
+      hint: {
+        en: 'Add a :hover selector for the button and set the background and scale transform.',
+        uz: '.magic-btn:hover { background: #2dd4bf; transform: scale(1.1); } deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /#2dd4bf|rgb\(45,\\s*212,\\s*191\)/i,
+          message: 'Set hover background to #2dd4bf!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'transform',
+          valuePattern: /scale/i,
+          message: 'Add transform: scale(1.1) on hover!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'An arcade button that lights up when you put your finger near it.',
+        uz: 'Qo\'lingizni yaqinlashtirganingizda yonib chiroq beruvchi o\'yin avtomati tugmasi.'
+      },
+      discussionQuestions: [
+        { en: 'Why is visual feedback important on buttons? (So users know it is clickable!)', uz: 'Nega tugmaga effekt berish muhim? (Foydalanuvchi bosilishini bilsin deb!)' }
+      ],
+      commonMistakes: [
+        { en: 'Forgetting the colon : before hover (must be :hover)', uz: 'hover dan oldin ikki nuqta : qo\'yishni unutish' }
+      ],
+      funActivity: {
+        en: 'Try scale(1.5) for a giant cartoon balloon pop!',
+        uz: 'scale(1.5) qilib ko\'ring va tugma shar kabi shishishini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 11: Links & Web Portals
+  // ==========================================
+  {
+    id: 'theme-11-links',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 11: Links & Web Portals (Portals)',
+      uz: '11-Mavzu: Havolalar va Sayt Portallari (Portallar)'
+    },
+    icon: '🌐',
+    tag: '<a href="...">, target="_blank"',
+    humanIntro: {
+      whatIsIt: {
+        en: 'A link is a secret portal that teleports you to another universe on the web with a single click!',
+        uz: 'Havola (link) — bu bir marta bosish bilan sizni butunlay boshqa veb-sahifaga teleportatsiya qiluvchi sehrli portal!'
+      },
+      whatIsATag: {
+        en: '`<a>` stands for Anchor. The `href` attribute tells the browser the exact destination URL to visit.',
+        uz: '`<a>` tegi Anchor (Langar) so\'zidan olingan. `href` xususiyati esa boriladigan manzilni bildiradi.'
+      }
+    },
+    summary: {
+      en: 'Turn words and buttons into teleportation links that open web pages in new tabs.',
+      uz: 'So\'zlar va tugmalarni boshqa sahifalarga eltuvchi havolalarga aylantiring.'
+    },
+    story: {
+      en: 'The entire World Wide Web is woven together by millions of anchor tags linking every site!',
+      uz: 'Butun jahon o\'rgimchak to\'ri aynan millionlab <a> teglari orqali bir-biriga bog\'langan!'
+    },
+    initialCode: `<p>
+  Welcome to my coding realm! Check out my favorite website:
+</p>
+<p>
+  <!-- Turn this text into a link! -->
+  Visit Wikipedia to learn anything!
+</p>`,
+    targetCode: `<p>
+  Welcome to my coding realm! Check out my favorite website:
+</p>
+<p>
+  Visit <a href="https://wikipedia.org" target="_blank">Wikipedia</a> to learn anything!
+</p>`,
+    targetDescription: {
+      en: 'The word "Wikipedia" wrapped in an <a> tag pointing to https://wikipedia.org that opens in a new tab.',
+      uz: '"Wikipedia" so\'zi <a> tegi bilan https://wikipedia.org manziliga yo\'naltirilgan havola.'
+    },
+    anatomy: [
+      {
+        part: '<a href="...">',
+        role: { en: 'Opening Anchor', uz: 'Ochuvchi Langar tegi' },
+        explanation: { en: 'href means "Hypertext Reference" - the address you are teleporting to.', uz: 'href — bu boriladigan saytning aniq manzili.' },
+        effect: { en: 'Makes text clickable', uz: 'Matnni bosiladigan havola qiladi' }
+      },
+      {
+        part: 'target="_blank"',
+        role: { en: 'New Tab Flag', uz: 'Yangi vkladka buyrug\'i' },
+        explanation: { en: 'Opens the webpage in a brand new tab so kids never lose their current page.', uz: 'Saytni yangi vkladkada ochadi, asosiy sahifa yopilib ketmaydi.' },
+        effect: { en: 'Opens in new tab', uz: 'Yangi tabda ochadi' }
+      }
+    ],
+    listOfTags: [
+      { code: '<a href="URL"> ... </a>', name: { en: 'Anchor Tag', uz: 'Havola tegi' }, description: { en: 'Creates a hyperlink to another webpage or file', uz: 'Boshqa veb-sahifaga havola yaratadi' } },
+      { code: 'target="_blank"', name: { en: 'Blank Target', uz: 'Yangi vkladka' }, description: { en: 'Instructs the browser to open the link in a fresh new tab', uz: 'Havolani yangi toza tabda ochadi' } }
+    ],
+    tagShowcase: [
+      { tag: '<a href="...">', meaning: { en: 'Web portal', uz: 'Sayt portali' } },
+      { tag: 'target="_blank"', meaning: { en: 'New tab', uz: 'Yangi oyna' } }
+    ],
+    quickTags: ['<a href="https://wikipedia.org" target="_blank">', '</a>'],
+    challenge: {
+      mission: {
+        en: 'Wrap the word "Wikipedia" in an <a href="https://wikipedia.org" target="_blank"> tag!',
+        uz: '"Wikipedia" so\'zini <a href="https://wikipedia.org" target="_blank"> tegi bilan o\'rab oling!'
+      },
+      hint: {
+        en: 'Use the <a> tag with href pointing to the website URL and target="_blank".',
+        uz: '<a href="https://wikipedia.org" target="_blank">Wikipedia</a> deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'a',
+          message: 'Add an <a> tag!'
+        },
+        {
+          type: 'hasAttribute',
+          tag: 'a',
+          attribute: 'href',
+          valuePattern: /wikipedia/i,
+          message: 'Set href to https://wikipedia.org!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'A portal door like in Minecraft or Monsters Inc.',
+        uz: 'Minecraft yoki multfilmlardagi boshqa dunyoga ochiluvchi sehrli eshik.'
+      },
+      discussionQuestions: [
+        { en: 'What does href stand for? (Hypertext Reference)', uz: 'href nima degani? (Hypertext Reference - gipermatn manzili)' }
+      ],
+      commonMistakes: [
+        { en: 'Forgetting https:// in the address', uz: 'Manzilda https:// ni unutib qoldirish' }
+      ],
+      funActivity: {
+        en: 'Make an emoji link like 🚀 that teleports to NASA!',
+        uz: '🚀 emojisini NASA saytiga eltuvchi havolaga aylantiring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 12: Bullet & Numbered Lists
+  // ==========================================
+  {
+    id: 'theme-12-lists',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 12: Bullet & Numbered Lists (Lists)',
+      uz: '12-Mavzu: Ro\'yxatlar (Tartibli va Tartibsiz)'
+    },
+    icon: '📝',
+    tag: '<ul>, <ol>, <li>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Lists keep your thoughts organized like an adventurer quest checklist or recipe!',
+        uz: 'Ro\'yxatlar vazifalaringizni xuddi o\'yindagi kvestlar kabi chiroyli tartibga soladi!'
+      },
+      whatIsATag: {
+        en: '`<ul>` gives bullet dots, `<ol>` gives numbers (1, 2, 3), and every single item inside is wrapped in `<li>`!',
+        uz: '`<ul>` nuqtali ro\'yxat, `<ol>` raqamli ro\'yxat (1, 2, 3) beradi, har bir qator esa `<li>` ichiga olinadi!'
+      }
+    },
+    summary: {
+      en: 'Organize items neatly into bullet point or numbered lists using ul, ol, and li tags.',
+      uz: 'Elementlarni ul, ol va li teglari yordamida nuqtali yoki raqamli qilib tartiblang.'
+    },
+    story: {
+      en: 'Every great video game has an inventory list. HTML lists make clean inventories!',
+      uz: 'Har qanday sarguzasht o\'yinida xaltadagi narsalar ro\'yxati bo\'ladi. HTML ro\'yxatlari buni oson qiladi!'
+    },
+    initialCode: `<p>My Secret Spy Gear:</p>
+<!-- Turn into a bullet list using <ul> and <li>! -->
+Laser Watch
+Invisible Cloak
+Jetpack Shoes`,
+    targetCode: `<p>My Secret Spy Gear:</p>
+<ul>
+  <li>Laser Watch</li>
+  <li>Invisible Cloak</li>
+  <li>Jetpack Shoes</li>
+</ul>`,
+    targetDescription: {
+      en: 'A neat bullet-point list containing the 3 spy items wrapped in <li> inside <ul>.',
+      uz: '<ul> ichida 3 ta <li> tegi bilan chiroyli nuqtali ro\'yxat qilingan ayg\'oqchi jihozlari.'
+    },
+    anatomy: [
+      {
+        part: '<ul> ... </ul>',
+        role: { en: 'Unordered List', uz: 'Tartibsiz ro\'yxat' },
+        explanation: { en: 'Creates a bullet-point list container.', uz: 'Nuqtali ro\'yxat idishini yaratadi.' },
+        effect: { en: 'Bullet list container', uz: 'Nuqtali ro\'yxat' }
+      },
+      {
+        part: '<li>Item</li>',
+        role: { en: 'List Item', uz: 'Ro\'yxat elementi' },
+        explanation: { en: 'Defines each individual line item inside the list.', uz: 'Ro\'yxat ichidagi har bir qatorni bildiradi.' },
+        effect: { en: 'One bullet line', uz: 'Bitta ro\'yxat qatori' }
+      }
+    ],
+    listOfTags: [
+      { code: '<ul> ... </ul>', name: { en: 'Unordered List', uz: 'Nuqtali Ro\'yxat' }, description: { en: 'Container for bullet-point list items', uz: 'Nuqtali ro\'yxat yaratuvchi ona teg' } },
+      { code: '<ol> ... </ol>', name: { en: 'Ordered List', uz: 'Raqamli Ro\'yxat' }, description: { en: 'Container for automatically numbered (1, 2, 3) list items', uz: 'Avtomatik raqamlanuvchi ro\'yxat ona tegi' } },
+      { code: '<li> ... </li>', name: { en: 'List Item', uz: 'Ro\'yxat qatori' }, description: { en: 'Each individual bullet or numbered item inside ul or ol', uz: 'ul yoki ol ichidagi har bir alohida qator' } }
+    ],
+    tagShowcase: [
+      { tag: '<ul>', meaning: { en: 'Bullet list', uz: 'Nuqtali ro\'yxat' } },
+      { tag: '<ol>', meaning: { en: 'Numbered 1, 2, 3', uz: 'Raqamli ro\'yxat' } },
+      { tag: '<li>', meaning: { en: 'Single item line', uz: 'Alohida qator' } }
+    ],
+    quickTags: ['<ul>', '<li>', '</li>', '</ul>'],
+    challenge: {
+      mission: {
+        en: 'Wrap the 3 items in <li> and put them inside a <ul> list container!',
+        uz: '3 ta jihozni <li> bilan o\'rab, ularni <ul> ichiga joylashtiring!'
+      },
+      hint: {
+        en: 'Start an unordered list with <ul>, and place each secret item inside its own <li> tag.',
+        uz: '<ul> ichiga 3 ta <li> yozing.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'ul',
+          message: 'Add an <ul> tag!'
+        },
+        {
+          type: 'hasTag',
+          tag: 'li',
+          message: 'Add <li> items!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'A grocery shopping list or recipe ingredient list.',
+        uz: 'Bozorlik ro\'yxati yoki taom tayyorlash retsepti.'
+      },
+      discussionQuestions: [
+        { en: 'What is the difference between ul (bullets) and ol (numbers)?', uz: 'ul (nuqtali) va ol (raqamli) ning farqi nimada?' }
+      ],
+      commonMistakes: [
+        { en: 'Putting text inside ul without an li tag', uz: 'ul ichiga li tegini qo\'ymasdan matn yozish' }
+      ],
+      funActivity: {
+        en: 'Change ul to ol and watch the numbers 1, 2, 3 appear automatically!',
+        uz: 'ul ni ol ga almashtiring va raqamlar avtomatik chiqishini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 13: Colors & Gradients
+  // ==========================================
+  {
+    id: 'theme-13-colors',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 13: Colors & Gradients (HEX & Linear)',
+      uz: '13-Mavzu: Ranglar va Gradientlar (HEX va Chiziqli)'
+    },
+    icon: '🌈',
+    tag: 'color, background: linear-gradient()',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Colors bring emotion to the web! You can use common names, HEX codes with hashtags (#ff757f), or smooth color gradients.',
+        uz: 'Ranglar sahifaga joziba bag\'ishlaydi! Oddiy nomlar, panjara (#) bilan HEX kodlari yoki silliq gradientlardan foydalanishingiz mumkin.'
+      },
+      whatIsATag: {
+        en: '`linear-gradient(45deg, #7c6cf7, #ff757f)` blends two colors smoothly across the screen like a tropical sunset!',
+        uz: '`linear-gradient(45deg, #7c6cf7, #ff757f)` ikki rangni xuddi quyosh botishi kabi bir-biriga silliq qo\'shadi!'
+      }
+    },
+    summary: {
+      en: 'Master hex color codes and create breathtaking multi-color gradient backgrounds.',
+      uz: 'HEX rang kodlarini o\'rganing va chiroyli gradient fonlar yarating.'
+    },
+    story: {
+      en: 'Gradients make cards and banners feel modern, vibrant, and futuristic!',
+      uz: 'Gradientlar kartochkalarni zamonaviy va yorqin ko\'rsatadi!'
+    },
+    initialCode: `<style>
+  .sunset-card {
+    width: 260px;
+    height: 160px;
+    border-radius: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    /* Add gradient background below! */
+    background: gray;
+  }
+</style>
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <div class="sunset-card">🌅 Sunset Vibe</div>
+</div>`,
+    targetCode: `<style>
+  .sunset-card {
+    width: 260px;
+    height: 160px;
+    border-radius: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff757f, #7c6cf7);
+  }
+</style>
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <div class="sunset-card">🌅 Sunset Vibe</div>
+</div>`,
+    targetDescription: {
+      en: 'A card painted with a gorgeous diagonal gradient from coral pink (#ff757f) into purple (#7c6cf7).',
+      uz: 'Qizil-pushtidan (#ff757f) binafsha (#7c6cf7) rangga silliq o\'tuvchi diagonal gradientli kartochka.'
+    },
+    anatomy: [
+      {
+        part: 'linear-gradient(135deg, ...)',
+        role: { en: 'Gradient Angle', uz: 'Gradient burchagi' },
+        explanation: { en: 'The angle (135deg) dictates which corner the colors blend across.', uz: 'Ranglar qaysi burchakka qarab oqishini belgilaydi.' },
+        effect: { en: 'Diagonal blend', uz: 'Diagonal rang o\'tishi' }
+      },
+      {
+        part: '#ff757f, #7c6cf7',
+        role: { en: 'Color Stops', uz: 'Rang nuqtalari' },
+        explanation: { en: 'The starting and ending colors in HEX format.', uz: 'Boshlang\'ich va yakuniy ranglarning HEX kodlari.' },
+        effect: { en: 'Smooth blend between colors', uz: 'Ikki rangning silliq uyg\'unligi' }
+      }
+    ],
+    listOfTags: [
+      { code: 'background: linear-gradient(...)', name: { en: 'Linear Gradient', uz: 'Chiziqli Gradient' }, description: { en: 'Blends two or more colors smoothly across an angle', uz: 'Ikki yoki undan ko\'p rangni bir-biriga silliq qorishtiradi' } },
+      { code: 'color: #hexCode;', name: { en: 'Text Color', uz: 'Matn rangi' }, description: { en: 'Changes the foreground color of letters', uz: 'Harflarning rangini o\'zgartiradi' } }
+    ],
+    tagShowcase: [
+      { tag: 'linear-gradient(...)', meaning: { en: 'Multi-color blend', uz: 'Ranglar uyg\'unligi' } },
+      { tag: '#ff757f', meaning: { en: 'Coral HEX', uz: 'Pushti-qizil HEX' } }
+    ],
+    quickTags: ['background: linear-gradient(135deg, #ff757f, #7c6cf7);'],
+    challenge: {
+      mission: {
+        en: 'Replace background: gray; with a linear-gradient from #ff757f to #7c6cf7!',
+        uz: 'background: gray; ni linear-gradient(135deg, #ff757f, #7c6cf7) ga almashtiring!'
+      },
+      hint: {
+        en: 'Use linear-gradient(...) inside the background property with an angle and two colors.',
+        uz: 'background: linear-gradient(135deg, #ff757f, #7c6cf7); deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /linear-gradient/i,
+          message: 'Apply linear-gradient to background!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Mixing two colors of watercolor paint on paper until they blend.',
+        uz: 'Qog\'ozda ikki xil akvarel bo\'yog\'ini bir-biriga qo\'shib yuvish.'
+      },
+      discussionQuestions: [
+        { en: 'What does the deg in 135deg mean? (Degrees of rotation!)', uz: '135deg dagi deg nimani bildiradi? (Aylanish burchagi gradusi!)' }
+      ],
+      commonMistakes: [
+        { en: 'Forgetting the closing parenthesis after linear-gradient', uz: 'linear-gradient dan keyin qavsni yopishni unutish' }
+      ],
+      funActivity: {
+        en: 'Try adding a 3rd color stop like #2dd4bf for a 3-color rainbow!',
+        uz: '3-rang sifatida #2dd4bf ni ham qo\'shib ko\'ring va kamalak hosil qiling!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 14: Fonts & Neon Glows
+  // ==========================================
+  {
+    id: 'theme-14-fonts',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 14: Fonts & Neon Glows (text-shadow)',
+      uz: '14-Mavzu: Shriftlar va Neon Nurlari (text-shadow)'
+    },
+    icon: '✨',
+    tag: 'font-family, text-shadow',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Typography lets your web page speak with power, and neon glows make it look like a futuristic arcade game!',
+        uz: 'Shriftlar sahifangizga salobat beradi, neon nurlari esa uni kelajak o\'yinlari kabi yoritadi!'
+      },
+      whatIsATag: {
+        en: '`text-shadow: 0 0 10px #2dd4bf;` casts a glowing aura of light directly behind each letter.',
+        uz: '`text-shadow: 0 0 10px #2dd4bf;` har bir harf ortidan porloq neon nurini taratadi.'
+      }
+    },
+    summary: {
+      en: 'Change font sizing and project radiant neon glow effects behind your headings.',
+      uz: 'Shrift o\'lchamini o\'zgartiring va sarlavhalar ortiga porloq neon nurlari bering.'
+    },
+    story: {
+      en: 'Arcade games and cyberpunk posters use glowing text to pop off dark screens!',
+      uz: 'O\'yin zallari va kiberpank plakatlarida matnlar qorong\'i ekranda porlab turadi!'
+    },
+    initialCode: `<style>
+  .arcade-title {
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    font-family: sans-serif;
+    /* Add glowing text-shadow here! */
+  }
+</style>
+
+<div style="background: #0f1019; padding: 40px; border-radius: 12px;">
+  <h1 class="arcade-title">⚡ LEVEL UP! ⚡</h1>
+</div>`,
+    targetCode: `<style>
+  .arcade-title {
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    font-family: sans-serif;
+    text-shadow: 0 0 15px #2dd4bf;
+  }
+</style>
+
+<div style="background: #0f1019; padding: 40px; border-radius: 12px;">
+  <h1 class="arcade-title">⚡ LEVEL UP! ⚡</h1>
+</div>`,
+    targetDescription: {
+      en: 'The title "LEVEL UP!" glowing with a vivid neon teal aura behind the letters.',
+      uz: '"LEVEL UP!" sarlavhasi ortidan taralayotgan yorqin firuza neon nuri.'
+    },
+    anatomy: [
+      {
+        part: 'text-shadow: 0 0 15px #2dd4bf;',
+        role: { en: 'Neon Shadow', uz: 'Neon soyasi' },
+        explanation: { en: '0 X-offset, 0 Y-offset, 15px blur blur-radius, and #2dd4bf glow color.', uz: '0 siljish, 15px xiralashtirish va #2dd4bf nur rangi.' },
+        effect: { en: 'Glowing light halo', uz: 'Porloq nur doirasi' }
+      }
+    ],
+    listOfTags: [
+      { code: 'text-shadow: X Y blur color;', name: { en: 'Text Shadow', uz: 'Matn soyasi' }, description: { en: 'Casts a shadow or luminous glow behind text letters', uz: 'Harflar ortidan soya yoki nur hosil qiladi' } },
+      { code: 'font-size: 32px;', name: { en: 'Font Size', uz: 'Shrift hajmi' }, description: { en: 'Sets how big or small words appear on the screen', uz: 'So\'zlarning ekrandagi kattaligini belgilaydi' } }
+    ],
+    tagShowcase: [
+      { tag: 'text-shadow', meaning: { en: 'Neon letter glow', uz: 'Neon harf nurlari' } },
+      { tag: 'font-size', meaning: { en: 'Letter size', uz: 'Harf kattaligi' } }
+    ],
+    quickTags: ['text-shadow: 0 0 15px #2dd4bf;', 'font-size: 36px;'],
+    challenge: {
+      mission: {
+        en: 'Add text-shadow: 0 0 15px #2dd4bf; to .arcade-title to make it glow neon teal!',
+        uz: '.arcade-title ga text-shadow: 0 0 15px #2dd4bf; qo\'shib uni neon rangida porlating!'
+      },
+      hint: {
+        en: 'Add the text-shadow property with horizontal offset, vertical offset, blur radius, and color.',
+        uz: '.arcade-title { ... } ichiga text-shadow: 0 0 15px #2dd4bf; deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'text-shadow',
+          valuePattern: /#2dd4bf|2dd4bf|15px/i,
+          message: 'Add a text-shadow with 15px blur and #2dd4bf!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'A bright neon sign outside a restaurant at midnight.',
+        uz: 'Tundagi shaharda porlab turgan neon yozuvi.'
+      },
+      discussionQuestions: [
+        { en: 'Why did we set 0 0 for X and Y? (So the glow radiates evenly in all directions!)', uz: 'Nega X va Y ga 0 berdik? (Nur har tomonga teng taralsin deb!)' }
+      ],
+      commonMistakes: [
+        { en: 'Putting too small a blur number like 1px which looks like a hard outline', uz: '1px kabi juda kichik raqam yozib xiralashtirmaslik' }
+      ],
+      funActivity: {
+        en: 'Change the color to #ff757f for hot pink lasers!',
+        uz: 'Rangni #ff757f ga o\'zgartirib pushti lazer hosil qiling!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 15: Rounded Corners & Circles
+  // ==========================================
+  {
+    id: 'theme-15-shapes',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 15: Rounded Corners & 50% Circles',
+      uz: '15-Mavzu: Yumaloq Burchaklar va Aylana (50%)'
+    },
+    icon: '⚪',
+    tag: 'border-radius: 12px, border-radius: 50%',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In the real world, sharp corners poke your fingers! Rounded corners make web apps feel smooth, friendly, and modern like an iPhone app.',
+        uz: 'Haqiqiy hayotda o\'tkir burchaklar qo\'lni og\'ritadi! Yumaloq burchaklar esa ilovalarni xuddi iPhone kabi muloyim va chiroyli ko\'rsatadi.'
+      },
+      whatIsATag: {
+        en: '`border-radius: 12px;` rounds corners. If you give an exact square `border-radius: 50%;`, it magically morphs into a 100% round circle!',
+        uz: '`border-radius: 12px;` burchaklarni sal yumaloqlaydi. Kvadratga `border-radius: 50%;` bersangiz, u bir zumda mukammal aylanaga aylanadi!'
+      }
+    },
+    summary: {
+      en: 'Soft-edge your cards with border-radius and turn square avatars into perfect circles with 50%.',
+      uz: 'Kartochkalarning burchaklarini yumaloqlang va 50% bilan kvadrat rasmlarni mukammal aylanaga aylantiring.'
+    },
+    story: {
+      en: 'Almost every profile avatar on YouTube, Discord, and Roblox is a square with border-radius: 50%!',
+      uz: 'YouTube, Discord va Roblox dagi barcha profil rasmlari aslida border-radius: 50% berilgan kvadratdir!'
+    },
+    initialCode: `<style>
+  .avatar {
+    width: 120px;
+    height: 120px;
+    background: #ff757f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    /* Make this square a circle! */
+    border-radius: 0px;
+  }
+</style>
+
+<div style="display: flex; justify-content: center; padding: 30px;">
+  <div class="avatar">🦊</div>
+</div>`,
+    targetCode: `<style>
+  .avatar {
+    width: 120px;
+    height: 120px;
+    background: #ff757f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border-radius: 50%;
+  }
+</style>
+
+<div style="display: flex; justify-content: center; padding: 30px;">
+  <div class="avatar">🦊</div>
+</div>`,
+    targetDescription: {
+      en: 'The square fox badge transformed into a 100% round circular profile avatar.',
+      uz: 'Kvadrat tulki nishoni border-radius: 50% yordamida mukammal aylanaga aylantirilgan.'
+    },
+    anatomy: [
+      {
+        part: 'border-radius: 50%;',
+        role: { en: 'Circle Transformer', uz: 'Aylana o\'zgartiruvchi' },
+        explanation: { en: 'Bends the corners halfway across each side, creating an exact circle.', uz: 'Burchaklarni tomonlarning qoq o\'rtasigacha yumaloqlab, mukammal aylana yasaydi.' },
+        effect: { en: 'Turns square into circle', uz: 'Kvadratni aylanaga aylantiradi' }
+      }
+    ],
+    listOfTags: [
+      { code: 'border-radius: 12px;', name: { en: 'Rounded Corners', uz: 'Yumaloq burchak' }, description: { en: 'Softens sharp corners into smooth rounded edges', uz: 'O\'tkir burchaklarni silliq qilib yumaloqlaydi' } },
+      { code: 'border-radius: 50%;', name: { en: 'Perfect Circle', uz: 'Mukammal aylana' }, description: { en: 'Turns any square element into a 100% round circular shape', uz: 'Istalgan kvadrat elementni 100% dumaloq aylanaga aylantiradi' } }
+    ],
+    tagShowcase: [
+      { tag: 'border-radius: 12px;', meaning: { en: 'Smooth corners', uz: 'Yumaloq burchak' } },
+      { tag: 'border-radius: 50%;', meaning: { en: 'Round circle', uz: 'Aylana' } }
+    ],
+    quickTags: ['border-radius: 50%;', 'border-radius: 16px;'],
+    challenge: {
+      mission: {
+        en: 'Change border-radius: 0px; to border-radius: 50%; to make the fox avatar a circle!',
+        uz: 'border-radius: 0px; ni border-radius: 50%; ga o\'zgartirib tulki belgisini aylanaga aylantiring!'
+      },
+      hint: {
+        en: 'Set border-radius to 50% to turn the square image into a perfect circle.',
+        uz: '.avatar ichida border-radius: 50%; deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'border-radius',
+          valuePattern: /50%/i,
+          message: 'Set border-radius: 50%!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Sanding down sharp wooden corners until the wood block is round like a ball.',
+        uz: 'Yog\'och blok burchaklarini jilvirlab to\'p kabi yumaloqlash.'
+      },
+      discussionQuestions: [
+        { en: 'Why does 50% turn a square into a circle? (Each corner curve reaches the exact center!)', uz: 'Nega 50% kvadratni aylanaga aylantiradi? (Egrilik tomonning qoq o\'rtasiga yetib boradi!)' }
+      ],
+      commonMistakes: [
+        { en: 'Typing 50px instead of 50% (50px only rounds the edges a bit!)', uz: '50% o\'rniga 50px yozib qo\'yish' }
+      ],
+      funActivity: {
+        en: 'Change to border-radius: 20px to see an iPhone app icon shape!',
+        uz: 'border-radius: 20px qilib, iPhone ilovasi ikonkasiga o\'xshatib ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 16: Keyframe Animations
+  // ==========================================
+  {
+    id: 'theme-16-animations',
+    module: 'full-powers',
+    title: {
+      en: 'Theme 16: Keyframe Animations (Alive & Bouncing)',
+      uz: '16-Mavzu: Jonli Animatsiyalar (@keyframes)'
+    },
+    icon: '🎈',
+    tag: '@keyframes, animation: bounce infinite',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, `@keyframes` turns you into a cartoon animator like at Disney or Pixar! You set the start (0%) and end (100%), and the browser brings it to life.',
+        uz: 'Oddiy inson tilida `@keyframes` sizni Pixar yoki Disney animatoriga aylantiradi! Boshlanishi (0%) va tugashini (100%) chizasiz, brauzer esa uni jonlantiradi.'
+      },
+      whatIsATag: {
+        en: '`@keyframes bounce` writes the dance choreography, and `animation: bounce 1s infinite alternate;` keeps the alien floating in space forever!',
+        uz: '`@keyframes bounce` raqs harakatlarini belgilaydi, `animation: bounce 1s infinite alternate;` esa o\'zga sayyoralikni koinotda to\'xtovsiz uchiradi!'
+      }
+    },
+    summary: {
+      en: 'Make characters and buttons bounce, float, and pulse continuously on their own.',
+      uz: 'Qahramonlar va tugmalarni o\'z-o\'zidan sakraydigan, uchadigan va nafas oladigan qilib jonlantiring.'
+    },
+    story: {
+      en: 'Keyframes are like flipbook drawings: rapid frames that create smooth motion.',
+      uz: 'Keyframelar xuddi tez varaqlanadigan rasm daftarchasidek silliq harakat yaratadi.'
+    },
+    initialCode: `<style>
+  .alien {
+    font-size: 60px;
+    display: inline-block;
+    /* Add animation here! */
+  }
+  @keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-25px); }
+  }
+</style>
+
+<div style="text-align: center; padding: 40px;">
+  <div class="alien">👾</div>
+</div>`,
+    targetCode: `<style>
+  .alien {
+    font-size: 60px;
+    display: inline-block;
+    animation: bounce 1s infinite alternate ease-in-out;
+  }
+  @keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-25px); }
+  }
+</style>
+
+<div style="text-align: center; padding: 40px;">
+  <div class="alien">👾</div>
+</div>`,
+    targetDescription: {
+      en: 'A purple alien invader 👾 continuously floating up and down smoothly in zero gravity.',
+      uz: 'Binafsharang fazogir 👾 vaznsizlikda yuqoriga va pastga to\'xtovsiz ravishda bir tekis suzib harakatlanmoqda.'
+    },
+    anatomy: [
+      {
+        part: '@keyframes bounce { ... }',
+        role: { en: 'Choreography Timeline', uz: 'Harakat xaritasi' },
+        explanation: { en: 'Defines positions from 0% (start) to 100% (finish).', uz: '0% dan 100% gacha bo\'lgan harakat yo\'lini belgilaydi.' },
+        effect: { en: 'Defines motion path', uz: 'Harakat yo\'nalishi' }
+      },
+      {
+        part: 'animation: bounce 1s infinite alternate;',
+        role: { en: 'Animation Engine', uz: 'Animatsiya motori' },
+        explanation: { en: 'Connects the bounce timeline with 1-second speed, looping forever.', uz: 'Harakatni 1 soniyali tezlikda to\'xtovsiz takrorlaydi.' },
+        effect: { en: 'Runs motion forever', uz: 'Harakatni to\'xtovsiz aylantiradi' }
+      }
+    ],
+    listOfTags: [
+      { code: '@keyframes name { ... }', name: { en: 'Keyframe Rule', uz: 'Keyframe Qoidasi' }, description: { en: 'Defines the movement timeline for an animation', uz: 'Animatsiyaning harakat bosqichlarini belgilaydi' } },
+      { code: 'animation: name 1s infinite;', name: { en: 'Animation Property', uz: 'Animatsiya xususiyati' }, description: { en: 'Attaches the keyframe timeline to any element', uz: 'Harakatni elementga bog\'lab uni jonlantiradi' } }
+    ],
+    tagShowcase: [
+      { tag: '@keyframes name', meaning: { en: 'Dance choreography', uz: 'Harakat xaritasi' } },
+      { tag: 'animation: name 1s infinite;', meaning: { en: 'Loop forever', uz: 'Cheksiz takrorlash' } }
+    ],
+    quickTags: ['animation: bounce 1s infinite alternate;', '@keyframes bounce {'],
+    challenge: {
+      mission: {
+        en: 'Add animation: bounce 1s infinite alternate; to the .alien to bring it to life!',
+        uz: '.alien ga animation: bounce 1s infinite alternate; qo\'shib uni jonlantiring!'
+      },
+      hint: {
+        en: 'Assign your @keyframes animation using the animation property with duration and infinite loop.',
+        uz: '.alien { ... } ichiga animation: bounce 1s infinite alternate; deb yozing.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'animation',
+          valuePattern: /bounce/i,
+          message: 'Attach the bounce animation!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Flipbook drawings flipped fast with your thumb creating motion.',
+        uz: 'Burchaklariga rasm chizilgan daftarni barmoq bilan tez varaqlaganda hosil bo\'ladigan multfilm.'
+      },
+      discussionQuestions: [
+        { en: 'What does "infinite" mean? (Loops forever without stopping!)', uz: '"infinite" so\'zi nimani anglatadi? (To\'xtamasdan mangu davom etadi!)' }
+      ],
+      commonMistakes: [
+        { en: 'Mismatched animation name in @keyframes and animation property', uz: '@keyframes dagi nom bilan animation dagi nomni har xil yozib qo\'yish' }
+      ],
+      funActivity: {
+        en: 'Change 1s to 0.1s to watch the alien vibrate furiously like a bee!',
+        uz: '1s ni 0.1s ga almashtiring va o\'zga sayyoralik asalari kabi pirpirashini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 17: Theme 17: Interactive Inputs (Player Name & Color)
+  // ==========================================
+  {
+    id: 'theme-17-inputs',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 17: Interactive Inputs (Player Name & Color)',
+      uz: '17-Mavzu: Interaktiv Kiritish (Ism va Rang Tanlash)'
+    },
+    icon: '📝',
+    tag: '<input type="text">, <input type="color">',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, an **Input** is a little slot where visitors can type, pick colors, or enter secret passwords!',
+        uz: 'Oddiy inson tilida, **Input** — bu foydalanuvchilar o\'z ismlarini yozishi, rang tanlashi yoki maxfiy parollarni kiritishi mumkin bo\'lgan maydonchadir!'
+      },
+      whatIsATag: {
+        en: `1. \`<input type="text">\` creates a blank typing box.\\n2. \`<input type="color">\` pops open a rainbow color palette.\\n3. Notice: \`<input>\` is a void tag with NO closing tag!`,
+        uz: `1. \`<input type="text">\` matn yozish qutisini yaratadi.\\n2. \`<input type="color">\` kamalak rang palitrasini ochadi.\\n3. E'tibor bering: \`<input>\` bo'sh teg bo'lib, yopiluvchi juftga ega emas!`
+      }
+    },
+    summary: {
+      en: 'Let users type their player name and choose colors with interactive input fields.',
+      uz: 'Interaktiv input maydonchalari orqali foydalanuvchilarga o\'z ismlarini yozish va ranglarni tanlash imkonini bering.'
+    },
+    story: {
+      en: 'Every game starts with entering your hero nickname. Build the input box for the player!',
+      uz: 'Har qanday o\'yin qahramon laqabini kiritishdan boshlanadi. O\'yinchi uchun kiritish qutisini yarating!'
+    },
+    initialCode: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🎮 Hero Registration</h3>
+  <p>Type your player nickname below:</p>
+  <!-- Step: Add text input here! -->
+</div>`,
+    targetCode: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🎮 Hero Registration</h3>
+  <p>Type your player nickname below:</p>
+  <input type="text" placeholder="Enter Hero Name" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #5b5fc7; background: #0b0d13; color: white;">
+</div>`,
+    targetDescription: {
+      en: 'A hero registration card with a stylish dark text input ready for players to type their nickname.',
+      uz: 'O\'yinchilar o\'z laqablarini yozishlari uchun chiroyli qora matn kiritish maydonchasiga ega ro\'yxatdan o\'tish kartochkasi.'
+    },
+    anatomy: [
+      {
+        part: '<input',
+        role: {
+          en: 'Input Field (Void)',
+          uz: 'Kiritish maydoni (Bo\'sh)'
+        },
+        explanation: {
+          en: 'Creates an interactive entry field for the visitor.',
+          uz: 'Foydalanuvchi ma\'lumot kiritishi uchun interaktiv maydoncha ochadi.'
+        },
+        effect: {
+          en: 'Displays interactive entry box',
+          uz: 'Interaktiv kiritish qutisini ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas"><input type="text" placeholder="Type here..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid #5b5fc7; background: #0b0d13; color: white; font-size: 11px;"></div>'
+      },
+      {
+        part: 'type="text"',
+        role: {
+          en: 'Field Type Attribute',
+          uz: 'Maydon turi atributi'
+        },
+        explanation: {
+          en: 'Tells the browser to accept normal words and numbers.',
+          uz: 'Brauzerga oddiy so\'zlar va raqamlarni qabul qilishni aytadi.'
+        },
+        effect: {
+          en: 'Accepts keyboard typing',
+          uz: 'Klaviatura matnini qabul qiladi'
+        },
+        visualPreview: '<div class="mini-canvas">⌨️ Text Input Mode</div>'
+      },
+      {
+        part: 'placeholder="..."',
+        role: {
+          en: 'Ghost Hint Text',
+          uz: 'Yordamchi fon matni'
+        },
+        explanation: {
+          en: 'Gray hint text that disappears as soon as the user starts typing.',
+          uz: 'Foydalanuvchi yozishni boshlashi bilanoq yo\'qoladigan kulrang yordamchi matn.'
+        },
+        effect: {
+          en: 'Shows helpful hint in empty box',
+          uz: 'Bo\'sh qutida yo\'riqnoma ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas">💭 Gray Hint: "Enter name..."</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: '<input type="text">',
+        name: {
+          en: 'Text Input',
+          uz: 'Matn kiritish'
+        },
+        description: {
+          en: 'Single-line text box for names, emails, and words',
+          uz: 'Ism va so\'zlar uchun bir qatorli matn qutisi'
+        },
+        exampleHtml: '<input type="text" placeholder="Name">'
+      },
+      {
+        code: '<input type="color">',
+        name: {
+          en: 'Color Picker',
+          uz: 'Rang tanlagich'
+        },
+        description: {
+          en: 'Interactive popup palette to pick any hex color',
+          uz: 'Istalgan rangni tanlash uchun interaktiv palitra'
+        },
+        exampleHtml: '<input type="color">'
+      },
+      {
+        code: '<input type="checkbox">',
+        name: {
+          en: 'Checkbox',
+          uz: 'Belgilash katagi'
+        },
+        description: {
+          en: 'Clickable toggle box for YES / NO options',
+          uz: 'HA / YO\'Q variantlari uchun bosiladigan katakcha'
+        },
+        exampleHtml: '<input type="checkbox">'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: '<input type="text">',
+        meaning: {
+          en: 'Text box',
+          uz: 'Matn qutisi'
+        }
+      },
+      {
+        tag: '<input type="color">',
+        meaning: {
+          en: 'Color picker',
+          uz: 'Rang tanlagich'
+        }
+      },
+      {
+        tag: '<input type="checkbox">',
+        meaning: {
+          en: 'Checkmark box',
+          uz: 'Belgilash katagi'
+        }
+      }
+    ],
+    quickTags: [
+      '<input type="text">',
+      '<input type="color">',
+      '<input type="checkbox">'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add a text input with type="text" inside the card so players can type their name!',
+        uz: 'Kartochka ichiga type="text" bo\'lgan input qo\'shing, shunda o\'yinchilar o\'z ismlarini yoza oladilar!'
+      },
+      hint: {
+        en: 'Use the self-closing <input> tag with the type="text" attribute inside the card.',
+        uz: 'Karta ichiga type="text" atributiga ega <input> tegini yozing.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'input',
+          message: 'Add the <input> tag!'
+        },
+        {
+          type: 'hasAttribute',
+          tag: 'input',
+          attribute: 'type',
+          valuePattern: /text/i,
+          message: 'Set type="text" on the input tag!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Input is like a mail slot in a door: visitors slip their letters and names through the slot.',
+        uz: 'Input eshikdagi xat tirqishiga o\'xshaydi: tashrif buyuruvchilar o\'z ismlari va xabarlarini shu tirqish orqali kiritadilar.'
+      },
+      discussionQuestions: [
+        {
+          en: 'Why does <input> have no closing tag? (Because you type into it, you don\'t put HTML tags inside it!)',
+          uz: 'Nega <input> da yopiluvchi teg yo\'q? (Chunki uning ichiga matn kiritiladi, unga boshqa HTML teglari solinmaydi!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Trying to write </input> (it is a void tag!)',
+          uz: '</input> deb yopuvchi teg yozishga urinish (u bo\'sh teg hisoblanadi!)'
+        }
+      ],
+      funActivity: {
+        en: 'Try changing type to "color" or "date" to see the browser pop open a calendar or rainbow picker!',
+        uz: 'type ni "color" yoki "date" ga almashtirib, brauzerda kamalak rang tanlagichi yoki taqvim ochilishini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 18: Theme 18: Audio Player (Sound FX & Music)
+  // ==========================================
+  {
+    id: 'theme-18-audio',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 18: Audio Player (Sound FX & Music)',
+      uz: '18-Mavzu: Audio Pleyer (Ovoz va Musiqa)'
+    },
+    icon: '🎵',
+    tag: '<audio controls src="...">',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, the **Audio** tag brings your web page to life with sound effects, background music, or podcast voices!',
+        uz: 'Oddiy inson tilida, **Audio** tegi veb-sahifangizga ovoz effektlari, fon musiqasi yoki podkastlar qo\'shib jon bag\'ishlaydi!'
+      },
+      whatIsATag: {
+        en: `1. \`<audio>\` is the sound player container.\\n2. The \`controls\` attribute draws the play/pause button and volume bar.\\n3. \`src="..."\` tells the browser where the sound file lives.`,
+        uz: `1. \`<audio>\` — ovoz pleyerining qobig'i.\\n2. \`controls\` atributi tinglash/to'xtatish tugmasi va ovoz balandligini chiqaradi.\\n3. \`src="..."\` ovoz fayli manzilini ko'rsatadi.`
+      }
+    },
+    summary: {
+      en: 'Embed sound effects and music players directly into your web pages.',
+      uz: 'Veb-sahifalaringizga ovoz effektlari va musiqa pleyerlarini to\'g\'ridan-to\'g\'ri joylashtiring.'
+    },
+    story: {
+      en: 'The spaceship launched into hyperdrive, but the cockpit is silent! Add controls to the audio player so the pilot can hear the hum.',
+      uz: 'Kema fazoga uchdi, lekin kabina jim-jit! Uchuvchi ovozni eshitishi uchun audio pleyerga controls qo\'shing.'
+    },
+    initialCode: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+  <h3>🚀 Mission Sound FX</h3>
+  <p>Add controls to the audio player so astronauts can press Play!</p>
+  <audio src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg">
+  </audio>
+</div>`,
+    targetCode: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+  <h3>🚀 Mission Sound FX</h3>
+  <p>Add controls to the audio player so astronauts can press Play!</p>
+  <audio controls src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg">
+  </audio>
+</div>`,
+    targetDescription: {
+      en: 'An audio player with visible play, pause, and volume controls embedded in the space mission card.',
+      uz: 'Fazoviy missiya kartochkasida ko\'rinadigan tinglash, to\'xtatish va ovoz boshqaruvi tugmalariga ega audio pleyer.'
+    },
+    anatomy: [
+      {
+        part: '<audio',
+        role: {
+          en: 'Audio Container',
+          uz: 'Audio qobig\'i'
+        },
+        explanation: {
+          en: 'Initializes the sound playback engine in the browser.',
+          uz: 'Brauzerda ovoz ijro etish mexanizmini boshlaydi.'
+        },
+        effect: {
+          en: 'Creates audio player',
+          uz: 'Audio pleyer yaratadi'
+        },
+        visualPreview: '<div class="mini-canvas">🎵 Sound Player Initialized</div>'
+      },
+      {
+        part: 'controls',
+        role: {
+          en: 'Player Controls Attribute',
+          uz: 'Boshqaruv atributi'
+        },
+        explanation: {
+          en: 'Draws the visible Play button, progress slider, and volume bar on screen.',
+          uz: 'Ekranda ko\'rinadigan Play tugmasi, vaqt chizig\'i va ovoz slayderini chizadi.'
+        },
+        effect: {
+          en: 'Shows Play / Pause buttons',
+          uz: 'Ijro / Pauza tugmalarini ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas">▶️ Play / ⏸️ Pause Bar Visible</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: '<audio controls src="...">',
+        name: {
+          en: 'Audio Player',
+          uz: 'Audio pleyer'
+        },
+        description: {
+          en: 'Plays sound files (.mp3, .ogg) with visible controls',
+          uz: 'Ko\'rinadigan tugmalar bilan ovoz fayllarini tinglatadi'
+        },
+        exampleHtml: '<audio controls src="audio.mp3"></audio>'
+      },
+      {
+        code: 'autoplay',
+        name: {
+          en: 'Autoplay Attribute',
+          uz: 'Avto-ijro atributi'
+        },
+        description: {
+          en: 'Starts playing audio as soon as the page loads',
+          uz: 'Sahifa yuklanishi bilanoq avtomatik ijro etadi'
+        },
+        exampleHtml: '<audio controls autoplay></audio>'
+      },
+      {
+        code: 'loop',
+        name: {
+          en: 'Loop Attribute',
+          uz: 'Takrorlash atributi'
+        },
+        description: {
+          en: 'Repeats the sound continuously forever',
+          uz: 'Ovozni to\'xtovsiz cheksiz takrorlaydi'
+        },
+        exampleHtml: '<audio controls loop></audio>'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: '<audio controls>',
+        meaning: {
+          en: 'Playable sound player',
+          uz: 'Ijro etiluvchi pleyer'
+        }
+      },
+      {
+        tag: 'autoplay',
+        meaning: {
+          en: 'Plays on load',
+          uz: 'Yuklanganda ijro etish'
+        }
+      },
+      {
+        tag: 'loop',
+        meaning: {
+          en: 'Repeats forever',
+          uz: 'Cheksiz takrorlash'
+        }
+      }
+    ],
+    quickTags: [
+      'controls',
+      'src=""',
+      '<audio controls>',
+      '</audio>'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add the controls attribute to the <audio> tag so the Play and Pause buttons appear!',
+        uz: '<audio> tegiga controls atributini qo\'shing, shunda Play va Pause tugmalari paydo bo\'ladi!'
+      },
+      hint: {
+        en: 'Type the word controls inside the opening <audio> tag before the closing angle bracket.',
+        uz: '<audio tegining ochiluvchi qismiga controls so\'zini yozib qo\'ying.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'audio',
+          message: 'Keep the <audio> tag!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /<audio[^>]*\bcontrols\b/i.test(code),
+          message: 'Add the controls attribute inside the <audio> tag!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Audio without controls is like a boombox without buttons: it can\'t be started! Adding controls gives the listener the play button.',
+        uz: 'Controls siz audio — bu tugmasiz magnitofonga o\'xshaydi: uni yoqib bo\'lmaydi! Controls atributi tinglovchiga Play tugmachasini beradi.'
+      },
+      discussionQuestions: [
+        {
+          en: 'Why do browsers usually block autoplay with sound? (To protect your ears!)',
+          uz: 'Nega brauzerlar ovozli avtomatik ijroni (autoplay) bloklaydi? (Quloqlaringizni kutilmagan shovqindan asrash uchun!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting the controls attribute, making the player invisible!',
+          uz: 'controls atributini unutib qo\'yish — natijada pleyer ko\'rinmas bo\'lib qoladi!'
+        }
+      ],
+      funActivity: {
+        en: 'Click play to hear the alien spaceship hum!',
+        uz: 'O\'zga sayyoralik kosmik kemaning tovushini eshitish uchun Play tugmasini bosing!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 19: Theme 19: Video Player (Cinema on the Web)
+  // ==========================================
+  {
+    id: 'theme-19-video',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 19: Video Player (Cinema on the Web)',
+      uz: '19-Mavzu: Video Pleyer (Vebda Kino)'
+    },
+    icon: '🎬',
+    tag: '<video controls width="320">',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, the **Video** tag embeds movies, game animations, or recordings right inside your web page!',
+        uz: 'Oddiy inson tilida, **Video** tegi veb-sahifangizga filmlar, o\'yin videolari yoki animatsiyalarni joylashtirish imkonini beradi!'
+      },
+      whatIsATag: {
+        en: `1. \`<video>\` creates the cinema screen.\\n2. \`controls\` enables play, pause, and full-screen buttons.\\n3. \`width="320"\` sizes the movie screen.`,
+        uz: `1. \`<video>\` — kino ekranini yaratadi.\\n2. \`controls\` — ijro etish, to'xtatish va butun ekranga ochish tugmalarini faollashtiradi.\\n3. \`width="320"\` — video ekranining kengligini belgilaydi.`
+      }
+    },
+    summary: {
+      en: 'Embed and control video clips directly on your web pages.',
+      uz: 'Veb-sahifalaringizda videolarni to\'g\'ridan-to\'g\'ri joylashtiring va boshqaring.'
+    },
+    story: {
+      en: 'Build a movie cinema card for your space exploration mission film with video playback controls.',
+      uz: 'Fazoviy tadqiqot filmi uchun video pleyerli kino kartochkasini yarating.'
+    },
+    initialCode: `<div style="padding: 20px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+  <h3>🌌 Space Exploration Movie</h3>
+  <!-- Add a video player with controls and width="320" -->
+</div>`,
+    targetCode: `<div style="padding: 20px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+  <h3>🌌 Space Exploration Movie</h3>
+  <video controls width="320" src="https://www.w3schools.com/html/mov_bbb.mp4">
+  </video>
+</div>`,
+    targetDescription: {
+      en: 'A video movie player with visible playback controls and a width of 320 pixels.',
+      uz: 'Ko\'rinadigan boshqaruv tugmalariga va 320 piksel kenglikka ega video pleyer.'
+    },
+    anatomy: [
+      {
+        part: '<video',
+        role: {
+          en: 'Video Element',
+          uz: 'Video elementi'
+        },
+        explanation: {
+          en: 'Initializes the video display canvas in the browser.',
+          uz: 'Brauzerda video ko\'rsatish ekranini boshlaydi.'
+        },
+        effect: {
+          en: 'Places video screen',
+          uz: 'Video ekranini joylashtiradi'
+        },
+        visualPreview: '<div class="mini-canvas">🎬 Cinema Screen Placed</div>'
+      },
+      {
+        part: 'controls',
+        role: {
+          en: 'Video Controls',
+          uz: 'Video boshqaruvi'
+        },
+        explanation: {
+          en: 'Provides play/pause, time seeker, and fullscreen options.',
+          uz: 'Ijro etish, to\'xtatish va to\'liq ekranga ochish imkoniyatlarini beradi.'
+        },
+        effect: {
+          en: 'Enables video controls',
+          uz: 'Video boshqaruv tugmalarini chiqaradi'
+        },
+        visualPreview: '<div class="mini-canvas">▶️ Fullscreen &amp; Play Controls</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: '<video controls src="...">',
+        name: {
+          en: 'Video Tag',
+          uz: 'Video tegi'
+        },
+        description: {
+          en: 'Embeds playable video files (.mp4, .webm)',
+          uz: 'Ijro etiluvchi video fayllarni joylashtiradi'
+        },
+        exampleHtml: '<video controls width="320" src="movie.mp4"></video>'
+      },
+      {
+        code: 'width="320"',
+        name: {
+          en: 'Video Width',
+          uz: 'Video kengligi'
+        },
+        description: {
+          en: 'Sets the width of the movie screen in pixels',
+          uz: 'Video ekranining kengligini pikselda belgilaydi'
+        },
+        exampleHtml: 'width="320"'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: '<video controls>',
+        meaning: {
+          en: 'Playable video screen',
+          uz: 'Video ekrani'
+        }
+      },
+      {
+        tag: 'width="320"',
+        meaning: {
+          en: '320px wide',
+          uz: '320px kenglik'
+        }
+      }
+    ],
+    quickTags: [
+      '<video controls width="320">',
+      '</video>',
+      'controls'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add a <video controls width="320" src="..."> player inside the movie card!',
+        uz: 'Kino kartasi ichiga <video controls width="320" src="..."> pleyerini qo\'shing!'
+      },
+      hint: {
+        en: 'Create a <video> tag with controls and width="320" attributes, then close it with </video>.',
+        uz: 'controls va width="320" atributlariga ega <video> tegini yarating va </video> bilan yoping.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'video',
+          message: 'Add the <video> tag!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /<video[^>]*\bcontrols\b/i.test(code),
+          message: 'Add the controls attribute to <video>!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'A video tag is like hanging a miniature TV screen on your web page wall.',
+        uz: '<video> tegi veb-sahifa devoriga kichik televizor ekranni ilib qo\'yishga o\'xshaydi.'
+      },
+      discussionQuestions: [
+        {
+          en: 'Why should you always set a width on video tags? (So the page doesn\'t jump around while loading!)',
+          uz: 'Nega doim videoga width (kenglik) o\'lchami berish kerak? (Yuklanayotganda sahifa sakrab ketmasligi uchun!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting controls so the video stays frozen with no way to press play',
+          uz: 'controls atributini unutish — video muzlab turadi va ijro etish tugmasi bo\'lmaydi'
+        }
+      ],
+      funActivity: {
+        en: 'Press full screen to watch Big Buck Bunny on the entire monitor!',
+        uz: 'Butun ekranda videoni tomosha qilish uchun to\'liq ekran tugmasini bosing!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 20: Theme 20: Accordion Secrets (<details> & <summary>)
+  // ==========================================
+  {
+    id: 'theme-20-details',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 20: Accordion Secrets (Details & Summary)',
+      uz: '20-Mavzu: Ochiluvchi Sirli Quti (Details va Summary)'
+    },
+    icon: '🗝️',
+    tag: '<details>, <summary>',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **<details>** is a magical secret envelope! It stays closed until a visitor clicks on its title (**<summary>**) to pop it open — with zero JavaScript!',
+        uz: 'Oddiy inson tilida, **<details>** — bu sehrli maxfiy konvert! Foydalanuvchi uning sarlavhasi (**<summary>**) ustiga bosmaguncha yopiq turadi va hech qanday JavaScriptsiz ochiladi!'
+      },
+      whatIsATag: {
+        en: `1. \`<details>\` is the expandable secret box.\\n2. \`<summary>\` is the clickable question or title.\\n3. Whatever you write below \`<summary>\` is kept hidden until clicked!`,
+        uz: `1. \`<details>\` — ochiluvchi maxfiy quti.\\n2. \`<summary>\` — bosiladigan sarlavha yoki savol.\\n3. \`<summary>\` dan pastda yozgan hamma narsangiz bosilmaguncha yashirin turadi!`
+      }
+    },
+    summary: {
+      en: 'Build zero-JS interactive accordions, secret answers, and FAQ dropdowns with <details> and <summary>.',
+      uz: '<details> va <summary> yordamida JavaScriptsiz ochiluvchi sirlar, savol-javoblar va yashirin xabarlar yarating.'
+    },
+    story: {
+      en: 'Create a treasure vault clue box where the golden secret code is revealed only when clicked!',
+      uz: 'Faqat bosilganda oltin maxfiy kodni ochib beradigan xazina qutisini yarating!'
+    },
+    initialCode: `<div style="padding: 24px; color: white; background: #141722; border-radius: 12px;">
+  <h3>🏆 Secret Treasure Vault</h3>
+  <!-- Step: Add details accordion and summary tag to hide the secret code -->
+</div>`,
+    targetCode: `<div style="padding: 24px; color: white; background: #141722; border-radius: 12px;">
+  <h3>🏆 Secret Treasure Vault</h3>
+  <details style="cursor: pointer; padding: 12px; background: #1a1f2e; border-radius: 8px;">
+    <summary style="font-weight: bold; color: #fbbf24;">Click to Reveal Secret Code</summary>
+    <p style="margin-top: 10px; color: #34d399;">🔑 Golden Key: STAR-9999</p>
+  </details>
+</div>`,
+    targetDescription: {
+      en: 'An interactive secret accordion that reveals the Golden Key code when clicked.',
+      uz: 'Bosilganda "Golden Key" maxfiy kodini ochib beradigan interaktiv sirli quti.'
+    },
+    anatomy: [
+      {
+        part: '<details>',
+        role: {
+          en: 'Disclosure Container',
+          uz: 'Ochiluvchi quti'
+        },
+        explanation: {
+          en: 'Creates a collapsible box that opens and closes natively.',
+          uz: 'O\'z-o\'zidan ochilib-yopiladigan quti konteynerini yaratadi.'
+        },
+        effect: {
+          en: 'Creates interactive toggle box',
+          uz: 'Ochilib-yopiluvchi quti hosil qiladi'
+        },
+        visualPreview: '<div class="mini-canvas">📁 Closed / Openable Envelope</div>'
+      },
+      {
+        part: '<summary>',
+        role: {
+          en: 'Clickable Title',
+          uz: 'Bosiladigan sarlavha'
+        },
+        explanation: {
+          en: 'The visible header with an arrow you click to toggle the content.',
+          uz: 'Kontentni ochish uchun ustiga bosiladigan strelkali sarlavha.'
+        },
+        effect: {
+          en: 'Shows clickable title',
+          uz: 'Bosiladigan sarlavhani ko\'rsatadi'
+        },
+        visualPreview: '<div class="mini-canvas">▶ Click to Reveal Secret Code</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: '<details> ... </details>',
+        name: {
+          en: 'Details Container',
+          uz: 'Details qobig\'i'
+        },
+        description: {
+          en: 'Interactive widget that toggles open/closed without JS',
+          uz: 'JS siz ochilib yopiladigan interaktiv vidjet'
+        },
+        exampleHtml: '<details><summary>Title</summary><p>Secret</p></details>'
+      },
+      {
+        code: '<summary> ... </summary>',
+        name: {
+          en: 'Summary Label',
+          uz: 'Sarlavha qismi'
+        },
+        description: {
+          en: 'The permanent visible heading of the <details> box',
+          uz: '<details> qutisining doim ko\'rinib turuvchi sarlavhasi'
+        },
+        exampleHtml: '<summary>Open Me</summary>'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: '<details>',
+        meaning: {
+          en: 'Expandable box',
+          uz: 'Ochiluvchi quti'
+        }
+      },
+      {
+        tag: '<summary>',
+        meaning: {
+          en: 'Clickable title',
+          uz: 'Bosiladigan sarlavha'
+        }
+      }
+    ],
+    quickTags: [
+      '<details>',
+      '</details>',
+      '<summary>',
+      '</summary>'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add a <details> element with a <summary> inside the card to hide the secret code!',
+        uz: 'Kartochka ichiga maxfiy kodni yashirish uchun <summary> sarlavhali <details> tegi qo\'shing!'
+      },
+      hint: {
+        en: 'Wrap your clickable heading in <summary>...</summary> inside the <details>...</details> block.',
+        uz: '<details> ichida bosiladigan sarlavhani <summary> teglari orasiga oling.'
+      },
+      rules: [
+        {
+          type: 'hasTag',
+          tag: 'details',
+          message: 'Add the <details> tag!'
+        },
+        {
+          type: 'hasTag',
+          tag: 'summary',
+          message: 'Add the <summary> tag inside details!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: '<details> is like an advent calendar door: you knock on <summary> and the surprise pops open!',
+        uz: '<details> syurprizli qutichaga o\'xshaydi: <summary> eshigini bossangiz, ichidagi sir ochiladi!'
+      },
+      discussionQuestions: [
+        {
+          en: 'Why is <details> so awesome? (It works without writing any JavaScript code!)',
+          uz: 'Nega <details> ajoyib? (Chunki u hech qanday JavaScript yozmasdan ochilib-yopiladi!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Putting <summary> outside of <details>',
+          uz: '<summary> tegini <details> dan tashqariga chiqarib qo\'yish'
+        }
+      ],
+      funActivity: {
+        en: 'Click the summary to see the secret key appear!',
+        uz: 'Maxfiy kalitni ko\'rish uchun sarlavha ustiga bosing!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 21: Theme 21: CSS Grid (2D Game Inventory)
+  // ==========================================
+  {
+    id: 'theme-21-grid',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 21: CSS Grid (2D Game Inventory)',
+      uz: '21-Mavzu: CSS Grid (2D O\'yin Inventari)'
+    },
+    icon: '⊞',
+    tag: 'display: grid;, grid-template-columns',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **CSS Grid** is the master 2D blueprint of web design! While Flexbox lines things up in one direction, Grid controls both rows AND columns at the same time.',
+        uz: 'Oddiy inson tilida, **CSS Grid** — bu veb-dizaynning 2D bosh chizmasidir! Flexbox bir yo\'nalishda ishlasa, Grid bir vaqtning o\'zida qatorlar va ustunlarni boshqaradi.'
+      },
+      whatIsATag: {
+        en: `1. \`display: grid;\` turns on the 2D grid matrix.\\n2. \`grid-template-columns: repeat(3, 1fr);\` splits the container into 3 equal columns.\\n3. \`gap: 12px;\` creates even space between all tiles.`,
+        uz: `1. \`display: grid;\` — 2D panjara rejimini yoqadi.\\n2. \`grid-template-columns: repeat(3, 1fr);\` — konteynerni 3 ta teng ustunga bo'ladi.\\n3. \`gap: 12px;\` — barcha kataklar orasida bir tekis masofa qoldiradi.`
+      }
+    },
+    summary: {
+      en: 'Organize cards, photo galleries, and RPG game inventories into flawless 2D grids.',
+      uz: 'Kartochkalar, foto galereyalar va o\'yin inventarlarini mukammal 2D panjaralarga tering.'
+    },
+    story: {
+      en: 'The hero needs an inventory bag with 3 columns to organize weapons, potions, and armor.',
+      uz: 'Qahramonga qurollar, dorilar va zirhlarni tartiblash uchun 3 ustunli inventar sumkasi kerak.'
+    },
+    initialCode: `<style>
+  .inventory {
+    display: grid;
+    /* Step: Turn on 3 equal columns with grid-template-columns */
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px;
+  }
+  .slot {
+    background: #1e2433;
+    border: 2px solid #5b5fc7;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+  }
+</style>
+
+<div class="inventory">
+  <div class="slot">🗡️</div>
+  <div class="slot">🛡️</div>
+  <div class="slot">🧪</div>
+  <div class="slot">💎</div>
+  <div class="slot">🏹</div>
+  <div class="slot">👑</div>
+</div>`,
+    targetCode: `<style>
+  .inventory {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 20px;
+  }
+  .slot {
+    background: #1e2433;
+    border: 2px solid #5b5fc7;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+  }
+</style>
+
+<div class="inventory">
+  <div class="slot">🗡️</div>
+  <div class="slot">🛡️</div>
+  <div class="slot">🧪</div>
+  <div class="slot">💎</div>
+  <div class="slot">🏹</div>
+  <div class="slot">👑</div>
+</div>`,
+    targetDescription: {
+      en: 'A 2D game inventory matrix aligned into 3 neat columns and 2 rows.',
+      uz: '3 ta tekis ustun va 2 ta qatorga terilgan 2D o\'yin inventar panjarasi.'
+    },
+    anatomy: [
+      {
+        part: 'display: grid;',
+        role: {
+          en: 'Grid Mode',
+          uz: 'Grid rejimi'
+        },
+        explanation: {
+          en: 'Activates the 2D grid layout system on the container.',
+          uz: 'Konteynerda 2D panjara tartib tizimini faollashtiradi.'
+        },
+        effect: {
+          en: 'Initializes 2D grid container',
+          uz: '2D panjara konteynerini boshlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">⊞ 2D Matrix Grid Active</div>'
+      },
+      {
+        part: 'grid-template-columns: repeat(3, 1fr);',
+        role: {
+          en: 'Column Template',
+          uz: 'Ustun andozasi'
+        },
+        explanation: {
+          en: 'Divides the space into 3 equal fractional (1fr) columns.',
+          uz: 'Maydonni 3 ta teng nisbatli (1fr) ustunga bo\'lib beradi.'
+        },
+        effect: {
+          en: 'Splits grid into 3 equal columns',
+          uz: 'Panjarani 3 ta teng ustunga ajratadi'
+        },
+        visualPreview: '<div class="mini-canvas">| Col 1 | Col 2 | Col 3 |</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'display: grid;',
+        name: {
+          en: 'Display Grid',
+          uz: 'Display Grid'
+        },
+        description: {
+          en: 'Turns an element into a 2D grid parent',
+          uz: 'Elementni 2D panjara konteyneriga aylantiradi'
+        },
+        exampleHtml: 'display: grid;'
+      },
+      {
+        code: 'grid-template-columns: repeat(3, 1fr);',
+        name: {
+          en: 'Columns Template',
+          uz: 'Ustunlar andozasi'
+        },
+        description: {
+          en: 'Specifies the number and size of columns',
+          uz: 'Ustunlar soni va hajmini belgilaydi'
+        },
+        exampleHtml: 'grid-template-columns: repeat(3, 1fr);'
+      },
+      {
+        code: 'gap: 16px;',
+        name: {
+          en: 'Grid Gap',
+          uz: 'Kataklar oralig\'i'
+        },
+        description: {
+          en: 'Sets even spacing between all grid rows and columns',
+          uz: 'Barcha qator va ustunlar orasida bir xil oraliq qoldiradi'
+        },
+        exampleHtml: 'gap: 16px;'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: 'display: grid;',
+        meaning: {
+          en: '2D grid world',
+          uz: '2D panjara dunyosi'
+        }
+      },
+      {
+        tag: 'repeat(3, 1fr)',
+        meaning: {
+          en: '3 equal columns',
+          uz: '3 ta teng ustun'
+        }
+      }
+    ],
+    quickTags: [
+      'display: grid;',
+      'grid-template-columns: repeat(3, 1fr);',
+      'gap: 12px;'
+    ],
+    challenge: {
+      mission: {
+        en: 'Change grid-template-columns on .inventory to "repeat(3, 1fr)" to create 3 columns!',
+        uz: '.inventory da grid-template-columns ni "repeat(3, 1fr)" ga o\'zgartirib, 3 ta ustun hosil qiling!'
+      },
+      hint: {
+        en: 'Replace 1fr with repeat(3, 1fr) inside grid-template-columns on .inventory.',
+        uz: '.inventory klassidagi grid-template-columns qiymatini repeat(3, 1fr) qiling.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'display',
+          valuePattern: /grid/i,
+          message: 'Keep display: grid;'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'grid-template-columns',
+          valuePattern: /repeat\(3|1fr\s+1fr\s+1fr/i,
+          message: 'Set grid-template-columns to 3 columns (repeat(3, 1fr))!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Grid is like an ice cube tray or a chessboard: items snap cleanly into rows and columns.',
+        uz: 'Grid shaxmat taxtasi yoki muz qolipiga o\'xshaydi: buyumlar qator va ustunlarga toza joylashadi.'
+      },
+      discussionQuestions: [
+        {
+          en: 'What does 1fr mean? (One fraction of the available space!)',
+          uz: '1fr nimani anglatadi? (Mavjud bo\'sh joyning teng bir qismini!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting repeat() or writing 3 instead of 3, 1fr',
+          uz: 'repeat() ni unutish yoki 3, 1fr o\'rniga faqat 3 yozib qo\'yish'
+        }
+      ],
+      funActivity: {
+        en: 'Change 3 to 4 or 2 to see the items automatically re-wrap!',
+        uz: '3 raqamini 2 yoki 4 ga almashtiring va kataklar qanday qayta terilishini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 22: Theme 22: Positioning (Corner Notification Badges)
+  // ==========================================
+  {
+    id: 'theme-22-position',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 22: Positioning (Corner Notification Badges)',
+      uz: '22-Mavzu: Joylashuv (Burchakdagi Bildirishnoma Nishonlari)'
+    },
+    icon: '📍',
+    tag: 'position: relative;, position: absolute;',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **CSS Position** is your GPS pin! It lets you take an element out of the normal text flow and pin it anywhere — like pinning a "NEW!" badge right on the corner of a card.',
+        uz: 'Oddiy inson tilida, **CSS Position** — bu sizning GPS nishoningizdir! U elementni oddiy matn oqimidan chiqarib, istalgan burchakka mixlab qo\'yish imkonini beradi — masalan, kartochka burchagiga "YANGI!" nishonini qo\'yish.'
+      },
+      whatIsATag: {
+        en: `1. \`position: relative;\` on the parent marks the boundary fence.\\n2. \`position: absolute;\` on the badge lets it fly freely inside that fence.\\n3. \`top: -10px; right: -10px;\` pins it right over the top-right corner!`,
+        uz: `1. Ota elementdagi \`position: relative;\` chegara devorini belgilaydi.\\n2. Boladagi \`position: absolute;\` unga shu devor ichida erkin uchish imkonini beradi.\\n3. \`top: -10px; right: -10px;\` uni to'g'ridan-to'g'ri yuqori o'ng burchakka mixlaydi!`
+      }
+    },
+    summary: {
+      en: 'Pin badges, icons, and buttons to exact corners using position: relative and absolute.',
+      uz: 'position: relative va absolute yordamida nishonlar va tugmalarni aniq burchaklarga mixlang.'
+    },
+    story: {
+      en: 'Stick a red "NEW!" notification badge floating on the top-right corner of the Cyber Armor card.',
+      uz: 'Cyber Armor kartasining yuqori o\'ng burchagiga qizil "NEW!" nishonini mixlab qo\'ying.'
+    },
+    initialCode: `<style>
+  .card {
+    position: relative;
+    background: #141722;
+    border: 1px solid #1e2433;
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    width: 200px;
+    margin: 40px auto;
+  }
+  .notification-badge {
+    /* Step: Position this badge in the top right corner! */
+    position: static;
+    background: #ef4444;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+  }
+</style>
+
+<div class="card">
+  <span class="notification-badge">NEW!</span>
+  <h3>Cyber Armor</h3>
+  <p>Shield level 100%</p>
+</div>`,
+    targetCode: `<style>
+  .card {
+    position: relative;
+    background: #141722;
+    border: 1px solid #1e2433;
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    width: 200px;
+    margin: 40px auto;
+  }
+  .notification-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ef4444;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+  }
+</style>
+
+<div class="card">
+  <span class="notification-badge">NEW!</span>
+  <h3>Cyber Armor</h3>
+  <p>Shield level 100%</p>
+</div>`,
+    targetDescription: {
+      en: 'A cyber card with a red notification pill pinned right on the top-right corner.',
+      uz: 'Yuqori o\'ng burchagiga qizil nishon mixlangan kiber kartochka.'
+    },
+    anatomy: [
+      {
+        part: 'position: relative;',
+        role: {
+          en: 'Boundary Fence',
+          uz: 'Chegara devori'
+        },
+        explanation: {
+          en: 'Tells children elements: "Your GPS coordinates are measured relative to ME!"',
+          uz: 'Bola elementlarga: "Sizning koordinatalaringiz MENGA nisbatan o\'lchanadi!" deydi.'
+        },
+        effect: {
+          en: 'Sets boundary reference for child',
+          uz: 'Ichki elementlar uchun boshlang\'ich nuqta bo\'ladi'
+        },
+        visualPreview: '<div class="mini-canvas">📦 Parent Fence (relative)</div>'
+      },
+      {
+        part: 'position: absolute;',
+        role: {
+          en: 'Free Floater',
+          uz: 'Erkin suzuvchi'
+        },
+        explanation: {
+          en: 'Unlocks the element from text flow so it can float to top/right coordinates.',
+          uz: 'Elementni matn qatoridan chiqarib, top va right koordinatalariga uchiradi.'
+        },
+        effect: {
+          en: 'Pins element to exact coordinates',
+          uz: 'Elementni aniq koordinataga mixlaydi'
+        },
+        visualPreview: '<div class="mini-canvas">📍 Pinned to Top-Right Corner</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'position: relative;',
+        name: {
+          en: 'Relative Position',
+          uz: 'Nisbiy joylashuv'
+        },
+        description: {
+          en: 'Parent boundary anchor for absolute children',
+          uz: 'Absolute bolalar uchun ota chegara langari'
+        },
+        exampleHtml: 'position: relative;'
+      },
+      {
+        code: 'position: absolute;',
+        name: {
+          en: 'Absolute Position',
+          uz: 'Mutlaq joylashuv'
+        },
+        description: {
+          en: 'Pins an element to exact top, bottom, left, right coordinates',
+          uz: 'Elementni aniq top, right, bottom, left koordinatalariga qo\'yadi'
+        },
+        exampleHtml: 'position: absolute; top: 0; right: 0;'
+      },
+      {
+        code: 'position: fixed;',
+        name: {
+          en: 'Fixed Position',
+          uz: 'Qotirilgan joylashuv'
+        },
+        description: {
+          en: 'Stays glued to the screen even while scrolling down',
+          uz: 'Sahifa aylantirilganda ham ekranga yopishib turadi'
+        },
+        exampleHtml: 'position: fixed; top: 0;'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: 'position: relative;',
+        meaning: {
+          en: 'Parent anchor',
+          uz: 'Ota langar'
+        }
+      },
+      {
+        tag: 'position: absolute;',
+        meaning: {
+          en: 'Corner pin',
+          uz: 'Burchakka mixlash'
+        }
+      }
+    ],
+    quickTags: [
+      'position: absolute;',
+      'top: -10px;',
+      'right: -10px;'
+    ],
+    challenge: {
+      mission: {
+        en: 'Set position: absolute; on .notification-badge with top: -10px; and right: -10px;!',
+        uz: '.notification-badge ga position: absolute;, top: -10px; va right: -10px; o\'rnating!'
+      },
+      hint: {
+        en: 'Change position: static; to position: absolute; and add top: -10px; and right: -10px;.',
+        uz: '.notification-badge klassida position: absolute; qiling va top hamda right qiymatlarini -10px qilib belgilang.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'position',
+          valuePattern: /absolute/i,
+          message: 'Set position: absolute; on .notification-badge!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /top\s*:\s*-?10px/i.test(code) && /right\s*:\s*-?10px/i.test(code),
+          message: 'Set top: -10px; and right: -10px; on .notification-badge!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Relative is a bulletin board on the wall. Absolute is the push-pin you stick right into the top-right corner of the board.',
+        uz: 'Relative — devordagi e\'lonlar doskasi. Absolute esa doskaning burchagiga qadalgan tugmacha.'
+      },
+      discussionQuestions: [
+        {
+          en: 'What happens if the parent doesn\'t have position: relative? (The badge flies all the way to the screen corner!)',
+          uz: 'Agar ota elementda position: relative bo\'lmasa nima bo\'ladi? (Nishon butun ekran burchagiga uchib ketadi!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Forgetting position: relative on the parent container',
+          uz: 'Ota blokda position: relative yozishni unutish'
+        }
+      ],
+      funActivity: {
+        en: 'Change top to 50% to see the badge slide right into the middle of the edge!',
+        uz: 'top qiymatini 50% ga o\'zgartiring va nishon o\'rtaga siljiganini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 23: Theme 23: Smooth Transitions (Buttery Hover Physics)
+  // ==========================================
+  {
+    id: 'theme-23-transitions',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 23: Smooth Transitions (Buttery Hover Physics)',
+      uz: '23-Mavzu: Yumshoq O\'tishlar (Smooth Transition Fizikasi)'
+    },
+    icon: '🧈',
+    tag: 'transition: all 0.3s ease;',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **Transition** is the magic butter of CSS! Without it, color and movement changes snap instantly like a light switch. With transition, everything glides smoothly like warm honey.',
+        uz: 'Oddiy inson tilida, **Transition** — bu CSS ning yumshoq moyidir! Usiz rang va harakatlar chiroqni o\'chirgandek bir zumda sakraydi. Transition bilan esa hamma narsa xuddi asaldek mayin sirpanadi.'
+      },
+      whatIsATag: {
+        en: `1. \`transition: all 0.3s ease;\` tells the browser: "When any style changes, glide it over 0.3 seconds!"\\n2. \`0.3s\` is the duration (a third of a second).\\n3. \`ease\` makes the start and stop feel natural and soft.`,
+        uz: `1. \`transition: all 0.3s ease;\` — brauzerga: "Har qanday uslub o'zgarganda, uni 0.3 soniya davomida mayin o'zgartir!" deydi.\\n2. \`0.3s\` — davomiylik vaqti.\\n3. \`ease\` — harakatni tabiiy va yumshoq qiladi.`
+      }
+    },
+    summary: {
+      en: 'Transform abrupt visual changes into buttery-smooth hover animations with CSS transitions.',
+      uz: 'CSS transition yordamida qo\'pol sakrashlarni mayin va chiroyli sichqoncha animatsiyalariga aylantiring.'
+    },
+    story: {
+      en: 'The magic card currently jumps abruptly when hovered. Add transition physics so it glides upwards softly!',
+      uz: 'Sehrli kartochka sichqoncha kelganda qo\'pol sakramoqda. U mayin ko\'tarilishi uchun transition fizikasini qo\'shing!'
+    },
+    initialCode: `<style>
+  .magic-card {
+    background: #141722;
+    border: 2px solid #5b5fc7;
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    text-align: center;
+    /* Step: Add smooth transition physics here! */
+    transition: none;
+  }
+  .magic-card:hover {
+    transform: translateY(-10px);
+    border-color: #2dd4bf;
+    box-shadow: 0 10px 25px rgba(45, 212, 191, 0.3);
+  }
+</style>
+
+<div class="magic-card">
+  <h3>✨ Hover Over Me!</h3>
+  <p>Make me float like butter!</p>
+</div>`,
+    targetCode: `<style>
+  .magic-card {
+    background: #141722;
+    border: 2px solid #5b5fc7;
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .magic-card:hover {
+    transform: translateY(-10px);
+    border-color: #2dd4bf;
+    box-shadow: 0 10px 25px rgba(45, 212, 191, 0.3);
+  }
+</style>
+
+<div class="magic-card">
+  <h3>✨ Hover Over Me!</h3>
+  <p>Make me float like butter!</p>
+</div>`,
+    targetDescription: {
+      en: 'A card that glides up smoothly with a cyan border and glow when the mouse glides over it.',
+      uz: 'Sichqoncha ustiga kelganda mayin yuqoriga ko\'tariladigan va ko\'k nur taratadigan kartochka.'
+    },
+    anatomy: [
+      {
+        part: 'transition:',
+        role: {
+          en: 'Physics Engine',
+          uz: 'Fizika mexanizmi'
+        },
+        explanation: {
+          en: 'Activates smooth animation between CSS state changes.',
+          uz: 'CSS holatlari o\'zgarishi orasida mayin animatsiyani yoqadi.'
+        },
+        effect: {
+          en: 'Glides changes smoothly',
+          uz: 'O\'zgarishlarni mayin siljitadi'
+        },
+        visualPreview: '<div class="mini-canvas">🧈 Smooth Gliding Physics Active</div>'
+      },
+      {
+        part: '0.3s ease',
+        role: {
+          en: 'Timing & Easing',
+          uz: 'Vaqt va tezlanish'
+        },
+        explanation: {
+          en: 'Completes in 0.3 seconds with natural deceleration.',
+          uz: '0.3 soniyada tabiiy yumshoq tormozlanish bilan yakunlanadi.'
+        },
+        effect: {
+          en: 'Natural organic motion curve',
+          uz: 'Tabiiy organik harakat egri chizig\'i'
+        },
+        visualPreview: '<div class="mini-canvas">⏱️ 0.3 Seconds Duration</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'transition: all 0.3s ease;',
+        name: {
+          en: 'All Transitions',
+          uz: 'Barcha o\'tishlar'
+        },
+        description: {
+          en: 'Smooths every property change over 0.3 seconds',
+          uz: 'Barcha o\'zgarishlarni 0.3 soniyada mayinlashtiradi'
+        },
+        exampleHtml: 'transition: all 0.3s ease;'
+      },
+      {
+        code: 'transition: transform 0.2s;',
+        name: {
+          en: 'Transform Transition',
+          uz: 'Transform o\'tishi'
+        },
+        description: {
+          en: 'Smooths only transform movements',
+          uz: 'Faqatgina harakat o\'zgarishlarini mayin qiladi'
+        },
+        exampleHtml: 'transition: transform 0.2s;'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: 'transition: all 0.3s ease;',
+        meaning: {
+          en: 'Smooth physics',
+          uz: 'Mayin harakat'
+        }
+      }
+    ],
+    quickTags: [
+      'transition: all 0.3s ease;'
+    ],
+    challenge: {
+      mission: {
+        en: 'Set transition: all 0.3s ease; on .magic-card so it glides smoothly on hover!',
+        uz: '.magic-card ga transition: all 0.3s ease; qo\'shing, shunda u hover bo\'lganda mayin suzadi!'
+      },
+      hint: {
+        en: 'Change transition: none; to transition: all 0.3s ease; inside .magic-card.',
+        uz: '.magic-card klassidagi transition qiymatini all 0.3s ease qiling.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'transition',
+          valuePattern: /all.*0\.3s|0\.3s.*ease/i,
+          message: 'Set transition: all 0.3s ease; on .magic-card!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'Without transition is teleporting. With transition is walking smoothly from point A to point B.',
+        uz: 'Transitionsiz bu teleportatsiya (bir zumda sakrash). Transition bilan esa A nuqtadan B nuqtaga mayin harakatlanish.'
+      },
+      discussionQuestions: [
+        {
+          en: 'What happens if you set transition to 2s? (It moves in slow motion!)',
+          uz: 'Agar transition ni 2s qilsangiz nima bo\'ladi? (U sekinlashtirilgan kadrdek mayin suzadi!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Putting the transition inside :hover instead of the base class',
+          uz: 'transition ni asosiy klass o\'rniga :hover ichiga yozib qo\'yish'
+        }
+      ],
+      funActivity: {
+        en: 'Hover your mouse over the card to see it lift off the ground!',
+        uz: 'Sichqonchani karta ustiga olib boring va uning yerga suzib ko\'tarilishini ko\'ring!'
+      }
+    }
+  },
+
+  // ==========================================
+  // THEME 24: Theme 24: Filters & Neon Auras (drop-shadow & blur)
+  // ==========================================
+  {
+    id: 'theme-24-filters',
+    module: 'modern-mastery',
+    title: {
+      en: 'Theme 24: Filters & Neon Auras (drop-shadow & blur)',
+      uz: '24-Mavzu: Filtrlari va Neon Aura (drop-shadow va blur)'
+    },
+    icon: '🔮',
+    tag: 'filter: drop-shadow(), blur()',
+    humanIntro: {
+      whatIsIt: {
+        en: 'In human language, **CSS Filters** are photo magic effects! You can blur elements, turn them black-and-white, or give shapes glowing neon halo auras.',
+        uz: 'Oddiy inson tilida, **CSS Filtrlari** — bu fotosuratlarning sehrli effektlaridir! Ular yordamida shakllarni xiralashtirish, oq-qora qilish yoki atrofida porlovchi neon auralar hosil qilish mumkin.'
+      },
+      whatIsATag: {
+        en: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` creates a glowing colored halo that perfectly outlines emojis and transparent PNGs!\\n2. \`filter: blur(4px);\` softens things like frosted glass.\\n3. \`filter: grayscale(100%);\` turns everything black & white.`,
+        uz: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` — emoji yoki shaffof rasmlar atrofida neon nur taratadi!\\n2. \`filter: blur(4px);\` — xuddi muzlagan oynadek xiralashtiradi.\\n3. \`filter: grayscale(100%);\` — hamma ranglarni oq-qora qiladi.`
+      }
+    },
+    summary: {
+      en: 'Create glowing neon auras, photo blurs, and glassmorphism with CSS filter powers.',
+      uz: 'CSS filter yordamida porlovchi neon auralar, xiralashgan rasmlar va shaffof oyna effektlari yarating.'
+    },
+    story: {
+      en: 'This legendary diamond crystal is asleep! Add a glowing cyan drop-shadow filter to awaken its magic power.',
+      uz: 'Ushbu afsonaviy olmos uxlamoqda! Uning sehrli kuchini uyg\'otish uchun unga porlovchi ko\'k drop-shadow filtrini qo\'shing.'
+    },
+    initialCode: `<style>
+  .crystal {
+    font-size: 64px;
+    text-align: center;
+    padding: 30px;
+    /* Step: Add a neon drop-shadow filter to make it glow! */
+    filter: none;
+  }
+</style>
+
+<div class="crystal">
+  💎
+</div>`,
+    targetCode: `<style>
+  .crystal {
+    font-size: 64px;
+    text-align: center;
+    padding: 30px;
+    filter: drop-shadow(0 0 20px #2dd4bf);
+  }
+</style>
+
+<div class="crystal">
+  💎
+</div>`,
+    targetDescription: {
+      en: 'A legendary crystal diamond radiating a radiant cyan neon light halo.',
+      uz: 'Atrofida yorqin och ko\'k neon nur taratayotgan afsonaviy olmos.'
+    },
+    anatomy: [
+      {
+        part: 'filter:',
+        role: {
+          en: 'Photo Filter Engine',
+          uz: 'Foto filtr mexanizmi'
+        },
+        explanation: {
+          en: 'Applies visual graphics processing to the rendered element.',
+          uz: 'Chizilgan elementga vizual grafik ishlov berishni qo\'llaydi.'
+        },
+        effect: {
+          en: 'Enables visual graphics filters',
+          uz: 'Vizual grafik filtrlarni yoqadi'
+        },
+        visualPreview: '<div class="mini-canvas">🔮 Graphic Filter Active</div>'
+      },
+      {
+        part: 'drop-shadow(0 0 20px #2dd4bf)',
+        role: {
+          en: 'Neon Contour Glow',
+          uz: 'Neon kontur nuri'
+        },
+        explanation: {
+          en: 'Casts a soft 20px colored light halo wrapping the exact shape of the emoji.',
+          uz: 'Emoji shaklini aniq o\'rab turuvchi 20px lik mayin rangli nur halqasini taratadi.'
+        },
+        effect: {
+          en: 'Radiates glowing neon aura',
+          uz: 'Porlovchi neon nur taratadi'
+        },
+        visualPreview: '<div class="mini-canvas"><span style="filter: drop-shadow(0 0 12px #2dd4bf); font-size: 20px;">💎</span> Glow</div>'
+      }
+    ],
+    listOfTags: [
+      {
+        code: 'filter: drop-shadow(0 0 15px cyan);',
+        name: {
+          en: 'Drop Shadow Glow',
+          uz: 'Konturli nur'
+        },
+        description: {
+          en: 'Wraps the exact shape in a glowing colored light halo',
+          uz: 'Shaklni porlovchi rangli nur halqasi bilan o\'raydi'
+        },
+        exampleHtml: 'filter: drop-shadow(0 0 10px #2dd4bf);'
+      },
+      {
+        code: 'filter: blur(4px);',
+        name: {
+          en: 'Blur Filter',
+          uz: 'Xiralashtirish filtri'
+        },
+        description: {
+          en: 'Softens the element like frosted glass',
+          uz: 'Elementni xira muzlagan oynadek ko\'rsatadi'
+        },
+        exampleHtml: 'filter: blur(4px);'
+      },
+      {
+        code: 'filter: grayscale(100%);',
+        name: {
+          en: 'Grayscale',
+          uz: 'Oq-qora rejim'
+        },
+        description: {
+          en: 'Turns any photo into vintage black & white',
+          uz: 'Har qanday rangli fotosuratni oq-qora qiladi'
+        },
+        exampleHtml: 'filter: grayscale(100%);'
+      }
+    ],
+    tagShowcase: [
+      {
+        tag: 'drop-shadow(0 0 15px cyan)',
+        meaning: {
+          en: 'Neon aura',
+          uz: 'Neon aura'
+        }
+      },
+      {
+        tag: 'blur(4px)',
+        meaning: {
+          en: 'Frosted glass',
+          uz: 'Xiralashtirish'
+        }
+      }
+    ],
+    quickTags: [
+      'filter: drop-shadow(0 0 20px #2dd4bf);',
+      'filter: blur(4px);'
+    ],
+    challenge: {
+      mission: {
+        en: 'Add filter: drop-shadow(0 0 20px #2dd4bf); to .crystal so the diamond radiates a neon glow!',
+        uz: '.crystal ga filter: drop-shadow(0 0 20px #2dd4bf); qo\'shing, shunda olmos neon nur taratadi!'
+      },
+      hint: {
+        en: 'Set filter to drop-shadow(0 0 20px #2dd4bf); inside the .crystal class.',
+        uz: '.crystal klassidagi filter qiymatini drop-shadow(0 0 20px #2dd4bf); qiling.'
+      },
+      rules: [
+        {
+          type: 'hasCssProperty',
+          property: 'filter',
+          valuePattern: /drop-shadow/i,
+          message: 'Add the drop-shadow filter to .crystal!'
+        }
+      ]
+    },
+    teacherGuide: {
+      analogy: {
+        en: 'drop-shadow is like turning on a colored light bulb directly behind your object so it glows like a neon sign.',
+        uz: 'drop-shadow buyumning orqasida rangli lampochkani yoqib, uni neon reklama belgisidek porlatishga o\'xshaydi.'
+      },
+      discussionQuestions: [
+        {
+          en: 'How is drop-shadow different from box-shadow? (drop-shadow outlines transparent shapes and emojis, box-shadow only shadows the square box!)',
+          uz: 'drop-shadow bilan box-shadow farqi nima? (drop-shadow shaffof emoji shaklini o\'rab nur sochadi, box-shadow esa faqat to\'rtburchak qutini!)'
+        }
+      ],
+      commonMistakes: [
+        {
+          en: 'Writing box-shadow instead of filter: drop-shadow',
+          uz: 'filter: drop-shadow o\'rniga box-shadow yozib qo\'yish'
+        }
+      ],
+      funActivity: {
+        en: 'Change #2dd4bf to #ff5e7e to make the crystal glow hot pink!',
+        uz: '#2dd4bf rangini #ff5e7e ga almashtirib, olmosni yorqin pushti rangda porlating!'
+      }
+    }
+  }
+];
+
+export function getLessonById(id) {
+  return LESSONS.find(l => l.id === id) || LESSONS[0];
+}
+
+export function getLessonsByModule(moduleId) {
+  return LESSONS.filter(l => l.module === moduleId);
+}

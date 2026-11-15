@@ -1,135 +1,106 @@
-# 👾 CodeCraft Kids: HTML & CSS Educational Adventure
+# 🚀 CodeCraft Academy: Offline Coding School for Kids
 
-An interactive, kid-friendly learning platform and visual coding studio designed for parents and teachers to guide kids (ages 7–14) through **HTML & CSS** from their very first tag to creating superhero cards, interactive pizza menus, and cyber space stations!
+An interactive, 100% offline educational coding platform divided into two comprehensive tracks: **HTML & CSS** and **JavaScript**, specifically designed for classroom computer labs with rotating student shifts.
 
 ---
 
-## 🚀 100% Pure HTML/JS (Zero Node.js & Zero Localhost Required!)
+## 📁 Project Structure (Divided Workspace)
 
-You do **NOT** need to install Node.js, run servers, or configure anything!
-
-### To Run:
-1. **Just double-click `index.html`** in this folder! It will open directly in Chrome, Edge, Firefox, or Safari.
-2. (Or double-click `start.bat` on Windows).
-
-> 💡 **Teacher Pro-Tip**: You can copy `index.html` onto a USB flash drive or email it to your kids' laptops or school computers. Since all code, curriculum, styles, and audio synthesizers are 100% self-contained, it runs completely offline anywhere with zero installation!
-
-### Run Automated Tests & Coverage:
-```bash
-npm test
-# To inspect 99%+ code coverage:
-node --test --experimental-test-coverage tests/*.test.js
+```
+project teacher jarvis/
+├── index.html                   🚀 Academy Launchpad (Choose course with 1 click)
+├── start.bat                    🖥️ Windows 1-click offline launcher
+├── package.json                 📦 Root test & build runner (53 passing tests)
+│
+├── html-css/                    🎨 Track 1: HTML & CSS (24 Themes)
+│   ├── index.html               🇬🇧 English Standalone Build
+│   ├── index_uz.html            🇺🇿 100% Pure Uzbek Standalone Build
+│   ├── index_en.html            🇬🇧 Dedicated English Edition
+│   ├── src/                     🧩 Modular source code & curriculum
+│   ├── public/                  🎨 Stylesheets & assets
+│   ├── scripts/build.js         ⚡ Single-file bundler
+│   ├── tests/                   🧪 40 Automated unit tests
+│   └── start.bat                🚀 1-Click launcher
+│
+└── javascript/                  ⚡ Track 2: JavaScript (24 Themes)
+    ├── index.html               🇬🇧 English Standalone Build
+    ├── index_uz.html            🇺🇿 100% Pure Uzbek Standalone Build
+    ├── index_en.html            🇬🇧 Dedicated English Edition
+    ├── src/                     🧩 Modular source code, curriculum & labs
+    ├── public/                  🎨 Stylesheets & assets
+    ├── scripts/build.js         ⚡ Single-file bundler
+    ├── tests/                   🧪 13 Automated unit tests
+    └── start.bat                🚀 1-Click launcher
 ```
 
 ---
 
-## 🌟 Key Features Built for Kids & Parents
+## ⚡ 100% Offline & Zero Server Requirements
 
-### 1. 📖 For Every Theme / Subject
-- **Kid-Friendly Story & Real-World Analogy**: Explains the concepts in terms kids love (skeletons, lego blocks, megaphone volume, bubble wrap).
-- **Cheat Sheet & Quick Tag Chips**: Clickable buttons (e.g. `[+ <h1>]`, `[+ <button>]`, `[+ <img>]`, `[+ color: hotpink]`) so young kids don't struggle finding `<` and `>` on the keyboard.
-- **Starter Interactive Code**: Clean, formatted code ready to edit.
-- **🎯 "What the Result Should Look Like" Preview**: Kids and parents can switch between **Live Result**, **Target Goal**, and **⚖️ Side-by-Side Comparison** so they always know what success looks like.
-- **Target Description**: Plain-language breakdown explaining every visual element in the result.
-- **Mission Quest & Automated Checker**: Click *"🚀 Check My Code!"* to test if the required tags/styles are present.
-- **Celebration Mode**: Confetti explosion on HTML5 canvas, retro synthesized fanfare sounds, and star awards!
-
-### 2. 🧑‍🏫 Teacher & Parent Secret Playbook (Toggleable)
-Click the **"🧑‍🏫 Teacher Mode"** or **"Teacher Tips"** button on any lesson to reveal:
-- **How to explain this to a kid** (simple analogies).
-- **Questions to ask aloud** to spark curiosity and conversation.
-- **Common traps kids fall into** (e.g. spelling `src` as `scr`, forgetting closing tags `</>`, forgetting quotes).
-- **Off-screen physical activities** (e.g. acting out headings with deep vs squeaky voices, putting on a coat for padding).
-
-### 3. 🧪 3 Interactive Visual Labs
-Accessible from the top navigation bar:
-- **📦 The Box Model Toy**: Interactive visualizer with sliders for Margin (personal space), Border (wall), Padding (bubble wrap), and Corner Curve (radius) with live generated CSS!
-- **🧩 Flexbox LEGO Lab**: Command 3 cute cyber-buddies (🤖, 🐱, 🚀) to snap into rows, columns, center, or space-between.
-- **🎨 Color & Gradient Mixer**: Pick superhero color palettes or slide RGB/Angle to create dazzling backgrounds.
-
-### 4. 🚀 Free Creative Sandbox ("Creative Mode")
-- Scratchpad where kids can create anything they want.
-- Comes with starter templates:
-  - 📄 Blank Canvas
-  - 🦸 Superhero Trading Card
-  - 🎂 Birthday Party Invitation
-- **💾 One-Click Download**: Saves their webpage as a real `.html` file directly to their computer to show friends or grandparents!
-
-### 5. 🔊 Kid Delight Features
-- **Retro Sound Synthesizer**: Uses Web Audio API for arcade clicks, star chimes, celebration fanfares, and cartoon boings (100% offline, zero audio files).
-- **Speech Narrator ("🔊 Read Aloud")**: Uses Web Speech API to read the lesson stories and missions aloud for young readers.
-- **Avatar & Cadet Name Selector**: Kids can choose from 10 avatars (🚀, 🐱, 🤖, 🦖, 🦄, ⚡, 👾, 🍕, 👑, 🦸) and name their profile.
-- **Themes**: Switch between *Candy*, *Arcade*, and *Space* color themes.
+- **Runs natively via `file://` protocol**: Double-click `index.html` on any PC running Windows 7, 8, 10, or modern macOS/Linux.
+- **No Node.js, XAMPP, or web server needed**: Everything runs out-of-the-box directly inside the browser.
+- **USB Portable**: Copy this whole folder to a flash drive to distribute across all 10 lab computers.
 
 ---
 
-## 📚 Curriculum Structure
+## 🕒 Lab Shift Management (3 Exact Shifts)
 
-### Module 1: The HTML Skeleton 🦴
-1. **The Body & The Bones** (`<html>`, `<head>`, `<body>`, `<!DOCTYPE>`)
-2. **Gigantic Headings & Secret Words** (`<h1>`–`<h6>`, `<p>`, `<strong>`, `<em>`, `<mark>`)
-3. **Super Action Buttons** (`<button>`, `<input>`, `onclick="alert(...)"`)
-4. **Pictures, Pets & Monsters** (`<img src="" alt="" width="">`)
-5. **Secret Portals (Hyperlinks)** (`<a href="" target="_blank">`)
-6. **Treasure Lists & Inventories** (`<ul>`, `<ol>`, `<li>`)
-7. **Secret Boxes & Card Containers** (`<div>`, `<span>`, `class=""`)
+Both tracks are integrated with the offline `localStorage` multi-student profile system configured for your 3 classroom shifts:
+1. **1-Smena**: 10:30 – 12:00
+2. **2-Smena**: 14:00 – 15:30
+3. **3-Smena**: 15:30 – 17:00
 
-### Module 2: The CSS Magic Paint 🎨
-8. **Color Power & Gradients** (`color`, `background`, Hex `#ff007f`, gradients)
-9. **Epic Typography & Text Shadows** (`font-family`, `font-size`, `text-shadow`)
-10. **The Secret Box Model** (`margin`, `border`, `padding`, `width`)
-11. **Rounded Corners & Magic Badges** (`border-radius: 50%`, pills)
-12. **Flexbox: The LEGO Snap System** (`display: flex`, `justify-content`, `gap`)
-13. **Hover Powers & Micro-Interactions** (`:hover`, `transform: scale`, `transition`)
-14. **Alive & Bouncing: Keyframe Animations** (`@keyframes`, `animation: bounce infinite`)
-
-### Module 3: Epic Mini-Projects 🚀
-15. **Project 1: Superhero / Pet ID Card** (Complete trading card with badges and power moves)
-16. **Project 2: Yummy Pizza Restaurant** (Restaurant menu with prices and interactive ordering)
-17. **Project 3: Cyber Space Station** (Sci-fi telemetry dashboard with progress bars and ignition trigger)
+### Features:
+- **Instant Student Switching**: Students choose their shift and avatar to immediately load their individual star count, completed lessons, and last saved code.
+- **Shift Filter Pills**: Filter registered students with 1 click: `[Barcha Smenalar]` `[1-Smena]` `[2-Smena]` `[3-Smena]`.
+- **USB Backup & Restore**: Teachers can export all student profiles from one PC to a `.json` backup and import them onto any of the other 9 computers.
 
 ---
 
-## 🛠️ Adding New Lessons
+## 📚 JavaScript Curriculum (24 Curated Themes)
 
-New lessons can be added easily in `src/modules/curriculum.js`. Each lesson object accepts:
-```javascript
-{
-  id: 'my-lesson-id',
-  module: 'html', // or 'css' or 'projects'
-  title: 'Lesson Title',
-  icon: '🌟',
-  tag: '<tag>',
-  summary: 'Short description',
-  story: 'Engaging story for kids',
-  tagsExplored: ['<h1>', '<p>'],
-  quickTags: ['<h1>', '</h1>'],
-  initialCode: `...`,
-  targetCode: `...`,
-  targetDescription: `Detailed explanation of what the result looks like`,
-  challenge: {
-    mission: 'What the student needs to do',
-    hint: 'Helpful hint if they get stuck',
-    rules: [
-      { type: 'hasTag', tag: 'h1', message: 'Add an <h1> tag!' }
-    ]
-  },
-  teacherGuide: {
-    analogy: 'Real-world analogy',
-    discussionQuestions: ['Question 1', 'Question 2'],
-    commonMistakes: ['Mistake 1'],
-    funActivity: 'Off-screen activity'
-  }
-}
-```
+### Modul 1: JS Boshlanishi va O'zgaruvchilar (Themes 1 - 6)
+1. `console.log()` va `alert()` — Salom Dunyo!
+2. `let` va `const` — Sehrli Qutilar (O'zgaruvchilar)
+3. Ma'lumot Turlari — String, Number, Boolean
+4. Matematik Amallar — Hisob-Kitob (+, -, *, /, %)
+5. Sehrli Matnlar — Template Literals (``${}``)
+6. Foydalanuvchidan Ma'lumot Olish — `prompt()` va `confirm()`
+
+### Modul 2: Mantiq, Shartlar va Funksiyalar (Themes 7 - 12)
+7. Shartlar — `if` va `else` (Qarorlar Qabul Qilish)
+8. Taqqoslash va Mantiq — `===`, `>`, `<`, `&&`, `||`
+9. Ko'p Shartli Tanlov — `else if` (Baholash Tizimi)
+10. Funksiyalar — Qayta Ishlatiluvchi Sehrli Buyruqlar
+11. Parametrlar va Natija Qaytarish (`return`)
+12. Arrow Funksiyalar — Zamonaviy Qisqa Yozuv (`() => {}`)
+
+### Modul 3: Massivlar, Tsikllar va Obyektlar (Themes 13 - 18)
+13. Massivlar — Sehrli Ryukzak va Ro'yxatlar (`[]`)
+14. Massiv Metodlari — `push()` va `pop()`
+15. Takrorlash Mashinasi — `for` Tsikli
+16. Shartli Takrorlash — `while` Tsikli
+17. Obyektlar — Qahramon Xususiyatlari (`{}`)
+18. O'yin Do'koni — Obyektlar Massivi
+
+### Modul 4: Jonli Veb Sahifa va Mini-O'yinlar (Themes 19 - 24)
+19. Sahifani Boshqarish — `querySelector()`
+20. Matn va Rangni O'zgartirish — `textContent` va `style`
+21. Hodisalar — `addEventListener('click')` (Jonli Tugma)
+22. Taymerlar — `setTimeout()` va `setInterval()`
+23. Tasodifiy Sonlar va O'yin Oshiqlari — `Math.random()`
+24. Super Mini-Loyiha — Jonli Kliker O'yini (Clicker Game)
 
 ---
 
-## 🧪 Automated Tests
-Run:
+## 🧪 Testing Both Projects
+
+Run all 53 automated unit tests from the root directory:
 ```bash
 npm test
 ```
-- **22 Unit & Integration tests**
-- **99.27% Line Coverage**
-- Automated validation of all lessons, starter codes, and target codes.
+Or test each project individually:
+```bash
+npm run test:html
+npm run test:js
+```

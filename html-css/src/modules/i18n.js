@@ -1,0 +1,137 @@
+/**
+ * Internationalization (i18n) Module: English (EN) & Uzbek (UZ)
+ * Provides clean child-friendly translations for interface controls, labels, and modals.
+ */
+
+export const UI_TEXT = {
+  en: {
+    appTitle: 'CodeCraft',
+    appSubtitle: 'HTML & CSS for Kids',
+    startPractice: '🚀 Start Practice',
+    resetCode: '🔄 Reset to Start',
+    listOfTags: '📋 List of Tags',
+    teacherTips: '🧑‍🏫 Teacher Tips',
+    soundOn: '🔊 Sound: ON',
+    soundOff: '🔇 Sound: OFF',
+    freeSandbox: '🚀 Free Sandbox',
+    lessonPrefix: 'Theme',
+    yourProgress: 'Your Progress',
+    completedTag: '✅ Completed!',
+    humanLanguageHeader: '💡 In Human Language: What is this?',
+    tagSandwichHeader: '🥪 The Secret Tag Sandwich: Opening vs Closing',
+    tagShowcaseHeader: '🏷️ Simple Tags to Know:',
+    stepBreakdownHeader: '🔍 Step-by-Step Breakdown: What Each Part Does to the Result',
+    resultCallout: 'Result:',
+    codeEditorTitle: 'Code (Edit Here)',
+    tagsLabel: 'Tags:',
+    browserPreviewTitle: 'What the Browser Draws',
+    yourResultTab: 'Your Result',
+    targetGoalTab: '🎯 Target Goal',
+    compareTab: '⚖️ Compare',
+    targetExplanationTitle: '🎯 What the Result Should Look Like:',
+    missionTag: '🎯 Mission',
+    hintBtn: '💡 Hint',
+    checkCodeBtn: '🚀 Check My Code!',
+    copyBtn: '📋 Copy',
+    copiedMsg: '✅ Copied!',
+    tidyBtn: '🪄 Tidy',
+    modalCompleteTitle: 'MISSION COMPLETE!',
+    starsEarnedMsg: '+3 STARS EARNED! ⭐⭐⭐',
+    stayHereBtn: 'Stay Here',
+    nextLessonBtn: 'Next Lesson ➡️',
+    tryAgainTitle: 'Almost There!',
+    tryAgainBody: 'Take a quick look at your code:',
+    retryBtn: 'Let Me Try Again! 💪',
+    tagListModalTitle: 'List of Tags & Codes',
+    tagListDesc: 'Here are all the codes and tags you learn in this theme. Click any code chip to copy it!',
+    colCode: 'Code / Tag',
+    colName: 'Name',
+    colMeaning: 'Meaning (What It Does)',
+    doneBtn: 'Got it!',
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    labBoxModelTitle: '📦 Box Model Playground',
+    labFlexboxTitle: '🧩 Flexbox LEGO Playground',
+    labColorTitle: '🎨 Color & Gradient Mixer',
+    labGridTitle: '🏁 CSS Grid 2D World',
+    topicLabBtn: '🧪 Visual Lab',
+    topicLabModalTitle: 'Interactive Visual Lab',
+    topicLabEffectLabel: 'Effect on Scene:',
+    topicLabGeneratedCode: 'Live Generated Code'
+  },
+  uz: {
+    appTitle: 'CodeCraft',
+    appSubtitle: 'Bolalar uchun HTML va CSS',
+    startPractice: '🚀 Amaliyotni boshlash',
+    resetCode: '🔄 Boshlang\'ich kodga qaytish',
+    listOfTags: '📋 Teglar ro\'yxati',
+    teacherTips: '🧑‍🏫 O\'qituvchi maslahatlari',
+    soundOn: '🔊 Ovoz: Yoniq',
+    soundOff: '🔇 Ovoz: O\'chiq',
+    freeSandbox: '🚀 Erkin laboratoriya',
+    lessonPrefix: 'Mavzu',
+    yourProgress: 'Sizning natijangiz',
+    completedTag: '✅ Bajarildi!',
+    humanLanguageHeader: '💡 Oddiy tilda: Bu nima o\'zi?',
+    tagSandwichHeader: '🥪 Sehrli Sendvich: Ochuvchi va Yopuvchi teglar',
+    tagShowcaseHeader: '🏷️ Bilib olish kerak bo\'lgan oddiy teglar:',
+    stepBreakdownHeader: '🔍 Qadamma-qadam tahlil: Har bir belgi natijaga qanday ta\'sir qiladi?',
+    resultCallout: 'Natija:',
+    codeEditorTitle: 'Kod (Shu yerda tahrirlang)',
+    tagsLabel: 'Teglar:',
+    browserPreviewTitle: 'Brauzer chizadigan natija',
+    yourResultTab: 'Sizning kodingiz',
+    targetGoalTab: '🎯 Maqsad natijasi',
+    compareTab: '⚖️ Taqqoslash',
+    targetExplanationTitle: '🎯 Natija qanday ko\'rinishi kerak:',
+    missionTag: '🎯 Vazifa',
+    hintBtn: '💡 Maslahat',
+    checkCodeBtn: '🚀 Kodimni tekshirish!',
+    copyBtn: '📋 Nusxalash',
+    copiedMsg: '✅ Nusxalandi!',
+    tidyBtn: '🪄 Tartiblash',
+    modalCompleteTitle: 'VAZIFA BAJARILDI!',
+    starsEarnedMsg: '+3 YULDUZCHA YUTIB OLDINGIZ! ⭐⭐⭐',
+    stayHereBtn: 'Shu yerda qolish',
+    nextLessonBtn: 'Keyingi dars ➡️',
+    tryAgainTitle: 'Juda yaqin keldingiz!',
+    tryAgainBody: 'Kodingizga yana bir bor e\'tibor bering:',
+    retryBtn: 'Qayta urinib ko\'rish! 💪',
+    tagListModalTitle: 'Teglar va Kodlar Ro\'yxati',
+    tagListDesc: 'Ushbu mavzuda o\'rganiladigan barcha teglar. Nusxalash uchun istalgan kod ustiga bosing!',
+    colCode: 'Kod / Teg',
+    colName: 'Nomi',
+    colMeaning: 'Vazifasi (Nima ish qiladi)',
+    doneBtn: 'Tushundim!',
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    labBoxModelTitle: '📦 Box Model Maydonchasi',
+    labFlexboxTitle: '🧩 Flexbox Konstruktori',
+    labColorTitle: '🎨 Rang va Gradient Mikseri',
+    labGridTitle: '🏁 CSS Grid 2D Dunyosi',
+    topicLabBtn: '🧪 Vizual Laboratoriya',
+    topicLabModalTitle: 'Interaktiv Vizual Laboratoriya',
+    topicLabEffectLabel: 'Sahnaga ta\'siri:',
+    topicLabGeneratedCode: 'Jonli Yaratilgan Kod'
+  }
+};
+
+export function t(key, lang = 'en') {
+  const currentLang = (lang === 'uz') ? 'uz' : 'en';
+  return UI_TEXT[currentLang]?.[key] || UI_TEXT.en[key] || key;
+}
+
+export function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}

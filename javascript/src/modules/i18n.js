@@ -1,0 +1,132 @@
+/**
+ * Internationalization (i18n) Module: English (EN) & Uzbek (UZ) for CodeCraft JS
+ */
+
+export const UI_TEXT = {
+  en: {
+    appTitle: 'CodeCraft JS',
+    appSubtitle: 'JavaScript for Kids',
+    startPractice: '🚀 Start Practice',
+    resetCode: '🔄 Reset to Start',
+    listOfTags: '📋 List of Commands',
+    teacherTips: '🧑‍🏫 Teacher Tips',
+    soundOn: '🔊 Sound: ON',
+    soundOff: '🔇 Sound: OFF',
+    freeSandbox: '🚀 Free Sandbox',
+    lessonPrefix: 'Theme',
+    yourProgress: 'Your Progress',
+    completedTag: '✅ Completed!',
+    humanLanguageHeader: '💡 In Human Language: What is this?',
+    tagSandwichHeader: '🥪 The Secret Formula: How to Write It',
+    tagShowcaseHeader: '🏷️ Simple Commands & Keywords to Know:',
+    stepBreakdownHeader: '🔍 Step-by-Step Breakdown: What Each Part Does to the Result',
+    resultCallout: 'Result:',
+    codeEditorTitle: 'JS Code (Edit Here)',
+    tagsLabel: 'Keywords:',
+    browserPreviewTitle: 'Live Preview & Console Output',
+    yourResultTab: 'Console & Output',
+    targetGoalTab: '🎯 Target Goal',
+    compareTab: '⚖️ Compare',
+    targetExplanationTitle: '🎯 What the Result Should Look Like:',
+    missionTag: '🎯 Mission',
+    hintBtn: '💡 Hint',
+    checkCodeBtn: '🚀 Check My Code!',
+    runCodeBtn: '▶️ Run Code',
+    copyBtn: '📋 Copy',
+    copiedMsg: '✅ Copied!',
+    tidyBtn: '🪄 Tidy',
+    clearConsoleBtn: '🧹 Clear Console',
+    modalCompleteTitle: 'MISSION COMPLETE!',
+    starsEarnedMsg: '+3 STARS EARNED! ⭐⭐⭐',
+    stayHereBtn: 'Stay Here',
+    nextLessonBtn: 'Next Lesson ➡️',
+    tryAgainTitle: 'Almost There!',
+    tryAgainBody: 'Take a quick look at your code:',
+    retryBtn: 'Let Me Try Again! 💪',
+    tagListModalTitle: 'List of Commands & Keywords',
+    tagListDesc: 'Here are all the JavaScript commands and keywords in this theme. Click any chip to copy it!',
+    colCode: 'Command / Code',
+    colName: 'Name',
+    colMeaning: 'Meaning (What It Does)',
+    doneBtn: 'Got it!',
+    langToggleBtn: '🇺🇿 O\'zbekcha',
+    labsBtn: '🧪 Visual Labs',
+    readAloudBtn: '🔊 Read Aloud',
+    stopSpeechBtn: '⏹️ Stop Voice',
+    insertTagHint: 'Click to insert at cursor',
+    topicLabBtn: '🧪 Visual Lab',
+    topicLabModalTitle: 'Interactive JS Visual Lab',
+    topicLabEffectLabel: 'Stage Effect on State:',
+    topicLabGeneratedCode: 'Live Generated Code'
+  },
+  uz: {
+    appTitle: 'CodeCraft JS',
+    appSubtitle: 'Bolalar uchun JavaScript',
+    startPractice: '🚀 Mashqni Boshlash',
+    resetCode: '🔄 Boshiga Qaytish',
+    listOfTags: '📋 Buyruqlar Ro\'yxati',
+    teacherTips: '🧑‍🏫 O\'qituvchiga Maslahat',
+    soundOn: '🔊 Ovoz: YONIQ',
+    soundOff: '🔇 Ovoz: O\'CHIQ',
+    freeSandbox: '🚀 Erkin Qumloq (Sandbox)',
+    lessonPrefix: 'Mavzu',
+    yourProgress: 'Sizning Natijangiz',
+    completedTag: '✅ Bajarildi!',
+    humanLanguageHeader: '💡 Odam Tilida: Bu nima o\'zi?',
+    tagSandwichHeader: '🥪 Sehrli Formula: Qanday yoziladi?',
+    tagShowcaseHeader: '🏷️ Bilib olish kerak bo\'lgan buyruqlar va kalit so\'zlar:',
+    stepBreakdownHeader: '🔍 Qadamma-qadam tahlil: Har bir belgi natijaga qanday ta\'sir qiladi?',
+    resultCallout: 'Natija:',
+    codeEditorTitle: 'JS Kod (Shu yerda tahrirlang)',
+    tagsLabel: 'Kalit so\'zlar:',
+    browserPreviewTitle: 'Jonli Natija va Konsol Oynasi',
+    yourResultTab: 'Konsol va Natija',
+    targetGoalTab: '🎯 Maqsad natijasi',
+    compareTab: '⚖️ Taqqoslash',
+    targetExplanationTitle: '🎯 Natija qanday ko\'rinishi kerak:',
+    missionTag: '🎯 Vazifa',
+    hintBtn: '💡 Maslahat',
+    checkCodeBtn: '🚀 Kodimni tekshirish!',
+    runCodeBtn: '▶️ Ishga tushirish',
+    copyBtn: '📋 Nusxalash',
+    copiedMsg: '✅ Nusxalandi!',
+    tidyBtn: '🪄 Tartiblash',
+    clearConsoleBtn: '🧹 Konsolni tozalash',
+    modalCompleteTitle: 'VAZIFA BAJARILDI!',
+    starsEarnedMsg: '+3 YULDUZCHA YUTIB OLDINGIZ! ⭐⭐⭐',
+    stayHereBtn: 'Shu yerda qolish',
+    nextLessonBtn: 'Keyingi dars ➡️',
+    tryAgainTitle: 'Juda yaqin keldingiz!',
+    tryAgainBody: 'Kodingizga yana bir bor e\'tibor bering:',
+    retryBtn: 'Qayta urinib ko\'rish! 💪',
+    tagListModalTitle: 'Buyruqlar va Kalit So\'zlar Ro\'yxati',
+    tagListDesc: 'Ushbu mavzuda o\'rganiladigan barcha buyruqlar. Nusxalash uchun istalgan kod ustiga bosing!',
+    colCode: 'Buyruq / Kod',
+    colName: 'Nomi',
+    colMeaning: 'Vazifasi (Nima ish qiladi)',
+    doneBtn: 'Tushundim!',
+    langToggleBtn: '🇬🇧 English',
+    labsBtn: '🧪 Vizual Laboratoriyalar',
+    readAloudBtn: '🔊 Ovozli o\'qish',
+    stopSpeechBtn: '⏹️ To\'xtatish',
+    insertTagHint: 'Kursorga kiritish uchun bosing',
+    topicLabBtn: '🧪 Vizual Laboratoriya',
+    topicLabModalTitle: 'Interaktiv JS Vizual Laboratoriya',
+    topicLabEffectLabel: 'Holatga ta\'siri:',
+    topicLabGeneratedCode: 'Jonli Yaratilgan Kod'
+  }
+};
+
+export function t(key, lang = 'en') {
+  const currentLang = (lang === 'uz') ? 'uz' : 'en';
+  return UI_TEXT[currentLang]?.[key] || UI_TEXT.en[key] || key;
+}
+
+export function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
