@@ -4071,6 +4071,15 @@ function t(key, lang = 'en') {
   return UI_TEXT[currentLang]?.[key] || UI_TEXT.en[key] || key;
 }
 
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 
   // --- Validator Module ---
   /**
@@ -4176,15 +4185,21 @@ function validateChallenge(code, rules = []) {
   // --- State Module ---
   /**
  * State Management Module
- * Pure immutable state transitions for progress, badges, and preferences.
+ * Pure immutable state transitions for progress, badges, preferences,
+ * and offline multi-student shift profile management.
  */
 
 const STORAGE_KEY = 'codecraft_kids_v1_state';
+const PROFILES_INDEX_KEY = 'codecraft_kids_profiles_index_v2';
+const ACTIVE_PROFILE_ID_KEY = 'codecraft_kids_active_profile_id_v2';
+const PROFILE_STATE_PREFIX = 'codecraft_kids_profile_state_';
 
 function createInitialState() {
   return {
     studentName: 'Code Cadet',
     studentAvatar: '🚀',
+    shift: '1-Smena (09:00 - 11:00)',
+    profileId: 'prof_default',
     stars: 0,
     completedLessons: [],
     badges: [],
@@ -4226,16 +4241,14 @@ function createInitialState() {
         font-size: 16px;
         border-radius: 8px;
         cursor: pointer;
-        font-weight: bold;
       }
-      button:hover { background: #6957ea; }
     </style>
   </head>
   <body>
     <div class="card">
-      <h1>🚀 My Secret Lab!</h1>
-      <p>Build anything you imagine here!</p>
-      <button onclick="alert('⚡ Superpower Activated!')">Click Me</button>
+      <h1>Hello CodeCraft!</h1>
+      <p>Edit this code in the sandbox to build anything you imagine!</p>
+      <button onclick="alert('Great job!')">Click Me</button>
     </div>
   </body>
 </html>`
@@ -4250,7 +4263,7 @@ function completeLesson(state, lessonId, starsEarned = 3) {
   const updatedCompleted = [...state.completedLessons, lessonId];
   const updatedStars = state.stars + starsEarned;
 
-  const updatedBadges = [...state.badges];
+  let updatedBadges = [...state.badges];
   if (updatedCompleted.length >= 1 && !updatedBadges.includes('first-code')) {
     updatedBadges.push('first-code');
   }
@@ -4259,6 +4272,9 @@ function completeLesson(state, lessonId, starsEarned = 3) {
   }
   if (updatedCompleted.length >= 10 && !updatedBadges.includes('master-crafter')) {
     updatedBadges.push('master-crafter');
+  }
+  if (updatedCompleted.length >= 24 && !updatedBadges.includes('web-master')) {
+    updatedBadges.push('web-master');
   }
 
   return {
@@ -4302,10 +4318,9 @@ function toggleAudio(state) {
 }
 
 function toggleLanguage(state) {
-  const nextLang = state.lang === 'uz' ? 'en' : 'uz';
   return {
     ...state,
-    lang: nextLang
+    lang: state.lang === 'uz' ? 'en' : 'uz'
   };
 }
 
@@ -4331,11 +4346,236 @@ function setStudentProfile(state, { name, avatar }) {
   };
 }
 
+// ===================================================================
+// Multi-Student Shift Profile & Storage Engine (100% Offline)
+// ===================================================================
+
+function listStudentProfiles(storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.getItem) return [];
+
+    const raw = store.getItem(PROFILES_INDEX_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+
+    // Auto-migrate from legacy single state if present
+    const legacyRaw = store.getItem(STORAGE_KEY);
+    if (legacyRaw) {
+      try {
+        const legacy = JSON.parse(legacyRaw);
+        const defaultProfile = {
+          id: 'prof_default',
+          name: legacy.studentName || 'Code Cadet',
+          shift: legacy.shift || '1-Smena (09:00 - 11:00)',
+          avatar: legacy.studentAvatar || '🚀',
+          pin: '',
+          createdAt: Date.now(),
+          lastActiveAt: Date.now()
+        };
+        const profiles = [defaultProfile];
+        if (store.setItem) {
+          store.setItem(PROFILES_INDEX_KEY, JSON.stringify(profiles));
+          store.setItem(ACTIVE_PROFILE_ID_KEY, 'prof_default');
+          store.setItem(PROFILE_STATE_PREFIX + 'prof_default', JSON.stringify({
+            ...legacy,
+            profileId: 'prof_default',
+            shift: defaultProfile.shift
+          }));
+        }
+        return profiles;
+      } catch (err) {}
+    }
+  } catch (e) {
+    console.warn('Error reading student profiles:', e);
+  }
+  return [];
+}
+
+function getActiveProfileId(storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.getItem) {
+      const id = store.getItem(ACTIVE_PROFILE_ID_KEY);
+      if (id) return id;
+    }
+    const profiles = listStudentProfiles(store);
+    return profiles.length > 0 ? profiles[0].id : 'prof_default';
+  } catch (e) {
+    return 'prof_default';
+  }
+}
+
+function setActiveProfileId(profileId, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.setItem) {
+      store.setItem(ACTIVE_PROFILE_ID_KEY, profileId);
+    }
+  } catch (e) {}
+}
+
+function registerStudentProfile({ name, shift, avatar, pin }, storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+
+  const cleanName = (name || '').trim() || 'Code Cadet';
+  const cleanShift = shift || '1-Smena (09:00 - 11:00)';
+  const cleanAvatar = avatar || '🚀';
+  const cleanPin = (pin || '').trim();
+
+  const id = 'prof_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+  const newProfile = {
+    id,
+    name: cleanName,
+    shift: cleanShift,
+    avatar: cleanAvatar,
+    pin: cleanPin,
+    createdAt: Date.now(),
+    lastActiveAt: Date.now()
+  };
+
+  const freshState = {
+    ...createInitialState(),
+    profileId: id,
+    studentName: cleanName,
+    studentAvatar: cleanAvatar,
+    shift: cleanShift,
+    stars: 0,
+    completedLessons: [],
+    badges: []
+  };
+
+  if (store && store.setItem) {
+    const updatedProfiles = [...profiles, newProfile];
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(updatedProfiles));
+    store.setItem(ACTIVE_PROFILE_ID_KEY, id);
+    store.setItem(PROFILE_STATE_PREFIX + id, JSON.stringify(freshState));
+    store.setItem(STORAGE_KEY, JSON.stringify(freshState)); // sync legacy
+  }
+
+  return { profile: newProfile, state: freshState };
+}
+
+function loginStudentProfile(profileId, pin = '', storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+  const profile = profiles.find(p => p.id === profileId);
+
+  if (!profile) {
+    return { success: false, error: 'NOT_FOUND' };
+  }
+
+  if (profile.pin && profile.pin !== (pin || '').trim()) {
+    return { success: false, error: 'INCORRECT_PIN' };
+  }
+
+  profile.lastActiveAt = Date.now();
+  if (store && store.setItem) {
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(profiles));
+    store.setItem(ACTIVE_PROFILE_ID_KEY, profileId);
+  }
+
+  const state = loadProfileState(profileId, store);
+  if (store && store.setItem) {
+    store.setItem(STORAGE_KEY, JSON.stringify(state)); // sync legacy
+  }
+
+  return { success: true, profile, state };
+}
+
+function loadProfileState(profileId, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.getItem) {
+      const data = store.getItem(PROFILE_STATE_PREFIX + profileId);
+      if (data) {
+        return {
+          ...createInitialState(),
+          ...JSON.parse(data)
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load profile state:', e);
+  }
+  return createInitialState();
+}
+
+function saveProfileState(profileId, state, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (store && store.setItem) {
+      store.setItem(PROFILE_STATE_PREFIX + profileId, JSON.stringify(state));
+      const activeId = getActiveProfileId(store);
+      if (activeId === profileId) {
+        store.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+    }
+  } catch (e) {
+    console.warn('Could not save profile state:', e);
+  }
+}
+
+function deleteStudentProfile(profileId, storage = null) {
+  try {
+    const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+    if (!store || !store.setItem) return false;
+
+    let profiles = listStudentProfiles(store);
+    profiles = profiles.filter(p => p.id !== profileId);
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(profiles));
+
+    if (store.removeItem) {
+      store.removeItem(PROFILE_STATE_PREFIX + profileId);
+    }
+
+    const activeId = getActiveProfileId(store);
+    if (activeId === profileId) {
+      if (profiles.length > 0) {
+        store.setItem(ACTIVE_PROFILE_ID_KEY, profiles[0].id);
+        const nextState = loadProfileState(profiles[0].id, store);
+        store.setItem(STORAGE_KEY, JSON.stringify(nextState));
+      } else {
+        if (store.removeItem) {
+          store.removeItem(ACTIVE_PROFILE_ID_KEY);
+          store.removeItem(STORAGE_KEY);
+        }
+      }
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function saveStateToStorage(state, storage = null) {
   try {
     const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
     if (store && store.setItem) {
+      const profileId = state.profileId || getActiveProfileId(store) || 'prof_default';
+      store.setItem(PROFILE_STATE_PREFIX + profileId, JSON.stringify(state));
       store.setItem(STORAGE_KEY, JSON.stringify(state));
+
+      // Update profile metadata if exists
+      const raw = store.getItem(PROFILES_INDEX_KEY);
+      if (raw) {
+        try {
+          const profiles = JSON.parse(raw);
+          const p = profiles.find(x => x.id === profileId);
+          if (p) {
+            p.lastActiveAt = Date.now();
+            p.name = state.studentName || p.name;
+            p.avatar = state.studentAvatar || p.avatar;
+            p.shift = state.shift || p.shift;
+            store.setItem(PROFILES_INDEX_KEY, JSON.stringify(profiles));
+          }
+        } catch (err) {}
+      }
     }
   } catch (e) {
     console.warn('Could not save state to storage:', e);
@@ -4346,6 +4586,18 @@ function loadStateFromStorage(storage = null) {
   try {
     const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
     if (store && store.getItem) {
+      const activeId = getActiveProfileId(store);
+      if (activeId) {
+        const profileState = store.getItem(PROFILE_STATE_PREFIX + activeId);
+        if (profileState) {
+          return {
+            ...createInitialState(),
+            ...JSON.parse(profileState)
+          };
+        }
+      }
+
+      // Legacy fallback
       const data = store.getItem(STORAGE_KEY);
       if (data) {
         return {
@@ -4358,6 +4610,60 @@ function loadStateFromStorage(storage = null) {
     console.warn('Could not load state from storage:', e);
   }
   return createInitialState();
+}
+
+function exportClassroomBackup(storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  const profiles = listStudentProfiles(store);
+  const states = {};
+  profiles.forEach(p => {
+    states[p.id] = loadProfileState(p.id, store);
+  });
+  return JSON.stringify({
+    version: 2,
+    exportDate: new Date().toISOString(),
+    profiles,
+    states
+  }, null, 2);
+}
+
+function importClassroomBackup(jsonString, storage = null) {
+  const store = storage || (typeof window !== 'undefined' ? window.localStorage : null);
+  if (!store || !store.setItem) return { success: false, error: 'NO_STORAGE' };
+
+  try {
+    const parsed = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
+    if (!parsed || !parsed.profiles || !Array.isArray(parsed.profiles)) {
+      return { success: false, error: 'INVALID_FORMAT' };
+    }
+
+    const existingProfiles = listStudentProfiles(store);
+    const existingMap = new Map(existingProfiles.map(p => [p.id, p]));
+
+    let importedCount = 0;
+    parsed.profiles.forEach(p => {
+      existingMap.set(p.id, p);
+      if (parsed.states && parsed.states[p.id]) {
+        store.setItem(PROFILE_STATE_PREFIX + p.id, JSON.stringify(parsed.states[p.id]));
+      }
+      importedCount++;
+    });
+
+    const mergedProfiles = Array.from(existingMap.values());
+    store.setItem(PROFILES_INDEX_KEY, JSON.stringify(mergedProfiles));
+
+    if (parsed.profiles.length > 0) {
+      const firstId = parsed.profiles[0].id;
+      store.setItem(ACTIVE_PROFILE_ID_KEY, firstId);
+      if (parsed.states && parsed.states[firstId]) {
+        store.setItem(STORAGE_KEY, JSON.stringify(parsed.states[firstId]));
+      }
+    }
+
+    return { success: true, count: importedCount };
+  } catch (e) {
+    return { success: false, error: e.message };
+  }
 }
 
 
@@ -4823,6 +5129,372 @@ function downloadHtmlFile(filename = 'my-webpage.html', content) {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+
+  // --- Classroom Module ---
+  /**
+ * Classroom Multi-Student & Shift Portal Module
+ * 100% Offline LocalStorage student management for computer labs with shifts.
+ * Runs on Windows 7, 8, 10 with ZERO internet, servers, or database installations.
+ */
+
+
+
+
+
+function openStudentPortalModal({ state, onProfileSwitched, playSound, defaultTab = 'login' }) {
+  playSound?.('click', state.audioEnabled);
+
+  const isUz = state.lang === 'uz';
+  let activeTab = defaultTab;
+  let selectedAvatar = '🚀';
+
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'student-portal-modal';
+
+  function renderModalContent() {
+    const profiles = listStudentProfiles();
+    const activeId = getActiveProfileId();
+
+    modal.innerHTML = `
+      <div class="modal-card student-portal-card">
+        <div class="student-portal-header">
+          <div class="portal-header-left">
+            <span class="portal-icon">🏫</span>
+            <div>
+              <h3 class="portal-title">${isUz ? "O'quvchilar & Smenalar Portali" : "Student Profiles & Shifts"}</h3>
+              <p class="portal-subtitle">${isUz ? "100% Oflayn: Ma'lumotlar ushbu kompyuterda xavfsiz saqlanadi" : "100% Offline: Data stored permanently on this PC"}</p>
+            </div>
+          </div>
+          <button id="btn-close-portal" class="btn-close-modal" title="Close">✕</button>
+        </div>
+
+        <div class="portal-tabs-nav">
+          <button class="portal-tab-btn ${activeTab === 'login' ? 'active' : ''}" id="tab-btn-login">
+            👤 ${isUz ? "O'quvchini Tanlash (Kirish)" : "Login / Select Student"} (${profiles.length})
+          </button>
+          <button class="portal-tab-btn ${activeTab === 'register' ? 'active' : ''}" id="tab-btn-register">
+            ➕ ${isUz ? "Yangi O'quvchi (Ro'yxatdan o'tish)" : "New Student (Register)"}
+          </button>
+          <button class="portal-tab-btn ${activeTab === 'backup' ? 'active' : ''}" id="tab-btn-backup">
+            💾 ${isUz ? "Fleshka & O'qituvchi Boshqaruvi" : "USB Backup & Teacher Tools"}
+          </button>
+        </div>
+
+        <div class="portal-body" id="portal-tab-body">
+          ${renderTabBody(profiles, activeId)}
+        </div>
+      </div>
+    `;
+
+    attachEvents();
+  }
+
+  function renderTabBody(profiles, activeId) {
+    if (activeTab === 'login') {
+      if (profiles.length === 0) {
+        return `
+          <div class="portal-empty-state">
+            <span style="font-size: 48px;">🎒</span>
+            <h4>${isUz ? "Hali hech qanday o'quvchi ro'yxatdan o'tmagan" : "No students registered on this computer yet"}</h4>
+            <p>${isUz ? "Darsni boshlash uchun yangi o'quvchini ro'yxatdan o'tkazing." : "Register a new student to start tracking their progress."}</p>
+            <button id="btn-go-to-reg" class="btn-modal btn-modal-primary" style="margin-top: 12px;">
+              ➕ ${isUz ? "Yangi O'quvchi Qo'shish" : "Add First Student"}
+            </button>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="student-cards-grid">
+          ${profiles.map(p => {
+            const pState = loadProfileState(p.id);
+            const total = LESSONS.length;
+            const completed = pState.completedLessons ? pState.completedLessons.length : 0;
+            const pct = Math.round((completed / total) * 100);
+            const isActive = p.id === activeId;
+
+            return `
+              <div class="student-profile-card ${isActive ? 'active-card' : ''}" data-profile-id="${p.id}">
+                <div class="card-avatar-col">
+                  <span class="card-avatar">${escapeHtml(p.avatar || '🚀')}</span>
+                  ${p.pin ? '<span class="pin-protected-badge" title="PIN bilan himoyalangan">🔒 PIN</span>' : ''}
+                </div>
+                <div class="card-info-col">
+                  <div class="card-name-row">
+                    <strong class="card-student-name">${escapeHtml(p.name)}</strong>
+                    ${isActive ? `<span class="badge-active-tag">${isUz ? 'Faol' : 'Active'}</span>` : ''}
+                  </div>
+                  <div class="card-shift-tag">🕒 ${escapeHtml(p.shift || '1-Smena')}</div>
+                  <div class="card-progress-bar-wrap">
+                    <div class="card-progress-bar-fill" style="width: ${pct}%;"></div>
+                  </div>
+                  <div class="card-stats-row">
+                    <span>📚 ${completed}/${total} (${pct}%)</span>
+                    <span>⭐ ${pState.stars || 0}</span>
+                    <span>🏆 ${pState.badges ? pState.badges.length : 0}</span>
+                  </div>
+                </div>
+                <div class="card-action-col">
+                  <button class="btn-card-select ${isActive ? 'btn-selected' : ''}" data-id="${p.id}">
+                    ${isActive ? (isUz ? '✅ Tanlangan' : '✅ Active') : (isUz ? '👉 Kirish' : '👉 Login')}
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    if (activeTab === 'register') {
+      const avatars = ['🚀', '🤖', '🐱', '🦊', '🦁', '🐼', '💎', '⭐', '🎮', '🦄'];
+      return `
+        <form class="portal-form" id="form-register-student">
+          <div class="form-row">
+            <label for="reg-name"><strong>${isUz ? "O'quvchi Ismi va Familiyasi:" : "Student Full Name:"}</strong></label>
+            <input type="text" id="reg-name" class="lab-input-text" placeholder="${isUz ? 'Masalan: Ali Karimov' : 'e.g. Alex Johnson'}" required autofocus />
+          </div>
+
+          <div class="form-row">
+            <label for="reg-shift"><strong>${isUz ? "Dars Smenasi / Guruh:" : "Class Shift / Group:"}</strong></label>
+            <select id="reg-shift" class="lab-select">
+              <option value="1-Smena (09:00 - 11:00)">1-Smena (09:00 - 11:00)</option>
+              <option value="2-Smena (11:00 - 13:00)">2-Smena (11:00 - 13:00)</option>
+              <option value="3-Smena (14:00 - 16:00)">3-Smena (14:00 - 16:00)</option>
+              <option value="4-Smena (16:00 - 18:00)">4-Smena (16:00 - 18:00)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label><strong>${isUz ? "Qahramoningizni Tanlang (Avatar):" : "Choose Your Avatar:"}</strong></label>
+            <div class="avatar-picker-row">
+              ${avatars.map(av => `
+                <button type="button" class="avatar-pick-btn ${av === selectedAvatar ? 'selected' : ''}" data-avatar="${av}">
+                  ${av}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="reg-pin"><strong>${isUz ? "Maxfiy PIN-kod (Ixtiyoriy 4 ta raqam):" : "Secret PIN (Optional 4 digits):"}</strong></label>
+            <input type="password" id="reg-pin" class="lab-input-text" maxlength="4" placeholder="${isUz ? 'Boshqalar kirmasligi uchun (ixtiyoriy)' : 'Prevent others from accessing (optional)'}" />
+            <small style="color: var(--text-muted); font-size: 11px;">
+              ${isUz ? "Agar kiritmasangiz, o'quvchi 1 ta bosishda erkin kira oladi." : "If empty, student can log in instantly with 1 click."}
+            </small>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn-modal btn-modal-primary" style="padding: 12px 24px; font-size: 14px;">
+              🚀 ${isUz ? "Ro'yxatdan O'tish va Boshlash" : "Register & Start Practice"}
+            </button>
+          </div>
+        </form>
+      `;
+    }
+
+    if (activeTab === 'backup') {
+      return `
+        <div class="portal-backup-panel">
+          <div class="backup-info-card">
+            <h4>💾 ${isUz ? "O'qituvchi Uchun: Fleshkaga Saqlash & O'tkazish" : "Teacher Tools: USB Backup & Transfer"}</h4>
+            <p>${isUz ? "Ushbu kompyuterdagi barcha o'quvchilar ro'yxati va ularning bajargan mavzularini fleshkaga fayl qilib saqlab oling. Boshqa kompyuterga bir zumda yuklashingiz mumkin." : "Export all student accounts and their progress into a single file to keep backups on USB or transfer students between offline lab PCs."}</p>
+          </div>
+
+          <div class="backup-actions-grid">
+            <div class="backup-action-box">
+              <span style="font-size: 32px;">💾</span>
+              <strong>${isUz ? "Fleshkaga Saqlash" : "Export to USB"}</strong>
+              <p style="font-size: 11px; color: var(--text-muted);">${isUz ? "Barcha o'quvchilar progressini bitta .json faylga yuklab oladi." : "Downloads a complete .json file with all student profiles & stars."}</p>
+              <button id="btn-export-backup" class="btn-modal btn-modal-primary">
+                💾 ${isUz ? "Faylni Yuklab Olish (.json)" : "Download Backup (.json)"}
+              </button>
+            </div>
+
+            <div class="backup-action-box">
+              <span style="font-size: 32px;">📂</span>
+              <strong>${isUz ? "Fleshkadan Yuklash" : "Import from USB"}</strong>
+              <p style="font-size: 11px; color: var(--text-muted);">${isUz ? "Boshqa kompyuterdan saqlangan .json faylni ushbu kompyuterga qo'shadi." : "Restores or merges students from a .json backup file into this PC."}</p>
+              <input type="file" id="file-import-backup" accept=".json" style="display: none;" />
+              <button id="btn-trigger-import" class="btn-modal" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: white;">
+                📂 ${isUz ? "Faylni Tanlash..." : "Choose File..."}
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <h4 style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">
+              ${isUz ? "Ushbu Kompyuterdagi O'quvchilar Ro'yxati:" : "Registered Students on this PC:"}
+            </h4>
+            <div class="backup-students-table-wrap">
+              <table class="tag-list-table">
+                <thead>
+                  <tr>
+                    <th>${isUz ? "O'quvchi" : "Student"}</th>
+                    <th>${isUz ? "Smena" : "Shift"}</th>
+                    <th>${isUz ? "Bajarilgan" : "Completed"}</th>
+                    <th>⭐</th>
+                    <th>${isUz ? "Amal" : "Action"}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${profiles.map(p => {
+                    const pState = loadProfileState(p.id);
+                    return `
+                      <tr>
+                        <td><strong>${escapeHtml(p.avatar || '🚀')} ${escapeHtml(p.name)}</strong></td>
+                        <td>${escapeHtml(p.shift || '1-Smena')}</td>
+                        <td>${pState.completedLessons ? pState.completedLessons.length : 0} / ${LESSONS.length}</td>
+                        <td>⭐ ${pState.stars || 0}</td>
+                        <td>
+                          <button class="btn-delete-student" data-del-id="${p.id}" title="${isUz ? 'Profilni o\'chirish' : 'Delete profile'}">
+                            🗑️
+                          </button>
+                        </td>
+                      </tr>
+                    `;
+                  }).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    return '';
+  }
+
+  function attachEvents() {
+    // Close button
+    modal.querySelector('#btn-close-portal')?.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    // Tab buttons
+    modal.querySelector('#tab-btn-login')?.addEventListener('click', () => { activeTab = 'login'; renderModalContent(); });
+    modal.querySelector('#tab-btn-register')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
+    modal.querySelector('#tab-btn-backup')?.addEventListener('click', () => { activeTab = 'backup'; renderModalContent(); });
+    modal.querySelector('#btn-go-to-reg')?.addEventListener('click', () => { activeTab = 'register'; renderModalContent(); });
+
+    // Select student in login tab
+    modal.querySelectorAll('.btn-card-select').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const profiles = listStudentProfiles();
+        const p = profiles.find(x => x.id === id);
+        if (!p) return;
+
+        let pin = '';
+        if (p.pin) {
+          pin = prompt(isUz ? "Maxfiy 4 xonali PIN-kodni kiriting:" : "Enter your 4-digit secret PIN:");
+          if (pin === null) return;
+        }
+
+        const res = loginStudentProfile(id, pin);
+        if (res.success) {
+          playSound?.('success', true);
+          onProfileSwitched?.(res.state, res.profile);
+          modal.remove();
+        } else {
+          playSound?.('tryAgain', true);
+          alert(isUz ? "❌ PIN-kod noto'g'ri kiritildi!" : "❌ Incorrect PIN!");
+        }
+      });
+    });
+
+    // Avatar pickers in register tab
+    modal.querySelectorAll('.avatar-pick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedAvatar = btn.getAttribute('data-avatar');
+        modal.querySelectorAll('.avatar-pick-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+
+    // Form submit for registration
+    modal.querySelector('#form-register-student')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = modal.querySelector('#reg-name')?.value;
+      const shift = modal.querySelector('#reg-shift')?.value;
+      const pin = modal.querySelector('#reg-pin')?.value;
+
+      const { profile, state: freshState } = registerStudentProfile({
+        name,
+        shift,
+        avatar: selectedAvatar,
+        pin
+      });
+
+      playSound?.('success', true);
+      onProfileSwitched?.(freshState, profile);
+      modal.remove();
+    });
+
+    // Export to USB JSON file
+    modal.querySelector('#btn-export-backup')?.addEventListener('click', () => {
+      const backupJson = exportClassroomBackup();
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const filename = `codecraft_backup_${dateStr}.json`;
+
+      const blob = new Blob([backupJson], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      playSound?.('click', true);
+    });
+
+    // Trigger Import file input
+    const fileInput = modal.querySelector('#file-import-backup');
+    modal.querySelector('#btn-trigger-import')?.addEventListener('click', () => {
+      fileInput?.click();
+    });
+
+    fileInput?.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        const text = evt.target?.result;
+        const res = importClassroomBackup(text);
+        if (res.success) {
+          playSound?.('success', true);
+          alert(isUz ? `✅ ${res.count} ta o'quvchi ma'lumotlari muvaffaqiyatli yuklandi!` : `✅ ${res.count} student profiles imported successfully!`);
+          renderModalContent();
+        } else {
+          playSound?.('tryAgain', true);
+          alert(isUz ? "❌ Faylni o'qishda xatolik yuz berdi." : "❌ Failed to parse backup file.");
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Delete student profile in backup tab
+    modal.querySelectorAll('.btn-delete-student').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-del-id');
+        const confirmMsg = isUz ? "Haqiqatan ham ushbu o'quvchi profilini o'chirmoqchimisiz?" : "Are you sure you want to delete this student profile?";
+        if (confirm(confirmMsg)) {
+          deleteStudentProfile(id);
+          playSound?.('click', true);
+          renderModalContent();
+        }
+      });
+    });
+  }
+
+  renderModalContent();
+  document.body.appendChild(modal);
 }
 
 
@@ -7437,7 +8109,8 @@ function renderTopicLab(container, lesson, lang = 'en') {
 
 
   // --- Main App Controller ---
-  /**
+  
+/**
  * CodeCraft Kids Main Application Controller
  * Focused, uncluttered, step-by-step educational interface.
  */
@@ -7520,6 +8193,7 @@ function cacheElements() {
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnLabs = document.getElementById('btn-labs');
   elements.btnSandbox = document.getElementById('btn-sandbox');
+  elements.btnStudentProfile = document.getElementById('btn-student-profile');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
   elements.progressFill = document.getElementById('progress-fill');
@@ -7531,6 +8205,21 @@ function cacheElements() {
 }
 
 function attachGlobalListeners() {
+  // Student Shift Profile & Classroom Portal
+  elements.btnStudentProfile?.addEventListener('click', () => {
+    openStudentPortalModal({
+      state,
+      onProfileSwitched: (newState, profile) => {
+        state = newState;
+        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        saveStateToStorage(state);
+        applyStateToUI();
+        selectLesson(state.currentLessonId || LESSONS[0].id);
+      },
+      playSound
+    });
+  });
+
   function switchLang(lang) {
     stopSpeaking();
     state = setLanguage(state, lang);
@@ -7645,6 +8334,21 @@ function applyTheme() {
 
 function applyStateToUI() {
   applyTheme();
+  const avatarEl = document.getElementById('header-student-avatar');
+  if (avatarEl) avatarEl.textContent = state.studentAvatar || '🚀';
+  const nameEl = document.getElementById('header-student-name');
+  if (nameEl) nameEl.textContent = state.studentName || 'Code Cadet';
+  const shiftEl = document.getElementById('header-student-shift');
+  if (shiftEl) shiftEl.textContent = state.shift || '1-Smena';
+
+  const totalLessonsCount = LESSONS.length;
+  const completedCount = state.completedLessons ? state.completedLessons.length : 0;
+  const pPct = Math.round((completedCount / totalLessonsCount) * 100);
+  const fillEl = document.getElementById('header-student-progress-fill');
+  if (fillEl) fillEl.style.width = `${pPct}%`;
+  const pctEl = document.getElementById('header-student-progress-pct');
+  if (pctEl) pctEl.textContent = `${completedCount}/${totalLessonsCount}`;
+
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
   if (elements.btnLangUz) elements.btnLangUz.classList.toggle('active', state.lang === 'uz');
   if (elements.btnLangEn) elements.btnLangEn.classList.toggle('active', state.lang === 'en');

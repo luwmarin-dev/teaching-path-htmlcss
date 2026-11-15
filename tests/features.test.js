@@ -43,6 +43,15 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
     assert.equal(html.includes('speakText'), true);
   });
 
+  it('includes offline multi-student profile switcher and registration portal in index.html', () => {
+    const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf-8');
+    assert.equal(html.includes('btn-student-profile'), true);
+    assert.equal(html.includes('openStudentPortalModal'), true);
+    assert.equal(html.includes('registerStudentProfile'), true);
+    assert.equal(html.includes('loginStudentProfile'), true);
+    assert.equal(html.includes('exportClassroomBackup'), true);
+  });
+
   it('verifies dedicated Uzbek and English standalone builds exist and contain all features', () => {
     const uzHtml = fs.readFileSync(path.join(rootDir, 'index_uz.html'), 'utf-8');
     const enHtml = fs.readFileSync(path.join(rootDir, 'index_en.html'), 'utf-8');

@@ -1,3 +1,4 @@
+import { openStudentPortalModal } from './modules/classroom.js';
 /**
  * CodeCraft Kids Main Application Controller
  * Focused, uncluttered, step-by-step educational interface.
@@ -89,6 +90,7 @@ function cacheElements() {
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnLabs = document.getElementById('btn-labs');
   elements.btnSandbox = document.getElementById('btn-sandbox');
+  elements.btnStudentProfile = document.getElementById('btn-student-profile');
 
   elements.sidebarLessonList = document.getElementById('sidebar-lesson-list');
   elements.progressFill = document.getElementById('progress-fill');
@@ -100,6 +102,21 @@ function cacheElements() {
 }
 
 function attachGlobalListeners() {
+  // Student Shift Profile & Classroom Portal
+  elements.btnStudentProfile?.addEventListener('click', () => {
+    openStudentPortalModal({
+      state,
+      onProfileSwitched: (newState, profile) => {
+        state = newState;
+        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        saveStateToStorage(state);
+        applyStateToUI();
+        selectLesson(state.currentLessonId || LESSONS[0].id);
+      },
+      playSound
+    });
+  });
+
   function switchLang(lang) {
     stopSpeaking();
     state = setLanguage(state, lang);
@@ -214,6 +231,21 @@ function applyTheme() {
 
 function applyStateToUI() {
   applyTheme();
+  const avatarEl = document.getElementById('header-student-avatar');
+  if (avatarEl) avatarEl.textContent = state.studentAvatar || '🚀';
+  const nameEl = document.getElementById('header-student-name');
+  if (nameEl) nameEl.textContent = state.studentName || 'Code Cadet';
+  const shiftEl = document.getElementById('header-student-shift');
+  if (shiftEl) shiftEl.textContent = state.shift || '1-Smena';
+
+  const totalLessonsCount = LESSONS.length;
+  const completedCount = state.completedLessons ? state.completedLessons.length : 0;
+  const pPct = Math.round((completedCount / totalLessonsCount) * 100);
+  const fillEl = document.getElementById('header-student-progress-fill');
+  if (fillEl) fillEl.style.width = `${pPct}%`;
+  const pctEl = document.getElementById('header-student-progress-pct');
+  if (pctEl) pctEl.textContent = `${completedCount}/${totalLessonsCount}`;
+
   if (elements.starCount) elements.starCount.textContent = `⭐ ${state.stars}`;
   if (elements.btnLangUz) elements.btnLangUz.classList.toggle('active', state.lang === 'uz');
   if (elements.btnLangEn) elements.btnLangEn.classList.toggle('active', state.lang === 'en');

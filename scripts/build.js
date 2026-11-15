@@ -23,6 +23,7 @@ const audioCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/au
 const confettiCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/confetti.js'), 'utf-8'));
 const speechCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/speech.js'), 'utf-8'));
 const sandboxCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/sandbox.js'), 'utf-8'));
+const classroomCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/classroom.js'), 'utf-8'));
 const boxModelLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/boxModelLab.js'), 'utf-8'));
 const flexboxLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/flexboxLab.js'), 'utf-8'));
 const colorLabCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/labs/colorLab.js'), 'utf-8'));
@@ -62,6 +63,9 @@ const bundledJs = `/**
 
   // --- Sandbox Module ---
   ${sandboxCode}
+
+  // --- Classroom Module ---
+  ${classroomCode}
 
   // --- Box Model Lab Module ---
   ${boxModelLabCode}
