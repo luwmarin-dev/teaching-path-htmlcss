@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ JavaScript Klasslar Masterklassi — Noldan Oxirigacha (OOP)</title>
+  <style>
+    /* ==========================================================================
+       1. UMUMIY DIZAYN VA O'YINBOP STATUS (DARK CYBER THEME)
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: #090d16;
+      color: #f1f5f9;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ==========================================================================
+       2. YUQORI SARLAVHA (NAVBAR)
+       ========================================================================== */
+    header {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      font-size: 28px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 6px 12px;
+    }
+
+    .brand-text h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1px solid #334155;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .badge-pill:hover {
+      background: #334155;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .badge-pill.active {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: #10b981;
+    }
+
+    /* ==========================================================================
+       3. 7 TA QADAM NAVIGATSIYASI (STEPS NAVIGATION)
+       ========================================================================== */
+    .steps-nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .steps-nav {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .steps-nav {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .step-btn {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .step-btn:hover {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .step-btn.active {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .step-btn.completed {
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    .step-btn.completed .step-num {
+      color: #34d399;
+    }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .step-btn.active .step-num {
+      color: #38bdf8;
+    }
+
+    .step-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ==========================================================================
+       4. INTERAKTIV RPG QAHRAMONLAR LABORATORIYASI (VISUAL SIMULATOR)
+       ========================================================================== */
+    .arena-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .arena-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .arena-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arena-stats {
+      font-size: 12.5px;
+      color: #94a3b8;
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-pill {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .stat-pill span {
+      color: #38bdf8;
+      font-weight: 800;
+    }
+
+    /* Qahramonlar ko'rgazmasi */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .hero-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.12);
+    }
+
+    .hero-card.warrior {
+      border-top: 3px solid #f43f5e;
+    }
+
+    .hero-card.mage {
+      border-top: 3px solid #38bdf8;
+    }
+
+    .hero-card.boss {
+      border-top: 3px solid #a855f7;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-identity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-avatar {
+      font-size: 26px;
+      background: #111827;
+      border-radius: 8px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-meta h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #f1f5f9;
+    }
+
+    .hero-meta span {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .hero-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #1e293b;
+      color: #cbd5e1;
+    }
+
+    /* HP va Mana Barlari */
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 10px;
+      background: #1e293b;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill-hp {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      width: 100%;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .bar-fill-hp.low {
+      background: linear-gradient(90deg, #f43f5e, #fb7185);
+    }
+
+    .bar-fill-mana {
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+      width: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .hero-props-preview {
+      background: #111827;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: 'Consolas', monospace;
+      font-size: 11px;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-prop-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-prop-name { color: #94a3b8; }
+    .hero-prop-val { color: #38bdf8; font-weight: bold; }
+
+    /* Arena Boshqaruv Tugmalari */
+    .arena-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      padding: 12px 16px;
+      border-radius: 10px;
+      align-items: center;
+    }
+
+    .control-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .control-btn:hover {
+      background: #334155;
+      border-color: #38bdf8;
+      transform: translateY(-1px);
+    }
+
+    .control-btn.primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+    }
+
+    .control-btn.primary:hover {
+      background: #0369a1;
+    }
+
+    /* Live Konsol Log oqimi */
+    .console-log-box {
+      background: #060911;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'Consolas', monospace;
+      font-size: 12px;
+      color: #94a3b8;
+      max-height: 110px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .log-line {
+      display: flex;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .log-time { color: #475569; }
+    .log-msg { color: #cbd5e1; }
+    .log-msg.highlight { color: #34d399; font-weight: bold; }
+    .log-msg.damage { color: #f87171; }
+    .log-msg.magic { color: #38bdf8; }
+
+    /* ==========================================================================
+       5. PEDAGOGIK TAHLIL KARTASI: TUSHUNTIRISH VA OCHIQ KOD
+       ========================================================================== */
+    .code-explanation-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 14px;
+    }
+
+    .step-title-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-tag {
+      background: #38bdf8;
+      color: #0b0f19;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .step-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .explanation-text {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      line-height: 1.65;
+    }
+
+    .analogy-box {
+      background: #151d2f;
+      border-left: 4px solid #38bdf8;
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      font-size: 13.5px;
+      color: #93c5fd;
+      line-height: 1.55;
+    }
+
+    /* Ochiq Kod Bloki */
+    .code-box-container {
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #090d16;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .code-box-header {
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .code-box-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .code-dot.red { background: #ef4444; }
+    .code-dot.yellow { background: #f59e0b; }
+    .code-dot.green { background: #10b981; }
+
+    .code-lang-label {
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Consolas', monospace;
+    }
+
+    .code-header-badge {
+      font-size: 11px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .code-editor-box {
+      background: #090d16;
+      padding: 18px 20px;
+      font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      tab-size: 2;
+      overflow-x: auto;
+    }
+
+    .code-keyword { color: #f43f5e; font-weight: bold; }
+    .code-class { color: #38bdf8; font-weight: bold; }
+    .code-prop { color: #34d399; }
+    .code-func { color: #fbbf24; }
+    .code-comment { color: #64748b; font-style: italic; }
+    .code-num { color: #c084fc; }
+
+    /* ==========================================================================
+       6. MANTIQIY KALIT (KOD TAHLILI VA BILIMNI MUSTAHKAMLASH)
+       ========================================================================== */
+    .quiz-gate-card {
+      background: #0d1322;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .quiz-gate-card.unlocked {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.05);
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.12);
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quiz-badge {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quiz-status {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #1e293b;
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+
+    .quiz-status.unlocked {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid #10b981;
+    }
+
+    .quiz-lead-text {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .quiz-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .quiz-options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-opt-btn {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 13px 18px;
+      color: #cbd5e1;
+      font-size: 13.5px;
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.5;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .quiz-opt-btn:hover:not(:disabled) {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .quiz-opt-btn.correct {
+      background: rgba(16, 185, 129, 0.18) !important;
+      border-color: #10b981 !important;
+      color: #34d399 !important;
+      font-weight: bold;
+    }
+
+    .quiz-opt-btn.wrong {
+      background: rgba(244, 63, 94, 0.18) !important;
+      border-color: #f43f5e !important;
+      color: #f87171 !important;
+    }
+
+    .quiz-feedback-box {
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .quiz-feedback-box.correct {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid #10b981;
+      color: #a7f3d0;
+      display: block;
+    }
+
+    .quiz-feedback-box.wrong {
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid #f43f5e;
+      color: #fecdd3;
+      display: block;
+    }
+
+    .quiz-actions-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 6px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-copy-code {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy-code:hover {
+      background: #334155;
+      color: white;
+    }
+
+    .btn-next-step {
+      background: #38bdf8;
+      border: none;
+      color: #0b0f19;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-next-step:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 1. HEADER -->
+    <header>
+      <div class="brand-title">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>JavaScript Klasslar (OOP) Masterklassi</h1>
+          <p>Noldan Murakkab Konsepsiyalargacha — Interaktiv Laboratoriya</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <a href="../dino-game-darsi/index.html" class="badge-pill">
+          <span>🦖 Dino Game Darsi</span>
+        </a>
+        <a href="../javascript/index_uz.html" class="badge-pill">
+          <span>💻 JS Asosiy Kurs</span>
+        </a>
+        <span class="badge-pill active">
+          <span>🛡️ 7 Ta Chuqur Qadam</span>
+        </span>
+      </div>
+    </header>
+
+    <!-- 2. 7 TA QADAM NAVIGATSIYASI -->
+    <nav class="steps-nav">
+      <button class="step-btn active" onclick="selectStep(1)">
+        <span class="step-num">1-QADAM</span>
+        <span class="step-name">Class & new</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(2)">
+        <span class="step-num">2-QADAM</span>
+        <span class="step-name">constructor & this</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(3)">
+        <span class="step-num">3-QADAM</span>
+        <span class="step-name">Metodlar (Actions)</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(4)">
+        <span class="step-num">4-QADAM</span>
+        <span class="step-name">Meros (extends & super)</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(5)">
+        <span class="step-num">5-QADAM</span>
+        <span class="step-name">get & set (Getter/Setter)</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(6)">
+        <span class="step-num">6-QADAM</span>
+        <span class="step-name">static (Sinf Qoidasi)</span>
+      </button>
+      <button class="step-btn" onclick="selectStep(7)">
+        <span class="step-num">7-QADAM</span>
+        <span class="step-name">#private Fields</span>
+      </button>
+    </nav>
+
+    <!-- 3. RPG QAHRAMONLAR LABORATORIYASI (VISUAL ARENA) -->
+    <section class="arena-card">
+      <div class="arena-header">
+        <div class="arena-title">
+          <span>🎮 O'yin Entitilari va Obyektlar Laboratoriyasi (RPG Factory)</span>
+        </div>
+        <div class="arena-stats">
+          <div class="stat-pill">Jami Qahramonlar: <span id="stat-hero-count">2</span></div>
+          <div class="stat-pill">Aktiv Sinf: <span id="stat-active-class">Hero (Oddiy)</span></div>
+        </div>
+      </div>
+
+      <!-- Qahramonlar Kartalari -->
+      <div class="hero-grid" id="arena-heroes-container">
+        <!-- JS dinamik to'ldiradi -->
+      </div>
+
+      <!-- Boshqaruv Tugmalari -->
+      <div class="arena-controls" id="arena-controls-bar">
+        <button class="control-btn primary" onclick="arenaAction('create')">
+          <span>➕ new Hero('Artur') Yaratish</span>
+        </button>
+        <button class="control-btn" onclick="arenaAction('attack')">
+          <span>⚔️ Zarba Berish (attack)</span>
+        </button>
+        <button class="control-btn" onclick="arenaAction('heal')">
+          <span>🧪 Davolash (heal)</span>
+        </button>
+        <button class="control-btn" id="btn-spell-action" onclick="arenaAction('spell')" style="display: none;">
+          <span>✨ Sehr Ishlatish (castSpell)</span>
+        </button>
+        <button class="control-btn" id="btn-setter-action" onclick="arenaAction('test_setter')" style="display: none;">
+          <span>🛡️ HP = -50 Sinash (Setter)</span>
+        </button>
+      </div>
+
+      <!-- Live Konsol Oqimi -->
+      <div class="console-log-box" id="arena-console-log">
+        <div class="log-line">
+          <span class="log-time">[00:00:00]</span>
+          <span class="log-msg highlight">Laboratoriya tayyor. Klasslarni o'rganishni boshlashingiz mumkin!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PEDAGOGIK TAHLIL KARTASI -->
+    <section class="code-explanation-card">
+      <div class="step-header">
+        <div class="step-title-box">
+          <span class="step-tag" id="display-step-tag">1-QADAM</span>
+          <h2 class="step-title" id="display-step-title">Class nima va Nega kerak?</h2>
+        </div>
+        <div style="font-size: 12px; color: #64748b;">Mavzu: JavaScript OOP Poydevori</div>
+      </div>
+
+      <div class="explanation-text" id="display-step-desc">
+        Dasturlashda 100 ta o'yinchi yoki 100 ta mahsulot kerak bo'lganda, har birini qo'lda alohida ob'ekt qilib yozib chiqish dasturchining vaqtini oladi va xatolarga olib keladi. Class — bu bitta mukammal chizma (qolip). Undan 'new' operatori orqali istalgancha bir xil tuzilishdagi obyektlarni yaratish mumkin!
+      </div>
+
+      <div class="analogy-box" id="display-step-analogy">
+        💡 <b>Hayotiy O'xshatish:</b> Bino chizmasi va qurilgan uylar. Chizma bitta, lekin shu chizma asosida butun boshli shahar quriladi. 'class' bu chizma, 'new' orqali qurilgan har bir uy esa 'obyekt'dir!
+      </div>
+
+      <!-- DOIMO OCHIQ KOD BLOKI (NAMUNA VA SINTAKSIS) -->
+      <div class="code-box-container">
+        <div class="code-box-header">
+          <div class="code-box-title">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-lang-label">JavaScript (ES6+ Class Sintaksisi)</span>
+          </div>
+          <div class="code-header-badge">
+            <span>📖 Ochiq Ko'rgazmali Kod va Sintaksis</span>
+          </div>
+        </div>
+
+        <div class="code-editor-box" id="display-step-code">
+          <!-- JS kodi 100% ochiq, Prettier formatida -->
+        </div>
+      </div>
+
+      <!-- MANTIQIY KALIT (KOD MANTIG'INI TAHLIL QILISH VA SAVOL-JAVOB) -->
+      <div class="quiz-gate-card" id="step-quiz-gate">
+        <div class="quiz-header">
+          <div class="quiz-badge">
+            <span>🧠 Mantiqiy Kalit (Kod Tahlili)</span>
+          </div>
+          <span class="quiz-status" id="quiz-status-badge">⏳ Mantiqni tahlil qiling</span>
+        </div>
+
+        <div class="quiz-lead-text">
+          Yuqoridagi ochiq kod sintaksisi va tuzilishini o'rganib chiqdingiz. Endi ushbu kodning ichki ishlash mantig'i bo'yicha savolga to'g'ri javob bering va keyingi qadamni oching:
+        </div>
+        
+        <div class="quiz-question" id="quiz-question-text">
+          <!-- Savol matni dinamik ravishda to'ldiriladi -->
+        </div>
+
+        <div class="quiz-options-grid" id="quiz-options-container">
+          <!-- A, B, C variantlari -->
+        </div>
+
+        <div class="quiz-feedback-box" id="quiz-feedback-box">
+          <!-- Tushuntirish: nega to'g'ri yoki noto'g'ri -->
+        </div>
+
+        <div class="quiz-actions-bar" id="code-actions-bar" style="display: none;">
+          <button class="btn-copy-code" id="btn-copy-step-code" onclick="copyCurrentStepCode()">
+            <span>📋 Koddan Nusxa Olish</span>
+          </button>
+          <button class="btn-next-step" id="btn-next-step-unlocked" onclick="goToNextStep()">
+            <span>Keyingi Qadamga O'tish ➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: TA'LIM BAZASI VA VISUAL ARENA
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       AUDIO SINTESIS (WEB AUDIO API — 100% OFLAYN)
+       ========================================================================== */
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playTone(freq, type, duration, gainVal = 0.1) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playSuccessSound() {
+      playTone(523.25, 'triangle', 0.12, 0.12);
+      setTimeout(() => playTone(659.25, 'triangle', 0.12, 0.12), 90);
+      setTimeout(() => playTone(783.99, 'triangle', 0.22, 0.14), 180);
+    }
+
+    function playErrorSound() {
+      playTone(180, 'sawtooth', 0.15, 0.1);
+      setTimeout(() => playTone(140, 'sawtooth', 0.2, 0.1), 120);
+    }
+
+    function playActionSound() {
+      playTone(440, 'sine', 0.1, 0.1);
+    }
+
+    function playMagicSound() {
+      playTone(600, 'sine', 0.15, 0.1);
+      setTimeout(() => playTone(900, 'triangle', 0.2, 0.12), 100);
+    }
+
+    /* ==========================================================================
+       7 TA QADAM BAZASI (O'QITISH METODIKASI, OCHIQ KOD VA MANTIQIY TAHLIL)
+       ========================================================================== */
+    const STEPS_DATA = {
+      1: {
+        tag: "1-QADAM",
+        title: "Class nima va Nega kerak? (Oddiy Obyekt vs Class)",
+        desc: "Dasturlashda 100 ta o'yinchi kerak bo'lsa, har birini qo'lda alohida { name: 'Artur', hp: 100 } deb yozish xotirani to'ldiradi va xato keltirib chiqaradi. Class — bu bitta umumiy chizma (qolip). Undan 'new' orqali millionta obyekt yaratish mumkin!",
+        analogy: "💡 Hayotiy O'xshatish: Pechenye qolipi. Qolip bitta, lekin xamirga bosganingiz sari o'nlab bir xil shakldagi shirin pechenyelar paydo bo'ladi.",
+        quiz: {
+          question: "Yuqoridagi ochiq kodda 'class Hero {}' e'lon qilindi va undan 'const hero1 = new Hero()' orqali obyekt olindi. Agar biz 'new Hero()' deb yozmasdan faqat 'class Hero {}' ning o'zini qoldirsak nima bo'ladi?",
+          options: [
+            {
+              text: "A) O'yinda hech qanday qahramon paydo bo'lmaydi! Chunki class bu faqat qog'ozdagi chizma. Undan tirik obyekt olish uchun albatta 'new' operatori kerak.",
+              correct: true,
+              feedback: "🎉 Qoyilmaqom! Aynan to'g'ri! 'class' bu reja yoki qolip. Uni xotirada jismga aylantirish uchun 'new' kalit so'zi shart!"
+            },
+            {
+              text: "B) Kompyuter o'zi avtomatik o'yinchi yaratib beradi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Kompyuter buyruqsiz o'zidan-o'zi yangi obyekt yaratmaydi."
+            },
+            {
+              text: "C) JavaScript xatolik berib butunlay to'xtaydi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Class e'lon qilish xatolik emas, lekin undan obyekt olinmasa u xotirada shunchaki qolip bo'lib turaveradi."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 1-QADAM: Qahramonlar uchun umumiy qolip (class) yaratamiz</span>
+<span class="code-keyword">class</span> <span class="code-class">Hero</span> {
+  <span class="code-comment">// Hozircha ichi bo'm-bo'sh, bu shunchaki qolip (chizma)</span>
+}
+
+<span class="code-comment">// 'new' operatori orqali shu qolipdan ilk jonli obyektni yasaymiz:</span>
+<span class="code-keyword">const</span> hero1 = <span class="code-keyword">new</span> <span class="code-class">Hero</span>();
+<span class="code-keyword">const</span> hero2 = <span class="code-keyword">new</span> <span class="code-class">Hero</span>();
+
+<span class="code-comment">// Konsolda tekshiramiz:</span>
+console.<span class="code-func">log</span>(hero1); <span class="code-comment">// Natija: Hero {}</span>
+console.<span class="code-func">log</span>(hero2); <span class="code-comment">// Natija: Hero {}</span>`
+      },
+      2: {
+        tag: "2-QADAM",
+        title: "Konstruktor va 'this' Kalit So'zi (O'zlik)",
+        desc: "Har bir qahramonning o'z ismi, boshlang'ich joni (HP) va kuchi har xil bo'lishi kerak. Buning uchun 'constructor()' funksiyasi ishlatiladi. 'this' so'zi esa aynan o'sha onda yaratilayotgan qahramonning o'ziga ishora qiladi!",
+        analogy: "💡 Hayotiy O'xshatish: Tug'uruqxona anketasi. Har bir chaqaloq tug'ilganda unga alohida ism va vazn beriladi. 'this.name' — 'mening ismim' deganidir.",
+        quiz: {
+          question: "Yuqoridagi kodda konstruktorda 'this.hp = hp;' deb yozilgan. Agar biz 'const h2 = new Hero(\"Lanselot\", 120);' qilsak, 'this' aynan kimga tegishli bo'ladi?",
+          options: [
+            {
+              text: "A) Aynan o'sha yangi yaratilayotgan 'Lanselot' obyektiga. Boshqa qahramonlarga ta'sir qilmaydi.",
+              correct: true,
+              feedback: "🎉 Barakalla! 'this' — bu obyektning o'zligi! Har bir 'new' chaqirilganda 'this' yangi tug'ilgan obyektga teng bo'ladi."
+            },
+            {
+              text: "B) Butun o'yindagi barcha qahramonlarga barobar tegishli bo'ladi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: 'this' umumiy emas, u aynan shu daqiqada yaratilayotgan bitta nusxaga tegishli!"
+            },
+            {
+              text: "C) Brauzerning 'window' oynasiga tegishli bo'ladi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Klass konstruktori ichida 'this' doimo yangi yaratilayotgan instansiyaga bog'lanadi."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 2-QADAM: Konstruktor orqali shaxsiy xususiyatlar beramiz</span>
+<span class="code-keyword">class</span> <span class="code-class">Hero</span> {
+  <span class="code-func">constructor</span>(name, hp) {
+    <span class="code-comment">// 'this.name' — mening ismim</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">name</span> = name;
+
+    <span class="code-comment">// 'this.hp' — mening jonim (Health Points)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">hp</span> = hp;
+
+    <span class="code-comment">// 'this.level' — boshlang'ich darajam</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">level</span> = <span class="code-num">1</span>;
+  }
+}
+
+<span class="code-comment">// Endi har xil xususiyatli qahramonlarni yaratamiz:</span>
+<span class="code-keyword">const</span> artur = <span class="code-keyword">new</span> <span class="code-class">Hero</span>(<span class="code-prop">'Artur'</span>, <span class="code-num">100</span>);
+<span class="code-keyword">const</span> lanselot = <span class="code-keyword">new</span> <span class="code-class">Hero</span>(<span class="code-prop">'Lanselot'</span>, <span class="code-num">120</span>);
+
+console.<span class="code-func">log</span>(artur.<span class="code-prop">name</span>);    <span class="code-comment">// 'Artur'</span>
+console.<span class="code-func">log</span>(lanselot.<span class="code-prop">hp</span>); <span class="code-comment">// 120</span>`
+      },
+      3: {
+        tag: "3-QADAM",
+        title: "Metodlar — Qobiliyatlar va Harakatlar (Methods)",
+        desc: "Qahramonlar shunchaki qotib turmaydi, ular harakat qilishi kerak: hujum qilish (attack), davolanish (heal). Class ichida e'lon qilingan funksiyalarga 'metod' deyiladi. Ular 'this' orqali o'z joni va kuchini o'zgartira oladi!",
+        analogy: "💡 Hayotiy O'xshatish: Inson qobiliyatlari. Har bir inson ko'z va quloqqa ega (xususiyat), shuningdek yura oladi va gapira oladi (metod).",
+        quiz: {
+          question: "Koddagi 'heal()' metodida 'this.hp += 15;' yozilgan. Agar biz 'artur.heal()' qilsak, Lanselotning joni (HP) ham oshib ketadimi?",
+          options: [
+            {
+              text: "A) Yo'q, faqat Artur o'zini davolaydi! Chunki 'this' chaqirgan qahramon (artur)ning o'ziga tegishlidir.",
+              correct: true,
+              feedback: "🎉 Aynan to'g'ri! 'artur.heal()' qilinganda 'this' Arturga teng bo'ladi. Lanselotning joniga hech narsa bo'lmaydi."
+            },
+            {
+              text: "B) Ha, bir qahramon davolansa o'yindagi hammaning joni to'ladi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Metodlar shaxsiy xususiyatlar ustida ishlaydi, umumiy emas."
+            },
+            {
+              text: "C) Faqat Arturdagi dushmanning joni oshadi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: 'this' o'z egasini ko'rsatadi, dushmanni emas."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 3-QADAM: Qahramonga harakat metodlarini qo'shamiz</span>
+<span class="code-keyword">class</span> <span class="code-class">Hero</span> {
+  <span class="code-func">constructor</span>(name, hp) {
+    <span class="code-keyword">this</span>.<span class="code-prop">name</span> = name;
+    <span class="code-keyword">this</span>.<span class="code-prop">hp</span> = hp;
+  }
+
+  <span class="code-comment">// Hujum qilish metodi (boshqa qahramonga zarar yetkazadi)</span>
+  <span class="code-func">attack</span>(target) {
+    target.<span class="code-prop">hp</span> -= <span class="code-num">20</span>;
+    console.<span class="code-func">log</span>(<span class="code-prop">\`\${this.name} \${target.name}ga 20 zarba berdi!\`</span>);
+  }
+
+  <span class="code-comment">// O'zini davolash metodi (jonini 15 ga oshiradi)</span>
+  <span class="code-func">heal</span>() {
+    <span class="code-keyword">this</span>.<span class="code-prop">hp</span> += <span class="code-num">15</span>;
+    console.<span class="code-func">log</span>(<span class="code-prop">\`\${this.name} 15 HP davolandi! Hozirgi HP: \${this.hp}\`</span>);
+  }
+}`
+      },
+      4: {
+        tag: "4-QADAM",
+        title: "Vorislik — Meros Olish (extends va super())",
+        desc: "O'yinda Sehrgar (Mage) va Jangchi (Warrior) kerak. Ikkisida ham ism va jon bor. Hammasini noldan qayta yozmaslik uchun 'extends' orqali Hero dan meros olamiz! 'super()' esa ota klassning konstruktoriga ism va jonni uzatib beradi.",
+        analogy: "💡 Hayotiy O'xshatish: Otadan bolaga meros. Bola otasining ko'z rangi va familiyasini oladi (super), lekin o'zining shaxsiy iste'dodiga ham ega bo'ladi.",
+        quiz: {
+          question: "Mage (Sehrgar) sinfida 'super(name, hp);' nima vazifani bajaradi?",
+          options: [
+            {
+              text: "A) Ota klass (Hero) konstruktorini chaqiradi va ism hamda jon parametrlarini unga topshiradi.",
+              correct: true,
+              feedback: "🎉 Juda to'g'ri! 'super()' bolaning ota klassiga qo'ng'iroq qiladi va poydevor xususiyatlarni tayyorlab beradi."
+            },
+            {
+              text: "B) Sehrgarga cheksiz sehr kuchini beradi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: 'super' o'yin sehriga aloqador emas, u OOP dagi ota klass chaqiruvchisidir."
+            },
+            {
+              text: "C) Ota klassdagi barcha kodlarni o'chirib yuboradi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Aksincha, u ota klass imkoniyatlaridan to'liq foydalanish imkonini beradi."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 4-QADAM: Hero asosida yangi Sehrgar (Mage) sinfini yaratamiz</span>
+<span class="code-keyword">class</span> <span class="code-class">Mage</span> <span class="code-keyword">extends</span> <span class="code-class">Hero</span> {
+  <span class="code-func">constructor</span>(name, hp, mana) {
+    <span class="code-comment">// Ota klassning konstruktorini chaqiramiz:</span>
+    <span class="code-keyword">super</span>(name, hp);
+
+    <span class="code-comment">// Sehrgarning shaxsiy qo'shimcha xususiyati (Mana):</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">mana</span> = mana;
+  }
+
+  <span class="code-comment">// Sehrgarning shaxsiy qobiliyati:</span>
+  <span class="code-func">castSpell</span>(target) {
+    <span class="code-keyword">if</span> (<span class="code-keyword">this</span>.<span class="code-prop">mana</span> >= <span class="code-num">15</span>) {
+      <span class="code-keyword">this</span>.<span class="code-prop">mana</span> -= <span class="code-num">15</span>;
+      target.<span class="code-prop">hp</span> -= <span class="code-num">35</span>;
+      console.<span class="code-func">log</span>(<span class="code-prop">\`\${this.name} olovli shar otdi! Dushmanga 35 zarar!\`</span>);
+    }
+  }
+}`
+      },
+      5: {
+        tag: "5-QADAM",
+        title: "Getter va Setter — Xavfsiz Boshqaruv (get / set)",
+        desc: "Agar kimdir tasodifan 'hero.hp = -999' yoki 'hero.hp = \"salom\"' deb yozsa, o'yin mantiqsiz bo'lib qoladi. Getter va Setter — qahramonning xususiyatlarini qo'riqlovchi shaxsiy tansoqchilardir!",
+        analogy: "💡 Hayotiy O'xshatish: Bankomat tekshiruvi. Pul yechishdan oldin hisobingizda yetarli mablag' bor-yo'qligini tekshiradi, manfiy pul berib yubormaydi.",
+        quiz: {
+          question: "Koddagi 'set hp(val)' nima sababdan 'val < 0 ? 0 : val;' tekshiruvini amalga oshirmoqda?",
+          options: [
+            {
+              text: "A) Jon miqdori noldan pastga tushib, manfiy (-10 HP) bo'lib qolmasligi va o'yin buzilmasligi uchun.",
+              correct: true,
+              feedback: "🎉 Ajoyib tahlil! Setter xavfsizlik filtri bo'lib xizmat qiladi. Qahramon joni 0 dan kamaymaydi!"
+            },
+            {
+              text: "B) Qahramon har safar yutqazganda kompyuterni o'chirish uchun.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Setter faqat qiymatni to'g'ri chegarada ushlab turadi."
+            },
+            {
+              text: "C) Barcha jonlarni 100 ga ko'paytirish uchun.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: U shunchaki manfiy son kirib kelishining oldini oladi."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 5-QADAM: Jon (HP)ni himoyalovchi get va set metodlari</span>
+<span class="code-keyword">class</span> <span class="code-class">SafeHero</span> {
+  <span class="code-func">constructor</span>(name, hp) {
+    <span class="code-keyword">this</span>.<span class="code-prop">name</span> = name;
+    <span class="code-keyword">this</span>.<span class="code-prop">_hp</span> = hp; <span class="code-comment">// Ichki o'zgaruvchi</span>
+  }
+
+  <span class="code-comment">// Getter: Jonni o'qish</span>
+  <span class="code-keyword">get</span> <span class="code-func">hp</span>() {
+    <span class="code-keyword">return</span> <span class="code-keyword">this</span>.<span class="code-prop">_hp</span>;
+  }
+
+  <span class="code-comment">// Setter: Jonni tekshirib o'rnatish</span>
+  <span class="code-keyword">set</span> <span class="code-func">hp</span>(val) {
+    <span class="code-keyword">if</span> (val &lt; <span class="code-num">0</span>) {
+      <span class="code-keyword">this</span>.<span class="code-prop">_hp</span> = <span class="code-num">0</span>; <span class="code-comment">// Hech qachon 0 dan past bo'lmaydi!</span>
+    } <span class="code-keyword">else</span> {
+      <span class="code-keyword">this</span>.<span class="code-prop">_hp</span> = val;
+    }
+  }
+}`
+      },
+      6: {
+        tag: "6-QADAM",
+        title: "Statik Metodlar va Xususiyatlar (static)",
+        desc: "Bitta aniq qahramonga emas, butun sinfga yoki butun o'yinga tegishli umumiy qoidalar bo'ladi. Masalan, o'yinda nechta qahramon yaratildi? Yoki ikki qahramonni taqqoslash. Bular 'static' deb yoziladi va to'g'ridan-to'g'ri 'Hero.metod()' deb chaqiriladi!",
+        analogy: "💡 Hayotiy O'xshatish: Zavod hisoblagichi. Mashina o'zini qancha dona ishlab chiqarilganini bilmaydi, lekin zavod binosidagi peshtaxtada 'Jami: 50,000 ta mashina' deb yozilgan bo'ladi.",
+        quiz: {
+          question: "Koddagi 'static totalHeroesCount = 0;' xususiyati nima uchun 'this' bilan emas, 'Hero.totalHeroesCount' deb chaqiriladi?",
+          options: [
+            {
+              text: "A) Chunki u bitta qahramonning xususiyati emas, butun 'Hero' sinfining umumiy global hisoblagichidir.",
+              correct: true,
+              feedback: "🎉 Qoyil! Statik narsalar bitta nusxaga tegishli bo'lmaydi. Ular to'g'ridan-to'g'ri sinf nomiga birikadi!"
+            },
+            {
+              text: "B) Chunki 'this' so'zi JavaScriptdan butunlay olib tashlangan.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: 'this' odatiy metodlarda ishlayveradi, faqat static butun sinfga tegishli."
+            },
+            {
+              text: "C) Kompyuter xotirasini tejash uchun nomini qisqartirishgan.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Bu arxitekturaviy qoida — sinf darajasidagi vositalar instansiyalardan ajratiladi."
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 6-QADAM: Sinf darajasidagi statik vositalar</span>
+<span class="code-keyword">class</span> <span class="code-class">Hero</span> {
+  <span class="code-comment">// Butun sinf uchun bitta umumiy hisoblagich:</span>
+  <span class="code-keyword">static</span> <span class="code-prop">totalHeroesCount</span> = <span class="code-num">0</span>;
+
+  <span class="code-func">constructor</span>(name) {
+    <span class="code-keyword">this</span>.<span class="code-prop">name</span> = name;
+    <span class="code-comment">// Har safar yangi qahramon tug'ilganda statik sonni 1 ga oshiramiz:</span>
+    <span class="code-class">Hero</span>.<span class="code-prop">totalHeroesCount</span>++;
+  }
+
+  <span class="code-comment">// Statik solishtirish metodi:</span>
+  <span class="code-keyword">static</span> <span class="code-func">compare</span>(h1, h2) {
+    <span class="code-keyword">return</span> h1.<span class="code-prop">hp</span> > h2.<span class="code-prop">hp</span> ? h1.<span class="code-prop">name</span> : h2.<span class="code-prop">name</span>;
+  }
+}
+
+<span class="code-keyword">const</span> h1 = <span class="code-keyword">new</span> <span class="code-class">Hero</span>(<span class="code-prop">'Artur'</span>);
+<span class="code-keyword">const</span> h2 = <span class="code-keyword">new</span> <span class="code-class">Hero</span>(<span class="code-prop">'Lanselot'</span>);
+
+console.<span class="code-func">log</span>(<span class="code-class">Hero</span>.<span class="code-prop">totalHeroesCount</span>); <span class="code-comment">// Natija: 2</span>`
+      },
+      7: {
+        tag: "7-QADAM",
+        title: "Haqiqiy Xususiy Maydonlar (#private fields)",
+        desc: "Zamonaviy JavaScript (ES2022+)da xususiyat oldiga '#' qo'yilsa, u mutlaqo maxfiy (private) bo'lib qoladi. Sinf tashqarisidan turib hech kim uni ko'ra olmaydi va buza olmaydi! Masalan: maxfiy PIN kod yoki daxlsiz ID.",
+        analogy: "💡 Hayotiy O'xshatish: Uy seyfi. Mehmonlar zalda o'tiradi, lekin yotoqxonadagi temir seyf ichidagi buyumlarni na ko'ra oladi, na o'g'irlay oladi.",
+        quiz: {
+          question: "Koddagi '#pinCode' maydonini tashqaridan 'account.#pinCode' deb chaqirishga urinilsa nima yuz beradi?",
+          options: [
+            {
+              text: "A) JavaScript darhol qat'iy xatolik (SyntaxError: Private field) beradi va ruxsat bermaydi!",
+              correct: true,
+              feedback: "🎉 Mukammal xulosa! '#' belgili maydonlar tashqaridan 100% himoyalangan. Faqat sinfning o'z metodlari uni o'qiy oladi!"
+            },
+            {
+              text: "B) Brauzer maxfiy PIN kodni ekranga bemalol chiqarib beradi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: #private aynan ruxsatsiz o'qishni to'xtatish uchun yaratilgan."
+            },
+            {
+              text: "C) PIN kod o'rniga 'undefined' so'zi chiqadi.",
+              correct: false,
+              feedback: "❌ Noto'g'ri: Zamonaviy JS shunchaki undefined qaytarmaydi, sintaksis xatosi beradi!"
+            }
+          ]
+        },
+        code: `<span class="code-comment">// 7-QADAM: Maxfiy (#private) maydonlar bilan ishlash</span>
+<span class="code-keyword">class</span> <span class="code-class">VaultHero</span> {
+  <span class="code-comment">// '#' belgisi — bu maydon 100% maxfiyligini bildiradi:</span>
+  #secretPin;
+
+  <span class="code-func">constructor</span>(name, pin) {
+    <span class="code-keyword">this</span>.<span class="code-prop">name</span> = name;
+    <span class="code-keyword">this</span>.#secretPin = pin; <span class="code-comment">// Ichkarida bemalol ishlatamiz</span>
+  }
+
+  <span class="code-comment">// Faqat to'g'ri parol aytilsa javob beramiz:</span>
+  <span class="code-func">unlockVault</span>(enteredPin) {
+    <span class="code-keyword">if</span> (enteredPin === <span class="code-keyword">this</span>.#secretPin) {
+      <span class="code-keyword">return</span> <span class="code-prop">'Xazina ochildi: 1,000 oltin tanga!'</span>;
+    }
+    <span class="code-keyword">return</span> <span class="code-prop">'Xato parol! Ruxsat yoq.'</span>;
+  }
+}
+
+<span class="code-keyword">const</span> keeper = <span class="code-keyword">new</span> <span class="code-class">VaultHero</span>(<span class="code-prop">'Qo\\'riqchi'</span>, <span class="code-num">7777</span>);
+<span class="code-comment">// keeper.#secretPin // ❌ XATO: Tashqaridan o'qib bo'lmaydi!</span>`
+      }
+    };
+
+    /* ==========================================================================
+       ARENA HOLATI VA QAHRAMONLAR INSTANSIYALARI
+       ========================================================================== */
+    class HeroEntity {
+      constructor(name, hp, type = 'warrior', mana = 0) {
+        this.name = name;
+        this.maxHp = hp;
+        this.hp = hp;
+        this.type = type; // warrior, mage, boss
+        this.mana = mana;
+        this.maxMana = mana;
+        this.level = 1;
+      }
+    }
+
+    let heroes = [
+      new HeroEntity('Artur (Jangchi)', 100, 'warrior', 0),
+      new HeroEntity('Merlin (Sehrgar)', 80, 'mage', 50)
+    ];
+
+    let totalSpawnedCount = 2;
+
+    function renderArenaHeroes() {
+      const container = document.getElementById('arena-heroes-container');
+      container.innerHTML = '';
+
+      heroes.forEach((h, idx) => {
+        const hpPercent = Math.max(0, Math.min(100, (h.hp / h.maxHp) * 100));
+        const isLowHp = hpPercent < 35;
+        const card = document.createElement('div');
+        card.className = `hero-card ${h.type}`;
+        
+        let avatar = '⚔️';
+        let roleName = 'Oddiy Qahramon';
+        if (h.type === 'mage') { avatar = '🧙‍♂️'; roleName = 'Mage (Sehrgar)'; }
+        if (h.type === 'boss') { avatar = '👹'; roleName = 'Katta Dushman'; }
+
+        card.innerHTML = `
+          <div class="hero-top">
+            <div class="hero-identity">
+              <div class="hero-avatar">${avatar}</div>
+              <div class="hero-meta">
+                <h3>${h.name}</h3>
+                <span>${roleName} • Lv.${h.level}</span>
+              </div>
+            </div>
+            <span class="hero-tag">ID: #${idx + 1}</span>
+          </div>
+
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>Jon (HP)</span>
+              <span>${h.hp} / ${h.maxHp} HP</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill-hp ${isLowHp ? 'low' : ''}" style="width: ${hpPercent}%"></div>
+            </div>
+          </div>
+
+          ${h.type === 'mage' ? `
+          <div class="bar-group">
+            <div class="bar-label">
+              <span style="color: #38bdf8;">Sehr Kuchi (Mana)</span>
+              <span style="color: #38bdf8;">${h.mana} / ${h.maxMana} MP</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill-mana" style="width: ${(h.mana / h.maxMana) * 100}%"></div>
+            </div>
+          </div>
+          ` : ''}
+
+          <div class="hero-props-preview">
+            <div class="hero-prop-row">
+              <span class="hero-prop-name">this.name:</span>
+              <span class="hero-prop-val">"${h.name}"</span>
+            </div>
+            <div class="hero-prop-row">
+              <span class="hero-prop-name">this.hp:</span>
+              <span class="hero-prop-val">${h.hp}</span>
+            </div>
+            ${h.type === 'mage' ? `
+            <div class="hero-prop-row">
+              <span class="hero-prop-name">this.mana (extends):</span>
+              <span class="hero-prop-val">${h.mana}</span>
+            </div>
+            ` : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById('stat-hero-count').textContent = heroes.length;
+    }
+
+    function logArena(msg, type = '') {
+      const logBox = document.getElementById('arena-console-log');
+      const now = new Date();
+      const timeStr = `[${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}]`;
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.innerHTML = `<span class="log-time">${timeStr}</span> <span class="log-msg ${type}">${msg}</span>`;
+      logBox.appendChild(line);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function arenaAction(actionType) {
+      if (heroes.length === 0) {
+        logArena("Qahramonlar mavjud emas! Avval yangi qahramon yarating.", 'damage');
+        return;
+      }
+
+      if (actionType === 'create') {
+        totalSpawnedCount++;
+        const names = ['Lanselot', 'Robin Gud', 'Gendalf', 'Ragnar', 'Aelita'];
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        const isMage = currentStepNum >= 4 && Math.random() > 0.5;
+        const newHero = new HeroEntity(`${randomName} #${totalSpawnedCount}`, isMage ? 85 : 100, isMage ? 'mage' : 'warrior', isMage ? 60 : 0);
+        heroes.push(newHero);
+        renderArenaHeroes();
+        playSuccessSound();
+        logArena(`⚡ new Hero("${newHero.name}") yaratildi! Xotirada yangi instansiya saqlandi.`, 'highlight');
+      } 
+      else if (actionType === 'attack') {
+        const attacker = heroes[0];
+        const target = heroes.length > 1 ? heroes[1] : heroes[0];
+        target.hp = Math.max(0, target.hp - 20);
+        renderArenaHeroes();
+        playActionSound();
+        logArena(`⚔️ ${attacker.name} zarba berdi! ${target.name} joni -20 kamaydi (Hozirgi HP: ${target.hp}).`, 'damage');
+      } 
+      else if (actionType === 'heal') {
+        const hero = heroes[0];
+        hero.hp = Math.min(hero.maxHp, hero.hp + 15);
+        renderArenaHeroes();
+        playSuccessSound();
+        logArena(`🧪 ${hero.name}.heal() chaqirildi! +15 HP tiklandi (Hozirgi HP: ${hero.hp}).`, 'highlight');
+      } 
+      else if (actionType === 'spell') {
+        const mage = heroes.find(h => h.type === 'mage') || heroes[0];
+        if (mage.mana >= 15) {
+          mage.mana -= 15;
+          const target = heroes.find(h => h !== mage) || mage;
+          target.hp = Math.max(0, target.hp - 35);
+          renderArenaHeroes();
+          playMagicSound();
+          logArena(`✨ ${mage.name} olovli sehr otdi! Mana: -15 (${mage.mana} MP qoldi). ${target.name}ga 35 zarar yetkazildi!`, 'magic');
+        } else {
+          logArena(`⚠️ ${mage.name}da sehr uchun yetarli Mana qolmadi!`, 'damage');
+          playErrorSound();
+        }
+      } 
+      else if (actionType === 'test_setter') {
+        const hero = heroes[0];
+        logArena(`🛡️ Test: ${hero.name}.hp = -50 kiritilmoqda...`, 'highlight');
+        // Setter xavfsizligi
+        hero.hp = 0; // Setter uni 0 da to'xtatadi
+        renderArenaHeroes();
+        playActionSound();
+        logArena(`✅ Setter ishladi: Qiymat manfiy bo'lishiga yo'l qo'yilmadi, HP = 0 qilib himoyalandi!`, 'highlight');
+      }
+    }
+
+    /* ==========================================================================
+       QADAMLARNI BOSHQARISH VA INTERAKTIV KOD TAHLILI (QUIZ GATE)
+       ========================================================================== */
+    let currentStepNum = 1;
+    const unlockedSteps = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false };
+
+    function selectStep(stepNum) {
+      currentStepNum = stepNum;
+
+      document.querySelectorAll('.step-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === stepNum);
+      });
+
+      const data = STEPS_DATA[stepNum];
+      document.getElementById('display-step-tag').textContent = data.tag;
+      document.getElementById('display-step-title').textContent = data.title;
+      document.getElementById('display-step-desc').textContent = data.desc;
+      document.getElementById('display-step-analogy').innerHTML = data.analogy;
+      document.getElementById('display-step-code').innerHTML = data.code;
+
+      // Arena boshqaruv tugmalarini bosqichga moslash
+      const spellBtn = document.getElementById('btn-spell-action');
+      const setterBtn = document.getElementById('btn-setter-action');
+      const activeClassLabel = document.getElementById('stat-active-class');
+
+      if (stepNum >= 4) {
+        spellBtn.style.display = 'flex';
+        activeClassLabel.textContent = 'Mage extends Hero';
+      } else {
+        spellBtn.style.display = 'none';
+        activeClassLabel.textContent = 'Hero (Oddiy)';
+      }
+
+      if (stepNum >= 5) {
+        setterBtn.style.display = 'flex';
+      } else {
+        setterBtn.style.display = 'none';
+      }
+
+      renderStepQuiz(stepNum);
+    }
+
+    function renderStepQuiz(stepNum) {
+      const data = STEPS_DATA[stepNum];
+      const quiz = data.quiz;
+      const isUnlocked = unlockedSteps[stepNum];
+
+      const statusEl = document.getElementById('quiz-status-badge');
+      const gateCard = document.getElementById('step-quiz-gate');
+      const qTextEl = document.getElementById('quiz-question-text');
+      const optContainer = document.getElementById('quiz-options-container');
+      const fbBox = document.getElementById('quiz-feedback-box');
+      const actionsBar = document.getElementById('code-actions-bar');
+      const nextBtn = document.getElementById('btn-next-step-unlocked');
+
+      qTextEl.textContent = quiz.question;
+      fbBox.className = 'quiz-feedback-box';
+      fbBox.style.display = 'none';
+      fbBox.innerHTML = '';
+
+      if (isUnlocked) {
+        statusEl.className = 'quiz-status unlocked';
+        statusEl.textContent = '✅ Mantiq O\'zlashtirildi • Keyingi Qadam Ochiq';
+        gateCard.className = 'quiz-gate-card unlocked';
+        actionsBar.style.display = 'flex';
+        if (stepNum < 7) {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>Keyingi Qadamga O'tish (${stepNum + 1}-qadam) ➔</span>`;
+        } else {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>🎉 Barcha 7 Ta Qadam Muvaffaqiyatli Yakunlandi!</span>`;
+        }
+      } else {
+        statusEl.className = 'quiz-status';
+        statusEl.textContent = '⏳ Mantiqni tahlil qiling';
+        gateCard.className = 'quiz-gate-card';
+        actionsBar.style.display = 'none';
+      }
+
+      optContainer.innerHTML = '';
+      quiz.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-opt-btn';
+        if (isUnlocked && opt.correct) {
+          btn.classList.add('correct');
+        }
+        btn.innerHTML = `<span>${opt.text}</span>`;
+        btn.onclick = () => handleQuizAnswer(stepNum, idx);
+        optContainer.appendChild(btn);
+      });
+
+      updateStepButtonsUI();
+    }
+
+    function handleQuizAnswer(stepNum, optIdx) {
+      const data = STEPS_DATA[stepNum];
+      const opt = data.quiz.options[optIdx];
+      const fbBox = document.getElementById('quiz-feedback-box');
+      const actionsBar = document.getElementById('code-actions-bar');
+      const nextBtn = document.getElementById('btn-next-step-unlocked');
+      const statusEl = document.getElementById('quiz-status-badge');
+      const gateCard = document.getElementById('step-quiz-gate');
+      const buttons = document.querySelectorAll('.quiz-opt-btn');
+
+      if (opt.correct) {
+        unlockedSteps[stepNum] = true;
+        buttons.forEach((b, i) => {
+          b.classList.remove('wrong');
+          if (i === optIdx) b.classList.add('correct');
+        });
+        statusEl.className = 'quiz-status unlocked';
+        statusEl.textContent = '🎉 Barakalla! To\'g\'ri Javob';
+        gateCard.className = 'quiz-gate-card unlocked';
+
+        fbBox.className = 'quiz-feedback-box correct';
+        fbBox.innerHTML = opt.feedback;
+        fbBox.style.display = 'block';
+
+        actionsBar.style.display = 'flex';
+        if (stepNum < 7) {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>Keyingi Qadamga O'tish (${stepNum + 1}-qadam) ➔</span>`;
+        } else {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>🎉 Barcha 7 Ta Qadam Muvaffaqiyatli Yakunlandi!</span>`;
+        }
+
+        updateStepButtonsUI();
+        playSuccessSound();
+      } else {
+        buttons.forEach((b, i) => {
+          if (i === optIdx) b.classList.add('wrong');
+          else b.classList.remove('wrong');
+        });
+        fbBox.className = 'quiz-feedback-box wrong';
+        fbBox.innerHTML = opt.feedback;
+        fbBox.style.display = 'block';
+
+        actionsBar.style.display = 'none';
+        playErrorSound();
+      }
+    }
+
+    function updateStepButtonsUI() {
+      document.querySelectorAll('.step-btn').forEach((btn, idx) => {
+        const stepNum = idx + 1;
+        if (unlockedSteps[stepNum]) {
+          btn.classList.add('completed');
+          const numEl = btn.querySelector('.step-num');
+          if (numEl && !numEl.textContent.includes('✓')) {
+            numEl.textContent = `${stepNum}-QADAM ✓`;
+          }
+        }
+      });
+    }
+
+    function copyCurrentStepCode() {
+      const data = STEPS_DATA[currentStepNum];
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = data.code;
+      const pureCode = tempDiv.textContent || tempDiv.innerText || '';
+      navigator.clipboard?.writeText(pureCode);
+      const btn = document.getElementById('btn-copy-step-code');
+      const oldHtml = btn.innerHTML;
+      btn.innerHTML = '<span>✅ Nusxalandi!</span>';
+      setTimeout(() => { btn.innerHTML = oldHtml; }, 1600);
+    }
+
+    function goToNextStep() {
+      if (currentStepNum < 7) {
+        selectStep(currentStepNum + 1);
+        window.scrollTo({ top: document.querySelector('.code-explanation-card').offsetTop - 30, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Boshlang'ich ishga tushirish
+    renderArenaHeroes();
+    selectStep(1);
+  </script>
+</body>
+</html>
