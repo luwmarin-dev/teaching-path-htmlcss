@@ -480,17 +480,20 @@
       color: #93c5fd;
     }
 
-    /* Kod oynasi */
+    /* Kod oynasi (Prettier uslubidagi toza format) */
     .code-editor-box {
       background: #090d16;
       border: 1px solid #1f2937;
       border-radius: 10px;
-      padding: 16px;
-      font-family: 'Consolas', 'Fira Code', monospace;
-      font-size: 13px;
-      line-height: 1.5;
+      padding: 18px 20px;
+      font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+      font-size: 13.5px;
+      line-height: 1.65;
       color: #e2e8f0;
       position: relative;
+      white-space: pre-wrap;
+      tab-size: 2;
+      overflow-x: auto;
     }
 
     .code-keyword { color: #f43f5e; font-weight: bold; }
@@ -723,7 +726,7 @@
        ==================================================================== -->
   <script>
     /* ==========================================================================
-       QADAMLAR BAZASI (O'QITISH METODIKASI)
+       QADAMLAR BAZASI (O'QITISH METODIKASI - PRETTIER TOZA FORMAT)
        ========================================================================== */
     const STEPS_DATA = {
       1: {
@@ -731,43 +734,62 @@
         title: "Bo'sh Class E'lon Qilish (Skelet)",
         desc: "O'quvchiga eng avval hech qanday murakkabliksiz, faqat sinf nomini ochish o'rgatiladi. Ichida na konstruktor, na funksiya, na metod bor. Faqat sinfning qobig'i (skeleti) ochiladi.",
         analogy: "💡 Hayotiy O'xshatish: Loyihaning poydevorini qo'yish. Hozircha bo'sh quti ochdik va unga 'Dino' deb nom berdik.",
-        code: `<span class="code-comment">// 1-QADAM: Bo'sh klass ochamiz. Na konstruktor, na metod bor!</span>
+        code: `<span class="code-comment">// 1-Qadam: Dinozavr uchun bo'sh sinf (shablon) e'lon qilamiz</span>
 <span class="code-keyword">class</span> <span class="code-class">Dino</span> {
-  <span class="code-comment">// Hozircha ichi bo'm-bo'sh</span>
+  <span class="code-comment">// Hozircha ichi bo'm-bo'sh, bu shunchaki poydevor</span>
 }
 
-<span class="code-comment">// Sinov uchun obyekt olib ko'ramiz:</span>
+<span class="code-comment">// 2-Qadam: Ushbu sinfdan foydalanib ilk obyektni yaratamiz</span>
 <span class="code-keyword">const</span> dino = <span class="code-keyword">new</span> <span class="code-class">Dino</span>();
-console.log(dino); <span class="code-comment">// Natija: Dino {}</span>`
+
+<span class="code-comment">// Konsolda tekshirib ko'ramiz (Natija: Dino {})</span>
+console.<span class="code-func">log</span>(dino);`
       },
       2: {
         tag: "2-QADAM",
         title: "O'lchamlar va Yashil Karobka (Hitbox)",
         desc: "O'yin yaratishda avval boshidanoq murakkab rasm chizilmaydi! Barcha professional o'yinlarda avval personaj oddiy to'rtburchak (hitbox / karobka) sifatida yaratiladi. Konstruktor orqali eni, bo'yi va boshlang'ich koordinatalari beriladi.",
         analogy: "💡 O'yin Dasturchilari Siri: GTA yoki Mario o'yinlarida ham qahramonning tagida ko'rinmas to'rtburchak 'karobka' yuradi. Biz ham shunday qilyapmiz!",
-        code: `<span class="code-comment">// 2-QADAM: Konstruktor orqali o'lcham va koordinatalarni beramiz</span>
+        code: `<span class="code-comment">// 1-Qadam: Dino sinfiga konstruktor (boshlang'ich sozlamalar) qo'shamiz</span>
 <span class="code-keyword">class</span> <span class="code-class">Dino</span> {
   <span class="code-func">constructor</span>() {
-    <span class="code-keyword">this</span>.<span class="code-prop">width</span> = <span class="code-num">50</span>;        <span class="code-comment">// Eni (pikselda)</span>
-    <span class="code-keyword">this</span>.<span class="code-prop">height</span> = <span class="code-num">50</span>;       <span class="code-comment">// Bo'yi (pikselda)</span>
-    <span class="code-keyword">this</span>.<span class="code-prop">x</span> = <span class="code-num">60</span>;            <span class="code-comment">// Chapdan joylashuvi</span>
-    <span class="code-keyword">this</span>.<span class="code-prop">y</span> = <span class="code-num">0</span>;             <span class="code-comment">// Yerdan balandligi</span>
-    <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>; <span class="code-comment">// Hozir sakrayaptimi? (yo'q)</span>
+    <span class="code-comment">// Dinozavrning eni (kengligi) 50 piksel</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">width</span> = <span class="code-num">50</span>;
+
+    <span class="code-comment">// Dinozavrning bo'yi (balandligi) 50 piksel</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">height</span> = <span class="code-num">50</span>;
+
+    <span class="code-comment">// Chap tomondan boshlang'ich masofasi (X koordinatasi)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">x</span> = <span class="code-num">60</span>;
+
+    <span class="code-comment">// Yerdan balandligi (Y koordinatasi)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">y</span> = <span class="code-num">0</span>;
+
+    <span class="code-comment">// Sakrash holati: boshida yerda tinch turadi (sakramayapti)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>;
   }
 }
 
-<span class="code-comment">// Natija: Ekranda yashil 50x50 to'rtburchak paydo bo'ladi!</span>`
+<span class="code-comment">// 2-Qadam: Yangi dinozavr obyektini xotirada yaratamiz</span>
+<span class="code-keyword">const</span> dino = <span class="code-keyword">new</span> <span class="code-class">Dino</span>();
+
+<span class="code-comment">// Natija: Ekranda yashil 50x50 to'rtburchak (hitbox) paydo bo'ladi!</span>
+console.<span class="code-func">log</span>(dino);`
       },
       3: {
         tag: "3-QADAM",
         title: "Klaviaturani Tinglash (EventListener)",
         desc: "Kompyuter o'quvchi qachon 'Space' (Bo'sh joy) yoki 'ArrowUp' tugmasini bosganini bilishi kerak. Buning uchun 'keydown' hodisasi (eventListener) qo'shiladi va u Dino sinfining jump() metodini chaqiradi.",
         analogy: "💡 Hayotiy O'xshatish: Xonaga qo'ng'iroq o'rnatish. Mehmon tugmani bosganida jiringlaydi, xuddi shuningdek Space bosilganda sakrash signali uzatiladi.",
-        code: `<span class="code-comment">// 3-QADAM: Klaviaturadan Space bosilishini ushlaymiz</span>
+        code: `<span class="code-comment">// 1-Qadam: Butun brauzer oynasiga tugma bosilishini tinglovchi qo'shamiz</span>
 window.<span class="code-func">addEventListener</span>(<span class="code-prop">'keydown'</span>, (event) => {
+  <span class="code-comment">// 2-Qadam: Foydalanuvchi Space yoki Yuqoriga o'q tugmasini bosganini tekshiramiz</span>
   <span class="code-keyword">if</span> (event.<span class="code-prop">code</span> === <span class="code-prop">'Space'</span> || event.<span class="code-prop">code</span> === <span class="code-prop">'ArrowUp'</span>) {
-    event.<span class="code-func">preventDefault</span>(); <span class="code-comment">// Sahifa pastga aylanib ketmasligi uchun</span>
-    dino.<span class="code-func">jump</span>();            <span class="code-comment">// Dinozavrga sakrash buyrug'ini beramiz!</span>
+    <span class="code-comment">// 3-Qadam: Sahifaning pastga aylanib ketishining oldini olamiz</span>
+    event.<span class="code-func">preventDefault</span>();
+
+    <span class="code-comment">// 4-Qadam: Dinozavrga sakrash buyrug'ini uzatamiz!</span>
+    dino.<span class="code-func">jump</span>();
   }
 });`
       },
@@ -776,25 +798,36 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
         title: "jump() Metodi va Yerga Qaytish",
         desc: "Dino sakraganida darhol tepaga ko'tarilishi va ma'lum vaqtdan so'ng (masalan 500 millisekund) avtomatik ravishda yana yerga tushishi kerak. Eng muhimi: agar dino allaqachon havoda bo'lsa (isJumping === true), u havoda turib yana sakrab ketmasligi shart!",
         analogy: "💡 Fizika Qonuni: Gravitatsiya tortishi. Havoga sakragan tosh abadiy uchib ketmaydi, pastga qaytadi.",
-        code: `<span class="code-comment">// 4-QADAM: Sakrash va yerga qaytish mexanikasi</span>
+        code: `<span class="code-comment">// 1-Qadam: Sakrash mexanikasini o'z ichiga olgan sinfni quramiz</span>
 <span class="code-keyword">class</span> <span class="code-class">Dino</span> {
   <span class="code-func">constructor</span>() {
+    <span class="code-comment">// Sakrash holati (boshida yerda turibdi)</span>
     <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>;
-    <span class="code-keyword">this</span>.<span class="code-prop">jumpHeight</span> = <span class="code-num">110</span>;   <span class="code-comment">// qancha baland sakrashi</span>
+
+    <span class="code-comment">// Havoga ko'tarilish balandligi</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">jumpHeight</span> = <span class="code-num">110</span>;
+
+    <span class="code-comment">// Sakrash davomiyligi (millisekundda)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">jumpDuration</span> = <span class="code-num">500</span>;
   }
 
   <span class="code-func">jump</span>() {
-    <span class="code-comment">// 1. Agar allaqachon havoda bo'lsa, ikkinchi marta sakratmaymiz!</span>
-    <span class="code-keyword">if</span> (<span class="code-keyword">this</span>.<span class="code-prop">isJumping</span>) <span class="code-keyword">return</span>;
+    <span class="code-comment">// 2-Qadam: Agar allaqachon havoda bo'lsa, qayta sakratmaymiz!</span>
+    <span class="code-keyword">if</span> (<span class="code-keyword">this</span>.<span class="code-prop">isJumping</span>) {
+      <span class="code-keyword">return</span>;
+    }
 
+    <span class="code-comment">// 3-Qadam: Sakrashni boshlaymiz va elementni havoga ko'taramiz</span>
     <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">true</span>;
     dinoElement.style.bottom = <span class="code-prop">\`\${34 + this.jumpHeight}px\`</span>;
 
-    <span class="code-comment">// 2. 500 millisekunddan so'ng yana yerga qaytaramiz:</span>
+    <span class="code-comment">// 4-Qadam: 500 millisekunddan so'ng uni yana yerga qaytaramiz</span>
     <span class="code-func">setTimeout</span>(() => {
       dinoElement.style.bottom = <span class="code-prop">'34px'</span>;
-      <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>; <span class="code-comment">// Yana sakrashga ruxsat ochildi!</span>
-    }, <span class="code-num">500</span>);
+
+      <span class="code-comment">// Yana sakrashga ruxsat ochildi!</span>
+      <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>;
+    }, <span class="code-keyword">this</span>.<span class="code-prop">jumpDuration</span>);
   }
 }`
       },
@@ -803,9 +836,12 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
         title: "Karobkani Haqiqiy Dinozavr Rasmiga Almashtirish!",
         desc: "Endi mexanika 100% tayyor! Karobka sakrayapti, yerga qaytyapti. Endi o'quvchiga sirni ochamiz: yashil karobkani o'chirib, uning o'rniga haqiqiy T-Rex pikselli rasmi (SVG yoki IMG) qo'yiladi. O'yin o'sha-o'sha, lekin endi haqiqiy Chrome Dino Game ga aylandi!",
         analogy: "💡 Kostyum Kiygizish: Aktyor avval mashq qiladi, keyin esa sahnaga chiqish uchun chiroyli dinozavr kostyumini kiyadi!",
-        code: `<span class="code-comment">// 5-QADAM: Karobka o'rniga haqiqiy rasm (SVG / Sprite) qo'yish</span>
+        code: `<span class="code-comment">// 1-Qadam: Karobka o'rniga haqiqiy dinozavr kostyumini kiygizamiz</span>
 <span class="code-keyword">function</span> <span class="code-func">setRealDinoSprite</span>() {
+  <span class="code-comment">// CSS klassini haqiqiy dinozavr rejimiga o'tkazamiz</span>
   dinoElement.className = <span class="code-prop">'dino-sprite-mode'</span>;
+
+  <span class="code-comment">// Ichiga pikselli T-Rex SVG rasmini joylashtiramiz</span>
   dinoElement.innerHTML = <span class="code-prop">\`
     &lt;svg class="dino-svg" viewBox="0 0 48 48"&gt;
       &lt;path d="M28 2h14v14h-4v4h-6v4h-4v4h-4v4h-4v8h-6v4h-6v-8h4v-4h4v-4h4v-6h4v-6h6V6h4V2z"/&gt;
@@ -813,7 +849,8 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
   \`</span>;
 }
 
-<span class="code-comment">// Mana, to'liq o'yin tayyor! Endi kaktuslarni qo'shib to'qnashuvni tekshirish mumkin!</span>`
+<span class="code-comment">// 2-Qadam: Mana, 100% to'liq Chrome Dino Game tayyor!</span>
+<span class="code-func">setRealDinoSprite</span>();`
       }
     };
 

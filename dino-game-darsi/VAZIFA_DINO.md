@@ -30,11 +30,20 @@ Barcha 2D va 3D o'yinlarda avval personaj oddiy to'rtburchak (hitbox / karobka) 
 ```javascript
 class Dino {
   constructor() {
-    this.width = 50;        // Eni (piksel)
-    this.height = 50;       // Bo'yi (piksel)
-    this.x = 60;            // Chapdan joylashuv
-    this.y = 0;             // Yerdan balandlik
-    this.isJumping = false; // Hozir sakrayaptimi?
+    // Dinozavrning eni (kengligi) 50 piksel
+    this.width = 50;
+
+    // Dinozavrning bo'yi (balandligi) 50 piksel
+    this.height = 50;
+
+    // X o'qi bo'yicha chapdan boshlang'ich masofasi
+    this.x = 60;
+
+    // Y o'qi bo'yicha yerdan balandligi
+    this.y = 0;
+
+    // Boshlang'ich sakrash holati: yerda tinch turibdi (sakramayapti)
+    this.isJumping = false;
   }
 }
 ```
