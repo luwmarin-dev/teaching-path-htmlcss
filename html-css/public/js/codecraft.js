@@ -462,12 +462,12 @@ const LESSONS = [
       }
     },
     summary: {
-      en: 'Construct a full Esports Championship SPA leaderboard by coding multiple player rows, champion badges, and a summary footer with colspan.',
-      uz: 'Bir nechta o\'yinchi qatorlari, chempion nishonlari va colspan li hisobot qatorini o\'z qo\'lingiz bilan yozib to\'liq Kibersport SPA jadvalini quring.'
+      en: 'Construct a full Esports Championship SPA leaderboard completely from scratch: write the table container, header row with <th> cells, multiple player data rows with <td> cells, and a summary row with colspan.',
+      uz: 'Kibersport SPA turnir jadvalini noldan o\'zingiz quring: jadval ramkasi, <th> li sarlavha qatori, <td> li 3 ta o\'yinchi qatorlari va colspan li hisobot qatorini bosqichma-bosqich o\'z qo\'lingiz bilan yozing.'
     },
     story: {
-      en: 'The Grand Cyber Championship standings table needs its #1 Champion row AND its tournament summary total row constructed!',
-      uz: 'Katta Kiber Chempionat SPA jadvalida 1-o\'rin Chempion qatorini HAMDA butun turnir hisobotini ko\'rsatuvchi colspan li qatorni o\'z qo\'lingiz bilan quring!'
+      en: 'The tournament arena needs its entire standings table built from the ground up: open the table, label the columns with <th>, record all 3 championship player rows with <td>, and crown the grand total with colspan="3"!',
+      uz: 'Turnir maydoniga jadvalni noldan boshlab qurish kerak: jadvalni oching, <th> bilan ustunlarni nomlang, <td> bilan 3 ta o\'yinchi qatorlarini kiriting va colspan="3" bilan umumiy hisobotni chiqaring!'
     },
     initialCode: {
       en: `<style>
@@ -568,31 +568,20 @@ const LESSONS = [
   </div>
 
   <table>
-    <tr>
-      <th>Rank</th>
-      <th>Player</th>
-      <th>Badge</th>
-      <th>Score</th>
-    </tr>
+    <!-- Step 1: Open the header row using <tr> and add 4 <th> column titles: -->
+    <!-- <th>Rank</th> <th>Player</th> <th>Badge</th> <th>Score</th> -->
 
-    <!-- Step 1: Put the 1st Place Champion row here using <tr class="champion"> -->
-    <!-- Add 4 <td> cells: "🥇 1st", "ApexDragon", '<span class="badge gold">CHAMPION</span>', and "15,400" -->
+    <!-- Step 2: Open 1st player row using <tr class="champion"> with 4 <td> cells: -->
+    <!-- <td>🥇 1st</td> <td>ApexDragon</td> <td><span class="badge gold">CHAMPION</span></td> <td>15,400</td> -->
 
-    <tr>
-      <td>🥈 2nd</td>
-      <td>PixelCat</td>
-      <td><span class="badge silver">MASTER</span></td>
-      <td>12,850</td>
-    </tr>
-    <tr>
-      <td>🥉 3rd</td>
-      <td>CyberBot</td>
-      <td><span class="badge bronze">PRO</span></td>
-      <td>10,200</td>
-    </tr>
+    <!-- Step 3: Open 2nd player row using <tr> with 4 <td> cells: -->
+    <!-- <td>🥈 2nd</td> <td>PixelCat</td> <td><span class="badge silver">MASTER</span></td> <td>12,850</td> -->
 
-    <!-- Step 2: Add a tournament summary row using <tr class="total-row"> -->
-    <!-- Inside it, add <td colspan="3">Arena Total Score</td> and <td>38,450</td> -->
+    <!-- Step 4: Open 3rd player row using <tr> with 4 <td> cells: -->
+    <!-- <td>🥉 3rd</td> <td>CyberBot</td> <td><span class="badge bronze">PRO</span></td> <td>10,200</td> -->
+
+    <!-- Step 5: Open tournament total row using <tr class="total-row"> with colspan="3": -->
+    <!-- <td colspan="3">Arena Total Score</td> <td>38,450</td> -->
   </table>
 </div>`,
       uz: `<style>
@@ -693,31 +682,20 @@ const LESSONS = [
   </div>
 
   <table>
-    <tr>
-      <th>Rank</th>
-      <th>Player</th>
-      <th>Badge</th>
-      <th>Score</th>
-    </tr>
+    <!-- 1-QADAM: <tr> bilan sarlavha qatorini oching va 4 ta <th> ustun nomlarini yozing: -->
+    <!-- <th>O'rin</th> <th>O'yinchi</th> <th>Nishon</th> <th>Ochko</th> -->
 
-    <!-- 1-Qadam: <tr class="champion"> yordamida 1-o'rin Chempion qatorini oching -->
-    <!-- Ichiga 4 ta <td> yozing: "🥇 1st", "ApexDragon", '<span class="badge gold">CHAMPION</span>' va "15,400" -->
+    <!-- 2-QADAM: <tr class="champion"> bilan 1-o'rin Chempion qatorini oching va 4 ta <td> yozing: -->
+    <!-- <td>🥇 1st</td> <td>ApexDragon</td> <td><span class="badge gold">CHAMPION</span></td> <td>15,400</td> -->
 
-    <tr>
-      <td>🥈 2nd</td>
-      <td>PixelCat</td>
-      <td><span class="badge silver">MASTER</span></td>
-      <td>12,850</td>
-    </tr>
-    <tr>
-      <td>🥉 3rd</td>
-      <td>CyberBot</td>
-      <td><span class="badge bronze">PRO</span></td>
-      <td>10,200</td>
-    </tr>
+    <!-- 3-QADAM: Yangi <tr> ochib, 2-o'rin uchun 4 ta <td> yozing: -->
+    <!-- <td>🥈 2nd</td> <td>PixelCat</td> <td><span class="badge silver">MASTER</span></td> <td>12,850</td> -->
 
-    <!-- 2-Qadam: Turnir jami hisobot qatorini qo'shing: <tr class="total-row"> -->
-    <!-- Ichiga <td colspan="3">Arena Jami Ochko</td> va <td>38,450</td> yozing -->
+    <!-- 4-QADAM: Yangi <tr> ochib, 3-o'rin uchun 4 ta <td> yozing: -->
+    <!-- <td>🥉 3rd</td> <td>CyberBot</td> <td><span class="badge bronze">PRO</span></td> <td>10,200</td> -->
+
+    <!-- 5-QADAM: <tr class="total-row"> ochib, colspan="3" bilan hisobot qatorini yozing: -->
+    <!-- <td colspan="3">Arena Jami Ochko</td> <td>38,450</td> -->
   </table>
 </div>`
     },
@@ -840,6 +818,7 @@ const LESSONS = [
       <td><span class="badge silver">MASTER</span></td>
       <td>12,850</td>
     </tr>
+
     <tr>
       <td>🥉 3rd</td>
       <td>CyberBot</td>
@@ -952,10 +931,10 @@ const LESSONS = [
 
   <table>
     <tr>
-      <th>Rank</th>
-      <th>Player</th>
-      <th>Badge</th>
-      <th>Score</th>
+      <th>O'rin</th>
+      <th>O'yinchi</th>
+      <th>Nishon</th>
+      <th>Ochko</th>
     </tr>
 
     <tr class="champion">
@@ -971,6 +950,7 @@ const LESSONS = [
       <td><span class="badge silver">MASTER</span></td>
       <td>12,850</td>
     </tr>
+
     <tr>
       <td>🥉 3rd</td>
       <td>CyberBot</td>
@@ -986,8 +966,8 @@ const LESSONS = [
 </div>`
     },
     targetDescription: {
-      en: 'An Esports Championship SPA featuring metric cards, the #1 Champion ApexDragon row, and a summary footer table row with colspan="3".',
-      uz: 'Ko\'rsatkichlar kartalari, oltin nishonli 1-o\'rin Chempioni ApexDragon qatori hamda colspan="3" li hisobot qatoriga ega to\'liq Kibersport SPA jadvali.'
+      en: 'A grand championship standings table built completely from scratch: header row with 4 <th> cells, 3 player rows with badges, and a summary footer with colspan="3".',
+      uz: 'Noldan boshlab to\'liq qurilgan chempionat jadvali: 4 ta <th> sarlavha kataklari, nishonli 3 ta o\'yinchi qatori va colspan="3" li umumiy hisobot qatori.'
     },
     anatomy: [
       {
@@ -1000,33 +980,33 @@ const LESSONS = [
       {
         part: '<tr>',
         role: { en: 'Table Row', uz: 'Jadval qatori' },
-        explanation: { en: 'Creates horizontal rows across the table. Used for header, champions, and summaries!', uz: 'Gorizontal qatorlar hosil qiladi. Sarlavha, chempionlar va xulosalarda ishlatiladi!' },
+        explanation: { en: 'Creates horizontal rows across the table. Each <tr> is a brand-new row!', uz: 'Gorizontal qatorlar hosil qiladi. Har bir <tr> yangi bitta qator deganidir!' },
         effect: { en: 'Starts a horizontal row', uz: 'Gorizontal qatorni boshlaydi' },
         visualPreview: '<div class="mini-canvas">➔ Horizontal Row ➔</div>'
       },
       {
         part: '<th>',
         role: { en: 'Table Header Cell', uz: 'Sarlavha katagi' },
-        explanation: { en: 'Creates a bold label cell for column titles.', uz: 'Ustun nomlari uchun qalin sarlavha katagi hosil qiladi.' },
+        explanation: { en: 'Creates bold, centered column title cells. Belongs inside the 1st <tr> row!', uz: 'Ustun nomlari uchun qalin sarlavha katagi hosil qiladi. 1-qator <tr> ichiga qo\'yiladi!' },
         effect: { en: 'Bold column header', uz: 'Qalin sarlavha katagi' },
         visualPreview: '<div class="mini-canvas"><b>Header: Name | Score</b></div>'
       },
       {
         part: '<td>',
         role: { en: 'Table Data Cell', uz: 'Ma\'lumot katagi' },
-        explanation: { en: 'A regular grid box holding values, medals, or text.', uz: 'Matn yoki raqamni saqlovchi oddiy katak.' },
+        explanation: { en: 'Regular grid cells holding facts, names, badges, or numbers.', uz: 'Ma\'lumot, o\'yinchi nomi, nishon va ochkolarni saqlovchi kataklar.' },
         effect: { en: 'Standard data cell box', uz: 'Oddiy ma\'lumot katagi' },
         visualPreview: '<div class="mini-canvas">📦 Standard Data Cell Box</div>'
       },
       {
         part: 'colspan="3"',
         role: { en: 'Column Span', uz: 'Ustunlarni Birlashtirish' },
-        explanation: { en: 'Merges multiple columns horizontally into one wide cell.', uz: 'Bir nechta ustunni gorizontal ravishda bitta keng katakka birlashtiradi.' },
+        explanation: { en: 'Merges 3 columns horizontally into one grand banner cell.', uz: '3 ta ustunni gorizontal ravishda bitta keng katakka birlashtiradi.' },
         effect: { en: 'Wide merged cell', uz: 'Birlashtirilgan keng katak' }
       }
     ],
     listOfTags: [
-      { code: '<table> ... </table>', name: 'Table', description: 'The outer container frame for a grid/table', exampleHtml: '<table><tr><td>Cell</td></tr></table>' },
+      { code: '<table> ... </table>', name: 'Table Container', description: 'The outer container frame for a data table', exampleHtml: '<table>...</table>' },
       { code: '<tr> ... </tr>', name: 'Table Row', description: 'Creates one horizontal line of cells across the table', exampleHtml: '<tr><td>A</td><td>B</td></tr>' },
       { code: '<th> ... </th>', name: 'Table Header', description: 'Bold title cell at the top of a column', exampleHtml: '<th>Player</th>' },
       { code: '<td> ... </td>', name: 'Table Data', description: 'Standard data cell box holding facts or numbers', exampleHtml: '<td>15,400</td>' },
@@ -1036,29 +1016,39 @@ const LESSONS = [
       { tag: '<table>', meaning: 'The whole grid' },
       { tag: '<tr>', meaning: 'One horizontal row' },
       { tag: '<th>', meaning: 'Bold column title' },
-      { tag: '<td>', meaning: 'Data box inside a row' },
-      { tag: 'colspan="3"', meaning: 'Merge 3 cells' }
+      { tag: '<td>', meaning: 'Data cell box' },
+      { tag: 'colspan="3"', meaning: 'Merge 3 columns' }
     ],
     quickTags: ['<table>', '</table>', '<tr>', '</tr>', '<th>', '</th>', '<td>', '</td>', 'colspan="3"'],
     challenge: {
       mission: {
-        en: 'Build the full Esports table! 1) Add <tr class="champion"> with 4 <td> cells for ApexDragon ("🥇 1st", "ApexDragon", \`<span class="badge gold">CHAMPION</span>\`, "15,400"). 2) Add <tr class="total-row"> with <td colspan="3">Arena Total Score</td> and <td>38,450</td>!',
-        uz: 'To\'liq Kibersport jadvalini quring! 1) ApexDragon uchun 4 ta <td> katakli <tr class="champion"> qatorini qo\'shing ("🥇 1st", "ApexDragon", \`<span class="badge gold">CHAMPION</span>\`, "15,400"). 2) <td colspan="3">Arena Jami Ochko</td> va <td>38,450</td> ga ega <tr class="total-row"> qatorini qo\'shing!'
+        en: 'Construct the full Esports Standings Table from scratch! 1) Create header <tr> with 4 <th> cells. 2) Create 1st place <tr class="champion"> for ApexDragon with 4 <td> cells. 3) Create 2nd place <tr> for PixelCat with 4 <td> cells. 4) Create 3rd place <tr> for CyberBot with 4 <td> cells. 5) Create <tr class="total-row"> with <td colspan="3"> and <td>38,450</td>!',
+        uz: 'Kibersport jadvalini noldan o\'zingiz quring! 1) 4 ta <th> katakli sarlavha <tr> qatorini oching. 2) ApexDragon uchun 4 ta <td> katakli <tr class="champion"> qatorini yozing. 3) PixelCat uchun 4 ta <td> katakli <tr> qatorini yozing. 4) CyberBot uchun 4 ta <td> katakli <tr> qatorini yozing. 5) <td colspan="3"> va <td>38,450</td> ga ega <tr class="total-row"> qatorini qo\'shing!'
       },
       hint: {
-        en: 'Add the champion <tr> row, and at the bottom add a <tr> row with <td colspan="3"> and <td>38,450</td>.',
-        uz: 'Chempion <tr> qatorini qo\'shing va jadval oxirida <td colspan="3"> hamda <td>38,450</td> ga ega hisobot <tr> qatorini yozing.'
+        en: 'Write 5 distinct <tr> rows: row 1 with <th>, rows 2-4 with <td> for players, and row 5 with <td colspan="3">.',
+        uz: '5 ta alohida <tr> qatori yozing: 1-qatorda <th>, 2-4 qatorlarda o\'yinchilar uchun <td>, 5-qatorda esa <td colspan="3"> bo\'lsin.'
       },
       rules: [
         {
           type: 'hasTag',
           tag: 'table',
-          message: 'Keep the <table> grid!'
+          message: 'Keep the <table> container!'
+        },
+        {
+          type: 'custom',
+          check: (code) => (code.match(/<th/gi) || []).length >= 4,
+          message: 'Add at least 4 <th> header title cells in the first row!'
         },
         {
           type: 'custom',
           check: (code) => (code.match(/<tr/gi) || []).length >= 5,
-          message: 'You need at least 5 rows (header + 3 player rows + 1 total summary row)!'
+          message: 'You need at least 5 <tr> rows (header + 3 player rows + summary row)!'
+        },
+        {
+          type: 'custom',
+          check: (code) => (code.match(/<td/gi) || []).length >= 13,
+          message: 'You need all player data cells (at least 13 <td> cells total across rows)!'
         },
         {
           type: 'custom',
@@ -1067,8 +1057,13 @@ const LESSONS = [
         },
         {
           type: 'custom',
-          check: (code) => /CHAMPION/i.test(code),
-          message: 'Give ApexDragon the CHAMPION badge!'
+          check: (code) => /PixelCat/i.test(code),
+          message: 'Add PixelCat as the 2nd place master in the table!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /CyberBot/i.test(code),
+          message: 'Add CyberBot as the 3rd place player in the table!'
         },
         {
           type: 'custom',
@@ -1100,7 +1095,7 @@ const LESSONS = [
   // THEME 4: Pictures
   // ==========================================
   {
-    id: 'theme-4-pictures',
+id: 'theme-4-pictures',
     module: 'html-core',
     title: {
       en: 'Theme 4: Pictures & Void Tags',
