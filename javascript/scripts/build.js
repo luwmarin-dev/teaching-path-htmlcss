@@ -114,8 +114,8 @@ function createStandaloneHtml(defaultLang, customTitle) {
   }
 
   const customizedJs = bundledJs.replace(
-    'initApp();',
-    `${langBootCode}\n    initApp();`
+    'function initApp() {',
+    `function initApp() {\n    ${langBootCode}`
   );
 
   html = html.replace(

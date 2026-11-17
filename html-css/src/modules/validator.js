@@ -4,7 +4,11 @@
  */
 
 export function validateChallenge(code, rules = []) {
-  if (!code || typeof code !== 'string') {
+  const codeStr = (typeof code === 'object' && code !== null)
+    ? (code.en || code.uz || Object.values(code)[0] || '')
+    : code;
+
+  if (!codeStr || typeof codeStr !== 'string') {
     return {
       passed: false,
       feedback: ['Write some code in the editor to start the challenge!']
@@ -12,7 +16,7 @@ export function validateChallenge(code, rules = []) {
   }
 
   // Strip HTML and CSS comments so instructions inside comments don't trigger false passes
-  const codeWithoutComments = code
+  const codeWithoutComments = codeStr
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
   const feedback = [];

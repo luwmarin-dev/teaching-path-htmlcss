@@ -25,17 +25,29 @@ describe('JavaScript Curriculum Integrity', () => {
     });
   });
 
-  it('verifies all 24 lessons pass their own targetCode validation', () => {
+  it('verifies all 24 lessons pass their own targetCode validation in both English and Uzbek', () => {
     LESSONS.forEach(l => {
-      const result = l.validate(l.targetCode);
-      assert.equal(result.passed, true, `Lesson ${l.id} targetCode failed validation: ${result.message}`);
+      const enCode = typeof l.targetCode === 'object' ? l.targetCode.en : l.targetCode;
+      const uzCode = typeof l.targetCode === 'object' ? l.targetCode.uz : l.targetCode;
+
+      const resEn = l.validate(enCode);
+      assert.equal(resEn.passed, true, `Lesson ${l.id} targetCode (EN) failed validation: ${resEn.message}`);
+
+      const resUz = l.validate(uzCode);
+      assert.equal(resUz.passed, true, `Lesson ${l.id} targetCode (UZ) failed validation: ${resUz.message}`);
     });
   });
 
-  it('verifies all 24 initialCodes do not prematurely pass validation (constructive pedagogy)', () => {
+  it('verifies all 24 initialCodes do not prematurely pass validation in either English or Uzbek', () => {
     LESSONS.forEach(l => {
-      const result = l.validate(l.initialCode);
-      assert.equal(result.passed, false, `Lesson ${l.id} initialCode prematurely passed validation without student action!`);
+      const enCode = typeof l.initialCode === 'object' ? l.initialCode.en : l.initialCode;
+      const uzCode = typeof l.initialCode === 'object' ? l.initialCode.uz : l.initialCode;
+
+      const resEn = l.validate(enCode);
+      assert.equal(resEn.passed, false, `Lesson ${l.id} initialCode (EN) prematurely passed validation without student action!`);
+
+      const resUz = l.validate(uzCode);
+      assert.equal(resUz.passed, false, `Lesson ${l.id} initialCode (UZ) prematurely passed validation without student action!`);
     });
   });
 

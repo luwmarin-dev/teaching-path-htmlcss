@@ -1246,10 +1246,13 @@ export function getLessonsByModule(modId) {
 LESSONS.forEach(lesson => {
   const originalValidate = lesson.validate;
   lesson.validate = (code) => {
-    if (!code || typeof code !== 'string') {
+    const codeStr = (typeof code === 'object' && code !== null)
+      ? (code.uz || code.en || Object.values(code)[0] || '')
+      : code;
+    if (!codeStr || typeof codeStr !== 'string') {
       return { passed: false, message: 'Kodingizni yozing!' };
     }
-    const cleanCode = code
+    const cleanCode = codeStr
       .replace(/\/\/.*$/gm, '')
       .replace(/\/\*[\s\S]*?\*\//g, '');
     return originalValidate(cleanCode);

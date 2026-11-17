@@ -108,7 +108,7 @@ function attachGlobalListeners() {
       state,
       onProfileSwitched: (newState, profile) => {
         state = newState;
-        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        currentCode = state.customSandboxCode || localize(LESSONS[0].initialCode, state.lang);
         saveStateToStorage(state);
         applyStateToUI();
         selectLesson(state.currentLessonId || LESSONS[0].id);
@@ -119,15 +119,27 @@ function attachGlobalListeners() {
 
   function switchLang(lang) {
     stopSpeaking();
+    const prevLang = state.lang;
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
+
+    const lesson = getLessonById(state.currentLessonId);
+    if (lesson) {
+      const prevStarter = localize(lesson.initialCode, prevLang);
+      const newStarter = localize(lesson.initialCode, lang);
+      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+        currentCode = newStarter;
+      }
+    }
+
     if (currentView === 'sandbox') {
       renderSandboxView();
     } else if (currentView === 'labs') {
       renderLabsView();
     } else {
+      renderSidebar();
       renderLessonView();
     }
   }
@@ -138,15 +150,28 @@ function attachGlobalListeners() {
 
   // Language Toggle (English <-> Uzbek)
   elements.btnLang?.addEventListener('click', () => {
+    stopSpeaking();
+    const prevLang = state.lang;
     state = toggleLanguage(state);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
+
+    const lesson = getLessonById(state.currentLessonId);
+    if (lesson) {
+      const prevStarter = localize(lesson.initialCode, prevLang);
+      const newStarter = localize(lesson.initialCode, state.lang);
+      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+        currentCode = newStarter;
+      }
+    }
+
     if (currentView === 'sandbox') {
       renderSandboxView();
     } else if (currentView === 'labs') {
       renderLabsView();
     } else {
+      renderSidebar();
       renderLessonView();
     }
   });
@@ -321,7 +346,7 @@ export function selectLesson(lessonId) {
   elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
-  currentCode = lesson.initialCode;
+  currentCode = localize(lesson.initialCode, state.lang);
   saveStateToStorage(state);
 
   renderSidebar();
@@ -718,8 +743,9 @@ function setupLessonListeners(lesson) {
 
   // Start Practice Button: loads starter code, smoothly scrolls to editor, focuses textarea
   document.getElementById('btn-start-practice')?.addEventListener('click', () => {
-    textarea.value = lesson.initialCode;
-    currentCode = lesson.initialCode;
+    const code = localize(lesson.initialCode, state.lang);
+    textarea.value = code;
+    currentCode = code;
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
@@ -729,8 +755,9 @@ function setupLessonListeners(lesson) {
 
   // Reset to initial starter code
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    textarea.value = lesson.initialCode;
-    currentCode = lesson.initialCode;
+    const code = localize(lesson.initialCode, state.lang);
+    textarea.value = code;
+    currentCode = code;
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);

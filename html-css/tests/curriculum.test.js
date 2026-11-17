@@ -56,27 +56,47 @@ describe('Curriculum Data Integrity', () => {
     }
   });
 
-  it('verifies targetCode passes its own challenge validator', () => {
+  it('verifies targetCode passes its own challenge validator in both English and Uzbek', () => {
     for (const lesson of LESSONS) {
       if (lesson.challenge && lesson.challenge.rules.length > 0) {
-        const result = validateChallenge(lesson.targetCode, lesson.challenge.rules);
+        const enCode = typeof lesson.targetCode === 'object' ? lesson.targetCode.en : lesson.targetCode;
+        const uzCode = typeof lesson.targetCode === 'object' ? lesson.targetCode.uz : lesson.targetCode;
+
+        const resultEn = validateChallenge(enCode, lesson.challenge.rules);
         assert.equal(
-          result.passed,
+          resultEn.passed,
           true,
-          `Lesson ${lesson.id} targetCode did not pass its own challenge rules: ${result.feedback.join('; ')}`
+          `Lesson ${lesson.id} targetCode (EN) did not pass its own challenge rules: ${resultEn.feedback.join('; ')}`
+        );
+
+        const resultUz = validateChallenge(uzCode, lesson.challenge.rules);
+        assert.equal(
+          resultUz.passed,
+          true,
+          `Lesson ${lesson.id} targetCode (UZ) did not pass its own challenge rules: ${resultUz.feedback.join('; ')}`
         );
       }
     }
   });
 
-  it('verifies initialCode does not prematurely pass its own challenge validator (constructive pedagogy)', () => {
+  it('verifies initialCode does not prematurely pass its own challenge validator in either English or Uzbek', () => {
     for (const lesson of LESSONS) {
       if (lesson.challenge && lesson.challenge.rules.length > 0) {
-        const result = validateChallenge(lesson.initialCode, lesson.challenge.rules);
+        const enCode = typeof lesson.initialCode === 'object' ? lesson.initialCode.en : lesson.initialCode;
+        const uzCode = typeof lesson.initialCode === 'object' ? lesson.initialCode.uz : lesson.initialCode;
+
+        const resultEn = validateChallenge(enCode, lesson.challenge.rules);
         assert.equal(
-          result.passed,
+          resultEn.passed,
           false,
-          `Lesson ${lesson.id} initialCode prematurely passed its own challenge rules without student action!`
+          `Lesson ${lesson.id} initialCode (EN) prematurely passed its own challenge rules without student action!`
+        );
+
+        const resultUz = validateChallenge(uzCode, lesson.challenge.rules);
+        assert.equal(
+          resultUz.passed,
+          false,
+          `Lesson ${lesson.id} initialCode (UZ) prematurely passed its own challenge rules without student action!`
         );
       }
     }

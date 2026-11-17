@@ -3774,209 +3774,68 @@ const LESSONS = [
     id: 'theme-3-tables',
     module: 'html-core',
     title: {
-      en: 'Theme 3: Tables & Grids (Esports Championship Leaderboard)',
-      uz: '3-Mavzu: Jadvallar va Kataklar (Chempionat Reyting Jadvali)'
+      en: 'Theme 3: Tables & Grids (Esports Championship Arena SPA)',
+      uz: '3-Mavzu: Jadvallar va Kataklar (Kibersport Chempionati SPA Sahifasi)'
     },
     icon: '📊',
     tag: '<table>, <tr>, <th>, <td>',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, a **Table** is a high-tech data grid! It organizes tournament scores, school timetables, and game inventories into crisp rows and columns.',
-        uz: 'Oddiy tilda aytganda, **Jadval** — bu yuqori texnologiyali ma\'lumotlar panjarasi! U turnir ochkolari, dars jadvallari va o\'yin reytinglarini toza qator va ustunlarga teradi.'
+        en: 'In human language, a **Table** is a high-tech data grid! Inside real Single Page Applications (SPAs), tables power esports leaderboards, flight schedules, and financial analytics.',
+        uz: 'Oddiy tilda aytganda, **Jadval** — bu yuqori texnologiyali ma\'lumotlar panjarasi! Haqiqiy bitta sahifali ilovalarda (SPA) jadvallar kibersport reytinglari, parvoz jadvallari va moliyaviy hisobotlarni tuzadi.'
       },
       whatIsATag: {
-        en: 'HTML tables work like building a skyscraper floor-by-floor:\n1. `<table>` is the outer skyscraper foundation.\n2. `<tr>` (Table Row) is each horizontal floor.\n3. `<th>` (Table Header) is the bold roof sign labeling what is inside.\n4. `<td>` (Table Data) is each room holding facts, player names, and medals!',
-        uz: 'HTML jadvallari xuddi binoni qavatma-qavat qurishdek ishlaydi:\n1. `<table>` — binoning poydevori.\n2. `<tr>` (Table Row) — har bir gorizontal qavat.\n3. `<th>` (Table Header) — ustun nomini bildiruvchi qalin sarlavha.\n4. `<td>` (Table Data) — ma\'lumot, o\'yinchi nomi va medallar saqlanuvchi xonalar!'
+        en: 'HTML tables structure complex web applications floor-by-floor:\n1. `<table>` is the outer grid container.\n2. `<tr>` (Table Row) is each horizontal row.\n3. `<th>` (Table Header) is the bold roof sign labeling each column.\n4. `<td>` (Table Data) is each cell holding facts, player names, and medals!',
+        uz: 'HTML jadvallari veb-ilovalarni qavatma-qavat quradi:\n1. `<table>` — jadvalning tashqi ramkasi.\n2. `<tr>` (Table Row) — har bir gorizontal qator.\n3. `<th>` (Table Header) — ustun nomini bildiruvchi qalin sarlavha.\n4. `<td>` (Table Data) — ma\'lumot, o\'yinchi nomi va medallar saqlanuvchi xonalar!'
       }
     },
     summary: {
-      en: 'Construct pro esports championship leaderboards using <table>, <tr> rows, <th> headers, and <td> cells.',
-      uz: '<table>, <tr> qatorlari, <th> sarlavhalari va <td> kataklari yordamida professional kibersport reytingini quring.'
+      en: 'Construct a full Esports Championship SPA with live metrics and a pro leaderboard using <table>, <tr>, <th>, and <td>.',
+      uz: '<table>, <tr>, <th> va <td> yordamida jonli ko\'rsatkichlarga ega haqiqiy Kibersport SPA reytingini quring.'
     },
     story: {
-      en: 'The Grand Cyber Tournament needs its #1 Champion crowned at the top of the leaderboard with 🥇 1st place and a golden CHAMPION badge!',
-      uz: 'Katta Kiber Turnirning eng yuqori qatoriga 1-o\'rin va oltin CHAMPION nishoniga ega bosh chempionni kiritish kerak!'
+      en: 'The Grand Cyber Championship needs its #1 Champion crowned in the tournament SPA with 🥇 1st place and a golden CHAMPION badge!',
+      uz: 'Katta Kiber Chempionat SPA sahifasida 1-o\'rin va oltin CHAMPION nishoniga ega bosh chempionni e\'lon qilish kerak!'
     },
-    initialCode: `<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #141726;
-    border-radius: 12px;
-    overflow: hidden;
-    color: #e2e8f0;
-    font-family: sans-serif;
-  }
-  th {
-    background: #1e2438;
-    color: #38bdf8;
-    padding: 14px;
-    text-align: left;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  td {
-    padding: 12px 14px;
-    border-top: 1px solid #232b42;
-  }
-  .champion {
-    background: rgba(234, 179, 8, 0.18);
-    font-weight: bold;
-  }
-  .badge {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
-  }
-  .gold { background: #eab308; color: #000; }
-  .silver { background: #94a3b8; color: #000; }
-  .bronze { background: #f97316; color: #fff; }
-</style>
-
-<table>
-  <tr>
-    <th>Rank</th>
-    <th>Player</th>
-    <th>Badge</th>
-    <th>Score</th>
-  </tr>
-
-  <!-- Step 1: Put the 1st Place Champion row here using <tr class="champion"> -->
-  <!-- Step 2: Add 4 <td> cells: 🥇 1st | ApexDragon | <span class="badge gold">CHAMPION</span> | 15,400 -->
-
-  <tr>
-    <td>🥈 2nd</td>
-    <td>PixelCat</td>
-    <td><span class="badge silver">MASTER</span></td>
-    <td>12,850</td>
-  </tr>
-  <tr>
-    <td>🥉 3rd</td>
-    <td>CyberBot</td>
-    <td><span class="badge bronze">PRO</span></td>
-    <td>10,200</td>
-  </tr>
-</table>`,
-    targetCode: `<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #141726;
-    border-radius: 12px;
-    overflow: hidden;
-    color: #e2e8f0;
-    font-family: sans-serif;
-  }
-  th {
-    background: #1e2438;
-    color: #38bdf8;
-    padding: 14px;
-    text-align: left;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  td {
-    padding: 12px 14px;
-    border-top: 1px solid #232b42;
-  }
-  .champion {
-    background: rgba(234, 179, 8, 0.18);
-    font-weight: bold;
-  }
-  .badge {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
-  }
-  .gold { background: #eab308; color: #000; }
-  .silver { background: #94a3b8; color: #000; }
-  .bronze { background: #f97316; color: #fff; }
-</style>
-
-<table>
-  <tr>
-    <th>Rank</th>
-    <th>Player</th>
-    <th>Badge</th>
-    <th>Score</th>
-  </tr>
-  <tr class="champion">
-    <td>🥇 1st</td>
-    <td>ApexDragon</td>
-    <td><span class="badge gold">CHAMPION</span></td>
-    <td>15,400</td>
-  </tr>
-  <tr>
-    <td>🥈 2nd</td>
-    <td>PixelCat</td>
-    <td><span class="badge silver">MASTER</span></td>
-    <td>12,850</td>
-  </tr>
-  <tr>
-    <td>🥉 3rd</td>
-    <td>CyberBot</td>
-    <td><span class="badge bronze">PRO</span></td>
-    <td>10,200</td>
-  </tr>
-</table>`,
-    targetDescription: 'A pro esports tournament leaderboard featuring rank badges, custom theme styling, and the #1 Champion ApexDragon row.',
+    initialCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-esports {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 12px;\n    padding: 16px 20px;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-banner h2 { margin: 0; color: #a5b4fc; font-size: 18px; }\n  .spa-banner span { background: #38bdf8; color: #0b0f19; font-weight: bold; font-size: 11px; padding: 4px 10px; border-radius: 6px; }\n\n  .stats-row {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .stat-card {\n    flex: 1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px;\n    text-align: center;\n  }\n  .stat-card b { display: block; font-size: 16px; color: #38bdf8; }\n  .stat-card span { font-size: 11px; color: #94a3b8; }\n\n  /* Leaderboard Grid Table */\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    overflow: hidden;\n  }\n  th {\n    background: #1e2438;\n    color: #38bdf8;\n    padding: 14px;\n    text-align: left;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n  }\n  td {\n    padding: 12px 14px;\n    border-top: 1px solid #1f2937;\n    font-size: 13px;\n  }\n  .champion {\n    background: rgba(234, 179, 8, 0.18);\n    font-weight: bold;\n  }\n  .badge {\n    display: inline-block;\n    padding: 3px 8px;\n    border-radius: 6px;\n    font-size: 11px;\n    font-weight: bold;\n  }\n  .gold { background: #eab308; color: #000; }\n  .silver { background: #94a3b8; color: #000; }\n  .bronze { background: #f97316; color: #fff; }\n</style>\n\n<div class=\"spa-esports\">\n  <!-- Championship Header -->\n  <div class=\"spa-banner\">\n    <div>\n      <h2>🏆 Global Cyber Championship 2099</h2>\n      <p style=\"margin: 4px 0 0 0; font-size: 12px; color: #cbd5e1;\">Live Arena Standings • Prize Pool: $100,000</p>\n    </div>\n    <span>🔴 LIVE ARENA</span>\n  </div>\n\n  <!-- Metric Ribbon -->\n  <div class=\"stats-row\">\n    <div class=\"stat-card\"><b>32</b><span>Pro Teams</span></div>\n    <div class=\"stat-card\"><b>128</b><span>Matches Played</span></div>\n    <div class=\"stat-card\"><b>1.4M</b><span>Global Viewers</span></div>\n  </div>\n\n  <!-- Standings Table -->\n  <table>\n    <tr>\n      <th>Rank</th>\n      <th>Player</th>\n      <th>Badge</th>\n      <th>Score</th>\n    </tr>\n\n    <!-- Step 1: Put the 1st Place Champion row here using <tr class=\"champion\"> -->\n    <!-- Step 2: Add 4 <td> cells: 🥇 1st | ApexDragon | <span class=\"badge gold\">CHAMPION</span> | 15,400 -->\n\n    <tr>\n      <td>🥈 2nd</td>\n      <td>PixelCat</td>\n      <td><span class=\"badge silver\">MASTER</span></td>\n      <td>12,850</td>\n    </tr>\n    <tr>\n      <td>🥉 3rd</td>\n      <td>CyberBot</td>\n      <td><span class=\"badge bronze\">PRO</span></td>\n      <td>10,200</td>\n    </tr>\n  </table>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-esports {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 12px;\n    padding: 16px 20px;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-banner h2 { margin: 0; color: #a5b4fc; font-size: 18px; }\n  .spa-banner span { background: #38bdf8; color: #0b0f19; font-weight: bold; font-size: 11px; padding: 4px 10px; border-radius: 6px; }\n\n  .stats-row {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .stat-card {\n    flex: 1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px;\n    text-align: center;\n  }\n  .stat-card b { display: block; font-size: 16px; color: #38bdf8; }\n  .stat-card span { font-size: 11px; color: #94a3b8; }\n\n  /* Leaderboard Grid Table */\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    overflow: hidden;\n  }\n  th {\n    background: #1e2438;\n    color: #38bdf8;\n    padding: 14px;\n    text-align: left;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n  }\n  td {\n    padding: 12px 14px;\n    border-top: 1px solid #1f2937;\n    font-size: 13px;\n  }\n  .champion {\n    background: rgba(234, 179, 8, 0.18);\n    font-weight: bold;\n  }\n  .badge {\n    display: inline-block;\n    padding: 3px 8px;\n    border-radius: 6px;\n    font-size: 11px;\n    font-weight: bold;\n  }\n  .gold { background: #eab308; color: #000; }\n  .silver { background: #94a3b8; color: #000; }\n  .bronze { background: #f97316; color: #fff; }\n</style>\n\n<div class=\"spa-esports\">\n  <!-- Championship Header -->\n  <div class=\"spa-banner\">\n    <div>\n      <h2>🏆 Global Cyber Championship 2099</h2>\n      <p style=\"margin: 4px 0 0 0; font-size: 12px; color: #cbd5e1;\">Live Arena Standings • Prize Pool: $100,000</p>\n    </div>\n    <span>🔴 LIVE ARENA</span>\n  </div>\n\n  <!-- Metric Ribbon -->\n  <div class=\"stats-row\">\n    <div class=\"stat-card\"><b>32</b><span>Pro Teams</span></div>\n    <div class=\"stat-card\"><b>128</b><span>Matches Played</span></div>\n    <div class=\"stat-card\"><b>1.4M</b><span>Global Viewers</span></div>\n  </div>\n\n  <!-- Standings Table -->\n  <table>\n    <tr>\n      <th>Rank</th>\n      <th>Player</th>\n      <th>Badge</th>\n      <th>Score</th>\n    </tr>\n\n    <!-- 1-Qadam: <tr class=\"champion\"> yordamida 1-o'rin Chempion qatorini shu yerga qo'ying -->\n    <!-- 2-Qadam: 4 ta <td> katak qo'shing: 🥇 1st | ApexDragon | <span class=\"badge gold\">CHAMPION</span> | 15,400 -->\n\n    <tr>\n      <td>🥈 2nd</td>\n      <td>PixelCat</td>\n      <td><span class=\"badge silver\">MASTER</span></td>\n      <td>12,850</td>\n    </tr>\n    <tr>\n      <td>🥉 3rd</td>\n      <td>CyberBot</td>\n      <td><span class=\"badge bronze\">PRO</span></td>\n      <td>10,200</td>\n    </tr>\n  </table>\n</div>"
+    },
+    targetCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-esports {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 12px;\n    padding: 16px 20px;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-banner h2 { margin: 0; color: #a5b4fc; font-size: 18px; }\n  .spa-banner span { background: #38bdf8; color: #0b0f19; font-weight: bold; font-size: 11px; padding: 4px 10px; border-radius: 6px; }\n\n  .stats-row {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .stat-card {\n    flex: 1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px;\n    text-align: center;\n  }\n  .stat-card b { display: block; font-size: 16px; color: #38bdf8; }\n  .stat-card span { font-size: 11px; color: #94a3b8; }\n\n  /* Leaderboard Grid Table */\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    overflow: hidden;\n  }\n  th {\n    background: #1e2438;\n    color: #38bdf8;\n    padding: 14px;\n    text-align: left;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n  }\n  td {\n    padding: 12px 14px;\n    border-top: 1px solid #1f2937;\n    font-size: 13px;\n  }\n  .champion {\n    background: rgba(234, 179, 8, 0.18);\n    font-weight: bold;\n  }\n  .badge {\n    display: inline-block;\n    padding: 3px 8px;\n    border-radius: 6px;\n    font-size: 11px;\n    font-weight: bold;\n  }\n  .gold { background: #eab308; color: #000; }\n  .silver { background: #94a3b8; color: #000; }\n  .bronze { background: #f97316; color: #fff; }\n</style>\n\n<div class=\"spa-esports\">\n  <!-- Championship Header -->\n  <div class=\"spa-banner\">\n    <div>\n      <h2>🏆 Global Cyber Championship 2099</h2>\n      <p style=\"margin: 4px 0 0 0; font-size: 12px; color: #cbd5e1;\">Live Arena Standings • Prize Pool: $100,000</p>\n    </div>\n    <span>🔴 LIVE ARENA</span>\n  </div>\n\n  <!-- Metric Ribbon -->\n  <div class=\"stats-row\">\n    <div class=\"stat-card\"><b>32</b><span>Pro Teams</span></div>\n    <div class=\"stat-card\"><b>128</b><span>Matches Played</span></div>\n    <div class=\"stat-card\"><b>1.4M</b><span>Global Viewers</span></div>\n  </div>\n\n  <!-- Standings Table -->\n  <table>\n    <tr>\n      <th>Rank</th>\n      <th>Player</th>\n      <th>Badge</th>\n      <th>Score</th>\n    </tr>\n\n    <tr class=\"champion\">\n      <td>🥇 1st</td>\n      <td>ApexDragon</td>\n      <td><span class=\"badge gold\">CHAMPION</span></td>\n      <td>15,400</td>\n    </tr>\n\n    <tr>\n      <td>🥈 2nd</td>\n      <td>PixelCat</td>\n      <td><span class=\"badge silver\">MASTER</span></td>\n      <td>12,850</td>\n    </tr>\n    <tr>\n      <td>🥉 3rd</td>\n      <td>CyberBot</td>\n      <td><span class=\"badge bronze\">PRO</span></td>\n      <td>10,200</td>\n    </tr>\n  </table>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-esports {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 12px;\n    padding: 16px 20px;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-banner h2 { margin: 0; color: #a5b4fc; font-size: 18px; }\n  .spa-banner span { background: #38bdf8; color: #0b0f19; font-weight: bold; font-size: 11px; padding: 4px 10px; border-radius: 6px; }\n\n  .stats-row {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .stat-card {\n    flex: 1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px;\n    text-align: center;\n  }\n  .stat-card b { display: block; font-size: 16px; color: #38bdf8; }\n  .stat-card span { font-size: 11px; color: #94a3b8; }\n\n  /* Leaderboard Grid Table */\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    overflow: hidden;\n  }\n  th {\n    background: #1e2438;\n    color: #38bdf8;\n    padding: 14px;\n    text-align: left;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n  }\n  td {\n    padding: 12px 14px;\n    border-top: 1px solid #1f2937;\n    font-size: 13px;\n  }\n  .champion {\n    background: rgba(234, 179, 8, 0.18);\n    font-weight: bold;\n  }\n  .badge {\n    display: inline-block;\n    padding: 3px 8px;\n    border-radius: 6px;\n    font-size: 11px;\n    font-weight: bold;\n  }\n  .gold { background: #eab308; color: #000; }\n  .silver { background: #94a3b8; color: #000; }\n  .bronze { background: #f97316; color: #fff; }\n</style>\n\n<div class=\"spa-esports\">\n  <!-- Championship Header -->\n  <div class=\"spa-banner\">\n    <div>\n      <h2>🏆 Global Cyber Championship 2099</h2>\n      <p style=\"margin: 4px 0 0 0; font-size: 12px; color: #cbd5e1;\">Live Arena Standings • Prize Pool: $100,000</p>\n    </div>\n    <span>🔴 LIVE ARENA</span>\n  </div>\n\n  <!-- Metric Ribbon -->\n  <div class=\"stats-row\">\n    <div class=\"stat-card\"><b>32</b><span>Pro Teams</span></div>\n    <div class=\"stat-card\"><b>128</b><span>Matches Played</span></div>\n    <div class=\"stat-card\"><b>1.4M</b><span>Global Viewers</span></div>\n  </div>\n\n  <!-- Standings Table -->\n  <table>\n    <tr>\n      <th>Rank</th>\n      <th>Player</th>\n      <th>Badge</th>\n      <th>Score</th>\n    </tr>\n\n    <tr class=\"champion\">\n      <td>🥇 1st</td>\n      <td>ApexDragon</td>\n      <td><span class=\"badge gold\">CHAMPION</span></td>\n      <td>15,400</td>\n    </tr>\n\n    <tr>\n      <td>🥈 2nd</td>\n      <td>PixelCat</td>\n      <td><span class=\"badge silver\">MASTER</span></td>\n      <td>12,850</td>\n    </tr>\n    <tr>\n      <td>🥉 3rd</td>\n      <td>CyberBot</td>\n      <td><span class=\"badge bronze\">PRO</span></td>\n      <td>10,200</td>\n    </tr>\n  </table>\n</div>"
+    },
+    targetDescription: {
+      en: 'An Esports Championship SPA featuring metric cards and the #1 Champion ApexDragon row with a golden badge.',
+      uz: 'Ko\'rsatkichlar kartalari va oltin nishonli 1-o\'rin Chempioni ApexDragon qatoriga ega Kibersport SPA sahifasi.'
+    },
     anatomy: [
       {
         part: '<table>',
         role: { en: 'Table Foundation', uz: 'Jadval poydevori' },
-        explanation: {
-          en: 'Creates the outer structured grid container.',
-          uz: 'Tashqi jadval panjarasini yaratadi.'
-        },
-        effect: {
-          en: 'Initializes the table grid',
-          uz: 'Jadval panjarasini boshlaydi'
-        },
+        explanation: { en: 'Creates the outer structured grid container.', uz: 'Tashqi jadval panjarasini yaratadi.' },
+        effect: { en: 'Initializes the table grid', uz: 'Jadval panjarasini boshlaydi' },
         visualPreview: '<div class="mini-canvas">⊞ Outer Grid Table Frame</div>'
       },
       {
         part: '<tr>',
         role: { en: 'Table Row', uz: 'Jadval qatori' },
-        explanation: {
-          en: 'Short for Table Row. Creates one horizontal row of boxes from left to right.',
-          uz: 'Table Row (Jadval qatori). Chapdan o\'ngga bitta gorizontal qator hosil qiladi.'
-        },
-        effect: {
-          en: 'Starts a horizontal row',
-          uz: 'Gorizontal qatorni boshlaydi'
-        },
+        explanation: { en: 'Short for Table Row. Creates one horizontal row of boxes from left to right.', uz: 'Table Row (Jadval qatori). Chapdan o\'ngga bitta gorizontal qator hosil qiladi.' },
+        effect: { en: 'Starts a horizontal row', uz: 'Gorizontal qatorni boshlaydi' },
         visualPreview: '<div class="mini-canvas">➔ Horizontal Row (Left to Right) ➔</div>'
       },
       {
         part: '<th>',
         role: { en: 'Table Header Cell', uz: 'Sarlavha katagi' },
-        explanation: {
-          en: 'Short for Table Header. Creates a bold, centered label cell for column titles.',
-          uz: 'Table Header (Sarlavha katagi). Ustun nomlari uchun qalin sarlavha katagi hosil qiladi.'
-        },
-        effect: {
-          en: 'Bold column header',
-          uz: 'Qalin sarlavha katagi'
-        },
+        explanation: { en: 'Creates a bold label cell for column titles.', uz: 'Ustun nomlari uchun qalin sarlavha katagi hosil qiladi.' },
+        effect: { en: 'Bold column header', uz: 'Qalin sarlavha katagi' },
         visualPreview: '<div class="mini-canvas"><b>Header: Name | Score</b></div>'
       },
       {
         part: '<td>',
         role: { en: 'Table Data Cell', uz: 'Ma\'lumot katagi' },
-        explanation: {
-          en: 'Short for Table Data. A regular grid box holding values or text.',
-          uz: 'Table Data (Ma\'lumot katagi). Matn yoki raqamni saqlovchi oddiy katak.'
-        },
-        effect: {
-          en: 'Standard data cell box',
-          uz: 'Oddiy ma\'lumot katagi'
-        },
+        explanation: { en: 'A regular grid box holding values or text.', uz: 'Matn yoki raqamni saqlovchi oddiy katak.' },
+        effect: { en: 'Standard data cell box', uz: 'Oddiy ma\'lumot katagi' },
         visualPreview: '<div class="mini-canvas">📦 Standard Data Cell Box</div>'
       }
     ],
@@ -3995,8 +3854,8 @@ const LESSONS = [
     quickTags: ['<table>', '</table>', '<tr>', '</tr>', '<th>', '</th>', '<td>', '</td>'],
     challenge: {
       mission: {
-        en: 'Crown the #1 Champion! Add a new <tr class="champion"> with 4 <td> cells: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>`, and score "15,400"!',
-        uz: '1-o\'rin Chempionini taxtga o\'tqazing! Yangi <tr class="champion"> qatori ochib, ichiga 4 ta <td> katak qo\'shing: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>` va "15,400" ochko!'
+        en: 'Crown the #1 Champion in the Esports SPA! Add a new <tr class="champion"> with 4 <td> cells: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>`, and score "15,400"!',
+        uz: 'Kibersport SPA sahifasida 1-o\'rin Chempionini e\'lon qiling! Yangi <tr class="champion"> qatori ochib, ichiga 4 ta <td> katak yozing: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>` va "15,400" ochko!'
       },
       hint: {
         en: 'Right below the header <tr>, write <tr class="champion"> and place the four <td> cells inside it.',
@@ -4026,16 +3885,16 @@ const LESSONS = [
       ]
     },
     teacherGuide: {
-      analogy: 'A table is like an apartment building: <table> is the building, <tr> is each floor, <th> is the roof penthouse sign, and <td> is each apartment room.',
+      analogy: 'A table in an SPA is like an apartment building: <table> is the building, <tr> is each floor, <th> is the roof penthouse sign, and <td> is each apartment room.',
       discussionQuestions: [
-        'What is the difference between <th> (header) and <td> (data)?',
+        'How do web apps like ESPN, Steam, and Discord use tables for rankings and match histories?',
         'Why do all <td> and <th> cells have to be wrapped inside a <tr> row?'
       ],
       commonMistakes: [
         'Putting <td> directly inside <table> without wrapping it in a <tr> row',
         'Having a different number of <td> cells in different rows'
       ],
-      funActivity: 'Design a high-score leaderboard for your favorite game with player avatars and scores!'
+      funActivity: 'Design a championship leaderboard for your classroom with student avatars and stars!'
     }
   },
 
@@ -4818,130 +4677,46 @@ const LESSONS = [
     id: 'theme-9-flexbox',
     module: 'full-powers',
     title: {
-      en: 'Theme 9: Flexbox (CyberBeats App Navigation Bar)',
-      uz: '9-Mavzu: Flexbox (CyberBeats Ilova Navigatsiya Paneli)'
+      en: 'Theme 9: Flexbox (CyberPulse Music Media SPA)',
+      uz: '9-Mavzu: Flexbox (CyberPulse Musiqiy Media SPA)'
     },
     icon: '🧩',
     tag: 'display: flex, justify-content, align-items',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **Flexbox** is the master layout engine of modern web apps! Without it, elements fall on top of each other like clumsy stacked blocks.',
-        uz: 'Oddiy tilda **Flexbox** — bu zamonaviy veb-ilovalarning asosiy terish dvigatelidir! Usiz elementlar xuddi qulab tushgan g\'ishtlardek bir-birining ustiga yig\'ilib qoladi.'
+        en: 'In human language, **Flexbox** is the master 1D layout engine of real Single Page Applications! Without it, navbars, sidebars, cards, and player controls collapse into a clumsy vertical pile.',
+        uz: 'Oddiy tilda **Flexbox** — bu haqiqiy SPA ilovalarning 1D terish dvigatelidir! Usiz navigatsiya panellari, yon menyular, kartochkalar va pleyer boshqaruvi bir-birining ustiga yig\'ilib qoladi.'
       },
       whatIsATag: {
-        en: '1. `display: flex;` activates the 1D horizontal snapping power.\n2. `justify-content: space-between;` pushes the logo to the left and controls to the right.\n3. `align-items: center;` centers everything vertically on the same horizon!',
-        uz: '1. `display: flex;` gorizontal tekis qator kuchini yoqadi.\n2. `justify-content: space-between;` logotipni chapga, tugmalarni esa eng o\'ng chetga suradi.\n3. `align-items: center;` barcha elementlarni vertikal bo\'yicha bir tekis o\'rtaga tekislaydi!'
+        en: '1. `display: flex;` activates the 1D snapping power.\n2. `justify-content: space-between;` pushes the logo to the left and profile controls to the right.\n3. `align-items: center;` centers all navbar items vertically on the same horizon!',
+        uz: '1. `display: flex;` bir o\'lchovli qator kuchini yoqadi.\n2. `justify-content: space-between;` logotipni chapga, tugmalarni esa eng o\'ng chetga suradi.\n3. `align-items: center;` barcha elementlarni vertikal bo\'yicha bir tekis o\'rtaga tekislaydi!'
       }
     },
     summary: {
-      en: 'Build authentic modern app headers with display: flex, justify-content: space-between, and align-items: center.',
-      uz: 'display: flex, justify-content: space-between va align-items: center yordamida zamonaviy ilova navigatsiya panelini quring.'
+      en: 'Assemble a complete Spotify-style Music SPA layout using display: flex, justify-content: space-between, and align-items: center.',
+      uz: 'display: flex, justify-content: space-between va align-items: center yordamida to\'liq Spotify uslubidagi Musiqa SPA sahifasini quring.'
     },
     story: {
-      en: 'The CyberBeats music streaming app navbar is collapsed into a messy vertical pile. Snap it into a sleek Spotify-style topbar using Flexbox!',
-      uz: 'CyberBeats musiqa ilovasining paneli ustma-ust tushib buzilib yotibdi. Flexbox yordamida uni haqiqiy Spotify kabi chiroyli panelga aylantiring!'
+      en: 'The CyberPulse Music SPA header is collapsed into a messy vertical pile. Snap the topbar into place using Flexbox to power the entire web app!',
+      uz: 'CyberPulse Musiqa SPA sahifasining sarlavhasi ustma-ust tushib buzilib yotibdi. Flexbox yordamida uni haqiqiy musiqiy ilova kabi terib chiqing!'
     },
-    initialCode: `<style>
-  .app-navbar {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
-    padding: 16px 24px;
-    color: white;
-    font-family: sans-serif;
-    /* Step 1: Turn on flexbox with display: flex; */
-    /* Step 2: Push brand to far-left and actions to far-right with justify-content: space-between; */
-    /* Step 3: Center all items vertically with align-items: center; */
-  }
-  .brand {
-    font-size: 18px;
-    font-weight: 800;
-    color: #38bdf8;
-  }
-  .nav-links {
-    display: flex;
-    gap: 18px;
-    color: #94a3b8;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .upgrade-btn {
-    background: #38bdf8;
-    color: #0f172a;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 13px;
-  }
-</style>
-
-<div class="app-navbar">
-  <div class="brand">🎵 CyberBeats</div>
-  <div class="nav-links">
-    <span>Discover</span>
-    <span>Trending</span>
-    <span>Radio</span>
-  </div>
-  <div class="user-actions">
-    <button class="upgrade-btn">⚡ GO PRO</button>
-  </div>
-</div>`,
-    targetCode: `<style>
-  .app-navbar {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
-    padding: 16px 24px;
-    color: white;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .brand {
-    font-size: 18px;
-    font-weight: 800;
-    color: #38bdf8;
-  }
-  .nav-links {
-    display: flex;
-    gap: 18px;
-    color: #94a3b8;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .upgrade-btn {
-    background: #38bdf8;
-    color: #0f172a;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 13px;
-  }
-</style>
-
-<div class="app-navbar">
-  <div class="brand">🎵 CyberBeats</div>
-  <div class="nav-links">
-    <span>Discover</span>
-    <span>Trending</span>
-    <span>Radio</span>
-  </div>
-  <div class="user-actions">
-    <button class="upgrade-btn">⚡ GO PRO</button>
-  </div>
-</div>`,
+    initialCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-app {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 16px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-navbar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    margin-bottom: 16px;\n    /* Step 1: Turn on flexbox power with display: flex; */\n    /* Step 2: Push brand to left and user deck to right with justify-content: space-between; */\n    /* Step 3: Align all navbar items vertically with align-items: center; */\n  }\n  .brand { font-size: 16px; font-weight: 800; color: #38bdf8; }\n  .nav-menu { display: flex; gap: 16px; font-size: 13px; color: #94a3b8; }\n  .nav-menu span:hover { color: #38bdf8; cursor: pointer; }\n  .user-deck { display: flex; align-items: center; gap: 10px; font-size: 12px; }\n  .vip-pill { background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 4px 10px; border-radius: 6px; }\n\n  .spa-body {\n    display: flex;\n    gap: 16px;\n    margin-bottom: 16px;\n  }\n  .spa-sidebar {\n    width: 170px;\n    background: #111827;\n    border-radius: 12px;\n    padding: 14px;\n    font-size: 12px;\n  }\n  .spa-sidebar h4 { margin: 0 0 10px 0; color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }\n  .spa-sidebar div { padding: 6px 0; color: #94a3b8; cursor: pointer; }\n  .spa-sidebar div:hover { color: white; }\n\n  .spa-content {\n    flex: 1;\n    background: #111827;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .hero-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 10px;\n    padding: 16px;\n    margin-bottom: 16px;\n  }\n  .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }\n  .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }\n\n  .track-row {\n    display: flex;\n    gap: 12px;\n  }\n  .track-card {\n    flex: 1;\n    background: #1e293b;\n    border-radius: 8px;\n    padding: 12px;\n    font-size: 12px;\n  }\n  .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }\n\n  .spa-player {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 12px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 12px;\n  }\n  .player-track { color: #38bdf8; font-weight: bold; }\n  .player-controls { display: flex; gap: 14px; font-size: 14px; cursor: pointer; }\n</style>\n\n<div class=\"spa-app\">\n  <header class=\"spa-navbar\">\n    <div class=\"brand\">🎵 CyberPulse SPA</div>\n    <div class=\"nav-menu\">\n      <span>Home</span>\n      <span>Discover</span>\n      <span>Radio</span>\n      <span>Library</span>\n    </div>\n    <div class=\"user-deck\">\n      <span class=\"vip-pill\">⭐ VIP PASS</span>\n      <span>🎧 Alex</span>\n    </div>\n  </header>\n\n  <div class=\"spa-body\">\n    <aside class=\"spa-sidebar\">\n      <h4>Playlists</h4>\n      <div>⚡ Synthwave</div>\n      <div>🚀 Lo-Fi Chill</div>\n      <div>🎮 Gaming OST</div>\n      <div>💎 Cyber Beats</div>\n    </aside>\n\n    <main class=\"spa-content\">\n      <div class=\"hero-banner\">\n        <h3>⚡ Live Cyber Station</h3>\n        <p>Streaming high-tempo coding synth to 12,400 listeners worldwide.</p>\n      </div>\n\n      <div class=\"track-row\">\n        <div class=\"track-card\"><b>Neon Horizon</b><span>3:42 • CyberBoy</span></div>\n        <div class=\"track-card\"><b>Laser Grid</b><span>4:15 • PixelQueen</span></div>\n        <div class=\"track-card\"><b>Dark Orbit</b><span>2:58 • SynthLord</span></div>\n      </div>\n    </main>\n  </div>\n\n  <footer class=\"spa-player\">\n    <div class=\"player-track\">▶ Now Playing: Neon Horizon (3:42)</div>\n    <div class=\"player-controls\">\n      <span>⏮️</span>\n      <span>⏯️</span>\n      <span>⏭️</span>\n    </div>\n    <div class=\"player-vol\">🔊 85%</div>\n  </footer>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-app {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 16px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-navbar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    margin-bottom: 16px;\n    /* 1-Qadam: display: flex; yordamida flexboxni yoqing */\n    /* 2-Qadam: justify-content: space-between; orqali brendni chapga, profilni o'ngga suring */\n    /* 3-Qadam: align-items: center; orqali barcha elementlarni vertikal markazga tekislang */\n  }\n  .brand { font-size: 16px; font-weight: 800; color: #38bdf8; }\n  .nav-menu { display: flex; gap: 16px; font-size: 13px; color: #94a3b8; }\n  .nav-menu span:hover { color: #38bdf8; cursor: pointer; }\n  .user-deck { display: flex; align-items: center; gap: 10px; font-size: 12px; }\n  .vip-pill { background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 4px 10px; border-radius: 6px; }\n\n  .spa-body {\n    display: flex;\n    gap: 16px;\n    margin-bottom: 16px;\n  }\n  .spa-sidebar {\n    width: 170px;\n    background: #111827;\n    border-radius: 12px;\n    padding: 14px;\n    font-size: 12px;\n  }\n  .spa-sidebar h4 { margin: 0 0 10px 0; color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }\n  .spa-sidebar div { padding: 6px 0; color: #94a3b8; cursor: pointer; }\n  .spa-sidebar div:hover { color: white; }\n\n  .spa-content {\n    flex: 1;\n    background: #111827;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .hero-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 10px;\n    padding: 16px;\n    margin-bottom: 16px;\n  }\n  .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }\n  .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }\n\n  .track-row {\n    display: flex;\n    gap: 12px;\n  }\n  .track-card {\n    flex: 1;\n    background: #1e293b;\n    border-radius: 8px;\n    padding: 12px;\n    font-size: 12px;\n  }\n  .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }\n\n  .spa-player {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 12px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 12px;\n  }\n  .player-track { color: #38bdf8; font-weight: bold; }\n  .player-controls { display: flex; gap: 14px; font-size: 14px; cursor: pointer; }\n</style>\n\n<div class=\"spa-app\">\n  <header class=\"spa-navbar\">\n    <div class=\"brand\">🎵 CyberPulse SPA</div>\n    <div class=\"nav-menu\">\n      <span>Home</span>\n      <span>Discover</span>\n      <span>Radio</span>\n      <span>Library</span>\n    </div>\n    <div class=\"user-deck\">\n      <span class=\"vip-pill\">⭐ VIP PASS</span>\n      <span>🎧 Alex</span>\n    </div>\n  </header>\n\n  <div class=\"spa-body\">\n    <aside class=\"spa-sidebar\">\n      <h4>Playlists</h4>\n      <div>⚡ Synthwave</div>\n      <div>🚀 Lo-Fi Chill</div>\n      <div>🎮 Gaming OST</div>\n      <div>💎 Cyber Beats</div>\n    </aside>\n\n    <main class=\"spa-content\">\n      <div class=\"hero-banner\">\n        <h3>⚡ Live Cyber Station</h3>\n        <p>Streaming high-tempo coding synth to 12,400 listeners worldwide.</p>\n      </div>\n\n      <div class=\"track-row\">\n        <div class=\"track-card\"><b>Neon Horizon</b><span>3:42 • CyberBoy</span></div>\n        <div class=\"track-card\"><b>Laser Grid</b><span>4:15 • PixelQueen</span></div>\n        <div class=\"track-card\"><b>Dark Orbit</b><span>2:58 • SynthLord</span></div>\n      </div>\n    </main>\n  </div>\n\n  <footer class=\"spa-player\">\n    <div class=\"player-track\">▶ Now Playing: Neon Horizon (3:42)</div>\n    <div class=\"player-controls\">\n      <span>⏮️</span>\n      <span>⏯️</span>\n      <span>⏭️</span>\n    </div>\n    <div class=\"player-vol\">🔊 85%</div>\n  </footer>\n</div>"
+    },
+    targetCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-app {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 16px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-navbar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    margin-bottom: 16px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .brand { font-size: 16px; font-weight: 800; color: #38bdf8; }\n  .nav-menu { display: flex; gap: 16px; font-size: 13px; color: #94a3b8; }\n  .nav-menu span:hover { color: #38bdf8; cursor: pointer; }\n  .user-deck { display: flex; align-items: center; gap: 10px; font-size: 12px; }\n  .vip-pill { background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 4px 10px; border-radius: 6px; }\n\n  .spa-body {\n    display: flex;\n    gap: 16px;\n    margin-bottom: 16px;\n  }\n  .spa-sidebar {\n    width: 170px;\n    background: #111827;\n    border-radius: 12px;\n    padding: 14px;\n    font-size: 12px;\n  }\n  .spa-sidebar h4 { margin: 0 0 10px 0; color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }\n  .spa-sidebar div { padding: 6px 0; color: #94a3b8; cursor: pointer; }\n  .spa-sidebar div:hover { color: white; }\n\n  .spa-content {\n    flex: 1;\n    background: #111827;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .hero-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 10px;\n    padding: 16px;\n    margin-bottom: 16px;\n  }\n  .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }\n  .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }\n\n  .track-row {\n    display: flex;\n    gap: 12px;\n  }\n  .track-card {\n    flex: 1;\n    background: #1e293b;\n    border-radius: 8px;\n    padding: 12px;\n    font-size: 12px;\n  }\n  .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }\n\n  .spa-player {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 12px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 12px;\n  }\n  .player-track { color: #38bdf8; font-weight: bold; }\n  .player-controls { display: flex; gap: 14px; font-size: 14px; cursor: pointer; }\n</style>\n\n<div class=\"spa-app\">\n  <header class=\"spa-navbar\">\n    <div class=\"brand\">🎵 CyberPulse SPA</div>\n    <div class=\"nav-menu\">\n      <span>Home</span>\n      <span>Discover</span>\n      <span>Radio</span>\n      <span>Library</span>\n    </div>\n    <div class=\"user-deck\">\n      <span class=\"vip-pill\">⭐ VIP PASS</span>\n      <span>🎧 Alex</span>\n    </div>\n  </header>\n\n  <div class=\"spa-body\">\n    <aside class=\"spa-sidebar\">\n      <h4>Playlists</h4>\n      <div>⚡ Synthwave</div>\n      <div>🚀 Lo-Fi Chill</div>\n      <div>🎮 Gaming OST</div>\n      <div>💎 Cyber Beats</div>\n    </aside>\n\n    <main class=\"spa-content\">\n      <div class=\"hero-banner\">\n        <h3>⚡ Live Cyber Station</h3>\n        <p>Streaming high-tempo coding synth to 12,400 listeners worldwide.</p>\n      </div>\n\n      <div class=\"track-row\">\n        <div class=\"track-card\"><b>Neon Horizon</b><span>3:42 • CyberBoy</span></div>\n        <div class=\"track-card\"><b>Laser Grid</b><span>4:15 • PixelQueen</span></div>\n        <div class=\"track-card\"><b>Dark Orbit</b><span>2:58 • SynthLord</span></div>\n      </div>\n    </main>\n  </div>\n\n  <footer class=\"spa-player\">\n    <div class=\"player-track\">▶ Now Playing: Neon Horizon (3:42)</div>\n    <div class=\"player-controls\">\n      <span>⏮️</span>\n      <span>⏯️</span>\n      <span>⏭️</span>\n    </div>\n    <div class=\"player-vol\">🔊 85%</div>\n  </footer>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-app {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 16px;\n    color: #e2e8f0;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-navbar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    margin-bottom: 16px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .brand { font-size: 16px; font-weight: 800; color: #38bdf8; }\n  .nav-menu { display: flex; gap: 16px; font-size: 13px; color: #94a3b8; }\n  .nav-menu span:hover { color: #38bdf8; cursor: pointer; }\n  .user-deck { display: flex; align-items: center; gap: 10px; font-size: 12px; }\n  .vip-pill { background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 4px 10px; border-radius: 6px; }\n\n  .spa-body {\n    display: flex;\n    gap: 16px;\n    margin-bottom: 16px;\n  }\n  .spa-sidebar {\n    width: 170px;\n    background: #111827;\n    border-radius: 12px;\n    padding: 14px;\n    font-size: 12px;\n  }\n  .spa-sidebar h4 { margin: 0 0 10px 0; color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }\n  .spa-sidebar div { padding: 6px 0; color: #94a3b8; cursor: pointer; }\n  .spa-sidebar div:hover { color: white; }\n\n  .spa-content {\n    flex: 1;\n    background: #111827;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .hero-banner {\n    background: linear-gradient(135deg, #1e1b4b, #312e81);\n    border: 1px solid #4338ca;\n    border-radius: 10px;\n    padding: 16px;\n    margin-bottom: 16px;\n  }\n  .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }\n  .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }\n\n  .track-row {\n    display: flex;\n    gap: 12px;\n  }\n  .track-card {\n    flex: 1;\n    background: #1e293b;\n    border-radius: 8px;\n    padding: 12px;\n    font-size: 12px;\n  }\n  .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }\n\n  .spa-player {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 12px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 12px;\n  }\n  .player-track { color: #38bdf8; font-weight: bold; }\n  .player-controls { display: flex; gap: 14px; font-size: 14px; cursor: pointer; }\n</style>\n\n<div class=\"spa-app\">\n  <header class=\"spa-navbar\">\n    <div class=\"brand\">🎵 CyberPulse SPA</div>\n    <div class=\"nav-menu\">\n      <span>Home</span>\n      <span>Discover</span>\n      <span>Radio</span>\n      <span>Library</span>\n    </div>\n    <div class=\"user-deck\">\n      <span class=\"vip-pill\">⭐ VIP PASS</span>\n      <span>🎧 Alex</span>\n    </div>\n  </header>\n\n  <div class=\"spa-body\">\n    <aside class=\"spa-sidebar\">\n      <h4>Playlists</h4>\n      <div>⚡ Synthwave</div>\n      <div>🚀 Lo-Fi Chill</div>\n      <div>🎮 Gaming OST</div>\n      <div>💎 Cyber Beats</div>\n    </aside>\n\n    <main class=\"spa-content\">\n      <div class=\"hero-banner\">\n        <h3>⚡ Live Cyber Station</h3>\n        <p>Streaming high-tempo coding synth to 12,400 listeners worldwide.</p>\n      </div>\n\n      <div class=\"track-row\">\n        <div class=\"track-card\"><b>Neon Horizon</b><span>3:42 • CyberBoy</span></div>\n        <div class=\"track-card\"><b>Laser Grid</b><span>4:15 • PixelQueen</span></div>\n        <div class=\"track-card\"><b>Dark Orbit</b><span>2:58 • SynthLord</span></div>\n      </div>\n    </main>\n  </div>\n\n  <footer class=\"spa-player\">\n    <div class=\"player-track\">▶ Now Playing: Neon Horizon (3:42)</div>\n    <div class=\"player-controls\">\n      <span>⏮️</span>\n      <span>⏯️</span>\n      <span>⏭️</span>\n    </div>\n    <div class=\"player-vol\">🔊 85%</div>\n  </footer>\n</div>"
+    },
     targetDescription: {
-      en: 'A sleek streaming app navigation topbar with brand on the left, nav links centered, and upgrade button on the right.',
-      uz: 'Chapda logotip, o\'rtada havolalar va o\'ngda obuna tugmasi joylashgan zamonaviy musiqiy ilova paneli.'
+      en: 'A complete CyberPulse Music SPA with an organized topbar, navigation links, sidebar playlists, track cards, and bottom player deck.',
+      uz: 'Tartibli navigatsiya paneli, yon menyu, qo\'shiqlar qatori va pastki pleyerga ega to\'liq CyberPulse Musiqiy SPA sahifasi.'
     },
     anatomy: [
       {
         part: 'display: flex;',
         role: { en: 'Flex Activation', uz: 'Flexni faollashtirish' },
-        explanation: { en: 'Tells the parent: "Snap all children into a horizontal row!"', uz: 'Ona qutiga: "Barcha bolalarni gorizontal qatorga tiz!" deb buyuradi.' },
+        explanation: { en: 'Tells the parent container: "Snap all children into a horizontal row!"', uz: 'Ona qutiga: "Barcha bolalarni gorizontal qatorga tiz!" deb buyuradi.' },
         effect: { en: 'Snaps items side-by-side', uz: 'Elementlarni yonma-yon teradi' }
       },
       {
@@ -4970,48 +4745,45 @@ const LESSONS = [
     quickTags: ['display: flex;', 'justify-content: space-between;', 'align-items: center;'],
     challenge: {
       mission: {
-        en: 'Transform the messy navbar into a pro app header! Add display: flex;, justify-content: space-between;, and align-items: center; to .app-navbar!',
-        uz: 'Buzilgan panelni pro ilova sarlavhasiga aylantiring! .app-navbar ga display: flex;, justify-content: space-between; va align-items: center; qo\'shing!'
+        en: 'Build the CyberPulse Music SPA! Add display: flex;, justify-content: space-between;, and align-items: center; to .spa-navbar to assemble the web app topbar!',
+        uz: 'CyberPulse Musiqa SPA ilovasini quring! .spa-navbar ga display: flex;, justify-content: space-between; va align-items: center; berib navigatsiya panelini terib chiqing!'
       },
       hint: {
-        en: 'Inside .app-navbar { ... }, add display: flex;, justify-content: space-between;, and align-items: center;',
-        uz: '.app-navbar { ... } ichiga display: flex;, justify-content: space-between; va align-items: center; yozing.'
+        en: 'Inside .spa-navbar { ... }, add display: flex;, justify-content: space-between;, and align-items: center;',
+        uz: '.spa-navbar { ... } ichiga display: flex;, justify-content: space-between; va align-items: center; yozing.'
       },
       rules: [
         {
-          type: 'hasCssProperty',
-          property: 'display',
-          valuePattern: /flex/i,
-          message: 'Add display: flex; to .app-navbar!'
+          type: 'custom',
+          check: (code) => /\.spa-navbar\s*\{[^}]*display\s*:\s*flex/i.test(code),
+          message: 'Add display: flex; to .spa-navbar!'
         },
         {
-          type: 'hasCssProperty',
-          property: 'justify-content',
-          valuePattern: /space-between/i,
-          message: 'Add justify-content: space-between; to .app-navbar!'
+          type: 'custom',
+          check: (code) => /\.spa-navbar\s*\{[^}]*justify-content\s*:\s*space-between/i.test(code),
+          message: 'Add justify-content: space-between; to .spa-navbar!'
         },
         {
-          type: 'hasCssProperty',
-          property: 'align-items',
-          valuePattern: /center/i,
-          message: 'Add align-items: center; to .app-navbar!'
+          type: 'custom',
+          check: (code) => /\.spa-navbar\s*\{[^}]*align-items\s*:\s*center/i.test(code),
+          message: 'Add align-items: center; to .spa-navbar!'
         }
       ]
     },
     teacherGuide: {
       analogy: {
-        en: 'Flexbox is like an expandable clothesline with automatic clothes pegs holding everything in a neat horizontal line.',
-        uz: 'Flexbox — bu hamma narsani bir tekis ushlab turadigan elastik kiyim arqoniga o\'xshaydi.'
+        en: 'A music app navbar is like a dashboard in a spaceship: logo on the left, radio stations in the center, and commander status on the right.',
+        uz: 'Musiqa ilovasi paneli kosmik kema asboblar paneliga o\'xshaydi: chapda logotip, o\'rtada kanallar, o\'ngda esa komandir ma\'lumotlari.'
       },
       discussionQuestions: [
-        'Why do navigation bars almost universally use display: flex with justify-content: space-between?',
+        'Why do modern SPAs (Spotify, Netflix, YouTube) use Flexbox for topbars and player rows?',
         'How does align-items: center prevent buttons and logos from looking crooked?'
       ],
       commonMistakes: [
-        'Writing display: flex on the children instead of the parent container',
-        'Confusing justify-content (main axis) with align-items (cross axis)'
+        'Writing display: flex on individual buttons instead of the parent navbar container',
+        'Confusing justify-content (horizontal) with align-items (vertical)'
       ],
-      funActivity: 'Stretch your arms wide: left hand is the Logo, right hand is the Login button. That is justify-content: space-between!'
+      funActivity: 'Inspect Spotify or YouTube Web: open DevTools and toggle display: flex on the header!'
     }
   },
 
@@ -6579,154 +6351,40 @@ Jetpack Shoes`,
     id: 'theme-21-grid',
     module: 'full-powers',
     title: {
-      en: 'Theme 21: CSS Grid (Game Store 2D Showcase Layout)',
-      uz: '21-Mavzu: CSS Grid (O\'yinlar Do\'koni 2D Vitrinasi)'
+      en: 'Theme 21: CSS Grid (CyberStore 2D Launcher SPA)',
+      uz: '21-Mavzu: CSS Grid (CyberStore 2D O\'yinlar Do\'koni SPA)'
     },
     icon: '⊞',
     tag: 'display: grid, grid-template-columns, gap, grid-column',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **CSS Grid** is the master 2D blueprint of web design! While Flexbox lines things up in one direction, Grid controls both rows AND columns at the same time to build real website layouts.',
-        uz: 'Oddiy inson tilida, **CSS Grid** — bu veb-dizaynning 2D bosh chizmasidir! Flexbox bir yo\'nalishda ishlasa, Grid bir vaqtning o\'zida ham qatorlar, ham ustunlarni boshqarib haqiqiy sayt tuzilishini yaratadi.'
+        en: 'In human language, **CSS Grid** is the master 2D blueprint of modern web design! While Flexbox lines things up in one direction, Grid orchestrates entire Single Page Application (SPA) dashboards controlling both columns and rows at the same time.',
+        uz: 'Oddiy inson tilida, **CSS Grid** — bu zamonaviy veb-dizaynning 2D bosh chizmasidir! Flexbox bir yo\'nalishda ishlasa, Grid bir vaqtning o\'zida qatorlar va ustunlarni boshqarib to\'liq SPA boshqaruv panellarini quradi.'
       },
       whatIsATag: {
-        en: `1. \`display: grid;\` activates the 2D layout matrix.\n2. \`grid-template-columns: repeat(3, 1fr);\` cuts the canvas into 3 equal responsive columns.\n3. \`gap: 16px;\` leaves clean breathing room between all cards.\n4. \`grid-column: span 2;\` lets a featured hero card expand across 2 columns!`,
-        uz: `1. \`display: grid;\` — 2D panjara rejimini yoqadi.\n2. \`grid-template-columns: repeat(3, 1fr);\` — konteynerni 3 ta teng ustunga bo'ladi.\n3. \`gap: 16px;\` — kartochkalar orasida oraliq qoldiradi.\n4. \`grid-column: span 2;\` — asosiy kartaga 2 ta ustunni egallash imkonini beradi!`
+        en: `1. \`display: grid;\` activates the 2D layout matrix.\n2. \`grid-template-columns: 200px 1fr 1fr;\` creates a dedicated sidebar column and two responsive content columns.\n3. \`gap: 16px;\` leaves clean breathing room between all cards.\n4. \`grid-column: span 2;\` lets a featured hero card expand across 2 columns!`,
+        uz: `1. \`display: grid;\` — 2D panjara rejimini yoqadi.\n2. \`grid-template-columns: 200px 1fr 1fr;\` — 200px yon panel va 2 ta teng moslashuvchan ustun hosil qiladi.\n3. \`gap: 16px;\` — barcha panellar orasida oraliq qoldiradi.\n4. \`grid-column: span 2;\` — asosiy o'yin kartasiga 2 ta ustunni egallash imkonini beradi!`
       }
     },
     summary: {
-      en: 'Construct pro game store layouts with display: grid, 3-column repeat, gap, and multi-column span.',
-      uz: 'display: grid, 3 ustunli repeat, gap va ustunlarni birlashtirish orqali haqiqiy o\'yin do\'koni vitrinasini quring.'
+      en: 'Build a full 2D game store launcher SPA with display: grid, multi-column template, and hero card column spanning.',
+      uz: 'display: grid, ko\'p ustunli shablon va asosiy kartani kengaytirish orqali to\'liq 2D o\'yin do\'koni SPA sahifasini quring.'
     },
     story: {
-      en: 'The Cyber Gaming Store needs a hero showcase! The top game must be featured wide across 2 columns while other games line up beside it.',
-      uz: 'Kiber O\'yinlar Do\'koniga chiroyli vitrina kerak! Eng zo\'r o\'yin 2 ustunni egallab turishi, qolganlari esa yonma-yon tizilishi lozim.'
+      en: 'The CyberStore Gaming SPA needs a complete dashboard: structure the sidebar, featured hero game, and trending cards into a 2D matrix!',
+      uz: 'CyberStore O\'yinlar SPA ilovasiga to\'liq boshqaruv paneli kerak: yon menyu, asosiy o\'yin banneri va boshqa kartochkalarni 2D panjara tizimiga tering!'
     },
-    initialCode: `<style>
-  .store-grid {
-    /* Step 1: Turn on 2D matrix with display: grid; */
-    /* Step 2: Create 3 equal columns using grid-template-columns: repeat(3, 1fr); */
-    /* Step 3: Add gap: 16px; */
-    font-family: sans-serif;
-  }
-  .card {
-    background: #141b2d;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 16px;
-    color: white;
-  }
-  .card h3 {
-    margin: 8px 0 4px 0;
-    color: #38bdf8;
-  }
-  .card p {
-    margin: 0;
-    font-size: 12px;
-    color: #94a3b8;
-  }
-  .featured {
-    /* Step 4: Make this hero game card span across 2 columns using grid-column: span 2; */
-    background: linear-gradient(135deg, #1e1b4b, #312e81);
-    border-color: #6366f1;
-  }
-  .badge {
-    background: #ec4899;
-    color: white;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-</style>
-
-<div class="store-grid">
-  <div class="card featured">
-    <span class="badge">🔥 FEATURED GAME</span>
-    <h3>Cyber Odyssey 2099</h3>
-    <p>Explore infinite neon galaxies with your squad.</p>
-  </div>
-  <div class="card">
-    <h3>🗡️ Shadow Blade</h3>
-    <p>Action RPG</p>
-  </div>
-  <div class="card">
-    <h3>🏎️ Turbo Horizon</h3>
-    <p>Cyber Racing</p>
-  </div>
-  <div class="card">
-    <h3>🧪 Potion Lab</h3>
-    <p>Puzzle Alchemy</p>
-  </div>
-  <div class="card">
-    <h3>🛡️ Fortress Defense</h3>
-    <p>Strategy Tower</p>
-  </div>
-</div>`,
-    targetCode: `<style>
-  .store-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    font-family: sans-serif;
-  }
-  .card {
-    background: #141b2d;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 16px;
-    color: white;
-  }
-  .card h3 {
-    margin: 8px 0 4px 0;
-    color: #38bdf8;
-  }
-  .card p {
-    margin: 0;
-    font-size: 12px;
-    color: #94a3b8;
-  }
-  .featured {
-    grid-column: span 2;
-    background: linear-gradient(135deg, #1e1b4b, #312e81);
-    border-color: #6366f1;
-  }
-  .badge {
-    background: #ec4899;
-    color: white;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-</style>
-
-<div class="store-grid">
-  <div class="card featured">
-    <span class="badge">🔥 FEATURED GAME</span>
-    <h3>Cyber Odyssey 2099</h3>
-    <p>Explore infinite neon galaxies with your squad.</p>
-  </div>
-  <div class="card">
-    <h3>🗡️ Shadow Blade</h3>
-    <p>Action RPG</p>
-  </div>
-  <div class="card">
-    <h3>🏎️ Turbo Horizon</h3>
-    <p>Cyber Racing</p>
-  </div>
-  <div class="card">
-    <h3>🧪 Potion Lab</h3>
-    <p>Puzzle Alchemy</p>
-  </div>
-  <div class="card">
-    <h3>🛡️ Fortress Defense</h3>
-    <p>Strategy Tower</p>
-  </div>
-</div>`,
+    initialCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-grid {\n    /* Step 1: Turn this entire application into a 2D matrix using display: grid; */\n    /* Step 2: Create a 200px sidebar column and two equal content columns with grid-template-columns: 200px 1fr 1fr; */\n    /* Step 3: Add gap: 16px; between all panels */\n    background: #0b0f19;\n    padding: 18px;\n    border-radius: 16px;\n    border: 1px solid #1e293b;\n    color: white;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-header {\n    grid-column: 1 / -1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-sidebar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .featured-card {\n    /* Step 4: Expand this hero banner across 2 columns with grid-column: span 2; */\n    background: linear-gradient(135deg, #1e1b4b, #3730a3);\n    border: 1px solid #6366f1;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .game-card {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .spa-footer {\n    grid-column: 1 / -1;\n    background: #111827;\n    border-radius: 10px;\n    padding: 10px 16px;\n    display: flex;\n    justify-content: space-between;\n    font-size: 12px;\n    color: #94a3b8;\n  }\n</style>\n\n<div class=\"spa-grid\">\n  <header class=\"spa-header\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🎮 CyberStore Launcher SPA</div>\n    <div style=\"font-size: 13px; color: #94a3b8;\">Commander Alex • 💎 1,450 XP</div>\n  </header>\n\n  <aside class=\"spa-sidebar\">\n    <h4 style=\"margin: 0 0 10px 0; color: #38bdf8; font-size: 12px;\">CATEGORIES</h4>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🔥 Action RPG</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🏎️ Sci-Fi Racing</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🧪 Strategy Lab</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🛡️ Tower Defense</div>\n  </aside>\n\n  <div class=\"featured-card\">\n    <span style=\"background: #ec4899; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: bold;\">FEATURED RELEASE</span>\n    <h2 style=\"margin: 8px 0 4px 0; color: #ffffff;\">Cyber Odyssey 2099</h2>\n    <p style=\"margin: 0 0 12px 0; font-size: 12px; color: #c7d2fe;\">Lead your starfleet across infinite procedurally generated galactic frontiers.</p>\n    <button style=\"background: #6366f1; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;\">🚀 PLAY NOW</button>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🗡️ Shadow Blade</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Cyber Ninja Action</p>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🏎️ Turbo Horizon</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Neon Street Racing</p>\n  </div>\n\n  <footer class=\"spa-footer\">\n    <span>🟢 Online Players: 14,820</span>\n    <span>⚡ Ping: 18ms (Tashkent Central)</span>\n    <span>Version 2.4.0 SPA</span>\n  </footer>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-grid {\n    /* 1-Qadam: display: grid; yordamida butun ilovani 2D panjara tizimiga aylantiring */\n    /* 2-Qadam: grid-template-columns: 200px 1fr 1fr; orqali 200px yon panel va 2 ta teng ustun yarating */\n    /* 3-Qadam: gap: 16px; orqali barcha panellar orasida oraliq qoldiring */\n    background: #0b0f19;\n    padding: 18px;\n    border-radius: 16px;\n    border: 1px solid #1e293b;\n    color: white;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-header {\n    grid-column: 1 / -1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-sidebar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .featured-card {\n    /* 4-Qadam: grid-column: span 2; yordamida ushbu bosh o'yin kartasini 2 ta ustunga cho'zing */\n    background: linear-gradient(135deg, #1e1b4b, #3730a3);\n    border: 1px solid #6366f1;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .game-card {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .spa-footer {\n    grid-column: 1 / -1;\n    background: #111827;\n    border-radius: 10px;\n    padding: 10px 16px;\n    display: flex;\n    justify-content: space-between;\n    font-size: 12px;\n    color: #94a3b8;\n  }\n</style>\n\n<div class=\"spa-grid\">\n  <header class=\"spa-header\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🎮 CyberStore Launcher SPA</div>\n    <div style=\"font-size: 13px; color: #94a3b8;\">Commander Alex • 💎 1,450 XP</div>\n  </header>\n\n  <aside class=\"spa-sidebar\">\n    <h4 style=\"margin: 0 0 10px 0; color: #38bdf8; font-size: 12px;\">CATEGORIES</h4>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🔥 Action RPG</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🏎️ Sci-Fi Racing</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🧪 Strategy Lab</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🛡️ Tower Defense</div>\n  </aside>\n\n  <div class=\"featured-card\">\n    <span style=\"background: #ec4899; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: bold;\">FEATURED RELEASE</span>\n    <h2 style=\"margin: 8px 0 4px 0; color: #ffffff;\">Cyber Odyssey 2099</h2>\n    <p style=\"margin: 0 0 12px 0; font-size: 12px; color: #c7d2fe;\">Lead your starfleet across infinite procedurally generated galactic frontiers.</p>\n    <button style=\"background: #6366f1; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;\">🚀 PLAY NOW</button>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🗡️ Shadow Blade</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Cyber Ninja Action</p>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🏎️ Turbo Horizon</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Neon Street Racing</p>\n  </div>\n\n  <footer class=\"spa-footer\">\n    <span>🟢 Online Players: 14,820</span>\n    <span>⚡ Ping: 18ms (Tashkent Central)</span>\n    <span>Version 2.4.0 SPA</span>\n  </footer>\n</div>"
+    },
+    targetCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-grid {\n    display: grid;\n    grid-template-columns: 200px 1fr 1fr;\n    gap: 16px;\n    background: #0b0f19;\n    padding: 18px;\n    border-radius: 16px;\n    border: 1px solid #1e293b;\n    color: white;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-header {\n    grid-column: 1 / -1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-sidebar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .featured-card {\n    grid-column: span 2;\n    background: linear-gradient(135deg, #1e1b4b, #3730a3);\n    border: 1px solid #6366f1;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .game-card {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .spa-footer {\n    grid-column: 1 / -1;\n    background: #111827;\n    border-radius: 10px;\n    padding: 10px 16px;\n    display: flex;\n    justify-content: space-between;\n    font-size: 12px;\n    color: #94a3b8;\n  }\n</style>\n\n<div class=\"spa-grid\">\n  <header class=\"spa-header\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🎮 CyberStore Launcher SPA</div>\n    <div style=\"font-size: 13px; color: #94a3b8;\">Commander Alex • 💎 1,450 XP</div>\n  </header>\n\n  <aside class=\"spa-sidebar\">\n    <h4 style=\"margin: 0 0 10px 0; color: #38bdf8; font-size: 12px;\">CATEGORIES</h4>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🔥 Action RPG</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🏎️ Sci-Fi Racing</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🧪 Strategy Lab</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🛡️ Tower Defense</div>\n  </aside>\n\n  <div class=\"featured-card\">\n    <span style=\"background: #ec4899; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: bold;\">FEATURED RELEASE</span>\n    <h2 style=\"margin: 8px 0 4px 0; color: #ffffff;\">Cyber Odyssey 2099</h2>\n    <p style=\"margin: 0 0 12px 0; font-size: 12px; color: #c7d2fe;\">Lead your starfleet across infinite procedurally generated galactic frontiers.</p>\n    <button style=\"background: #6366f1; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;\">🚀 PLAY NOW</button>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🗡️ Shadow Blade</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Cyber Ninja Action</p>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🏎️ Turbo Horizon</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Neon Street Racing</p>\n  </div>\n\n  <footer class=\"spa-footer\">\n    <span>🟢 Online Players: 14,820</span>\n    <span>⚡ Ping: 18ms (Tashkent Central)</span>\n    <span>Version 2.4.0 SPA</span>\n  </footer>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-grid {\n    display: grid;\n    grid-template-columns: 200px 1fr 1fr;\n    gap: 16px;\n    background: #0b0f19;\n    padding: 18px;\n    border-radius: 16px;\n    border: 1px solid #1e293b;\n    color: white;\n    font-family: system-ui, sans-serif;\n  }\n  .spa-header {\n    grid-column: 1 / -1;\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 14px 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .spa-sidebar {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .featured-card {\n    grid-column: span 2;\n    background: linear-gradient(135deg, #1e1b4b, #3730a3);\n    border: 1px solid #6366f1;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .game-card {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 16px;\n  }\n  .spa-footer {\n    grid-column: 1 / -1;\n    background: #111827;\n    border-radius: 10px;\n    padding: 10px 16px;\n    display: flex;\n    justify-content: space-between;\n    font-size: 12px;\n    color: #94a3b8;\n  }\n</style>\n\n<div class=\"spa-grid\">\n  <header class=\"spa-header\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🎮 CyberStore Launcher SPA</div>\n    <div style=\"font-size: 13px; color: #94a3b8;\">Commander Alex • 💎 1,450 XP</div>\n  </header>\n\n  <aside class=\"spa-sidebar\">\n    <h4 style=\"margin: 0 0 10px 0; color: #38bdf8; font-size: 12px;\">CATEGORIES</h4>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🔥 Action RPG</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🏎️ Sci-Fi Racing</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🧪 Strategy Lab</div>\n    <div style=\"padding: 4px 0; color: #cbd5e1; font-size: 12px;\">🛡️ Tower Defense</div>\n  </aside>\n\n  <div class=\"featured-card\">\n    <span style=\"background: #ec4899; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: bold;\">FEATURED RELEASE</span>\n    <h2 style=\"margin: 8px 0 4px 0; color: #ffffff;\">Cyber Odyssey 2099</h2>\n    <p style=\"margin: 0 0 12px 0; font-size: 12px; color: #c7d2fe;\">Lead your starfleet across infinite procedurally generated galactic frontiers.</p>\n    <button style=\"background: #6366f1; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;\">🚀 PLAY NOW</button>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🗡️ Shadow Blade</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Cyber Ninja Action</p>\n  </div>\n\n  <div class=\"game-card\">\n    <h3 style=\"margin: 0 0 4px 0; color: #38bdf8; font-size: 14px;\">🏎️ Turbo Horizon</h3>\n    <p style=\"margin: 0; font-size: 12px; color: #94a3b8;\">Neon Street Racing</p>\n  </div>\n\n  <footer class=\"spa-footer\">\n    <span>🟢 Online Players: 14,820</span>\n    <span>⚡ Ping: 18ms (Tashkent Central)</span>\n    <span>Version 2.4.0 SPA</span>\n  </footer>\n</div>"
+    },
     targetDescription: {
-      en: 'A 2D game store showcase with a wide featured hero banner spanning 2 columns and neat responsive game tiles.',
-      uz: '2 ta ustunni egallagan keng banner va yonma-yon chiroyli o\'yin kartochkalaridan iborat 2D o\'yin do\'koni vitrinasi.'
+      en: 'A full-scale CyberStore launcher SPA featuring a sidebar category panel, wide 2-column hero game banner, and responsive cards.',
+      uz: 'Kategoriya paneli, 2 ta ustunni egallagan keng banner va o\'yin kartalaridan iborat to\'liq CyberStore o\'yin do\'koni SPA sahifasi.'
     },
     anatomy: [
       {
@@ -6736,9 +6394,9 @@ Jetpack Shoes`,
         effect: { en: 'Enables 2D grid rules', uz: '2D panjara qoidalarini yoqadi' }
       },
       {
-        part: 'grid-template-columns: repeat(3, 1fr);',
-        role: { en: '3 Equal Columns', uz: '3 ta teng ustun' },
-        explanation: { en: 'Defines three equal fractional columns that adjust automatically.', uz: 'Avtomatik moslashuvchi uchta teng ustun hosil qiladi.' },
+        part: 'grid-template-columns: 200px 1fr 1fr;',
+        role: { en: 'Sidebar + Content Columns', uz: 'Yon panel + Tarkib ustunlari' },
+        explanation: { en: 'Creates a fixed 200px sidebar track and two flexible content tracks.', uz: '200px o\'lchamli yon panel va 2 ta teng moslashuvchan ustun yaratadi.' },
         effect: { en: 'Splits width into 3 columns', uz: 'Enini 3 ta ustunga bo\'ladi' }
       },
       {
@@ -6756,66 +6414,66 @@ Jetpack Shoes`,
     ],
     listOfTags: [
       { code: 'display: grid;', name: { en: 'Grid Activation', uz: 'Grid Faollashtirish' }, description: { en: 'Turns on two-dimensional grid layout on a parent container', uz: 'Ota elementda ikki o\'lchovli panjara rejimini yoqadi' } },
-      { code: 'grid-template-columns: repeat(3, 1fr);', name: { en: 'Column Template', uz: 'Ustunlar Qolipi' }, description: { en: 'Defines 3 responsive columns with equal 1fr fraction sizes', uz: '3 ta teng 1fr o\'lchamli moslashuvchan ustun yaratadi' } },
+      { code: 'grid-template-columns: 200px 1fr 1fr;', name: { en: 'Column Template', uz: 'Ustunlar Qolipi' }, description: { en: 'Defines sidebar and content columns with responsive fractional units', uz: 'Yon panel va asosiy qism uchun moslashuvchan ustunlar yaratadi' } },
       { code: 'gap: 16px;', name: { en: 'Grid Gap', uz: 'Panjara Oralig\'i' }, description: { en: 'Even space between all rows and columns', uz: 'Barcha qator va ustunlar orasidagi bir xil masofa' } },
       { code: 'grid-column: span 2;', name: { en: 'Column Spanning', uz: 'Ustun Cho\'zish' }, description: { en: 'Causes an element to stretch across multiple columns', uz: 'Elementni bir nechta ustun bo\'ylab cho\'zadi' } }
     ],
     tagShowcase: [
       { tag: 'display: grid;', meaning: { en: 'Enable 2D Grid', uz: '2D panjarani yoqish' } },
-      { tag: 'repeat(3, 1fr)', meaning: { en: '3 Equal Columns', uz: '3 ta teng ustun' } },
+      { tag: 'grid-template-columns: 200px 1fr 1fr;', meaning: { en: 'Sidebar + 2 Columns', uz: 'Yon panel + 2 ta ustun' } },
       { tag: 'grid-column: span 2;', meaning: { en: 'Span 2 Columns', uz: '2 ta ustunni egallash' } }
     ],
-    quickTags: ['display: grid;', 'grid-template-columns: repeat(3, 1fr);', 'gap: 16px;', 'grid-column: span 2;'],
+    quickTags: ['display: grid;', 'grid-template-columns: 200px 1fr 1fr;', 'gap: 16px;', 'grid-column: span 2;'],
     challenge: {
       mission: {
-        en: 'Build the Game Store Layout! Add display: grid;, grid-template-columns: repeat(3, 1fr);, and gap: 16px; to .store-grid, then expand .featured using grid-column: span 2;!',
-        uz: 'O\'yinlar Do\'koni Vitrinasini quring! .store-grid ga display: grid;, grid-template-columns: repeat(3, 1fr); va gap: 16px; bering, so\'ng .featured kartasiga grid-column: span 2; yozing!'
+        en: 'Build the CyberStore Launcher SPA! Add display: grid;, grid-template-columns: 200px 1fr 1fr;, and gap: 16px; to .spa-grid, then expand .featured-card across 2 columns with grid-column: span 2;!',
+        uz: 'CyberStore O\'yinlar Do\'koni SPA sahifasini quring! .spa-grid ga display: grid;, grid-template-columns: 200px 1fr 1fr; va gap: 16px; bering, so\'ng .featured-card ga grid-column: span 2; yozing!'
       },
       hint: {
-        en: 'Add display: grid;, grid-template-columns: repeat(3, 1fr);, and gap: 16px; in .store-grid, and grid-column: span 2; inside .featured.',
-        uz: '.store-grid ichiga display: grid;, grid-template-columns: repeat(3, 1fr);, gap: 16px; yozing va .featured ichiga grid-column: span 2; qo\'shing.'
+        en: 'Add display: grid;, grid-template-columns: 200px 1fr 1fr;, and gap: 16px; in .spa-grid, and grid-column: span 2; inside .featured-card.',
+        uz: '.spa-grid ichiga display: grid;, grid-template-columns: 200px 1fr 1fr;, gap: 16px; yozing va .featured-card ichiga grid-column: span 2; qo\'shing.'
       },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'display',
           valuePattern: /grid/i,
-          message: 'Add display: grid; to .store-grid!'
+          message: 'Add display: grid; to .spa-grid!'
         },
         {
           type: 'hasCssProperty',
           property: 'grid-template-columns',
-          valuePattern: 'repeat(3, 1fr)',
-          message: 'Add grid-template-columns: repeat(3, 1fr); to .store-grid!'
+          valuePattern: '200px',
+          message: 'Add grid-template-columns: 200px 1fr 1fr; to .spa-grid!'
         },
         {
           type: 'hasCssProperty',
           property: 'gap',
-          valuePattern: /16px/i,
-          message: 'Add gap: 16px; to .store-grid!'
+          valuePattern: '16px',
+          message: 'Add gap: 16px; to .spa-grid!'
         },
         {
           type: 'hasCssProperty',
           property: 'grid-column',
           valuePattern: 'span 2',
-          message: 'Add grid-column: span 2; to .featured!'
+          message: 'Add grid-column: span 2; to .featured-card!'
         }
       ]
     },
     teacherGuide: {
       analogy: {
-        en: 'A chess board or comic book layout where panels can take up 1 square or span across 2 squares.',
-        uz: 'Shaxmat taxtasi yoki komiks sahifasi kabi: ba\'zi rasmlar 1 ta katakni, ba\'zilari esa birdaniga 2 ta katakni egallaydi.'
+        en: 'CSS Grid turns a web app into a master architectural blueprint: header covers the roof, sidebar guards the entrance, and hero cards span across the living room.',
+        uz: 'CSS Grid veb-ilovani me\'moriy chizmaga aylantiradi: tom qismini sarlavha, kirishni yon panel, mehmonxonani esa keng banner egallaydi.'
       },
       discussionQuestions: [
-        'When would you use CSS Grid instead of Flexbox?',
-        'What does 1fr mean, and why is it better than hardcoded pixels?'
+        'How do gaming dashboards like Discord, Steam, and Xbox Web use 2D Grid systems?',
+        'What is the advantage of grid-column: span 2 for hero promotional banners?'
       ],
       commonMistakes: [
         'Confusing grid-column with grid-row',
-        'Forgetting display: grid on the parent container before setting columns'
+        'Forgetting display: grid on the outer container before defining column tracks'
       ],
-      funActivity: 'Look at YouTube or Netflix homepages: point out how featured banners span multiple column tracks!'
+      funActivity: 'Sketch a multi-section dashboard on paper and plan which sections should span 2 columns!'
     }
   },
 
@@ -6826,15 +6484,15 @@ Jetpack Shoes`,
     id: 'theme-22-position',
     module: 'full-powers',
     title: {
-      en: 'Theme 22: CSS Positioning (The 5 Positions & Overlays)',
-      uz: '22-Mavzu: CSS Joylashuvi (5 Xil Position Turlari va Qatlamlar)'
+      en: 'Theme 22: CSS Positioning (Mission Defense SPA & The 5 Positions)',
+      uz: '22-Mavzu: CSS Joylashuvi (Mudofaa SPA & 5 Xil Position Turlari)'
     },
     icon: '📍',
     tag: 'static, relative, absolute, fixed, sticky',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **CSS Position** is the GPS coordinate system of the web! CSS gives you **5 distinct positions**, each with its own superpower:\n\n• **static**: The natural default flow. Elements stack normally; top, left, and z-index are ignored.\n• **relative**: Remains in normal flow, but unlocks top/left offsets and acts as the **GPS fence (anchor)** for child elements.\n• **absolute**: Lifted completely out of document flow. Flies to exact top/right coordinates inside its nearest relative parent!\n• **fixed**: Ripped from the page and glued directly to the **screen viewport**. Stays frozen in place even when you scroll!\n• **sticky**: A magical hybrid! Behaves like relative until you scroll past it, then locks to the screen edge like fixed!',
-        uz: 'Oddiy inson tilida, **CSS Position** — bu vebning GPS koordinata tizimidir! CSS sizga **5 ta alohida joylashuv turini** beradi, ularning har biri o\'z super-kuchiga ega:\n\n• **static**: Standart oqim. Elementlar odatdagidek joylashadi; top, left va z-index ishlamaydi.\n• **relative**: O\'z o\'rnida qoladi, lekin siljishlarni yoqadi va ichki bolalar uchun **GPS boshlang\'ich nuqtasi (devor)** bo\'ladi.\n• **absolute**: Oqimdan butunlay chiqadi. Eng yaqin relative ota element burchaklariga aniq top/right bilan mixlanadi!\n• **fixed**: Sahifadan ajralib, to\'g\'ridan-to\'g\'ri **ekran oynasiga** mixlanadi. Sahifani pastga aylantirsangiz ham joyidan qimirlamaydi!\n• **sticky**: Ajoyib gibrid! Odatda o\'z o\'rnida turadi, lekin sahifa surilganda ekran chetiga fixed kabi yopishib qoladi!'
+        en: 'In human language, **CSS Position** is the GPS coordinate system of web design! Real Single Page Applications coordinate **all 5 positions** together:\n\n• **static**: The natural default flow. Elements stack normally; top, left, and z-index are ignored.\n• **relative**: Remains in normal flow, but unlocks top/left offsets and acts as the **GPS fence (anchor)** for child elements.\n• **absolute**: Lifted completely out of document flow. Flies to exact top/right coordinates inside its nearest relative parent!\n• **fixed**: Ripped from the page and glued directly to the **screen viewport**. Stays frozen in place even when you scroll!\n• **sticky**: A magical hybrid! Behaves like relative until you scroll past it, then locks to the screen edge like fixed!',
+        uz: 'Oddiy inson tilida, **CSS Position** — bu vebning GPS koordinata tizimidir! Haqiqiy SPA ilovalar **barcha 5 ta joylashuv turini** birgalikda ishlatadi:\n\n• **static**: Standart oqim. Elementlar odatdagidek joylashadi; top, left va z-index ishlamaydi.\n• **relative**: O\'z o\'rnida qoladi, lekin siljishlarni yoqadi va ichki bolalar uchun **GPS boshlang\'ich nuqtasi (devor)** bo\'ladi.\n• **absolute**: Oqimdan butunlay chiqadi. Eng yaqin relative ota element burchaklariga aniq top/right bilan mixlanadi!\n• **fixed**: Sahifadan ajralib, to\'g\'ridan-to\'g\'ri **ekran oynasiga** mixlanadi. Sahifani pastga aylantirsangiz ham joyidan qimirlamaydi!\n• **sticky**: Ajoyib gibrid! Odatda o\'z o\'rnida turadi, lekin sahifa surilganda ekran chetiga fixed kabi yopishib qoladi!'
       },
       whatIsATag: {
         en: `1. \`position: static;\` = Default reading order.\n2. \`position: relative;\` = Parent anchor fence.\n3. \`position: absolute;\` = Corner GPS coordinates (top, right).\n4. \`position: fixed;\` = Glued to screen window.\n5. \`position: sticky;\` = Scrolls then sticks to top!`,
@@ -6842,79 +6500,24 @@ Jetpack Shoes`,
       }
     },
     summary: {
-      en: 'Master all 5 CSS positions (static, relative, absolute, fixed, sticky) and build professional corner badges and cards.',
-      uz: 'Barcha 5 ta CSS position turlarini (static, relative, absolute, fixed, sticky) o\'rganing va professional burchak nishonlarini yarating.'
+      en: 'Master all 5 CSS positions (static, relative, absolute, fixed, sticky) by building a complete Mission Defense SPA with sticky header, relative cards, absolute badges, and fixed beacons.',
+      uz: 'Barcha 5 ta CSS position turlarini (static, relative, absolute, fixed, sticky) o\'rganing va yopishqoq panel, nisbiy karta, mutlaq nishon va qadalgan dronli to\'liq Mudofaa SPA ilovasini quring.'
     },
     story: {
-      en: 'The Cyber Defense unit needs a status card: place the pulsing red notification badge on the card and lock it directly to the top-right corner!',
-      uz: 'Kiber Mudofaa tizimiga kartochka kerak: qizil nishonni kartochkaga joylashtiring va uni aniq yuqori o\'ng burchakka mixlab qo\'ying!'
+      en: 'The Mission Control Defense SPA needs its alert system completed: place the alarm badge on the shield card and anchor it directly to the top-right corner!',
+      uz: 'Mudofaa SPA ilovasining signal tizimini tugatish kerak: qizil nishonni qalqon kartasiga qo\'ying va uni yuqori o\'ng burchakka mixlab qo\'ying!'
     },
-    initialCode: `<style>
-  .card {
-    /* Step 2: Make this card the GPS anchor boundary using position: relative; */
-    background: #141722;
-    border: 1px solid #1e2433;
-    border-radius: 12px;
-    padding: 24px;
-    color: white;
-    width: 220px;
-    margin: 40px auto;
-    text-align: center;
-    font-family: sans-serif;
-  }
-  .notification-badge {
-    /* Step 3: Anchor this badge to the top-right corner using position: absolute; top: -10px; right: -10px; */
-    background: #ef4444;
-    color: white;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-  }
-</style>
-
-<div class="card">
-  <!-- Step 1: Put the badge element here: <span class="notification-badge">🔥 LIVE</span> -->
-
-  <h3>Cyber Armor</h3>
-  <p>Shield level 100%</p>
-</div>`,
-    targetCode: `<style>
-  .card {
-    position: relative;
-    background: #141722;
-    border: 1px solid #1e2433;
-    border-radius: 12px;
-    padding: 24px;
-    color: white;
-    width: 220px;
-    margin: 40px auto;
-    text-align: center;
-    font-family: sans-serif;
-  }
-  .notification-badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #ef4444;
-    color: white;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-  }
-</style>
-
-<div class="card">
-  <span class="notification-badge">🔥 LIVE</span>
-  <h3>Cyber Armor</h3>
-  <p>Shield level 100%</p>
-</div>`,
+    initialCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-command {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: white;\n    font-family: system-ui, sans-serif;\n    min-height: 400px;\n    position: relative;\n  }\n  /* Sticky Topbar: Sticks to top edge during scroll */\n  .sticky-navbar {\n    position: sticky;\n    top: 0;\n    z-index: 50;\n    background: rgba(17, 24, 39, 0.95);\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px 18px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 24px;\n    backdrop-filter: blur(8px);\n  }\n  .spa-dashboard-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 16px;\n    margin-bottom: 20px;\n  }\n  .panel {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .shield-card {\n    /* Step 2: Make this card the GPS anchor boundary using position: relative; */\n    background: #1e1b4b;\n    border: 2px solid #6366f1;\n    border-radius: 12px;\n    padding: 24px;\n    text-align: center;\n  }\n  .alarm-badge {\n    /* Step 3: Pin this badge to the top-right corner using position: absolute; top: -10px; right: -10px; */\n    background: #ef4444;\n    color: white;\n    font-weight: 800;\n    padding: 4px 12px;\n    border-radius: 999px;\n    font-size: 11px;\n    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);\n  }\n  /* Fixed Drone: Glued to the viewport screen corner */\n  .fixed-drone {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    z-index: 100;\n    background: #38bdf8;\n    color: #0b0f19;\n    font-weight: 800;\n    font-size: 12px;\n    padding: 10px 18px;\n    border-radius: 999px;\n    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.5);\n  }\n</style>\n\n<div class=\"spa-command\">\n  <!-- Sticky Navigation Header -->\n  <nav class=\"sticky-navbar\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🛰️ CyberCommand Defense SPA</div>\n    <div style=\"font-size: 12px; color: #10b981;\">● ALL SYSTEMS OPERATIONAL</div>\n  </nav>\n\n  <div class=\"spa-dashboard-grid\">\n    <div class=\"shield-card\">\n      <!-- Step 1: Put the alarm badge here: <span class=\"alarm-badge\">🔥 ALERT</span> -->\n\n      <h3 style=\"margin: 0 0 6px 0; color: #a5b4fc;\">Plasma Shield Matrix</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #cbd5e1;\">Deflector barrier active at 98.4% capacity.</p>\n    </div>\n\n    <div class=\"panel\">\n      <h3 style=\"margin: 0 0 6px 0; color: #38bdf8;\">Tactical Sensor Log</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #94a3b8;\">Scanning sector 7G. Zero hostile anomalies detected.</p>\n    </div>\n  </div>\n\n  <!-- Fixed Floating Drone Beacon -->\n  <div class=\"fixed-drone\">🛸 DRONE SUPPORT</div>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-command {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: white;\n    font-family: system-ui, sans-serif;\n    min-height: 400px;\n    position: relative;\n  }\n  /* Sticky Topbar: Sticks to top edge during scroll */\n  .sticky-navbar {\n    position: sticky;\n    top: 0;\n    z-index: 50;\n    background: rgba(17, 24, 39, 0.95);\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px 18px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 24px;\n    backdrop-filter: blur(8px);\n  }\n  .spa-dashboard-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 16px;\n    margin-bottom: 20px;\n  }\n  .panel {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .shield-card {\n    /* 2-Qadam: position: relative; yordamida bu kartani GPS chegara devori qiling */\n    background: #1e1b4b;\n    border: 2px solid #6366f1;\n    border-radius: 12px;\n    padding: 24px;\n    text-align: center;\n  }\n  .alarm-badge {\n    /* 3-Qadam: position: absolute; top: -10px; right: -10px; yordamida bu nishonni yuqori o'ng burchakka mixlang */\n    background: #ef4444;\n    color: white;\n    font-weight: 800;\n    padding: 4px 12px;\n    border-radius: 999px;\n    font-size: 11px;\n    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);\n  }\n  /* Fixed Drone: Glued to the viewport screen corner */\n  .fixed-drone {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    z-index: 100;\n    background: #38bdf8;\n    color: #0b0f19;\n    font-weight: 800;\n    font-size: 12px;\n    padding: 10px 18px;\n    border-radius: 999px;\n    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.5);\n  }\n</style>\n\n<div class=\"spa-command\">\n  <!-- Sticky Navigation Header -->\n  <nav class=\"sticky-navbar\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🛰️ CyberCommand Defense SPA</div>\n    <div style=\"font-size: 12px; color: #10b981;\">● ALL SYSTEMS OPERATIONAL</div>\n  </nav>\n\n  <div class=\"spa-dashboard-grid\">\n    <div class=\"shield-card\">\n      <!-- 1-Qadam: Nishon elementini shu yerga qo'ying: <span class=\"alarm-badge\">🔥 ALERT</span> -->\n\n      <h3 style=\"margin: 0 0 6px 0; color: #a5b4fc;\">Plasma Shield Matrix</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #cbd5e1;\">Deflector barrier active at 98.4% capacity.</p>\n    </div>\n\n    <div class=\"panel\">\n      <h3 style=\"margin: 0 0 6px 0; color: #38bdf8;\">Tactical Sensor Log</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #94a3b8;\">Scanning sector 7G. Zero hostile anomalies detected.</p>\n    </div>\n  </div>\n\n  <!-- Fixed Floating Drone Beacon -->\n  <div class=\"fixed-drone\">🛸 DRONE SUPPORT</div>\n</div>"
+    },
+    targetCode: {
+      en: "<style>\n  * { box-sizing: border-box; }\n  .spa-command {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: white;\n    font-family: system-ui, sans-serif;\n    min-height: 400px;\n    position: relative;\n  }\n  /* Sticky Topbar: Sticks to top edge during scroll */\n  .sticky-navbar {\n    position: sticky;\n    top: 0;\n    z-index: 50;\n    background: rgba(17, 24, 39, 0.95);\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px 18px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 24px;\n    backdrop-filter: blur(8px);\n  }\n  .spa-dashboard-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 16px;\n    margin-bottom: 20px;\n  }\n  .panel {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .shield-card {\n    position: relative;\n    background: #1e1b4b;\n    border: 2px solid #6366f1;\n    border-radius: 12px;\n    padding: 24px;\n    text-align: center;\n  }\n  .alarm-badge {\n    position: absolute;\n    top: -10px;\n    right: -10px;\n    background: #ef4444;\n    color: white;\n    font-weight: 800;\n    padding: 4px 12px;\n    border-radius: 999px;\n    font-size: 11px;\n    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);\n  }\n  /* Fixed Drone: Glued to the viewport screen corner */\n  .fixed-drone {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    z-index: 100;\n    background: #38bdf8;\n    color: #0b0f19;\n    font-weight: 800;\n    font-size: 12px;\n    padding: 10px 18px;\n    border-radius: 999px;\n    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.5);\n  }\n</style>\n\n<div class=\"spa-command\">\n  <!-- Sticky Navigation Header -->\n  <nav class=\"sticky-navbar\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🛰️ CyberCommand Defense SPA</div>\n    <div style=\"font-size: 12px; color: #10b981;\">● ALL SYSTEMS OPERATIONAL</div>\n  </nav>\n\n  <div class=\"spa-dashboard-grid\">\n    <div class=\"shield-card\">\n      <span class=\"alarm-badge\">🔥 ALERT</span>\n\n      <h3 style=\"margin: 0 0 6px 0; color: #a5b4fc;\">Plasma Shield Matrix</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #cbd5e1;\">Deflector barrier active at 98.4% capacity.</p>\n    </div>\n\n    <div class=\"panel\">\n      <h3 style=\"margin: 0 0 6px 0; color: #38bdf8;\">Tactical Sensor Log</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #94a3b8;\">Scanning sector 7G. Zero hostile anomalies detected.</p>\n    </div>\n  </div>\n\n  <!-- Fixed Floating Drone Beacon -->\n  <div class=\"fixed-drone\">🛸 DRONE SUPPORT</div>\n</div>",
+      uz: "<style>\n  * { box-sizing: border-box; }\n  .spa-command {\n    background: #0b0f19;\n    border: 1px solid #1e293b;\n    border-radius: 16px;\n    padding: 20px;\n    color: white;\n    font-family: system-ui, sans-serif;\n    min-height: 400px;\n    position: relative;\n  }\n  /* Sticky Topbar: Sticks to top edge during scroll */\n  .sticky-navbar {\n    position: sticky;\n    top: 0;\n    z-index: 50;\n    background: rgba(17, 24, 39, 0.95);\n    border: 1px solid #1f2937;\n    border-radius: 10px;\n    padding: 12px 18px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 24px;\n    backdrop-filter: blur(8px);\n  }\n  .spa-dashboard-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 16px;\n    margin-bottom: 20px;\n  }\n  .panel {\n    background: #111827;\n    border: 1px solid #1f2937;\n    border-radius: 12px;\n    padding: 20px;\n  }\n  .shield-card {\n    position: relative;\n    background: #1e1b4b;\n    border: 2px solid #6366f1;\n    border-radius: 12px;\n    padding: 24px;\n    text-align: center;\n  }\n  .alarm-badge {\n    position: absolute;\n    top: -10px;\n    right: -10px;\n    background: #ef4444;\n    color: white;\n    font-weight: 800;\n    padding: 4px 12px;\n    border-radius: 999px;\n    font-size: 11px;\n    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);\n  }\n  /* Fixed Drone: Glued to the viewport screen corner */\n  .fixed-drone {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    z-index: 100;\n    background: #38bdf8;\n    color: #0b0f19;\n    font-weight: 800;\n    font-size: 12px;\n    padding: 10px 18px;\n    border-radius: 999px;\n    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.5);\n  }\n</style>\n\n<div class=\"spa-command\">\n  <!-- Sticky Navigation Header -->\n  <nav class=\"sticky-navbar\">\n    <div style=\"font-weight: 800; color: #38bdf8;\">🛰️ CyberCommand Defense SPA</div>\n    <div style=\"font-size: 12px; color: #10b981;\">● ALL SYSTEMS OPERATIONAL</div>\n  </nav>\n\n  <div class=\"spa-dashboard-grid\">\n    <div class=\"shield-card\">\n      <span class=\"alarm-badge\">🔥 ALERT</span>\n\n      <h3 style=\"margin: 0 0 6px 0; color: #a5b4fc;\">Plasma Shield Matrix</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #cbd5e1;\">Deflector barrier active at 98.4% capacity.</p>\n    </div>\n\n    <div class=\"panel\">\n      <h3 style=\"margin: 0 0 6px 0; color: #38bdf8;\">Tactical Sensor Log</h3>\n      <p style=\"margin: 0; font-size: 13px; color: #94a3b8;\">Scanning sector 7G. Zero hostile anomalies detected.</p>\n    </div>\n  </div>\n\n  <!-- Fixed Floating Drone Beacon -->\n  <div class=\"fixed-drone\">🛸 DRONE SUPPORT</div>\n</div>"
+    },
     targetDescription: {
-      en: 'A cyber card with a red notification pill pinned right on the top-right corner.',
-      uz: 'Yuqori o\'ng burchagiga qizil nishon mixlangan kiber kartochka.'
+      en: 'A Mission Defense SPA featuring a sticky topbar, fixed drone beacon, and a plasma shield card with an absolute alert badge pinned to the top-right corner.',
+      uz: 'Yopishqoq sarlavha, ekranga mixlangan dron va yuqori o\'ng burchagiga qizil nishon qadalgan plazma qalqoni kartasidan iborat Mudofaa SPA sahifasi.'
     },
     anatomy: [
       {
@@ -6967,42 +6570,42 @@ Jetpack Shoes`,
     quickTags: ['position: relative;', 'position: absolute;', 'top: -10px;', 'right: -10px;', 'position: fixed;', 'position: sticky;'],
     challenge: {
       mission: {
-        en: 'Pin the badge to the card! Step 1: Put <span class="notification-badge">🔥 LIVE</span> inside the card. Step 2: Add position: relative; to .card. Step 3: Add position: absolute; top: -10px; right: -10px; to .notification-badge!',
-        uz: 'Nishonni kartochkaga mixlang! 1-Qadam: Karta ichiga <span class="notification-badge">🔥 LIVE</span> qo\'ying. 2-Qadam: .card ga position: relative; bering. 3-Qadam: .notification-badge ga position: absolute; top: -10px; right: -10px; yozing!'
+        en: 'Complete the Mission Defense SPA! Step 1: Put <span class="alarm-badge">🔥 ALERT</span> inside .shield-card. Step 2: Add position: relative; to .shield-card. Step 3: Add position: absolute; top: -10px; right: -10px; to .alarm-badge!',
+        uz: 'Mudofaa SPA sahifasini yakunlang! 1-Qadam: .shield-card ichiga <span class="alarm-badge">🔥 ALERT</span> qo\'ying. 2-Qadam: .shield-card ga position: relative; bering. 3-Qadam: .alarm-badge ga position: absolute; top: -10px; right: -10px; yozing!'
       },
       hint: {
-        en: 'Place <span class="notification-badge">🔥 LIVE</span> inside .card. Give .card position: relative; and give .notification-badge position: absolute; top: -10px; right: -10px;',
-        uz: '.card ichiga <span class="notification-badge">🔥 LIVE</span> yozing. .card ga position: relative;, .notification-badge ga esa position: absolute; top: -10px; right: -10px; bering.'
+        en: 'Place <span class="alarm-badge">🔥 ALERT</span> inside .shield-card. Give .shield-card position: relative; and give .alarm-badge position: absolute; top: -10px; right: -10px;',
+        uz: '.shield-card ichiga <span class="alarm-badge">🔥 ALERT</span> yozing. .shield-card ga position: relative;, .alarm-badge ga esa position: absolute; top: -10px; right: -10px; bering.'
       },
       rules: [
         {
           type: 'hasTag',
           tag: 'span',
-          message: 'Place the <span class="notification-badge"> inside the card!'
+          message: 'Place the <span class="alarm-badge"> inside the card!'
         },
         {
           type: 'hasCssProperty',
           property: 'position',
           valuePattern: /relative/i,
-          message: 'Add position: relative; to .card to make it the anchor boundary!'
+          message: 'Add position: relative; to .shield-card to make it the anchor boundary!'
         },
         {
           type: 'hasCssProperty',
           property: 'position',
           valuePattern: /absolute/i,
-          message: 'Add position: absolute; to .notification-badge!'
+          message: 'Add position: absolute; to .alarm-badge!'
         },
         {
           type: 'hasCssProperty',
           property: 'top',
           valuePattern: /-10px/i,
-          message: 'Add top: -10px; to .notification-badge!'
+          message: 'Add top: -10px; to .alarm-badge!'
         },
         {
           type: 'hasCssProperty',
           property: 'right',
           valuePattern: /-10px/i,
-          message: 'Add right: -10px; to .notification-badge!'
+          message: 'Add right: -10px; to .alarm-badge!'
         }
       ]
     },
@@ -7013,7 +6616,7 @@ Jetpack Shoes`,
       },
       discussionQuestions: [
         'What disaster happens to position: absolute if you forget position: relative on the parent container?',
-        'How do modern websites use position: sticky for top navigation bars?'
+        'How do modern SPA websites use position: sticky for top navigation bars?'
       ],
       commonMistakes: [
         'Forgetting position: relative on the parent, causing the badge to fly to the very top corner of the entire screen',
@@ -8899,7 +8502,11 @@ function escapeHtml(str) {
  */
 
 function validateChallenge(code, rules = []) {
-  if (!code || typeof code !== 'string') {
+  const codeStr = (typeof code === 'object' && code !== null)
+    ? (code.en || code.uz || Object.values(code)[0] || '')
+    : code;
+
+  if (!codeStr || typeof codeStr !== 'string') {
     return {
       passed: false,
       feedback: ['Write some code in the editor to start the challenge!']
@@ -8907,7 +8514,7 @@ function validateChallenge(code, rules = []) {
   }
 
   // Strip HTML and CSS comments so instructions inside comments don't trigger false passes
-  const codeWithoutComments = code
+  const codeWithoutComments = codeStr
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
   const feedback = [];
@@ -13868,6 +13475,11 @@ function formatProse(str) {
 }
 
 function initApp() {
+    
+    // Force English default for this dedicated edition
+    state = setLanguage(state, 'en');
+    saveStateToStorage(state);
+    
   cacheElements();
   attachGlobalListeners();
   applyStateToUI();
@@ -13903,7 +13515,7 @@ function attachGlobalListeners() {
       state,
       onProfileSwitched: (newState, profile) => {
         state = newState;
-        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        currentCode = state.customSandboxCode || localize(LESSONS[0].initialCode, state.lang);
         saveStateToStorage(state);
         applyStateToUI();
         selectLesson(state.currentLessonId || LESSONS[0].id);
@@ -13914,15 +13526,27 @@ function attachGlobalListeners() {
 
   function switchLang(lang) {
     stopSpeaking();
+    const prevLang = state.lang;
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
+
+    const lesson = getLessonById(state.currentLessonId);
+    if (lesson) {
+      const prevStarter = localize(lesson.initialCode, prevLang);
+      const newStarter = localize(lesson.initialCode, lang);
+      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+        currentCode = newStarter;
+      }
+    }
+
     if (currentView === 'sandbox') {
       renderSandboxView();
     } else if (currentView === 'labs') {
       renderLabsView();
     } else {
+      renderSidebar();
       renderLessonView();
     }
   }
@@ -13933,15 +13557,28 @@ function attachGlobalListeners() {
 
   // Language Toggle (English <-> Uzbek)
   elements.btnLang?.addEventListener('click', () => {
+    stopSpeaking();
+    const prevLang = state.lang;
     state = toggleLanguage(state);
     saveStateToStorage(state);
     playSound('click', state.audioEnabled);
     applyStateToUI();
+
+    const lesson = getLessonById(state.currentLessonId);
+    if (lesson) {
+      const prevStarter = localize(lesson.initialCode, prevLang);
+      const newStarter = localize(lesson.initialCode, state.lang);
+      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+        currentCode = newStarter;
+      }
+    }
+
     if (currentView === 'sandbox') {
       renderSandboxView();
     } else if (currentView === 'labs') {
       renderLabsView();
     } else {
+      renderSidebar();
       renderLessonView();
     }
   });
@@ -14116,7 +13753,7 @@ function selectLesson(lessonId) {
   elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
-  currentCode = lesson.initialCode;
+  currentCode = localize(lesson.initialCode, state.lang);
   saveStateToStorage(state);
 
   renderSidebar();
@@ -14513,8 +14150,9 @@ function setupLessonListeners(lesson) {
 
   // Start Practice Button: loads starter code, smoothly scrolls to editor, focuses textarea
   document.getElementById('btn-start-practice')?.addEventListener('click', () => {
-    textarea.value = lesson.initialCode;
-    currentCode = lesson.initialCode;
+    const code = localize(lesson.initialCode, state.lang);
+    textarea.value = code;
+    currentCode = code;
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
@@ -14524,8 +14162,9 @@ function setupLessonListeners(lesson) {
 
   // Reset to initial starter code
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    textarea.value = lesson.initialCode;
-    currentCode = lesson.initialCode;
+    const code = localize(lesson.initialCode, state.lang);
+    textarea.value = code;
+    currentCode = code;
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
@@ -15069,11 +14708,6 @@ if (typeof window !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
   } else {
-    
-    // Force English default for this dedicated edition
-    state = setLanguage(state, 'en');
-    saveStateToStorage(state);
-    
     initApp();
   }
 })();

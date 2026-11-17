@@ -1254,10 +1254,13 @@ function getLessonsByModule(modId) {
 LESSONS.forEach(lesson => {
   const originalValidate = lesson.validate;
   lesson.validate = (code) => {
-    if (!code || typeof code !== 'string') {
+    const codeStr = (typeof code === 'object' && code !== null)
+      ? (code.uz || code.en || Object.values(code)[0] || '')
+      : code;
+    if (!codeStr || typeof codeStr !== 'string') {
       return { passed: false, message: 'Kodingizni yozing!' };
     }
-    const cleanCode = code
+    const cleanCode = codeStr
       .replace(/\/\/.*$/gm, '')
       .replace(/\/\*[\s\S]*?\*\//g, '');
     return originalValidate(cleanCode);
@@ -3239,7 +3242,7 @@ function attachGlobalListeners() {
       state,
       onProfileSwitched: (newState, profile) => {
         state = newState;
-        currentCode = state.customSandboxCode || LESSONS[0].initialCode;
+        currentCode = state.customSandboxCode || localize(LESSONS[0].initialCode, state.lang);
         saveStateToStorage(state);
         applyStateToUI();
         selectLesson(state.currentLessonId || LESSONS[0].id);
@@ -3250,9 +3253,20 @@ function attachGlobalListeners() {
 
   function switchLang(lang) {
     stopSpeaking();
+    const prevLang = state.lang;
     state = setLanguage(state, lang);
     saveStateToStorage(state);
     applyStateToUI();
+
+    const lesson = getLessonById(state.currentLessonId);
+    if (lesson) {
+      const prevStarter = localize(lesson.initialCode, prevLang);
+      const newStarter = localize(lesson.initialCode, lang);
+      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+        currentCode = newStarter;
+      }
+    }
+
     if (currentView === 'lesson') {
       selectLesson(state.currentLessonId);
     } else {
@@ -3397,7 +3411,7 @@ function selectLesson(lessonId) {
   elements.btnSandbox?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
-  currentCode = lesson.initialCode;
+  currentCode = localize(lesson.initialCode, state.lang);
   consoleLogs = [];
   saveStateToStorage(state);
 
@@ -3662,7 +3676,7 @@ function attachLessonEvents(lesson) {
   btnReset?.addEventListener('click', () => {
     if (confirm(state.lang === 'uz' ? 'Kodingizni boshiga qaytarmoqchimisiz?' : 'Reset code to start?')) {
       playSound('click', state.audioEnabled);
-      currentCode = lesson.initialCode;
+      currentCode = localize(lesson.initialCode, state.lang);
       if (editor) editor.value = currentCode;
       runCurrentCode();
     }
