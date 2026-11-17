@@ -632,6 +632,7 @@ function renderLessonView() {
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
+            <button id="btn-focus-mode" class="btn-tool" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
             <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
@@ -665,6 +666,7 @@ function renderLessonView() {
           <div class="preview-tabs">
             <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+            <button id="tab-side" class="prev-tab-btn" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
           </div>
         </div>
 
@@ -765,6 +767,30 @@ function setupLessonListeners(lesson) {
     updateLineNumbers();
   });
 
+  // Keep line numbers scroll in 1:1 sync with textarea scroll
+  textarea?.addEventListener('scroll', () => {
+    const lineNumbers = document.getElementById('line-numbers');
+    if (lineNumbers) {
+      lineNumbers.scrollTop = textarea.scrollTop;
+    }
+  });
+
+  // Focus Mode toggle: maximizes editor and preview space
+  document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
+    const stage = document.querySelector('.workspace-stage');
+    if (stage) {
+      stage.classList.toggle('focus-ide-mode');
+      const isFocused = stage.classList.contains('focus-ide-mode');
+      const btn = document.getElementById('btn-focus-mode');
+      if (btn) {
+        btn.classList.toggle('active', isFocused);
+        btn.style.color = isFocused ? '#38bdf8' : '';
+        btn.style.borderColor = isFocused ? '#38bdf8' : '';
+      }
+      playSound('click', state.audioEnabled);
+    }
+  });
+
   // Tab indent
   textarea?.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
@@ -797,7 +823,7 @@ function setupLessonListeners(lesson) {
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
-    document.querySelector('.code-editor-wrapper')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     textarea.focus();
   });
 

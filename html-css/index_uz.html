@@ -825,14 +825,33 @@ body {
 }
 
 /* ===================================================================
-   Editor & Dual Preview Split
+   Editor & Dual Preview Split (Docked IDE Layout)
    =================================================================== */
 .editor-stage-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding: 16px 24px;
-  flex: 1;
+  padding: 16px 24px 24px;
+  height: calc(100vh - 120px);
+  min-height: 560px;
+  scroll-margin-top: 14px;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+/* Focus Mode: Hides upper cards and gives 100% viewport to editor & preview */
+.workspace-stage.focus-ide-mode .lesson-banner,
+.workspace-stage.focus-ide-mode .topic-action-deck,
+.workspace-stage.focus-ide-mode .teacher-playbook,
+.workspace-stage.focus-ide-mode .human-intro-card,
+.workspace-stage.focus-ide-mode .anatomy-deck-card,
+.workspace-stage.focus-ide-mode .mission-spotlight-card {
+  display: none !important;
+}
+
+.workspace-stage.focus-ide-mode .editor-stage-split {
+  height: calc(100vh - 40px);
+  padding: 12px 20px;
 }
 
 .pane-card {
@@ -843,6 +862,8 @@ body {
   flex-direction: column;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  height: 100%;
+  min-height: 0;
 }
 
 .pane-header {
@@ -852,6 +873,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .pane-title {
@@ -928,15 +950,16 @@ body {
 /* Code Editor Textarea */
 .code-editor-wrapper {
   flex: 1;
+  min-height: 0;
   position: relative;
   background: var(--bg-code);
   display: flex;
-  min-height: 280px;
+  overflow: hidden;
 }
 
 .editor-line-numbers {
-  width: 36px;
-  background: rgba(0, 0, 0, 0.25);
+  width: 38px;
+  background: rgba(0, 0, 0, 0.35);
   color: #64748b;
   font-family: var(--font-code);
   font-size: 12px;
@@ -945,10 +968,17 @@ body {
   text-align: right;
   user-select: none;
   border-right: 1px solid var(--border-color);
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .code-textarea {
   flex: 1;
+  min-height: 0;
+  height: 100%;
   background: transparent;
   color: var(--text-code);
   font-family: var(--font-code);
@@ -960,6 +990,9 @@ body {
   resize: none;
   white-space: pre;
   tab-size: 2;
+  overflow-y: auto;
+  overflow-x: auto;
+  box-sizing: border-box;
 }
 
 /* Right Pane: Preview Tabs */
@@ -990,34 +1023,45 @@ body {
 
 .preview-wrapper {
   flex: 1;
+  min-height: 0;
   position: relative;
-  min-height: 280px;
   background: var(--bg-code);
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .preview-iframe {
   width: 100%;
   height: 100%;
+  flex: 1;
+  min-height: 0;
   border: none;
   background: var(--bg-code);
   color: var(--text-main);
+  display: block;
 }
 
 .target-view-container {
   width: 100%;
   height: 100%;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .target-explanation-box {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-color);
-  padding: 10px 14px;
+  padding: 8px 14px;
   font-size: 12px;
   line-height: 1.4;
   color: var(--text-main);
+  flex-shrink: 0;
+  max-height: 110px;
+  overflow-y: auto;
 }
 
 .target-explanation-box strong {
@@ -16370,6 +16414,7 @@ function renderLessonView() {
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
+            <button id="btn-focus-mode" class="btn-tool" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
             <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
@@ -16403,6 +16448,7 @@ function renderLessonView() {
           <div class="preview-tabs">
             <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+            <button id="tab-side" class="prev-tab-btn" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
           </div>
         </div>
 
@@ -16503,6 +16549,30 @@ function setupLessonListeners(lesson) {
     updateLineNumbers();
   });
 
+  // Keep line numbers scroll in 1:1 sync with textarea scroll
+  textarea?.addEventListener('scroll', () => {
+    const lineNumbers = document.getElementById('line-numbers');
+    if (lineNumbers) {
+      lineNumbers.scrollTop = textarea.scrollTop;
+    }
+  });
+
+  // Focus Mode toggle: maximizes editor and preview space
+  document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
+    const stage = document.querySelector('.workspace-stage');
+    if (stage) {
+      stage.classList.toggle('focus-ide-mode');
+      const isFocused = stage.classList.contains('focus-ide-mode');
+      const btn = document.getElementById('btn-focus-mode');
+      if (btn) {
+        btn.classList.toggle('active', isFocused);
+        btn.style.color = isFocused ? '#38bdf8' : '';
+        btn.style.borderColor = isFocused ? '#38bdf8' : '';
+      }
+      playSound('click', state.audioEnabled);
+    }
+  });
+
   // Tab indent
   textarea?.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
@@ -16535,7 +16605,7 @@ function setupLessonListeners(lesson) {
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
-    document.querySelector('.code-editor-wrapper')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     textarea.focus();
   });
 
