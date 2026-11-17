@@ -165,6 +165,8 @@ function attachGlobalListeners() {
     } else if (e.data.type === 'CONSOLE_ALERT') {
       addConsoleLine('alert', '🔔 ALERT: ' + e.data.text);
       playSound('star', state.audioEnabled);
+    } else if (e.data.type === 'TARGET_CONSOLE_LOG') {
+      addTargetConsoleLine(e.data.method, e.data.text);
     }
   });
 }
@@ -272,6 +274,20 @@ export function selectLesson(lessonId) {
 function addConsoleLine(type, text) {
   consoleLogs.push({ type, text, time: new Date().toLocaleTimeString() });
   const body = document.getElementById('js-console-body');
+  if (!body) return;
+
+  const line = document.createElement('div');
+  line.className = `console-line console-line-${type}`;
+  line.innerHTML = `
+    <span class="console-line-time">${new Date().toLocaleTimeString()}</span>
+    <span class="console-line-text">${escapeHtml(text)}</span>
+  `;
+  body.appendChild(line);
+  body.scrollTop = body.scrollHeight;
+}
+
+function addTargetConsoleLine(type, text) {
+  const body = document.getElementById('target-console-body');
   if (!body) return;
 
   const line = document.createElement('div');
@@ -424,24 +440,35 @@ function renderLessonWorkspace(lesson) {
           </div>
         </div>
 
-        <!-- Right: Live Output & Virtual Console Pane -->
+        <!-- Right: Live Output & Virtual Console Pane with Preview Tabs -->
         <div class="preview-pane">
-          <div class="js-console-container">
-            <div class="js-console-header">
-              <div class="js-console-title">🖥️ ${t('liveConsoleTitle', state.lang)}</div>
-              <button id="btn-clear-console" class="btn-tool">${t('clearConsoleBtn', state.lang)}</button>
+          <div class="pane-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding: 8px 12px; background:var(--bg-surface);">
+            <div class="preview-tabs" style="display:flex; gap:6px;">
+              <button id="tab-live" class="prev-tab-btn active">💻 ${escapeHtml(t('yourResultTab', state.lang))}</button>
+              <button id="tab-target" class="prev-tab-btn">🎯 ${escapeHtml(t('targetGoalTab', state.lang))}</button>
+              <button id="tab-side" class="prev-tab-btn">⚡ ${isUz ? 'Yonma-yon' : 'Side-by-Side'}</button>
             </div>
+            <button id="btn-clear-console" class="btn-tool" style="font-size:11px;">🧹 ${t('clearConsoleBtn', state.lang)}</button>
+          </div>
 
-            <div class="js-console-body" id="js-console-body">
-              <div class="console-line console-line-log">
-                <span class="console-line-time">System</span>
-                <span class="console-line-text">&gt; CodeCraft JS Sandbox Ready ⚡</span>
+          <div id="js-preview-stage-container" style="flex:1; display:flex; flex-direction:column; overflow:hidden; position:relative; min-height:420px;">
+            <div id="live-view-box" style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+              <div class="js-console-header" style="background:#0f172a; padding:6px 12px; font-size:11px; color:#94a3b8; font-weight:700; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+                <span class="js-console-title">🖥️ ${t('liveConsoleTitle', state.lang)}</span>
+                <span style="font-size:10px; color:#38bdf8;">LIVE JS VIRTUAL MACHINE</span>
               </div>
-            </div>
 
-            <!-- Bottom Iframe for Interactive DOM elements -->
-            <div style="height: 160px; border-top: 1px solid var(--border-color); background: #000;">
-              <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+              <div class="js-console-body" id="js-console-body" style="flex:1; overflow-y:auto; padding:10px; font-family:monospace; font-size:12px; background:#050811;">
+                <div class="console-line console-line-log">
+                  <span class="console-line-time">System</span>
+                  <span class="console-line-text">&gt; CodeCraft JS Sandbox Ready ⚡</span>
+                </div>
+              </div>
+
+              <!-- Bottom Iframe for Interactive DOM elements -->
+              <div style="height: 160px; border-top: 1px solid var(--border-color); background: #000;">
+                <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -450,6 +477,7 @@ function renderLessonWorkspace(lesson) {
   `;
 
   attachLessonEvents(lesson);
+  setupPreviewTabs(lesson);
   // Auto-run initial preview
   runCurrentCode();
 }
@@ -611,14 +639,153 @@ function runCurrentCode() {
   if (editor) currentCode = editor.value;
   const frame = document.getElementById('live-preview-frame');
   const consoleBody = document.getElementById('js-console-body');
+  const lesson = getLessonById(state.currentLessonId);
   if (frame) {
-    executeJsInSandbox(currentCode, consoleBody, frame).then(res => {
+    executeJsInSandbox(currentCode, consoleBody, frame, lesson?.sandboxHtml, false).then(res => {
       if (!res.success && res.error) {
         addConsoleLine('error', '❌ Xatolik (Error): ' + res.error);
         playSound('tryAgain', state.audioEnabled);
       }
     });
   }
+}
+
+function runTargetPreview(lesson) {
+  const targetConsole = document.getElementById('target-console-body');
+  const targetFrame = document.getElementById('target-preview-frame');
+  if (!targetFrame || !lesson) return;
+
+  const targetCodeStr = localize(lesson.targetCode, state.lang);
+  executeJsInSandbox(targetCodeStr, targetConsole, targetFrame, lesson.sandboxHtml, true).then(res => {
+    if (res && res.logs && targetConsole) {
+      targetConsole.innerHTML = '';
+      res.logs.forEach(logItem => {
+        const line = document.createElement('div');
+        line.className = `console-line console-line-${logItem.method || 'log'}`;
+        line.innerHTML = `
+          <span class="console-line-time">Target</span>
+          <span class="console-line-text">${escapeHtml(logItem.args.join(' '))}</span>
+        `;
+        targetConsole.appendChild(line);
+      });
+      targetConsole.scrollTop = targetConsole.scrollHeight;
+    }
+  });
+}
+
+let activePreviewTab = 'live';
+
+function setupPreviewTabs(lesson) {
+  const tabLive = document.getElementById('tab-live');
+  const tabTarget = document.getElementById('tab-target');
+  const tabSide = document.getElementById('tab-side');
+  const stage = document.getElementById('js-preview-stage-container');
+  if (!stage) return;
+
+  const isUz = state.lang === 'uz';
+
+  function resetTabs() {
+    [tabLive, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
+  }
+
+  function renderLiveView() {
+    return `
+      <div id="live-view-box" style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+        <div class="js-console-header" style="background:#0f172a; padding:6px 12px; font-size:11px; color:#94a3b8; font-weight:700; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+          <span class="js-console-title">🖥️ ${t('liveConsoleTitle', state.lang)}</span>
+          <span style="font-size:10px; color:#38bdf8;">LIVE JS VIRTUAL MACHINE</span>
+        </div>
+        <div class="js-console-body" id="js-console-body" style="flex:1; overflow-y:auto; padding:10px; font-family:monospace; font-size:12px; background:#050811;">
+          <div class="console-line console-line-log">
+            <span class="console-line-time">System</span>
+            <span class="console-line-text">&gt; CodeCraft JS Sandbox Ready ⚡</span>
+          </div>
+        </div>
+        <div style="height: 160px; border-top: 1px solid var(--border-color); background: #000;">
+          <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderTargetView() {
+    return `
+      <div class="target-view-container" style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+        <div class="target-explanation-box">
+          <strong>🎯 ${escapeHtml(t('targetExplanationTitle', state.lang))}</strong>
+          <p style="margin: 4px 0 0; white-space: pre-line;">${formatProse(localize(lesson.targetDescription, state.lang))}</p>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+          <div class="js-console-header" style="background:#0f172a; padding:6px 12px; font-size:11px; color:#94a3b8; font-weight:700; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+            <span>📋 ${isUz ? "Kutilayotgan Konsol va Dastur Natijasi" : "Expected Console & Application Result"}</span>
+            <span style="font-size:10px; color:#10b981;">TARGET GOAL</span>
+          </div>
+          <div id="target-console-body" class="js-console-body" style="flex:1; overflow-y:auto; padding:10px; font-family:monospace; font-size:12px; background:#050811;">
+            <div class="console-line console-line-log">
+              <span class="console-line-time">Target</span>
+              <span class="console-line-text">&gt; Executing Target Goal...</span>
+            </div>
+          </div>
+          <div style="height: 160px; border-top: 1px solid var(--border-color); background: #000;">
+            <iframe id="target-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSideBySideView() {
+    return `
+      <div style="display:grid; grid-template-columns:1fr 1fr; width:100%; height:100%; overflow:hidden;">
+        <div style="border-right:1px solid var(--border-color); display:flex; flex-direction:column; overflow:hidden;">
+          <div style="background:var(--bg-surface); padding:4px 10px; font-size:10px; font-weight:800; color:#38bdf8; border-bottom:1px solid var(--border-color);">${t('yourResultTab', state.lang).toUpperCase()}</div>
+          <div class="js-console-body" id="js-console-body" style="flex:1; overflow-y:auto; padding:8px; font-family:monospace; font-size:11px; background:#050811;"></div>
+          <div style="height:140px; border-top:1px solid var(--border-color); background:#000;">
+            <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; overflow:hidden;">
+          <div style="background:var(--bg-surface); padding:4px 10px; font-size:10px; font-weight:800; color:#10b981; border-bottom:1px solid var(--border-color);">${t('targetGoalTab', state.lang).toUpperCase()}</div>
+          <div class="target-explanation-box" style="padding:8px; font-size:11px; max-height:80px; overflow-y:auto;">
+            <strong>🎯 ${escapeHtml(t('targetExplanationTitle', state.lang))}</strong>
+            <p style="margin:2px 0 0; white-space:pre-line;">${formatProse(localize(lesson.targetDescription, state.lang))}</p>
+          </div>
+          <div id="target-console-body" class="js-console-body" style="flex:1; overflow-y:auto; padding:8px; font-family:monospace; font-size:11px; background:#050811;"></div>
+          <div style="height:140px; border-top:1px solid var(--border-color); background:#000;">
+            <iframe id="target-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  tabLive?.addEventListener('click', () => {
+    resetTabs();
+    tabLive.classList.add('active');
+    activePreviewTab = 'live';
+    stage.innerHTML = renderLiveView();
+    runCurrentCode();
+    playSound('click', state.audioEnabled);
+  });
+
+  tabTarget?.addEventListener('click', () => {
+    resetTabs();
+    tabTarget.classList.add('active');
+    activePreviewTab = 'target';
+    stage.innerHTML = renderTargetView();
+    runTargetPreview(lesson);
+    playSound('click', state.audioEnabled);
+  });
+
+  tabSide?.addEventListener('click', () => {
+    resetTabs();
+    tabSide.classList.add('active');
+    activePreviewTab = 'side';
+    stage.innerHTML = renderSideBySideView();
+    runCurrentCode();
+    runTargetPreview(lesson);
+    playSound('click', state.audioEnabled);
+  });
 }
 
 function showSuccessModal(lesson) {
@@ -666,7 +833,8 @@ function showTryAgainModal(lesson, errorMsg) {
 }
 
 function openTagListModal(lesson) {
-  if (!lesson.tagShowcase || lesson.tagShowcase.length === 0) return;
+  const commands = lesson.listOfCommands || lesson.tagShowcase || [];
+  if (commands.length === 0) return;
   playSound('click', state.audioEnabled);
 
   const isUz = state.lang === 'uz';
@@ -695,15 +863,20 @@ function openTagListModal(lesson) {
             </tr>
           </thead>
           <tbody>
-            ${lesson.tagShowcase.map(item => `
+            ${commands.map(item => {
+              const codeVal = item.code || item.tag;
+              const nameVal = item.name ? localize(item.name, state.lang) : codeVal;
+              const descVal = item.description ? localize(item.description, state.lang) : (item.meaning ? localize(item.meaning, state.lang) : '');
+              return `
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
                 <td style="padding: 10px 12px;">
-                  <code class="code-chip insertable" data-insert="${escapeHtml(item.tag)}" style="cursor: pointer;" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(item.tag)}</code>
+                  <code class="code-chip insertable" data-insert="${escapeHtml(codeVal)}" style="cursor: pointer;" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(codeVal)}</code>
                 </td>
-                <td style="padding: 10px 12px; font-weight: 600; color: #f8fafc;">${escapeHtml(localize(item.name, state.lang))}</td>
-                <td style="padding: 10px 12px; color: #cbd5e1; font-size: 12px;">${escapeHtml(localize(item.meaning, state.lang))}</td>
+                <td style="padding: 10px 12px; font-weight: 600; color: #f8fafc;">${escapeHtml(nameVal)}</td>
+                <td style="padding: 10px 12px; color: #cbd5e1; font-size: 12px;">${escapeHtml(descVal)}</td>
               </tr>
-            `).join('')}
+            `;
+            }).join('')}
           </tbody>
         </table>
       </div>

@@ -13,12 +13,19 @@ describe('JavaScript Curriculum Integrity', () => {
     assert.equal(LESSONS.length, 24);
   });
 
-  it('ensures every lesson has humanLanguage, secretSandwich, stepBreakdown, and tagShowcase', () => {
+  it('ensures every lesson has humanLanguage, secretSandwich, stepBreakdown, tagShowcase, targetDescription, and listOfCommands', () => {
     LESSONS.forEach(l => {
       assert.ok(l.title.uz && l.title.en, `Lesson ${l.id} missing title`);
       assert.ok(l.concept.uz && l.concept.en, `Lesson ${l.id} missing concept`);
       assert.ok(l.humanLanguage.uz && l.humanLanguage.en, `Lesson ${l.id} missing humanLanguage`);
       assert.ok(l.secretSandwich.uz && l.secretSandwich.en, `Lesson ${l.id} missing secretSandwich`);
+      assert.ok(l.targetDescription && l.targetDescription.uz && l.targetDescription.en, `Lesson ${l.id} missing targetDescription`);
+      assert.ok(Array.isArray(l.listOfCommands) && l.listOfCommands.length > 0, `Lesson ${l.id} missing listOfCommands`);
+      for (const cmd of l.listOfCommands) {
+        assert.ok(cmd.code, `Command in ${l.id} missing code`);
+        assert.ok(cmd.name, `Command in ${l.id} missing name`);
+        assert.ok(cmd.description, `Command in ${l.id} missing description`);
+      }
       assert.ok(Array.isArray(l.stepBreakdown) && l.stepBreakdown.length > 0, `Lesson ${l.id} missing stepBreakdown`);
       assert.ok(Array.isArray(l.tagShowcase) && l.tagShowcase.length > 0, `Lesson ${l.id} missing tagShowcase`);
       assert.ok(typeof l.validate === 'function', `Lesson ${l.id} missing validate`);

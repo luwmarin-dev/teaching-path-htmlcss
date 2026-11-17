@@ -4,7 +4,7 @@
  * intercepts alerts/prompts gracefully, and returns outputs.
  */
 
-export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
+export function executeJsInSandbox(code, outputContainer, livePreviewFrame, customHtml = null, isTarget = false) {
   const logs = [];
 
   function appendLog(type, args) {
@@ -19,6 +19,18 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
 
   const tagOpen = '<' + 'script>';
   const tagClose = '<' + '/script>';
+  const logMsgType = isTarget ? 'TARGET_CONSOLE_LOG' : 'CONSOLE_LOG';
+  const alertMsgType = isTarget ? 'TARGET_CONSOLE_ALERT' : 'CONSOLE_ALERT';
+
+  const defaultBody = `
+  <h2 id="title">CodeCraft JS Sandbox ⚡</h2>
+  <div id="box">Sehrli Quti</div>
+  <div class="hud-row">
+    <button id="btn">Meni Bosing!</button>
+    <button id="click-btn">O'yin Tugmasi (Clicker)</button>
+    <span>Hisob: <span id="count">0</span></span>
+  </div>
+`;
 
   // Pre-configured mini HTML environment inside iframe so DOM tasks (querySelector, etc.) work!
   const sandboxHtml = `<!DOCTYPE html>
@@ -70,13 +82,7 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
   </style>
 </head>
 <body>
-  <h2 id="title">CodeCraft JS Sandbox ⚡</h2>
-  <div id="box">Sehrli Quti</div>
-  <div class="hud-row">
-    <button id="btn">Meni Bosing!</button>
-    <button id="click-btn">O'yin Tugmasi (Clicker)</button>
-    <span>Hisob: <span id="count">0</span></span>
-  </div>
+  ${customHtml || defaultBody}
 
   ${tagOpen}
     // Console interceptor
@@ -85,7 +91,7 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
       const orig = console[method];
       console[method] = function(...args) {
         window._capturedLogs.push({ method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) });
-        window.parent.postMessage({ type: 'CONSOLE_LOG', method, text: args.join(' ') }, '*');
+        window.parent.postMessage({ type: '${logMsgType}', method, text: args.join(' ') }, '*');
         if (orig) orig.apply(console, args);
       };
     });
@@ -93,7 +99,7 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     // Alert & Prompt interceptors
     window.alert = function(msg) {
       window._capturedLogs.push({ method: 'alert', args: [msg] });
-      window.parent.postMessage({ type: 'CONSOLE_ALERT', text: String(msg) }, '*');
+      window.parent.postMessage({ type: '${alertMsgType}', text: String(msg) }, '*');
     };
 
     window.prompt = function(msg, def) {
@@ -109,7 +115,7 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     } catch (err) {
       window._capturedLogs.push({ method: 'error', args: [err.message] });
       try {
-        window.parent.postMessage({ type: 'CONSOLE_LOG', method: 'error', text: '❌ Xatolik (Error): ' + err.message }, '*');
+        window.parent.postMessage({ type: '${logMsgType}', method: 'error', text: '❌ Xatolik (Error): ' + err.message }, '*');
       } catch (e) {}
     }
   ${tagClose}

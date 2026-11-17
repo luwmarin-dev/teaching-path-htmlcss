@@ -906,7 +906,7 @@ function setupPreviewTabs(lesson) {
     `;
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
+      targetIframe.srcdoc = wrapForPreview(localize(lesson.targetCode, state.lang));
     }
     playSound('click', state.audioEnabled);
   });
@@ -930,7 +930,7 @@ function setupPreviewTabs(lesson) {
     updateLivePreview();
     const targetIframe = document.getElementById('target-iframe');
     if (targetIframe) {
-      targetIframe.srcdoc = wrapForPreview(lesson.targetCode);
+      targetIframe.srcdoc = wrapForPreview(localize(lesson.targetCode, state.lang));
     }
     playSound('click', state.audioEnabled);
   });

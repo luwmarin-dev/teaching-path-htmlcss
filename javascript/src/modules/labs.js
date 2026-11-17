@@ -157,7 +157,10 @@ export function getTopicLab(lessonId, lesson) {
   if (TOPIC_LABS[lessonId]) return TOPIC_LABS[lessonId];
 
   const titleText = lesson ? (lesson.title.uz || lesson.title.en) : lessonId;
-  const targetCode = lesson ? lesson.targetCode : '// code';
+  const targetCodeRaw = lesson ? lesson.targetCode : '// code';
+  const targetCode = typeof targetCodeRaw === 'object' && targetCodeRaw !== null
+    ? (targetCodeRaw.uz || targetCodeRaw.en || Object.values(targetCodeRaw)[0] || '')
+    : String(targetCodeRaw || '');
 
   return {
     title: { uz: `🧪 ${titleText} Laboratoriyasi`, en: `🧪 ${titleText} Visual Lab` },

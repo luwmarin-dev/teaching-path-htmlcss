@@ -313,7 +313,10 @@ export const LESSONS = [
     <p>Mission Status: <b>Ready for Launch</b></p>
   </body>
 </html>`,
-    targetDescription: 'A complete, well-formed HTML document:\n• Browser tab title set to "My Secret Base"\n• <h1> title inside <body>: "🚀 Welcome to Space Base!"\n• Two paragraphs, with "Ready for Launch" bolded inside the body.',
+    targetDescription: {
+      en: 'A complete, well-formed HTML document:\n• Browser tab title set to "My Secret Base"\n• <h1> title inside <body>: "🚀 Welcome to Space Base!"\n• Two paragraphs, with "Ready for Launch" bolded inside the body.',
+      uz: 'To\'liq va to\'g\'ri shakllangan HTML hujjati:\n• Brauzer yorlig\'i sarlavhasi "My Secret Base"\n• <body> ichida <h1> sarlavhasi: "🚀 Welcome to Space Base!"\n• Ikkita xatboshi, tana ichida "Ready for Launch" qalinlashtirilgan.'
+    },
     anatomy: [
       {
         part: '<!DOCTYPE html>',
@@ -605,7 +608,10 @@ export const LESSONS = [
     width="260"
   >
 </div>`,
-    targetDescription: 'A handsome pet card with a puppy photo placed from scratch and resized to width="260".',
+    targetDescription: {
+      en: 'A handsome pet card with a puppy photo placed from scratch and resized to width="260".',
+      uz: 'Noldan joylashtirilgan va kengligi width="260" qilib belgilangan chiroyli kuchukcha fotosurati kartochkasi.'
+    },
     anatomy: [
       {
         part: '<img',
@@ -732,7 +738,10 @@ export const LESSONS = [
   <h3>Secret Chest</h3>
   <p>Contains 100 gold coins and a magical crystal!</p>
 </div>`,
-    targetDescription: 'A solid card with a bright mint cyan (4px solid #2dd4bf) border wall neatly wrapping the title and text.',
+    targetDescription: {
+      en: 'A solid card with a bright mint cyan (4px solid #2dd4bf) border wall neatly wrapping the title and text.',
+      uz: 'Sarlavha va matnni chiroyli o\'rab turuvchi yorqin feruza (4px solid #2dd4bf) devor hoshiyasiga ega karta.'
+    },
     anatomy: [
       {
         part: '<div>',
@@ -895,7 +904,10 @@ export const LESSONS = [
   <span class="badge">Level: 99</span>
   <span class="badge">Rank: Master</span>
 </div>`,
-    targetDescription: 'A player profile containing two purple badge pills ("Level: 99" and "Rank: Master") both sharing the exact same `.badge` class styling.',
+    targetDescription: {
+      en: 'A player profile containing two purple badge pills ("Level: 99" and "Rank: Master") both sharing the exact same `.badge` class styling.',
+      uz: 'Ikkalasi ham bir xil `.badge` klass uslubiga ega ikkita binafsharang nishonli ("Level: 99" va "Rank: Master") o\'yinchi profili.'
+    },
     anatomy: [
       {
         part: 'class="badge"',
@@ -1038,7 +1050,10 @@ export const LESSONS = [
   <h3>I am in a box!</h3>
   <p>Give me 24px of inside cushion (padding) and 30px of personal space (margin)!</p>
 </div>`,
-    targetDescription: 'A spacious navy card with cozy 24px padding giving the text room to breathe inside, and generous 30px margin pushing it away from the edges.',
+    targetDescription: {
+      en: 'A spacious navy card with cozy 24px padding giving the text room to breathe inside, and generous 30px margin pushing it away from the edges.',
+      uz: 'Matnga ichkaridan nafas olishi uchun 24px padding va tashqi chetlardan itarib turish uchun 30px margin berilgan keng to\'q ko\'k kartochka.'
+    },
     anatomy: [
       {
         part: 'padding: 24px;',
