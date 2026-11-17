@@ -117,17 +117,22 @@ export const LESSONS = [
       { tag: 'const', name: { uz: "Doimiy quti", en: "Constant variable" }, meaning: { uz: "Bir marta beriladi va o'zgarmaydi", en: "Fixed value that never changes" } }
     ],
     mission: {
-      uz: "score nomli let o'zgaruvchi (100) va playerName nomli const o'zgaruvchi ('Ali') yarating.",
-      en: "Create a let variable named score set to 100, and a const named playerName set to 'Ali'."
+      uz: "score nomli let o'zgaruvchi (100) va playerName nomli const o'zgaruvchi ('Ali') yarating hamda ularni konsolga chiqaring.",
+      en: "Create a let variable named score set to 100, a const named playerName set to 'Ali', and log them to console."
     },
-    initialCode: '// 2-Mavzu: O\'zgaruvchilar\nlet score = 100;\n// playerName nomli const yarating:\n',
+    initialCode: `// 2-Mavzu: O'zgaruvchilar
+// Step 1: let score = 100; yarating
+// Step 2: const playerName = "Ali"; yarating
+// Step 3: console.log(playerName, score); qiling
+`,
     targetCode: 'let score = 100;\nconst playerName = "Ali";\nconsole.log(playerName, score);',
     hints: [
-      { uz: 'const playerName = "Ali"; deb yozing.', en: 'Write: const playerName = "Ali";' }
+      { uz: 'let score = 100; const playerName = "Ali"; console.log(playerName, score); deb yozing.', en: 'Write: let score = 100; const playerName = "Ali"; console.log(playerName, score);' }
     ],
     validate: (code) => {
-      if (!/let\s+score\s*=/.test(code)) return { passed: false, message: "let score = 100; yarating!" };
-      if (!/const\s+playerName\s*=/.test(code)) return { passed: false, message: "const playerName = 'Ali'; yarating!" };
+      if (!/let\s+score\s*=\s*100/.test(code)) return { passed: false, message: "let score = 100; deb o'zgaruvchi yarating!" };
+      if (!/const\s+playerName\s*=\s*["']Ali["']/.test(code)) return { passed: false, message: "const playerName = 'Ali'; deb doimiy yarating!" };
+      if (!/console\.log\s*\(/.test(code)) return { passed: false, message: "console.log(playerName, score); bilan konsolga chiqaring!" };
       return { passed: true, message: "Qoyil! O'zgaruvchi qutilar bilan ishlashni o'rgandingiz! 📦⭐" };
     }
   },
@@ -173,15 +178,22 @@ export const LESSONS = [
       { tag: 'Boolean', name: { uz: "Mantiq turi", en: "Boolean type" }, meaning: { uz: "Faqat true yoki false bo'ladi", en: "Either true or false" } }
     ],
     mission: {
-      uz: "hero (matn), level (son), va isAlive (true) o'zgaruvchilarini yarating.",
-      en: "Create variables hero (string), level (number), and isAlive (boolean true)."
+      uz: "hero (matn 'Botir'), level (son 5), va isAlive (true) o'zgaruvchilarini yarating hamda console.log qiling.",
+      en: "Create variables hero (string 'Botir'), level (number 5), and isAlive (boolean true), then log them."
     },
-    initialCode: 'let hero = "Botir";\nlet level = 5;\n// isAlive o\'zgaruvchisini true qilib qo\'shing:\n',
+    initialCode: `// 3-Mavzu: Ma'lumot turlari
+// Step 1: let hero = "Botir";
+// Step 2: let level = 5;
+// Step 3: let isAlive = true;
+// Step 4: console.log(hero, level, isAlive);
+`,
     targetCode: 'let hero = "Botir";\nlet level = 5;\nlet isAlive = true;\nconsole.log(hero, level, isAlive);',
     hints: [
-      { uz: "let isAlive = true; deb yozing.", en: "Type: let isAlive = true;" }
+      { uz: 'let hero = "Botir"; let level = 5; let isAlive = true; console.log(hero, level, isAlive); deb yozing.', en: 'Type all 3 variable declarations and log them.' }
     ],
     validate: (code) => {
+      if (!/hero\s*=\s*["']Botir["']/.test(code)) return { passed: false, message: "hero = 'Botir' matnini kiriting!" };
+      if (!/level\s*=\s*5/.test(code)) return { passed: false, message: "level = 5 sonini kiriting!" };
       if (!/isAlive\s*=\s*true/.test(code)) return { passed: false, message: "isAlive = true deb yozing!" };
       return { passed: true, message: "Zo'r! Barcha ma'lumot turlarini to'g'ri qo'lladingiz! 🏷️✨" };
     }
@@ -320,17 +332,20 @@ export const LESSONS = [
       { tag: 'confirm()', name: { uz: "Tasdiqlash oynasi", en: "Confirm Dialog" }, meaning: { uz: "Ok yoki Cancel qaytaradi (true/false)", en: "Returns true or false" } }
     ],
     mission: {
-      uz: 'userName o\'zgaruvchisiga prompt("Ismingiz?") natijasini oling va alert("Xush kelibsiz!") chiqaring.',
-      en: 'Store prompt("Ismingiz?") in userName and call alert("Xush kelibsiz!").'
+      uz: 'userName o\'zgaruvchisiga prompt("Ismingiz nima?") natijasini oling va alert("Xush kelibsiz!"); chiqaring.',
+      en: 'Store prompt("Ismingiz nima?") in userName and call alert("Xush kelibsiz!").'
     },
-    initialCode: '// 6-Mavzu: prompt va alert\nlet userName = prompt("Ismingiz nima?");\n// alert bilan salom bering:\n',
+    initialCode: `// 6-Mavzu: prompt va alert
+// Step 1: userName nomli o'zgaruvchiga prompt("Ismingiz nima?") natijasini oling
+// Step 2: alert("Xush kelibsiz!"); bilan salom bering
+`,
     targetCode: 'let userName = prompt("Ismingiz nima?");\nalert("Xush kelibsiz!");',
     hints: [
-      { uz: 'alert("Xush kelibsiz!"); deb yozing.', en: 'Type: alert("Xush kelibsiz!");' }
+      { uz: 'let userName = prompt("Ismingiz nima?"); alert("Xush kelibsiz!"); deb yozing.', en: 'Write: let userName = prompt("Ismingiz nima?"); alert("Xush kelibsiz!");' }
     ],
     validate: (code) => {
-      if (!/prompt\s*\(/.test(code)) return { passed: false, message: "prompt() dan foydalaning!" };
-      if (!/alert\s*\(/.test(code)) return { passed: false, message: "alert() dan foydalaning!" };
+      if (!/let\s+userName\s*=\s*prompt\s*\(/.test(code)) return { passed: false, message: "let userName = prompt(...) bilan ismni oling!" };
+      if (!/alert\s*\(/.test(code)) return { passed: false, message: "alert() bilan xabar chiqaring!" };
       return { passed: true, message: "Super! Foydalanuvchi bilan muloqot qilishni o'rgandingiz! ❓🎉" };
     }
   },
@@ -370,16 +385,20 @@ export const LESSONS = [
       { tag: 'else', name: { uz: "Aks holda", en: "Else statement" }, meaning: { uz: "Shart yolg'on bo'lsa yurgizadi", en: "Runs if false" } }
     ],
     mission: {
-      uz: 'if (score >= 10) bo\'lsa "G\'alaba!", aks holda "Davom eting!" deb konsolga chiqaring.',
-      en: 'If score >= 10 log "G\'alaba!", else log "Davom eting!".'
+      uz: 'if (score >= 10) bo\'lsa "G\'alaba!", aks holda "Davom eting!" deb konsolga chiqaruvchi if-else qarorini yozing.',
+      en: 'Write an if-else decision that logs "G\'alaba!" if score >= 10, else logs "Davom eting!".'
     },
-    initialCode: 'let score = 12;\nif (score >= 10) {\n  console.log("G\'alaba!");\n} else {\n  // else qismiga yozing:\n}\n',
+    initialCode: `let score = 12;
+// Step 1: if (score >= 10) shartini yozing
+// Step 2: if ichida console.log("G'alaba!"); qiling
+// Step 3: else blokida console.log("Davom eting!"); qiling
+`,
     targetCode: 'let score = 12;\nif (score >= 10) {\n  console.log("G\'alaba!");\n} else {\n  console.log("Davom eting!");\n}',
     hints: [
-      { uz: 'else blokiga console.log("Davom eting!"); deb yozing.', en: 'Inside else write: console.log("Davom eting!");' }
+      { uz: 'if (score >= 10) { console.log("G\'alaba!"); } else { console.log("Davom eting!"); } deb yozing.', en: 'Write the complete if-else block.' }
     ],
     validate: (code) => {
-      if (!/if\s*\([^)]+\)/.test(code)) return { passed: false, message: "if shartini yozing!" };
+      if (!/if\s*\(\s*score\s*>=?\s*10\s*\)/.test(code)) return { passed: false, message: "if (score >= 10) shartini to'g'ri yozing!" };
       if (!/else\s*\{/.test(code)) return { passed: false, message: "else blokini yozing!" };
       return { passed: true, message: "Qaror qabul qilish mexanizmi tayyor! 🔀⭐" };
     }
@@ -466,13 +485,14 @@ export const LESSONS = [
       uz: 'grade 90 dan katta bo\'lsa "A\'lo!", 70 dan katta bo\'lsa "Yaxshi!" deb else if yordamida yozing.',
       en: 'Use else if to check if grade >= 90 log "A\'lo!", else if grade >= 70 log "Yaxshi!".'
     },
-    initialCode: 'let grade = 85;\nif (grade >= 90) {\n  console.log("A\'lo!");\n} else if (grade >= 70) {\n  // Shu yerga yozing:\n}\n',
+    initialCode: 'let grade = 85;\nif (grade >= 90) {\n  console.log("A\'lo!");\n}\n// Step: else if (grade >= 70) qo\'shib console.log("Yaxshi!"); qiling:\n',
     targetCode: 'let grade = 85;\nif (grade >= 90) {\n  console.log("A\'lo!");\n} else if (grade >= 70) {\n  console.log("Yaxshi!");\n}',
     hints: [
-      { uz: 'else if ichiga console.log("Yaxshi!"); yozing.', en: 'Inside else if write: console.log("Yaxshi!");' }
+      { uz: 'else if (grade >= 70) { console.log("Yaxshi!"); } deb yozing.', en: 'Write: else if (grade >= 70) { console.log("Yaxshi!"); }' }
     ],
     validate: (code) => {
-      if (!/else\s+if/.test(code)) return { passed: false, message: "else if operatoridan foydalaning!" };
+      if (!/else\s+if\s*\(\s*grade\s*>=?\s*70\s*\)/.test(code)) return { passed: false, message: "else if (grade >= 70) shartini yozing!" };
+      if (!/console\.log\s*\(\s*["']Yaxshi!["']\s*\)/.test(code)) return { passed: false, message: "console.log('Yaxshi!'); bilan chiqaring!" };
       return { passed: true, message: "Ko'p shartli zanjir bekamu-ko'st ishlamoqda! 🚥🎉" };
     }
   },
@@ -512,16 +532,19 @@ export const LESSONS = [
       { tag: '()', name: { uz: "Chaqirish qavslari", en: "Invocation Parentheses" }, meaning: { uz: "Funksiyani darhol ishga tushiradi", en: "Triggers the function execution" } }
     ],
     mission: {
-      uz: "sayHello nomli funksiya yarating va uni sayHello(); deb chaqiring.",
-      en: "Declare function sayHello() that logs a message, and call it."
+      uz: 'sayHello nomli funksiya e\'lon qiling va uni sayHello(); orqali chaqiring.',
+      en: 'Declare function sayHello() that logs "Salom, Dasturchi!", and invoke it.'
     },
-    initialCode: '// 10-Mavzu: Funksiya\nfunction sayHello() {\n  console.log("Salom, Dasturchi!");\n}\n// Funksiyani chaqiring:\n',
+    initialCode: `// 10-Mavzu: Funksiyalar
+// Step 1: function sayHello() { console.log("Salom, Dasturchi!"); } yarating
+// Step 2: sayHello(); deb uni ishga tushiring
+`,
     targetCode: 'function sayHello() {\n  console.log("Salom, Dasturchi!");\n}\nsayHello();',
     hints: [
-      { uz: "sayHello(); deb yozing.", en: "Write: sayHello();" }
+      { uz: 'function sayHello() { console.log("Salom, Dasturchi!"); } sayHello(); deb yozing.', en: 'Write the function definition and call sayHello();' }
     ],
     validate: (code) => {
-      if (!/function\s+sayHello\s*\(/.test(code)) return { passed: false, message: "function sayHello() yarating!" };
+      if (!/function\s+sayHello\s*\(/.test(code)) return { passed: false, message: "function sayHello() deb funksiya yarating!" };
       if (!/sayHello\s*\(\s*\)/.test(code)) return { passed: false, message: "sayHello() deb chaqiring!" };
       return { passed: true, message: "Sehrli funksiyangiz muvaffaqiyatli ishga tushdi! 🪄⭐" };
     }
@@ -654,16 +677,19 @@ export const LESSONS = [
       { tag: '.length', name: { uz: "Uzunlik xususiyati", en: "Length property" }, meaning: { uz: "Massivda nechta element borligini aytadi", en: "Counts total elements" } }
     ],
     mission: {
-      uz: "inventory nomli massiv tuzing va console.log(inventory[0]); qilib birinchi buyumni chiqaring.",
-      en: "Create an inventory array with 3 items and log inventory[0]."
+      uz: "inventory nomli massiv tuzing: ['Qilich', 'Qalqon', 'Sehrli Idish'] va birinchi qurolni console.log(inventory[0]); qiling.",
+      en: "Create an inventory array with 3 items, and log the first item using console.log(inventory[0]);."
     },
-    initialCode: 'let inventory = ["Qilich", "Qalqon", "Sehrli Idish"];\n// Birinchi elementni konsolga chiqaring:\n',
+    initialCode: `// 13-Mavzu: Massivlar (Ryukzak)
+// Step 1: let inventory = ["Qilich", "Qalqon", "Sehrli Idish"];
+// Step 2: console.log(inventory[0]);
+`,
     targetCode: 'let inventory = ["Qilich", "Qalqon", "Sehrli Idish"];\nconsole.log(inventory[0]);',
     hints: [
-      { uz: "console.log(inventory[0]); deb yozing.", en: "Write: console.log(inventory[0]);" }
+      { uz: 'let inventory = ["Qilich", "Qalqon", "Sehrli Idish"]; console.log(inventory[0]); deb yozing.', en: 'Write the array and log inventory[0].' }
     ],
     validate: (code) => {
-      if (!/\[.*?\]/.test(code)) return { passed: false, message: "[] massiv qavslarini yozing!" };
+      if (!/inventory\s*=\s*\[/.test(code)) return { passed: false, message: "let inventory = [...] massivini e'lon qiling!" };
       if (!/inventory\s*\[\s*0\s*\]/.test(code)) return { passed: false, message: "inventory[0] orqali birinchi elementni oling!" };
       return { passed: true, message: "Zo'r! Birinchi massivingiz va uning 0-indeksini zabt etdingiz! 🎒⭐" };
     }
@@ -853,16 +879,20 @@ export const LESSONS = [
       { tag: '.', name: { uz: "Nuqta operatori", en: "Dot operator" }, meaning: { uz: "Obyekt ichidagi xususiyatni chaqiradi", en: "Accesses object properties" } }
     ],
     mission: {
-      uz: "hero obyektida name, hp (100), va power (50) xususiyatlarini yarating va console.log(hero.name); qiling.",
-      en: "Create a hero object with name, hp, power properties and log hero.name."
+      uz: "hero nomli obyekt tuzing (name: 'Alpomish', hp: 100, power: 50) va console.log(hero.name); qiling.",
+      en: "Create a hero object (name: 'Alpomish', hp: 100, power: 50) and log hero.name."
     },
-    initialCode: 'let hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\n// Qahramon nomini konsolga chiqaring:\n',
+    initialCode: `// 17-Mavzu: Obyektlar
+// Step 1: hero obyektini yarating ({ name: "Alpomish", hp: 100, power: 50 })
+// Step 2: console.log(hero.name); qiling
+`,
     targetCode: 'let hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\nconsole.log(hero.name);',
     hints: [
-      { uz: "console.log(hero.name); deb yozing.", en: "Type: console.log(hero.name);" }
+      { uz: 'let hero = { name: "Alpomish", hp: 100, power: 50 }; console.log(hero.name); deb yozing.', en: 'Declare hero object and log hero.name.' }
     ],
     validate: (code) => {
       if (!/hero\s*=\s*\{/.test(code)) return { passed: false, message: "hero obyektini yarating!" };
+      if (!/name\s*:\s*["']Alpomish["']/.test(code)) return { passed: false, message: "name: 'Alpomish' xususiyatini kiriting!" };
       if (!/hero\.name/.test(code)) return { passed: false, message: "hero.name orqali nomni chaqiring!" };
       return { passed: true, message: "Super qahramon pasporti tayyor! Obyektlar ajoyib! 👤💎" };
     }
@@ -944,13 +974,17 @@ export const LESSONS = [
       uz: 'document.querySelector("#title") orqali sarlavhani oling va console.log(title.textContent); qiling.',
       en: 'Select #title with document.querySelector and log title.textContent.'
     },
-    initialCode: '// 19-Mavzu: querySelector\nconst title = document.querySelector("#title");\n// title ning textContent xususiyatini chiqaring:\n',
+    initialCode: `// 19-Mavzu: querySelector
+// Step 1: const title = document.querySelector("#title"); deb sarlavhani ushlab oling
+// Step 2: console.log(title.textContent); qiling
+`,
     targetCode: 'const title = document.querySelector("#title");\nconsole.log(title.textContent);',
     hints: [
-      { uz: "console.log(title.textContent); deb yozing.", en: "Write: console.log(title.textContent);" }
+      { uz: 'const title = document.querySelector("#title"); console.log(title.textContent); deb yozing.', en: 'Select #title and log title.textContent.' }
     ],
     validate: (code) => {
-      if (!/querySelector\s*\(/.test(code)) return { passed: false, message: "document.querySelector() dan foydalaning!" };
+      if (!/document\.querySelector\s*\(\s*["']#title["']\s*\)/.test(code)) return { passed: false, message: 'document.querySelector("#title") orqali elementni oling!' };
+      if (!/title\.textContent/.test(code)) return { passed: false, message: 'title.textContent orqali matnni chiqaring!' };
       return { passed: true, message: "Element ushlab olindi! Endi sahifani boshqara olasiz! 🎯🎉" };
     }
   },
@@ -1207,3 +1241,18 @@ export function getLessonById(id) {
 export function getLessonsByModule(modId) {
   return LESSONS.filter(l => l.module === modId);
 }
+
+// Ensure validators ignore comments so hints/comments in starter code never trigger false passes
+LESSONS.forEach(lesson => {
+  const originalValidate = lesson.validate;
+  lesson.validate = (code) => {
+    if (!code || typeof code !== 'string') {
+      return { passed: false, message: 'Kodingizni yozing!' };
+    }
+    const cleanCode = code
+      .replace(/\/\/.*$/gm, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+    return originalValidate(cleanCode);
+  };
+});
+

@@ -69,6 +69,19 @@ describe('Curriculum Data Integrity', () => {
     }
   });
 
+  it('verifies initialCode does not prematurely pass its own challenge validator (constructive pedagogy)', () => {
+    for (const lesson of LESSONS) {
+      if (lesson.challenge && lesson.challenge.rules.length > 0) {
+        const result = validateChallenge(lesson.initialCode, lesson.challenge.rules);
+        assert.equal(
+          result.passed,
+          false,
+          `Lesson ${lesson.id} initialCode prematurely passed its own challenge rules without student action!`
+        );
+      }
+    }
+  });
+
   it('allows fetching lessons by id and module', () => {
     const lesson = getLessonById('theme-1-tags');
     assert.ok(lesson);

@@ -32,6 +32,13 @@ describe('JavaScript Curriculum Integrity', () => {
     });
   });
 
+  it('verifies all 24 initialCodes do not prematurely pass validation (constructive pedagogy)', () => {
+    LESSONS.forEach(l => {
+      const result = l.validate(l.initialCode);
+      assert.equal(result.passed, false, `Lesson ${l.id} initialCode prematurely passed validation without student action!`);
+    });
+  });
+
   it('allows fetching lessons by ID and Module', () => {
     const l1 = getLessonById('js-1-console');
     assert.ok(l1);

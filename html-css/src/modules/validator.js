@@ -11,8 +11,10 @@ export function validateChallenge(code, rules = []) {
     };
   }
 
-  // Strip HTML comments so instructions inside comments don't trigger false passes
-  const codeWithoutComments = code.replace(/<!--[\s\S]*?-->/g, '');
+  // Strip HTML and CSS comments so instructions inside comments don't trigger false passes
+  const codeWithoutComments = code
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '');
   const feedback = [];
 
   for (const rule of rules) {
@@ -76,7 +78,7 @@ export function validateChallenge(code, rules = []) {
       case 'custom': {
         try {
           const fn = rule.check || rule.fn;
-          passed = typeof fn === 'function' ? !!fn(code) : false;
+          passed = typeof fn === 'function' ? !!fn(codeWithoutComments) : false;
         } catch {
           passed = false;
         }
