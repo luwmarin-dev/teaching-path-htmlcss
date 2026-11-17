@@ -1122,133 +1122,235 @@ export const LESSONS = [
   // THEME 4: Pictures
   // ==========================================
   {
-id: 'theme-4-pictures',
+    id: 'theme-4-pictures',
     module: 'html-core',
     title: {
-      en: 'Theme 4: Pictures & Void Tags',
-      uz: '4-Mavzu: Rasmlar va Yopilmas Teglar'
+      en: 'Theme 4: Pictures & Media Gallery (Figure, Img & Figcaption)',
+      uz: '4-Mavzu: Rasmlar va Media Galereyasi (Figure, Img va Figcaption)'
     },
     icon: '🖼️',
-    tag: '<img src="" alt="" width="">',
+    tag: '<figure>, <img src="" alt="" width="">, <figcaption>',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, an **Image** tag is like sticking a sticker onto a poster. Instead of writing text, you show a photo or drawing.',
-        uz: 'Oddiy tilda aytganda, **Rasm** tegi plakatga stiker yopishtirishga o\'xshaydi. Matn yozish o\'rniga fotosurat yoki chizilgan rasm ko\'rsatasiz.'
+        en: 'In human language, images bring websites to life! Instead of boring blank cards, professional websites wrap photos inside semantic **<figure>** tags and explain them with **<figcaption>**. You also place circular avatar badges using width, height, and border-radius.',
+        uz: "Oddiy inson tilida, rasmlar veb-sahifaga jon bag'ishlaydi! Zerikarli bo'sh qutilar o'rniga zamonaviy saytlar rasmlarni semantik **<figure>** ichiga o'rab, ostiga **<figcaption>** orqali izoh yozadi. Shuningdek, width va height orqali dumaloq kiber avatarlar joylashtiriladi."
       },
       whatIsATag: {
-        en: 'Fun secret: `<img>` is a **Void Tag**! It has NO closing `</img>`! Why? Because you cannot put words inside a picture — the picture stands by itself! You tell it where the picture lives using `src` (source).',
-        uz: 'Qiziqarli sir: `<img>` — bu **Bo\'sh (Void) teg**! Uning yopiluvchi `</img>` jufti YO\'Q! Nega? Chunki rasmning ichiga matn joylay olmaysiz — rasm o\'zi alohida turadi! Rasm qayerdaligini `src` (manba) atributi orqali aytasiz.'
+        en: '1. `<img>` is a **Void Tag** (self-closing, no </img>)! It requires `src` (address) and `alt` (description for screen readers).\n2. `<figure>` and `<figcaption>` group the photo and its caption into one neat semantic story.',
+        uz: "1. `<img>` — **Bo'sh (Void) teg** (yopiluvchi jufti yo'q)! Unga `src` (manzil) va `alt` (tavsif) atributlari shart.\n2. `<figure>` va `<figcaption>` rasmni va uning ostidagi tushuntirish izohini bitta yaxlit semantik hikoyaga birlashtiradi."
       }
     },
     summary: {
-      en: 'Learn how to show pictures on a page and discover why <img> is a self-closing void tag.',
-      uz: 'Sahifada rasmlar ko\'rsatishni va nima uchun <img> tegi yopiluvchi juftga ega emasligini o\'rganing.'
+      en: 'Build a high-tech Mars Rover Expedition gallery with semantic <figure>, <figcaption>, hero photos, and circular crew avatars.',
+      uz: "Semantik <figure>, <figcaption>, bosh rasm va dumaloq ekipaj avatarlari bilan Mars Rover ekspeditsiya galereyasini quring."
     },
     story: {
-      en: 'Pictures need an address (src) to find the image file, and width to decide how big or small to draw it.',
-      uz: 'Rasmlarga manzil (src) va uni qanchalik katta yoki kichik chizish uchun kenglik (width) kerak bo\'ladi.'
+      en: 'The Cyber Explorer Agency is launching Rover MK-IV on Mars! Assemble the mission gallery card with the hero rover photo, caption, and crew avatars!',
+      uz: "Kiber Ekspeditsiya Agentligi Marsda Rover MK-IV missiyasini boshlamoqda! Bosh rover rasmi, uning izohi va 2 ta ekipaj avatarini joylashtiring!"
     },
     initialCode: {
-      en: `<div class="pet-card">
-  <h2>🐾 Cyber Pet Adoption</h2>
-  <p>Our shelter has a super cute puppy ready for a home!</p>
+      en: `<style>
+  .gallery-card {
+    background: #0b0f19;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 18px;
+    color: white;
+    font-family: system-ui, sans-serif;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .gallery-caption {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 10px 0 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .crew-deck {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    border-top: 1px solid #1f2937;
+    padding-top: 12px;
+  }
+  .crew-avatar {
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+</style>
 
-  <!-- Step 1: Put the picture here using <img src="..." alt="..."> -->
-  <!-- Step 2: Set width="260" on the <img> tag -->
+<figure class="gallery-card">
+  <!-- Step 1: Add the main rover image: <img src="rover.svg" alt="Mars Rover MK-IV" width="280"> -->
 
-</div>`,
-      uz: `<div class="pet-card">
-  <h2>🐾 Cyber Pet Adoption</h2>
-  <p>Our shelter has a super cute puppy ready for a home!</p>
+  <!-- Step 2: Add <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Red Planet Recon</figcaption> -->
 
-  <!-- 1-Qadam: Quyida <img src="..." alt="..."> orqali rasmni qo'ying -->
-  <!-- 2-Qadam: <img> tegiga width="260" kenglik bering -->
+  <div class="crew-deck">
+    <!-- Step 3: Add 2 crew avatar images with width="56" height="56" class="crew-avatar" -->
 
-</div>`
+  </div>
+</figure>`,
+      uz: `<style>
+  .gallery-card {
+    background: #0b0f19;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 18px;
+    color: white;
+    font-family: system-ui, sans-serif;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .gallery-caption {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 10px 0 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .crew-deck {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    border-top: 1px solid #1f2937;
+    padding-top: 12px;
+  }
+  .crew-avatar {
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+</style>
+
+<figure class="gallery-card">
+  <!-- 1-Qadam: Rover rasmini qo'ying: <img src="rover.svg" alt="Mars Rover MK-IV" width="280"> -->
+
+  <!-- 2-Qadam: <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi</figcaption> qo'shing -->
+
+  <div class="crew-deck">
+    <!-- 3-Qadam: 2 ta ekipaj avatar rasmini qo'ying: width="56" height="56" class="crew-avatar" -->
+
+  </div>
+</figure>`
     },
-    targetCode: `<div class="pet-card">
-  <h2>🐾 Cyber Pet Adoption</h2>
-  <p>Our shelter has a super cute puppy ready for a home!</p>
-  <img 
-    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" 
-    alt="Cute fluffy puppy wearing glasses" 
-    width="260"
-  >
-</div>`,
+    targetCode: `<style>
+  .gallery-card {
+    background: #0b0f19;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 18px;
+    color: white;
+    font-family: system-ui, sans-serif;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .gallery-caption {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 10px 0 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .crew-deck {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    border-top: 1px solid #1f2937;
+    padding-top: 12px;
+  }
+  .crew-avatar {
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+</style>
+
+<figure class="gallery-card">
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='150' viewBox='0 0 280 150'><rect width='280' height='150' rx='10' fill='%23111827'/><circle cx='50' cy='40' r='18' fill='%23f59e0b'/><rect x='40' y='75' width='200' height='35' rx='8' fill='%231f2937' stroke='%2338bdf8' stroke-width='2'/><circle cx='70' cy='115' r='12' fill='%2338bdf8'/><circle cx='140' cy='115' r='12' fill='%2338bdf8'/><circle cx='210' cy='115' r='12' fill='%2338bdf8'/><text x='140' y='98' fill='%2338bdf8' font-family='sans-serif' font-weight='bold' font-size='12' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV" width="280">
+  <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi</figcaption>
+  <div class="crew-deck">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><circle cx='28' cy='28' r='26' fill='%23f97316'/><text x='28' y='36' font-size='26' text-anchor='middle'>🦊</text></svg>" alt="Pilot Fox" width="56" height="56" class="crew-avatar">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><circle cx='28' cy='28' r='26' fill='%2306b6d4'/><text x='28' y='36' font-size='26' text-anchor='middle'>🤖</text></svg>" alt="Scientist Bot" width="56" height="56" class="crew-avatar">
+  </div>
+</figure>`,
     targetDescription: {
-      en: 'A handsome pet card with a puppy photo placed from scratch and resized to width="260".',
-      uz: 'Noldan joylashtirilgan va kengligi width="260" qilib belgilangan chiroyli kuchukcha fotosurati kartochkasi.'
+      en: 'A Mars Rover expedition card featuring an offline vector hero graphic, semantic figcaption, and two neon circular crew avatar badges.',
+      uz: "Oflayn ishlaydigan vektorli bosh rasm, semantik figcaption va 2 ta neon dumaloq ekipaj avatari jamlangan Mars Rover ekspeditsiya kartochkasi."
     },
     anatomy: [
       {
-        part: '<img',
-        role: 'Image Tag (Void)',
-        explanation: 'Tells the browser to display an image. It is self-closing — no </img> needed!',
-        effect: 'Places an image on the page'
+        part: '<figure>...</figure>',
+        role: { en: 'Semantic Figure Container', uz: 'Semantik Rasm Konteyneri' },
+        explanation: { en: 'Groups a self-contained image and its caption together.', uz: 'Rasm va uning tushuntirish matnini bitta semantik qutiga birlashtiradi.' },
+        effect: { en: 'Semantic media block', uz: 'Yaxlit media bloki' }
       },
       {
-        part: 'src="..."',
-        role: 'Source URL',
-        explanation: 'Short for Source. The web link or file path where the picture lives.',
-        effect: 'Loads the picture from the link'
+        part: '<img src="..." alt="...">',
+        role: { en: 'Image Void Tag', uz: 'Rasm Tegi (Void)' },
+        explanation: { en: 'Displays the photo from src with an alt description. No closing tag!', uz: "src manzilidan rasmni alt tavsifi bilan ko'rsatadi. Yopiluvchi tegi yo'q!" },
+        effect: { en: 'Renders the visual photo', uz: 'Rasmni ekranda chizadi' }
       },
       {
-        part: 'alt="..."',
-        role: 'Alternative Text',
-        explanation: 'Describes the photo in case internet is slow or for screen readers.',
-        effect: 'Helpful text description'
-      },
-      {
-        part: 'width="260"',
-        role: 'Width in Pixels',
-        explanation: 'Controls how wide the picture looks on screen.',
-        effect: 'Resizes the image'
+        part: '<figcaption>...</figcaption>',
+        role: { en: 'Figure Caption', uz: 'Rasm Izohi' },
+        explanation: { en: 'Provides a clean title or description for the figure.', uz: 'Rasm ostiga chiroyli sarlavha yoki tavsif beradi.' },
+        effect: { en: 'Caption text under picture', uz: 'Rasm ostidagi matn' }
       }
     ],
     listOfTags: [
-      { code: '<img src="...">', name: 'Image', description: 'Displays a picture or photo on screen (self-closing)', exampleHtml: '<img src="cat.png" alt="Cat" width="80">' },
-      { code: 'src="..."', name: 'Source Attribute', description: 'The web address or file path where the image is stored', exampleHtml: 'src="https://example.com/pet.jpg"' },
-      { code: 'alt="..."', name: 'Alt Description', description: 'Explains what the image shows if it fails to load', exampleHtml: 'alt="Happy Puppy"' },
-      { code: 'width="..."', name: 'Width', description: 'Sets the width of the image in pixels (e.g. 200)', exampleHtml: 'width="200"' },
-      { code: 'height="..."', name: 'Height', description: 'Sets the height of the image in pixels', exampleHtml: 'height="150"' }
+      { code: '<figure>', name: 'Figure', description: 'Semantic container for photos and illustrations', exampleHtml: '<figure><img src="rover.svg"><figcaption>Rover</figcaption></figure>' },
+      { code: '<img src="" alt="">', name: 'Image', description: 'Displays an image or graphic (self-closing)', exampleHtml: '<img src="avatar.svg" alt="Pilot" width="56">' },
+      { code: '<figcaption>', name: 'Caption', description: 'Describes or captions the figure', exampleHtml: '<figcaption>Expedition Map</figcaption>' }
     ],
     tagShowcase: [
-      { tag: '<img src="..." alt="...">', meaning: 'Image sticker (no closing tag)' },
-      { tag: 'src="link"', meaning: 'Where the photo lives' },
-      { tag: 'width="200"', meaning: 'Sets size in pixels' }
+      { tag: '<figure>', meaning: { en: 'Media Container', uz: 'Media Konteyner' } },
+      { tag: '<img src="..." alt="...">', meaning: { en: 'Void Image sticker', uz: 'Yopilmas rasm tegi' } },
+      { tag: '<figcaption>', meaning: { en: 'Photo description', uz: 'Rasm izohi' } }
     ],
-    quickTags: ['<img src="" alt="" width="200">', 'src=""', 'alt=""', 'width="260"'],
+    quickTags: [
+      '<figure>',
+      '<img src="data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%231f2937\'/><text x=\'140\' y=\'80\' fill=\'%2338bdf8\' font-size=\'14\' text-anchor=\'middle\'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV" width="280">',
+      '<figcaption class="gallery-caption">',
+      '<img src="data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'56\' height=\'56\'><circle cx=\'28\' cy=\'28\' r=\'26\' fill=\'%23f97316\'/><text x=\'28\' y=\'36\' font-size=\'26\' text-anchor=\'middle\'>🦊</text></svg>" alt="Pilot" width="56" height="56" class="crew-avatar">'
+    ],
     challenge: {
       mission: {
-        en: 'Put a puppy photo onto the pet card using the <img> tag with src, alt, and size it by adding width="260"!',
-        uz: '<img> tegi, src va alt yordamida uy hayvoni kartochkasiga kuchukcha rasmini joylashtiring va width="260" bilan o\'lchamini moslang!'
+        en: 'Build the Mars Expedition gallery: add the main <img> with src and alt="Mars Rover MK-IV", add <figcaption>, and insert 2 crew avatar <img> badges with width="56"!',
+        uz: "Mars Ekspeditsiya galereyasini quring: bosh <img> ga src va alt='Mars Rover MK-IV' bering, <figcaption> izohini qo'shing va 2 ta width='56' li ekipaj avatar <img> nishonlarini joylashtiring!"
       },
       hint: {
-        en: 'Write: <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" alt="Puppy" width="260"> (Remember: <img> is a void tag, no closing tag needed!)',
-        uz: 'Yozing: <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" alt="Kuchukcha" width="260"> (Esda tuting: <img> yopiluvchi tegga ega emas!)'
+        en: 'Make sure you have <figure>, <figcaption>, and at least 3 <img> tags with src and alt attributes!',
+        uz: "<figure>, <figcaption> va kamida 3 ta <img> teglari (bosh rasm + 2 ta avatar) bo'lishi kerak!"
       },
       rules: [
         {
           type: 'hasTag',
-          tag: 'img',
-          message: 'Place an <img> tag on the page!'
+          tag: 'figure',
+          message: 'Wrap your gallery inside a semantic <figure> tag!'
         },
         {
-          type: 'hasAttribute',
-          tag: 'img',
-          attribute: 'src',
-          message: 'Give your <img> tag a src attribute with the photo link!'
+          type: 'hasTag',
+          tag: 'figcaption',
+          message: 'Add a <figcaption> describing the expedition!'
         },
         {
-          type: 'hasAttribute',
+          type: 'hasTag',
           tag: 'img',
-          attribute: 'alt',
-          message: 'Add an alt attribute describing the puppy!'
+          message: 'Place <img> tags with src and alt attributes!'
         },
         {
           type: 'custom',
-          check: (code) => code.includes('260'),
-          message: 'Shape the image size by adding width="260"!'
+          check: (code) => {
+            const matches = code.match(/<img\b/gi);
+            return matches && matches.length >= 3;
+          },
+          message: 'Include at least 3 <img> tags: the main rover photo and 2 crew avatar badges!'
+        },
+        {
+          type: 'custom',
+          check: (code) => code.includes('alt='),
+          message: 'Ensure your <img> tags have alt descriptions!'
         }
       ]
     },
@@ -3135,114 +3237,143 @@ id: 'theme-4-pictures',
   },
 
   // ==========================================
-  // THEME 13: Colors & Gradients
+  // THEME 13: Colors & Styling
   // ==========================================
   {
     id: 'theme-13-colors',
     module: 'css-core',
     title: {
-      en: 'Theme 13: Colors & Gradients (HEX & Linear)',
-      uz: '13-Mavzu: Ranglar va Gradientlar (HEX va Chiziqli)'
+      en: 'Theme 13: CSS Colors (HEX, RGB, Transparency & Accents)',
+      uz: '13-Mavzu: CSS Ranglari (HEX, RGB, Shaffoflik va Ranglar Tizimi)'
     },
-    icon: '🌈',
-    tag: 'color, background: linear-gradient()',
+    icon: '🎨',
+    tag: 'color: #hex; background: rgba(); border-color;',
     humanIntro: {
       whatIsIt: {
-        en: 'Colors bring emotion to the web! You can use common names, HEX codes with hashtags (#ff757f), or smooth color gradients.',
-        uz: 'Ranglar sahifaga joziba bag\'ishlaydi! Oddiy nomlar, panjara (#) bilan HEX kodlari yoki silliq gradientlardan foydalanishingiz mumkin.'
+        en: 'In human language, CSS colors give character and personality to web interfaces! Professional designers never use just one flat color. They combine **HEX codes** (#38bdf8), **transparent RGB alphas** (rgba(56, 189, 248, 0.15)), and glowing borders into harmonious color palettes.',
+        uz: "Oddiy inson tilida, CSS ranglari veb-sahifaga joziba va ruh bag'ishlaydi! Tajribali dasturchilar hech qachon bitta oddiy rang bilan cheklanmaydi. Ular **HEX kodlari** (#38bdf8), **shaffof RGB ranglar** (rgba(56, 189, 248, 0.15)) va neon hoshiyalarni bir-biriga moslab mukammal palitra tuzadilar."
       },
       whatIsATag: {
-        en: '`linear-gradient(45deg, #7c6cf7, #ff757f)` blends two colors smoothly across the screen like a tropical sunset!',
-        uz: '`linear-gradient(45deg, #7c6cf7, #ff757f)` ikki rangni xuddi quyosh botishi kabi bir-biriga silliq qo\'shadi!'
+        en: '1. `color: #38bdf8;` changes text font color.\n2. `background: rgba(56, 189, 248, 0.15);` creates a sleek frosted transparent glass background.\n3. `border: 2px solid #38bdf8;` paints a crisp neon perimeter frame.',
+        uz: "1. `color: #38bdf8;` matn harflari rangini belgilaydi.\n2. `background: rgba(56, 189, 248, 0.15);` shaffof shishadek zamonaviy fon yaratadi.\n3. `border: 2px solid #38bdf8;` atrofiga yorqin neon ramka chizadi."
       }
     },
     summary: {
-      en: 'Master hex color codes and create breathtaking multi-color gradient backgrounds.',
-      uz: 'HEX rang kodlarini o\'rganing va chiroyli gradient fonlar yarating.'
+      en: 'Master HEX codes, RGBA transparency, and border color palettes on a cyberpunk identity badge.',
+      uz: "HEX kodlari, RGBA shaffofligi va hoshiya ranglarini kiber nishon ustida amalda qo'llang."
     },
     story: {
-      en: 'Gradients make cards and banners feel modern, vibrant, and futuristic!',
-      uz: 'Gradientlar kartochkalarni zamonaviy va yorqin ko\'rsatadi!'
+      en: 'The Cyber Badge looks blank and unstyled! Style it using glowing cyan HEX text color, a transparent glass RGBA background, and a sharp solid border!',
+      uz: "Kiber nishon rangsiz turibdi! Unga neon moviy HEX matn rangi, shaffof RGBA foni va mustahkam hoshiya rangini berib jonlantiring!"
     },
     initialCode: `<style>
-  .sunset-card {
-    width: 260px;
-    height: 160px;
-    border-radius: 16px;
+  .color-badge {
+    width: 280px;
+    padding: 20px;
+    border-radius: 14px;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+
+    /* 1-Qadam: Matn rangini moviy HEX qiling: color: #38bdf8; */
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    /* Add gradient background below! */
-    background: gray;
+
+    /* 2-Qadam: Shaffof oyna foni bering: background: rgba(56, 189, 248, 0.12); */
+    background: #111827;
+
+    /* 3-Qadam: Neon hoshiya bering: border: 2px solid #38bdf8; */
+    border: 1px solid #374151;
   }
 </style>
 
 <div style="display: flex; justify-content: center; padding: 20px;">
-  <div class="sunset-card">🌅 Sunset Vibe</div>
+  <div class="color-badge">
+    <h3>⚡ CYBER OPERATOR</h3>
+    <p>Color Palette: HEX + RGBA Transparency</p>
+  </div>
 </div>`,
     targetCode: `<style>
-  .sunset-card {
-    width: 260px;
-    height: 160px;
-    border-radius: 16px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    background: linear-gradient(135deg, #ff757f, #7c6cf7);
+  .color-badge {
+    width: 280px;
+    padding: 20px;
+    border-radius: 14px;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 2px solid #38bdf8;
   }
 </style>
 
 <div style="display: flex; justify-content: center; padding: 20px;">
-  <div class="sunset-card">🌅 Sunset Vibe</div>
+  <div class="color-badge">
+    <h3>⚡ CYBER OPERATOR</h3>
+    <p>Color Palette: HEX + RGBA Transparency</p>
+  </div>
 </div>`,
     targetDescription: {
-      en: 'A card painted with a gorgeous diagonal gradient from coral pink (#ff757f) into purple (#7c6cf7).',
-      uz: 'Qizil-pushtidan (#ff757f) binafsha (#7c6cf7) rangga silliq o\'tuvchi diagonal gradientli kartochka.'
+      en: 'A high-tech cyber operator badge painted with cyan HEX typography (#38bdf8), frosted RGBA background, and neon perimeter border.',
+      uz: "Moviy HEX matn (#38bdf8), shaffof RGBA foni va neon hoshiyasi bilan bezatilgan kiber operator nishoni."
     },
     anatomy: [
       {
-        part: 'linear-gradient(135deg, ...)',
-        role: { en: 'Gradient Angle', uz: 'Gradient burchagi' },
-        explanation: { en: 'The angle (135deg) dictates which corner the colors blend across.', uz: 'Ranglar qaysi burchakka qarab oqishini belgilaydi.' },
-        effect: { en: 'Diagonal blend', uz: 'Diagonal rang o\'tishi' }
+        part: 'color: #38bdf8;',
+        role: { en: 'HEX Font Color', uz: 'HEX Matn Rangi' },
+        explanation: { en: 'Sets text color using a 6-digit hex code.', uz: "6 xonali hex kodi orqali harflar rangini belgilaydi." },
+        effect: { en: 'Vibrant cyan typography', uz: 'Yorqin moviy harflar' }
       },
       {
-        part: '#ff757f, #7c6cf7',
-        role: { en: 'Color Stops', uz: 'Rang nuqtalari' },
-        explanation: { en: 'The starting and ending colors in HEX format.', uz: 'Boshlang\'ich va yakuniy ranglarning HEX kodlari.' },
-        effect: { en: 'Smooth blend between colors', uz: 'Ikki rangning silliq uyg\'unligi' }
+        part: 'background: rgba(...);',
+        role: { en: 'RGBA Transparency', uz: 'RGBA Shaffofligi' },
+        explanation: { en: 'Sets background with an alpha transparency channel.', uz: "Oxirgi alpha qiymati orqali fonni shaffof qilib chizadi." },
+        effect: { en: 'Frosted glass look', uz: 'Muzdek shaffof fon' }
+      },
+      {
+        part: 'border: 2px solid #38bdf8;',
+        role: { en: 'Border Color', uz: 'Hoshiya Rangi' },
+        explanation: { en: 'Paints the enclosing outline in matching neon cyan.', uz: "Tashqi chegarani mos neon rang bilan o'raydi." },
+        effect: { en: 'Neon outline', uz: 'Neon hoshiya' }
       }
     ],
     listOfTags: [
-      { code: 'background: linear-gradient(...)', name: { en: 'Linear Gradient', uz: 'Chiziqli Gradient' }, description: { en: 'Blends two or more colors smoothly across an angle', uz: 'Ikki yoki undan ko\'p rangni bir-biriga silliq qorishtiradi' } },
-      { code: 'color: #hexCode;', name: { en: 'Text Color', uz: 'Matn rangi' }, description: { en: 'Changes the foreground color of letters', uz: 'Harflarning rangini o\'zgartiradi' } }
+      { code: 'color: #hex', name: 'Text Color', description: 'Sets the font color' },
+      { code: 'background: rgba(r,g,b,a)', name: 'RGBA Color', description: 'Color with transparency' },
+      { code: 'border: 2px solid #hex', name: 'Border Color', description: 'Sets outline color' }
     ],
     tagShowcase: [
-      { tag: 'linear-gradient(...)', meaning: { en: 'Multi-color blend', uz: 'Ranglar uyg\'unligi' } },
-      { tag: '#ff757f', meaning: { en: 'Coral HEX', uz: 'Pushti-qizil HEX' } }
+      { tag: 'color: #38bdf8;', meaning: { en: 'Font color', uz: 'Matn rangi' } },
+      { tag: 'background: rgba(...)', meaning: { en: 'Transparent glass', uz: 'Shaffof shisha' } },
+      { tag: 'border: 2px solid ...', meaning: { en: 'Border frame', uz: 'Hoshiya ramkasi' } }
     ],
-    quickTags: ['background: linear-gradient(135deg, #ff757f, #7c6cf7);'],
+    quickTags: ['color: #38bdf8;', 'background: rgba(56, 189, 248, 0.12);', 'border: 2px solid #38bdf8;'],
     challenge: {
       mission: {
-        en: 'Replace background: gray; with a linear-gradient from #ff757f to #7c6cf7!',
-        uz: 'background: gray; ni linear-gradient(135deg, #ff757f, #7c6cf7) ga almashtiring!'
+        en: 'Style .color-badge: set color to #38bdf8, background to rgba(56, 189, 248, 0.12), and border to 2px solid #38bdf8!',
+        uz: ".color-badge ni bezang: color ni #38bdf8 qiling, background ni rgba(56, 189, 248, 0.12) qiling va border ni 2px solid #38bdf8 bering!"
       },
       hint: {
-        en: 'Use linear-gradient(...) inside the background property with an angle and two colors.',
-        uz: 'background: linear-gradient(135deg, #ff757f, #7c6cf7); deb yozing.'
+        en: 'Write color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 2px solid #38bdf8; inside .color-badge.',
+        uz: ".color-badge ichiga color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 2px solid #38bdf8; yozing."
       },
       rules: [
         {
           type: 'hasCssProperty',
+          property: 'color',
+          valuePattern: /#38bdf8|38bdf8/i,
+          message: 'Set color: #38bdf8 on .color-badge!'
+        },
+        {
+          type: 'hasCssProperty',
           property: 'background',
-          valuePattern: /linear-gradient/i,
-          message: 'Apply linear-gradient to background!'
+          valuePattern: /rgba/i,
+          message: 'Set background with rgba(...) on .color-badge!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'border',
+          valuePattern: /solid/i,
+          message: 'Set border: 2px solid #38bdf8 on .color-badge!'
         }
       ]
     },
@@ -5883,102 +6014,202 @@ id: 'theme-4-pictures',
       uz: "Yulduz kemasi terminali koinotdan kelayotgan minglab xabarlar bilan toshib ketdi! overflow-y: auto qo'shib, xabarlarni ixcham skroll qilinadigan qiling!"
     },
     initialCode: `<style>
-  .terminal-box {
-    width: 320px;
-    height: 150px;
+  .overflow-lab {
+    display: flex;
+    gap: 16px;
     background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 18px;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .terminal-box {
+    flex: 1;
+    height: 140px;
+    background: #0b0f19;
     border: 2px solid #38bdf8;
-    border-radius: 12px;
-    padding: 16px;
-    color: #38bdf8;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 11px;
     font-family: monospace;
-    /* Step: Add overflow-y: auto to create a smooth scrolling log! */
+    /* 1-Qadam: overflow-y: auto; bering */
+  }
+  .weapons-deck {
+    flex: 1;
+    height: 140px;
+    background: #0b0f19;
+    border: 2px solid #a855f7;
+    border-radius: 10px;
+    padding: 10px;
+    white-space: nowrap;
+    /* 2-Qadam: overflow-x: auto; bering */
+  }
+  .id-badge {
+    width: 140px;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    /* 3-Qadam: overflow: hidden; va text-overflow: ellipsis; bering */
   }
   .log-line {
-    margin-bottom: 8px;
-    padding: 6px 10px;
+    margin-bottom: 6px;
+    padding: 4px 8px;
     background: rgba(56, 189, 248, 0.08);
+    border-radius: 4px;
+    border-left: 2px solid #38bdf8;
+  }
+  .weapon-chip {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid #a855f7;
     border-radius: 6px;
-    border-left: 3px solid #38bdf8;
+    margin-right: 8px;
   }
 </style>
 
-<div class="terminal-box">
-  <div class="log-line">🛰️ [SYS] Satellite Link: Online</div>
-  <div class="log-line">⚡ [PWR] Reactor Core at 99%</div>
-  <div class="log-line">👾 [WARN] Alien Signal Detected!</div>
-  <div class="log-line">🛡️ [DEF] Shield Matrix: Active</div>
-  <div class="log-line">🚀 [NAV] Warp Coordinates Locked</div>
-  <div class="log-line">🏁 [SYS] Hyperspace Ready!</div>
+<div class="overflow-lab">
+  <div class="terminal-box">
+    <div class="log-line">🛰️ SAT LINK: ON</div>
+    <div class="log-line">⚡ REACTOR: 99%</div>
+    <div class="log-line">👾 SIGNAL DETECTED</div>
+    <div class="log-line">🛡️ SHIELD: ACTIVE</div>
+    <div class="log-line">🚀 WARP READY</div>
+  </div>
+
+  <div class="weapons-deck">
+    <span class="weapon-chip">⚔️ LASER BLADE</span>
+    <span class="weapon-chip">⚡ PLASMA CANNON</span>
+    <span class="weapon-chip">🛡️ TITAN SHIELD</span>
+    <span class="weapon-chip">🌀 QUANTUM DISRUPTOR</span>
+  </div>
+
+  <div class="id-badge">
+    <strong>AGENT_ALPHA_007_CLASSIFIED_TOP_SECRET</strong>
+  </div>
 </div>`,
     targetCode: `<style>
-  .terminal-box {
-    width: 320px;
-    height: 150px;
+  .overflow-lab {
+    display: flex;
+    gap: 16px;
     background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 18px;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .terminal-box {
+    flex: 1;
+    height: 140px;
+    background: #0b0f19;
     border: 2px solid #38bdf8;
-    border-radius: 12px;
-    padding: 16px;
-    color: #38bdf8;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 11px;
     font-family: monospace;
     overflow-y: auto;
   }
+  .weapons-deck {
+    flex: 1;
+    height: 140px;
+    background: #0b0f19;
+    border: 2px solid #a855f7;
+    border-radius: 10px;
+    padding: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .id-badge {
+    width: 140px;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .log-line {
-    margin-bottom: 8px;
-    padding: 6px 10px;
+    margin-bottom: 6px;
+    padding: 4px 8px;
     background: rgba(56, 189, 248, 0.08);
+    border-radius: 4px;
+    border-left: 2px solid #38bdf8;
+  }
+  .weapon-chip {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid #a855f7;
     border-radius: 6px;
-    border-left: 3px solid #38bdf8;
+    margin-right: 8px;
   }
 </style>
 
-<div class="terminal-box">
-  <div class="log-line">🛰️ [SYS] Satellite Link: Online</div>
-  <div class="log-line">⚡ [PWR] Reactor Core at 99%</div>
-  <div class="log-line">👾 [WARN] Alien Signal Detected!</div>
-  <div class="log-line">🛡️ [DEF] Shield Matrix: Active</div>
-  <div class="log-line">🚀 [NAV] Warp Coordinates Locked</div>
-  <div class="log-line">🏁 [SYS] Hyperspace Ready!</div>
+<div class="overflow-lab">
+  <div class="terminal-box">
+    <div class="log-line">🛰️ SAT LINK: ON</div>
+    <div class="log-line">⚡ REACTOR: 99%</div>
+    <div class="log-line">👾 SIGNAL DETECTED</div>
+    <div class="log-line">🛡️ SHIELD: ACTIVE</div>
+    <div class="log-line">🚀 WARP READY</div>
+  </div>
+
+  <div class="weapons-deck">
+    <span class="weapon-chip">⚔️ LASER BLADE</span>
+    <span class="weapon-chip">⚡ PLASMA CANNON</span>
+    <span class="weapon-chip">🛡️ TITAN SHIELD</span>
+    <span class="weapon-chip">🌀 QUANTUM DISRUPTOR</span>
+  </div>
+
+  <div class="id-badge">
+    <strong>AGENT_ALPHA_007_CLASSIFIED_TOP_SECRET</strong>
+  </div>
 </div>`,
     targetDescription: {
-      en: 'A high-tech cyberpunk terminal with a neon blue border that neatly scrolls through 6 telemetry logs without spilling!',
-      uz: "6 ta telemetriya xabarini toshib ketmasdan chiroyli skroll qiladigan neon ko'k hoshiyali kiber terminal!"
+      en: 'A 3-part Cyber Overflow Deck: vertical terminal scrolling, horizontal weapon deck scrolling, and laser-trimmed text ellipsis on the badge!',
+      uz: "3 qismli Kiber Overflow Dek: vertikal skroll bo'ladigan terminal, gorizontal qurollar karuseli va lazerdek qirqilgan agent nishoni!"
     },
     anatomy: [
       {
-        code: 'overflow: hidden;',
-        name: { en: 'Overflow Hidden', uz: 'Overflow Hidden' },
-        purpose: { en: 'Clips off anything that spills outside the boundaries.', uz: 'Chegaradan toshgan har qanday narsani qirqib yashiradi.' },
-        role: { en: 'Laser scissors', uz: 'Lazer qaychi' }
+        code: 'overflow-y: auto;',
+        name: { en: 'Vertical Scroll', uz: 'Vertikal Skroll' },
+        purpose: { en: 'Scrolls vertically when logs exceed box height.', uz: "Xabarlar balandlikdan oshganda pastga skroll qiladi." },
+        role: { en: 'Vertical elevator', uz: 'Vertikal lift' }
       },
       {
-        code: 'overflow-y: auto;',
-        name: { en: 'Overflow Vertical Auto', uz: 'Vertikal Avto Skroll' },
-        purpose: { en: 'Displays a vertical scrollbar only when content overflows.', uz: 'Faqatgina matn toshganda vertikal skrollbarni chiqaradi.' },
-        role: { en: 'Scroll elevator', uz: 'Skroll lifti' }
+        code: 'overflow-x: auto;',
+        name: { en: 'Horizontal Scroll', uz: 'Gorizontal Skroll' },
+        purpose: { en: 'Scrolls horizontally for weapon cards.', uz: "Keng qurollar karuselini yonga skroll qiladi." },
+        role: { en: 'Horizontal slider', uz: 'Gorizontal slayder' }
+      },
+      {
+        code: 'overflow: hidden; text-overflow: ellipsis;',
+        name: { en: 'Laser Crop with Ellipsis', uz: "Ko'p nuqta bilan lazerli qirqish" },
+        purpose: { en: 'Cuts overflow cleanly and appends ...', uz: "Toshgan uzun matnni qirqib, oxiriga ... qo'yadi." },
+        role: { en: 'Laser trimmer', uz: 'Lazer keskich' }
       }
     ],
     listOfTags: [
-      {
-        code: 'overflow: hidden',
-        name: { en: 'Hidden Overflow', uz: 'Yashirin Toshish' },
-        description: { en: 'Hides overflowing content cleanly.', uz: 'Toshgan tarkibni toza yashiradi.' }
-      },
-      {
-        code: 'overflow-y: auto',
-        name: { en: 'Auto Scrollbar', uz: 'Avtomatik Skroll' },
-        description: { en: 'Adds scrollbar if content exceeds container height.', uz: "Balandlikdan oshganda skrollbar qo'shadi." }
-      }
+      { code: 'overflow-y: auto', name: 'Vertical Overflow', description: 'Scrolls vertically' },
+      { code: 'overflow-x: auto', name: 'Horizontal Overflow', description: 'Scrolls horizontally' },
+      { code: 'text-overflow: ellipsis', name: 'Ellipsis Crop', description: 'Appends ... to overflowing single line text' }
     ],
-    quickTags: ['overflow: hidden;', 'overflow-y: auto;', 'overflow: scroll;'],
+    quickTags: ['overflow-y: auto;', 'overflow-x: auto;', 'overflow: hidden; text-overflow: ellipsis;'],
     challenge: {
       mission: {
-        en: 'Add overflow-y: auto; to .terminal-box so all telemetry logs fit inside a scrollable window!',
-        uz: ".terminal-box ga overflow-y: auto; qo'shing, shunda barcha telemetriya xabarlari skroll oynasida sig'adi!"
+        en: 'Configure all 3 overflow modes: add overflow-y: auto to .terminal-box, overflow-x: auto to .weapons-deck, and text-overflow: ellipsis with overflow: hidden to .id-badge!',
+        uz: "Barcha 3 xil overflow turini sozlang: .terminal-box ga overflow-y: auto, .weapons-deck ga overflow-x: auto va .id-badge ga text-overflow: ellipsis hamda overflow: hidden bering!"
       },
       hint: {
-        en: 'Write overflow-y: auto; inside the .terminal-box style block.',
-        uz: '.terminal-box uslublar bloki ichiga overflow-y: auto; yozing.'
+        en: 'Add overflow-y: auto; to terminal, overflow-x: auto; to weapons, and overflow: hidden; text-overflow: ellipsis; to badge!',
+        uz: "Terminalga overflow-y: auto, qurollarga overflow-x: auto, nishonga esa overflow: hidden va text-overflow: ellipsis bering!"
       },
       rules: [
         {
@@ -5986,6 +6217,18 @@ id: 'theme-4-pictures',
           property: 'overflow-y',
           valuePattern: /auto|scroll/i,
           message: 'Add overflow-y: auto to .terminal-box!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'overflow-x',
+          valuePattern: /auto|scroll/i,
+          message: 'Add overflow-x: auto to .weapons-deck!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'text-overflow',
+          valuePattern: /ellipsis/i,
+          message: 'Add text-overflow: ellipsis to .id-badge!'
         }
       ]
     },
@@ -6020,212 +6263,314 @@ id: 'theme-4-pictures',
     id: 'theme-26-gradients',
     module: 'modern-mastery',
     title: {
-      en: 'Theme 26: Gradients (Linear, Radial & Conic Neons)',
-      uz: '26-Mavzu: Gradientlar (Linear, Radial va Conic Neonlar)'
+      en: 'Theme 26: Gradients (Linear, Radial, Conic & Gradient Text)',
+      uz: '26-Mavzu: Gradientlar (Linear, Radial, Conic va Gradient Matn)'
     },
     icon: '🌈',
-    tag: 'background: linear-gradient() | radial-gradient()',
+    tag: 'linear-gradient(), radial-gradient(), conic-gradient(), background-clip',
     humanIntro: {
       whatIsIt: {
-        en: 'Why settle for one flat color when you can blend colors together like a neon sunset or a glowing space nebula? In CSS, a **Gradient** smoothly transitions between multiple colors. You can make diagonal rays (**linear-gradient**), glowing cosmic energy orbs (**radial-gradient**), or 360-degree radar sweeps (**conic-gradient**)!',
-        uz: "Nega faqat bitta oddiy rang bilan cheklanish kerak, agar quyosh botishi yoki kosmik tumanlik kabi yorqin neon ranglarni bir-biriga qorishtirish mumkin bo'lsa? CSS da **Gradient** ranglar orasidagi silliq o'tishdir. Siz diagonal nurlar (linear), nur taratuvchi sharlar (radial) yoki 360 darajali kiber radarlar (conic) yasashingiz mumkin!"
+        en: 'Why settle for one flat color when CSS gives you 4 distinct gradient powers? In modern UI design, gradients create AAA gaming visuals:\n\n• **Linear (linear-gradient)**: Directional rays flowing across any angle (45deg, 135deg, to right).\n• **Radial (radial-gradient)**: Circular light radiating from an offset focal point, creating glowing 3D planets.\n• **Conic (conic-gradient)**: 360-degree color sweeps used for sci-fi radars and smart watch progress rings.\n• **Gradient Text**: Clipping a vibrant gradient directly inside typography!',
+        uz: "Nega faqat bitta oddiy rang bilan cheklanish kerak, agar CSS da 4 xil kuchli gradient usullari mavjud bo'lsa? Zamonaviy dizaynda gradientlar AAA o'yinlar darajasidagi vizuallarni yaratadi:\n\n• **Linear (linear-gradient)**: Har qanday burchak (45deg, 135deg, to right) bo'yicha yo'nalishli nur.\n• **Radial (radial-gradient)**: Markazdan yoki burchakdan nur taratuvchi 3D kiber shar va tumanliklar.\n• **Conic (conic-gradient)**: 360 darajali kiber radar va aqlli soat halqalari.\n• **Gradient Matn**: Gradientni to'g'ridan-to'g'ri harflarning ichiga lazerdek qirqib joylash!"
       },
       whatIsATag: {
-        en: '**linear-gradient(135deg, #ff007a, #7928ca)** blends colors at a 135-degree angle. **radial-gradient(circle, #00f2fe, #0b0d13)** radiates light outwards from the center!',
-        uz: '**linear-gradient(135deg, #ff007a, #7928ca)** ranglarni 135 gradus burchak ostida qorishtiradi. **radial-gradient(circle, #00f2fe, #0b0d13)** esa markazdan nur taratadi!'
+        en: '1. `linear-gradient(135deg, #ff007a, #7928ca, #4338ca)` = 3-color angled diagonal.\n2. `radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)` = 3D sphere.\n3. `conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)` = 360° radar sweep.\n4. `-webkit-background-clip: text; -webkit-text-fill-color: transparent;` = Gradient text.',
+        uz: "1. `linear-gradient(135deg, #ff007a, #7928ca, #4338ca)` = 3 rangli diagonal oqim.\n2. `radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)` = 3D nurli shar.\n3. `conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)` = 360° kiber radar.\n4. `-webkit-background-clip: text; -webkit-text-fill-color: transparent;` = Gradientli sarlavha."
       }
     },
     summary: {
-      en: 'Create stunning linear, radial, and multi-stop glowing gradients that make designs look like AAA video games.',
-      uz: "Saytlarni AAA video o'yinlardek ko'rsatadigan ajoyib linear, radial va ko'p rangli gradientlar yarating."
+      en: 'Master all 4 CSS gradient techniques: multi-stop angled linear, 3D radial sphere, 360° conic radar, and clipped gradient typography.',
+      uz: "Barcha 4 xil CSS gradient uslublarini o'rganing: ko'p rangli diagonal linear, 3D radial shar, 360° conic radar va gradientli harflar."
     },
     story: {
-      en: 'The Galaxy Explorers Club needs two glowing badges: a Nebula Card powered by a diagonal linear gradient and a Cosmic Orb powered by a center radial gradient!',
-      uz: "Koinot Tadqiqotchilari Klubiga ikkita yorqin nishon kerak: diagonal linear gradientli Tumanlik Kartasi va markazdan nur taratuvchi Kosmik Shar!"
+      en: 'The CyberPulse FX Matrix needs all 4 gradient reactors activated: a diagonal linear card, a 3D energy sphere, a conic radar scanner, and a glowing neon text title!',
+      uz: "CyberPulse FX Matritsasidagi 4 ta reaktorni ishga tushiring: diagonal linear karta, 3D nurli shar, conic radar skaneri va yorqin gradientli matn!"
     },
     initialCode: {
       en: `<style>
-  .gradient-showcase {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background: #090d16;
-    border-radius: 14px;
-  }
-
-  .nebula-card {
-    width: 150px;
-    height: 150px;
+  .fx-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+    background: #080c14;
+    border: 1px solid #1e293b;
     border-radius: 16px;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .gradient-title {
+    grid-column: span 3;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, #ff007a, #00f2fe);
+    /* Step 4: Add -webkit-background-clip: text; -webkit-text-fill-color: transparent; */
+  }
+  .linear-card {
+    height: 120px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
-
-    /* Step 1: Add background: linear-gradient(135deg, #ff007a, #7928ca); */
-    background: #ff007a;
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
+    /* Step 1: Add background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca); */
+    background: #1e1b4b;
   }
-
-  .cosmic-orb {
-    width: 140px;
-    height: 140px;
+  .radial-orb {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
     box-shadow: 0 0 35px #00f2fe;
-
-    /* Step 2: Add background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); */
-    background: #00f2fe;
+    /* Step 2: Add background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
+    background: #0369a1;
+  }
+  .conic-reactor {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    /* Step 3: Add background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a); */
+    background: #3730a3;
   }
 </style>
 
-<div class="gradient-showcase">
-  <div class="nebula-card">✨ NEBULA</div>
-  <div class="cosmic-orb">🔮 ORB</div>
+<div class="fx-matrix">
+  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
+  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="radial-orb">🔮 3D RADIAL</div>
+  <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`,
       uz: `<style>
-  .gradient-showcase {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background: #090d16;
-    border-radius: 14px;
-  }
-
-  .nebula-card {
-    width: 150px;
-    height: 150px;
+  .fx-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+    background: #080c14;
+    border: 1px solid #1e293b;
     border-radius: 16px;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .gradient-title {
+    grid-column: span 3;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, #ff007a, #00f2fe);
+    /* 4-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; qo'shing */
+  }
+  .linear-card {
+    height: 120px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
-
-    /* 1-Qadam: background: linear-gradient(135deg, #ff007a, #7928ca); qo'shing */
-    background: #ff007a;
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
+    /* 1-Qadam: background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca); qo'shing */
+    background: #1e1b4b;
   }
-
-  .cosmic-orb {
-    width: 140px;
-    height: 140px;
+  .radial-orb {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
     box-shadow: 0 0 35px #00f2fe;
-
-    /* 2-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); qo'shing */
-    background: #00f2fe;
+    /* 2-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); qo'shing */
+    background: #0369a1;
+  }
+  .conic-reactor {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    /* 3-Qadam: background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a); qo'shing */
+    background: #3730a3;
   }
 </style>
 
-<div class="gradient-showcase">
-  <div class="nebula-card">✨ NEBULA</div>
-  <div class="cosmic-orb">🔮 ORB</div>
+<div class="fx-matrix">
+  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
+  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="radial-orb">🔮 3D RADIAL</div>
+  <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`
     },
     targetCode: `<style>
-  .gradient-showcase {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background: #090d16;
-    border-radius: 14px;
-  }
-  .nebula-card {
-    width: 150px;
-    height: 150px;
+  .fx-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+    background: #080c14;
+    border: 1px solid #1e293b;
     border-radius: 16px;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .gradient-title {
+    grid-column: span 3;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, #ff007a, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .linear-card {
+    height: 120px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
-    background: linear-gradient(135deg, #ff007a, #7928ca);
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
+    background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca);
   }
-  .cosmic-orb {
-    width: 140px;
-    height: 140px;
+  .radial-orb {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 800;
     box-shadow: 0 0 35px #00f2fe;
-    background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%);
+    background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712);
+  }
+  .conic-reactor {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a);
   }
 </style>
 
-<div class="gradient-showcase">
-  <div class="nebula-card">✨ NEBULA</div>
-  <div class="cosmic-orb">🔮 ORB</div>
+<div class="fx-matrix">
+  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
+  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="radial-orb">🔮 3D RADIAL</div>
+  <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`,
     targetDescription: {
-      en: 'A neon showcase with a pink-purple diagonal linear gradient card alongside a glowing 3D cyan radial energy sphere!',
-      uz: "Pushti-binafsha diagonal linear gradientli karta hamda 3D ko'rinishdagi nur taratuvchi sian radial shar!"
+      en: 'A AAA gaming visual matrix featuring a clipped gradient title, 135deg multi-stop linear card, 3D radial orb, and 360deg conic radar sweep!',
+      uz: "Gradientli sarlavha, 135-darajali diagonal linear karta, 3D radial shar va 360-darajali conic radarni o'z ichiga olgan kiber FX matritsasi!"
     },
     anatomy: [
       {
-        code: 'linear-gradient(135deg, color1, color2)',
-        name: { en: 'Linear Gradient', uz: 'Chiziqli Gradient' },
-        purpose: { en: 'Blends colors across a directional straight line.', uz: "Ranglarni to'g'ri yo'nalishli chiziq bo'ylab qorishtiradi." },
-        role: { en: 'Directional light', uz: "Yo'nalishli nur" }
+        code: 'linear-gradient(135deg, color1, color2, color3)',
+        name: { en: 'Multi-Stop Linear Gradient', uz: "Ko'p Rangli Linear Gradient" },
+        purpose: { en: 'Transitions multiple colors smoothly across any angle.', uz: "Ranglarni burchak bo'ylab silliq oqizadi." },
+        role: { en: 'Directional light rays', uz: "Yo'nalishli nur" }
       },
       {
-        code: 'radial-gradient(circle, color1, color2)',
-        name: { en: 'Radial Gradient', uz: 'Doiraviy Gradient' },
-        purpose: { en: 'Blends colors radiating out from a central focal point.', uz: "Ranglarni markaziy nuqtadan tashqariga doira shaklida qorishtiradi." },
-        role: { en: 'Glowing orb', uz: 'Nur taratuvchi shar' }
+        code: 'radial-gradient(circle at x y, c1, c2, c3)',
+        name: { en: 'Offset 3D Radial Gradient', uz: '3D Doiraviy Radial Gradient' },
+        purpose: { en: 'Illuminates from an offset position to create realistic 3D spheres.', uz: "Yorug'lik nuqtasidan 3D shar shaklida nur taratadi." },
+        role: { en: 'Glowing 3D sphere', uz: 'Nurli shar' }
+      },
+      {
+        code: 'conic-gradient(from deg, c1, c2, c3, c1)',
+        name: { en: '360° Conic Gradient', uz: '360° Conic Gradient' },
+        purpose: { en: 'Rotates colors in a full circle like radar sweeps or gauge meters.', uz: "Ranglarni soat millari kabi to'liq aylanada aylantiradi." },
+        role: { en: 'Radar scanner sweep', uz: 'Radar aylanasi' }
+      },
+      {
+        code: '-webkit-background-clip: text;',
+        name: { en: 'Gradient Text Clipping', uz: 'Matn Ichiga Gradient Qirqish' },
+        purpose: { en: 'Clips background colors directly inside letter shapes.', uz: "Fon gradientini to'g'ridan-to'g'ri harflar shakli ichiga joylaydi." },
+        role: { en: 'Neon typography', uz: 'Neon harflar' }
       }
     ],
     listOfTags: [
       {
-        code: 'linear-gradient(deg, c1, c2)',
+        code: 'linear-gradient(135deg, c1, c2, c3)',
         name: { en: 'Linear Gradient', uz: 'Linear Gradient' },
         description: { en: 'Transitions colors on an angle.', uz: "Ranglarni burchak bo'yicha o'tkazadi." }
       },
       {
-        code: 'radial-gradient(circle, c1, c2)',
+        code: 'radial-gradient(circle at x y, c1, c2)',
         name: { en: 'Radial Gradient', uz: 'Radial Gradient' },
         description: { en: 'Radiates colors outward in circular waves.', uz: "Ranglarni doira bo'ylab to'lqinlantiradi." }
+      },
+      {
+        code: 'conic-gradient(from deg, c1, c2)',
+        name: { en: 'Conic Gradient', uz: 'Conic Gradient' },
+        description: { en: 'Sweeps colors in 360-degree rotation.', uz: "Ranglarni 360 daraja aylanada chizadi." }
+      },
+      {
+        code: '-webkit-background-clip: text',
+        name: { en: 'Background Clip Text', uz: 'Fonni Matnga Qirqish' },
+        description: { en: 'Cuts gradient to font outlines.', uz: "Gradientni harflarga qirqadi." }
       }
     ],
     quickTags: [
-      'background: linear-gradient(135deg, #ff007a, #7928ca);',
-      'background: radial-gradient(circle, #00f2fe, #0b0d13);'
+      'background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca);',
+      'background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712);',
+      'background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a);',
+      '-webkit-background-clip: text; -webkit-text-fill-color: transparent;'
     ],
     challenge: {
       mission: {
-        en: 'Add background: linear-gradient(135deg, #ff007a, #7928ca); to .nebula-card!',
-        uz: ".nebula-card ga background: linear-gradient(135deg, #ff007a, #7928ca); qo'shing!"
+        en: 'Activate all 4 gradient powers: add linear-gradient(135deg, ...) to .linear-card, radial-gradient(circle, ...) to .radial-orb, conic-gradient(...) to .conic-reactor, and -webkit-background-clip: text to .gradient-title!',
+        uz: "Barcha 4 xil gradient kuchini yoqing: .linear-card ga linear-gradient(135deg, ...), .radial-orb ga radial-gradient, .conic-reactor ga conic-gradient va .gradient-title ga -webkit-background-clip: text bering!"
       },
       hint: {
-        en: 'Replace the flat #ff007a background with linear-gradient(135deg, #ff007a, #7928ca);.',
-        uz: "Oddiy #ff007a rangini linear-gradient(135deg, #ff007a, #7928ca); ga almashtiring."
+        en: 'Apply linear-gradient to .linear-card, radial-gradient to .radial-orb, conic-gradient to .conic-reactor, and background-clip to .gradient-title!',
+        uz: ".linear-card ga linear-gradient, .radial-orb ga radial-gradient, .conic-reactor ga conic-gradient va .gradient-title ga background-clip bering!"
       },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'background',
           valuePattern: /linear-gradient/i,
-          message: 'Add linear-gradient background to .nebula-card!'
+          message: 'Apply linear-gradient to .linear-card!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /radial-gradient/i,
+          message: 'Apply radial-gradient to .radial-orb!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /conic-gradient/i,
+          message: 'Apply conic-gradient to .conic-reactor!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /background-clip/i.test(code),
+          message: 'Clip gradient inside letters using -webkit-background-clip: text!'
         }
       ]
     },
