@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🦖 Chrome Dino Game — 1-Dars: JS Class va Sakrash Mexanikasi</title>
+  <style>
+    /* ==========================================================================
+       1. UMUMIY DIZAYN VA SHIFT
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: #090d16;
+      color: #f1f5f9;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ==========================================================================
+       2. YUQORI SARLAVHA (NAVBAR)
+       ========================================================================== */
+    header {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      font-size: 32px;
+      background: #1e293b;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: -0.5px;
+    }
+
+    .sub-title {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+    .badge-primary {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+    }
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      color: #10b981;
+    }
+
+    /* ==========================================================================
+       3. 5 TA QADAM TUGMALARI (METODIKA)
+       ========================================================================== */
+    .steps-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .step-btn {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #94a3b8;
+    }
+
+    .step-btn:hover {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .step-btn.active {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #64748b;
+    }
+    .step-btn.active .step-num {
+      color: #38bdf8;
+    }
+
+    .step-name {
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ==========================================================================
+       4. O'YIN MAYDONI (CANVAS / ARENA)
+       ========================================================================== */
+    .game-arena-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .arena-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .score-board {
+      display: flex;
+      gap: 20px;
+      font-family: 'Consolas', monospace;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .score-val { color: #f59e0b; }
+    .high-val { color: #10b981; }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #090d16;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      font-size: 13px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #334155;
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #10b981;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Maydon ekrani */
+    .game-track {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(180deg, #090d16 0%, #151d2f 100%);
+      border: 2px solid #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Yer chizig'i */
+    .ground-line {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 200%;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, #475569 0px, #475569 15px, transparent 15px, transparent 25px);
+      animation: groundScroll 1.2s linear infinite;
+    }
+
+    .ground-line.paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes groundScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* DINOZAVR (Yashil Karobka yoki Haqiqiy Dino) */
+    #dino {
+      position: absolute;
+      left: 60px;
+      bottom: 34px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: bottom 0.08s ease-out;
+      z-index: 10;
+    }
+
+    /* 1. Karobka Rejimi (Oddiy Hitbox) */
+    .dino-box-mode {
+      background: #10b981 !important;
+      border: 2px solid #34d399 !important;
+      border-radius: 6px !important;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+    .dino-box-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: #042f2e;
+      text-align: center;
+      line-height: 1;
+    }
+
+    /* 2. Haqiqiy Dinozavr Rejimi (Pixel Art Sprite) */
+    .dino-sprite-mode {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .dino-svg {
+      width: 54px;
+      height: 54px;
+      fill: #38bdf8;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+    }
+
+    /* Kaktus (Tusiq) */
+    #cactus {
+      position: absolute;
+      bottom: 34px;
+      right: -40px;
+      width: 30px;
+      height: 45px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .cactus-svg {
+      width: 32px;
+      height: 44px;
+      fill: #f43f5e;
+      filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.5));
+    }
+
+    /* Bulutlar */
+    .cloud {
+      position: absolute;
+      top: 30px;
+      color: #334155;
+      font-size: 26px;
+      animation: cloudFloat 12s linear infinite;
+    }
+    @keyframes cloudFloat {
+      from { transform: translateX(1100px); }
+      to { transform: translateX(-100px); }
+    }
+
+    /* Game Over xabari */
+    .game-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .game-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .overlay-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #f43f5e;
+    }
+
+    .restart-btn {
+      background: #38bdf8;
+      color: #0b0f19;
+      font-weight: 800;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform 0.1s;
+    }
+    .restart-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Interaktiv tugmalar (Pastki) */
+    .arena-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .jump-action-btn {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #0b0f19;
+      font-size: 16px;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      transition: all 0.15s ease;
+    }
+    .jump-action-btn:active {
+      transform: scale(0.96);
+    }
+
+    .keyboard-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .kbd {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #f1f5f9;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-family: monospace;
+      font-size: 12px;
+      box-shadow: 0 2px 0 #334155;
+    }
+
+    /* ==========================================================================
+       5. QADAMLAR TAHLILI VA KOD DOSKASI (PEDAGOGIKA)
+       ========================================================================== */
+    .code-explanation-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 14px;
+    }
+
+    .step-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-tag {
+      background: #38bdf8;
+      color: #0b0f19;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .explanation-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .analogy-box {
+      background: #151d2f;
+      border-left: 4px solid #38bdf8;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: #93c5fd;
+    }
+
+    /* Kod oynasi */
+    .code-editor-box {
+      background: #090d16;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      position: relative;
+    }
+
+    .code-keyword { color: #f43f5e; font-weight: bold; }
+    .code-class { color: #38bdf8; font-weight: bold; }
+    .code-prop { color: #34d399; }
+    .code-func { color: #fbbf24; }
+    .code-comment { color: #64748b; font-style: italic; }
+    .code-num { color: #c084fc; }
+
+    /* Parametrlar slayderlari */
+    .tweaks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: #0d1322;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+    }
+
+    .tweak-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .tweak-val {
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    input[type=range] {
+      accent-color: #38bdf8;
+      cursor: pointer;
+    }
+
+    /* Pastki havolalar */
+    .links-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 4px;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .links-footer a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .links-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 800px) {
+      .steps-nav { grid-template-columns: repeat(2, 1fr); }
+      .tweaks-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- ====================================================================
+         1. SARLAVHA (HEADER)
+         ==================================================================== -->
+    <header>
+      <div class="header-left">
+        <div class="header-icon">🦖</div>
+        <div>
+          <h1>Chrome Dino Game — 1-Dars</h1>
+          <div class="sub-title">JavaScript Class & Sakrash Mexanikasini 0 dan Qurish</div>
+        </div>
+      </div>
+      <div class="badge-bar">
+        <span class="badge badge-primary">JS Class (OOP)</span>
+        <span class="badge badge-success">100% Oflayn Amaliyot</span>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         2. METODIKA: 5 TA QADAM TUGMALARI
+         ==================================================================== -->
+    <nav class="steps-nav">
+      <button class="step-btn active" onclick="selectStep(1)">
+        <div class="step-num">1-QADAM</div>
+        <div class="step-name">Bo'sh Class (Skelet)</div>
+      </button>
+
+      <button class="step-btn" onclick="selectStep(2)">
+        <div class="step-num">2-QADAM</div>
+        <div class="step-name">O'lchamlar & Karobka</div>
+      </button>
+
+      <button class="step-btn" onclick="selectStep(3)">
+        <div class="step-num">3-QADAM</div>
+        <div class="step-name">Klaviaturani Tinglash</div>
+      </button>
+
+      <button class="step-btn" onclick="selectStep(4)">
+        <div class="step-num">4-QADAM</div>
+        <div class="step-name">jump() & Qaytish</div>
+      </button>
+
+      <button class="step-btn" onclick="selectStep(5)">
+        <div class="step-num">5-QADAM</div>
+        <div class="step-name">Haqiqiy Sprite & O'yin</div>
+      </button>
+    </nav>
+
+    <!-- ====================================================================
+         3. INTERAKTIV O'YIN MAYDONI (CANVAS / ARENA)
+         ==================================================================== -->
+    <section class="game-arena-card">
+      <div class="arena-header">
+        <div class="score-board">
+          <span>OCHKO: <span id="current-score" class="score-val">00000</span></span>
+          <span>REKORD: <span id="high-score" class="high-val">00000</span></span>
+        </div>
+
+        <!-- REJIM ALMASHTIRGICH: Karobka vs Haqiqiy Dinozavr -->
+        <div class="mode-toggle">
+          <span>📦 Karobka Rejimi</span>
+          <label class="switch">
+            <input type="checkbox" id="mode-checkbox" onchange="toggleDinoMode(this.checked)">
+            <span class="slider"></span>
+          </label>
+          <span style="color: #38bdf8; font-weight: bold;">🦖 Haqiqiy Dinozavr</span>
+        </div>
+      </div>
+
+      <!-- O'yin treki -->
+      <div class="game-track" id="track">
+        <div class="cloud">☁️</div>
+
+        <!-- DINOZAVR (Standart: Karobka rejimi) -->
+        <div id="dino" class="dino-box-mode">
+          <div id="dino-content" class="dino-box-label">HITBOX<br>50x50</div>
+        </div>
+
+        <!-- KAKTUS (TUSIQ) -->
+        <div id="cactus">
+          <svg class="cactus-svg" viewBox="0 0 32 44">
+            <path d="M12 0h8v44h-8z M4 12h8v12H4z M4 20h8v4H4z M20 16h8v12h-8z M20 24h8v4h-8z"/>
+          </svg>
+        </div>
+
+        <!-- YER CHIZIG'I -->
+        <div class="ground-line" id="ground"></div>
+
+        <!-- GAME OVER EKRANI -->
+        <div class="game-overlay" id="overlay">
+          <div class="overlay-title">💥 TO'QNASHUV YUZ BERDI!</div>
+          <div style="color: #94a3b8; font-size: 14px;">Dinozavr kaktusga tegib ketdi. Yana urinib ko'rasizmi?</div>
+          <button class="restart-btn" onclick="resetGame()">Qaytadan Boshlash 🔄</button>
+        </div>
+      </div>
+
+      <!-- PASTKI BOSHQARUV -->
+      <div class="arena-controls">
+        <div class="keyboard-hint">
+          <span>Boshqaruv:</span>
+          <span class="kbd">Space (Bo'sh joy)</span>
+          <span>yoki</span>
+          <span class="kbd">⬆️ Strelka</span>
+        </div>
+
+        <button class="jump-action-btn" id="jump-btn" onclick="triggerDinoJump()">
+          <span>🚀 SAKRASH (JUMP)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. PEDAGOGIK TAHLIL: QADAMMA-QADAM METODIKA VA KOD
+         ==================================================================== -->
+    <section class="code-explanation-card">
+      <div class="step-header">
+        <div class="step-title-box">
+          <span class="step-tag" id="display-step-tag">1-QADAM</span>
+          <h2 class="step-title" id="display-step-title">Bo'sh Class E'lon Qilish</h2>
+        </div>
+        <div style="font-size: 12px; color: #64748b;">Mavzu: JavaScript OOP Asosi</div>
+      </div>
+
+      <div class="explanation-text" id="display-step-desc">
+        O'quvchiga eng avval hech qanday murakkabliksiz, faqat sinf nomini ochish o'rgatiladi. Ichida na konstruktor, na metodlar bo'lmaydi. Bu xuddi yangi uy qurishdan oldin uning bo'sh yer maydonini belgilab olishga o'xshaydi.
+      </div>
+
+      <div class="analogy-box" id="display-step-analogy">
+        💡 <b>Hayotiy O'xshatish:</b> Avval "Dinozavr" degan tushunchaning o'zini miyaga kiritamiz. U hozircha hech narsa qila olmaydi, lekin uning nomi bor!
+      </div>
+
+      <!-- KOD BLOKI -->
+      <div class="code-editor-box" id="display-step-code">
+        <!-- JS kodi dinamik ravishda to'ldiriladi -->
+      </div>
+
+      <!-- AMALIYOT SOZLAMALARI (TWEAKS) -->
+      <div class="tweaks-grid">
+        <div class="tweak-item">
+          <div>Sakrash Balandligi: <span class="tweak-val" id="val-jump-height">110px</span></div>
+          <input type="range" id="slider-height" min="70" max="170" value="110" oninput="updateJumpParams()">
+        </div>
+        <div class="tweak-item">
+          <div>Sakrash Tezligi: <span class="tweak-val" id="val-jump-duration">500ms</span></div>
+          <input type="range" id="slider-duration" min="300" max="800" step="50" value="500" oninput="updateJumpParams()">
+        </div>
+        <div class="tweak-item">
+          <div>Kaktus Tezligi: <span class="tweak-val" id="val-game-speed">4.5</span></div>
+          <input type="range" id="slider-speed" min="2" max="9" step="0.5" value="4.5" oninput="updateSpeedParam()">
+        </div>
+      </div>
+    </section>
+
+    <!-- PASTKI HAVOLALAR -->
+    <footer class="links-footer">
+      <div>© Ustoz va O'quvchi Amaliyot Platformasi</div>
+      <div>
+        <a href="../ertangi-loyiha/index.html">⬅️ Kiber Qahramonlar Arenasiga O'tish (Flex & Grid)</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ====================================================================
+       5. JAVASCRIPT: CLASS VA DINO O'YINI LOGIKASI
+       ==================================================================== -->
+  <script>
+    /* ==========================================================================
+       QADAMLAR BAZASI (O'QITISH METODIKASI)
+       ========================================================================== */
+    const STEPS_DATA = {
+      1: {
+        tag: "1-QADAM",
+        title: "Bo'sh Class E'lon Qilish (Skelet)",
+        desc: "O'quvchiga eng avval hech qanday murakkabliksiz, faqat sinf nomini ochish o'rgatiladi. Ichida na konstruktor, na funksiya, na metod bor. Faqat sinfning qobig'i (skeleti) ochiladi.",
+        analogy: "💡 Hayotiy O'xshatish: Loyihaning poydevorini qo'yish. Hozircha bo'sh quti ochdik va unga 'Dino' deb nom berdik.",
+        code: `<span class="code-comment">// 1-QADAM: Bo'sh klass ochamiz. Na konstruktor, na metod bor!</span>
+<span class="code-keyword">class</span> <span class="code-class">Dino</span> {
+  <span class="code-comment">// Hozircha ichi bo'm-bo'sh</span>
+}
+
+<span class="code-comment">// Sinov uchun obyekt olib ko'ramiz:</span>
+<span class="code-keyword">const</span> dino = <span class="code-keyword">new</span> <span class="code-class">Dino</span>();
+console.log(dino); <span class="code-comment">// Natija: Dino {}</span>`
+      },
+      2: {
+        tag: "2-QADAM",
+        title: "O'lchamlar va Yashil Karobka (Hitbox)",
+        desc: "O'yin yaratishda avval boshidanoq murakkab rasm chizilmaydi! Barcha professional o'yinlarda avval personaj oddiy to'rtburchak (hitbox / karobka) sifatida yaratiladi. Konstruktor orqali eni, bo'yi va boshlang'ich koordinatalari beriladi.",
+        analogy: "💡 O'yin Dasturchilari Siri: GTA yoki Mario o'yinlarida ham qahramonning tagida ko'rinmas to'rtburchak 'karobka' yuradi. Biz ham shunday qilyapmiz!",
+        code: `<span class="code-comment">// 2-QADAM: Konstruktor orqali o'lcham va koordinatalarni beramiz</span>
+<span class="code-keyword">class</span> <span class="code-class">Dino</span> {
+  <span class="code-func">constructor</span>() {
+    <span class="code-keyword">this</span>.<span class="code-prop">width</span> = <span class="code-num">50</span>;        <span class="code-comment">// Eni (pikselda)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">height</span> = <span class="code-num">50</span>;       <span class="code-comment">// Bo'yi (pikselda)</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">x</span> = <span class="code-num">60</span>;            <span class="code-comment">// Chapdan joylashuvi</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">y</span> = <span class="code-num">0</span>;             <span class="code-comment">// Yerdan balandligi</span>
+    <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>; <span class="code-comment">// Hozir sakrayaptimi? (yo'q)</span>
+  }
+}
+
+<span class="code-comment">// Natija: Ekranda yashil 50x50 to'rtburchak paydo bo'ladi!</span>`
+      },
+      3: {
+        tag: "3-QADAM",
+        title: "Klaviaturani Tinglash (EventListener)",
+        desc: "Kompyuter o'quvchi qachon 'Space' (Bo'sh joy) yoki 'ArrowUp' tugmasini bosganini bilishi kerak. Buning uchun 'keydown' hodisasi (eventListener) qo'shiladi va u Dino sinfining jump() metodini chaqiradi.",
+        analogy: "💡 Hayotiy O'xshatish: Xonaga qo'ng'iroq o'rnatish. Mehmon tugmani bosganida jiringlaydi, xuddi shuningdek Space bosilganda sakrash signali uzatiladi.",
+        code: `<span class="code-comment">// 3-QADAM: Klaviaturadan Space bosilishini ushlaymiz</span>
+window.<span class="code-func">addEventListener</span>(<span class="code-prop">'keydown'</span>, (event) => {
+  <span class="code-keyword">if</span> (event.<span class="code-prop">code</span> === <span class="code-prop">'Space'</span> || event.<span class="code-prop">code</span> === <span class="code-prop">'ArrowUp'</span>) {
+    event.<span class="code-func">preventDefault</span>(); <span class="code-comment">// Sahifa pastga aylanib ketmasligi uchun</span>
+    dino.<span class="code-func">jump</span>();            <span class="code-comment">// Dinozavrga sakrash buyrug'ini beramiz!</span>
+  }
+});`
+      },
+      4: {
+        tag: "4-QADAM",
+        title: "jump() Metodi va Yerga Qaytish",
+        desc: "Dino sakraganida darhol tepaga ko'tarilishi va ma'lum vaqtdan so'ng (masalan 500 millisekund) avtomatik ravishda yana yerga tushishi kerak. Eng muhimi: agar dino allaqachon havoda bo'lsa (isJumping === true), u havoda turib yana sakrab ketmasligi shart!",
+        analogy: "💡 Fizika Qonuni: Gravitatsiya tortishi. Havoga sakragan tosh abadiy uchib ketmaydi, pastga qaytadi.",
+        code: `<span class="code-comment">// 4-QADAM: Sakrash va yerga qaytish mexanikasi</span>
+<span class="code-keyword">class</span> <span class="code-class">Dino</span> {
+  <span class="code-func">constructor</span>() {
+    <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>;
+    <span class="code-keyword">this</span>.<span class="code-prop">jumpHeight</span> = <span class="code-num">110</span>;   <span class="code-comment">// qancha baland sakrashi</span>
+  }
+
+  <span class="code-func">jump</span>() {
+    <span class="code-comment">// 1. Agar allaqachon havoda bo'lsa, ikkinchi marta sakratmaymiz!</span>
+    <span class="code-keyword">if</span> (<span class="code-keyword">this</span>.<span class="code-prop">isJumping</span>) <span class="code-keyword">return</span>;
+
+    <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">true</span>;
+    dinoElement.style.bottom = <span class="code-prop">\`\${34 + this.jumpHeight}px\`</span>;
+
+    <span class="code-comment">// 2. 500 millisekunddan so'ng yana yerga qaytaramiz:</span>
+    <span class="code-func">setTimeout</span>(() => {
+      dinoElement.style.bottom = <span class="code-prop">'34px'</span>;
+      <span class="code-keyword">this</span>.<span class="code-prop">isJumping</span> = <span class="code-keyword">false</span>; <span class="code-comment">// Yana sakrashga ruxsat ochildi!</span>
+    }, <span class="code-num">500</span>);
+  }
+}`
+      },
+      5: {
+        tag: "5-QADAM",
+        title: "Karobkani Haqiqiy Dinozavr Rasmiga Almashtirish!",
+        desc: "Endi mexanika 100% tayyor! Karobka sakrayapti, yerga qaytyapti. Endi o'quvchiga sirni ochamiz: yashil karobkani o'chirib, uning o'rniga haqiqiy T-Rex pikselli rasmi (SVG yoki IMG) qo'yiladi. O'yin o'sha-o'sha, lekin endi haqiqiy Chrome Dino Game ga aylandi!",
+        analogy: "💡 Kostyum Kiygizish: Aktyor avval mashq qiladi, keyin esa sahnaga chiqish uchun chiroyli dinozavr kostyumini kiyadi!",
+        code: `<span class="code-comment">// 5-QADAM: Karobka o'rniga haqiqiy rasm (SVG / Sprite) qo'yish</span>
+<span class="code-keyword">function</span> <span class="code-func">setRealDinoSprite</span>() {
+  dinoElement.className = <span class="code-prop">'dino-sprite-mode'</span>;
+  dinoElement.innerHTML = <span class="code-prop">\`
+    &lt;svg class="dino-svg" viewBox="0 0 48 48"&gt;
+      &lt;path d="M28 2h14v14h-4v4h-6v4h-4v4h-4v4h-4v8h-6v4h-6v-8h4v-4h4v-4h4v-6h4v-6h6V6h4V2z"/&gt;
+    &lt;/svg&gt;
+  \`</span>;
+}
+
+<span class="code-comment">// Mana, to'liq o'yin tayyor! Endi kaktuslarni qo'shib to'qnashuvni tekshirish mumkin!</span>`
+      }
+    };
+
+    /* ==========================================================================
+       DINO SINF (CLASS IMPLEMENTATION)
+       ========================================================================== */
+    class Dino {
+      constructor() {
+        this.width = 50;
+        this.height = 50;
+        this.x = 60;
+        this.y = 0;
+        this.isJumping = false;
+        this.jumpHeight = 110;
+        this.jumpDuration = 500;
+      }
+
+      jump() {
+        if (this.isJumping || isGameOver) return;
+        this.isJumping = true;
+        playJumpSound();
+
+        const dinoEl = document.getElementById('dino');
+        dinoEl.style.transition = `bottom ${this.jumpDuration / 2000}s cubic-bezier(0.2, 0.8, 0.2, 1)`;
+        dinoEl.style.bottom = `${34 + this.jumpHeight}px`;
+
+        setTimeout(() => {
+          dinoEl.style.transition = `bottom ${this.jumpDuration / 2000}s cubic-bezier(0.8, 0.2, 0.8, 1)`;
+          dinoEl.style.bottom = '34px';
+          
+          setTimeout(() => {
+            this.isJumping = false;
+          }, this.jumpDuration / 2);
+        }, this.jumpDuration / 2);
+      }
+    }
+
+    const dinoInstance = new Dino();
+
+    /* ==========================================================================
+       O'YIN TIZIMI: OBSTACLES, SCORE, HITBOX DETECTION
+       ========================================================================== */
+    let isGameOver = false;
+    let score = 0;
+    let highScore = 0;
+    let cactusX = 1000;
+    let gameSpeed = 4.5;
+    let animationFrameId = null;
+
+    const dinoEl = document.getElementById('dino');
+    const dinoContentEl = document.getElementById('dino-content');
+    const cactusEl = document.getElementById('cactus');
+    const currentScoreEl = document.getElementById('current-score');
+    const highScoreEl = document.getElementById('high-score');
+    const overlayEl = document.getElementById('overlay');
+    const groundEl = document.getElementById('ground');
+
+    // Web Audio Synthesizer (100% oflayn tovushlar)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playJumpSound() {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(160, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(480, audioCtx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.12);
+      } catch(e) {}
+    }
+
+    function playHitSound() {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+        osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.25);
+      } catch(e) {}
+    }
+
+    // Dinozavr sakrashini chaqirish
+    function triggerDinoJump() {
+      dinoInstance.jump();
+    }
+
+    // Rejimni almashtirish (Karobka <-> Haqiqiy Dino)
+    function toggleDinoMode(isSprite) {
+      if (isSprite) {
+        dinoEl.className = 'dino-sprite-mode';
+        dinoEl.innerHTML = `
+          <svg class="dino-svg" viewBox="0 0 48 48">
+            <path d="M28 4h14v12h-4v4h-6v4h-4v4h-4v4h-4v6h-6v4h-6v-6h4v-4h4v-4h4v-6h4v-6h6V8h4V4z M38 8h3v3h-3z M20 38h4v6h-4z M28 38h4v6h-4z"/>
+          </svg>
+        `;
+      } else {
+        dinoEl.className = 'dino-box-mode';
+        dinoEl.innerHTML = `<div id="dino-content" class="dino-box-label">HITBOX<br>50x50</div>`;
+      }
+    }
+
+    // O'yin sikli (Game Loop)
+    function gameLoop() {
+      if (isGameOver) return;
+
+      // Kaktusni chapga surish
+      cactusX -= gameSpeed;
+      if (cactusX < -50) {
+        cactusX = 900 + Math.random() * 300;
+        score += 10;
+        currentScoreEl.textContent = String(score).padStart(5, '0');
+        if (score > highScore) {
+          highScore = score;
+          highScoreEl.textContent = String(highScore).padStart(5, '0');
+        }
+      }
+      cactusEl.style.right = `${1000 - cactusX}px`;
+
+      // To'qnashuvni tekshirish (AABB Collision)
+      const dinoRect = dinoEl.getBoundingClientRect();
+      const cactusRect = cactusEl.getBoundingClientRect();
+
+      // Qisqartirilgan aniq hitbox tekshiruvi
+      const isColliding = !(
+        dinoRect.top > cactusRect.bottom - 6 ||
+        dinoRect.right < cactusRect.left + 8 ||
+        dinoRect.bottom < cactusRect.top + 6 ||
+        dinoRect.left > cactusRect.right - 8
+      );
+
+      if (isColliding) {
+        gameOver();
+        return;
+      }
+
+      animationFrameId = requestAnimationFrame(gameLoop);
+    }
+
+    function gameOver() {
+      isGameOver = true;
+      playHitSound();
+      groundEl.classList.add('paused');
+      overlayEl.classList.add('visible');
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    }
+
+    function resetGame() {
+      isGameOver = false;
+      score = 0;
+      currentScoreEl.textContent = '00000';
+      cactusX = 1000;
+      overlayEl.classList.remove('visible');
+      groundEl.classList.remove('paused');
+      dinoEl.style.bottom = '34px';
+      dinoInstance.isJumping = false;
+      gameLoop();
+    }
+
+    // Klaviatura tinglash
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        if (isGameOver) {
+          resetGame();
+        } else {
+          triggerDinoJump();
+        }
+      }
+    });
+
+    // 5 ta Qadamni Ko'rsatish
+    function selectStep(stepNum) {
+      document.querySelectorAll('.step-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === stepNum);
+      });
+
+      const data = STEPS_DATA[stepNum];
+      document.getElementById('display-step-tag').textContent = data.tag;
+      document.getElementById('display-step-title').textContent = data.title;
+      document.getElementById('display-step-desc').textContent = data.desc;
+      document.getElementById('display-step-analogy').innerHTML = data.analogy;
+      document.getElementById('display-step-code').innerHTML = data.code;
+
+      // 5-qadamga bosilganda avtomatik ravishda haqiqiy dinozavr rejimiga o'tkazish
+      if (stepNum === 5) {
+        document.getElementById('mode-checkbox').checked = true;
+        toggleDinoMode(true);
+      } else if (stepNum === 1 || stepNum === 2) {
+        document.getElementById('mode-checkbox').checked = false;
+        toggleDinoMode(false);
+      }
+    }
+
+    // Slayderlar sozlamalarini yangilash
+    function updateJumpParams() {
+      const h = parseInt(document.getElementById('slider-height').value);
+      const d = parseInt(document.getElementById('slider-duration').value);
+      dinoInstance.jumpHeight = h;
+      dinoInstance.jumpDuration = d;
+      document.getElementById('val-jump-height').textContent = `${h}px`;
+      document.getElementById('val-jump-duration').textContent = `${d}ms`;
+    }
+
+    function updateSpeedParam() {
+      const spd = parseFloat(document.getElementById('slider-speed').value);
+      gameSpeed = spd;
+      document.getElementById('val-game-speed').textContent = spd.toFixed(1);
+    }
+
+    // Dastlabki ishga tushirish
+    selectStep(1);
+    resetGame();
+  </script>
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiber Qahramonlar Arenasi — Amaliy Loyiha</title>
+  <title>Kiber Qahramonlar Arenasi — Flexbox, Grid & JS Class Amaliyoti</title>
   <style>
     /* ==========================================================================
-       1. UMUMIY USLUB (ASOS)
+       1. UMUMIY USLUB VA SHIFT
        ========================================================================== */
     * {
       box-sizing: border-box;
@@ -16,32 +16,232 @@
     }
 
     body {
-      background: #0b0f19;
+      background: #090d16;
       color: #e2e8f0;
       padding: 20px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     /* ==========================================================================
-       2. CSS GRID: ASOSIY 2D SAHIFA SKELETI
+       2. REJAMLAR PANELI (TOP NAVIGATION TABS)
+       ========================================================================== */
+    .top-nav {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      background: #334155;
+      color: white;
+    }
+
+    .tab-btn.active {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+
+    .dino-link-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      transition: transform 0.15s;
+    }
+    .dino-link-btn:hover {
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       3. BOSQICHMA-BOSQICH LABORATORIYA (5 BOSQICH)
+       ========================================================================== */
+    .lab-container {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .lab-topic-nav {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 14px;
+    }
+
+    .topic-pill {
+      background: #090d16;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .topic-pill.active {
+      background: #38bdf8;
+      color: #0b0f19;
+      border-color: #38bdf8;
+    }
+
+    .lab-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .lab-step-btn {
+      background: #090d16;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+    .lab-step-btn.active {
+      background: #1e293b;
+      border-color: #38bdf8;
+      color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+    .lab-step-num { font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .lab-step-name { font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Lab tushuntirish va Live Preview paneli */
+    .lab-workbench {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .lab-code-card {
+      background: #090d16;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lab-preview-card {
+      background: #090d16;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .code-view {
+      background: #050811;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'Consolas', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      overflow-x: auto;
+      min-height: 180px;
+      white-space: pre-wrap;
+    }
+
+    .stage-view {
+      background: #050811;
+      border: 1px dashed #334155;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       4. KIBER QAHRAMONLAR ARENASI (ASOSIY SAHIFA)
        ========================================================================== */
     .arena-container {
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
     }
 
-    /* Sarlavha: Butun ustunlar bo'ylab cho'ziladi */
     .arena-header {
       grid-column: 1 / -1;
       background: #111827;
       border: 1px solid #1f2937;
       border-radius: 14px;
       padding: 16px 24px;
-      
-      /* CSS FLEXBOX: Logotip chapda, ko'rsatkichlar o'ngda */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -66,7 +266,6 @@
       border-radius: 999px;
     }
 
-    /* Yon panel (Gildiya boshqaruvi) */
     .arena-sidebar {
       background: #111827;
       border: 1px solid #1f2937;
@@ -127,16 +326,12 @@
     }
     .heal-btn:hover { background: #059669 !important; }
 
-    /* ==========================================================================
-       3. CSS GRID: QAHRAMONLAR RO'YXATI (3 USTUN)
-       ========================================================================== */
     .heroes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    /* CSS FLEXBOX: Har bir karta ichki elementlarini vertikal tekislash */
     .hero-card {
       background: #111827;
       border: 1px solid #1f2937;
@@ -189,7 +384,6 @@
       margin-bottom: 12px;
     }
 
-    /* HP Progress Bar */
     .hp-container {
       background: #1e293b;
       height: 10px;
@@ -204,7 +398,6 @@
       transition: width 0.3s ease;
     }
 
-    /* Pastki Jang Jurnali (Log) */
     .arena-footer {
       grid-column: 1 / -1;
       background: #111827;
@@ -233,62 +426,130 @@
     .log-entry { margin-bottom: 4px; }
     .log-attack { color: #f87171; }
     .log-heal { color: #34d399; }
+
+    @media (max-width: 900px) {
+      .arena-container { grid-template-columns: 1fr; }
+      .heroes-grid { grid-template-columns: 1fr; }
+      .lab-workbench { grid-template-columns: 1fr; }
+      .lab-steps-grid { grid-template-columns: repeat(3, 1fr); }
+    }
   </style>
 </head>
 <body>
 
-  <div class="arena-container">
-    <!-- 1. HEADER (FLEXBOX) -->
-    <header class="arena-header">
-      <div class="brand-title">
-        <span>⚔️</span>
-        <span>Kiber Qahramonlar Arenasi</span>
-      </div>
-      <div class="status-badge">● ARENA FAOLLASHTIRILGAN</div>
-    </header>
-
-    <!-- 2. SIDEBAR (BOSHQARUV PANELI) -->
-    <aside class="arena-sidebar">
-      <h3>Jang Boshqaruvi</h3>
-      
-      <div class="control-box">
-        <label>Hujumchi qahramon:</label>
-        <select id="attacker-select"></select>
-
-        <label>Nishon (Raqib):</label>
-        <select id="target-select"></select>
-
-        <button class="action-btn" id="btn-attack">⚔️ Hujum Qilish!</button>
-        <button class="heal-btn" id="btn-heal">💚 O'zini Davolash (+20 HP)</button>
+  <div class="main-wrapper">
+    <!-- ====================================================================
+         1. ASOSIY REJIMLAR BOSHQARUVI (TOP TABS)
+         ==================================================================== -->
+    <nav class="top-nav">
+      <div class="nav-tabs">
+        <button class="tab-btn active" id="btn-mode-arena" onclick="switchView('arena')">
+          <span>⚔️ Kiber Qahramonlar Arenasi</span>
+        </button>
+        <button class="tab-btn" id="btn-mode-lab" onclick="switchView('lab')">
+          <span>🧪 5 Bosqichli O'quv Laboratoriyasi (Flex, Grid, Class)</span>
+        </button>
       </div>
 
-      <div style="font-size: 12px; color: #64748b; line-height: 1.5;">
-        💡 <b>Mavzular:</b><br>
-        • <b>CSS Grid:</b> 2D bosh maket va 3 ustunli qahramonlar panjarasi.<br>
-        • <b>CSS Flexbox:</b> Kartochka ichki tartibi va navigatsiya.<br>
-        • <b>JS Class:</b> Hero sinfi orqali obyektlar yaratish va metodlar bilan boshqarish.
-      </div>
-    </aside>
+      <a href="../dino-game-darsi/index.html" class="dino-link-btn">
+        <span>🦖 Dino Game Darsi (1-Dars)</span>
+        <span>➔</span>
+      </a>
+    </nav>
 
-    <!-- 3. HEROES GRID (3 USTUNLI 2D GRID) -->
-    <main class="heroes-grid" id="heroes-display"></main>
+    <!-- ====================================================================
+         2. REJIM 1: KIBER QAHRAMONLAR ARENASI (BATTLE ARENA)
+         ==================================================================== -->
+    <div id="view-arena" class="arena-container">
+      <!-- HEADER (FLEXBOX) -->
+      <header class="arena-header">
+        <div class="brand-title">
+          <span>⚔️</span>
+          <span>Kiber Qahramonlar Arenasi</span>
+        </div>
+        <div class="status-badge">● ARENA FAOLLASHTIRILGAN</div>
+      </header>
 
-    <!-- 4. FOOTER (JANG JURNALI) -->
-    <footer class="arena-footer">
-      <h4>Jang Jurnali (Battle Log)</h4>
-      <div class="log-box" id="battle-log">
-        <div class="log-entry">⚡ Jang maydoni tayyor. Qahramonlarni jangga chorlang!</div>
+      <!-- SIDEBAR -->
+      <aside class="arena-sidebar">
+        <h3>Jang Boshqaruvi</h3>
+        
+        <div class="control-box">
+          <label>Hujumchi qahramon:</label>
+          <select id="attacker-select"></select>
+
+          <label>Nishon (Raqib):</label>
+          <select id="target-select"></select>
+
+          <button class="action-btn" id="btn-attack">⚔️ Hujum Qilish!</button>
+          <button class="heal-btn" id="btn-heal">💚 O'zini Davolash (+20 HP)</button>
+        </div>
+
+        <div style="font-size: 12px; color: #64748b; line-height: 1.5;">
+          💡 <b>Amaliyot:</b><br>
+          • <b>CSS Grid:</b> 2D bosh maket va 3 ustunli qahramonlar panjarasi.<br>
+          • <b>CSS Flexbox:</b> Kartochka ichki tartibi va sarlavha.<br>
+          • <b>JS Class:</b> Hero sinfi orqali obyekt yaratish va boshqarish.
+        </div>
+      </aside>
+
+      <!-- HEROES GRID -->
+      <main class="heroes-grid" id="heroes-display"></main>
+
+      <!-- FOOTER -->
+      <footer class="arena-footer">
+        <h4>Jang Jurnali (Battle Log)</h4>
+        <div class="log-box" id="battle-log">
+          <div class="log-entry">⚡ Jang maydoni tayyor. Qahramonlarni jangga chorlang!</div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ====================================================================
+         3. REJIM 2: 5 BOSQICHLI O'QUV LABORATORIYASI (LABORATORIYA)
+         ==================================================================== -->
+    <div id="view-lab" class="lab-container" style="display: none;">
+      <!-- MAVZU TANLASH -->
+      <div class="lab-topic-nav">
+        <button class="topic-pill active" onclick="switchLabTopic('flex')">1. CSS Flexbox Metodikasi</button>
+        <button class="topic-pill" onclick="switchLabTopic('grid')">2. CSS Grid Metodikasi</button>
+        <button class="topic-pill" onclick="switchLabTopic('class')">3. JS Class Metodikasi</button>
       </div>
-    </footer>
+
+      <!-- 5 TA QADAM TUGMALARI -->
+      <div class="lab-steps-grid" id="lab-steps-bar"></div>
+
+      <!-- WORKBENCH (KOD VA PREVIEW) -->
+      <div class="lab-workbench">
+        <!-- KOD VA TAHLIL -->
+        <div class="lab-code-card">
+          <div class="card-title">
+            <span id="lab-step-tag">1-QADAM</span>
+            <span style="font-size: 11px; color: #64748b;">Tushuntirish va Sintaksis</span>
+          </div>
+          <div id="lab-step-desc" style="font-size: 13px; color: #cbd5e1; line-height: 1.6;"></div>
+          <div class="code-view" id="lab-step-code"></div>
+        </div>
+
+        <!-- JONLI NATIJA (LIVE PREVIEW) -->
+        <div class="lab-preview-card">
+          <div class="card-title">
+            <span>Brauzer Chizgan Jonli Natija</span>
+            <span id="lab-visual-tag" style="color: #10b981; font-size: 11px;">● Jonli Ko'rinish</span>
+          </div>
+          <div class="stage-view" id="lab-stage-preview"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ==========================================================================
-       4. JAVASCRIPT: CLASS VA INTERAKTIV MANIPULYATSIYA
-       ========================================================================== -->
+  <!-- ====================================================================
+       4. JAVASCRIPT: ARENA VA LABORATORIYA MA'LUMOTLARI
+       ==================================================================== -->
   <script>
-    // ==============================================================
-    // 1-QADAM: HERO SINFINI (CLASS) E'LON QILISH
-    // ==============================================================
+    /* ==========================================================================
+       ARENA LOGIKASI (CLASS HERO)
+       ========================================================================== */
     class Hero {
       constructor(id, name, role, hp, maxHp, attackPower, icon) {
         this.id = id;
@@ -300,18 +561,14 @@
         this.icon = icon;
       }
 
-      // Hujum qilish metodi
       attack(target) {
         if (this.hp <= 0) return `${this.name} mag'lub bo'lgan, hujum qila olmaydi!`;
         if (target.hp <= 0) return `${target.name} allaqachon mag'lub etilgan!`;
-        
         target.hp -= this.attackPower;
         if (target.hp < 0) target.hp = 0;
-
         return `${this.name} raqibi ${target.name} ga ${this.attackPower} zarba berdi!`;
       }
 
-      // Jon tiklash (davolash) metodi
       heal() {
         if (this.hp <= 0) return `${this.name} mag'lub bo'lgan, davolanib bo'lmaydi!`;
         this.hp += 20;
@@ -320,18 +577,12 @@
       }
     }
 
-    // ==============================================================
-    // 2-QADAM: 3 TA QAHRAMON OBYEKTINI YARATISH (new Hero)
-    // ==============================================================
     const heroes = [
       new Hero(1, "Kiber Ritsar", "Jangchi", 120, 120, 25, "🛡️"),
       new Hero(2, "Neon Sehrgar", "Mage", 80, 80, 35, "🔮"),
       new Hero(3, "Soya Mergani", "Kamonchi", 95, 95, 30, "🏹")
     ];
 
-    // ==============================================================
-    // 3-QADAM: EKRANGA CHIZISH VA INTERAKTIV BOG'LASH
-    // ==============================================================
     const displayContainer = document.getElementById('heroes-display');
     const attackerSelect = document.getElementById('attacker-select');
     const targetSelect = document.getElementById('target-select');
@@ -343,7 +594,6 @@
       targetSelect.innerHTML = '';
 
       heroes.forEach((h, index) => {
-        // Dropdownlarni to'ldirish
         const opt1 = document.createElement('option');
         opt1.value = index;
         opt1.textContent = `${h.icon} ${h.name} (${h.hp}/${h.maxHp} HP)`;
@@ -354,7 +604,6 @@
         opt2.textContent = `${h.icon} ${h.name} (${h.hp}/${h.maxHp} HP)`;
         targetSelect.appendChild(opt2);
 
-        // Kartochkani chizish
         const hpPercent = (h.hp / h.maxHp) * 100;
         const isDefeated = h.hp <= 0;
 
@@ -385,7 +634,6 @@
         displayContainer.appendChild(card);
       });
 
-      // Default nishonni boshqa qahramonga qo'yish
       if (heroes.length > 1 && targetSelect.options.length > 1) {
         targetSelect.selectedIndex = 1;
       }
@@ -398,16 +646,13 @@
       battleLog.prepend(entry);
     }
 
-    // Tugmalar hodisalari
     document.getElementById('btn-attack').addEventListener('click', () => {
       const attackerIdx = parseInt(attackerSelect.value);
       const targetIdx = parseInt(targetSelect.value);
-
       if (attackerIdx === targetIdx) {
-        alert("Qahramon o'ziga o'zi hujum qila olmaydi! Boshqa nishonni tanlang.");
+        alert("Qahramon o'ziga o'zi hujum qila olmaydi!");
         return;
       }
-
       const result = heroes[attackerIdx].attack(heroes[targetIdx]);
       addLog(result, 'attack');
       renderHeroes();
@@ -420,8 +665,191 @@
       renderHeroes();
     });
 
-    // Dastlabki render
     renderHeroes();
+
+    /* ==========================================================================
+       VIEW ALMASHTIRISH (ARENA VS LABORATORIYA)
+       ========================================================================== */
+    function switchView(viewName) {
+      document.getElementById('view-arena').style.display = viewName === 'arena' ? 'grid' : 'none';
+      document.getElementById('view-lab').style.display = viewName === 'lab' ? 'flex' : 'none';
+
+      document.getElementById('btn-mode-arena').classList.toggle('active', viewName === 'arena');
+      document.getElementById('btn-mode-lab').classList.toggle('active', viewName === 'lab');
+    }
+
+    /* ==========================================================================
+       LABORATORIYA MA'LUMOTLAR BAZASI (5 BOSQICHLI METODIKA)
+       ========================================================================== */
+    const LAB_DATA = {
+      flex: {
+        title: "CSS Flexbox",
+        steps: [
+          {
+            num: 1,
+            name: "Bo'sh Konteyner",
+            desc: "1-Qadam: O'quvchiga avval faqat bitta bo'sh ota konteyner beriladi va unga display: flex beriladi. Hech qanday ichki element yo'q.",
+            code: `.container {\n  display: flex;\n  border: 2px dashed #38bdf8;\n  min-height: 100px;\n  padding: 10px;\n}`,
+            render: `<div style="border: 2px dashed #38bdf8; min-height: 100px; padding: 10px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px;">Bo'sh Flex Maydoni (Ichida elementlar yo'q)</div>`
+          },
+          {
+            num: 2,
+            name: "1 ta Element & Tekislash",
+            desc: "2-Qadam: Ichiga bitta 'karobka' (element) solinadi va justify-content orqali uni chapga, o'rtaga va o'ngga surish ko'rsatiladi.",
+            code: `.container {\n  display: flex;\n  justify-content: flex-end; /* O'ng tomonga */\n}\n.box {\n  background: #38bdf8;\n  width: 60px; height: 60px;\n}`,
+            render: `<div style="border: 2px dashed #38bdf8; padding: 10px; display: flex; justify-content: flex-end;"><div style="background: #38bdf8; color: #0b0f19; font-weight: bold; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">1-Quti</div></div>`
+          },
+          {
+            num: 3,
+            name: "3 ta Element & gap",
+            desc: "3-Qadam: Endi 3 ta element qo'yiladi va gap: 16px bilan ular orasiga oraliq berilib, justify-content: space-between bilan chetlarga tarqatiladi.",
+            code: `.container {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n}`,
+            render: `<div style="border: 2px dashed #38bdf8; padding: 10px; display: flex; justify-content: space-between; gap: 16px;"><div style="background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 12px 20px; border-radius: 6px;">Quti A</div><div style="background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 12px 20px; border-radius: 6px;">Quti B</div><div style="background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 12px 20px; border-radius: 6px;">Quti C</div></div>`
+          },
+          {
+            num: 4,
+            name: "Vertikal Markazlash",
+            desc: "4-Qadam: align-items: center orqali elementlar vertikal markazlanadi. Shuningdek flex-direction: column bilan ularni ustun shakliga keltirish o'rgatiladi.",
+            code: `.container {\n  display: flex;\n  align-items: center;\n  min-height: 120px;\n}`,
+            render: `<div style="border: 2px dashed #38bdf8; min-height: 120px; padding: 10px; display: flex; align-items: center; justify-content: space-around;"><div style="background: #10b981; color: white; padding: 8px 16px; border-radius: 6px;">Markazlashgan 1</div><div style="background: #10b981; color: white; padding: 18px 16px; border-radius: 6px;">Balandroq 2</div><div style="background: #10b981; color: white; padding: 12px 16px; border-radius: 6px;">Markazlashgan 3</div></div>`
+          },
+          {
+            num: 5,
+            name: "Haqiqiy Kiber Navbar",
+            desc: "5-Qadam: Barcha bilimlarni birlashtirib, logotip chapda va ko'rsatkichlar o'ngda turuvchi haqiqiy Kiber Arenaning navigatsiya paneli hosil qilinadi!",
+            code: `.arena-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}`,
+            render: `<div style="background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;"><div style="font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 8px;"><span>⚔️</span> Kiber Navbar</div><div style="background: rgba(16,185,129,0.15); border: 1px solid #10b981; color: #10b981; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">● FAOLLASHTIRILGAN</div></div>`
+          }
+        ]
+      },
+      grid: {
+        title: "CSS Grid",
+        steps: [
+          {
+            num: 1,
+            name: "Bo'sh Grid",
+            desc: "1-Qadam: display: grid berilgan bo'sh maket. Brauzer panjara hisob-kitobini boshlaydi.",
+            code: `.grid-container {\n  display: grid;\n  border: 2px dashed #f59e0b;\n  min-height: 100px;\n}`,
+            render: `<div style="border: 2px dashed #f59e0b; min-height: 100px; padding: 10px; display: grid; align-items: center; justify-content: center; color: #64748b; font-size: 13px;">Bo'sh 2D Grid Panjarasi</div>`
+          },
+          {
+            num: 2,
+            name: "Ustunlar (repeat 3)",
+            desc: "2-Qadam: grid-template-columns: repeat(3, 1fr) orqali maydon 3 ta teng ustunli bo'lakka bo'linadi.",
+            code: `.grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n}`,
+            render: `<div style="border: 2px dashed #f59e0b; padding: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;"><div style="background: #1e293b; padding: 15px; border-radius: 6px; text-align: center;">Ustun 1</div><div style="background: #1e293b; padding: 15px; border-radius: 6px; text-align: center;">Ustun 2</div><div style="background: #1e293b; padding: 15px; border-radius: 6px; text-align: center;">Ustun 3</div></div>`
+          },
+          {
+            num: 3,
+            name: "Yon Panel (280px 1fr)",
+            desc: "3-Qadam: Boshqaruv paneli uchun chap tomonda fiksirlangan 280px va o'ng tomonda erkin qolgan joy (1fr) ajratiladi.",
+            code: `.arena-container {\n  display: grid;\n  grid-template-columns: 200px 1fr;\n  gap: 16px;\n}`,
+            render: `<div style="border: 2px dashed #f59e0b; padding: 10px; display: grid; grid-template-columns: 140px 1fr; gap: 12px;"><div style="background: #1e293b; padding: 15px; border-radius: 6px; font-size: 12px; text-align: center;">Boshqaruv (140px)</div><div style="background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 6px; font-size: 12px; text-align: center;">Asosiy Jang Maydoni (1fr)</div></div>`
+          },
+          {
+            num: 4,
+            name: "Cho'zilish (grid-column: 1 / -1)",
+            desc: "4-Qadam: Sarlavha (Header) va Futerni butun eni bo'ylab cho'zish uchun grid-column: 1 / -1 ishlatiladi.",
+            code: `.header {\n  grid-column: 1 / -1;\n  background: #1e293b;\n}`,
+            render: `<div style="display: grid; grid-template-columns: 100px 1fr; gap: 8px; border: 2px dashed #f59e0b; padding: 10px;"><div style="grid-column: 1 / -1; background: #38bdf8; color: #0b0f19; font-weight: bold; padding: 8px; text-align: center; border-radius: 4px;">Header (1 / -1)</div><div style="background: #1e293b; padding: 10px; text-align: center; border-radius: 4px; font-size: 11px;">Chap</div><div style="background: #1e293b; padding: 10px; text-align: center; border-radius: 4px; font-size: 11px;">O'ng</div></div>`
+          },
+          {
+            num: 5,
+            name: "Haqiqiy 2D Dashboard",
+            desc: "5-Qadam: Endi to'liq Kiber Arena maketi hosil bo'ladi: Header (1/-1), Chapda panel, O'ngda 3 ustunli qahramonlar, Pastda Jang jurnali!",
+            code: `/* To'liq Kiber Arena 2D Grid Maketi */\n.arena-container {\n  display: grid;\n  grid-template-columns: 280px 1fr;\n  gap: 20px;\n}`,
+            render: `<div style="background: #111827; border: 1px solid #1f2937; padding: 12px; border-radius: 8px; font-size: 11px; color: #94a3b8; text-align: center;">To'liq Kiber Arena 2D Grid Maketi Muvaffaqiyatli Tayyorlandi! (Yuqoridagi Arena tabiga qarang)</div>`
+          }
+        ]
+      },
+      class: {
+        title: "JS Class",
+        steps: [
+          {
+            num: 1,
+            name: "Bo'sh Class",
+            desc: "1-Qadam: Avval shunchaki class Hero {} ochiladi. Ichida hech narsa bo'lmaydi.",
+            code: `class Hero {\n  // Hozircha bo'm-bo'sh skelet\n}\nconst h = new Hero();`,
+            render: `<div style="font-family: monospace; background: #0b0f19; padding: 14px; border-radius: 6px; color: #38bdf8;">Hero {} // Bo'sh obyekt yaratildi</div>`
+          },
+          {
+            num: 2,
+            name: "Konstruktor & Xususiyatlar",
+            desc: "2-Qadam: constructor() ichida this.name, this.hp va this.attackPower kabi qahramon xususiyatlari belgilanadi.",
+            code: `class Hero {\n  constructor(name, hp, attack) {\n    this.name = name;\n    this.hp = hp;\n    this.attack = attack;\n  }\n}`,
+            render: `<div style="font-family: monospace; background: #0b0f19; padding: 14px; border-radius: 6px; color: #34d399;">Hero { name: "Kiber Ritsar", hp: 120, attack: 25 }</div>`
+          },
+          {
+            num: 3,
+            name: "Metodlar (attack & heal)",
+            desc: "3-Qadam: Qahramonga harakat bag'ishlaydigan metodlar (attack() va heal()) yoziladi.",
+            code: `attack(target) {\n  target.hp -= this.attack;\n  return \`\${this.name} \${target.name}ga zarba berdi!\`;\n}`,
+            render: `<div style="font-family: monospace; background: #0b0f19; padding: 14px; border-radius: 6px; color: #f87171;">⚔️ Kiber Ritsar raqibi Neon Sehrgarga 25 zarba berdi!</div>`
+          },
+          {
+            num: 4,
+            name: "3 Ta Obyekt Yaratish",
+            desc: "4-Qadam: new Hero(...) orqali 3 ta har xil qahramon (Jangchi, Sehrgar, Kamonchi) yaratiladi va massivga joylanadi.",
+            code: `const heroes = [\n  new Hero("Jangchi", 120, 25),\n  new Hero("Sehrgar", 80, 35),\n  new Hero("Kamonchi", 95, 30)\n];`,
+            render: `<div style="display: flex; gap: 8px;"><div style="background: #1e293b; padding: 8px 12px; border-radius: 6px; font-size: 12px;">🛡️ Jangchi</div><div style="background: #1e293b; padding: 8px 12px; border-radius: 6px; font-size: 12px;">🔮 Sehrgar</div><div style="background: #1e293b; padding: 8px 12px; border-radius: 6px; font-size: 12px;">🏹 Kamonchi</div></div>`
+          },
+          {
+            num: 5,
+            name: "Jang Maydoniga Bog'lash",
+            desc: "5-Qadam: Qahramonlar DOM (ekran) bilan bog'lanib, jon indikatorlari (HP Bar) va Jang Jurnali bilan to'liq jonlantiriladi!",
+            code: `// DOM render va tugmalar hodisalari\nrenderHeroes();\nbtnAttack.addEventListener('click', ...);`,
+            render: `<div style="background: #10b981; color: #042f2e; font-weight: bold; padding: 12px; border-radius: 6px; text-align: center;">🎉 Jang maydoni to'liq ishga tushirildi! Qahramonlar jang qilishga tayyor!</div>`
+          }
+        ]
+      }
+    };
+
+    let currentLabTopic = 'flex';
+    let currentLabStep = 1;
+
+    function switchLabTopic(topicKey) {
+      currentLabTopic = topicKey;
+      currentLabStep = 1;
+      document.querySelectorAll('.topic-pill').forEach((pill, idx) => {
+        pill.classList.toggle('active', (idx === 0 && topicKey === 'flex') || (idx === 1 && topicKey === 'grid') || (idx === 2 && topicKey === 'class'));
+      });
+      renderLabStepsBar();
+      displayLabStep(1);
+    }
+
+    function renderLabStepsBar() {
+      const container = document.getElementById('lab-steps-bar');
+      container.innerHTML = '';
+      const topicData = LAB_DATA[currentLabTopic];
+
+      topicData.steps.forEach(step => {
+        const btn = document.createElement('button');
+        btn.className = `lab-step-btn ${step.num === currentLabStep ? 'active' : ''}`;
+        btn.onclick = () => displayLabStep(step.num);
+        btn.innerHTML = `
+          <div class="lab-step-num">${step.num}-QADAM</div>
+          <div class="lab-step-name">${step.name}</div>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function displayLabStep(stepNum) {
+      currentLabStep = stepNum;
+      const stepData = LAB_DATA[currentLabTopic].steps[stepNum - 1];
+
+      document.querySelectorAll('.lab-step-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === stepNum);
+      });
+
+      document.getElementById('lab-step-tag').textContent = `${stepNum}-QADAM: ${stepData.name}`;
+      document.getElementById('lab-step-desc').textContent = stepData.desc;
+      document.getElementById('lab-step-code').textContent = stepData.code;
+      document.getElementById('lab-stage-preview').innerHTML = stepData.render;
+    }
+
+    // Laboratoriyani dastlabki render qilish
+    switchLabTopic('flex');
   </script>
 </body>
 </html>
