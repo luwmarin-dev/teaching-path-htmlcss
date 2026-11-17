@@ -3774,75 +3774,164 @@ const LESSONS = [
     id: 'theme-3-tables',
     module: 'html-core',
     title: {
-      en: 'Theme 3: Tables & Grids (Rows and Cells)',
-      uz: '3-Mavzu: Jadvallar va Kataklar (Qatorlar va Kataklar)'
+      en: 'Theme 3: Tables & Grids (Esports Championship Leaderboard)',
+      uz: '3-Mavzu: Jadvallar va Kataklar (Chempionat Reyting Jadvali)'
     },
     icon: '📊',
     tag: '<table>, <tr>, <th>, <td>',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, a **Table** is a neat grid of boxes with rows and columns — just like an Excel spreadsheet or a video game high-score leaderboard!',
-        uz: 'Oddiy tilda aytganda, **Jadval** — bu kataklardan iborat toza panjara — xuddi dars jadvali yoki o\'yinlardagi peshqadamlar ro\'yxati kabi!'
+        en: 'In human language, a **Table** is a high-tech data grid! It organizes tournament scores, school timetables, and game inventories into crisp rows and columns.',
+        uz: 'Oddiy tilda aytganda, **Jadval** — bu yuqori texnologiyali ma\'lumotlar panjarasi! U turnir ochkolari, dars jadvallari va o\'yin reytinglarini toza qator va ustunlarga teradi.'
       },
       whatIsATag: {
-        en: 'HTML builds tables row-by-row:\n1. `<table>` is the outer grid frame.\n2. `<tr>` stands for **Table Row** (a horizontal line across).\n3. `<th>` stands for **Table Header** (bold titles for column headers).\n4. `<td>` stands for **Table Data** (regular boxes holding player names, numbers, or stats)!',
-        uz: 'HTML jadvallarni qadamma-qadam quradi:\n1. `<table>` — jadvalning tashqi ramkasi.\n2. `<tr>` — **Table Row** (gorizontal qator).\n3. `<th>` — **Table Header** (ustun sarlavhasi, qalin yozuvda).\n4. `<td>` — **Table Data** (oddiy ma\'lumot katagi)!'
+        en: 'HTML tables work like building a skyscraper floor-by-floor:\n1. `<table>` is the outer skyscraper foundation.\n2. `<tr>` (Table Row) is each horizontal floor.\n3. `<th>` (Table Header) is the bold roof sign labeling what is inside.\n4. `<td>` (Table Data) is each room holding facts, player names, and medals!',
+        uz: 'HTML jadvallari xuddi binoni qavatma-qavat qurishdek ishlaydi:\n1. `<table>` — binoning poydevori.\n2. `<tr>` (Table Row) — har bir gorizontal qavat.\n3. `<th>` (Table Header) — ustun nomini bildiruvchi qalin sarlavha.\n4. `<td>` (Table Data) — ma\'lumot, o\'yinchi nomi va medallar saqlanuvchi xonalar!'
       }
     },
     summary: {
-      en: 'Build clean grids and leaderboards using `<table>`, `<tr>` (rows), `<th>` (headers), and `<td>` (data cells).',
-      uz: '<table>, <tr> (qatorlar), <th> (sarlavhalar) va <td> (kataklar) yordamida jadvallar va reytinglar tuzing.'
+      en: 'Construct pro esports championship leaderboards using <table>, <tr> rows, <th> headers, and <td> cells.',
+      uz: '<table>, <tr> qatorlari, <th> sarlavhalari va <td> kataklari yordamida professional kibersport reytingini quring.'
     },
     story: {
-      en: 'Think of `<tr>` like a train track. Each track holds train cars: `<th>` for the engine/header cars, and `<td>` for the passenger data cars.',
-      uz: '`<tr>` ni poyezd relsiga o\'xshating: `<th>` — boshlovchi lokomotiv vagoni, `<td>` — yo\'lovchilar vagoni.'
+      en: 'The Grand Cyber Tournament needs its #1 Champion crowned at the top of the leaderboard with 🥇 1st place and a golden CHAMPION badge!',
+      uz: 'Katta Kiber Turnirning eng yuqori qatoriga 1-o\'rin va oltin CHAMPION nishoniga ega bosh chempionni kiritish kerak!'
     },
-    initialCode: `<table border="1" cellpadding="8">
+    initialCode: `<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #141726;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #e2e8f0;
+    font-family: sans-serif;
+  }
+  th {
+    background: #1e2438;
+    color: #38bdf8;
+    padding: 14px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  td {
+    padding: 12px 14px;
+    border-top: 1px solid #232b42;
+  }
+  .champion {
+    background: rgba(234, 179, 8, 0.18);
+    font-weight: bold;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  .gold { background: #eab308; color: #000; }
+  .silver { background: #94a3b8; color: #000; }
+  .bronze { background: #f97316; color: #fff; }
+</style>
+
+<table>
   <tr>
     <th>Rank</th>
     <th>Player</th>
+    <th>Badge</th>
     <th>Score</th>
   </tr>
-  <tr>
-    <td>🥇 1st</td>
-    <td>PixelCat</td>
-    <td>9,900</td>
-  </tr>
-  <tr>
-    <td>🥈 2nd</td>
-    <td>CyberBot</td>
-    <td>8,450</td>
-  </tr>
-</table>`,
-    targetCode: `<table border="1" cellpadding="8">
-  <tr>
-    <th>Rank</th>
-    <th>Player</th>
-    <th>Score</th>
-  </tr>
-  <tr>
-    <td>🥇 1st</td>
-    <td>PixelCat</td>
-    <td>9,900</td>
-  </tr>
+
+  <!-- Step 1: Put the 1st Place Champion row here using <tr class="champion"> -->
+  <!-- Step 2: Add 4 <td> cells: 🥇 1st | ApexDragon | <span class="badge gold">CHAMPION</span> | 15,400 -->
+
   <tr>
     <td>🥈 2nd</td>
-    <td>CyberBot</td>
-    <td>8,450</td>
+    <td>PixelCat</td>
+    <td><span class="badge silver">MASTER</span></td>
+    <td>12,850</td>
   </tr>
   <tr>
     <td>🥉 3rd</td>
-    <td>DragonBoy</td>
-    <td>7,800</td>
+    <td>CyberBot</td>
+    <td><span class="badge bronze">PRO</span></td>
+    <td>10,200</td>
   </tr>
 </table>`,
-    targetDescription: 'A clean 3-column game leaderboard grid with border lines:\n• Header Row (bold): Rank | Player | Score\n• Row 1: 🥇 1st | PixelCat | 9,900\n• Row 2: 🥈 2nd | CyberBot | 8,450\n• Row 3: 🥉 3rd | DragonBoy | 7,800',
+    targetCode: `<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #141726;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #e2e8f0;
+    font-family: sans-serif;
+  }
+  th {
+    background: #1e2438;
+    color: #38bdf8;
+    padding: 14px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  td {
+    padding: 12px 14px;
+    border-top: 1px solid #232b42;
+  }
+  .champion {
+    background: rgba(234, 179, 8, 0.18);
+    font-weight: bold;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  .gold { background: #eab308; color: #000; }
+  .silver { background: #94a3b8; color: #000; }
+  .bronze { background: #f97316; color: #fff; }
+</style>
+
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Player</th>
+    <th>Badge</th>
+    <th>Score</th>
+  </tr>
+  <tr class="champion">
+    <td>🥇 1st</td>
+    <td>ApexDragon</td>
+    <td><span class="badge gold">CHAMPION</span></td>
+    <td>15,400</td>
+  </tr>
+  <tr>
+    <td>🥈 2nd</td>
+    <td>PixelCat</td>
+    <td><span class="badge silver">MASTER</span></td>
+    <td>12,850</td>
+  </tr>
+  <tr>
+    <td>🥉 3rd</td>
+    <td>CyberBot</td>
+    <td><span class="badge bronze">PRO</span></td>
+    <td>10,200</td>
+  </tr>
+</table>`,
+    targetDescription: 'A pro esports tournament leaderboard featuring rank badges, custom theme styling, and the #1 Champion ApexDragon row.',
     anatomy: [
       {
         part: '<table>',
-        role: { en: 'Table Container', uz: 'Jadval qobig\'i' },
+        role: { en: 'Table Foundation', uz: 'Jadval poydevori' },
         explanation: {
-          en: 'Creates the outer grid structure.',
+          en: 'Creates the outer structured grid container.',
           uz: 'Tashqi jadval panjarasini yaratadi.'
         },
         effect: {
@@ -3868,14 +3957,14 @@ const LESSONS = [
         part: '<th>',
         role: { en: 'Table Header Cell', uz: 'Sarlavha katagi' },
         explanation: {
-          en: 'Short for Table Header. Bold, centered title cell for a column.',
-          uz: 'Table Header (Sarlavha katagi). Ustun uchun qalin va markazlashtirilgan nom.'
+          en: 'Short for Table Header. Creates a bold, centered label cell for column titles.',
+          uz: 'Table Header (Sarlavha katagi). Ustun nomlari uchun qalin sarlavha katagi hosil qiladi.'
         },
         effect: {
-          en: 'Bold header column title',
+          en: 'Bold column header',
           uz: 'Qalin sarlavha katagi'
         },
-        visualPreview: '<div class="mini-canvas"><strong>🏷️ Bold Centered Header</strong></div>'
+        visualPreview: '<div class="mini-canvas"><b>Header: Name | Score</b></div>'
       },
       {
         part: '<td>',
@@ -3889,28 +3978,13 @@ const LESSONS = [
           uz: 'Oddiy ma\'lumot katagi'
         },
         visualPreview: '<div class="mini-canvas">📦 Standard Data Cell Box</div>'
-      },
-      {
-        part: 'border="1"',
-        role: { en: 'Border Attribute', uz: 'Chegara atributi' },
-        explanation: {
-          en: 'Draws visible grid lines around every box in the table.',
-          uz: 'Jadvaldagi har bir katak atrofida ko\'rinadigan chiziqlar chizadi.'
-        },
-        effect: {
-          en: 'Shows visible grid lines',
-          uz: 'Kataklar orasidagi chiziqlarni ko\'rsatadi'
-        },
-        visualPreview: '<div class="mini-canvas">▦ Visible Grid Lines (border="1")</div>'
       }
     ],
     listOfTags: [
-      { code: '<table> ... </table>', name: 'Table', description: 'The outer container frame for a grid/table', exampleHtml: '<table border="1"><tr><td>Cell</td></tr></table>' },
+      { code: '<table> ... </table>', name: 'Table', description: 'The outer container frame for a grid/table', exampleHtml: '<table><tr><td>Cell</td></tr></table>' },
       { code: '<tr> ... </tr>', name: 'Table Row', description: 'Creates one horizontal line of cells across the table', exampleHtml: '<tr><td>A</td><td>B</td></tr>' },
-      { code: '<th> ... </th>', name: 'Table Header', description: 'Bold title cell at the top of a column', exampleHtml: '<th>Name</th>' },
-      { code: '<td> ... </td>', name: 'Table Data', description: 'Standard data cell box holding facts or numbers', exampleHtml: '<td>100</td>' },
-      { code: 'border="1"', name: 'Border Attribute', description: 'Draws solid grid lines around table cells', exampleHtml: 'border="1"' },
-      { code: 'cellpadding="8"', name: 'Cell Padding', description: 'Adds breathing room cushion inside each cell box', exampleHtml: 'cellpadding="8"' }
+      { code: '<th> ... </th>', name: 'Table Header', description: 'Bold title cell at the top of a column', exampleHtml: '<th>Player</th>' },
+      { code: '<td> ... </td>', name: 'Table Data', description: 'Standard data cell box holding facts or numbers', exampleHtml: '<td>15,400</td>' }
     ],
     tagShowcase: [
       { tag: '<table>', meaning: 'The whole grid' },
@@ -3921,10 +3995,13 @@ const LESSONS = [
     quickTags: ['<table>', '</table>', '<tr>', '</tr>', '<th>', '</th>', '<td>', '</td>'],
     challenge: {
       mission: {
-        en: 'Add a 3rd place row for "🥉 3rd", player "DragonBoy", and score "7,800"!',
-        uz: '"🥉 3rd", o\'yinchi "DragonBoy" va ochko "7,800" uchun 3-o\'rin qatorini qo\'shing!'
+        en: 'Crown the #1 Champion! Add a new <tr class="champion"> with 4 <td> cells: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>`, and score "15,400"!',
+        uz: '1-o\'rin Chempionini taxtga o\'tqazing! Yangi <tr class="champion"> qatori ochib, ichiga 4 ta <td> katak qo\'shing: "🥇 1st", "ApexDragon", `<span class="badge gold">CHAMPION</span>` va "15,400" ochko!'
       },
-      hint: { en: 'Create a new <tr> row before </table>, and add three <td> cells inside for the medal, player, and score.', uz: '</table> oldidan yangi <tr> qator oching va ichiga 3 ta <td> katak qo\'shing.' },
+      hint: {
+        en: 'Right below the header <tr>, write <tr class="champion"> and place the four <td> cells inside it.',
+        uz: 'Sarlavha <tr> qatoridan keyin <tr class="champion"> oching va ichiga to\'rtta <td> katak joylashtiring.'
+      },
       rules: [
         {
           type: 'hasTag',
@@ -3938,22 +4015,27 @@ const LESSONS = [
         },
         {
           type: 'custom',
-          check: (code) => /DragonBoy/i.test(code),
-          message: 'Add DragonBoy as the 3rd player in the table!'
+          check: (code) => /ApexDragon/i.test(code),
+          message: 'Add ApexDragon as the 1st place champion in the table!'
+        },
+        {
+          type: 'custom',
+          check: (code) => /CHAMPION/i.test(code),
+          message: 'Give ApexDragon the CHAMPION badge!'
         }
       ]
     },
     teacherGuide: {
-      analogy: 'A table is like a waffle or an ice cube tray. `<tr>` is one row of ice compartments. `<td>` is each individual ice pocket.',
+      analogy: 'A table is like an apartment building: <table> is the building, <tr> is each floor, <th> is the roof penthouse sign, and <td> is each apartment room.',
       discussionQuestions: [
-        'What is the difference between `<th>` (header) and `<td>` (data)?',
-        'Why do all `<td>` and `<th>` cells have to be wrapped inside a `<tr>` row?'
+        'What is the difference between <th> (header) and <td> (data)?',
+        'Why do all <td> and <th> cells have to be wrapped inside a <tr> row?'
       ],
       commonMistakes: [
-        'Putting `<td>` directly inside `<table>` without wrapping it in a `<tr>` row',
-        'Having a different number of `<td>` cells in different rows'
+        'Putting <td> directly inside <table> without wrapping it in a <tr> row',
+        'Having a different number of <td> cells in different rows'
       ],
-      funActivity: 'Draw a 2x2 grid on paper and label the rows (`<tr>`) and boxes (`<td>`) with a pencil!'
+      funActivity: 'Design a high-score leaderboard for your favorite game with player avatars and scores!'
     }
   },
 
@@ -4736,78 +4818,124 @@ const LESSONS = [
     id: 'theme-9-flexbox',
     module: 'full-powers',
     title: {
-      en: 'Theme 9: Flexbox (Snapping Items in Line)',
-      uz: '9-Mavzu: Flexbox (Elementlarni Bir Qatorga Terish)'
+      en: 'Theme 9: Flexbox (CyberBeats App Navigation Bar)',
+      uz: '9-Mavzu: Flexbox (CyberBeats Ilova Navigatsiya Paneli)'
     },
     icon: '🧩',
-    tag: 'display: flex, justify-content, gap',
+    tag: 'display: flex, justify-content, align-items',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **Flexbox** is the LEGO snap system of web layout! Without it, elements stack vertically like pancakes.',
-        uz: 'Oddiy tilda **Flexbox** — bu veb-sahifa elementlarini xuddi LEGO g\'ishtlari kabi bir tekis teruvchi tizimdir! Usiz hamma narsa ustma-ust tushib qoladi.'
+        en: 'In human language, **Flexbox** is the master layout engine of modern web apps! Without it, elements fall on top of each other like clumsy stacked blocks.',
+        uz: 'Oddiy tilda **Flexbox** — bu zamonaviy veb-ilovalarning asosiy terish dvigatelidir! Usiz elementlar xuddi qulab tushgan g\'ishtlardek bir-birining ustiga yig\'ilib qoladi.'
       },
       whatIsATag: {
-        en: 'When you whisper `display: flex;` to a parent box, all the children inside snap into a neat horizontal row like ducks in a line!',
-        uz: 'Katta qutiga `display: flex;` deb yozsangiz, uning ichidagi barcha bolalar bir tekis gorizontal qatorga tiziladi!'
+        en: '1. `display: flex;` activates the 1D horizontal snapping power.\n2. `justify-content: space-between;` pushes the logo to the left and controls to the right.\n3. `align-items: center;` centers everything vertically on the same horizon!',
+        uz: '1. `display: flex;` gorizontal tekis qator kuchini yoqadi.\n2. `justify-content: space-between;` logotipni chapga, tugmalarni esa eng o\'ng chetga suradi.\n3. `align-items: center;` barcha elementlarni vertikal bo\'yicha bir tekis o\'rtaga tekislaydi!'
       }
     },
     summary: {
-      en: 'Line up buttons, badges, and cards side-by-side with display: flex, justify-content, and gap.',
-      uz: 'Tugmalar, nishonlar va kartochkalarni display: flex, justify-content va gap yordamida yonma-yon joylashtiring.'
+      en: 'Build authentic modern app headers with display: flex, justify-content: space-between, and align-items: center.',
+      uz: 'display: flex, justify-content: space-between va align-items: center yordamida zamonaviy ilova navigatsiya panelini quring.'
     },
     story: {
-      en: 'Before flexbox, putting items side-by-side was hard. display: flex makes it instant!',
-      uz: 'Flexboxdan oldin elementlarni yonma-yon qo\'yish juda qiyin edi. display: flex buni bir zumda osonlashtiradi!'
+      en: 'The CyberBeats music streaming app navbar is collapsed into a messy vertical pile. Snap it into a sleek Spotify-style topbar using Flexbox!',
+      uz: 'CyberBeats musiqa ilovasining paneli ustma-ust tushib buzilib yotibdi. Flexbox yordamida uni haqiqiy Spotify kabi chiroyli panelga aylantiring!'
     },
     initialCode: `<style>
-  .badge-row {
-    background: #1c1e2f;
-    padding: 20px;
-    border-radius: 12px;
-    /* Add flexbox powers here! */
-  }
-  .badge {
-    background: #7c6cf7;
+  .app-navbar {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 24px;
     color: white;
-    padding: 10px 18px;
-    border-radius: 20px;
+    font-family: sans-serif;
+    /* Step 1: Turn on flexbox with display: flex; */
+    /* Step 2: Push brand to far-left and actions to far-right with justify-content: space-between; */
+    /* Step 3: Center all items vertically with align-items: center; */
+  }
+  .brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: #38bdf8;
+  }
+  .nav-links {
+    display: flex;
+    gap: 18px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .upgrade-btn {
+    background: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
     font-weight: bold;
-    text-align: center;
+    font-size: 13px;
   }
 </style>
 
-<div class="badge-row">
-  <div class="badge">⭐ Hero</div>
-  <div class="badge">⚡ Legend</div>
-  <div class="badge">🔥 Master</div>
+<div class="app-navbar">
+  <div class="brand">🎵 CyberBeats</div>
+  <div class="nav-links">
+    <span>Discover</span>
+    <span>Trending</span>
+    <span>Radio</span>
+  </div>
+  <div class="user-actions">
+    <button class="upgrade-btn">⚡ GO PRO</button>
+  </div>
 </div>`,
     targetCode: `<style>
-  .badge-row {
-    background: #1c1e2f;
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  .badge {
-    background: #7c6cf7;
+  .app-navbar {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 24px;
     color: white;
-    padding: 10px 18px;
-    border-radius: 20px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: #38bdf8;
+  }
+  .nav-links {
+    display: flex;
+    gap: 18px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .upgrade-btn {
+    background: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
     font-weight: bold;
-    text-align: center;
+    font-size: 13px;
   }
 </style>
 
-<div class="badge-row">
-  <div class="badge">⭐ Hero</div>
-  <div class="badge">⚡ Legend</div>
-  <div class="badge">🔥 Master</div>
+<div class="app-navbar">
+  <div class="brand">🎵 CyberBeats</div>
+  <div class="nav-links">
+    <span>Discover</span>
+    <span>Trending</span>
+    <span>Radio</span>
+  </div>
+  <div class="user-actions">
+    <button class="upgrade-btn">⚡ GO PRO</button>
+  </div>
 </div>`,
     targetDescription: {
-      en: 'Three hero badges side-by-side centered with neat 16px space between them.',
-      uz: 'O\'rtaga chiroyli tekislangan va orasida 16px masofa bo\'lgan 3 ta qahramon nishonlari.'
+      en: 'A sleek streaming app navigation topbar with brand on the left, nav links centered, and upgrade button on the right.',
+      uz: 'Chapda logotip, o\'rtada havolalar va o\'ngda obuna tugmasi joylashgan zamonaviy musiqiy ilova paneli.'
     },
     anatomy: [
       {
@@ -4817,73 +4945,78 @@ const LESSONS = [
         effect: { en: 'Snaps items side-by-side', uz: 'Elementlarni yonma-yon teradi' }
       },
       {
-        part: 'justify-content: center;',
-        role: { en: 'Horizontal Alignment', uz: 'Gorizontal tekislash' },
-        explanation: { en: 'Centers the group of items in the middle of the screen.', uz: 'Elementlar guruhini sahifaning qoq o\'rtasiga joylashtiradi.' },
-        effect: { en: 'Centers items horizontally', uz: 'Markazga tekislaydi' }
+        part: 'justify-content: space-between;',
+        role: { en: 'Distribute Across Width', uz: 'Kenglik bo\'yicha taqsimlash' },
+        explanation: { en: 'Pushes the first item to the start edge and the last item to the end edge with even space between.', uz: 'Birinchi elementni chap chetga, oxirgisini o\'ng chetga suradi.' },
+        effect: { en: 'Max separation across horizontal axis', uz: 'Chetlarga surib o\'rtani bo\'shatadi' }
       },
       {
-        part: 'gap: 16px;',
-        role: { en: 'Space Between', uz: 'Oraliq masofa' },
-        explanation: { en: 'Puts neat breathing room between each badge without tricky margins.', uz: 'Elementlar orasiga 16px bo\'shliq qo\'yadi.' },
-        effect: { en: 'Even spacing between children', uz: 'Elementlar orasida bo\'shliq' }
+        part: 'align-items: center;',
+        role: { en: 'Vertical Centering', uz: 'Vertikal tekislash' },
+        explanation: { en: 'Centers all children along the cross-axis so tall buttons and short text align smoothly.', uz: 'Barcha elementlarni vertikal markaz chizig\'iga tekislaydi.' },
+        effect: { en: 'Perfect vertical alignment', uz: 'Mukammal vertikal tekislanish' }
       }
     ],
     listOfTags: [
-      { code: 'display: flex;', name: { en: 'Flex Container', uz: 'Flex Idish' }, description: { en: 'Lines up all child items horizontally in one row', uz: 'Ichidagi bolalarni bir qatorga yonma-yon teradi' } },
-      { code: 'justify-content: center;', name: { en: 'Center Alignment', uz: 'Markazga tekislash' }, description: { en: 'Centers items horizontally inside the flex container', uz: 'Elementlarni gorizontal bo\'yicha o\'rtaga suradi' } },
-      { code: 'gap: 16px;', name: { en: 'Gap Spacing', uz: 'Oraliq masofa' }, description: { en: 'Adds clean space between all child items', uz: 'Bolalar orasiga bir xil masofa qo\'shadi' } }
+      { code: 'display: flex;', name: { en: 'Flex Container', uz: 'Flex Idish' }, description: { en: 'Lines up child items horizontally in one unified row', uz: 'Ichidagi bolalarni bir qatorga yonma-yon teradi' } },
+      { code: 'justify-content: space-between;', name: { en: 'Space Between', uz: 'Chetlarga surish' }, description: { en: 'Distributes items with maximum space between edges', uz: 'Elementlarni chetlarga tarqatadi' } },
+      { code: 'align-items: center;', name: { en: 'Center Alignment', uz: 'Markazga tekislash' }, description: { en: 'Vertically aligns items in the exact center line', uz: 'Elementlarni balandlik bo\'yicha markazga suradi' } }
     ],
     tagShowcase: [
       { tag: 'display: flex;', meaning: { en: 'Snap into row', uz: 'Qatorga tizish' } },
-      { tag: 'gap: 16px;', meaning: { en: 'Space between', uz: 'Oraliq masofa' } },
-      { tag: 'justify-content: center;', meaning: { en: 'Center items', uz: 'O\'rtaga joylash' } }
+      { tag: 'justify-content: space-between;', meaning: { en: 'Push to opposite edges', uz: 'Chetlarga surish' } },
+      { tag: 'align-items: center;', meaning: { en: 'Center vertically', uz: 'Vertikal markazlash' } }
     ],
-    quickTags: ['display: flex;', 'gap: 16px;', 'justify-content: center;'],
+    quickTags: ['display: flex;', 'justify-content: space-between;', 'align-items: center;'],
     challenge: {
       mission: {
-        en: 'Add display: flex; and gap: 16px; to .badge-row to arrange the badges side-by-side!',
-        uz: '.badge-row ga display: flex; va gap: 16px; qo\'shib nishonlarni yonma-yon qilib tering!'
+        en: 'Transform the messy navbar into a pro app header! Add display: flex;, justify-content: space-between;, and align-items: center; to .app-navbar!',
+        uz: 'Buzilgan panelni pro ilova sarlavhasiga aylantiring! .app-navbar ga display: flex;, justify-content: space-between; va align-items: center; qo\'shing!'
       },
       hint: {
-        en: 'Turn on flexbox with display: flex; and space out the items with gap: 16px;',
-        uz: '.badge-row { ... } ichiga display: flex; va gap: 16px; yozing.'
+        en: 'Inside .app-navbar { ... }, add display: flex;, justify-content: space-between;, and align-items: center;',
+        uz: '.app-navbar { ... } ichiga display: flex;, justify-content: space-between; va align-items: center; yozing.'
       },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'display',
           valuePattern: /flex/i,
-          message: 'Add display: flex; to .badge-row!'
+          message: 'Add display: flex; to .app-navbar!'
         },
         {
           type: 'hasCssProperty',
-          property: 'gap',
-          valuePattern: /16px/i,
-          message: 'Add gap: 16px; to .badge-row!'
+          property: 'justify-content',
+          valuePattern: /space-between/i,
+          message: 'Add justify-content: space-between; to .app-navbar!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'align-items',
+          valuePattern: /center/i,
+          message: 'Add align-items: center; to .app-navbar!'
         }
       ]
     },
     teacherGuide: {
       analogy: {
-        en: 'A row of ducklings following their mom in a neat straight line.',
-        uz: 'Ona o\'rdak ortidan bitta tekis qatorda yurgan o\'rdakchalar.'
+        en: 'Flexbox is like an expandable clothesline with automatic clothes pegs holding everything in a neat horizontal line.',
+        uz: 'Flexbox — bu hamma narsani bir tekis ushlab turadigan elastik kiyim arqoniga o\'xshaydi.'
       },
       discussionQuestions: [
-        { en: 'What happened to the badges before flex? (They stacked vertically!)', uz: 'Flexdan oldin nishonlar qanday edi? (Ustma-ust tushgan edi!)' }
+        'Why do navigation bars almost universally use display: flex with justify-content: space-between?',
+        'How does align-items: center prevent buttons and logos from looking crooked?'
       ],
       commonMistakes: [
-        { en: 'Adding display: flex to the badge instead of badge-row', uz: 'display: flex ni badge-row ga emas, badge ga yozish' }
+        'Writing display: flex on the children instead of the parent container',
+        'Confusing justify-content (main axis) with align-items (cross axis)'
       ],
-      funActivity: {
-        en: 'Try justify-content: space-between; to push them to opposite walls!',
-        uz: 'justify-content: space-between; qilib ko\'ring va nishonlar chetlarga surilishini tomosha qiling!'
-      }
+      funActivity: 'Stretch your arms wide: left hand is the Logo, right hand is the Login button. That is justify-content: space-between!'
     }
   },
 
   // ==========================================
-  // THEME 10: Buttons & Hover Effects
+  // THEME 10: Buttons
   // ==========================================
   {
     id: 'theme-10-buttons',
@@ -6446,165 +6579,243 @@ Jetpack Shoes`,
     id: 'theme-21-grid',
     module: 'full-powers',
     title: {
-      en: 'Theme 21: CSS Grid (2D Game Inventory)',
-      uz: '21-Mavzu: CSS Grid (2D O\'yin Inventari)'
+      en: 'Theme 21: CSS Grid (Game Store 2D Showcase Layout)',
+      uz: '21-Mavzu: CSS Grid (O\'yinlar Do\'koni 2D Vitrinasi)'
     },
     icon: '⊞',
-    tag: 'display: grid;, grid-template-columns',
+    tag: 'display: grid, grid-template-columns, gap, grid-column',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **CSS Grid** is the master 2D blueprint of web design! While Flexbox lines things up in one direction, Grid controls both rows AND columns at the same time.',
-        uz: 'Oddiy inson tilida, **CSS Grid** — bu veb-dizaynning 2D bosh chizmasidir! Flexbox bir yo\'nalishda ishlasa, Grid bir vaqtning o\'zida qatorlar va ustunlarni boshqaradi.'
+        en: 'In human language, **CSS Grid** is the master 2D blueprint of web design! While Flexbox lines things up in one direction, Grid controls both rows AND columns at the same time to build real website layouts.',
+        uz: 'Oddiy inson tilida, **CSS Grid** — bu veb-dizaynning 2D bosh chizmasidir! Flexbox bir yo\'nalishda ishlasa, Grid bir vaqtning o\'zida ham qatorlar, ham ustunlarni boshqarib haqiqiy sayt tuzilishini yaratadi.'
       },
       whatIsATag: {
-        en: `1. \`display: grid;\` turns on the 2D grid matrix.\\n2. \`grid-template-columns: repeat(3, 1fr);\` splits the container into 3 equal columns.\\n3. \`gap: 14px;\` creates even space between all tiles.`,
-        uz: `1. \`display: grid;\` — 2D panjara rejimini yoqadi.\\n2. \`grid-template-columns: repeat(3, 1fr);\` — konteynerni 3 ta teng ustunga bo'ladi.\\n3. \`gap: 14px;\` — barcha kataklar orasida bir tekis masofa qoldiradi.`
+        en: `1. \`display: grid;\` activates the 2D layout matrix.\n2. \`grid-template-columns: repeat(3, 1fr);\` cuts the canvas into 3 equal responsive columns.\n3. \`gap: 16px;\` leaves clean breathing room between all cards.\n4. \`grid-column: span 2;\` lets a featured hero card expand across 2 columns!`,
+        uz: `1. \`display: grid;\` — 2D panjara rejimini yoqadi.\n2. \`grid-template-columns: repeat(3, 1fr);\` — konteynerni 3 ta teng ustunga bo'ladi.\n3. \`gap: 16px;\` — kartochkalar orasida oraliq qoldiradi.\n4. \`grid-column: span 2;\` — asosiy kartaga 2 ta ustunni egallash imkonini beradi!`
       }
     },
     summary: {
-      en: 'Organize cards, photo galleries, and RPG game inventories into flawless 2D grids.',
-      uz: 'Kartochkalar, foto galereyalar va o\'yin inventarlarini mukammal 2D panjaralarga tering.'
+      en: 'Construct pro game store layouts with display: grid, 3-column repeat, gap, and multi-column span.',
+      uz: 'display: grid, 3 ustunli repeat, gap va ustunlarni birlashtirish orqali haqiqiy o\'yin do\'koni vitrinasini quring.'
     },
     story: {
-      en: 'The hero needs an inventory bag with 3 columns to organize weapons, potions, and armor.',
-      uz: 'Qahramonga qurollar, dorilar va zirhlarni tartiblash uchun 3 ustunli inventar sumkasi kerak.'
+      en: 'The Cyber Gaming Store needs a hero showcase! The top game must be featured wide across 2 columns while other games line up beside it.',
+      uz: 'Kiber O\'yinlar Do\'koniga chiroyli vitrina kerak! Eng zo\'r o\'yin 2 ustunni egallab turishi, qolganlari esa yonma-yon tizilishi lozim.'
     },
     initialCode: `<style>
-  .inventory {
-    /* Step 1: Turn this bag into a 2D matrix using display: grid; */
-    /* Step 2: Shape it into 3 equal columns using grid-template-columns: repeat(3, 1fr); */
-    /* Step 3: Add gap: 14px; so weapons don't bump into each other! */
-    padding: 20px;
-    background: #0b0d13;
-    border-radius: 16px;
-    border: 2px solid #3b82f6;
+  .store-grid {
+    /* Step 1: Turn on 2D matrix with display: grid; */
+    /* Step 2: Create 3 equal columns using grid-template-columns: repeat(3, 1fr); */
+    /* Step 3: Add gap: 16px; */
+    font-family: sans-serif;
   }
-  .slot {
-    background: #1e2433;
-    border: 2px solid #5b5fc7;
-    border-radius: 10px;
+  .card {
+    background: #141b2d;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
     padding: 16px;
-    text-align: center;
     color: white;
-    font-size: 20px;
+  }
+  .card h3 {
+    margin: 8px 0 4px 0;
+    color: #38bdf8;
+  }
+  .card p {
+    margin: 0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+  .featured {
+    /* Step 4: Make this hero game card span across 2 columns using grid-column: span 2; */
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    border-color: #6366f1;
+  }
+  .badge {
+    background: #ec4899;
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
 </style>
 
-<div class="inventory">
-  <div class="slot">🗡️ Laser Blade</div>
-  <div class="slot">🛡️ Energy Shield</div>
-  <div class="slot">🧪 Health Potion</div>
-  <div class="slot">💎 Cyber Diamond</div>
-  <div class="slot">🏹 Plasma Bow</div>
-  <div class="slot">👑 Golden Crown</div>
+<div class="store-grid">
+  <div class="card featured">
+    <span class="badge">🔥 FEATURED GAME</span>
+    <h3>Cyber Odyssey 2099</h3>
+    <p>Explore infinite neon galaxies with your squad.</p>
+  </div>
+  <div class="card">
+    <h3>🗡️ Shadow Blade</h3>
+    <p>Action RPG</p>
+  </div>
+  <div class="card">
+    <h3>🏎️ Turbo Horizon</h3>
+    <p>Cyber Racing</p>
+  </div>
+  <div class="card">
+    <h3>🧪 Potion Lab</h3>
+    <p>Puzzle Alchemy</p>
+  </div>
+  <div class="card">
+    <h3>🛡️ Fortress Defense</h3>
+    <p>Strategy Tower</p>
+  </div>
 </div>`,
     targetCode: `<style>
-  .inventory {
+  .store-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    padding: 20px;
-    background: #0b0d13;
-    border-radius: 16px;
-    border: 2px solid #3b82f6;
+    gap: 16px;
+    font-family: sans-serif;
   }
-  .slot {
-    background: #1e2433;
-    border: 2px solid #5b5fc7;
-    border-radius: 10px;
+  .card {
+    background: #141b2d;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
     padding: 16px;
-    text-align: center;
     color: white;
-    font-size: 20px;
+  }
+  .card h3 {
+    margin: 8px 0 4px 0;
+    color: #38bdf8;
+  }
+  .card p {
+    margin: 0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+  .featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    border-color: #6366f1;
+  }
+  .badge {
+    background: #ec4899;
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
 </style>
 
-<div class="inventory">
-  <div class="slot">🗡️ Laser Blade</div>
-  <div class="slot">🛡️ Energy Shield</div>
-  <div class="slot">🧪 Health Potion</div>
-  <div class="slot">💎 Cyber Diamond</div>
-  <div class="slot">🏹 Plasma Bow</div>
-  <div class="slot">👑 Golden Crown</div>
+<div class="store-grid">
+  <div class="card featured">
+    <span class="badge">🔥 FEATURED GAME</span>
+    <h3>Cyber Odyssey 2099</h3>
+    <p>Explore infinite neon galaxies with your squad.</p>
+  </div>
+  <div class="card">
+    <h3>🗡️ Shadow Blade</h3>
+    <p>Action RPG</p>
+  </div>
+  <div class="card">
+    <h3>🏎️ Turbo Horizon</h3>
+    <p>Cyber Racing</p>
+  </div>
+  <div class="card">
+    <h3>🧪 Potion Lab</h3>
+    <p>Puzzle Alchemy</p>
+  </div>
+  <div class="card">
+    <h3>🛡️ Fortress Defense</h3>
+    <p>Strategy Tower</p>
+  </div>
 </div>`,
     targetDescription: {
-      en: 'A 2D game inventory matrix aligned into 3 neat columns and 2 rows.',
-      uz: '3 ta tekis ustun va 2 ta qatorga terilgan 2D o\'yin inventar panjarasi.'
+      en: 'A 2D game store showcase with a wide featured hero banner spanning 2 columns and neat responsive game tiles.',
+      uz: '2 ta ustunni egallagan keng banner va yonma-yon chiroyli o\'yin kartochkalaridan iborat 2D o\'yin do\'koni vitrinasi.'
     },
     anatomy: [
       {
         part: 'display: grid;',
         role: { en: 'Grid Mode', uz: 'Grid rejimi' },
-        explanation: { en: 'Activates the 2D grid layout system on the container.', uz: 'Konteynerda 2D panjara tartib tizimini faollashtiradi.' },
-        effect: { en: 'Initializes 2D grid container', uz: '2D panjara konteynerini boshlaydi' },
-        visualPreview: '<div class="mini-canvas">⊞ 2D Matrix Grid Active</div>'
+        explanation: { en: 'Transforms the container into a two-dimensional grid system.', uz: 'Konteynerni ikki o\'lchovli panjara tizimiga aylantiradi.' },
+        effect: { en: 'Enables 2D grid rules', uz: '2D panjara qoidalarini yoqadi' }
       },
       {
         part: 'grid-template-columns: repeat(3, 1fr);',
-        role: { en: 'Column Template', uz: 'Ustun andozasi' },
-        explanation: { en: 'Divides the space into 3 equal fractional (1fr) columns.', uz: 'Maydonni 3 ta teng nisbatli (1fr) ustunga bo\'lib beradi.' },
-        effect: { en: 'Splits grid into 3 equal columns', uz: 'Panjarani 3 ta teng ustunga ajratadi' },
-        visualPreview: '<div class="mini-canvas">| Col 1 | Col 2 | Col 3 |</div>'
+        role: { en: '3 Equal Columns', uz: '3 ta teng ustun' },
+        explanation: { en: 'Defines three equal fractional columns that adjust automatically.', uz: 'Avtomatik moslashuvchi uchta teng ustun hosil qiladi.' },
+        effect: { en: 'Splits width into 3 columns', uz: 'Enini 3 ta ustunga bo\'ladi' }
+      },
+      {
+        part: 'gap: 16px;',
+        role: { en: 'Grid Gutter', uz: 'Kataklar oralig\'i' },
+        explanation: { en: 'Leaves consistent spacing between rows and columns simultaneously.', uz: 'Bir vaqtning o\'zida qator va ustunlar orasida bo\'shliq qoldiradi.' },
+        effect: { en: 'Clean gutters between tiles', uz: 'Kataklar orasidagi toza masofa' }
+      },
+      {
+        part: 'grid-column: span 2;',
+        role: { en: 'Column Span', uz: 'Ustunlarni birlashtirish' },
+        explanation: { en: 'Allows a featured card to stretch across 2 columns.', uz: 'Asosiy kartaga 2 ta ustun bo\'ylab cho\'zilish imkonini beradi.' },
+        effect: { en: 'Wide hero banner expansion', uz: 'Keng banner ko\'rinishi' }
       }
     ],
     listOfTags: [
-      { code: 'display: grid;', name: { en: 'Display Grid', uz: 'Display Grid' }, description: { en: 'Turns an element into a 2D grid parent', uz: 'Elementni 2D panjara konteyneriga aylantiradi' }, exampleHtml: 'display: grid;' },
-      { code: 'grid-template-columns: repeat(3, 1fr);', name: { en: 'Columns Template', uz: 'Ustunlar andozasi' }, description: { en: 'Specifies the number and size of columns', uz: 'Ustunlar soni va hajmini belgilaydi' }, exampleHtml: 'grid-template-columns: repeat(3, 1fr);' },
-      { code: 'gap: 14px;', name: { en: 'Grid Gap', uz: 'Kataklar oralig\'i' }, description: { en: 'Sets even spacing between all grid rows and columns', uz: 'Barcha qator va ustunlar orasida bir xil oraliq qoldiradi' }, exampleHtml: 'gap: 14px;' }
+      { code: 'display: grid;', name: { en: 'Grid Activation', uz: 'Grid Faollashtirish' }, description: { en: 'Turns on two-dimensional grid layout on a parent container', uz: 'Ota elementda ikki o\'lchovli panjara rejimini yoqadi' } },
+      { code: 'grid-template-columns: repeat(3, 1fr);', name: { en: 'Column Template', uz: 'Ustunlar Qolipi' }, description: { en: 'Defines 3 responsive columns with equal 1fr fraction sizes', uz: '3 ta teng 1fr o\'lchamli moslashuvchan ustun yaratadi' } },
+      { code: 'gap: 16px;', name: { en: 'Grid Gap', uz: 'Panjara Oralig\'i' }, description: { en: 'Even space between all rows and columns', uz: 'Barcha qator va ustunlar orasidagi bir xil masofa' } },
+      { code: 'grid-column: span 2;', name: { en: 'Column Spanning', uz: 'Ustun Cho\'zish' }, description: { en: 'Causes an element to stretch across multiple columns', uz: 'Elementni bir nechta ustun bo\'ylab cho\'zadi' } }
     ],
     tagShowcase: [
-      { tag: 'display: grid;', meaning: { en: '2D grid world', uz: '2D panjara dunyosi' } },
-      { tag: 'repeat(3, 1fr)', meaning: { en: '3 equal columns', uz: '3 ta teng ustun' } }
+      { tag: 'display: grid;', meaning: { en: 'Enable 2D Grid', uz: '2D panjarani yoqish' } },
+      { tag: 'repeat(3, 1fr)', meaning: { en: '3 Equal Columns', uz: '3 ta teng ustun' } },
+      { tag: 'grid-column: span 2;', meaning: { en: 'Span 2 Columns', uz: '2 ta ustunni egallash' } }
     ],
-    quickTags: ['display: grid;', 'grid-template-columns: repeat(3, 1fr);', 'gap: 14px;'],
+    quickTags: ['display: grid;', 'grid-template-columns: repeat(3, 1fr);', 'gap: 16px;', 'grid-column: span 2;'],
     challenge: {
       mission: {
-        en: 'Organize the hero inventory into a 2D matrix by adding display: grid;, grid-template-columns: repeat(3, 1fr);, and gap: 14px; to .inventory!',
-        uz: '.inventory ga display: grid;, grid-template-columns: repeat(3, 1fr); va gap: 14px; qo\'shib, qahramon qurol-yarog\'larini 2D panjara matrixiga aylantiring!'
+        en: 'Build the Game Store Layout! Add display: grid;, grid-template-columns: repeat(3, 1fr);, and gap: 16px; to .store-grid, then expand .featured using grid-column: span 2;!',
+        uz: 'O\'yinlar Do\'koni Vitrinasini quring! .store-grid ga display: grid;, grid-template-columns: repeat(3, 1fr); va gap: 16px; bering, so\'ng .featured kartasiga grid-column: span 2; yozing!'
       },
       hint: {
-        en: 'Inside .inventory in the <style> block, write: display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;',
-        uz: '<style> dagi .inventory ichiga: display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; deb yozing.'
+        en: 'Add display: grid;, grid-template-columns: repeat(3, 1fr);, and gap: 16px; in .store-grid, and grid-column: span 2; inside .featured.',
+        uz: '.store-grid ichiga display: grid;, grid-template-columns: repeat(3, 1fr);, gap: 16px; yozing va .featured ichiga grid-column: span 2; qo\'shing.'
       },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'display',
           valuePattern: /grid/i,
-          message: 'Set display: grid; on .inventory!'
+          message: 'Add display: grid; to .store-grid!'
         },
         {
           type: 'hasCssProperty',
           property: 'grid-template-columns',
-          valuePattern: /repeat\s*\(\s*3\s*,\s*1fr\s*\)|1fr\s+1fr\s+1fr/i,
-          message: 'Set grid-template-columns: repeat(3, 1fr);!'
+          valuePattern: 'repeat(3, 1fr)',
+          message: 'Add grid-template-columns: repeat(3, 1fr); to .store-grid!'
         },
         {
           type: 'hasCssProperty',
           property: 'gap',
-          message: 'Add gap spacing between slots!'
+          valuePattern: /16px/i,
+          message: 'Add gap: 16px; to .store-grid!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'grid-column',
+          valuePattern: 'span 2',
+          message: 'Add grid-column: span 2; to .featured!'
         }
       ]
     },
     teacherGuide: {
       analogy: {
-        en: 'CSS Grid is like an egg carton or Minecraft hotbar: every item snaps into its designated slot automatically!',
-        uz: 'CSS Grid tuxum qutisiga o\'xshaydi: har bir qurol avtomatik o\'z katagiga joylashadi!'
+        en: 'A chess board or comic book layout where panels can take up 1 square or span across 2 squares.',
+        uz: 'Shaxmat taxtasi yoki komiks sahifasi kabi: ba\'zi rasmlar 1 ta katakni, ba\'zilari esa birdaniga 2 ta katakni egallaydi.'
       },
       discussionQuestions: [
-        { en: 'What does 1fr mean? (1 Fraction of the available width!)', uz: '1fr nimani anglatadi? (Mavjud bo\'sh joyning 1 ulushi!)' }
+        'When would you use CSS Grid instead of Flexbox?',
+        'What does 1fr mean, and why is it better than hardcoded pixels?'
       ],
       commonMistakes: [
-        { en: 'Writing repeat(3, 100px) instead of 1fr (1fr is responsive, px is fixed!)', uz: '1fr o\'rniga px yozib qo\'yish' }
+        'Confusing grid-column with grid-row',
+        'Forgetting display: grid on the parent container before setting columns'
       ],
-      funActivity: {
-        en: 'Change repeat(3, 1fr) to repeat(2, 1fr) to see a 2-column layout!',
-        uz: 'repeat(3, 1fr) ni repeat(2, 1fr) ga almashtirib ko\'ring!'
-      }
+      funActivity: 'Look at YouTube or Netflix homepages: point out how featured banners span multiple column tracks!'
     }
   },
 
@@ -6615,32 +6826,32 @@ Jetpack Shoes`,
     id: 'theme-22-position',
     module: 'full-powers',
     title: {
-      en: 'Theme 22: CSS Positioning (Corner Badges & Overlays)',
-      uz: '22-Mavzu: Joylashuv (Burchakdagi Bildirishnoma Nishonlari)'
+      en: 'Theme 22: CSS Positioning (The 5 Positions & Overlays)',
+      uz: '22-Mavzu: CSS Joylashuvi (5 Xil Position Turlari va Qatlamlar)'
     },
     icon: '📍',
-    tag: 'position: relative;, position: absolute;',
+    tag: 'static, relative, absolute, fixed, sticky',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, **position: absolute** lets you lift an element off the page and pin it to exact GPS coordinates (top, right, bottom, left) inside a **position: relative** parent!',
-        uz: 'Oddiy inson tilida, **position: absolute** elementni matn oqimidan chiqarib, **position: relative** ota element burchaklariga aniq GPS koordinatalari (top, right) bilan mixlab qo\'yish imkonini beradi!'
+        en: 'In human language, **CSS Position** is the GPS coordinate system of the web! CSS gives you **5 distinct positions**, each with its own superpower:\n\n• **static**: The natural default flow. Elements stack normally; top, left, and z-index are ignored.\n• **relative**: Remains in normal flow, but unlocks top/left offsets and acts as the **GPS fence (anchor)** for child elements.\n• **absolute**: Lifted completely out of document flow. Flies to exact top/right coordinates inside its nearest relative parent!\n• **fixed**: Ripped from the page and glued directly to the **screen viewport**. Stays frozen in place even when you scroll!\n• **sticky**: A magical hybrid! Behaves like relative until you scroll past it, then locks to the screen edge like fixed!',
+        uz: 'Oddiy inson tilida, **CSS Position** — bu vebning GPS koordinata tizimidir! CSS sizga **5 ta alohida joylashuv turini** beradi, ularning har biri o\'z super-kuchiga ega:\n\n• **static**: Standart oqim. Elementlar odatdagidek joylashadi; top, left va z-index ishlamaydi.\n• **relative**: O\'z o\'rnida qoladi, lekin siljishlarni yoqadi va ichki bolalar uchun **GPS boshlang\'ich nuqtasi (devor)** bo\'ladi.\n• **absolute**: Oqimdan butunlay chiqadi. Eng yaqin relative ota element burchaklariga aniq top/right bilan mixlanadi!\n• **fixed**: Sahifadan ajralib, to\'g\'ridan-to\'g\'ri **ekran oynasiga** mixlanadi. Sahifani pastga aylantirsangiz ham joyidan qimirlamaydi!\n• **sticky**: Ajoyib gibrid! Odatda o\'z o\'rnida turadi, lekin sahifa surilganda ekran chetiga fixed kabi yopishib qoladi!'
       },
       whatIsATag: {
-        en: `1. \`position: relative;\` on the parent marks the boundary fence.\\n2. \`position: absolute;\` on the badge lets it fly freely inside that fence.\\n3. \`top: -10px; right: -10px;\` pins it right over the top-right corner!`,
-        uz: `1. Ota elementdagi \`position: relative;\` chegara devorini belgilaydi.\\n2. Boladagi \`position: absolute;\` unga shu devor ichida erkin uchish imkonini beradi.\\n3. \`top: -10px; right: -10px;\` uni to'g'ridan-to'g'ri yuqori o'ng burchakka mixlaydi!`
+        en: `1. \`position: static;\` = Default reading order.\n2. \`position: relative;\` = Parent anchor fence.\n3. \`position: absolute;\` = Corner GPS coordinates (top, right).\n4. \`position: fixed;\` = Glued to screen window.\n5. \`position: sticky;\` = Scrolls then sticks to top!`,
+        uz: `1. \`position: static;\` = Odatiy tartib.\n2. \`position: relative;\` = Ota chegara devori.\n3. \`position: absolute;\` = Burchak GPS koordinatasi.\n4. \`position: fixed;\` = Ekranga mixlangan.\n5. \`position: sticky;\` = Suriladi va tepaga yopishadi!`
       }
     },
     summary: {
-      en: 'Pin badges, icons, and buttons to exact corners using position: relative and absolute.',
-      uz: 'position: relative va absolute yordamida nishonlar va tugmalarni aniq burchaklarga mixlang.'
+      en: 'Master all 5 CSS positions (static, relative, absolute, fixed, sticky) and build professional corner badges and cards.',
+      uz: 'Barcha 5 ta CSS position turlarini (static, relative, absolute, fixed, sticky) o\'rganing va professional burchak nishonlarini yarating.'
     },
     story: {
-      en: 'Stick a red notification badge floating on the top-right corner of the Cyber Armor card.',
-      uz: 'Cyber Armor kartasining yuqori o\'ng burchagiga qizil nishonni mixlab qo\'ying.'
+      en: 'The Cyber Defense unit needs a status card: place the pulsing red notification badge on the card and lock it directly to the top-right corner!',
+      uz: 'Kiber Mudofaa tizimiga kartochka kerak: qizil nishonni kartochkaga joylashtiring va uni aniq yuqori o\'ng burchakka mixlab qo\'ying!'
     },
     initialCode: `<style>
   .card {
-    position: relative;
+    /* Step 2: Make this card the GPS anchor boundary using position: relative; */
     background: #141722;
     border: 1px solid #1e2433;
     border-radius: 12px;
@@ -6649,9 +6860,10 @@ Jetpack Shoes`,
     width: 220px;
     margin: 40px auto;
     text-align: center;
+    font-family: sans-serif;
   }
   .notification-badge {
-    /* Step 2: Anchor this badge to the top-right corner using position: absolute; top: -10px; right: -10px; */
+    /* Step 3: Anchor this badge to the top-right corner using position: absolute; top: -10px; right: -10px; */
     background: #ef4444;
     color: white;
     font-weight: bold;
@@ -6663,7 +6875,7 @@ Jetpack Shoes`,
 </style>
 
 <div class="card">
-  <!-- Step 1: Put the badge element here: <span class="notification-badge">🔥 3</span> -->
+  <!-- Step 1: Put the badge element here: <span class="notification-badge">🔥 LIVE</span> -->
 
   <h3>Cyber Armor</h3>
   <p>Shield level 100%</p>
@@ -6679,6 +6891,7 @@ Jetpack Shoes`,
     width: 220px;
     margin: 40px auto;
     text-align: center;
+    font-family: sans-serif;
   }
   .notification-badge {
     position: absolute;
@@ -6695,7 +6908,7 @@ Jetpack Shoes`,
 </style>
 
 <div class="card">
-  <span class="notification-badge">🔥 3</span>
+  <span class="notification-badge">🔥 LIVE</span>
   <h3>Cyber Armor</h3>
   <p>Shield level 100%</p>
 </div>`,
@@ -6705,6 +6918,12 @@ Jetpack Shoes`,
     },
     anatomy: [
       {
+        part: 'position: static;',
+        role: { en: 'Default Flow', uz: 'Odatiy Oqim' },
+        explanation: { en: 'The natural browser default. Top and left coordinates are ignored.', uz: 'Brauzerning odatiy holati. Top va left koordinatalari ishlamaydi.' },
+        effect: { en: 'Normal document layout flow', uz: 'Matn kabi ketma-ket joylashadi' }
+      },
+      {
         part: 'position: relative;',
         role: { en: 'Boundary Fence', uz: 'Chegara devori' },
         explanation: { en: 'Tells children elements: "Your GPS coordinates are measured relative to ME!"', uz: 'Bola elementlarga: "Sizning koordinatalaringiz MENGA nisbatan o\'lchanadi!" deydi.' },
@@ -6713,76 +6932,99 @@ Jetpack Shoes`,
       },
       {
         part: 'position: absolute;',
-        role: { en: 'Free Floater', uz: 'Erkin suzuvchi' },
-        explanation: { en: 'Unlocks the element from text flow so it can float to top/right coordinates.', uz: 'Elementni matn qatoridan chiqarib, top va right koordinatalariga uchiradi.' },
-        effect: { en: 'Floats to absolute coordinate', uz: 'Aniq koordinataga uchadi' },
-        visualPreview: '<div class="mini-canvas">📍 Absolute Position Active</div>'
+        role: { en: 'Corner Anchor', uz: 'Burchakka mixlash' },
+        explanation: { en: 'Lifts the element off the page and flies it to exact top/right coordinates of its relative parent.', uz: 'Elementni matndan chiqarib, ota blokning aniq burchagiga uchirib olib boradi.' },
+        effect: { en: 'Pins badge precisely over corner', uz: 'Nishonni burchakka aniq mixlaydi' },
+        visualPreview: '<div class="mini-canvas">📌 Free-floating GPS Pin (absolute)</div>'
+      },
+      {
+        part: 'position: fixed;',
+        role: { en: 'Screen Lock', uz: 'Ekranga Mixlash' },
+        explanation: { en: 'Glues the element directly to the browser screen. Does not move even when scrolling.', uz: 'Elementni brauzer ekraniga mixlaydi. Sahifa aylantirilganda ham qimirlamaydi.' },
+        effect: { en: 'Frozen viewport position', uz: 'Ekran burchagida qotib turadi' }
+      },
+      {
+        part: 'position: sticky;',
+        role: { en: 'Scroll & Lock', uz: 'Surilish va Qotish' },
+        explanation: { en: 'Scrolls naturally with content, then sticks to top edge when reaching the threshold.', uz: 'Matn bilan birga suriladi, lekin chegara kelganda tepaga yopishib qoladi.' },
+        effect: { en: 'Sticky navigation bars', uz: 'Tepaga yopishuvchi menyu paneli' }
       }
     ],
     listOfTags: [
-      { code: 'position: relative;', name: { en: 'Relative Anchor', uz: 'Relative Langar' }, description: { en: 'Anchor parent without moving it', uz: 'Ota elementni siljitmasdan langar qiladi' }, exampleHtml: 'position: relative;' },
-      { code: 'position: absolute;', name: { en: 'Absolute Positioning', uz: 'Absolute Joylashuv' }, description: { en: 'Positions element relative to closest positioned ancestor', uz: 'Elementni langar ota elementiga nisbatan mixlaydi' }, exampleHtml: 'position: absolute;' }
+      { code: 'position: static;', name: { en: 'Static Position', uz: 'Statik Joylashuv' }, description: { en: 'Default document flow; top/left properties are ignored', uz: 'Odatiy oqim; top va left buyruqlari ishlamaydi' } },
+      { code: 'position: relative;', name: { en: 'Relative Anchor', uz: 'Nisbiy Boshlang\'ich' }, description: { en: 'Normal flow, creates coordinate anchor frame for absolute children', uz: 'O\'z o\'rnida turadi va absolute bolalari uchun GPS ramka bo\'ladi' } },
+      { code: 'position: absolute;', name: { en: 'Absolute Pin', uz: 'Mutlaq Joylashuv' }, description: { en: 'Flies freely to top/right coordinates inside nearest relative parent', uz: 'Eng yaqin relative ota blok ichida erkin koordinatada turadi' } },
+      { code: 'position: fixed;', name: { en: 'Fixed Viewport', uz: 'Ekranga Qadalgan' }, description: { en: 'Locked to the screen window regardless of page scrolling', uz: 'Sahifa surilishidan qat\'i nazar ekran oynasiga mixlanadi' } },
+      { code: 'position: sticky;', name: { en: 'Sticky Header', uz: 'Yopishqoq Joylashuv' }, description: { en: 'Scrolls naturally, then sticks to screen edge at threshold', uz: 'Oddiy suriladi va ma\'lum nuqtaga yetganda ekranga yopishadi' } }
     ],
     tagShowcase: [
-      { tag: 'position: relative;', meaning: { en: 'Parent anchor', uz: 'Ota langar' } },
-      { tag: 'position: absolute;', meaning: { en: 'Floating pin', uz: 'Mixlangan nishon' } }
+      { tag: 'static', meaning: { en: 'Default natural flow', uz: 'Odatiy oqim' } },
+      { tag: 'relative', meaning: { en: 'Parent anchor fence', uz: 'Ota chegara devori' } },
+      { tag: 'absolute', meaning: { en: 'Exact corner pin', uz: 'Aniq burchak koordinatasi' } },
+      { tag: 'fixed', meaning: { en: 'Glued to screen window', uz: 'Ekranga mixlangan' } },
+      { tag: 'sticky', meaning: { en: 'Scrolls then sticks', uz: 'Suriladi va yopishadi' } }
     ],
-    quickTags: ['position: absolute;', 'top: -10px;', 'right: -10px;'],
+    quickTags: ['position: relative;', 'position: absolute;', 'top: -10px;', 'right: -10px;', 'position: fixed;', 'position: sticky;'],
     challenge: {
       mission: {
-        en: 'Put the badge <span class="notification-badge">🔥 3</span> inside the card, and anchor it to the top-right corner using position: absolute; top: -10px; right: -10px;!',
-        uz: 'Karta ichiga <span class="notification-badge">🔥 3</span> nishonini qo\'ying va position: absolute; top: -10px; right: -10px; bilan yuqori o\'ng burchakka mixlang!'
+        en: 'Pin the badge to the card! Step 1: Put <span class="notification-badge">🔥 LIVE</span> inside the card. Step 2: Add position: relative; to .card. Step 3: Add position: absolute; top: -10px; right: -10px; to .notification-badge!',
+        uz: 'Nishonni kartochkaga mixlang! 1-Qadam: Karta ichiga <span class="notification-badge">🔥 LIVE</span> qo\'ying. 2-Qadam: .card ga position: relative; bering. 3-Qadam: .notification-badge ga position: absolute; top: -10px; right: -10px; yozing!'
       },
       hint: {
-        en: 'Add <span class="notification-badge">🔥 3</span> in .card, then in .notification-badge write position: absolute; top: -10px; right: -10px;',
-        uz: '.card ichiga <span class="notification-badge">🔥 3</span> qo\'ying va .notification-badge ichiga position: absolute; top: -10px; right: -10px; yozing.'
+        en: 'Place <span class="notification-badge">🔥 LIVE</span> inside .card. Give .card position: relative; and give .notification-badge position: absolute; top: -10px; right: -10px;',
+        uz: '.card ichiga <span class="notification-badge">🔥 LIVE</span> yozing. .card ga position: relative;, .notification-badge ga esa position: absolute; top: -10px; right: -10px; bering.'
       },
       rules: [
         {
-          type: 'custom',
-          check: (code) => /<span[^>]*class=["'][^"']*notification-badge[^"']*["'][^>]*>.*3.*<\/span>/i.test(code),
-          message: 'Put <span class="notification-badge">🔥 3</span> inside the card!'
+          type: 'hasTag',
+          tag: 'span',
+          message: 'Place the <span class="notification-badge"> inside the card!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'position',
+          valuePattern: /relative/i,
+          message: 'Add position: relative; to .card to make it the anchor boundary!'
         },
         {
           type: 'hasCssProperty',
           property: 'position',
           valuePattern: /absolute/i,
-          message: 'Set position: absolute on .notification-badge!'
+          message: 'Add position: absolute; to .notification-badge!'
         },
         {
           type: 'hasCssProperty',
           property: 'top',
           valuePattern: /-10px/i,
-          message: 'Set top: -10px!'
+          message: 'Add top: -10px; to .notification-badge!'
         },
         {
           type: 'hasCssProperty',
           property: 'right',
           valuePattern: /-10px/i,
-          message: 'Set right: -10px!'
+          message: 'Add right: -10px; to .notification-badge!'
         }
       ]
     },
     teacherGuide: {
       analogy: {
-        en: 'Pushpins on a corkboard: the corkboard is relative, and each pushpin is absolute!',
-        uz: 'Doskadagi tugmalar: doska bu relative, tugma esa absolute!'
+        en: 'A bulletin board: the wooden frame is "relative". The sticky memo note you pushpin onto the corner is "absolute". The wall clock you stare at regardless of where you walk is "fixed".',
+        uz: 'E\'lonlar taxtasi: yog\'och ramka bu "relative". Burchakka tugmacha bilan qadalgan qog\'oz nishon esa "absolute". Devordagi har doim bir joyda turuvchi soat esa "fixed".'
       },
       discussionQuestions: [
-        { en: 'What happens if you remove position: relative from the parent? (The badge flies to the corner of the entire screen!)', uz: 'Otadagi relative olib tashlansa nima bo\'ladi? (Nishon butun ekran burchagiga uchib ketadi!)' }
+        'What disaster happens to position: absolute if you forget position: relative on the parent container?',
+        'How do modern websites use position: sticky for top navigation bars?'
       ],
       commonMistakes: [
-        { en: 'Forgetting position: relative on the container', uz: 'Ota elementda position: relative ni unutish' }
+        'Forgetting position: relative on the parent, causing the badge to fly to the very top corner of the entire screen',
+        'Confusing position: fixed (locks to viewport) with position: absolute (locks to relative parent)'
       ],
-      funActivity: {
-        en: 'Try bottom: -10px to see the badge snap to the bottom corner!',
-        uz: 'bottom: -10px qilib pastki burchakka tushishini ko\'ring!'
-      }
+      funActivity: 'Simulate sticky: hold your hand at eye level. As you squat down, keep your hand pinned to eye level!'
     }
   },
 
   // ==========================================
-  // THEME 23: Smooth Transitions
+  // THEME 23: Transitions
   // ==========================================
   {
     id: 'theme-23-transitions',
