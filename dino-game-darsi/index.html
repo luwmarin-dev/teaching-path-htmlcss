@@ -481,17 +481,69 @@
       color: #93c5fd;
     }
 
-    /* Kod oynasi (Prettier uslubidagi toza format) */
+    /* ==========================================================================
+       OCHIQ KOD BLOKI VA SINTAKSIS KO'RINISHI (PRETTIER FORMAT)
+       ========================================================================== */
+    .code-box-container {
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: #090d16;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .code-box-header {
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .code-box-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .code-dot.red { background: #ef4444; }
+    .code-dot.yellow { background: #f59e0b; }
+    .code-dot.green { background: #10b981; }
+
+    .code-lang-label {
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Consolas', monospace;
+    }
+
+    .code-header-badge {
+      font-size: 11px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
     .code-editor-box {
       background: #090d16;
-      border: 1px solid #1f2937;
-      border-radius: 10px;
       padding: 18px 20px;
       font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
       font-size: 13.5px;
       line-height: 1.65;
       color: #e2e8f0;
-      position: relative;
       white-space: pre-wrap;
       tab-size: 2;
       overflow-x: auto;
@@ -505,23 +557,25 @@
     .code-num { color: #c084fc; }
 
     /* ==========================================================================
-       INTERAKTIV SAVOL-JAVOB VA KODNI OCHISH (QUIZ GATE)
+       MANTIQIY KALIT (KOD MANTIG'INI TAHLIL QILISH VA SAVOL-JAVOB)
        ========================================================================== */
     .quiz-gate-card {
       background: #0d1322;
       border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 16px;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
 
     .quiz-gate-card.unlocked {
       border-color: #10b981;
       background: rgba(16, 185, 129, 0.05);
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.12);
     }
 
     .quiz-header {
@@ -533,18 +587,18 @@
     }
 
     .quiz-badge {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #38bdf8;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .quiz-status {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 6px;
       background: #1e293b;
       color: #94a3b8;
@@ -557,8 +611,16 @@
       border: 1px solid #10b981;
     }
 
+    .quiz-lead-text {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
     .quiz-question {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 600;
       color: #f1f5f9;
       line-height: 1.5;
@@ -567,19 +629,19 @@
     .quiz-options-grid {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .quiz-opt-btn {
       background: #111827;
       border: 1px solid #1f2937;
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 13px 18px;
       color: #cbd5e1;
       font-size: 13.5px;
       cursor: pointer;
       text-align: left;
-      line-height: 1.45;
+      line-height: 1.5;
       transition: all 0.15s ease;
       display: flex;
       align-items: flex-start;
@@ -590,7 +652,7 @@
       background: #1e293b;
       border-color: #38bdf8;
       color: white;
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
 
     .quiz-opt-btn.correct {
@@ -608,9 +670,9 @@
 
     .quiz-feedback-box {
       border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 13px;
-      line-height: 1.5;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      line-height: 1.55;
       display: none;
       animation: fadeIn 0.2s ease;
     }
@@ -629,48 +691,13 @@
       display: block;
     }
 
-    /* Kod oynasi bloklanishi (Lock overlay) */
-    .code-box-wrapper {
-      position: relative;
-      margin-bottom: 16px;
-    }
-
-    .code-lock-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(9, 13, 22, 0.92);
-      backdrop-filter: blur(5px);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: #94a3b8;
-      font-size: 13.5px;
-      text-align: center;
-      padding: 24px;
-      z-index: 5;
-      transition: all 0.3s ease;
-    }
-
-    .code-lock-icon {
-      font-size: 32px;
-    }
-
-    .code-lock-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .code-actions-bar {
+    .quiz-actions-bar {
       display: flex;
       justify-content: flex-end;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 6px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .btn-copy-code {
@@ -679,7 +706,7 @@
       color: #94a3b8;
       font-size: 12px;
       font-weight: 700;
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
       display: flex;
@@ -694,23 +721,24 @@
     }
 
     .btn-next-step {
-      background: linear-gradient(135deg, #0284c7, #0369a1);
+      background: #38bdf8;
       border: none;
-      color: white;
-      font-size: 12px;
+      color: #0b0f19;
+      font-size: 12.5px;
       font-weight: 800;
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 6px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
 
     .btn-next-step:hover {
-      transform: translateX(3px);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+      background: #7dd3fc;
+      transform: translateY(-1px);
     }
 
     /* Parametrlar slayderlari */
@@ -900,11 +928,36 @@
         💡 <b>Hayotiy O'xshatish:</b> Avval "Dinozavr" degan tushunchaning o'zini miyaga kiritamiz. U hozircha hech narsa qila olmaydi, lekin uning nomi bor!
       </div>
 
-      <!-- INTERAKTIV SAVOL-JAVOB VA KODNI OCHISH (QUIZ GATE) -->
+      <!-- 1. DOIMO OCHIQ KOD BLOKI (NAMUNA VA SINTAKSIS KO'RSATILADI) -->
+      <div class="code-box-container">
+        <div class="code-box-header">
+          <div class="code-box-title">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-lang-label">JavaScript (OOP Asosi)</span>
+          </div>
+          <div class="code-header-badge">
+            <span>📖 Ochiq Ko'rgazmali Kod va Sintaksis</span>
+          </div>
+        </div>
+
+        <div class="code-editor-box" id="display-step-code">
+          <!-- JS kodi 100% ochiq, Prettier formatida va rangli sintaksis bilan ko'rinadi -->
+        </div>
+      </div>
+
+      <!-- 2. MANTIQIY KALIT (KOD MANTIG'INI TAHLIL QILISH VA SAVOL-JAVOB) -->
       <div class="quiz-gate-card" id="step-quiz-gate">
         <div class="quiz-header">
-          <div class="quiz-badge">🧠 Tushunishni Tekshirish (Savol-Javob)</div>
-          <span class="quiz-status" id="quiz-status-badge">🔒 Kod qulflangan</span>
+          <div class="quiz-badge">
+            <span>🧠 Mantiqiy Kalit (Kod Tahlili)</span>
+          </div>
+          <span class="quiz-status" id="quiz-status-badge">⏳ Mantiqni tahlil qiling</span>
+        </div>
+
+        <div class="quiz-lead-text">
+          Yuqoridagi ochiq kod sintaksisi va tuzilishini o'rganib chiqdingiz. Endi ushbu kodning ichki ishlash mantig'i bo'yicha savolga to'g'ri javob bering va keyingi qadamni oching:
         </div>
         
         <div class="quiz-question" id="quiz-question-text">
@@ -918,27 +971,13 @@
         <div class="quiz-feedback-box" id="quiz-feedback-box">
           <!-- Tushuntirish: nega to'g'ri yoki noto'g'ri -->
         </div>
-      </div>
 
-      <!-- KOD BLOKI (LOCK BILAN) -->
-      <div class="code-box-wrapper">
-        <div class="code-lock-overlay" id="code-lock-overlay">
-          <div class="code-lock-icon">🔒</div>
-          <strong style="color: #f8fafc; font-size: 15px;">Ushbu Qadam Kodi Qulflangan!</strong>
-          <p style="max-width: 460px; margin: 0; line-height: 1.5;">Kodni ko'rish va nusxa olish uchun avval yuqoridagi savolga to'g'ri javob bering. O'ylab ko'ring va to'g'ri variantni bosing!</p>
-        </div>
-
-        <div class="code-editor-box" id="display-step-code">
-          <!-- JS kodi dinamik ravishda to'ldiriladi -->
-        </div>
-
-        <div class="code-actions-bar" id="code-actions-bar" style="display: none;">
+        <div class="quiz-actions-bar" id="code-actions-bar" style="display: none;">
           <button class="btn-copy-code" id="btn-copy-step-code" onclick="copyCurrentStepCode()">
-            <span>📋 Nusxa olish</span>
+            <span>📋 Koddan Nusxa Olish</span>
           </button>
-          <button class="btn-next-step" id="btn-next-step-unlocked" onclick="goToNextStep()" style="display: none;">
-            <span>Keyingi Qadamga O'tish</span>
-            <span>➔</span>
+          <button class="btn-next-step" id="btn-next-step-unlocked" onclick="goToNextStep()">
+            <span>Keyingi Qadamga O'tish ➔</span>
           </button>
         </div>
       </div>
@@ -985,25 +1024,25 @@
       1: {
         tag: "1-QADAM",
         title: "Bo'sh Class E'lon Qilish (Skelet)",
-        desc: "O'quvchiga eng avval hech qanday murakkabliksiz, faqat sinf nomini ochish o'rgatiladi. Ichida na konstruktor, na funksiya, na metod bor. Faqat sinfning qobig'i (skeleti) ochiladi.",
+        desc: "O'quvchiga eng avval hech qanday murakkabliksiz, faqat sinf nomini ochish o'rgatiladi. Ichida na konstruktor, na funksiya, na metod bor. Faqat sinfning qobig'i (skeleti) ochiladi va undan ilk obyekt olinadi.",
         analogy: "💡 Hayotiy O'xshatish: Loyihaning poydevorini qo'yish. Hozircha bo'sh quti ochdik va unga 'Dino' deb nom berdik.",
         quiz: {
-          question: "Nima uchun biz eng boshida 'class Dino {}' ichiga hech narsa yozmasdan, uni bo'sh qoldirdik?",
+          question: "Yuqoridagi ochiq kodda 'class Dino {}' sinfi e'lon qilindi va undan 'const dino = new Dino()' deb obyekt olindi. Agar biz 'new Dino()' deb yozmasdan, faqat 'class Dino {}' ning o'zini qoldirsak, o'yinda dinozavr paydo bo'ladimi?",
           options: [
             {
-              text: "A) Chunki avval loyihaning bo'sh poydevorini (qobig'ini) ochish kerak. Murakkab kodni bosqichma-bosqich kiritish xatolarning oldini oladi.",
+              text: "A) Yo'q! 'class' bu shunchaki qog'ozdagi chizma (qolip). O'yinda harakatlanishi uchun undan 'new' orqali albatta jonli nusxa (obyekt) yasash shart.",
               correct: true,
-              feedback: "🎉 Barakalla! Aynan shunday: har qanday katta dastur eng sodda skeletdan boshlanadi. Quti bo'sh bo'lsa ham, kompyuter endi 'Dino' degan sinf mavjudligini biladi!"
+              feedback: "🎉 Barakalla! Aynan to'g'ri! 'class' bu loyiha chizmasi, 'new Dino()' esa shu chizma asosida yasalgan haqiqiy jonli dinozavrdir!"
             },
             {
-              text: "B) Chunki JavaScriptda class ichiga kod yozish taqiqlangan.",
+              text: "B) Ha, 'class' deb yozganimiz zahoti kompyuter o'zi avtomatik dinozavrni yugurtirib qo'yadi.",
               correct: false,
-              feedback: "❌ Noto'g'ri: JavaScriptda class ichiga xususiyatlar (properties), konstruktor va metodlar bemalol yoziladi! Buni keyingi qadamda ko'rasiz."
+              feedback: "❌ Noto'g'ri: Class faqat qolip. Masalan, pechenye qolipi pechenyening o'zi emas. Xamirga bosib pechenye olish uchun 'new' operatori kerak!"
             },
             {
-              text: "C) Kompyuter qolgan barcha kodlarni o'zi avtomatik yozib to'ldirishi uchun.",
+              text: "C) Ha, lekin dinozavrning rangi oq bo'ladi.",
               correct: false,
-              feedback: "❌ Noto'g'ri: Kompyuter o'zidan-o'zi kod yozmaydi! Biz har bir qadamda o'zimiz unga aniq nima qilish kerakligini buyuramiz."
+              feedback: "❌ Noto'g'ri: Rangi emas, umuman hech qanday obyekt xotirada yaratilmaydi."
             }
           ]
         },
@@ -1024,22 +1063,22 @@ console.<span class="code-func">log</span>(dino);`
         desc: "O'yin yaratishda avval boshidanoq murakkab rasm chizilmaydi! Barcha professional o'yinlarda avval personaj oddiy to'rtburchak (hitbox / karobka) sifatida yaratiladi. Konstruktor orqali eni, bo'yi va boshlang'ich koordinatalari beriladi.",
         analogy: "💡 O'yin Dasturchilari Siri: GTA yoki Mario o'yinlarida ham qahramonning tagida ko'rinmas to'rtburchak 'karobka' yuradi. Biz ham shunday qilyapmiz!",
         quiz: {
-          question: "GTA, Mario kabi professional o'yinlarda nima uchun personaj avval rasm emas, oddiy to'rtburchak (hitbox) qilib yaratiladi?",
+          question: "Yuqoridagi ochiq kodda konstruktor ichida 'this.y = 0' deb yer sathidagi boshlang'ich balandlik berildi. Agar o'quvchi boshlanishidayoq 'this.y = 120' deb o'zgartirsa, o'yin boshlanganda dinozavr qayerda turadi?",
           options: [
             {
-              text: "A) Chunki o'yin fizikasi, o'lchamlari va to'siqlarga tegishini hisoblash to'rtburchakda kompyuter uchun juda yengil va aniq bo'ladi.",
+              text: "A) Havoda (yerdan 120px balandlikda osilib turadi). Chunki y o'qi yerdan vertikal balandlikni hisoblaydi.",
               correct: true,
-              feedback: "🎉 Aynan shunday! To'rtburchakning faqat 4 ta koordinatasi (x, y, width, height) bo'ladi. Kompyuter to'qnashuvni bir zumda hisoblaydi. Rasm esa keyin kiygiziladi!"
+              feedback: "🎉 Aynan to'g'ri! 'y' koordinatasi yerdan balandlikni bildiradi. 'this.y = 120' qilinganda dinozavr boshidanoq havoda paydo bo'ladi."
             },
             {
-              text: "B) Chunki o'yin rassomlari rasm chizishni bilishmaydi.",
+              text: "B) Yerning tagida (ekrandan pastda ko'rinmay ketadi).",
               correct: false,
-              feedback: "❌ Noto'g'ri: Rassomlar minglab chiroyli rasm chiza oladi. Lekin dasturchilar avval o'yin fizika mexanikasini oddiy karobkada xatosiz sinab olishadi."
+              feedback: "❌ Noto'g'ri: Bizning koordinatalar tizimimizda y=0 yer sathidir. Musbat son esa yer sathidan yuqoriga ko'taradi."
             },
             {
-              text: "C) Yashil to'rtburchak o'yinchilarning ko'zini quvontirishi uchun.",
+              text: "C) Dinozavrning sakrash tezligi 2 baravar oshadi.",
               correct: false,
-              feedback: "❌ Noto'g'ri: Yashil rang shunchaki biz ko'rishimiz uchun berilgan. Asosiy maqsad — personajning aniq o'lcham chegarasini (hitbox) belgilashdir."
+              feedback: "❌ Noto'g'ri: Bu parametr faqat boshlang'ich o'rnashish nuqtasini belgilaydi, sakrash tezligiga mutlaqo ta'sir qilmaydi."
             }
           ]
         },
@@ -1428,7 +1467,6 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
       const qTextEl = document.getElementById('quiz-question-text');
       const optContainer = document.getElementById('quiz-options-container');
       const fbBox = document.getElementById('quiz-feedback-box');
-      const lockOverlay = document.getElementById('code-lock-overlay');
       const actionsBar = document.getElementById('code-actions-bar');
       const nextBtn = document.getElementById('btn-next-step-unlocked');
 
@@ -1439,17 +1477,20 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
 
       if (isUnlocked) {
         statusEl.className = 'quiz-status unlocked';
-        statusEl.textContent = '✅ Savol Yechildi • Kod Ochiq';
+        statusEl.textContent = '✅ Mantiq O\'zlashtirildi • Keyingi Qadam Ochiq';
         gateCard.className = 'quiz-gate-card unlocked';
-        lockOverlay.classList.add('hidden');
         actionsBar.style.display = 'flex';
-        if (stepNum < 5) nextBtn.style.display = 'flex';
-        else nextBtn.style.display = 'none';
+        if (stepNum < 5) {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>Keyingi Qadamga O'tish (${stepNum + 1}-qadam) ➔</span>`;
+        } else {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>🎉 Barcha Qadamlar O'zlashtirildi!</span>`;
+        }
       } else {
         statusEl.className = 'quiz-status';
-        statusEl.textContent = '🔒 Kod Qulflangan • Javob bering';
+        statusEl.textContent = '⏳ Mantiqni tahlil qiling';
         gateCard.className = 'quiz-gate-card';
-        lockOverlay.classList.remove('hidden');
         actionsBar.style.display = 'none';
       }
 
@@ -1464,13 +1505,14 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
         btn.onclick = () => handleQuizAnswer(stepNum, idx);
         optContainer.appendChild(btn);
       });
+
+      updateStepButtonsUI();
     }
 
     function handleQuizAnswer(stepNum, optIdx) {
       const data = STEPS_DATA[stepNum];
       const opt = data.quiz.options[optIdx];
       const fbBox = document.getElementById('quiz-feedback-box');
-      const lockOverlay = document.getElementById('code-lock-overlay');
       const actionsBar = document.getElementById('code-actions-bar');
       const nextBtn = document.getElementById('btn-next-step-unlocked');
       const statusEl = document.getElementById('quiz-status-badge');
@@ -1484,18 +1526,23 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
           if (i === optIdx) b.classList.add('correct');
         });
         statusEl.className = 'quiz-status unlocked';
-        statusEl.textContent = '✅ To\'g\'ri Javob • Kod Ochildi!';
+        statusEl.textContent = '🎉 Barakalla! To\'g\'ri Javob';
         gateCard.className = 'quiz-gate-card unlocked';
 
         fbBox.className = 'quiz-feedback-box correct';
         fbBox.innerHTML = opt.feedback;
         fbBox.style.display = 'block';
 
-        lockOverlay.classList.add('hidden');
         actionsBar.style.display = 'flex';
-        if (stepNum < 5) nextBtn.style.display = 'flex';
-        else nextBtn.style.display = 'none';
+        if (stepNum < 5) {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>Keyingi Qadamga O'tish (${stepNum + 1}-qadam) ➔</span>`;
+        } else {
+          nextBtn.style.display = 'flex';
+          nextBtn.innerHTML = `<span>🎉 Barcha Qadamlar O'zlashtirildi!</span>`;
+        }
 
+        updateStepButtonsUI();
         playJumpSound();
       } else {
         buttons.forEach((b, i) => {
@@ -1506,10 +1553,22 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
         fbBox.innerHTML = opt.feedback;
         fbBox.style.display = 'block';
 
-        lockOverlay.classList.remove('hidden');
         actionsBar.style.display = 'none';
         playHitSound();
       }
+    }
+
+    function updateStepButtonsUI() {
+      document.querySelectorAll('.step-btn').forEach((btn, idx) => {
+        const stepNum = idx + 1;
+        if (unlockedSteps[stepNum]) {
+          btn.classList.add('completed');
+          const numEl = btn.querySelector('.step-num');
+          if (numEl && !numEl.textContent.includes('✓')) {
+            numEl.textContent = `${stepNum}-QADAM ✓`;
+          }
+        }
+      });
     }
 
     function copyCurrentStepCode() {
@@ -1528,6 +1587,8 @@ window.<span class="code-func">addEventListener</span>(<span class="code-prop">'
       if (currentStepNum < 5) {
         selectStep(currentStepNum + 1);
         window.scrollTo({ top: document.querySelector('.code-explanation-card').offsetTop - 30, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
