@@ -31,13 +31,31 @@ let consoleLogs = [];
 // DOM Elements Cache
 const elements = {};
 
+export function translateCodeCommentsToUz(codeStr) {
+  if (!codeStr || typeof codeStr !== 'string') return codeStr;
+  return codeStr
+    .replace(/\/\* Step (\d+):/gi, '/* $1-Qadam:')
+    .replace(/\/\/ Step (\d+):/gi, '// $1-Qadam:')
+    .replace(/\/\* In JavaScript, /gi, '/* JavaScript da, ')
+    .replace(/\/\/ Call the function /gi, '// Funksiyani chaqiring ')
+    .replace(/\/\/ Define the class /gi, '// Klassni e\'lon qiling ')
+    .replace(/\/\/ Declare the variable /gi, '// O\'zgaruvchini e\'lon qiling ');
+}
+
 export function localize(val, lang = 'en') {
   if (val === null || val === undefined) return '';
-  if (typeof val === 'string') return val;
-  if (typeof val === 'object') {
-    return val[lang] || val.en || Object.values(val)[0] || '';
+  if (typeof val === 'object' && !Array.isArray(val)) {
+    const res = val[lang] || val.en || Object.values(val)[0] || '';
+    if (lang === 'uz' && typeof res === 'string') {
+      return translateCodeCommentsToUz(res);
+    }
+    return res;
   }
-  return String(val);
+  const str = String(val);
+  if (lang === 'uz') {
+    return translateCodeCommentsToUz(str);
+  }
+  return str;
 }
 
 export function escapeHtml(str) {
@@ -112,8 +130,10 @@ function attachGlobalListeners() {
     if (lesson) {
       const prevStarter = localize(lesson.initialCode, prevLang);
       const newStarter = localize(lesson.initialCode, lang);
-      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+      if (!currentCode || currentCode.trim() === prevStarter.trim() || currentCode.includes('Step ') || currentCode.includes('Qadam:')) {
         currentCode = newStarter;
+      } else if (lang === 'uz') {
+        currentCode = translateCodeCommentsToUz(currentCode);
       }
     }
 

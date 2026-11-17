@@ -133,11 +133,70 @@ function createStepfulLab(container, def, isUz) {
     updateCodeAndStage();
   }
 
-  function updateCodeAndStage() {
+  function syncControlClasses() {
+    if (!controlsMount) return;
+    controlsMount.querySelectorAll('.btn-pill, .btn-sm').forEach(btn => {
+      // 1. data-* attributes
+      if (btn.hasAttribute('data-val')) {
+        const val = btn.getAttribute('data-val');
+        if (customState.jc !== undefined) btn.classList.toggle('active', customState.jc === val);
+        else if (customState.align !== undefined) btn.classList.toggle('active', customState.align === val);
+        else if (customState.dir !== undefined) btn.classList.toggle('active', customState.dir === val);
+      }
+      if (btn.hasAttribute('data-cols')) btn.classList.toggle('active', customState.cols === parseInt(btn.getAttribute('data-cols'), 10));
+      if (btn.hasAttribute('data-n')) btn.classList.toggle('active', customState.cols === parseInt(btn.getAttribute('data-n'), 10));
+      if (btn.hasAttribute('data-color')) btn.classList.toggle('active', customState.color === btn.getAttribute('data-color'));
+      if (btn.hasAttribute('data-font')) btn.classList.toggle('active', customState.font === btn.getAttribute('data-font'));
+      if (btn.hasAttribute('data-fx')) btn.classList.toggle('active', customState.effect === btn.getAttribute('data-fx'));
+      if (btn.hasAttribute('data-mode')) btn.classList.toggle('active', customState.overflowType === btn.getAttribute('data-mode'));
+      if (btn.hasAttribute('data-status')) btn.classList.toggle('active', customState.badgeStatus === btn.getAttribute('data-status'));
+      if (btn.hasAttribute('data-type')) btn.classList.toggle('active', customState.alertType === btn.getAttribute('data-type'));
+      if (btn.hasAttribute('data-tab')) btn.classList.toggle('active', customState.activeTab === btn.getAttribute('data-tab'));
+
+      // 2. ID-based mappings (Theme 8 Transform, Theme 9 Flexbox, Theme 11 Links, Theme 12 Lists, Theme 23 Transitions, Theme 26 Gradients)
+      if (btn.id === 't-d1') btn.classList.toggle('active', customState.target === '1');
+      if (btn.id === 't-d2') btn.classList.toggle('active', customState.target === '2');
+      if (btn.id === 't-d3') btn.classList.toggle('active', customState.target === '3');
+      if (btn.id === 't-da') btn.classList.toggle('active', customState.target === 'all');
+
+      if (btn.id === 'fl-s') btn.classList.toggle('active', customState.jc === 'flex-start');
+      if (btn.id === 'fl-c') btn.classList.toggle('active', customState.jc === 'center');
+      if (btn.id === 'fl-sb') btn.classList.toggle('active', customState.jc === 'space-between');
+      if (btn.id === 'fl-sa') btn.classList.toggle('active', customState.jc === 'space-around');
+
+      if (btn.id === 'l-b') btn.classList.toggle('active', customState.target === '_blank');
+      if (btn.id === 'l-s') btn.classList.toggle('active', customState.target === '_self');
+
+      if (btn.id === 'lst-u') btn.classList.toggle('active', customState.type === 'ul');
+      if (btn.id === 'lst-o') btn.classList.toggle('active', customState.type === 'ol');
+
+      if (btn.id === 'g-c2') btn.classList.toggle('active', customState.cols === 2);
+      if (btn.id === 'g-c3') btn.classList.toggle('active', customState.cols === 3);
+      if (btn.id === 'g-c4') btn.classList.toggle('active', customState.cols === 4);
+
+      if (btn.id === 'tr-0') btn.classList.toggle('active', customState.dur === 0);
+      if (btn.id === 'tr-3') btn.classList.toggle('active', customState.dur === 3);
+      if (btn.id === 'tr-15') btn.classList.toggle('active', customState.dur === 15);
+
+      if (btn.id === 'btn-linear') btn.classList.toggle('active', customState.type === 'linear');
+      if (btn.id === 'btn-radial') btn.classList.toggle('active', customState.type === 'radial');
+
+      if (btn.id === 'i-t') btn.classList.toggle('active', customState.type === 'text');
+      if (btn.id === 'i-c') btn.classList.toggle('active', customState.type === 'color');
+      if (btn.id === 'i-cb') btn.classList.toggle('active', customState.type === 'checkbox');
+      if (btn.id === 'i-r') btn.classList.toggle('active', customState.type === 'range');
+    });
+  }
+
+  function updateCodeAndStage(patch) {
+    if (patch && typeof patch === 'object') {
+      Object.assign(customState, patch);
+    }
     const step = def.steps[currentStep];
     const codeStr = typeof step.code === 'function' ? step.code(customState, isUz) : step.code;
     codeEl.textContent = codeStr;
     step.renderStage(stageEl, customState, isUz);
+    syncControlClasses();
   }
 
   // Slider input listener (scrubbing)
@@ -803,10 +862,10 @@ function renderTransformLab(container, lesson, isUz) {
             <div class="slider-row"><label>scale:</label><input type="range" id="t-sc" min="5" max="20" value="${Math.round(s.sc * 10)}"><span class="slider-val" id="t-scv">${s.sc}x</span></div>
             <button class="btn-pill" id="t-reset" style="margin-top: 6px;">🔄 Reset Position</button>
           `;
-          mount.querySelector('#t-d1').onclick = () => { s.target = '1'; update(); };
-          mount.querySelector('#t-d2').onclick = () => { s.target = '2'; update(); };
-          mount.querySelector('#t-d3').onclick = () => { s.target = '3'; update(); };
-          mount.querySelector('#t-da').onclick = () => { s.target = 'all'; update(); };
+          mount.querySelector('#t-d1').onclick = () => { s.target = '1'; update({ target: '1' }); };
+          mount.querySelector('#t-d2').onclick = () => { s.target = '2'; update({ target: '2' }); };
+          mount.querySelector('#t-d3').onclick = () => { s.target = '3'; update({ target: '3' }); };
+          mount.querySelector('#t-da').onclick = () => { s.target = 'all'; update({ target: 'all' }); };
           mount.querySelector('#t-tx').oninput = (e) => { s.tx = e.target.value; mount.querySelector('#t-txv').textContent = s.tx + 'px'; update(); };
           mount.querySelector('#t-ty').oninput = (e) => { s.ty = e.target.value; mount.querySelector('#t-tyv').textContent = s.ty + 'px'; update(); };
           mount.querySelector('#t-r').oninput = (e) => { s.rot = e.target.value; mount.querySelector('#t-rv').textContent = s.rot + '°'; update(); };
@@ -887,10 +946,10 @@ function renderFlexboxTopicLab(container, lesson, isUz) {
             </div>
             <div class="slider-row"><label>gap:</label><input type="range" id="fl-g" min="4" max="40" value="${s.gap}"><span class="slider-val" id="fl-gv">${s.gap}px</span></div>
           `;
-          mount.querySelector('#fl-s').onclick = () => { s.jc = 'flex-start'; update(); };
-          mount.querySelector('#fl-c').onclick = () => { s.jc = 'center'; update(); };
-          mount.querySelector('#fl-sb').onclick = () => { s.jc = 'space-between'; update(); };
-          mount.querySelector('#fl-sa').onclick = () => { s.jc = 'space-around'; update(); };
+          mount.querySelector('#fl-s').onclick = () => { s.jc = 'flex-start'; update({ jc: 'flex-start' }); };
+          mount.querySelector('#fl-c').onclick = () => { s.jc = 'center'; update({ jc: 'center' }); };
+          mount.querySelector('#fl-sb').onclick = () => { s.jc = 'space-between'; update({ jc: 'space-between' }); };
+          mount.querySelector('#fl-sa').onclick = () => { s.jc = 'space-around'; update({ jc: 'space-around' }); };
           mount.querySelector('#fl-g').oninput = (e) => { s.gap = e.target.value; mount.querySelector('#fl-gv').textContent = s.gap + 'px'; update(); };
         },
         renderStage(stage, s) {
@@ -1042,8 +1101,8 @@ function renderLinksLab(container, lesson, isUz) {
               <button class="btn-pill ${s.target === '_self' ? 'active' : ''}" id="l-s">_self (Same Page 🔄)</button>
             </div>
           `;
-          mount.querySelector('#l-b').onclick = () => { s.target = '_blank'; update(); };
-          mount.querySelector('#l-s').onclick = () => { s.target = '_self'; update(); };
+          mount.querySelector('#l-b').onclick = () => { s.target = '_blank'; update({ target: '_blank' }); };
+          mount.querySelector('#l-s').onclick = () => { s.target = '_self'; update({ target: '_self' }); };
         },
         renderStage(stage, s) {
           stage.innerHTML = `
@@ -1116,8 +1175,8 @@ function renderListsLab(container, lesson, isUz) {
               <button class="btn-pill ${s.type === 'ol' ? 'active' : ''}" id="lst-o">&lt;ol&gt; (Numbered 1,2,3)</button>
             </div>
           `;
-          mount.querySelector('#lst-u').onclick = () => { s.type = 'ul'; update(); };
-          mount.querySelector('#lst-o').onclick = () => { s.type = 'ol'; update(); };
+          mount.querySelector('#lst-u').onclick = () => { s.type = 'ul'; update({ type: 'ul' }); };
+          mount.querySelector('#lst-o').onclick = () => { s.type = 'ol'; update({ type: 'ol' }); };
         },
         renderStage(stage, s) {
           stage.innerHTML = s.type === 'ul'
@@ -1469,10 +1528,10 @@ function renderInputsLab(container, lesson, isUz) {
               <button class="btn-pill ${s.type === 'range' ? 'active' : ''}" id="i-r">type="range"</button>
             </div>
           `;
-          mount.querySelector('#i-t').onclick = () => { s.type = 'text'; update(); };
-          mount.querySelector('#i-c').onclick = () => { s.type = 'color'; update(); };
-          mount.querySelector('#i-cb').onclick = () => { s.type = 'checkbox'; update(); };
-          mount.querySelector('#i-r').onclick = () => { s.type = 'range'; update(); };
+          mount.querySelector('#i-t').onclick = () => { s.type = 'text'; update({ type: 'text' }); };
+          mount.querySelector('#i-c').onclick = () => { s.type = 'color'; update({ type: 'color' }); };
+          mount.querySelector('#i-cb').onclick = () => { s.type = 'checkbox'; update({ type: 'checkbox' }); };
+          mount.querySelector('#i-r').onclick = () => { s.type = 'range'; update({ type: 'range' }); };
         },
         renderStage(stage, s) {
           let inner = '';
@@ -1754,9 +1813,9 @@ function renderGridTopicLab(container, lesson, isUz) {
             </div>
             <div class="slider-row"><label>gap:</label><input type="range" id="gr-g" min="4" max="24" value="${s.gap}"><span class="slider-val" id="gr-gv">${s.gap}px</span></div>
           `;
-          mount.querySelector('#g-c2').onclick = () => { s.cols = 2; update(); };
-          mount.querySelector('#g-c3').onclick = () => { s.cols = 3; update(); };
-          mount.querySelector('#g-c4').onclick = () => { s.cols = 4; update(); };
+          mount.querySelector('#g-c2').onclick = () => { s.cols = 2; update({ cols: 2 }); };
+          mount.querySelector('#g-c3').onclick = () => { s.cols = 3; update({ cols: 3 }); };
+          mount.querySelector('#g-c4').onclick = () => { s.cols = 4; update({ cols: 4 }); };
           mount.querySelector('#gr-g').oninput = (e) => { s.gap = e.target.value; mount.querySelector('#gr-gv').textContent = s.gap + 'px'; update(); };
         },
         renderStage(stage, s) {
@@ -1908,9 +1967,9 @@ function renderTransitionsLab(container, lesson, isUz) {
               <button class="btn-pill ${s.dur === 15 ? 'active' : ''}" id="tr-15">1.5s (Slow-mo)</button>
             </div>
           `;
-          mount.querySelector('#tr-0').onclick = () => { s.dur = 0; update(); };
-          mount.querySelector('#tr-3').onclick = () => { s.dur = 3; update(); };
-          mount.querySelector('#tr-15').onclick = () => { s.dur = 15; update(); };
+          mount.querySelector('#tr-0').onclick = () => { s.dur = 0; update({ dur: 0 }); };
+          mount.querySelector('#tr-3').onclick = () => { s.dur = 3; update({ dur: 3 }); };
+          mount.querySelector('#tr-15').onclick = () => { s.dur = 15; update({ dur: 15 }); };
         },
         renderStage(stage, s) {
           const d = (s.dur / 10).toFixed(1);

@@ -36,16 +36,60 @@ let currentCode = '';
 // DOM Elements Cache
 const elements = {};
 
+export function translateCodeCommentsToUz(codeStr) {
+  if (!codeStr || typeof codeStr !== 'string') return codeStr;
+  return codeStr
+    .replace(/\/\* Step (\d+):/gi, '/* $1-Qadam:')
+    .replace(/<!-- Step (\d+):/gi, '<!-- $1-Qadam:')
+    .replace(/\/\/ Step (\d+):/gi, '// $1-Qadam:')
+    .replace(/\/\* In CSS, a dot \. means class \*\//gi, '/* CSS da nuqta . klass belgisidir */')
+    .replace(/<!-- Give this span class="badge" -->/gi, '<!-- Ushbu span ga class="badge" bering -->')
+    .replace(/\/\* The text is crammed against the walls! \*\//gi, '/* Matn devorlarga siqilib qolgan! */')
+    .replace(/<!-- The treasure items are loose on the floor! -->/gi, '<!-- Xazina buyumlari polga sochilib yotibdi! -->')
+    .replace(/<!-- Step 1: Wrap the treasure below inside a <div> container -->/gi, '<!-- 1-Qadam: Xazinani <div> ichiga oling -->')
+    .replace(/<!-- Step 2: Shape the box with style="border: 4px solid #2dd4bf; padding: 16px;" -->/gi, '<!-- 2-Qadam: Qutiga style="border: 4px solid #2dd4bf; padding: 16px;" bering -->')
+    .replace(/<!-- Step 1: Put the picture here using <img src="\.\.\." alt="\.\.\."> -->/gi, '<!-- 1-Qadam: <img> bilan rasmni joylashtiring -->')
+    .replace(/<!-- Step 2: Shape its size by setting width="260" so it fits nicely! -->/gi, '<!-- 2-Qadam: width="260" orqali rasmni o\'lchamga keltiring -->')
+    .replace(/\/\* Step 1: Use transform: rotate\(15deg\); on Box 1 \*\//gi, '/* 1-Qadam: .box-1 ni transform: rotate(15deg); bilan buring */')
+    .replace(/\/\* Step 2: Use transform: scale\(1\.2\); on Box 2 \*\//gi, '/* 2-Qadam: .box-2 ni transform: scale(1.2); bilan kattalashtiring */')
+    .replace(/\/\* Step 3: Use transform: translateY\(-15px\); on Box 3 \*\//gi, '/* 3-Qadam: .box-3 ni transform: translateY(-15px); bilan yuqoriga suring */')
+    .replace(/\/\* Step 2: Add \.magic-btn:hover power below! \*\//gi, '/* 2-Qadam: .magic-btn:hover uslubini qo\'shing! */')
+    .replace(/<!-- Step 1: Put the button here using <button class="magic-btn">✨ Turbo Boost<\/button> -->/gi, '<!-- 1-Qadam: <button class="magic-btn">✨ Turbo Boost</button> tugmasini qo\'ying -->')
+    .replace(/\/\* Add gradient background below! \*\//gi, '/* Gradient fonini pastda qo\'shing! */')
+    .replace(/\/\* Add glowing text-shadow here! \*\//gi, '/* Tovlanuvchi text-shadow qo\'shing! */')
+    .replace(/\/\* Add animation here! \*\//gi, '/* Animatsiyani shu yerda qo\'shing! */')
+    .replace(/<!-- Step 1: Open the header row using <tr> and add 4 <th> column titles: -->/gi, '<!-- 1-Qadam: <tr> bilan sarlavha qatorini oching va 4 ta <th> ustun nomini yozing: -->')
+    .replace(/<!-- Step 2: Open 1st player row using <tr class="champion"> with 4 <td> cells: -->/gi, '<!-- 2-Qadam: <tr class="champion"> bilan 1-o\'rin qatorini oching va 4 ta <td> yozing: -->')
+    .replace(/<!-- Step 3: Open 2nd player row using <tr> with 4 <td> cells: -->/gi, '<!-- 3-Qadam: <tr> bilan 2-o\'rin qatorini oching va 4 ta <td> yozing: -->')
+    .replace(/<!-- Step 4: Open 3rd player row using <tr> with 4 <td> cells: -->/gi, '<!-- 4-Qadam: <tr> bilan 3-o\'rin qatorini oching va 4 ta <td> yozing: -->')
+    .replace(/<!-- Step 5: Open tournament total row using <tr class="total-row"> with colspan="3": -->/gi, '<!-- 5-Qadam: <tr class="total-row"> bilan colspan="3" umumiy hisob qatorini oching: -->')
+    .replace(/<!-- Step 1: Add class="card" to the outer box -->/gi, '<!-- 1-Qadam: Tashqi qutiga class="card" bering -->')
+    .replace(/<!-- Step 2: Add class="badge bg-success rounded-pill" to the ONLINE status span -->/gi, '<!-- 2-Qadam: Status span ga class="badge bg-success rounded-pill" bering -->')
+    .replace(/<!-- Step 3: Add class="alert alert-primary" to the warp drive notification -->/gi, '<!-- 3-Qadam: Bildirishnomaga class="alert alert-primary" bering -->')
+    .replace(/<!-- Step 4: Add class="btn btn-primary" to the launch button! -->/gi, '<!-- 4-Qadam: Tugmaga class="btn btn-primary" bering! -->')
+    .replace(/<!-- Step 1: Add class="navbar navbar-dark bg-dark" to the <nav> element -->/gi, '<!-- 1-Qadam: <nav> elementiga class="navbar navbar-dark bg-dark" bering -->')
+    .replace(/<!-- Step 2: Add class="navbar-brand" to the logo link -->/gi, '<!-- 2-Qadam: Logotip havolasiga class="navbar-brand" bering -->')
+    .replace(/<!-- Step 3: Add class="nav-link active" to the Home link -->/gi, '<!-- 3-Qadam: Bosh sahifa havolasiga class="nav-link active" bering -->')
+    .replace(/<!-- Step 4: Add class="btn btn-outline-info btn-sm" to the connect button! -->/gi, '<!-- 4-Qadam: Ulanish tugmasiga class="btn btn-outline-info btn-sm" bering! -->');
+}
+
 /**
  * Resolves a bilingual string or object: { en: '...', uz: '...' }
  */
 export function localize(val, lang = 'en') {
   if (val === null || val === undefined) return '';
-  if (typeof val === 'string') return val;
-  if (typeof val === 'object') {
-    return val[lang] || val.en || Object.values(val)[0] || '';
+  if (typeof val === 'object' && !Array.isArray(val)) {
+    const res = val[lang] || val.en || Object.values(val)[0] || '';
+    if (lang === 'uz' && typeof res === 'string') {
+      return translateCodeCommentsToUz(res);
+    }
+    return res;
   }
-  return String(val);
+  const str = String(val);
+  if (lang === 'uz') {
+    return translateCodeCommentsToUz(str);
+  }
+  return str;
 }
 
 export function escapeHtml(str) {
@@ -129,8 +173,10 @@ function attachGlobalListeners() {
     if (lesson) {
       const prevStarter = localize(lesson.initialCode, prevLang);
       const newStarter = localize(lesson.initialCode, lang);
-      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+      if (!currentCode || currentCode.trim() === prevStarter.trim() || currentCode.includes('Step ') || currentCode.includes('Qadam:')) {
         currentCode = newStarter;
+      } else if (lang === 'uz') {
+        currentCode = translateCodeCommentsToUz(currentCode);
       }
     }
 
@@ -161,8 +207,10 @@ function attachGlobalListeners() {
     if (lesson) {
       const prevStarter = localize(lesson.initialCode, prevLang);
       const newStarter = localize(lesson.initialCode, state.lang);
-      if (!currentCode || currentCode.trim() === prevStarter.trim()) {
+      if (!currentCode || currentCode.trim() === prevStarter.trim() || currentCode.includes('Step ') || currentCode.includes('Qadam:')) {
         currentCode = newStarter;
+      } else if (state.lang === 'uz') {
+        currentCode = translateCodeCommentsToUz(currentCode);
       }
     }
 

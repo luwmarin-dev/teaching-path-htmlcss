@@ -116,15 +116,32 @@ export const LESSONS = [
       uz: 'HTML nima ekanligini oddiy tilda bilib oling, ochuvchi va yopuvchi teglar qanday ishlashini o\'rganing.'
     },
     story: {
-      en: 'Think of tags like sandwich buns. The opening bun <tag> says "Start the effect!", your words go in the middle, and the closing bun </tag> with a slash / says "Stop the effect!"',
-      uz: 'Teglarni sendvich nonlariga o\'xshating. Boshidagi <tag> noni "Sehrni boshla!" deydi, so\'zlar o\'rtada turadi, oxiridagi sleshli </tag> noni esa "Sehrni to\'xtat!" deydi.'
+      en: 'Assemble the Cyber Pet Robot ID card: combine bold strengths, italic agility, underlined armor, and highlight its favorite golden pizza power boost!',
+      uz: "Kiber Robot-Pet viza kartochkasini yig'ing: qalin kuch, yotiq tezlik, chizilgan zirh va uning sevimli tilla pitsasini yoritib bering!"
     },
-    initialCode: `<p>
-  My pet robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!
-</p>`,
-    targetCode: `<p>
-  My pet robot is <b>super strong</b>, <i>lightning fast</i>, <u>waterproof</u>, and loves <mark>golden pizza</mark>!
-</p>`,
+    initialCode: {
+      en: `<!-- Step 1: We set up the robot profile card -->
+<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h2>🤖 Cyber Pet Robot</h2>
+  <p>Our robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!</p>
+
+  <!-- Step 2: Add its favorite power food using <mark>golden pizza</mark> -->
+  <p>Favorite power snack: </p>
+</div>`,
+      uz: `<!-- 1-Qadam: Robot profil kartochkasining asosiy qismini quramiz -->
+<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h2>🤖 Cyber Pet Robot</h2>
+  <p>Bizning robotimiz <b>super strong</b>, <i>lightning fast</i> va <u>waterproof</u>!</p>
+
+  <!-- 2-Qadam: Sevimli quvvat ovqatini <mark>golden pizza</mark> tegi bilan qo'shing -->
+  <p>Favorite power snack: </p>
+</div>`
+    },
+    targetCode: `<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h2>🤖 Cyber Pet Robot</h2>
+  <p>Our robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!</p>
+  <p>Favorite power snack: <mark>golden pizza</mark>!</p>
+</div>`,
     targetDescription: {
       en: 'A sentence where:\n• "super strong" is bolded with <b>\n• "lightning fast" is slanted with <i>\n• "waterproof" is underlined with <u>\n• "golden pizza" is highlighted with <mark>',
       uz: '"super strong" qalin <b>, "lightning fast" yotiq <i>, "waterproof" tagiga chizilgan <u> va "golden pizza" sariq rangda <mark> bilan yoritilgan jumla.'
@@ -292,7 +309,8 @@ export const LESSONS = [
       en: 'Think of <!DOCTYPE html> as your passport. <html> is your house. <head> is the address plaque on the front door (for title and settings). <body> is the living room where your furniture and guests actually sit!',
       uz: '<!DOCTYPE html> — sizning pasportingiz. <html> — uyingiz. <head> — eshikdagi manzil lavhasi. <body> — mehmonlar o\'tiradigan xona!'
     },
-    initialCode: `<!DOCTYPE html>
+    initialCode: {
+      en: `<!DOCTYPE html>
 <html>
   <head>
     <title>My Secret Base</title>
@@ -300,8 +318,25 @@ export const LESSONS = [
   <body>
     <h1>🚀 Welcome to Space Base!</h1>
     <p>All astronauts report to the cockpit.</p>
+
+    <!-- Step 1: Add a new paragraph below: <p>Mission Status: <b>Ready for Launch</b></p> -->
+
   </body>
 </html>`,
+      uz: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Secret Base</title>
+  </head>
+  <body>
+    <h1>🚀 Welcome to Space Base!</h1>
+    <p>All astronauts report to the cockpit.</p>
+
+    <!-- 1-Qadam: Quyiga yangi xatboshi qo'shing: <p>Mission Status: <b>Ready for Launch</b></p> -->
+
+  </body>
+</html>`
+    },
     targetCode: `<!DOCTYPE html>
 <html>
   <head>
@@ -1113,13 +1148,24 @@ id: 'theme-4-pictures',
       en: 'Pictures need an address (src) to find the image file, and width to decide how big or small to draw it.',
       uz: 'Rasmlarga manzil (src) va uni qanchalik katta yoki kichik chizish uchun kenglik (width) kerak bo\'ladi.'
     },
-    initialCode: `<div class="pet-card">
+    initialCode: {
+      en: `<div class="pet-card">
   <h2>🐾 Cyber Pet Adoption</h2>
   <p>Our shelter has a super cute puppy ready for a home!</p>
+
   <!-- Step 1: Put the picture here using <img src="..." alt="..."> -->
-  <!-- Step 2: Shape its size by setting width="260" so it fits nicely! -->
+  <!-- Step 2: Set width="260" on the <img> tag -->
 
 </div>`,
+      uz: `<div class="pet-card">
+  <h2>🐾 Cyber Pet Adoption</h2>
+  <p>Our shelter has a super cute puppy ready for a home!</p>
+
+  <!-- 1-Qadam: Quyida <img src="..." alt="..."> orqali rasmni qo'ying -->
+  <!-- 2-Qadam: <img> tegiga width="260" kenglik bering -->
+
+</div>`
+    },
     targetCode: `<div class="pet-card">
   <h2>🐾 Cyber Pet Adoption</h2>
   <p>Our shelter has a super cute puppy ready for a home!</p>
@@ -1249,12 +1295,18 @@ id: 'theme-4-pictures',
       en: 'Think of <div> like a lunchbox or bento box. You can pack a sandwich, juice, and fruit inside. When you move the lunchbox, everything inside moves together!',
       uz: '<div> ni tushlik qutisiga o\'xshating: sendvich, sharbat va mevani ichiga solasiz. Qutini ko\'chirganingizda, ichidagi hamma narsa birga ko\'chadi!'
     },
-    initialCode: `<!-- The treasure items are loose on the floor! -->
-<!-- Step 1: Wrap the treasure below inside a <div> container -->
-<!-- Step 2: Shape the box with style="border: 4px solid #2dd4bf; padding: 16px;" -->
+    initialCode: {
+      en: `<!-- Step 1: Wrap the treasure below inside a <div> container -->
+<!-- Step 2: Add style="border: 4px solid #2dd4bf; padding: 16px;" to the <div> -->
 
 <h3>Secret Chest</h3>
 <p>Contains 100 gold coins and a magical crystal!</p>`,
+      uz: `<!-- 1-Qadam: Quyidagi xazinani <div> konteyneriga oling -->
+<!-- 2-Qadam: <div> ga style="border: 4px solid #2dd4bf; padding: 16px;" qo'shing -->
+
+<h3>Secret Chest</h3>
+<p>Contains 100 gold coins and a magical crystal!</p>`
+    },
     targetCode: `<div style="border: 4px solid #2dd4bf; padding: 16px;">
   <h3>Secret Chest</h3>
   <p>Contains 100 gold coins and a magical crystal!</p>
@@ -1394,7 +1446,8 @@ id: 'theme-4-pictures',
     },
     summary: 'Give nicknames to your boxes with class="..." and style multiple cards at once using CSS classes.',
     story: 'Imagine uniforms in a soccer team. Instead of telling each player what jersey to wear, you say: "Team Blue wears blue jerseys!" That is what a class does.',
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   /* In CSS, a dot . means class */
   .badge {
     background: #7c6cf7;
@@ -1407,9 +1460,28 @@ id: 'theme-4-pictures',
 
 <div>
   <h3>Player Profile</h3>
-  <!-- Give this span class="badge" -->
+
+  <!-- Step 1: Give this span class="badge" -->
   <span>Level: 99</span>
 </div>`,
+      uz: `<style>
+  /* CSS da nuqta . klass belgisidir */
+  .badge {
+    background: #7c6cf7;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+</style>
+
+<div>
+  <h3>Player Profile</h3>
+
+  <!-- 1-Qadam: Ushbu span ga class="badge" bering -->
+  <span>Level: 99</span>
+</div>`
+    },
     targetCode: `<style>
   .badge {
     background: #7c6cf7;
@@ -1542,13 +1614,17 @@ id: 'theme-4-pictures',
       en: 'The secret alert card feels claustrophobic! Add 24px padding so the text breathes, and 30px margin so it floats freely.',
       uz: 'Maxfiy xabar kartochkasi devorlarga siqilib qolgan! Matn erkin turishi uchun 24px padding va 30px margin bering.'
     },
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   .box {
     background-color: #1e2030;
     color: #ffffff;
     border: 3px solid #2dd4bf;
-    /* The text is crammed against the walls! */
+
+    /* Step 1: Change padding to 24px */
     padding: 0px;
+
+    /* Step 2: Change margin to 30px */
     margin: 0px;
   }
 </style>
@@ -1557,6 +1633,25 @@ id: 'theme-4-pictures',
   <h3>I am in a box!</h3>
   <p>Give me 24px of inside cushion (padding) and 30px of personal space (margin)!</p>
 </div>`,
+      uz: `<style>
+  .box {
+    background-color: #1e2030;
+    color: #ffffff;
+    border: 3px solid #2dd4bf;
+
+    /* 1-Qadam: Padding (ichki masofa) ni 24px qiling */
+    padding: 0px;
+
+    /* 2-Qadam: Margin (tashqi masofa) ni 30px qiling */
+    margin: 0px;
+  }
+</style>
+
+<div class="box">
+  <h3>I am in a box!</h3>
+  <p>Give me 24px of inside cushion (padding) and 30px of personal space (margin)!</p>
+</div>`
+    },
     targetCode: `<style>
   .box {
     background-color: #1e2030;
@@ -1690,13 +1785,15 @@ id: 'theme-4-pictures',
       en: 'You have three ready boxes waiting on your screen. Use transform to move each one with a different acrobatics spell!',
       uz: 'Ekranda uchta tayyor quti kutib turibdi. Har biriga alohida transform sehrini qo\'llang!'
     },
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   .box-container {
     display: flex;
     gap: 24px;
     justify-content: center;
     padding: 30px;
   }
+
   .box {
     width: 70px;
     height: 70px;
@@ -1708,19 +1805,25 @@ id: 'theme-4-pictures',
     font-size: 20px;
     color: white;
   }
+
   .box-1 {
     background: #ff5e7e;
-    /* Step 1: Use transform: rotate(15deg); on Box 1 */
+
+    /* Step 1: Rotate Box 1 by 15 degrees */
     transform: rotate(0deg);
   }
+
   .box-2 {
     background: #4facfe;
-    /* Step 2: Use transform: scale(1.2); on Box 2 */
+
+    /* Step 2: Zoom Box 2 20% larger using scale */
     transform: scale(1);
   }
+
   .box-3 {
     background: #43e97b;
-    /* Step 3: Use transform: translateY(-15px); on Box 3 */
+
+    /* Step 3: Float Box 3 15px upward into the air */
     transform: translateY(0px);
   }
 </style>
@@ -1730,13 +1833,14 @@ id: 'theme-4-pictures',
   <div class="box box-2">2</div>
   <div class="box box-3">3</div>
 </div>`,
-    targetCode: `<style>
+      uz: `<style>
   .box-container {
     display: flex;
     gap: 24px;
     justify-content: center;
     padding: 30px;
   }
+
   .box {
     width: 70px;
     height: 70px;
@@ -1748,14 +1852,66 @@ id: 'theme-4-pictures',
     font-size: 20px;
     color: white;
   }
+
+  .box-1 {
+    background: #ff5e7e;
+
+    /* 1-Qadam: 1-qutini 15 daraja buring */
+    transform: rotate(0deg);
+  }
+
+  .box-2 {
+    background: #4facfe;
+
+    /* 2-Qadam: 2-qutini 20% kattalashtiring */
+    transform: scale(1);
+  }
+
+  .box-3 {
+    background: #43e97b;
+
+    /* 3-Qadam: 3-qutini 15px yuqoriga suring */
+    transform: translateY(0px);
+  }
+</style>
+
+<div class="box-container">
+  <div class="box box-1">1</div>
+  <div class="box box-2">2</div>
+  <div class="box box-3">3</div>
+</div>`
+    },
+    targetCode: {
+      en: `<style>
+  .box-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .box {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+  }
+
   .box-1 {
     background: #ff5e7e;
     transform: rotate(15deg);
   }
+
   .box-2 {
     background: #4facfe;
     transform: scale(1.2);
   }
+
   .box-3 {
     background: #43e97b;
     transform: translateY(-15px);
@@ -1767,6 +1923,48 @@ id: 'theme-4-pictures',
   <div class="box box-2">2</div>
   <div class="box box-3">3</div>
 </div>`,
+      uz: `<style>
+  .box-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .box {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+  }
+
+  .box-1 {
+    background: #ff5e7e;
+    transform: rotate(15deg);
+  }
+
+  .box-2 {
+    background: #4facfe;
+    transform: scale(1.2);
+  }
+
+  .box-3 {
+    background: #43e97b;
+    transform: translateY(-15px);
+  }
+</style>
+
+<div class="box-container">
+  <div class="box box-1">1</div>
+  <div class="box box-2">2</div>
+  <div class="box box-3">3</div>
+</div>`
+    },
     targetDescription: {
       en: 'Three colorful boxes side-by-side: Box 1 tilted 15 degrees, Box 2 zoomed 20% larger, and Box 3 floating 15px upward.',
       uz: 'Yonma-yon uchta rangli quti: 1-quti 15 darajaga burilgan, 2-quti 20% ga kattalashgan va 3-quti 15px yuqoriga ko\'tarilgan.'
@@ -2546,7 +2744,8 @@ id: 'theme-4-pictures',
       en: 'A plain button is okay, but a button with :hover feels alive like a real video game control!',
       uz: 'Oddiy tugma ham yaxshi, lekin :hover bilan u haqiqiy video o\'yindagidek jonlanadi!'
     },
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   .magic-btn {
     background: #7c6cf7;
     color: white;
@@ -2557,13 +2756,34 @@ id: 'theme-4-pictures',
     cursor: pointer;
     transition: all 0.2s;
   }
-  /* Step 2: Add .magic-btn:hover power below! */
+
+  /* Step 2: Add .magic-btn:hover style below */
 </style>
 
 <div style="text-align: center; padding: 40px;">
-  <!-- Step 1: Put the button here using <button class="magic-btn">✨ Turbo Boost</button> -->
+  <!-- Step 1: Add <button class="magic-btn">✨ Turbo Boost</button> below -->
 
 </div>`,
+      uz: `<style>
+  .magic-btn {
+    background: #7c6cf7;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  /* 2-Qadam: .magic-btn:hover uslubini pastda yozing */
+</style>
+
+<div style="text-align: center; padding: 40px;">
+  <!-- 1-Qadam: <button class="magic-btn">✨ Turbo Boost</button> tugmasini qo'ying -->
+
+</div>`
+    },
     targetCode: `<style>
   .magic-btn {
     background: #7c6cf7;
@@ -2696,19 +2916,27 @@ id: 'theme-4-pictures',
       en: 'The entire World Wide Web is woven together by millions of anchor tags linking every site!',
       uz: 'Butun jahon o\'rgimchak to\'ri aynan millionlab <a> teglari orqali bir-biriga bog\'langan!'
     },
-    initialCode: `<p>
-  Welcome to my coding realm! Check out my favorite website:
-</p>
-<p>
-  <!-- Turn this text into a link! -->
-  Visit Wikipedia to learn anything!
-</p>`,
-    targetCode: `<p>
-  Welcome to my coding realm! Check out my favorite website:
-</p>
-<p>
-  Visit <a href="https://wikipedia.org" target="_blank">Wikipedia</a> to learn anything!
-</p>`,
+    initialCode: {
+      en: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🌌 Galactic Portal Station</h3>
+  <p>Welcome to my coding realm! Check out my favorite planetary archive:</p>
+
+  <!-- Step 1: Wrap "Wikipedia" below inside <a href="https://wikipedia.org" target="_blank">Wikipedia</a> -->
+  <p>Visit Wikipedia to learn anything!</p>
+</div>`,
+      uz: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🌌 Galactic Portal Station</h3>
+  <p>Dasturlash olamimga xush kelibsiz! Sevimli sayyoraviy bilimlar arxiviga ulaning:</p>
+
+  <!-- 1-Qadam: Quyidagi "Wikipedia" so'zini <a href="https://wikipedia.org" target="_blank">Wikipedia</a> bilan o'rang -->
+  <p>Visit Wikipedia to learn anything!</p>
+</div>`
+    },
+    targetCode: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🌌 Galactic Portal Station</h3>
+  <p>Welcome to my coding realm! Check out my favorite planetary archive:</p>
+  <p>Visit <a href="https://wikipedia.org" target="_blank">Wikipedia</a> to learn anything!</p>
+</div>`,
     targetDescription: {
       en: 'The word "Wikipedia" wrapped in an <a> tag pointing to https://wikipedia.org that opens in a new tab.',
       uz: '"Wikipedia" so\'zi <a> tegi bilan https://wikipedia.org manziliga yo\'naltirilgan havola.'
@@ -2808,17 +3036,35 @@ id: 'theme-4-pictures',
       en: 'Every great video game has an inventory list. HTML lists make clean inventories!',
       uz: 'Har qanday sarguzasht o\'yinida xaltadagi narsalar ro\'yxati bo\'ladi. HTML ro\'yxatlari buni oson qiladi!'
     },
-    initialCode: `<p>My Secret Spy Gear:</p>
-<!-- Turn into a bullet list using <ul> and <li>! -->
-Laser Watch
-Invisible Cloak
-Jetpack Shoes`,
-    targetCode: `<p>My Secret Spy Gear:</p>
-<ul>
-  <li>Laser Watch</li>
-  <li>Invisible Cloak</li>
-  <li>Jetpack Shoes</li>
-</ul>`,
+    initialCode: {
+      en: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🕵️ Secret Agent Inventory</h3>
+  <p>Equipped spy gear checklist:</p>
+
+  <!-- Step 1: Wrap the 3 items below inside <ul> with <li> tags -->
+  Laser Watch
+  Invisible Cloak
+  Jetpack Shoes
+</div>`,
+      uz: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🕵️ Secret Agent Inventory</h3>
+  <p>Ayg'oqchi anjomlari ro'yxati:</p>
+
+  <!-- 1-Qadam: Quyidagi 3 ta anjomni <ul> va <li> teglari orqali ro'yxatga oling -->
+  Laser Watch
+  Invisible Cloak
+  Jetpack Shoes
+</div>`
+    },
+    targetCode: `<div style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🕵️ Secret Agent Inventory</h3>
+  <p>Equipped spy gear checklist:</p>
+  <ul>
+    <li>Laser Watch</li>
+    <li>Invisible Cloak</li>
+    <li>Jetpack Shoes</li>
+  </ul>
+</div>`,
     targetDescription: {
       en: 'A neat bullet-point list containing the 3 spy items wrapped in <li> inside <ul>.',
       uz: '<ul> ichida 3 ta <li> tegi bilan chiroyli nuqtali ro\'yxat qilingan ayg\'oqchi jihozlari.'
@@ -3161,7 +3407,8 @@ Jetpack Shoes`,
       en: 'The superhero team needs round gamer badges! Place the avatar div and apply border-radius: 50% to turn the square into a circular badge.',
       uz: 'Superqahramonlar jamoasiga yumaloq nishon kerak! Avatar divini joylashtiring va border-radius: 50% bilan uni aylanaga aylantiring.'
     },
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   .profile-badge {
     background: #141722;
     border: 1px solid #1e2433;
@@ -3171,6 +3418,7 @@ Jetpack Shoes`,
     max-width: 260px;
     margin: 20px auto;
   }
+
   .avatar {
     width: 120px;
     height: 120px;
@@ -3180,16 +3428,49 @@ Jetpack Shoes`,
     justify-content: center;
     font-size: 50px;
     margin: 0 auto 12px;
-    /* Step 2: Shape the square avatar into a perfect circle using border-radius: 50%; */
+
+    /* Step 2: Shape avatar into circle using border-radius: 50%; */
   }
 </style>
 
 <div class="profile-badge">
-  <!-- Step 1: Put the avatar element here using <div class="avatar">🦊</div> -->
+  <!-- Step 1: Put <div class="avatar">🦊</div> here -->
 
   <h3 style="color: white; margin: 0;">Fox Champion</h3>
   <p style="color: #94a3b8; font-size: 13px;">Level 50 Master</p>
 </div>`,
+      uz: `<style>
+  .profile-badge {
+    background: #141722;
+    border: 1px solid #1e2433;
+    padding: 24px;
+    text-align: center;
+    border-radius: 16px;
+    max-width: 260px;
+    margin: 20px auto;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    background: #ff757f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    margin: 0 auto 12px;
+
+    /* 2-Qadam: border-radius: 50%; bilan avatarni aylana qiling */
+  }
+</style>
+
+<div class="profile-badge">
+  <!-- 1-Qadam: Bu yerga <div class="avatar">🦊</div> avatarni qo'ying -->
+
+  <h3 style="color: white; margin: 0;">Fox Champion</h3>
+  <p style="color: #94a3b8; font-size: 13px;">Level 50 Master</p>
+</div>`
+    },
     targetCode: `<style>
   .profile-badge {
     background: #141722;
@@ -3433,11 +3714,22 @@ Jetpack Shoes`,
       en: 'Every game starts with entering your hero nickname. Build the input box for the player!',
       uz: 'Har qanday o\'yin qahramon laqabini kiritishdan boshlanadi. O\'yinchi uchun kiritish qutisini yarating!'
     },
-    initialCode: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
+    initialCode: {
+      en: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
   <h3>🎮 Hero Registration</h3>
   <p>Type your player nickname below:</p>
-  <!-- Step: Add text input here! -->
+
+  <!-- Step 1: Add <input type="text" placeholder="Enter Hero Name"> below -->
+
 </div>`,
+      uz: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
+  <h3>🎮 Hero Registration</h3>
+  <p>Quyida o'yinchi laqabini kiriting:</p>
+
+  <!-- 1-Qadam: Quyiga <input type="text" placeholder="Enter Hero Name"> qo'shing -->
+
+</div>`
+    },
     targetCode: `<div style="padding: 24px; background: #141722; border-radius: 12px; color: white;">
   <h3>🎮 Hero Registration</h3>
   <p>Type your player nickname below:</p>
@@ -3641,13 +3933,24 @@ Jetpack Shoes`,
       en: 'The spaceship launched into hyperdrive, but the cockpit is silent! Add an audio player with controls so the pilot can hear the hum.',
       uz: 'Kema fazoga uchdi, lekin kabina jim-jit! Uchuvchi ovozni eshitishi uchun audio pleyer joylashtiring.'
     },
-    initialCode: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+    initialCode: {
+      en: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
   <h3>🎧 Cyber DJ Sound Deck</h3>
   <p>The cockpit is dead silent! Place an audio player below with controls so the pilot can play the soundtrack!</p>
-  <!-- Step 1: Put the <audio> player here with src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg" -->
-  <!-- Step 2: Add controls attribute so the Play and Pause buttons appear! -->
+
+  <!-- Step 1: Put <audio src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg"> below -->
+  <!-- Step 2: Add controls attribute so Play/Pause buttons appear -->
 
 </div>`,
+      uz: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
+  <h3>🎧 Cyber DJ Sound Deck</h3>
+  <p>Kosmik kabina jimjit bo'lib qoldi! Pilot musiqa tinglashi uchun pleyer qo'ying!</p>
+
+  <!-- 1-Qadam: Quyiga <audio src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg"> qo'ying -->
+  <!-- 2-Qadam: controls atributini qo'shing, shunda Play/Pause tugmalari ko'rinadi -->
+
+</div>`
+    },
     targetCode: `<div style="padding: 24px; text-align: center; color: white; background: #141722; border-radius: 12px;">
   <h3>🎧 Cyber DJ Sound Deck</h3>
   <p>The cockpit is dead silent! Place an audio player below with controls so the pilot can play the soundtrack!</p>
@@ -5740,7 +6043,8 @@ Jetpack Shoes`,
       en: 'The Galaxy Explorers Club needs two glowing badges: a Nebula Card powered by a diagonal linear gradient and a Cosmic Orb powered by a center radial gradient!',
       uz: "Koinot Tadqiqotchilari Klubiga ikkita yorqin nishon kerak: diagonal linear gradientli Tumanlik Kartasi va markazdan nur taratuvchi Kosmik Shar!"
     },
-    initialCode: `<style>
+    initialCode: {
+      en: `<style>
   .gradient-showcase {
     display: flex;
     gap: 20px;
@@ -5750,6 +6054,7 @@ Jetpack Shoes`,
     background: #090d16;
     border-radius: 14px;
   }
+
   .nebula-card {
     width: 150px;
     height: 150px;
@@ -5760,9 +6065,11 @@ Jetpack Shoes`,
     color: white;
     font-weight: 800;
     box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
+
     /* Step 1: Add background: linear-gradient(135deg, #ff007a, #7928ca); */
     background: #ff007a;
   }
+
   .cosmic-orb {
     width: 140px;
     height: 140px;
@@ -5773,6 +6080,7 @@ Jetpack Shoes`,
     color: white;
     font-weight: 800;
     box-shadow: 0 0 35px #00f2fe;
+
     /* Step 2: Add background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); */
     background: #00f2fe;
   }
@@ -5782,6 +6090,53 @@ Jetpack Shoes`,
   <div class="nebula-card">✨ NEBULA</div>
   <div class="cosmic-orb">🔮 ORB</div>
 </div>`,
+      uz: `<style>
+  .gradient-showcase {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #090d16;
+    border-radius: 14px;
+  }
+
+  .nebula-card {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.4);
+
+    /* 1-Qadam: background: linear-gradient(135deg, #ff007a, #7928ca); qo'shing */
+    background: #ff007a;
+  }
+
+  .cosmic-orb {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 0 35px #00f2fe;
+
+    /* 2-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe 0%, #0b0d13 80%); qo'shing */
+    background: #00f2fe;
+  }
+</style>
+
+<div class="gradient-showcase">
+  <div class="nebula-card">✨ NEBULA</div>
+  <div class="cosmic-orb">🔮 ORB</div>
+</div>`
+    },
     targetCode: `<style>
   .gradient-showcase {
     display: flex;
@@ -6614,8 +6969,8 @@ Jetpack Shoes`,
       en: 'Build the Starship Flagship Captain status card featuring a live ONLINE status badge, a mission alert, and a launch button!',
       uz: 'Yulduz kemasi sardorining status kartasini quring: jonli ONLINE nishoni, missiya ogohlantirishi va start tugmasi!'
     },
-    initialCode: `<!-- Assemble the Hero Status Card with Bootstrap classes! -->
-<!-- Step 1: Add class="card" to the outer box -->
+    initialCode: {
+      en: `<!-- Step 1: Add class="card" to the outer box -->
 <!-- Step 2: Add class="badge bg-success rounded-pill" to the ONLINE status span -->
 <!-- Step 3: Add class="alert alert-primary" to the warp drive notification -->
 <!-- Step 4: Add class="btn btn-primary" to the launch button! -->
@@ -6634,6 +6989,26 @@ Jetpack Shoes`,
     <button>Launch Shuttle 🚀</button>
   </div>
 </div>`,
+      uz: `<!-- 1-Qadam: Tashqi qutiga class="card" qo'shing -->
+<!-- 2-Qadam: ONLINE status spaniga class="badge bg-success rounded-pill" bering -->
+<!-- 3-Qadam: Xabarnomaga class="alert alert-primary" bering -->
+<!-- 4-Qadam: Tugmaga class="btn btn-primary" bering! -->
+
+<div style="max-width: 320px; margin: 20px auto;">
+  <div class="card-header d-flex justify-content-between">
+    <span>🛡️ HERO STATUS</span>
+    <span>ONLINE</span>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Commander Nova</h5>
+    <p class="card-text">Flagship captain with 100% hyperspace clearance.</p>
+    <div>
+      ⚡ Warp Drive Ready!
+    </div>
+    <button>Launch Shuttle 🚀</button>
+  </div>
+</div>`
+    },
     targetCode: `<!-- Bootstrap 5 Modern Card Component -->
 <div class="card" style="max-width: 320px; margin: 20px auto;">
   <div class="card-header d-flex justify-content-between">
@@ -6771,7 +7146,8 @@ Jetpack Shoes`,
       en: 'Build the official CodeCraft OS top navigation bar so players can effortlessly switch between Home, Missions, and Leaderboard!',
       uz: "O'yinchilar Home, Missions va Leaderboard bo'limlari orasida qulay o'tishlari uchun CodeCraft OS rasmiy navigatsiya panelini quring!"
     },
-    initialCode: `<!-- Step 1: Add class="navbar navbar-dark bg-dark" to the <nav> element -->
+    initialCode: {
+      en: `<!-- Step 1: Add class="navbar navbar-dark bg-dark" to the <nav> element -->
 <!-- Step 2: Add class="navbar-brand" to the logo link -->
 <!-- Step 3: Add class="nav-link active" to the Home link -->
 <!-- Step 4: Add class="btn btn-outline-info btn-sm" to the connect button! -->
@@ -6787,6 +7163,23 @@ Jetpack Shoes`,
   </ul>
   <button>Connect 💳</button>
 </nav>`,
+      uz: `<!-- 1-Qadam: <nav> tegiga class="navbar navbar-dark bg-dark" qo'shing -->
+<!-- 2-Qadam: Logotip havolasiga class="navbar-brand" bering -->
+<!-- 3-Qadam: Bosh sahifa (Home) havolasiga class="nav-link active" bering -->
+<!-- 4-Qadam: Ulanish tugmasiga class="btn btn-outline-info btn-sm" bering! -->
+
+<nav>
+  <a href="#">
+    <span>👾</span> CodeCraft OS
+  </a>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a>Home</a></li>
+    <li class="nav-item"><a>Missions</a></li>
+    <li class="nav-item"><a>Leaderboard</a></li>
+  </ul>
+  <button>Connect 💳</button>
+</nav>`
+    },
     targetCode: `<!-- Bootstrap 5 Dark Gaming Navbar -->
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
