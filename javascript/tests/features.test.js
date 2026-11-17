@@ -41,4 +41,26 @@ describe('JavaScript Features and Pedagogical Tools', () => {
     assert.ok(uzHtml.includes("Bolalar uchun JavaScript"));
     assert.ok(enHtml.includes("JavaScript for Kids"));
   });
+
+  it('verifies 4 creative themes, ambient living background, and isolated scroll controls for JS', () => {
+    const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf-8');
+    const css = fs.readFileSync(path.join(rootDir, 'public/css/style.css'), 'utf-8');
+
+    // 4 Creative Themes
+    assert.ok(html.includes('id="theme-switcher-deck"'), 'Theme switcher deck exists');
+    assert.ok(html.includes('data-theme="dark"'), 'Dark theme pill exists');
+    assert.ok(html.includes('data-theme="light"'), 'Light theme pill exists');
+    assert.ok(html.includes('data-theme="synthwave"'), 'Synthwave theme pill exists');
+    assert.ok(html.includes('data-theme="matrix"'), 'Matrix theme pill exists');
+
+    // Ambient Living Canvas
+    assert.ok(html.includes('id="ambient-canvas"'), 'Ambient canvas exists');
+    assert.ok(html.includes('initAmbientCanvas'), 'Ambient canvas engine initialized');
+
+    // Scroll Isolation & Direct Code Mode
+    assert.ok(html.includes('btn-toggle-editor-mode'), 'Direct code mode toggle exists');
+    assert.ok(css.includes('overscroll-behavior: contain'), 'CSS has overscroll contain for isolation');
+    assert.ok(css.includes('[data-theme="synthwave"]'), 'Synthwave CSS rules present');
+    assert.ok(css.includes('[data-theme="matrix"]'), 'Matrix CSS rules present');
+  });
 });

@@ -27,6 +27,8 @@ export function createInitialState() {
     currentLessonId: 'theme-1-tags',
     teacherMode: false,
     audioEnabled: true,
+    editorFirstMode: false,
+    focusIdeMode: false,
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `<!DOCTYPE html>
@@ -149,6 +151,20 @@ export function setLanguage(state, lang) {
   return {
     ...state,
     lang: lang === 'uz' ? 'uz' : 'en'
+  };
+}
+
+export function toggleEditorFirstMode(state) {
+  return {
+    ...state,
+    editorFirstMode: !state.editorFirstMode
+  };
+}
+
+export function toggleFocusIdeMode(state) {
+  return {
+    ...state,
+    focusIdeMode: !state.focusIdeMode
   };
 }
 

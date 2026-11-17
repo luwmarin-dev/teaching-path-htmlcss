@@ -1727,6 +1727,8 @@ function createInitialState() {
     currentLessonId: 'js-1-console',
     teacherMode: false,
     audioEnabled: true,
+    editorFirstMode: false,
+    focusIdeMode: false,
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `// CodeCraft JS Free Sandbox
@@ -1823,10 +1825,24 @@ function setStudentProfile(state, { name, avatar }) {
   };
 }
 
+function toggleEditorFirstMode(state) {
+  return {
+    ...state,
+    editorFirstMode: !state.editorFirstMode
+  };
+}
+
+function toggleFocusIdeMode(state) {
+  return {
+    ...state,
+    focusIdeMode: !state.focusIdeMode
+  };
+}
+
 function setTheme(state, theme) {
   return {
     ...state,
-    theme: theme === 'light' ? 'light' : 'dark'
+    theme: theme || 'dark'
   };
 }
 
@@ -2278,6 +2294,180 @@ function playSound(type = 'click', isEnabled = true) {
   } catch (e) {
     console.debug('Audio error:', e);
   }
+}
+
+
+  // --- Ambient Canvas Module ---
+  /**
+ * Ambient Canvas Engine
+ * 100% offline, lightweight, high-performance canvas backdrop.
+ * Living interactive particle field responding to cursor and adapting colors to active theme.
+ */
+
+function initAmbientCanvas(canvasId = 'ambient-canvas') {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return null;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }, { passive: true });
+
+  const mouse = { x: -9999, y: -9999 };
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  // 40 Ambient living particles
+  const PARTICLE_COUNT = 42;
+  const particles = [];
+  const matrixChars = ['0', '1', 'λ', 'π', '{', '}', ';', '>', '<', '⚡', '★', '◆', '▲'];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2.2 + 1.2,
+      baseAlpha: Math.random() * 0.4 + 0.3,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.02,
+      char: matrixChars[Math.floor(Math.random() * matrixChars.length)]
+    });
+  }
+
+  let currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+  function getPalette(theme) {
+    switch (theme) {
+      case 'light':
+        return {
+          particle: 'rgba(37, 99, 235, 0.45)',
+          glow: 'rgba(59, 130, 246, 0.25)',
+          line: 'rgba(37, 99, 235, 0.12)',
+          accent: 'rgba(16, 185, 129, 0.4)'
+        };
+      case 'synthwave':
+        return {
+          particle: 'rgba(192, 132, 252, 0.65)',
+          glow: 'rgba(244, 63, 94, 0.35)',
+          line: 'rgba(168, 85, 247, 0.18)',
+          accent: 'rgba(56, 189, 248, 0.6)'
+        };
+      case 'matrix':
+        return {
+          particle: 'rgba(34, 197, 94, 0.75)',
+          glow: 'rgba(16, 185, 129, 0.4)',
+          line: 'rgba(34, 197, 94, 0.22)',
+          accent: 'rgba(74, 222, 128, 0.85)'
+        };
+      case 'dark':
+      default:
+        return {
+          particle: 'rgba(56, 189, 248, 0.55)',
+          glow: 'rgba(99, 102, 241, 0.35)',
+          line: 'rgba(56, 189, 248, 0.14)',
+          accent: 'rgba(129, 140, 248, 0.55)'
+        };
+    }
+  }
+
+  let animFrameId = null;
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+    const colors = getPalette(currentTheme);
+
+    if (currentTheme === 'matrix') {
+      ctx.font = '12px "Fira Code", monospace';
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.pulse += p.pulseSpeed;
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap-around viewport edges smoothly
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+      if (p.y < -10) p.y = height + 10;
+      if (p.y > height + 10) p.y = -10;
+
+      // Cursor proximity interaction
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < 130 && dist > 0) {
+        const force = (130 - dist) / 130;
+        p.x -= (dx / dist) * force * 1.8;
+        p.y -= (dy / dist) * force * 1.8;
+
+        // Draw laser connector to cursor
+        ctx.strokeStyle = colors.glow;
+        ctx.lineWidth = 1.2 * force;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+
+      // Draw particle or matrix glyph
+      const dynamicSize = p.size + Math.sin(p.pulse) * 0.6;
+      ctx.fillStyle = (i % 3 === 0) ? colors.accent : colors.particle;
+
+      if (currentTheme === 'matrix') {
+        ctx.fillText(p.char, p.x, p.y);
+        if (Math.random() < 0.015) {
+          p.char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        }
+      } else {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(0.6, dynamicSize), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Constellation connectors
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (pDist < 100) {
+          ctx.strokeStyle = colors.line;
+          ctx.lineWidth = 0.8 * (1 - pDist / 100);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animFrameId = requestAnimationFrame(render);
+  }
+
+  animFrameId = requestAnimationFrame(render);
+
+  return {
+    setTheme: (newTheme) => {
+      currentTheme = newTheme;
+    },
+    destroy: () => {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    }
+  };
 }
 
 
@@ -3472,11 +3662,13 @@ function executeJsInSandbox(code, outputContainer, livePreviewFrame, customHtml 
 
 
 
+
 // Application State
 let state = loadStateFromStorage();
 let currentView = 'lesson'; // 'lesson' | 'sandbox'
 let currentCode = '';
 let consoleLogs = [];
+let ambientEngine = null;
 
 // DOM Elements Cache
 const elements = {};
@@ -3530,8 +3722,14 @@ function formatProse(str) {
 
 function initApp() {
   cacheElements();
+  try {
+    ambientEngine = initAmbientCanvas('ambient-canvas');
+  } catch (err) {
+    console.warn('Ambient background warning:', err);
+  }
   attachGlobalListeners();
   applyStateToUI();
+  updateEditorModeUI();
   selectLesson(state.currentLessonId || LESSONS[0].id);
 }
 
@@ -3541,6 +3739,10 @@ function cacheElements() {
   elements.btnLangUz = document.getElementById('btn-lang-uz');
   elements.btnLangEn = document.getElementById('btn-lang-en');
   elements.btnTheme = document.getElementById('btn-theme');
+  elements.themeSwitcherDeck = document.getElementById('theme-switcher-deck');
+  elements.btnToggleEditorMode = document.getElementById('btn-toggle-editor-mode');
+  elements.editorModeLabel = document.getElementById('editor-mode-label');
+  elements.editorModeStatus = document.getElementById('editor-mode-status');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnSandbox = document.getElementById('btn-sandbox');
@@ -3597,12 +3799,43 @@ function attachGlobalListeners() {
   elements.btnLangUz?.addEventListener('click', () => switchLang('uz'));
   elements.btnLangEn?.addEventListener('click', () => switchLang('en'));
 
+  // 4 Creative Themes Segmented Buttons
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme');
+      if (selectedTheme) {
+        state = setTheme(state, selectedTheme);
+        saveStateToStorage(state);
+        playSound('click', state.audioEnabled);
+        applyTheme();
+      }
+    });
+  });
+
+  // Backward compatible Theme Toggle button
   elements.btnTheme?.addEventListener('click', () => {
-    const isOled = document.body.getAttribute('data-theme') === 'oled';
-    state.theme = isOled ? 'dark' : 'oled';
+    const themes = ['dark', 'light', 'synthwave', 'matrix'];
+    const currentIdx = themes.indexOf(state.theme || 'dark');
+    const nextTheme = themes[(currentIdx + 1) % themes.length];
+    state = setTheme(state, nextTheme);
     saveStateToStorage(state);
     applyTheme();
     playSound('click', state.audioEnabled);
+  });
+
+  // Direct Code Mode Lock Toggle
+  elements.btnToggleEditorMode?.addEventListener('click', () => {
+    state = toggleEditorFirstMode(state);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+    updateEditorModeUI();
+    if (state.editorFirstMode) {
+      const editorSplit = document.getElementById('editor-stage-split') || document.querySelector('.editor-preview-split');
+      if (editorSplit) {
+        editorSplit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('code-editor')?.focus();
+      }
+    }
   });
 
   elements.btnAudio?.addEventListener('click', () => {
@@ -3642,12 +3875,32 @@ function attachGlobalListeners() {
 }
 
 function applyTheme() {
-  if (state.theme === 'oled') {
-    document.body.setAttribute('data-theme', 'oled');
-    if (elements.btnTheme) elements.btnTheme.textContent = '☀️';
-  } else {
-    document.body.removeAttribute('data-theme');
-    if (elements.btnTheme) elements.btnTheme.textContent = '🌙';
+  const theme = state.theme || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.setAttribute('data-theme', theme);
+  if (ambientEngine) {
+    ambientEngine.setTheme(theme);
+  }
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
+  });
+  if (elements.btnTheme) {
+    elements.btnTheme.textContent = theme === 'light' ? '☀️' : (theme === 'matrix' ? '🟢' : (theme === 'synthwave' ? '🌌' : '🌙'));
+    elements.btnTheme.title = `Active Theme: ${theme}`;
+  }
+}
+
+function updateEditorModeUI() {
+  const btn = document.getElementById('btn-toggle-editor-mode');
+  const label = document.getElementById('editor-mode-label');
+  const status = document.getElementById('editor-mode-status');
+  const isUz = state.lang === 'uz';
+  const isActive = !!state.editorFirstMode;
+
+  if (btn) btn.classList.toggle('active', isActive);
+  if (label) label.textContent = isUz ? 'Kod Rejimi' : 'Direct Code';
+  if (status) {
+    status.textContent = isActive ? (isUz ? 'YOQILGAN' : 'ON') : (isUz ? 'O\'CHIQ' : 'OFF');
   }
 }
 
@@ -3739,6 +3992,17 @@ function selectLesson(lessonId) {
 
   renderSidebar();
   renderLessonWorkspace(lesson);
+
+  // If in Direct Code Mode or Focus IDE Mode, stay anchored at the code editor!
+  if (state.editorFirstMode || state.focusIdeMode) {
+    setTimeout(() => {
+      const editorStage = document.getElementById('editor-stage-split') || document.querySelector('.editor-preview-split');
+      if (editorStage) {
+        editorStage.scrollIntoView({ behavior: 'auto', block: 'start' });
+        document.getElementById('code-editor')?.focus();
+      }
+    }, 25);
+  }
 }
 
 function addConsoleLine(type, text) {
@@ -3883,7 +4147,7 @@ function renderLessonWorkspace(lesson) {
       </section>
 
       <!-- Bottom Interactive Code Editor & Live Console Workspace -->
-      <section class="editor-preview-split">
+      <section class="editor-preview-split" id="editor-stage-split">
         <!-- Left: Code Editor Pane -->
         <div class="editor-pane">
           <div class="pane-header">
@@ -3891,6 +4155,7 @@ function renderLessonWorkspace(lesson) {
               <span>💻 ${t('codeEditorTitle', state.lang)}</span>
             </div>
             <div class="pane-actions">
+              <button id="btn-focus-mode" class="btn-tool" title="${isUz ? 'Fokus rejimi' : 'Focus Mode'}">🔍 ${isUz ? 'Fokus' : 'Focus'}</button>
               <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 ${t('copyBtn', state.lang)}</button>
               <button id="btn-tidy-code" class="btn-tool" title="Format code">🪄 ${t('tidyBtn', state.lang)}</button>
               <button id="btn-reset-code" class="btn-tool" title="Reset code">🔄 ${t('resetCode', state.lang)}</button>
@@ -3945,6 +4210,16 @@ function renderLessonWorkspace(lesson) {
       </section>
     </div>
   `;
+
+  elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
+  if (state.focusIdeMode) {
+    const focusBtn = document.getElementById('btn-focus-mode');
+    if (focusBtn) {
+      focusBtn.classList.add('active');
+      focusBtn.style.color = '#f59e0b';
+      focusBtn.style.borderColor = '#f59e0b';
+    }
+  }
 
   attachLessonEvents(lesson);
   setupPreviewTabs(lesson);
@@ -4057,15 +4332,29 @@ function attachLessonEvents(lesson) {
     openTagListModal(lesson);
   });
 
-  // Start Practice Action (Jump to Code Editor)
+  // Focus Mode toggle: maximizes editor and preview space and persists state
+  document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
+    state.focusIdeMode = !state.focusIdeMode;
+    saveStateToStorage(state);
+    elements.workspaceStage.classList.toggle('focus-ide-mode', state.focusIdeMode);
+    const btn = document.getElementById('btn-focus-mode');
+    if (btn) {
+      btn.classList.toggle('active', state.focusIdeMode);
+      btn.style.color = state.focusIdeMode ? '#f59e0b' : '';
+      btn.style.borderColor = state.focusIdeMode ? '#f59e0b' : '';
+    }
+    playSound('click', state.audioEnabled);
+  });
+
+  // Start Practice Action (Jump to Code Editor & turn on Direct Code mode)
   btnStartPractice?.addEventListener('click', () => {
     playSound('click', state.audioEnabled);
-    const missionCallout = document.querySelector('.mission-callout');
-    const editor = document.getElementById('code-editor');
-    if (missionCallout) {
-      missionCallout.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (editor) {
-      editor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    state.editorFirstMode = true;
+    saveStateToStorage(state);
+    updateEditorModeUI();
+    const editorEl = document.getElementById('editor-stage-split') || document.querySelector('.editor-preview-split');
+    if (editorEl) {
+      editorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     if (editor) {
       editor.focus();

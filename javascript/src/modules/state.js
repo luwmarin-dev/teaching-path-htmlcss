@@ -27,6 +27,8 @@ export function createInitialState() {
     currentLessonId: 'js-1-console',
     teacherMode: false,
     audioEnabled: true,
+    editorFirstMode: false,
+    focusIdeMode: false,
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `// CodeCraft JS Free Sandbox
@@ -123,10 +125,24 @@ export function setStudentProfile(state, { name, avatar }) {
   };
 }
 
+export function toggleEditorFirstMode(state) {
+  return {
+    ...state,
+    editorFirstMode: !state.editorFirstMode
+  };
+}
+
+export function toggleFocusIdeMode(state) {
+  return {
+    ...state,
+    focusIdeMode: !state.focusIdeMode
+  };
+}
+
 export function setTheme(state, theme) {
   return {
     ...state,
-    theme: theme === 'light' ? 'light' : 'dark'
+    theme: theme || 'dark'
   };
 }
 

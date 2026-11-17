@@ -15,7 +15,8 @@
 </head>
 <body>
 
-  <!-- Confetti Canvas Overlay -->
+  <!-- Confetti & Ambient Living Canvas Overlays -->
+  <canvas id="ambient-canvas"></canvas>
   <canvas id="confetti-canvas"></canvas>
 
   <!-- Clean, Uncluttered Header -->
@@ -56,10 +57,14 @@
         </button>
       </div>
 
-      <!-- Theme Switcher (Calm Dark / OLED Night) -->
-      <button id="btn-theme" class="btn-header btn-icon-only" title="Toggle Theme (Calm Dark / Deep OLED Night)">
-        🌙
-      </button>
+      <!-- 4-Theme Creative Switcher -->
+      <div class="theme-switcher-deck" id="theme-switcher-deck" title="Mavzuni tanlash / Select Theme">
+        <button class="theme-pill-btn active" data-theme="dark" title="🌙 Qora (Midnight Dark)">🌙 <span class="theme-name">Qora</span></button>
+        <button class="theme-pill-btn" data-theme="light" title="☀️ Oq (Clean Light)">☀️ <span class="theme-name">Oq</span></button>
+        <button class="theme-pill-btn" data-theme="synthwave" title="🌌 Kosmik (Nebula Purple)">🌌 <span class="theme-name">Kosmik</span></button>
+        <button class="theme-pill-btn" data-theme="matrix" title="🟢 Matritsa (Terminal Green)">🟢 <span class="theme-name">Matritsa</span></button>
+      </div>
+      <button id="btn-theme" style="display:none;" aria-hidden="true"></button>
 
       <!-- Sound Toggle -->
       <button id="btn-audio" class="btn-header btn-icon-only" title="Mute/Unmute sound">
@@ -90,6 +95,11 @@
         <div class="progress-track">
           <div id="progress-fill" class="progress-fill"></div>
         </div>
+        <!-- Direct Code Mode Lock Toggle -->
+        <button id="btn-toggle-editor-mode" class="sidebar-mode-toggle" title="Har bir mavzuda to'g'ridan-to'g'ri kod oynasida qolish / Lock directly to Code Editor">
+          <span>⚡ <strong id="editor-mode-label">Kod Rejimi</strong></span>
+          <span class="mode-badge" id="editor-mode-status">O'CHIQ</span>
+        </button>
       </div>
 
       <nav id="sidebar-lesson-list">

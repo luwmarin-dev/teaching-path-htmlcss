@@ -20,6 +20,7 @@ const i18nCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/i18
 const validatorCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/validator.js'), 'utf-8'));
 const stateCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/state.js'), 'utf-8'));
 const audioCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/audio.js'), 'utf-8'));
+const ambientCanvasCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/ambientCanvas.js'), 'utf-8'));
 const confettiCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/confetti.js'), 'utf-8'));
 const speechCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/speech.js'), 'utf-8'));
 const sandboxCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/sandbox.js'), 'utf-8'));
@@ -54,6 +55,9 @@ const bundledJs = `/**
 
   // --- Audio Module ---
   ${audioCode}
+
+  // --- Ambient Canvas Module ---
+  ${ambientCanvasCode}
 
   // --- Confetti Module ---
   ${confettiCode}

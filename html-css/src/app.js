@@ -1,4 +1,5 @@
 import { openStudentPortalModal } from './modules/classroom.js';
+import { initAmbientCanvas } from './modules/ambientCanvas.js';
 /**
  * CodeCraft Kids Main Application Controller
  * Focused, uncluttered, step-by-step educational interface.
@@ -12,6 +13,9 @@ import {
   isLessonCompleted,
   toggleLanguage,
   setLanguage,
+  setTheme,
+  toggleEditorFirstMode,
+  toggleFocusIdeMode,
   saveStateToStorage,
   loadStateFromStorage
 } from './modules/state.js';
@@ -32,6 +36,7 @@ let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
+let ambientEngine = null;
 
 // DOM Elements Cache
 const elements = {};
@@ -118,8 +123,14 @@ export function formatProse(str) {
 
 export function initApp() {
   cacheElements();
+  try {
+    ambientEngine = initAmbientCanvas('ambient-canvas');
+  } catch (err) {
+    console.warn('Ambient background warning:', err);
+  }
   attachGlobalListeners();
   applyStateToUI();
+  updateEditorModeUI();
   selectLesson(state.currentLessonId || LESSONS[0].id);
 }
 
@@ -130,6 +141,10 @@ function cacheElements() {
   elements.btnLangUz = document.getElementById('btn-lang-uz');
   elements.btnLangEn = document.getElementById('btn-lang-en');
   elements.btnTheme = document.getElementById('btn-theme');
+  elements.themeSwitcherDeck = document.getElementById('theme-switcher-deck');
+  elements.btnToggleEditorMode = document.getElementById('btn-toggle-editor-mode');
+  elements.editorModeLabel = document.getElementById('editor-mode-label');
+  elements.editorModeStatus = document.getElementById('editor-mode-status');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnLabs = document.getElementById('btn-labs');
@@ -224,12 +239,40 @@ function attachGlobalListeners() {
     }
   });
 
-  // Theme Toggle (Calm Dark <-> OLED Black)
+  // 4 Creative Themes Segmented Buttons
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme');
+      if (selectedTheme) {
+        state = setTheme(state, selectedTheme);
+        saveStateToStorage(state);
+        playSound('click', state.audioEnabled);
+        applyTheme();
+      }
+    });
+  });
+
+  // Backward compatible Theme Toggle button
   elements.btnTheme?.addEventListener('click', () => {
-    state.theme = state.theme === 'oled' ? 'dark' : 'oled';
+    const themes = ['dark', 'light', 'synthwave', 'matrix'];
+    const currentIdx = themes.indexOf(state.theme || 'dark');
+    const nextTheme = themes[(currentIdx + 1) % themes.length];
+    state = setTheme(state, nextTheme);
     saveStateToStorage(state);
     applyTheme();
     playSound('click', state.audioEnabled);
+  });
+
+  // Direct Code Mode Lock Toggle
+  elements.btnToggleEditorMode?.addEventListener('click', () => {
+    state = toggleEditorFirstMode(state);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+    updateEditorModeUI();
+    if (state.editorFirstMode) {
+      document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('code-textarea')?.focus();
+    }
   });
 
   // Audio toggle
@@ -296,9 +339,29 @@ function attachGlobalListeners() {
 function applyTheme() {
   const theme = state.theme || 'dark';
   document.documentElement.setAttribute('data-theme', theme);
+  if (ambientEngine) {
+    ambientEngine.setTheme(theme);
+  }
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
+  });
   if (elements.btnTheme) {
-    elements.btnTheme.textContent = theme === 'oled' ? '🌑' : '🌙';
-    elements.btnTheme.title = theme === 'oled' ? 'Switch to Calm Dark Mode' : 'Switch to Deep OLED Night';
+    elements.btnTheme.textContent = theme === 'light' ? '☀️' : (theme === 'matrix' ? '🟢' : (theme === 'synthwave' ? '🌌' : '🌙'));
+    elements.btnTheme.title = `Active Theme: ${theme}`;
+  }
+}
+
+function updateEditorModeUI() {
+  const btn = document.getElementById('btn-toggle-editor-mode');
+  const label = document.getElementById('editor-mode-label');
+  const status = document.getElementById('editor-mode-status');
+  const isUz = state.lang === 'uz';
+  const isActive = !!state.editorFirstMode;
+
+  if (btn) btn.classList.toggle('active', isActive);
+  if (label) label.textContent = isUz ? 'Kod Rejimi' : 'Direct Code';
+  if (status) {
+    status.textContent = isActive ? (isUz ? 'YOQILGAN' : 'ON') : (isUz ? 'O\'CHIQ' : 'OFF');
   }
 }
 
@@ -399,6 +462,17 @@ export function selectLesson(lessonId) {
 
   renderSidebar();
   renderLessonView();
+
+  // If in Direct Code Mode or Focus IDE Mode, keep workspace positioned right at the editor!
+  if (state.editorFirstMode || state.focusIdeMode) {
+    setTimeout(() => {
+      const editorStage = document.getElementById('editor-stage-split') || document.querySelector('.editor-stage-split');
+      if (editorStage) {
+        editorStage.scrollIntoView({ behavior: 'auto', block: 'start' });
+        document.getElementById('code-textarea')?.focus();
+      }
+    }, 25);
+  }
 }
 
 /**
@@ -677,7 +751,16 @@ function renderLessonView() {
     </div>
   `;
 
+  elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
   setupLessonListeners(lesson);
+  if (state.focusIdeMode) {
+    const focusBtn = document.getElementById('btn-focus-mode');
+    if (focusBtn) {
+      focusBtn.classList.add('active');
+      focusBtn.style.color = '#38bdf8';
+      focusBtn.style.borderColor = '#38bdf8';
+    }
+  }
   updateLivePreview();
   updateLineNumbers();
 }
@@ -775,17 +858,18 @@ function setupLessonListeners(lesson) {
     }
   });
 
-  // Focus Mode toggle: maximizes editor and preview space
+  // Focus Mode toggle: maximizes editor and preview space and persists state
   document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
     const stage = document.querySelector('.workspace-stage');
     if (stage) {
-      stage.classList.toggle('focus-ide-mode');
-      const isFocused = stage.classList.contains('focus-ide-mode');
+      state.focusIdeMode = !state.focusIdeMode;
+      saveStateToStorage(state);
+      stage.classList.toggle('focus-ide-mode', state.focusIdeMode);
       const btn = document.getElementById('btn-focus-mode');
       if (btn) {
-        btn.classList.toggle('active', isFocused);
-        btn.style.color = isFocused ? '#38bdf8' : '';
-        btn.style.borderColor = isFocused ? '#38bdf8' : '';
+        btn.classList.toggle('active', state.focusIdeMode);
+        btn.style.color = state.focusIdeMode ? '#38bdf8' : '';
+        btn.style.borderColor = state.focusIdeMode ? '#38bdf8' : '';
       }
       playSound('click', state.audioEnabled);
     }
@@ -815,13 +899,16 @@ function setupLessonListeners(lesson) {
     });
   });
 
-  // Start Practice Button: loads starter code, smoothly scrolls to editor, focuses textarea
+  // Start Practice Button: loads starter code, turns on editor-first mode, smoothly scrolls to editor, focuses textarea
   document.getElementById('btn-start-practice')?.addEventListener('click', () => {
     const code = localize(lesson.initialCode, state.lang);
     textarea.value = code;
     currentCode = code;
     updateLivePreview();
     updateLineNumbers();
+    state.editorFirstMode = true;
+    saveStateToStorage(state);
+    updateEditorModeUI();
     playSound('click', state.audioEnabled);
     document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     textarea.focus();

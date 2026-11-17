@@ -23,6 +23,7 @@ i18n_code = clean_module(read_src('src/modules/i18n.js'))
 validator_code = clean_module(read_src('src/modules/validator.js'))
 state_code = clean_module(read_src('src/modules/state.js'))
 audio_code = clean_module(read_src('src/modules/audio.js'))
+ambient_canvas_code = clean_module(read_src('src/modules/ambientCanvas.js'))
 confetti_code = clean_module(read_src('src/modules/confetti.js'))
 speech_code = clean_module(read_src('src/modules/speech.js'))
 sandbox_code = clean_module(read_src('src/modules/sandbox.js'))
@@ -57,6 +58,9 @@ bundled_js = f"""/**
 
   // --- Audio Module ---
   {audio_code}
+
+  // --- Ambient Canvas Module ---
+  {ambient_canvas_code}
 
   // --- Confetti Module ---
   {confetti_code}

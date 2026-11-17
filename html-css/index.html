@@ -14,37 +14,39 @@
   <style>
 /* Inlined Stylesheet */
 /* ===================================================================
-   CodeCraft Kids: Calm Dark Theme & Minimalist Design
+   CodeCraft Kids: 4 Creative Themes & Isolated Split Layout
    Easy on the eyes, zero visual clutter, focused on bite-sized learning.
    =================================================================== */
 
-:root {
+:root,
+[data-theme="dark"],
+[data-theme="oled"] {
   --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-code: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
 
-  /* Eye-friendly Calm Slate Theme (Soft Midnight, Zero Glare) */
-  --bg-app: #0b0d13;
-  --bg-sidebar: #0f121a;
-  --bg-card: #141722;
-  --bg-surface: #1a1f2e;
-  --bg-code: #080a0f;
+  /* Theme 1: Qora (Midnight Cyber) */
+  --bg-app: #090c15;
+  --bg-sidebar: #0e1320;
+  --bg-card: #131a2b;
+  --bg-surface: #1a233a;
+  --bg-code: #070910;
   
-  --text-main: #cbd5e1;
-  --text-muted: #788699;
-  --text-code: #e2e8f0;
+  --text-main: #e2e8f0;
+  --text-muted: #8e9bb0;
+  --text-code: #f1f5f9;
 
-  --primary: #5b5fc7;
-  --primary-hover: #4e52b3;
-  --primary-light: rgba(91, 95, 199, 0.12);
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: rgba(59, 130, 246, 0.15);
   
-  --accent-teal: #14b8a6;
+  --accent-teal: #06b6d4;
   --accent-pink: #ec4899;
-  --accent-amber: #eab308;
-  --accent-green: #22c55e;
+  --accent-amber: #f59e0b;
+  --accent-green: #10b981;
   --accent-red: #ef4444;
 
-  --border-color: #1e2433;
-  --border-focus: #5b5fc7;
+  --border-color: #1e293b;
+  --border-focus: #38bdf8;
 
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5);
@@ -58,16 +60,126 @@
   --header-height: 54px;
 }
 
-/* Deep OLED Pure Black Mode */
-[data-theme="oled"] {
-  --bg-app: #000000;
-  --bg-sidebar: #050608;
-  --bg-card: #0a0c10;
-  --bg-surface: #10131a;
-  --bg-code: #000000;
-  --border-color: #161a24;
-  --text-main: #b8c2cc;
+/* Theme 2: Oq (Clean Studio / Bright Daylight) */
+[data-theme="light"] {
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-code: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  --bg-app: #f1f5f9;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-surface: #e2e8f0;
+  --bg-code: #0f172a;
+  
+  --text-main: #0f172a;
   --text-muted: #64748b;
+  --text-code: #f8fafc;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: rgba(37, 99, 235, 0.12);
+  
+  --accent-teal: #0d9488;
+  --accent-pink: #db2777;
+  --accent-amber: #d97706;
+  --accent-green: #16a34a;
+  --accent-red: #dc2626;
+
+  --border-color: #cbd5e1;
+  --border-focus: #2563eb;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --header-height: 54px;
+}
+
+/* Theme 3: Kosmik (Nebula Purple / Cosmic Synthwave) */
+[data-theme="synthwave"],
+[data-theme="space"],
+[data-theme="cosmic"] {
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-code: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  --bg-app: #0e0717;
+  --bg-sidebar: #150a24;
+  --bg-card: #1c0e30;
+  --bg-surface: #261342;
+  --bg-code: #090310;
+  
+  --text-main: #f3e8ff;
+  --text-muted: #a894c2;
+  --text-code: #faf5ff;
+
+  --primary: #a855f7;
+  --primary-hover: #9333ea;
+  --primary-light: rgba(168, 85, 247, 0.18);
+  
+  --accent-teal: #38bdf8;
+  --accent-pink: #f43f5e;
+  --accent-amber: #facc15;
+  --accent-green: #34d399;
+  --accent-red: #fb7185;
+
+  --border-color: #3b1961;
+  --border-focus: #c084fc;
+
+  --shadow-sm: 0 2px 8px rgba(168, 85, 247, 0.2);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 12px 32px rgba(168, 85, 247, 0.25);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --header-height: 54px;
+}
+
+/* Theme 4: Matritsa (Cyber Matrix / Terminal Green) */
+[data-theme="matrix"] {
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-code: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  --bg-app: #020c06;
+  --bg-sidebar: #04140a;
+  --bg-card: #081d10;
+  --bg-surface: #0e2918;
+  --bg-code: #010603;
+  
+  --text-main: #d1fae5;
+  --text-muted: #6ee7b7;
+  --text-code: #ecfdf5;
+
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --primary-light: rgba(16, 185, 129, 0.18);
+  
+  --accent-teal: #2dd4bf;
+  --accent-pink: #f43f5e;
+  --accent-amber: #f59e0b;
+  --accent-green: #22c55e;
+  --accent-red: #ef4444;
+
+  --border-color: #123e20;
+  --border-focus: #10b981;
+
+  --shadow-sm: 0 2px 8px rgba(16, 185, 129, 0.2);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 12px 32px rgba(16, 185, 129, 0.25);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --header-height: 54px;
 }
 
 * {
@@ -76,15 +188,76 @@
   padding: 0;
 }
 
+html, body {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-app);
   color: var(--text-main);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   line-height: 1.5;
+  position: relative;
+}
+
+/* Ambient Dynamic Living Background Canvas */
+#ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+/* 4-Theme Segmented Bar */
+.theme-switcher-deck {
+  display: flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2px;
+  gap: 2px;
+}
+
+.theme-pill-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.theme-pill-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-pill-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.theme-name {
+  font-size: 11px;
+  letter-spacing: -0.2px;
 }
 
 /* ===================================================================
@@ -239,29 +412,86 @@ body {
 }
 
 /* ===================================================================
-   Main Layout: Sidebar + Workspace
+   Main Layout: Sidebar + Workspace (Completely Isolated Scroll)
    =================================================================== */
 .app-layout {
   display: flex;
   flex: 1;
   height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .app-sidebar {
   width: 280px;
   flex-shrink: 0;
+  height: 100%;
   background-color: var(--bg-sidebar);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: hidden;
   user-select: none;
+  z-index: 10;
 }
 
 .sidebar-header {
+  flex-shrink: 0;
   padding: 14px 18px;
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-sidebar);
+}
+
+.sidebar-mode-toggle {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.sidebar-mode-toggle:hover {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: #38bdf8;
+}
+
+.sidebar-mode-toggle.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.sidebar-mode-toggle .mode-badge {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.sidebar-mode-toggle.active .mode-badge {
+  background: #10b981;
+  color: #04140a;
+  font-weight: 800;
+}
+
+#sidebar-lesson-list {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px 0;
 }
 
 .progress-header {
@@ -352,10 +582,15 @@ body {
   flex: 1;
   min-width: 0;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
   background-color: var(--bg-app);
+  position: relative;
+  z-index: 1;
 }
 
 .lesson-banner {
@@ -3284,7 +3519,8 @@ body {
 </head>
 <body>
 
-  <!-- Confetti Canvas Overlay -->
+  <!-- Confetti & Ambient Living Canvas Overlays -->
+  <canvas id="ambient-canvas"></canvas>
   <canvas id="confetti-canvas"></canvas>
 
   <!-- Clean, Uncluttered Header -->
@@ -3325,10 +3561,14 @@ body {
         </button>
       </div>
 
-      <!-- Theme Switcher (Calm Dark / OLED Night) -->
-      <button id="btn-theme" class="btn-header btn-icon-only" title="Toggle Theme (Calm Dark / Deep OLED Night)">
-        🌙
-      </button>
+      <!-- 4-Theme Creative Switcher -->
+      <div class="theme-switcher-deck" id="theme-switcher-deck" title="Mavzuni tanlash / Select Theme">
+        <button class="theme-pill-btn active" data-theme="dark" title="🌙 Qora (Midnight Dark)">🌙 <span class="theme-name">Qora</span></button>
+        <button class="theme-pill-btn" data-theme="light" title="☀️ Oq (Clean Light)">☀️ <span class="theme-name">Oq</span></button>
+        <button class="theme-pill-btn" data-theme="synthwave" title="🌌 Kosmik (Nebula Purple)">🌌 <span class="theme-name">Kosmik</span></button>
+        <button class="theme-pill-btn" data-theme="matrix" title="🟢 Matritsa (Terminal Green)">🟢 <span class="theme-name">Matritsa</span></button>
+      </div>
+      <button id="btn-theme" style="display:none;" aria-hidden="true"></button>
 
       <!-- Sound Toggle -->
       <button id="btn-audio" class="btn-header btn-icon-only" title="Mute/Unmute sound">
@@ -3359,6 +3599,11 @@ body {
         <div class="progress-track">
           <div id="progress-fill" class="progress-fill"></div>
         </div>
+        <!-- Direct Code Mode Lock Toggle -->
+        <button id="btn-toggle-editor-mode" class="sidebar-mode-toggle" title="Har bir mavzuda to'g'ridan-to'g'ri kod oynasida qolish / Lock directly to Code Editor">
+          <span>⚡ <strong id="editor-mode-label">Kod Rejimi</strong></span>
+          <span class="mode-badge" id="editor-mode-status">O'CHIQ</span>
+        </button>
       </div>
 
       <nav id="sidebar-lesson-list">
@@ -11294,6 +11539,8 @@ function createInitialState() {
     currentLessonId: 'theme-1-tags',
     teacherMode: false,
     audioEnabled: true,
+    editorFirstMode: false,
+    focusIdeMode: false,
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `<!DOCTYPE html>
@@ -11416,6 +11663,20 @@ function setLanguage(state, lang) {
   return {
     ...state,
     lang: lang === 'uz' ? 'uz' : 'en'
+  };
+}
+
+function toggleEditorFirstMode(state) {
+  return {
+    ...state,
+    editorFirstMode: !state.editorFirstMode
+  };
+}
+
+function toggleFocusIdeMode(state) {
+  return {
+    ...state,
+    focusIdeMode: !state.focusIdeMode
   };
 }
 
@@ -11896,6 +12157,180 @@ function playSound(type = 'click', isEnabled = true) {
   } catch (e) {
     console.debug('Audio error:', e);
   }
+}
+
+
+  // --- Ambient Canvas Module ---
+  /**
+ * Ambient Canvas Engine
+ * 100% offline, lightweight, high-performance canvas backdrop.
+ * Living interactive particle field responding to cursor and adapting colors to active theme.
+ */
+
+function initAmbientCanvas(canvasId = 'ambient-canvas') {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return null;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }, { passive: true });
+
+  const mouse = { x: -9999, y: -9999 };
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  }, { passive: true });
+
+  // 40 Ambient living particles
+  const PARTICLE_COUNT = 42;
+  const particles = [];
+  const matrixChars = ['0', '1', 'λ', 'π', '{', '}', ';', '>', '<', '⚡', '★', '◆', '▲'];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2.2 + 1.2,
+      baseAlpha: Math.random() * 0.4 + 0.3,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.02,
+      char: matrixChars[Math.floor(Math.random() * matrixChars.length)]
+    });
+  }
+
+  let currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+  function getPalette(theme) {
+    switch (theme) {
+      case 'light':
+        return {
+          particle: 'rgba(37, 99, 235, 0.45)',
+          glow: 'rgba(59, 130, 246, 0.25)',
+          line: 'rgba(37, 99, 235, 0.12)',
+          accent: 'rgba(16, 185, 129, 0.4)'
+        };
+      case 'synthwave':
+        return {
+          particle: 'rgba(192, 132, 252, 0.65)',
+          glow: 'rgba(244, 63, 94, 0.35)',
+          line: 'rgba(168, 85, 247, 0.18)',
+          accent: 'rgba(56, 189, 248, 0.6)'
+        };
+      case 'matrix':
+        return {
+          particle: 'rgba(34, 197, 94, 0.75)',
+          glow: 'rgba(16, 185, 129, 0.4)',
+          line: 'rgba(34, 197, 94, 0.22)',
+          accent: 'rgba(74, 222, 128, 0.85)'
+        };
+      case 'dark':
+      default:
+        return {
+          particle: 'rgba(56, 189, 248, 0.55)',
+          glow: 'rgba(99, 102, 241, 0.35)',
+          line: 'rgba(56, 189, 248, 0.14)',
+          accent: 'rgba(129, 140, 248, 0.55)'
+        };
+    }
+  }
+
+  let animFrameId = null;
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+    const colors = getPalette(currentTheme);
+
+    if (currentTheme === 'matrix') {
+      ctx.font = '12px "Fira Code", monospace';
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.pulse += p.pulseSpeed;
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap-around viewport edges smoothly
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+      if (p.y < -10) p.y = height + 10;
+      if (p.y > height + 10) p.y = -10;
+
+      // Cursor proximity interaction
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < 130 && dist > 0) {
+        const force = (130 - dist) / 130;
+        p.x -= (dx / dist) * force * 1.8;
+        p.y -= (dy / dist) * force * 1.8;
+
+        // Draw laser connector to cursor
+        ctx.strokeStyle = colors.glow;
+        ctx.lineWidth = 1.2 * force;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+
+      // Draw particle or matrix glyph
+      const dynamicSize = p.size + Math.sin(p.pulse) * 0.6;
+      ctx.fillStyle = (i % 3 === 0) ? colors.accent : colors.particle;
+
+      if (currentTheme === 'matrix') {
+        ctx.fillText(p.char, p.x, p.y);
+        if (Math.random() < 0.015) {
+          p.char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        }
+      } else {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(0.6, dynamicSize), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Constellation connectors
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (pDist < 100) {
+          ctx.strokeStyle = colors.line;
+          ctx.lineWidth = 0.8 * (1 - pDist / 100);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animFrameId = requestAnimationFrame(render);
+  }
+
+  animFrameId = requestAnimationFrame(render);
+
+  return {
+    setTheme: (newTheme) => {
+      currentTheme = newTheme;
+    },
+    destroy: () => {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    }
+  };
 }
 
 
@@ -16129,6 +16564,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
 
   // --- Main App Controller ---
   
+
 /**
  * CodeCraft Kids Main Application Controller
  * Focused, uncluttered, step-by-step educational interface.
@@ -16154,6 +16590,7 @@ let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
 let currentCode = '';
+let ambientEngine = null;
 
 // DOM Elements Cache
 const elements = {};
@@ -16241,8 +16678,14 @@ function formatProse(str) {
 function initApp() {
     
   cacheElements();
+  try {
+    ambientEngine = initAmbientCanvas('ambient-canvas');
+  } catch (err) {
+    console.warn('Ambient background warning:', err);
+  }
   attachGlobalListeners();
   applyStateToUI();
+  updateEditorModeUI();
   selectLesson(state.currentLessonId || LESSONS[0].id);
 }
 
@@ -16253,6 +16696,10 @@ function cacheElements() {
   elements.btnLangUz = document.getElementById('btn-lang-uz');
   elements.btnLangEn = document.getElementById('btn-lang-en');
   elements.btnTheme = document.getElementById('btn-theme');
+  elements.themeSwitcherDeck = document.getElementById('theme-switcher-deck');
+  elements.btnToggleEditorMode = document.getElementById('btn-toggle-editor-mode');
+  elements.editorModeLabel = document.getElementById('editor-mode-label');
+  elements.editorModeStatus = document.getElementById('editor-mode-status');
   elements.btnAudio = document.getElementById('btn-audio');
   elements.btnTeacher = document.getElementById('btn-teacher');
   elements.btnLabs = document.getElementById('btn-labs');
@@ -16347,12 +16794,40 @@ function attachGlobalListeners() {
     }
   });
 
-  // Theme Toggle (Calm Dark <-> OLED Black)
+  // 4 Creative Themes Segmented Buttons
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme');
+      if (selectedTheme) {
+        state = setTheme(state, selectedTheme);
+        saveStateToStorage(state);
+        playSound('click', state.audioEnabled);
+        applyTheme();
+      }
+    });
+  });
+
+  // Backward compatible Theme Toggle button
   elements.btnTheme?.addEventListener('click', () => {
-    state.theme = state.theme === 'oled' ? 'dark' : 'oled';
+    const themes = ['dark', 'light', 'synthwave', 'matrix'];
+    const currentIdx = themes.indexOf(state.theme || 'dark');
+    const nextTheme = themes[(currentIdx + 1) % themes.length];
+    state = setTheme(state, nextTheme);
     saveStateToStorage(state);
     applyTheme();
     playSound('click', state.audioEnabled);
+  });
+
+  // Direct Code Mode Lock Toggle
+  elements.btnToggleEditorMode?.addEventListener('click', () => {
+    state = toggleEditorFirstMode(state);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+    updateEditorModeUI();
+    if (state.editorFirstMode) {
+      document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('code-textarea')?.focus();
+    }
   });
 
   // Audio toggle
@@ -16419,9 +16894,29 @@ function attachGlobalListeners() {
 function applyTheme() {
   const theme = state.theme || 'dark';
   document.documentElement.setAttribute('data-theme', theme);
+  if (ambientEngine) {
+    ambientEngine.setTheme(theme);
+  }
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
+  });
   if (elements.btnTheme) {
-    elements.btnTheme.textContent = theme === 'oled' ? '🌑' : '🌙';
-    elements.btnTheme.title = theme === 'oled' ? 'Switch to Calm Dark Mode' : 'Switch to Deep OLED Night';
+    elements.btnTheme.textContent = theme === 'light' ? '☀️' : (theme === 'matrix' ? '🟢' : (theme === 'synthwave' ? '🌌' : '🌙'));
+    elements.btnTheme.title = `Active Theme: ${theme}`;
+  }
+}
+
+function updateEditorModeUI() {
+  const btn = document.getElementById('btn-toggle-editor-mode');
+  const label = document.getElementById('editor-mode-label');
+  const status = document.getElementById('editor-mode-status');
+  const isUz = state.lang === 'uz';
+  const isActive = !!state.editorFirstMode;
+
+  if (btn) btn.classList.toggle('active', isActive);
+  if (label) label.textContent = isUz ? 'Kod Rejimi' : 'Direct Code';
+  if (status) {
+    status.textContent = isActive ? (isUz ? 'YOQILGAN' : 'ON') : (isUz ? 'O\'CHIQ' : 'OFF');
   }
 }
 
@@ -16522,6 +17017,17 @@ function selectLesson(lessonId) {
 
   renderSidebar();
   renderLessonView();
+
+  // If in Direct Code Mode or Focus IDE Mode, keep workspace positioned right at the editor!
+  if (state.editorFirstMode || state.focusIdeMode) {
+    setTimeout(() => {
+      const editorStage = document.getElementById('editor-stage-split') || document.querySelector('.editor-stage-split');
+      if (editorStage) {
+        editorStage.scrollIntoView({ behavior: 'auto', block: 'start' });
+        document.getElementById('code-textarea')?.focus();
+      }
+    }, 25);
+  }
 }
 
 /**
@@ -16800,7 +17306,16 @@ function renderLessonView() {
     </div>
   `;
 
+  elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
   setupLessonListeners(lesson);
+  if (state.focusIdeMode) {
+    const focusBtn = document.getElementById('btn-focus-mode');
+    if (focusBtn) {
+      focusBtn.classList.add('active');
+      focusBtn.style.color = '#38bdf8';
+      focusBtn.style.borderColor = '#38bdf8';
+    }
+  }
   updateLivePreview();
   updateLineNumbers();
 }
@@ -16898,17 +17413,18 @@ function setupLessonListeners(lesson) {
     }
   });
 
-  // Focus Mode toggle: maximizes editor and preview space
+  // Focus Mode toggle: maximizes editor and preview space and persists state
   document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
     const stage = document.querySelector('.workspace-stage');
     if (stage) {
-      stage.classList.toggle('focus-ide-mode');
-      const isFocused = stage.classList.contains('focus-ide-mode');
+      state.focusIdeMode = !state.focusIdeMode;
+      saveStateToStorage(state);
+      stage.classList.toggle('focus-ide-mode', state.focusIdeMode);
       const btn = document.getElementById('btn-focus-mode');
       if (btn) {
-        btn.classList.toggle('active', isFocused);
-        btn.style.color = isFocused ? '#38bdf8' : '';
-        btn.style.borderColor = isFocused ? '#38bdf8' : '';
+        btn.classList.toggle('active', state.focusIdeMode);
+        btn.style.color = state.focusIdeMode ? '#38bdf8' : '';
+        btn.style.borderColor = state.focusIdeMode ? '#38bdf8' : '';
       }
       playSound('click', state.audioEnabled);
     }
@@ -16938,13 +17454,16 @@ function setupLessonListeners(lesson) {
     });
   });
 
-  // Start Practice Button: loads starter code, smoothly scrolls to editor, focuses textarea
+  // Start Practice Button: loads starter code, turns on editor-first mode, smoothly scrolls to editor, focuses textarea
   document.getElementById('btn-start-practice')?.addEventListener('click', () => {
     const code = localize(lesson.initialCode, state.lang);
     textarea.value = code;
     currentCode = code;
     updateLivePreview();
     updateLineNumbers();
+    state.editorFirstMode = true;
+    saveStateToStorage(state);
+    updateEditorModeUI();
     playSound('click', state.audioEnabled);
     document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     textarea.focus();
