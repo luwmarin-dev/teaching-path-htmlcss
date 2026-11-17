@@ -7,17 +7,24 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #111726;
-      --card-border: #1e293b;
+      --bg: #07090e;
+      --bg-card: #0e121d;
+      --bg-card-hover: #131928;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.4);
       --text: #f8fafc;
-      --muted: #94a3b8;
-      --html-color: #3b82f6;
-      --js-color: #f59e0b;
-      --primary: #7c3aed;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --html-accent: #3b82f6;
+      --html-glow: rgba(59, 130, 246, 0.25);
+      --js-accent: #f59e0b;
+      --js-glow: rgba(245, 158, 11, 0.25);
+      --emerald: #10b981;
+      --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-code: 'Fira Code', monospace;
     }
 
     * {
@@ -29,115 +36,170 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: var(--font-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 48px 24px;
       overflow-x: hidden;
       position: relative;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient background glow */
+    /* Ambient top lighting (Apple Design subtle depth) */
     body::before {
       content: '';
       position: absolute;
-      top: -100px;
+      top: -160px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+      width: 850px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%);
       pointer-events: none;
       z-index: 0;
     }
 
     .hub-container {
-      max-width: 1060px;
+      max-width: 1080px;
       width: 100%;
       z-index: 1;
       text-align: center;
     }
 
-    .badge-offline {
+    /* System Status Badges Row */
+    .top-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
       color: #34d399;
       font-size: 13px;
       font-weight: 700;
-      padding: 6px 16px;
-      border-radius: 999px;
-      margin-bottom: 18px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-pill-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .badge-shift-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      backdrop-filter: blur(8px);
     }
 
     .hub-title {
-      font-size: 42px;
+      font-size: clamp(36px, 5vw, 54px);
       font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hub-subtitle {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto 36px;
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--text-muted);
+      max-width: 660px;
+      margin: 0 auto 42px;
       line-height: 1.6;
+      font-weight: 400;
     }
 
+    /* Courses Grid (Taste anti-slop equal edges) */
     .courses-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .course-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 32px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px 30px;
       text-align: left;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .course-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+    }
+
+    .course-card:active {
+      transform: translateY(-2px) scale(0.99);
     }
 
     .card-html:hover {
-      border-color: #3b82f6;
-      box-shadow: 0 20px 45px rgba(59, 130, 246, 0.25);
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 35px var(--html-glow);
     }
 
     .card-js:hover {
-      border-color: #f59e0b;
-      box-shadow: 0 20px 45px rgba(245, 158, 11, 0.25);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 35px var(--js-glow);
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
 
     .card-icon-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      margin-bottom: 20px;
+      font-size: 30px;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
     }
 
     .card-html .card-icon-wrap {
@@ -150,111 +212,137 @@
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
 
-    .course-title {
-      font-size: 24px;
+    .track-counter-pill {
+      font-size: 12px;
       font-weight: 800;
+      font-family: var(--font-code);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+    }
+
+    .course-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .course-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 20px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 22px;
       flex: 1;
     }
 
     .topics-tags-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 24px;
+      gap: 7px;
+      margin-bottom: 28px;
     }
 
     .topic-chip {
-      background: #090d16;
-      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
       color: #cbd5e1;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 5px 11px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .card-launch-actions {
-      display: flex;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       margin-top: auto;
     }
 
     .btn-launch {
-      flex: 1;
       text-decoration: none;
-      padding: 12px 16px;
-      border-radius: 10px;
+      padding: 13px 18px;
+      border-radius: 12px;
       font-weight: 800;
       font-size: 14px;
       text-align: center;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
+      gap: 8px;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .btn-launch:active {
+      transform: scale(0.97);
     }
 
     .btn-launch-primary-html {
       background: linear-gradient(135deg, #2563eb, #3b82f6);
-      color: white;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .btn-launch-primary-html:hover {
-      filter: brightness(1.15);
+      filter: brightness(1.12);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
     }
 
     .btn-launch-primary-js {
       background: linear-gradient(135deg, #d97706, #f59e0b);
-      color: #0f172a;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+      color: #0b0f19;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .btn-launch-primary-js:hover {
-      filter: brightness(1.15);
+      filter: brightness(1.12);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
     }
 
     .btn-launch-secondary {
-      background: #1e293b;
+      background: rgba(255, 255, 255, 0.05);
       color: #e2e8f0;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
     }
 
     .btn-launch-secondary:hover {
-      background: #334155;
-      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Shift Schedule Banner */
+    /* Shift Schedule Banner (Teacher Mechanical Requirement) */
     .shifts-banner {
-      background: rgba(17, 23, 38, 0.7);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 18px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px 28px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
       text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .shifts-banner-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
       color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .shifts-list {
@@ -264,93 +352,182 @@
     }
 
     .shift-tag-item {
-      background: #090d16;
-      border: 1px solid #334155;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
       font-weight: 700;
-      color: #38bdf8;
+      color: #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .shift-tag-item.active-shift {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.45);
+      color: #34d399;
+      font-weight: 800;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .hub-footer {
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
   </style>
 </head>
 <body>
 
   <div class="hub-container">
-    <div class="badge-offline">
-      <span>●</span> 100% Oflayn Ta'lim Hubi (Zero Server / Zero Internet)
+    <!-- Top System Live Meta -->
+    <div class="top-meta-row">
+      <div class="badge-pill">
+        <span class="badge-pill-pulse"></span>
+        100% Oflayn Ta'lim Hubi (Zero Server / USB Portable)
+      </div>
+      <div class="badge-shift-live" id="live-shift-status">
+        🕒 Smena Aniqlanmoqda...
+      </div>
     </div>
 
     <h1 class="hub-title">CodeCraft Academy</h1>
     <p class="hub-subtitle">
       Bolalar va yosh dasturchilar uchun 100% oflayn interaktiv maktab.
-      O'zingizga kerakli kursni tanlang va amaliyotni boshlang!
+      O'zingizga kerakli yo'nalishni tanlang va amaliyotni boshlang!
     </p>
 
+    <!-- Courses Grid -->
     <div class="courses-grid">
-      <!-- 1. HTML & CSS -->
+      <!-- 1. HTML & CSS Track (32 Topics) -->
       <div class="course-card card-html">
-        <div class="card-icon-wrap">🎨</div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap">🎨</div>
+          <span class="track-counter-pill">32 TA MAVZU</span>
+        </div>
+
         <h2 class="course-title">HTML &amp; CSS Kursi</h2>
         <p class="course-desc">
-          Veb-sahifalar yaratish, teglar, ranglar, qutilar, Flexbox, CSS Grid va jonli animatsiyalar dunyosi.
+          Veb-sahifalar anatomiyasi, teglar, ranglar, qutilar, Flexbox, CSS Grid, media so'rovlar va Bootstrap 5.
         </p>
 
         <div class="topics-tags-row">
-          <span class="topic-chip">24 ta Mavzu</span>
-          <span class="topic-chip">4 Bosqichli Laboratoriya</span>
-          <span class="topic-chip">Teglar Ro'yxati</span>
-          <span class="topic-chip">Oflayn Smenalar</span>
+          <span class="topic-chip">🧪 Bosqichma-bosqich Laboratoriya</span>
+          <span class="topic-chip">📋 Teglar Ro'yxati</span>
+          <span class="topic-chip">👥 Oflayn Smenalar</span>
+          <span class="topic-chip">💾 USB Zaxira</span>
         </div>
 
         <div class="card-launch-actions">
           <a href="./html-css/index_uz.html" class="btn-launch btn-launch-primary-html">
-            🇺🇿 O'zbekcha Boshlash
+            🇺🇿 O'zbekcha
           </a>
-          <a href="./html-css/index.html" class="btn-launch btn-launch-secondary">
+          <a href="./html-css/index_en.html" class="btn-launch btn-launch-secondary">
             🇬🇧 English
           </a>
         </div>
       </div>
 
-      <!-- 2. JavaScript -->
+      <!-- 2. JavaScript Track (24 Topics) -->
       <div class="course-card card-js">
-        <div class="card-icon-wrap">⚡</div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap">⚡</div>
+          <span class="track-counter-pill">24 TA MAVZU</span>
+        </div>
+
         <h2 class="course-title">JavaScript Kursi</h2>
         <p class="course-desc">
           Jonli interaktivlik, o'zgaruvchilar, shartlar, funksiyalar, massivlar, DOM hodisalari va mini-o'yinlar.
         </p>
 
         <div class="topics-tags-row">
-          <span class="topic-chip">24 ta Yangi Mavzu</span>
-          <span class="topic-chip">🖥️ Jonli Konsol</span>
+          <span class="topic-chip">🖥️ Jonli JS Konsol</span>
+          <span class="topic-chip">🧪 4 Bosqichli Laboratoriya</span>
           <span class="topic-chip">🎮 Kliker O'yini</span>
-          <span class="topic-chip">Oflayn Smenalar</span>
+          <span class="topic-chip">👥 Oflayn Smenalar</span>
         </div>
 
         <div class="card-launch-actions">
           <a href="./javascript/index_uz.html" class="btn-launch btn-launch-primary-js">
-            🇺🇿 O'zbekcha Boshlash
+            🇺🇿 O'zbekcha
           </a>
-          <a href="./javascript/index.html" class="btn-launch btn-launch-secondary">
+          <a href="./javascript/index_en.html" class="btn-launch btn-launch-secondary">
             🇬🇧 English
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Shifts Info Bar -->
+    <!-- Shifts Schedule Live Banner (3 Exact Class Shifts) -->
     <div class="shifts-banner">
       <div class="shifts-banner-title">
-        <span>🕒</span> Kompyuter Xonasidagi 3 ta Dars Smenasi Jadvali:
+        <span>🕒</span> Kompyuter Xonasidagi 3 ta Dars Smenasi:
       </div>
       <div class="shifts-list">
-        <span class="shift-tag-item">1-Smena (10:30 – 12:00)</span>
-        <span class="shift-tag-item">2-Smena (14:00 – 15:30)</span>
-        <span class="shift-tag-item">3-Smena (15:30 – 17:00)</span>
+        <span class="shift-tag-item" id="shift-pill-1">
+          <span>●</span> 1-Smena (10:30 – 12:00)
+        </span>
+        <span class="shift-tag-item" id="shift-pill-2">
+          <span>●</span> 2-Smena (14:00 – 15:30)
+        </span>
+        <span class="shift-tag-item" id="shift-pill-3">
+          <span>●</span> 3-Smena (15:30 – 17:00)
+        </span>
       </div>
+    </div>
+
+    <div class="hub-footer">
+      <span>10 ta Maktab Kompyuterlari Uchun Maxsus Ishlab Chiqilgan</span>
+      <span>•</span>
+      <span>Windows 7, 8, 10, 11 Moslashuvchan</span>
+      <span>•</span>
+      <span>100% Oflayn</span>
     </div>
   </div>
 
+  <script>
+    // Live Shift Detection directly on the Hub
+    function updateLiveShift() {
+      const now = new Date();
+      const mins = now.getHours() * 60 + now.getMinutes();
+
+      const p1 = document.getElementById('shift-pill-1');
+      const p2 = document.getElementById('shift-pill-2');
+      const p3 = document.getElementById('shift-pill-3');
+      const liveStatus = document.getElementById('live-shift-status');
+
+      p1.classList.remove('active-shift');
+      p2.classList.remove('active-shift');
+      p3.classList.remove('active-shift');
+
+      // Shift 1: 10:30 - 12:00 (630 - 720 mins)
+      if (mins >= 630 && mins < 720) {
+        p1.classList.add('active-shift');
+        liveStatus.innerHTML = '🟢 Hozir Darsda: <strong>1-Smena (10:30 – 12:00)</strong>';
+      }
+      // Shift 2: 14:00 - 15:30 (840 - 930 mins)
+      else if (mins >= 840 && mins < 930) {
+        p2.classList.add('active-shift');
+        liveStatus.innerHTML = '🟢 Hozir Darsda: <strong>2-Smena (14:00 – 15:30)</strong>';
+      }
+      // Shift 3: 15:30 - 17:00 (930 - 1020 mins)
+      else if (mins >= 930 && mins < 1020) {
+        p3.classList.add('active-shift');
+        liveStatus.innerHTML = '🟢 Hozir Darsda: <strong>3-Smena (15:30 – 17:00)</strong>';
+      } else {
+        liveStatus.innerHTML = '🕒 Hozir: Smenalar Oralig\'i / Tanaffus';
+      }
+    }
+
+    updateLiveShift();
+    setInterval(updateLiveShift, 30000);
+  </script>
 </body>
 </html>

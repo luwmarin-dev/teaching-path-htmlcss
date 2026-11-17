@@ -6,6 +6,9 @@
   "main": "index.html",
   "scripts": {
     "test": "node --test html-css/tests/*.test.js javascript/tests/*.test.js",
+    "test:unit": "node --test html-css/tests/*.test.js javascript/tests/*.test.js",
+    "test:e2e": "node --test tests/e2e.test.js",
+    "test:all": "node --test html-css/tests/*.test.js javascript/tests/*.test.js tests/e2e.test.js",
     "test:html": "cd html-css && npm test",
     "test:js": "cd javascript && npm test",
     "build": "node html-css/scripts/build.js && node javascript/scripts/build.js",
@@ -21,5 +24,8 @@
     "offline"
   ],
   "author": "Antigravity & Teacher",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.65.1"
+  }
 }

@@ -21,6 +21,9 @@ import { LESSONS } from './curriculum.js';
 export function openStudentPortalModal({ state, onProfileSwitched, playSound, defaultTab = 'login' }) {
   playSound?.('click', state.audioEnabled);
 
+  const existing = document.getElementById('student-portal-modal');
+  if (existing) existing.remove();
+
   const isUz = state.lang === 'uz';
   let activeTab = defaultTab;
   let selectedAvatar = '⚡';

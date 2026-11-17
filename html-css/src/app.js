@@ -463,20 +463,39 @@ function renderLessonView() {
   elements.workspaceStage.innerHTML = `
     <!-- Lesson Header Banner -->
     <div class="lesson-banner">
-      <div>
+      <div class="banner-content-wrap">
         <div class="banner-meta">
           <span class="badge-module">${escapeHtml(lesson.module.toUpperCase())}</span>
           <span class="badge-tags">${escapeHtml(lesson.tag)}</span>
-          ${isCompleted ? `<span style="color: var(--accent-green); font-weight: 800; font-size: 12px;">${escapeHtml(t('completedTag', state.lang))}</span>` : ''}
-          <button id="btn-topic-lab" class="btn-topic-lab" title="${escapeHtml(t('topicLabBtn', state.lang))}">
-            ${escapeHtml(t('topicLabBtn', state.lang))}
-          </button>
-          <button id="btn-tag-list" class="btn-link-tags" title="${escapeHtml(t('listOfTags', state.lang))}">
-            ${escapeHtml(t('listOfTags', state.lang))}
-          </button>
+          ${isCompleted ? `<span class="badge-completed">✓ ${escapeHtml(t('completedTag', state.lang))}</span>` : ''}
         </div>
         <h2 class="banner-title">${lesson.icon} ${escapeHtml(localize(lesson.title, state.lang))}</h2>
         <p class="banner-summary">${formatProse(localize(lesson.summary, state.lang))}</p>
+
+        <!-- Dedicated Interactive Study Action Deck -->
+        <div class="topic-action-deck">
+          <button id="btn-topic-lab" class="btn-deck-item btn-deck-lab" title="${escapeHtml(t('topicLabBtn', state.lang))}">
+            <span class="deck-icon">🧪</span>
+            <div class="deck-text">
+              <span class="deck-label">${escapeHtml(t('topicLabBtn', state.lang))}</span>
+              <span class="deck-sub">${state.lang === 'uz' ? 'Evolyutsiya Slayderi' : 'Step-by-Step Evolution Slider'}</span>
+            </div>
+          </button>
+          <button id="btn-tag-list" class="btn-deck-item btn-deck-tags" title="${escapeHtml(t('listOfTags', state.lang))}">
+            <span class="deck-icon">📋</span>
+            <div class="deck-text">
+              <span class="deck-label">${escapeHtml(t('listOfTags', state.lang))}</span>
+              <span class="deck-sub">${state.lang === 'uz' ? 'Teglar jadvali va namunalar' : 'Tag Cheat Sheet & Examples'}</span>
+            </div>
+          </button>
+          <button id="btn-start-practice" class="btn-deck-item btn-deck-practice" title="${state.lang === 'uz' ? 'Amaliyotni Boshlash' : 'Start Practice'}">
+            <span class="deck-icon">💻</span>
+            <div class="deck-text">
+              <span class="deck-label">${state.lang === 'uz' ? 'Amaliyotni Boshlash' : 'Start Practice'}</span>
+              <span class="deck-sub">${state.lang === 'uz' ? 'Tayyor kod bilan mashq' : 'Jump to Live Editor'}</span>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -726,13 +745,27 @@ function setupLessonListeners(lesson) {
   });
 
   // List of Tags Button
+  // Dedicated Per-Topic Action Deck Listeners
+  document.getElementById('btn-topic-lab')?.addEventListener('click', () => {
+    openTopicLabModal(lesson);
+  });
+
   document.getElementById('btn-tag-list')?.addEventListener('click', () => {
     openTagListModal(lesson);
   });
 
-  // Dedicated Per-Topic Visual Lab Button
-  document.getElementById('btn-topic-lab')?.addEventListener('click', () => {
-    openTopicLabModal(lesson);
+  document.getElementById('btn-start-practice')?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    const missionCard = document.querySelector('.mission-spotlight-card');
+    const editor = document.getElementById('code-input');
+    if (missionCard) {
+      missionCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (editor) {
+      editor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    setTimeout(() => {
+      editor?.focus();
+    }, 300);
   });
 
 

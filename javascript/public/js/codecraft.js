@@ -1242,6 +1242,7 @@ const UI_TEXT = {
     stepBreakdownHeader: '🔍 Step-by-Step Breakdown: What Each Part Does to the Result',
     resultCallout: 'Result:',
     codeEditorTitle: 'JS Code (Edit Here)',
+    liveConsoleTitle: 'Interactive Console & Output',
     tagsLabel: 'Keywords:',
     browserPreviewTitle: 'Live Preview & Console Output',
     yourResultTab: 'Console & Output',
@@ -1298,6 +1299,7 @@ const UI_TEXT = {
     stepBreakdownHeader: '🔍 Qadamma-qadam tahlil: Har bir belgi natijaga qanday ta\'sir qiladi?',
     resultCallout: 'Natija:',
     codeEditorTitle: 'JS Kod (Shu yerda tahrirlang)',
+    liveConsoleTitle: 'Interaktiv Konsol va Natija',
     tagsLabel: 'Kalit so\'zlar:',
     browserPreviewTitle: 'Jonli Natija va Konsol Oynasi',
     yourResultTab: 'Konsol va Natija',
@@ -2206,6 +2208,9 @@ function getStarterTemplateById(id) {
 function openStudentPortalModal({ state, onProfileSwitched, playSound, defaultTab = 'login' }) {
   playSound?.('click', state.audioEnabled);
 
+  const existing = document.getElementById('student-portal-modal');
+  if (existing) existing.remove();
+
   const isUz = state.lang === 'uz';
   let activeTab = defaultTab;
   let selectedAvatar = '⚡';
@@ -2953,6 +2958,9 @@ function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     logs.push({ type, text, time: new Date().toLocaleTimeString() });
   }
 
+  const tagOpen = '<' + 'script>';
+  const tagClose = '<' + '/script>';
+
   // Pre-configured mini HTML environment inside iframe so DOM tasks (querySelector, etc.) work!
   const sandboxHtml = `<!DOCTYPE html>
 <html>
@@ -3011,7 +3019,7 @@ function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     <span>Hisob: <span id="count">0</span></span>
   </div>
 
-  <' + 'script>
+  ${tagOpen}
     // Console interceptor
     window._capturedLogs = [];
     ['log', 'warn', 'error', 'info'].forEach(method => {
@@ -3034,7 +3042,18 @@ function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
       window._capturedLogs.push({ method: 'prompt', args: [msg, '->', res] });
       return res;
     };
-  <' + '/script>
+  ${tagClose}
+
+  ${tagOpen}
+    try {
+      ${String(code || '').replace(/<\/script>/gi, '<\\/script>')}
+    } catch (err) {
+      window._capturedLogs.push({ method: 'error', args: [err.message] });
+      try {
+        window.parent.postMessage({ type: 'CONSOLE_LOG', method: 'error', text: '❌ Xatolik (Error): ' + err.message }, '*');
+      } catch (e) {}
+    }
+  ${tagClose}
 </body>
 </html>`;
 
@@ -3063,24 +3082,21 @@ function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
       }
     }
 
+    // 100% Offline file:// protocol compatible iframe execution
     livePreviewFrame.srcdoc = sandboxHtml;
     livePreviewFrame.onload = () => {
-      try {
-        const win = livePreviewFrame.contentWindow;
-        win.eval(code);
-        setTimeout(() => {
-          resolve({
-            success: true,
-            logs: win._capturedLogs || []
-          });
-        }, 50);
-      } catch (err) {
+      setTimeout(() => {
+        let captured = [];
+        try {
+          captured = livePreviewFrame.contentWindow._capturedLogs || [];
+        } catch (e) {
+          // If cross-origin prevented direct property read, messages were received via postMessage
+        }
         resolve({
-          success: false,
-          error: err.message,
-          logs: []
+          success: true,
+          logs: captured
         });
-      }
+      }, 50);
     };
   });
 }
@@ -3373,16 +3389,38 @@ function renderLessonWorkspace(lesson) {
               <span class="badge-tag">${isCompleted ? t('completedTag', state.lang) : t('missionTag', state.lang)}</span>
             </div>
           </div>
-          <div class="brief-actions">
-            <!-- Visual Lab Button -->
-            <button id="btn-open-topic-lab" class="btn-brief-action btn-lab-highlight" title="${isUz ? 'Mavzu Vizual Laboratoriyasini ochish' : 'Open Topic Visual Lab'}">
-              🧪 ${t('topicLabBtn', state.lang)}
-            </button>
-            <!-- Speech Narrator -->
-            <button id="btn-read-aloud" class="btn-brief-action" title="${isUz ? 'Ovozli o\'qish' : 'Read Aloud'}">
-              🔊 ${t('readAloudBtn', state.lang)}
-            </button>
-          </div>
+        </div>
+
+        <!-- Dedicated Interactive Study Action Deck -->
+        <div class="topic-action-deck">
+          <button id="btn-topic-lab" class="btn-deck-item btn-deck-lab" title="${escapeHtml(t('topicLabBtn', state.lang))}">
+            <span class="deck-icon">🧪</span>
+            <div class="deck-text">
+              <span class="deck-label">${escapeHtml(t('topicLabBtn', state.lang))}</span>
+              <span class="deck-sub">${isUz ? 'Evolyutsiya Slayderi' : 'Step-by-Step Evolution Slider'}</span>
+            </div>
+          </button>
+          <button id="btn-tag-list" class="btn-deck-item btn-deck-tags" title="${escapeHtml(t('listOfTags', state.lang))}">
+            <span class="deck-icon">📋</span>
+            <div class="deck-text">
+              <span class="deck-label">${escapeHtml(t('listOfTags', state.lang))}</span>
+              <span class="deck-sub">${isUz ? 'Buyruqlar jadvali va namunalar' : 'Command Cheat Sheet'}</span>
+            </div>
+          </button>
+          <button id="btn-start-practice" class="btn-deck-item btn-deck-practice" title="${isUz ? 'Amaliyotni Boshlash' : 'Start Practice'}">
+            <span class="deck-icon">💻</span>
+            <div class="deck-text">
+              <span class="deck-label">${isUz ? 'Amaliyotni Boshlash' : 'Start Practice'}</span>
+              <span class="deck-sub">${isUz ? 'Tayyor kod bilan mashq' : 'Jump to Live Editor'}</span>
+            </div>
+          </button>
+          <button id="btn-read-aloud" class="btn-deck-item btn-deck-read" title="${isUz ? 'Ovozli o\'qish' : 'Read Aloud'}">
+            <span class="deck-icon">🔊</span>
+            <div class="deck-text">
+              <span class="deck-label">${escapeHtml(t('readAloudBtn', state.lang))}</span>
+              <span class="deck-sub">${isUz ? 'Ovozli eshitish' : 'Listen with Speech'}</span>
+            </div>
+          </button>
         </div>
 
         <!-- 1. In Human Language -->
@@ -3512,7 +3550,9 @@ function attachLessonEvents(lesson) {
   const btnTidy = document.getElementById('btn-tidy-code');
   const btnCopy = document.getElementById('btn-copy-code');
   const btnClearConsole = document.getElementById('btn-clear-console');
-  const btnTopicLab = document.getElementById('btn-open-topic-lab');
+  const btnTopicLab = document.getElementById('btn-topic-lab');
+  const btnTagList = document.getElementById('btn-tag-list');
+  const btnStartPractice = document.getElementById('btn-start-practice');
   const btnReadAloud = document.getElementById('btn-read-aloud');
 
   // Editor typing
@@ -3540,6 +3580,7 @@ function attachLessonEvents(lesson) {
 
   // Check Code
   btnCheck?.addEventListener('click', () => {
+    if (editor) currentCode = editor.value;
     runCurrentCode();
     const result = lesson.validate(currentCode);
     if (result.passed) {
@@ -3600,6 +3641,27 @@ function attachLessonEvents(lesson) {
     openTopicLabModal(lesson.id, lesson, state, playSound);
   });
 
+  // Open Tag / Command Cheat Sheet Modal
+  btnTagList?.addEventListener('click', () => {
+    openTagListModal(lesson);
+  });
+
+  // Start Practice Action (Jump to Code Editor)
+  btnStartPractice?.addEventListener('click', () => {
+    playSound('click', state.audioEnabled);
+    const missionCallout = document.querySelector('.mission-callout');
+    const editor = document.getElementById('code-editor');
+    if (missionCallout) {
+      missionCallout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (editor) {
+      editor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (editor) {
+      editor.focus();
+      editor.setSelectionRange(editor.value.length, editor.value.length);
+    }
+  });
+
   // Speech narrator
   btnReadAloud?.addEventListener('click', () => {
     if (isSpeaking()) {
@@ -3632,6 +3694,8 @@ function attachLessonEvents(lesson) {
 }
 
 function runCurrentCode() {
+  const editor = document.getElementById('code-editor') || document.getElementById('sandbox-editor');
+  if (editor) currentCode = editor.value;
   const frame = document.getElementById('live-preview-frame');
   const consoleBody = document.getElementById('js-console-body');
   if (frame) {
@@ -3686,6 +3750,81 @@ function showTryAgainModal(lesson, errorMsg) {
   `;
   document.body.appendChild(modal);
   modal.querySelector('#btn-retry')?.addEventListener('click', () => modal.remove());
+}
+
+function openTagListModal(lesson) {
+  if (!lesson.tagShowcase || lesson.tagShowcase.length === 0) return;
+  playSound('click', state.audioEnabled);
+
+  const isUz = state.lang === 'uz';
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card tag-list-modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px; margin: 0;">
+          <span>📋</span> ${escapeHtml(t('tagListModalTitle', state.lang))}: ${escapeHtml(localize(lesson.title, state.lang))}
+        </h3>
+        <button id="btn-close-tag-modal" class="btn-close-modal" title="Close">✕</button>
+      </div>
+
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">
+        ${escapeHtml(t('tagListDesc', state.lang))}
+      </p>
+
+      <div style="overflow-x: auto; max-height: 380px; margin-bottom: 16px; border: 1px solid var(--border-color); border-radius: 12px;">
+        <table class="tag-list-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+          <thead>
+            <tr style="background: var(--bg-surface); border-bottom: 1px solid var(--border-color);">
+              <th style="padding: 10px 12px; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">${escapeHtml(t('colCode', state.lang))}</th>
+              <th style="padding: 10px 12px; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">${escapeHtml(t('colName', state.lang))}</th>
+              <th style="padding: 10px 12px; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">${escapeHtml(t('colMeaning', state.lang))}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${lesson.tagShowcase.map(item => `
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 12px;">
+                  <code class="code-chip insertable" data-insert="${escapeHtml(item.tag)}" style="cursor: pointer;" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(item.tag)}</code>
+                </td>
+                <td style="padding: 10px 12px; font-weight: 600; color: #f8fafc;">${escapeHtml(localize(item.name, state.lang))}</td>
+                <td style="padding: 10px 12px; color: #cbd5e1; font-size: 12px;">${escapeHtml(localize(item.meaning, state.lang))}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button id="btn-done-tag-modal" class="btn-modal btn-modal-primary">${escapeHtml(t('doneBtn', state.lang))}</button>
+      </div>
+    </div>
+  `;
+
+  modal.querySelectorAll('.insertable').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.getAttribute('data-insert');
+      const editor = document.getElementById('code-editor');
+      if (editor && tag) {
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+        editor.value = editor.value.substring(0, start) + tag + editor.value.substring(end);
+        editor.selectionStart = editor.selectionEnd = start + tag.length;
+        currentCode = editor.value;
+        playSound('click', state.audioEnabled);
+        modal.remove();
+        editor.focus();
+      }
+    });
+  });
+
+  modal.querySelector('#btn-close-tag-modal')?.addEventListener('click', () => modal.remove());
+  modal.querySelector('#btn-done-tag-modal')?.addEventListener('click', () => modal.remove());
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.remove();
+  });
+
+  document.body.appendChild(modal);
 }
 
 function renderSandboxWorkspace() {

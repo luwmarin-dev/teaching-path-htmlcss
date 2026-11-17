@@ -26,6 +26,14 @@ function setupCopyBtn(container, codeSelector, btnSelector) {
   });
 }
 
+function safeText(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 /**
  * Universal Stepful Lab Controller
  * Renders the multi-stage stepper and wires previous/next and step clicking.
@@ -47,7 +55,7 @@ function createStepfulLab(container, def, isUz) {
             </div>
             <div class="slider-current-stage">
               <span class="stage-num-badge" id="badge-stage-num">1 / ${totalSteps}</span>
-              <strong class="stage-name" id="badge-stage-name">${isUz ? def.steps[0].title.uz : def.steps[0].title.en}</strong>
+              <strong class="stage-name" id="badge-stage-name">${safeText(isUz ? def.steps[0].title.uz : def.steps[0].title.en)}</strong>
             </div>
           </div>
 
@@ -65,7 +73,7 @@ function createStepfulLab(container, def, isUz) {
               ${def.steps.map((s, idx) => `
                 <div class="slider-stop-point ${idx === 0 ? 'active' : ''}" data-step="${idx}">
                   <div class="stop-dot">${idx + 1}</div>
-                  <div class="stop-title">${isUz ? s.title.uz : s.title.en}</div>
+                  <div class="stop-title" title="${safeText(isUz ? s.title.uz : s.title.en)}">${safeText(isUz ? s.title.uz : s.title.en)}</div>
                 </div>
               `).join('')}
             </div>

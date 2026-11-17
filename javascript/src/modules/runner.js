@@ -17,6 +17,9 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     logs.push({ type, text, time: new Date().toLocaleTimeString() });
   }
 
+  const tagOpen = '<' + 'script>';
+  const tagClose = '<' + '/script>';
+
   // Pre-configured mini HTML environment inside iframe so DOM tasks (querySelector, etc.) work!
   const sandboxHtml = `<!DOCTYPE html>
 <html>
@@ -75,7 +78,7 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
     <span>Hisob: <span id="count">0</span></span>
   </div>
 
-  <' + 'script>
+  ${tagOpen}
     // Console interceptor
     window._capturedLogs = [];
     ['log', 'warn', 'error', 'info'].forEach(method => {
@@ -98,7 +101,18 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
       window._capturedLogs.push({ method: 'prompt', args: [msg, '->', res] });
       return res;
     };
-  <' + '/script>
+  ${tagClose}
+
+  ${tagOpen}
+    try {
+      ${String(code || '').replace(/<\/script>/gi, '<\\/script>')}
+    } catch (err) {
+      window._capturedLogs.push({ method: 'error', args: [err.message] });
+      try {
+        window.parent.postMessage({ type: 'CONSOLE_LOG', method: 'error', text: '❌ Xatolik (Error): ' + err.message }, '*');
+      } catch (e) {}
+    }
+  ${tagClose}
 </body>
 </html>`;
 
@@ -127,24 +141,21 @@ export function executeJsInSandbox(code, outputContainer, livePreviewFrame) {
       }
     }
 
+    // 100% Offline file:// protocol compatible iframe execution
     livePreviewFrame.srcdoc = sandboxHtml;
     livePreviewFrame.onload = () => {
-      try {
-        const win = livePreviewFrame.contentWindow;
-        win.eval(code);
-        setTimeout(() => {
-          resolve({
-            success: true,
-            logs: win._capturedLogs || []
-          });
-        }, 50);
-      } catch (err) {
+      setTimeout(() => {
+        let captured = [];
+        try {
+          captured = livePreviewFrame.contentWindow._capturedLogs || [];
+        } catch (e) {
+          // If cross-origin prevented direct property read, messages were received via postMessage
+        }
         resolve({
-          success: false,
-          error: err.message,
-          logs: []
+          success: true,
+          logs: captured
         });
-      }
+      }, 50);
     };
   });
 }
