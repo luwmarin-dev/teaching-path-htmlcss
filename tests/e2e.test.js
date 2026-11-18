@@ -76,9 +76,48 @@ describe('Playwright E2E Integration Suite (100% Offline via file://)', () => {
     await page.waitForTimeout(200);
 
     // 3. Test Student Editor and Code Verification
+    // Test Dual IDE Mode: Fullscreen, Swapping, and Resizer
+    const fsBtn = await page.$('#btn-fullscreen-ide');
+    const swapBtn = await page.$('#btn-swap-panes');
+    const resizer = await page.$('#pane-resizer');
+    assert.ok(fsBtn, 'Fullscreen Dual IDE button exists');
+    assert.ok(swapBtn, 'Swap panes button exists');
+    assert.ok(resizer, 'Pane resizer divider exists');
+
+    // 1. Click Fullscreen
+    await fsBtn.click();
+    await page.waitForTimeout(200);
+    const isFsActive = await page.evaluate(() => document.querySelector('.workspace-stage')?.classList.contains('fullscreen-ide-active'));
+    assert.equal(isFsActive, true, 'Fullscreen IDE mode is active');
+
+    // 2. Click Swap Panes
+    await swapBtn.click();
+    await page.waitForTimeout(200);
+    const isSwapped = await page.evaluate(() => document.querySelector('.editor-stage-split')?.classList.contains('panes-swapped'));
+    assert.equal(isSwapped, true, 'Panes are swapped');
+
+    // 3. Exit Fullscreen
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(200);
+    const isFsExited = await page.evaluate(() => !document.querySelector('.workspace-stage')?.classList.contains('fullscreen-ide-active'));
+    assert.equal(isFsExited, true, 'Exited fullscreen cleanly via Escape key');
+
+    // 4. Test Student Editor and Code Verification for Manifesto
     const editor = await page.$('#code-textarea');
     assert.ok(editor, 'Code input editor exists');
-    await editor.fill('<h1>Salom Dunyo</h1>');
+    const validManifestoCode = `<article class="manifesto-doc">
+      <header><h1>🌐 Kiber Dasturchilar Tarixiy Manifesti</h1><p><abbr title="O'zKTA">O'zKTA</abbr></p></header>
+      <p>Dasturlash <strong>haqiqiy sehrgarlik</strong>dir! Hayotni <em>butunlay o'zgartirish</em> qudratiga ega.</p>
+      <blockquote><q>Veb — global tafakkur maydonidir.</q></blockquote>
+      <p><mark>Hech qachon xato qilishdan qo'rqmang!</mark></p>
+      <p><del>Eski afsona</del> <ins>Yangi haqiqat</ins></p>
+      <hr>
+      <h3>⚡ Formulalar</h3>
+      <p>H<sub>2</sub>O va 10<sup>9</sup></p>
+      <p><kbd>Ctrl</kbd> + <kbd>S</kbd> va <code>console.log("Salom!");</code></p>
+      <p><u>Qat'iyatli bo'ling</u></p>
+    </article>`;
+    await editor.fill(validManifestoCode);
     
     // Check code
     const checkBtn = await page.$('#btn-verify-mission');
@@ -86,7 +125,7 @@ describe('Playwright E2E Integration Suite (100% Offline via file://)', () => {
     await checkBtn.click();
     await page.waitForTimeout(400);
 
-    // Success modal or completed badge should appear
+    // Success celebration modal or completed badge should appear
     const successModal = await page.$('.modal-card');
     assert.ok(successModal, 'Success celebration modal appeared');
 

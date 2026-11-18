@@ -104,379 +104,834 @@ const LESSONS = [
     id: 'theme-1-tags',
     module: 'html-core',
     title: {
-      en: 'Theme 1: HTML Tags & The Sandwich Secret',
-      uz: '1-Mavzu: HTML Teglar va Sehrli Sendvich'
+      en: 'Theme 1: Cyber Coder Manifesto & All Text Tags',
+      uz: '1-Mavzu: Kiber Dasturchilar Tarixiy Manifesti va Matn Teglari'
     },
     icon: '🏷️',
     tag: '<tag> ... </tag>',
     humanIntro: {
       whatIsIt: {
-        en: 'HTML stands for "HyperText Markup Language", but in human language, it is simply the **secret language of web pages**! Web pages are built using little instructions called **Tags**.',
-        uz: 'HTML oddiy inson tilida — **veb-sahifalarning maxfiy tilidir**! Veb-sahifalar **Teglar** deb ataluvchi kichik ko\'rsatmalar yordamida quriladi.'
+        en: 'HTML stands for "HyperText Markup Language", but in human language, it is simply the **architectural skeleton of web pages**! Every sentence, heading, quote, formula, and hotkey on the internet is defined using instructions called **Tags**.',
+        uz: 'HTML inson tilida — **veb-sahifaning meʼmoriy suyak-karkasidir**! Internetdagi har bir jumla, sarlavha, iqtibos, formula va tugma **Teglar** deb ataluvchi maxsus ko\'rsatmalar orqali yoziladi.'
       },
       whatIsATag: {
-        en: 'A **Tag** is a special magic sticker that tells the computer how to treat words. Tags almost always come in pairs like a sandwich: an **Opening Tag** at the start (<tag>), and a **Closing Tag** at the end with a secret slash (</tag>)!',
-        uz: '**Teg** — bu so\'zlarni qanday ko\'rsatishni kompyuterga aytadigan sehrli stikerdir. Teglar xuddi sendvich kabi deyarli doim juft bo\'lib keladi: boshida **Ochuvchi teg** (<tag>) va oxirida sirli slesh belgili **Yopuvchi teg** (</tag>)!'
+        en: 'A **Tag** tells the computer how to treat and format text. Tags almost always come in pairs like a sandwich: an **Opening Tag** (<tag>) to begin, words in the middle, and a **Closing Tag** (</tag>) with a slash to stop!',
+        uz: '**Teg** kompyuterga matn qanday vazifa bajarishini aytadi. Ular xuddi sendvich kabi deyarli doim juft bo\'lib keladi: boshida **Ochuvchi teg** (<tag>), o\'rtada matn va oxirida slesh belgili **Yopuvchi teg** (</tag>)!'
       }
     },
     summary: {
-      en: 'Discover what HTML is in human language, how opening and closing tags work, and explore simple everyday tags.',
-      uz: 'HTML nima ekanligini oddiy tilda bilib oling, ochuvchi va yopuvchi teglar qanday ishlashini o\'rganing.'
+      en: 'Master all essential text formatting tags: h1-h3, p, strong, em, u, mark, del, ins, sub, sup, blockquote, q, code, kbd, abbr, and hr in a historic manifesto essay.',
+      uz: 'Tarixiy manifest essayi orqali barcha asosiy matn teglari: h1-h3, p, strong, em, u, mark, del, ins, sub, sup, blockquote, q, code, kbd, abbr va hr teglari mohiyatini o\'rganing.'
     },
     story: {
-      en: 'Assemble the Cyber Pet Robot ID card: combine bold strengths, italic agility, underlined armor, and highlight its favorite golden pizza power boost!',
-      uz: "Kiber Robot-Pet viza kartochkasini yig'ing: qalin kuch, yotiq tezlik, chizilgan zirh va uning sevimli tilla pitsasini yoritib bering!"
+      en: 'Shape the Future Coder Manifesto: turn a raw inspiring speech into a beautifully structured digital essay using the full spectrum of HTML formatting tags.',
+      uz: "Kelajak Kiber Dasturchilar Tarixiy Manifestini shakllantiring: ilhomlantiruvchi nutq xom matnini barcha formatlash teglari bilan professional raqamli maqolaga aylantiring!"
     },
     initialCode: {
-      en: `<!-- Step 1: We set up the robot profile card -->
-<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
-  <h2>🤖 Cyber Pet Robot</h2>
-  <p>Our robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!</p>
+      en: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
+  <!-- Step 1: Wrap the manifesto title in a top-level heading 1 (h1) tag, and wrap the organization in an abbreviation (<abbr title="...">) tag. -->
+  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
+    🌐 The Future Coder Historic Manifesto
+    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Author: CTA • Era: 21st Century Digital Revolution</p>
+  </header>
 
-  <!-- Step 2: Add its favorite power food using <mark>golden pizza</mark> -->
-  <p>Favorite power snack: </p>
-</div>`,
-      uz: `<!-- 1-Qadam: Robot profil kartochkasining asosiy qismini quramiz -->
-<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
-  <h2>🤖 Cyber Pet Robot</h2>
-  <p>Bizning robotimiz <b>super strong</b>, <i>lightning fast</i> va <u>waterproof</u>!</p>
+  <!-- Step 2: In the first paragraph, wrap "true art of digital wizardry" with strong importance (strong), and "completely transform" with vocal emphasis (em). -->
+  <p>Today we live in the greatest era of human history. Programming is not just an ordinary job — it is a true art of digital wizardry! Every line of code you craft has the power to completely transform millions of lives.</p>
 
-  <!-- 2-Qadam: Sevimli quvvat ovqatini <mark>golden pizza</mark> tegi bilan qo'shing -->
-  <p>Favorite power snack: </p>
-</div>`
+  <!-- Step 3: Frame the wisdom of Tim Berners-Lee as an indented quote block (blockquote), and enclose his direct words in an inline quotation (q). -->
+  <div style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
+    Master Tim Berners-Lee declared: The Web is a global canvas of human thought and unity.
+  </div>
+
+  <!-- Step 4: Highlight the golden motto with a glowing highlighter tag (mark). -->
+  <p>The cardinal law of cyberspace: Never fear making mistakes! Because every bug is a stepping stone to mastery.</p>
+
+  <!-- Step 5: Strike through the obsolete myth using (del or s), and mark the new reality with an inserted correction tag (ins). -->
+  <p>According to the old myth: Coding is only for math geniuses has been debunked. The modern truth is: Coding is open to every passionate and curious mind everywhere.</p>
+
+  <!-- Step 6: Add a horizontal divider line (hr) and introduce the next section with a heading 3 (h3). -->
+  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
+  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Technological Formulas and Your First Step</h3>
+
+  <!-- Step 7: Format the 2 in H2O as a chemical subscript (sub), and the 9 in 10^9 as a mathematical power superscript (sup). -->
+  <p>While the pure water on your coding desk is H2O, our neural supercomputer processes 109 operations per second.</p>
+
+  <!-- Step 8: Wrap the Ctrl and S hotkeys in keyboard key tags (kbd), and wrap the console snippet in a computer code tag (code). -->
+  <p>Whenever you write code, press Ctrl + S to save immediately. Your first victory snippet is: console.log("Hello, Cyber World!");</p>
+
+  <!-- Step 9: Underline the final golden advice using an underline tag (u). -->
+  <p>Remember: Relentless grit and 30 minutes of daily practice will forge you into a world-class creator!</p>
+</article>`,
+      uz: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
+  <!-- 1-QADAM: Manifestning bosh nomini 1-darajali eng yirik sarlavha (h1) tegi bilan belgilang. Tashkilot nomini esa <abbr title="O'zbekiston Kiber Texnologiyalari Akademiyasi">O'zKTA</abbr> qisqartma tegi ichiga oling. -->
+  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
+    🌐 Kiber Dasturchilar Tarixiy Manifesti
+    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Muallif: O'zKTA • Davr: XXI asr axborot inqilobi</p>
+  </header>
+
+  <!-- 2-QADAM: Birinchi paragrafda "haqiqiy sehrgarlik san'ati" iborasini jiddiy muhim qalinlashtiruvchi teg (strong), "butunlay o'zgartirish" iborasini esa his-tuyg'uli yotiq urg'u beruvchi teg (em) bilan o'rang. -->
+  <p>Bugun biz insoniyat tarixidagi eng buyuk davrda yashamoqdamiz. Dasturlash shunchaki zerikarli kasb emas — bu haqiqiy sehrgarlik san'atidir! Chunki siz yozgan har bir satr kod millionlab insonlar hayotini butunlay o'zgartirish qudratiga ega.</p>
+
+  <!-- 3-QADAM: Mashhur ustoz Tim Berners-Lee falsafasini sahifadan ajralib turuvchi iqtibos bloki (blockquote), uning ichidagi jumlasini esa qisqa iqtibos tegi (q) bilan o'rang. -->
+  <div style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
+    Ustoz Tim Berners-Lee aytgan edi: Veb — bu insoniyatni birlashtiruvchi global tafakkur maydonidir.
+  </div>
+
+  <!-- 4-QADAM: Kiber dunyoning bosh shiorini sariq flomaster bilan yorituvchi teg (mark) ichiga oling. -->
+  <p>Kiber dunyoning bosh qonuni: Hech qachon xato qilishdan qo'rqmang! Chunki xato — bu o'sish pillapoyasidir.</p>
+
+  <!-- 5-QADAM: Eski xato afsonani ustidan chizilgan teg (del yoki s), yangi to'g'ri haqiqatni esa tuzatilgan teg (ins) bilan ifodalang. -->
+  <p>Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi haqiqat shundaki: Dasturlash — har bir intiluvchan inson uchun ochiq sanaladi.</p>
+
+  <!-- 6-QADAM: Bo'limlarni ajratuvchi gorizontal chiziq (hr) qo'ying va 3-darajali sarlavha (h3) bilan pastki bo'limni nomlang. -->
+  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
+  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Texnologik Formulalar va Birinchi Qadam</h3>
+
+  <!-- 7-QADAM: H2O formulasidagi 2 raqamini pastki indeks (sub), 10 ning 9-darajasini esa yuqori daraja indeksi (sup) tegi bilan yozing. -->
+  <p>Dasturchining ish stolidagi toza suv formulasi H2O bo'lsa, super-kompyuterimiz soniyasiga 109 ta amallarni bajaradi.</p>
+
+  <!-- 8-QADAM: Ctrl va S tugmalarini alohida klaviatura teglari (kbd), dastur buyrug'ini esa kod tegi (code) bilan o'rang. -->
+  <p>Har safar yangi kod yozganingizda, uni darhol saqlash uchun klaviaturadagi Ctrl + S tugmalarini bosing. Sizning birinchi kodingiz: console.log("Salom, Kiber Dunyo!"); bo'ladi.</p>
+
+  <!-- 9-QADAM: Eng oxirgi maslahatning tagiga chizish uchun (u) tegidan foydalaning. -->
+  <p>Unutmang: Qat'iyat va har kuni 30 daqiqa mashq — sizni buyuk dasturchiga aylantiradi!</p>
+</article>`
     },
-    targetCode: `<div class="pet-card" style="padding: 20px; background: #141722; border-radius: 12px; color: white;">
-  <h2>🤖 Cyber Pet Robot</h2>
-  <p>Our robot is <b>super strong</b>, <i>lightning fast</i>, and <u>waterproof</u>!</p>
-  <p>Favorite power snack: <mark>golden pizza</mark>!</p>
-</div>`,
+    targetCode: {
+      en: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
+  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
+    <h1 style="color: #58a6ff; margin: 0 0 6px 0; font-size: 24px;">🌐 The Future Coder Historic Manifesto</h1>
+    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Author: <abbr title="CyberTech Academy">CTA</abbr> • Era: 21st Century Digital Revolution</p>
+  </header>
+
+  <p>Today we live in the greatest era of human history. Programming is not just an ordinary job — it is a <strong>true art of digital wizardry</strong>! Every line of code you craft has the power to <em>completely transform</em> millions of lives.</p>
+
+  <blockquote style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
+    Master Tim Berners-Lee declared: <q>The Web is a global canvas of human thought and unity.</q>
+  </blockquote>
+
+  <p>The cardinal law of cyberspace: <mark>Never fear making mistakes!</mark> Because every bug is a stepping stone to mastery.</p>
+
+  <p>According to the old myth: <del>Coding is only for math geniuses</del> has been debunked. The modern truth is: <ins>Coding is open to every passionate and curious mind everywhere</ins>.</p>
+
+  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
+  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Technological Formulas and Your First Step</h3>
+
+  <p>While the pure water on your coding desk is H<sub>2</sub>O, our neural supercomputer processes 10<sup>9</sup> operations per second.</p>
+
+  <p>Whenever you write code, press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save immediately. Your first victory snippet is: <code>console.log("Hello, Cyber World!");</code>.</p>
+
+  <p>Remember: <u>Relentless grit and 30 minutes of daily practice</u> will forge you into a world-class creator!</p>
+</article>`,
+      uz: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
+  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
+    <h1 style="color: #58a6ff; margin: 0 0 6px 0; font-size: 24px;">🌐 Kiber Dasturchilar Tarixiy Manifesti</h1>
+    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Muallif: <abbr title="O'zbekiston Kiber Texnologiyalari Akademiyasi">O'zKTA</abbr> • Davr: XXI asr axborot inqilobi</p>
+  </header>
+
+  <p>Bugun biz insoniyat tarixidagi eng buyuk davrda yashamoqdamiz. Dasturlash shunchaki zerikarli kasb emas — bu <strong>haqiqiy sehrgarlik san'ati</strong>dir! Chunki siz yozgan har bir satr kod millionlab insonlar hayotini <em>butunlay o'zgartirish</em> qudratiga ega.</p>
+
+  <blockquote style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
+    Ustoz Tim Berners-Lee aytgan edi: <q>Veb — bu insoniyatni birlashtiruvchi global tafakkur maydonidir.</q>
+  </blockquote>
+
+  <p>Kiber dunyoning bosh qonuni: <mark>Hech qachon xato qilishdan qo'rqmang!</mark> Chunki xato — bu o'sish pillapoyasidir.</p>
+
+  <p>Eski afsonaga ko'ra: <del>Dasturlash faqat daho matematiklar uchun</del> degan gap bekor qilindi. Bugungi haqiqat shundaki: <ins>Dasturlash — har bir intiluvchan inson uchun ochiq</ins> sanaladi.</p>
+
+  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
+  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Texnologik Formulalar va Birinchi Qadam</h3>
+
+  <p>Dasturchining ish stolidagi toza suv formulasi H<sub>2</sub>O bo'lsa, super-kompyuterimiz soniyasiga 10<sup>9</sup> ta amallarni bajaradi.</p>
+
+  <p>Har safar yangi kod yozganingizda, uni darhol saqlash uchun klaviaturadagi <kbd>Ctrl</kbd> + <kbd>S</kbd> tugmalarini bosing. Sizning birinchi kodingiz: <code>console.log("Salom, Kiber Dunyo!");</code> bo'ladi.</p>
+
+  <p>Unutmang: <u>Qat'iyat va har kuni 30 daqiqa mashq</u> — sizni buyuk dasturchiga aylantiradi!</p>
+</article>`
+    },
     targetDescription: {
-      en: 'A sentence where:\n• "super strong" is bolded with <b>\n• "lightning fast" is slanted with <i>\n• "waterproof" is underlined with <u>\n• "golden pizza" is highlighted with <mark>',
-      uz: '"super strong" qalin <b>, "lightning fast" yotiq <i>, "waterproof" tagiga chizilgan <u> va "golden pizza" sariq rangda <mark> bilan yoritilgan jumla.'
+      en: 'A historic manifesto essay where:\n• Title is set in <h1>, acronym in <abbr>\n• High importance words are wrapped in <strong> and <em>\n• Teacher wisdom is framed in <blockquote> and <q>\n• Golden motto is lit up with <mark>\n• Obsolete myths are crossed with <del>, truth inserted with <ins>\n• Science notation uses <sub> and <sup>\n• Keyboard hotkeys use <kbd>, code snippet uses <code>, advice is underlined with <u>',
+      uz: 'Tarixiy kiber manifest essayi:\n• Bosh sarlavha <h1> da, qisqartma <abbr> da\n• Muhim so\'zlar <strong> va <em> bilan belgilangan\n• Ustoz so\'zi <blockquote> va <q> iqtiboslarida\n• Oltin shior sariq <mark> bilan yoritilgan\n• Xato qarash <del> bilan o\'chirilgan, haqiqat <ins> bilan kiritilgan\n• Formulalar <sub> va <sup> yordamida yozilgan\n• Klaviatura tugmalari <kbd>, kod esa <code> da, maslahat <u> bilan chizilgan'
     },
     anatomy: [
       {
-        part: '<b>',
-        role: { en: 'Opening Tag', uz: 'Ochuvchi teg' },
+        part: '<h1> ... </h1>',
+        role: { en: 'Heading 1 (Master Title)', uz: '1-Darajali Bosh Sarlavha' },
         explanation: {
-          en: 'Notice the angle brackets < >. Tells the browser: "Start making words BOLD right now!"',
-          uz: 'Burchakli qavslarga e\'tibor bering. Brauzerga: "Hozirdan boshlab so\'zlarni QALIN qil!" deydi.'
+          en: 'The most important title of the entire document. Every webpage should have one clear h1.',
+          uz: 'Butun sahifadagi eng yuqori darajali asosiy sarlavha. Har bir sahifada bitta aniq h1 bo\'lishi maqsadga muvofiq.'
         },
         effect: {
-          en: 'Starts bold text',
-          uz: 'Qalin matnni boshlaydi'
+          en: 'Renders the largest, boldest title text',
+          uz: 'Eng yirik va nufuzli sarlavha matnini yaratadi'
         },
-        visualPreview: '<div class="mini-canvas">Normal ➔ <strong style="color:#ffffff; font-weight:800;">Bold Text</strong></div>'
+        visualPreview: '<div class="mini-canvas"><h1 style="font-size:22px; color:#58a6ff; margin:0;">🚀 Bosh Sarlavha</h1></div>'
       },
       {
-        part: 'super strong',
-        role: { en: 'Content', uz: 'Matn qismi' },
+        part: '<strong> ... </strong>',
+        role: { en: 'Strong Importance', uz: 'Jiddiy Ahamiyatli Qalin Matn' },
         explanation: {
-          en: 'The actual words sitting inside the tag sandwich.',
-          uz: 'Teg sendvichining o\'rtasida joylashgan haqiqiy so\'zlar.'
+          en: 'Signals critical importance to screen readers, search engines, and humans. Visually bold.',
+          uz: 'Brauzer va qidiruv tizimlariga bu so\'z o\'ta muhim ekanligini bildiradi. Qalin ko\'rinadi.'
         },
         effect: {
-          en: 'Appears as the text',
-          uz: 'Matn sifatida ko\'rinadi'
+          en: 'Renders bold with semantic gravity',
+          uz: 'Semantik jihatdan kuchli qalin matn hosil qiladi'
         },
-        visualPreview: '<div class="mini-canvas">📝 "super strong"</div>'
+        visualPreview: '<div class="mini-canvas"><strong style="color:#ffffff; font-weight:800;">Muhim Haqiqat</strong></div>'
       },
       {
-        part: '</b>',
-        role: { en: 'Closing Tag', uz: 'Yopuvchi teg' },
+        part: '<em> ... </em>',
+        role: { en: 'Vocal Stress & Emotion', uz: 'Ohangdor Urg\'u (Kursiv)' },
         explanation: {
-          en: 'The secret slash / means STOP! Tells the browser: "Stop making text bold; go back to normal."',
-          uz: 'Maxfiy slesh / belgisi TO\'XTAT degani! Brauzerga: "Qalinlashtirishni to\'xtat, odatiy holatga qayt" deydi.'
+          en: 'Changes the vocal stress and emotional rhythm of a sentence. Visually slanted (italic).',
+          uz: 'Gapdagi so\'zga ohang va emotsional urg\'u beradi. Matnni qiya (kursiv) qilib ko\'rsatadi.'
         },
         effect: {
-          en: 'Stops bolding from spreading',
-          uz: 'Qalinlik tarqalishini to\'xtatadi'
+          en: 'Slanted italic text with vocal emphasis',
+          uz: 'O\'zgacha ohangga ega qiya yozuv'
         },
-        visualPreview: '<div class="mini-canvas">🛑 / Stop Command</div>'
-      },
-      {
-        part: '<i> ... </i>',
-        role: { en: 'Italic Tag', uz: 'Kursiv teg' },
-        explanation: {
-          en: 'Slants words to make them stylish or emphasize speed.',
-          uz: 'So\'zlarni chiroyli yoki tezkor ko\'rsatish uchun yotiq qiladi.'
-        },
-        effect: {
-          en: 'Slanted italic text',
-          uz: 'Yotiq matn'
-        },
-        visualPreview: '<div class="mini-canvas">Normal ➔ <em style="color:#38bdf8;">Slanted Italic</em></div>'
-      },
-      {
-        part: '<u> ... </u>',
-        role: { en: 'Underline Tag', uz: 'Tagiga chizish tegi' },
-        explanation: {
-          en: 'Draws a neat line directly underneath the words.',
-          uz: 'So\'zlarning tagiga toza chiziq tortadi.'
-        },
-        effect: {
-          en: 'Underlined text',
-          uz: 'Tagiga chizilgan matn'
-        },
-        visualPreview: '<div class="mini-canvas">Normal ➔ <u style="text-decoration: underline wavy #2dd4bf;">Underlined Text</u></div>'
+        visualPreview: '<div class="mini-canvas"><em style="color:#a5b4fc;">butunlay o\'zgartirish</em></div>'
       },
       {
         part: '<mark> ... </mark>',
-        role: { en: 'Highlighter Tag', uz: 'Marker tegi' },
+        role: { en: 'Highlighter Pen', uz: 'Sariq Yorituvchi Marker' },
         explanation: {
-          en: 'Like swiping a neon yellow highlighter marker across your words.',
-          uz: 'So\'zlar ustidan yorqin sariq marker yurgazganga o\'xshaydi.'
+          en: 'Simulates a fluorescent highlighter marker across the text, drawing instant attention.',
+          uz: 'Matnni xuddi yorqin sariq flomaster bilan chizib qo\'yilgandek fonga olib yoritadi.'
         },
         effect: {
-          en: 'Yellow highlight background',
-          uz: 'Sariq fonli yorqin matn'
+          en: 'Glowing marker background',
+          uz: 'Yorqin ajralib turuvchi fon'
         },
-        visualPreview: '<div class="mini-canvas">Normal ➔ <mark style="background:#fbbf24; color:#0f1117; font-weight:bold; padding:2px 6px; border-radius:4px;">Highlighted</mark></div>'
+        visualPreview: '<div class="mini-canvas"><mark style="background:#e3b341; color:#0b0f19; font-weight:700; padding:2px 6px; border-radius:4px;">Kiber Shior</mark></div>'
+      },
+      {
+        part: '<blockquote> ... </blockquote>',
+        role: { en: 'Blockquote Container', uz: 'Katta Iqtibos Bloki' },
+        explanation: {
+          en: 'Indents and honors an extended quotation from an authority, mentor, or external source.',
+          uz: 'Ustoz yoki mashhur shaxsdan keltirilgan katta iqtibosni matndan alohida blok qilib ajratadi.'
+        },
+        effect: {
+          en: 'Indented block with vertical accent border',
+          uz: 'Yon hoshiyali va chetga surilgan iqtibos maydoni'
+        },
+        visualPreview: '<div class="mini-canvas" style="border-left:3px solid #a371f7; padding-left:8px; font-style:italic;">"Veb — umumiy tafakkur maydonidir"</div>'
+      },
+      {
+        part: '<del> & <ins>',
+        role: { en: 'Strike & Insert Truth', uz: 'O\'chirish va Yangi Kiritish' },
+        explanation: {
+          en: '<del> strikes a line through obsolete errors; <ins> underlines the new truth that replaced it.',
+          uz: '<del> xato fikr ustidan chizadi; <ins> esa uning o\'rniga kiritilgan to\'g\'ri fikrni belgilaydi.'
+        },
+        effect: {
+          en: 'Strike-through and inserted underline',
+          uz: 'Ustidan chizish va yangi tuzatish belgisi'
+        },
+        visualPreview: '<div class="mini-canvas"><del style="color:#f87171;">Eski xato</del> ➔ <ins style="color:#4ade80;">Yangi haqiqat</ins></div>'
+      },
+      {
+        part: '<sub> & <sup>',
+        role: { en: 'Sub & Super Scripts', uz: 'Pastki va Yuqori Indekslar' },
+        explanation: {
+          en: '<sub> lowers text for chemical formulas (H2O); <sup> elevates text for mathematical powers (10^9).',
+          uz: '<sub> formulalar uchun pastga tushiradi (H2O); <sup> darajalar uchun yuqoriga ko\'taradi (10^9).'
+        },
+        effect: {
+          en: 'Positioned above or below text baseline',
+          uz: 'Satrdan pastda yoki yuqorida joylashgan belgilar'
+        },
+        visualPreview: '<div class="mini-canvas">H<sub>2</sub>O va 10<sup>9</sup></div>'
+      },
+      {
+        part: '<kbd> & <code>',
+        role: { en: 'Keyboard & Code Snippet', uz: 'Klaviatura va Kod Teglari' },
+        explanation: {
+          en: '<kbd> visually frames keyboard keys (Ctrl, Enter); <code> styles programming syntax.',
+          uz: '<kbd> klaviatura tugmalarini ramkaga oladi; <code> esa dasturlash kodini monospace ko\'rsatadi.'
+        },
+        effect: {
+          en: 'Keycap button style & monospace syntax',
+          uz: 'Tugmacha ko\'rinishi va dastur kodi formati'
+        },
+        visualPreview: '<div class="mini-canvas"><kbd style="background:#21262d; border:1px solid #30363d; padding:2px 5px; border-radius:3px;">Ctrl</kbd> + <code>save()</code></div>'
       }
     ],
     listOfTags: [
-      { code: '<b> ... </b>', name: 'Bold Tag', description: 'Makes words thick, heavy, and bold', exampleHtml: '<b>Super Strong</b>' },
-      { code: '<i> ... </i>', name: 'Italic Tag', description: 'Slants words to make them stylish or emphasize them', exampleHtml: '<i>Lightning Fast</i>' },
-      { code: '<u> ... </u>', name: 'Underline Tag', description: 'Draws a clean line directly underneath words', exampleHtml: '<u>Waterproof</u>' },
-      { code: '<mark> ... </mark>', name: 'Highlighter Tag', description: 'Swipes a bright neon-yellow highlighter marker behind text', exampleHtml: '<mark>Golden Pizza</mark>' },
-      { code: '<s> ... </s>', name: 'Strikethrough Tag', description: 'Crosses words out with a horizontal strike line', exampleHtml: '<s>Old Secret</s>' },
-      { code: '<small> ... </small>', name: 'Small Tag', description: 'Shrinks words down like a tiny whisper', exampleHtml: '<small>tiny secret</small>' },
-      { code: '<strong> ... </strong>', name: 'Strong Tag', description: 'Shows strong importance (displays in bold)', exampleHtml: '<strong>Warning!</strong>' },
-      { code: '<em> ... </em>', name: 'Emphasis Tag', description: 'Emphasizes words in reading voice (displays slanted)', exampleHtml: '<em>Listen carefully</em>' },
-      { code: '<p> ... </p>', name: 'Paragraph Tag', description: 'Groups normal sentences with comfortable reading space', exampleHtml: '<p>A simple story sentence.</p>' }
+      { code: '<h1>', name: { en: 'Heading 1', uz: '1-Darajali Bosh Sarlavha' }, description: { en: 'Top-level document heading', uz: 'Eng asosiy yirik sarlavha' } },
+      { code: '<h2>', name: { en: 'Heading 2', uz: '2-Darajali Sarlavha' }, description: { en: 'Major section heading', uz: 'Katta bo\'lim sarlavhasi' } },
+      { code: '<h3>', name: { en: 'Heading 3', uz: '3-Darajali Sarlavha' }, description: { en: 'Sub-topic heading', uz: 'Ichki bo\'lim sarlavhasi' } },
+      { code: '<p>', name: { en: 'Paragraph', uz: 'Xatboshi (Paragraf)' }, description: { en: 'Standard text paragraph', uz: 'Oddiy matn xatboshisi' } },
+      { code: '<strong>', name: { en: 'Strong', uz: 'Kuchli Muhimlik' }, description: { en: 'High importance bold text', uz: 'Jiddiy ahamiyatli qalin matn' } },
+      { code: '<em>', name: { en: 'Emphasis', uz: 'Ohangdor Urg\'u' }, description: { en: 'Vocal emphasis italic text', uz: 'Urg\'u berilgan qiya matn' } },
+      { code: '<mark>', name: { en: 'Mark (Highlight)', uz: 'Yorituvchi Marker' }, description: { en: 'Highlights text with fluorescent glow', uz: 'Matnni sariq marker bilan yoritish' } },
+      { code: '<del>', name: { en: 'Delete (Strikethrough)', uz: 'Ustidan Chizish' }, description: { en: 'Strikes through obsolete or mistaken text', uz: 'Bekor qilingan xato so\'z ustidan chizish' } },
+      { code: '<ins>', name: { en: 'Insert (Correction)', uz: 'Yangi Kiritilgan So\'z' }, description: { en: 'Marks newly inserted correct text', uz: 'Yangi qo\'shilgan to\'g\'ri fikrni bildirish' } },
+      { code: '<blockquote>', name: { en: 'Blockquote', uz: 'Katta Iqtibos Bloki' }, description: { en: 'Indented block quote for wisdom or citations', uz: 'Ustozlar gapi uchun alohida iqtibos bloki' } },
+      { code: '<q>', name: { en: 'Inline Quote', uz: 'Qisqa Iqtibos' }, description: { en: 'Short inline quote with automatic quotes', uz: 'Matn ichidagi qisqa iqtibos' } },
+      { code: '<sub>', name: { en: 'Subscript', uz: 'Pastki Indeks' }, description: { en: 'Lowers text for formulas like H2O', uz: 'Formulalar uchun pastki indeks' } },
+      { code: '<sup>', name: { en: 'Superscript', uz: 'Yuqori Indeks' }, description: { en: 'Elevates text for math powers like 10^9', uz: 'Matematik daraja uchun yuqori indeks' } },
+      { code: '<code>', name: { en: 'Code Snippet', uz: 'Dastur Kodi Parchasi' }, description: { en: 'Monospace programming code', uz: 'Monospace shriftli dastur kodi' } },
+      { code: '<kbd>', name: { en: 'Keyboard Key', uz: 'Klaviatura Tugmasi' }, description: { en: 'Visual keycap for shortcuts', uz: 'Klaviatura tugmasi stili' } },
+      { code: '<abbr>', name: { en: 'Abbreviation', uz: 'Qisqartma Atama' }, description: { en: 'Shows full title on hover', uz: 'Ustiga borganda to\'liq nomni ko\'rsatadi' } },
+      { code: '<u>', name: { en: 'Underline', uz: 'Tagiga Chizish' }, description: { en: 'Underlines text for emphasis', uz: 'Qoida tagiga chizish' } },
+      { code: '<hr>', name: { en: 'Horizontal Rule', uz: 'Ajratuvchi Nurli Chiziq' }, description: { en: 'Thematic break between sections', uz: 'Bo\'limlar orasidagi gorizontal chiziq' } }
     ],
-    tagShowcase: [
-      { tag: '<b>word</b>', meaning: 'Bold (heavy and strong)' },
-      { tag: '<i>word</i>', meaning: 'Italic (slanted and fast)' },
-      { tag: '<u>word</u>', meaning: 'Underline (line drawn underneath)' },
-      { tag: '<mark>word</mark>', meaning: 'Highlighter (bright yellow marker)' },
-      { tag: '<s>word</s>', meaning: 'Strikethrough (line crossing through)' }
-    ],
-    quickTags: ['<b>', '</b>', '<i>', '</i>', '<u>', '</u>', '<mark>', '</mark>', '<s>', '</s>'],
+    quickTags: ['<h1>', '<strong>', '<em>', '<mark>', '<blockquote>', '<q>', '<del>', '<ins>', '<sub>', '<sup>', '<kbd>', '<code>', '<u>'],
+    teacherGuide: {
+      lessonGoal: {
+        en: 'Inspire students with a historic cyber manifesto while mastering the full palette of HTML typography and text tags.',
+        uz: 'O\'quvchilarni kiber manifest bilan ilhomlantirgan holda, HTML ning barcha tipografik va formatlash teglarini chuqur o\'rgatish.'
+      },
+      commonMistakes: [
+        {
+          mistake: { en: 'Forgetting the closing slash on tags like </h1> or </strong>', uz: '</h1> yoki </strong> kabi teglarda yopuvchi slesh belgisini unutish' },
+          howToHelp: { en: 'Show them how unclosed tags bleed formatting across the entire page like a runaway spell.', uz: 'Yopilmagan teg butun sahifani qalin yoki markerli qilib yuborishini ko\'rsating.' }
+        },
+        {
+          mistake: { en: 'Confusing <sub> (down) with <sup> (up)', uz: '<sub> (pastga) bilan <sup> (tepaga) ni adashtirib qo\'yish' },
+          howToHelp: { en: 'Remind: "Sub" like Submarine goes underwater, "Super" like Superman flies into the sky!', uz: 'Eslatma: "Sub" submarina kabi suv ostiga sho\'ng\'iydi, "Super" esa Supermen kabi osmonga uchadi!' }
+        }
+      ],
+      interactivePrompt: {
+        en: 'Ask: "If you were writing a historic law for the Internet, which motto would you highlight with <mark>?"',
+        uz: 'Savol bering: "Agar siz internetning bosh qonunini yozsangiz, qaysi shiorni <mark> bilan yoritgan bo\'lardingiz?"'
+      }
+    },
     challenge: {
       mission: {
-        en: 'Add <mark>golden pizza</mark> to the sentence so "golden pizza" is highlighted in bright yellow!',
-        uz: 'Jumlaga <mark>golden pizza</mark> tegi qo\'shing, shunda "golden pizza" yorqin sariq rangda yorishadi!'
+        en: 'Transform the unformatted manifesto speech into a legendary cyber document by applying all text tags: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code>, and <u>.',
+        uz: 'Xom manifest matnini barcha formatlash teglari: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code> va <u> teglari yordamida buyuk kiber hujjatga aylantiring.'
       },
-      hint: { en: 'Wrap the words "golden pizza" between an opening <mark> tag and closing </mark> tag!', uz: '"golden pizza" so\'zlarini ochuvchi <mark> va yopuvchi </mark> teglari orasiga oling!' },
+      hint: {
+        en: 'Look at the numbered steps in the code comments. Each step tells you the semantic purpose of the tag needed (heading, quote, math power, hotkey). Recall the tag sandwich formula!',
+        uz: 'Kod izohlaridagi raqamlangan qadamlarga qarang. Har bir qadamda kerakli tegning vazifasi (sarlavha, iqtibos, daraja, tugma) aytilgan. Sendvich qoidasini unutmang!'
+      },
       rules: [
         {
           type: 'hasTag',
-          tag: 'mark',
-          message: 'Add the <mark> highlighter tag!'
+          tag: 'h1',
+          feedback: {
+            en: 'Add the top-level manifesto title using the <h1> tag',
+            uz: "Manifest nomini eng yirik 1-darajali <h1> sarlavha tegi bilan belgilang"
+          }
         },
         {
-          type: 'tagContainsText',
+          type: 'hasTag',
+          tag: 'abbr',
+          feedback: {
+            en: 'Wrap the academy abbreviation with an <abbr> tag',
+            uz: "Akademiya qisqartmasini <abbr> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'custom',
+          check: (code) => /<(strong|b)>[\s\S]*?<\/(strong|b)>/i.test(code),
+          feedback: {
+            en: 'Emphasize importance using <strong> or <b>',
+            uz: "Muhimlikni ifodalash uchun <strong> yoki <b> tegi bilan qalin qiling"
+          }
+        },
+        {
+          type: 'custom',
+          check: (code) => /<(em|i)>[\s\S]*?<\/(em|i)>/i.test(code),
+          feedback: {
+            en: 'Give vocal stress or slanted emphasis using <em> or <i>',
+            uz: "His-tuyg'uli ohang berish uchun <em> yoki <i> tegidan foydalaning"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'blockquote',
+          feedback: {
+            en: 'Frame the historical quote in a <blockquote> container',
+            uz: "Ustoz hikmatini <blockquote> iqtibos bloki ichiga oling"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'q',
+          feedback: {
+            en: 'Wrap the inline quote in a <q> tag',
+            uz: "Qisqa ichki iqtibosni <q> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
           tag: 'mark',
-          pattern: /pizza/i,
-          message: 'The <mark> tag should highlight "golden pizza"!'
+          feedback: {
+            en: 'Highlight the cyber motto with a glowing <mark> tag',
+            uz: "Kiber shiorni sariq markerli <mark> tegi bilan yoriting"
+          }
+        },
+        {
+          type: 'custom',
+          check: (code) => /<(del|s)>[\s\S]*?<\/(del|s)>/i.test(code),
+          feedback: {
+            en: 'Strike through the obsolete myth using <del> or <s>',
+            uz: "Eski xato fikr ustidan <del> yoki <s> tegi bilan chizing"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'ins',
+          feedback: {
+            en: 'Mark the inserted modern truth with an <ins> tag',
+            uz: "Yangi kiritilgan to'g'ri haqiqatni <ins> tegi bilan belgilang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'sub',
+          feedback: {
+            en: 'Use <sub> for chemical subscript in H2O',
+            uz: "H2O formulasidagi 2 raqami uchun <sub> pastki indeksidan foydalaning"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'sup',
+          feedback: {
+            en: 'Use <sup> for power superscript in 10^9',
+            uz: "10 ning 9-darajasi uchun <sup> yuqori indeksidan foydalaning"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'kbd',
+          feedback: {
+            en: 'Wrap keyboard hotkey keys in <kbd> tags',
+            uz: "Klaviatura tugmalarini <kbd> teglari bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'code',
+          feedback: {
+            en: 'Wrap the console command in a <code> tag',
+            uz: "Dastur kodi buyrug'ini <code> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'u',
+          feedback: {
+            en: 'Underline the final advice with an <u> tag',
+            uz: "Eng oxirgi maslahat tagiga <u> tegi bilan chizing"
+          }
         }
       ]
-    },
-    teacherGuide: {
-      analogy: 'Tags are like sandwich buns. Opening `<tag>` is the top bun, your words are the cheese/patty, closing `</tag>` is the bottom bun. If you forget the bottom bun, the whole page gets messy!',
-      discussionQuestions: [
-        'What is the only difference between an opening tag and a closing tag? (The forward slash /!)',
-        'What happens if you forget to close a `<b>` tag? (Everything on the whole page turns bold!)'
-      ],
-      commonMistakes: [
-        'Using backslash \\ instead of forward slash / in closing tags',
-        'Forgetting the closing tag entirely'
-      ],
-      funActivity: 'Have the child hold up their left hand for <opening> and right hand with a crossed finger / for </closing>!'
     }
   },
 
-  // ==========================================
-  // THEME 2: Document Structure
-  // ==========================================
   {
     id: 'theme-2-structure',
     module: 'html-core',
     title: {
-      en: 'Theme 2: Document Structure (DocType, Head, Body)',
-      uz: '2-Mavzu: Hujjat Tuzilishi (DocType, Head, Body)'
+      en: 'Theme 2: Complete Semantic Document Structure',
+      uz: '2-Mavzu: To\'liq Semantik Hujjat Strukturasi'
     },
     icon: '🏛️',
-    tag: '<!DOCTYPE>, <html>, <head>, <body>',
+    tag: '<!DOCTYPE html> <html> ... </html>',
     humanIntro: {
       whatIsIt: {
-        en: 'In human language, every full web page is like a **Human Body or Robot Blueprint**! It has a declaration of what it is, a head for its brain, and a body for everything you can see.',
-        uz: 'Oddiy tilda aytganda, har bir to\'liq veb-sahifa **Odam tanasi yoki Robot chizmasiga** o\'xshaydi! Unda pasport, bosh (miya) va hamma ko\'radigan tana qismlari mavjud.'
+        en: 'Every great building has a foundation, walls, and a roof. An HTML document has the exact same architecture: **DOCTYPE**, **head** (the brain), and **body** (the visible world) with semantic landmark rooms!',
+        uz: 'Har bir buyuk binoning poydevori, devorlari va tomi bo\'lgani kabi, HTML sahifasining ham o\'z me\'moriy arxitekturasi bor: **DOCTYPE**, **head** (ko\'rinmas miya) va **body** (ko\'rinadigan olam) hamda semantik xonalar!'
       },
       whatIsATag: {
-        en: '1. `<!DOCTYPE html>` tells the browser: "I am a modern HTML5 document!"\n2. `<html>` is the outer container wrapping the whole document.\n3. `<head>` is the brain: stores invisible info like the browser tab `<title>`.\n4. `<body>` is the physical body: holds all visible headings, paragraphs, buttons, and pictures!',
-        uz: '1. `<!DOCTYPE html>` — brauzerga: "Men zamonaviy HTML5 hujjatiman!" deydi.\n2. `<html>` — butun sahifani o\'rab turuvchi bosh qobiq.\n3. `<head>` — miya qismi: brauzer yorlig\'idagi sarlavha (<title>) va sozlamalarni saqlaydi.\n4. `<body>` — ko\'rinadigan tana: barcha sarlavhalar, matnlar, tugmalar va rasmlar shu yerda yashaydi!'
+        en: 'Semantic tags like **header**, **nav**, **main**, **article**, **section**, **aside**, and **footer** tell search engines and assistive devices what each zone of your digital palace represents.',
+        uz: '**header**, **nav**, **main**, **article**, **section**, **aside** va **footer** kabi semantik teglar brauzer va qidiruv tizimlariga sahifangizning qaysi zonasi nima vazifa bajarishini aniq aytib beradi.'
       }
     },
     summary: {
-      en: 'Learn the master skeleton of every real web page: DocType, <html>, <head>, and <body>.',
-      uz: 'Har qanday haqiqiy veb-sahifaning bosh skeletini o\'rganing: DocType, <html>, <head> va <body>.'
+      en: 'Construct a professional semantic HTML5 web portal with doctype, head metadata, title, body, header, nav, main, article, section, aside, and footer.',
+      uz: 'Doctype, head sozlamalari, title, body, header, nav, main, article, section, aside va footer bilan to\'liq semantik HTML5 kiber portalini quring.'
     },
     story: {
-      en: 'Think of <!DOCTYPE html> as your passport. <html> is your house. <head> is the address plaque on the front door (for title and settings). <body> is the living room where your furniture and guests actually sit!',
-      uz: '<!DOCTYPE html> — sizning pasportingiz. <html> — uyingiz. <head> — eshikdagi manzil lavhasi. <body> — mehmonlar o\'tiradigan xona!'
+      en: 'Construct the Cyber TechPark Official Portal: assemble all structural and semantic landmark elements into a rock-solid, production-grade web page.',
+      uz: "Kiber Texnopark Rasmiy Portalini quring: barcha strukturaviy va semantik hududlarni birlashtirib, professional HTML5 veb-sahifasini bunyod eting!"
     },
     initialCode: {
-      en: `<!DOCTYPE html>
-<html>
+      en: `<!-- Step 1: Start with the HTML5 doctype declaration and the root html tag with lang="en" -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Step 2: Build the invisible brain of the page (head) containing charset UTF-8, viewport, and the page <title> -->
   <head>
-    <title>My Secret Base</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Place the page title here: Cyber TechPark Portal -->
   </head>
-  <body>
-    <h1>🚀 Welcome to Space Base!</h1>
-    <p>All astronauts report to the cockpit.</p>
 
-    <!-- Step 1: Add a new paragraph below: <p>Mission Status: <b>Ready for Launch</b></p> -->
+  <!-- Step 3: Put all visible user content inside the <body> tag -->
+  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
+    <!-- Step 4: Top brand bar — wrap in a semantic <header> tag -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
+      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Cyber TechPark Headquarters</h1>
+    </div>
 
+    <!-- Step 5: Navigation menu — wrap in a semantic <nav> tag -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
+      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Home</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Courses</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Projects</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Contact</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
+      <!-- Step 6: Primary central content — wrap in a semantic <main> tag containing an <article> and a <section> -->
+      <div style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
+        <div style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
+          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Coder Generation</h2>
+          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">Semantic HTML ensures digital accessibility across the universe.</p>
+        </div>
+
+        <div>
+          <h3 style="color: #38bdf8;">⚡ Today's Hands-On Lab</h3>
+          <p style="color: #94a3b8; font-size: 13px;">Mastering landmark rooms creates robust web architecture.</p>
+        </div>
+      </div>
+
+      <!-- Step 7: Complementary side information — wrap in a semantic <aside> tag -->
+      <div style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
+        <h3 style="color: #fbbf24; margin-top: 0;">💡 Daily Tip</h3>
+        <p style="color: #94a3b8;">Always use one main element per page for accessible UX.</p>
+      </div>
+    </div>
+
+    <!-- Step 8: Bottom footer — wrap in a semantic <footer> tag -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
+      © 2026 Cyber TechPark. All rights reserved.
+    </div>
   </body>
 </html>`,
-      uz: `<!DOCTYPE html>
-<html>
+      uz: `<!-- 1-QADAM: Sahifani HTML5 standarti deklaratsiyasi va lang="uz" bo'lgan asosiy html tegi bilan boshlang -->
+<!DOCTYPE html>
+<html lang="uz">
+  <!-- 2-QADAM: Sahifaning ko'rinmas boshqaruv miyasini (head) quring: charset UTF-8, viewport va sahifa nomi uchun <title> qo'ying -->
   <head>
-    <title>My Secret Base</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sahifa nomini shu yerga yozing: Kiber Texnopark Portali -->
   </head>
-  <body>
-    <h1>🚀 Welcome to Space Base!</h1>
-    <p>All astronauts report to the cockpit.</p>
 
-    <!-- 1-Qadam: Quyiga yangi xatboshi qo'shing: <p>Mission Status: <b>Ready for Launch</b></p> -->
+  <!-- 3-QADAM: Foydalanuvchiga ko'rinadigan barcha elementlarni <body> tegi ichiga oling -->
+  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
+    <!-- 4-QADAM: Sahifaning tepa brend shapkasini semantik <header> tegi bilan o'rang -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
+      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Kiber Texnopark Bosh Portali</h1>
+    </div>
 
+    <!-- 5-QADAM: Sayt navigatsiya menyusini semantik <nav> tegi bilan o'rang -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
+      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Asosiy</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Kurslar</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Loyihalar</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Aloqa</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
+      <!-- 6-QADAM: Saytning eng asosiy markaziy o'zagini semantik <main> tegi bilan, uning ichidagi maqolani <article>, bo'limni esa <section> bilan o'rang -->
+      <div style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
+        <div style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
+          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Dasturchilarning Yangi Avlodi</h2>
+          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">HTML semantikasi orqali sahifalar barcha qurilmalar va qidiruv tizimlari uchun ochiq bo'ladi.</p>
+        </div>
+
+        <div>
+          <h3 style="color: #38bdf8;">⚡ Bugungi Amaliy Mashg'ulotlar</h3>
+          <p style="color: #94a3b8; font-size: 13px;">Semantik zonalar sahifa arxitekturasini mustahkam qiladi.</p>
+        </div>
+      </div>
+
+      <!-- 7-QADAM: Qo'shimcha yon ma'lumotlar panelini semantik <aside> tegi bilan o'rang -->
+      <div style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
+        <h3 style="color: #fbbf24; margin-top: 0;">💡 Kundalik Maslahat</h3>
+        <p style="color: #94a3b8;">Har bir sahifada faqat bitta asosiy main tegi bo'lishi lozim.</p>
+      </div>
+    </div>
+
+    <!-- 8-QADAM: Sahifaning pastki qismini semantik <footer> tegi bilan o'rang -->
+    <div style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
+      © 2026 Kiber Texnopark. Barcha huquqlar himoyalangan.
+    </div>
   </body>
 </html>`
     },
-    targetCode: `<!DOCTYPE html>
-<html>
+    targetCode: {
+      en: `<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>My Secret Base</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber TechPark Portal</title>
   </head>
-  <body>
-    <h1>🚀 Welcome to Space Base!</h1>
-    <p>All astronauts report to the cockpit.</p>
-    <p>Mission Status: <b>Ready for Launch</b></p>
+  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
+    <header style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
+      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Cyber TechPark Headquarters</h1>
+    </header>
+
+    <nav style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
+      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Home</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Courses</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Projects</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Contact</a>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
+      <main style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
+        <article style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
+          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Coder Generation</h2>
+          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">Semantic HTML ensures digital accessibility across the universe.</p>
+        </article>
+
+        <section>
+          <h3 style="color: #38bdf8;">⚡ Today's Hands-On Lab</h3>
+          <p style="color: #94a3b8; font-size: 13px;">Mastering landmark rooms creates robust web architecture.</p>
+        </section>
+      </main>
+
+      <aside style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
+        <h3 style="color: #fbbf24; margin-top: 0;">💡 Daily Tip</h3>
+        <p style="color: #94a3b8;">Always use one main element per page for accessible UX.</p>
+      </aside>
+    </div>
+
+    <footer style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
+      © 2026 Cyber TechPark. All rights reserved.
+    </footer>
   </body>
 </html>`,
+      uz: `<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiber Texnopark Portali</title>
+  </head>
+  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
+    <header style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
+      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Kiber Texnopark Bosh Portali</h1>
+    </header>
+
+    <nav style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
+      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Asosiy</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Kurslar</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Loyihalar</a>
+      <a href="#" style="color: #94a3b8; text-decoration: none;">Aloqa</a>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
+      <main style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
+        <article style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
+          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Dasturchilarning Yangi Avlodi</h2>
+          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">HTML semantikasi orqali sahifalar barcha qurilmalar va qidiruv tizimlari uchun ochiq bo'ladi.</p>
+        </article>
+
+        <section>
+          <h3 style="color: #38bdf8;">⚡ Bugungi Amaliy Mashg'ulotlar</h3>
+          <p style="color: #94a3b8; font-size: 13px;">Semantik zonalar sahifa arxitekturasini mustahkam qiladi.</p>
+        </section>
+      </main>
+
+      <aside style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
+        <h3 style="color: #fbbf24; margin-top: 0;">💡 Kundalik Maslahat</h3>
+        <p style="color: #94a3b8;">Har bir sahifada faqat bitta asosiy main tegi bo'lishi lozim.</p>
+      </aside>
+    </div>
+
+    <footer style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
+      © 2026 Kiber Texnopark. Barcha huquqlar himoyalangan.
+    </footer>
+  </body>
+</html>`
+    },
     targetDescription: {
-      en: 'A complete, well-formed HTML document:\n• Browser tab title set to "My Secret Base"\n• <h1> title inside <body>: "🚀 Welcome to Space Base!"\n• Two paragraphs, with "Ready for Launch" bolded inside the body.',
-      uz: 'To\'liq va to\'g\'ri shakllangan HTML hujjati:\n• Brauzer yorlig\'i sarlavhasi "My Secret Base"\n• <body> ichida <h1> sarlavhasi: "🚀 Welcome to Space Base!"\n• Ikkita xatboshi, tana ichida "Ready for Launch" qalinlashtirilgan.'
+      en: 'Complete semantic architecture containing DOCTYPE, html lang, head with title, body, header, nav, main, article, section, aside, and footer.',
+      uz: 'DOCTYPE, html lang, title bilan head, body, header, nav, main, article, section, aside va footer dan iborat to\'liq semantik arxitektura.'
     },
     anatomy: [
       {
         part: '<!DOCTYPE html>',
-        role: { en: 'DocType Declaration', uz: 'DocType e\'loni' },
+        role: { en: 'HTML5 Standard Declaration', uz: 'HTML5 Standarti Deklaratsiyasi' },
         explanation: {
-          en: 'Tells the browser: "Attention! This document is written in modern HTML5."',
-          uz: 'Brauzerga: "Diqqat! Ushbu hujjat zamonaviy HTML5 da yozilgan" deydi.'
+          en: 'Tells the browser to render using modern HTML5 standards instead of legacy quirky mode.',
+          uz: 'Brauzerga sahifani zamonaviy HTML5 standartida xatosiz chizishni buyuradi.'
         },
         effect: {
-          en: 'Ensures modern standards mode',
-          uz: 'Zamonaviy standartlar rejimini faollashtiradi'
+          en: 'Unlocks modern web engine mode',
+          uz: 'Zamonaviy veb dvigatelini faollashtiradi'
         },
-        visualPreview: '<div class="mini-canvas">📄 Modern HTML5 Passport</div>'
+        visualPreview: '<div class="mini-canvas">📜 <!DOCTYPE html></div>'
       },
       {
-        part: '<html> ... </html>',
-        role: { en: 'Root Container', uz: 'Asosiy qobiq' },
+        part: '<head> & <title>',
+        role: { en: 'Document Brain & Tab Title', uz: 'Ko\'rinmas Miya va Vkladka Nomi' },
         explanation: {
-          en: 'The master container. Every single tag on the page lives inside this shell.',
-          uz: 'Bosh qobiq. Sahifadagi barcha teglar ushbu qobiq ichida yashaydi.'
+          en: '<head> holds metadata; <title> sets the title shown in the browser tab and search results.',
+          uz: '<head> sahifa sozlamalarini, <title> esa brauzer tepasidagi vkladka nomini belgilaydi.'
         },
         effect: {
-          en: 'Wraps the entire webpage',
-          uz: 'Butun sahifani o\'rab turadi'
+          en: 'Sets browser tab name and encoding',
+          uz: 'Brauzer vkladkasi nomini o\'rnatadi'
         },
-        visualPreview: '<div class="mini-canvas">🌐 Master Root Shell</div>'
+        visualPreview: '<div class="mini-canvas">🏷️ Tab: "Kiber Texnopark Portali"</div>'
       },
       {
-        part: '<head> ... </head>',
-        role: { en: 'Brain / Metadata', uz: 'Miya / Sozlamalar' },
+        part: '<header> & <nav>',
+        role: { en: 'Top Banner & Navigation Menu', uz: 'Yuqori Shapka va Navigatsiya' },
         explanation: {
-          en: 'Invisible head of the page. Holds the page title, fonts, and settings.',
-          uz: 'Sahifaning ko\'rinmas miya qismi: sarlavha va sozlamalarni saqlaydi.'
+          en: '<header> anchors the brand logo and title; <nav> groups website navigation links.',
+          uz: '<header> sahifaning yuqori brend qismi; <nav> esa sayt havolalari menyusi uyi.'
         },
         effect: {
-          en: 'Sets browser tab title & settings',
-          uz: 'Brauzer yorlig\'i va sozlamalarini belgilaydi'
+          en: 'Semantic landmark header and nav',
+          uz: 'Yuqori sarlavha va yo\'naltiruvchi menyu'
         },
-        visualPreview: '<div class="mini-canvas">🧠 Invisible Brain (Tab Title & Settings)</div>'
+        visualPreview: '<div class="mini-canvas">🚀 Header + 🧭 Nav Menu</div>'
       },
       {
-        part: '<title> ... </title>',
-        role: { en: 'Tab Title', uz: 'Yorliq sarlavhasi' },
+        part: '<main>, <article>, <section>',
+        role: { en: 'Primary Core Content', uz: 'Asosiy Mazmun O\'zagi' },
         explanation: {
-          en: 'The name that appears on the browser tab at the very top of your screen.',
-          uz: 'Brauzerning eng yuqori qismidagi yorliqda ko\'rinadigan nom.'
+          en: '<main> is the unique central purpose of the page; <article> is self-contained content; <section> is a thematic group.',
+          uz: '<main> sahifaning yagona bosh o\'zagi; <article> mustaqil maqola; <section> esa mavzuli bo\'lim.'
         },
         effect: {
-          en: 'Shows title in browser tab',
-          uz: 'Yorliqda sarlavhani ko\'rsatadi'
+          en: 'Identifies core readable content',
+          uz: 'Sahifaning eng asosiy o\'qiladigan qismini belgilaydi'
         },
-        visualPreview: '<div class="mini-canvas">🏷️ [ Tab: My Secret Base ]</div>'
+        visualPreview: '<div class="mini-canvas">🏛️ Main [ Article | Section ]</div>'
       },
       {
-        part: '<body> ... </body>',
-        role: { en: 'Visible Body', uz: 'Ko\'rinadigan tana' },
+        part: '<aside> & <footer>',
+        role: { en: 'Sidebar & Footer Base', uz: 'Yon Panel va Pastki Futer' },
         explanation: {
-          en: 'The visible page! Whatever you put between <body> and </body> appears on the screen.',
-          uz: 'Ko\'rinadigan sahifa! <body> ichiga nima qo\'ysangiz, ekranda paydo bo\'ladi.'
+          en: '<aside> provides related tips or links; <footer> closes the document with copyright and contacts.',
+          uz: '<aside> qo\'shimcha eslatma va yangiliklar; <footer> esa pastki mualliflik huquqi va aloqa qismi.'
         },
         effect: {
-          en: 'Renders all visible content on screen',
-          uz: 'Ekranda barcha ko\'rinadigan narsalarni chizadi'
+          en: 'Sidebar and bottom page base',
+          uz: 'Yon panel va sahifa poydevori'
         },
-        visualPreview: '<div class="mini-canvas">🖥️ Visible Canvas on Screen</div>'
+        visualPreview: '<div class="mini-canvas">💡 Aside + 📋 Footer Base</div>'
       }
     ],
     listOfTags: [
-      { code: '<!DOCTYPE html>', name: 'DocType', description: 'Tells browser this is modern HTML5 (goes on line 1)', exampleHtml: '<!DOCTYPE html>' },
-      { code: '<html> ... </html>', name: 'HTML Shell', description: 'The outer root container wrapping the entire document', exampleHtml: '<html>...</html>' },
-      { code: '<head> ... </head>', name: 'Head (Brain)', description: 'Stores invisible page information, tab title, and meta tags', exampleHtml: '<head><title>Tab</title></head>' },
-      { code: '<title> ... </title>', name: 'Page Title', description: 'The text that displays on the browser\'s top tab', exampleHtml: '<title>My Cool Page</title>' },
-      { code: '<body> ... </body>', name: 'Body', description: 'The container for EVERYTHING visible to the user on the screen', exampleHtml: '<body><h1>Visible</h1></body>' }
+      { code: '<!DOCTYPE html>', name: { en: 'Doctype', uz: 'Hujjat Turi Deklaratsiyasi' }, description: { en: 'Declares HTML5 document', uz: 'HTML5 standarti ekanligini bildiradi' } },
+      { code: '<html lang="...">', name: { en: 'HTML Root', uz: 'Bosh Ildiz Tegi' }, description: { en: 'Root element of document', uz: 'Barcha teglarning bosh konteyneri' } },
+      { code: '<head>', name: { en: 'Head', uz: 'Boshqaruv Miya Qismi' }, description: { en: 'Metadata, scripts, and title', uz: 'Metama\'lumotlar va sahifa nomi konteyneri' } },
+      { code: '<title>', name: { en: 'Title', uz: 'Vkladka Nomi' }, description: { en: 'Browser tab title', uz: 'Brauzer vkladkasidagi nom' } },
+      { code: '<meta>', name: { en: 'Meta Tag', uz: 'Sozlama Metategi' }, description: { en: 'Charset and viewport settings', uz: 'Kodirovka va ekran o\'lchamlari sozlamasi' } },
+      { code: '<body>', name: { en: 'Body', uz: 'Foydalanuvchi Ko\'radigan Tana' }, description: { en: 'Visible document content', uz: 'Ko\'rinadigan barcha kontent uyi' } },
+      { code: '<header>', name: { en: 'Header', uz: 'Yuqori Shapka' }, description: { en: 'Top banner or page header', uz: 'Sahifaning yuqori brend qismi' } },
+      { code: '<nav>', name: { en: 'Navigation', uz: 'Navigatsiya Menyu' }, description: { en: 'Website navigation links', uz: 'Yo\'naltiruvchi sayt havolalari' } },
+      { code: '<main>', name: { en: 'Main Content', uz: 'Asosiy Mazmun O\'zagi' }, description: { en: 'Central unique content of page', uz: 'Sahifaning yagona bosh mazmun qismi' } },
+      { code: '<article>', name: { en: 'Article', uz: 'Mustaqil Maqola' }, description: { en: 'Self-contained article or card', uz: 'O\'zi mustaqil mazmunga ega maqola' } },
+      { code: '<section>', name: { en: 'Section', uz: 'Mavzuli Bo\'lim' }, description: { en: 'Thematic chapter or section', uz: 'Mavzuga oid ichki bo\'lim' } },
+      { code: '<aside>', name: { en: 'Aside (Sidebar)', uz: 'Yon Qo\'shimcha Panel' }, description: { en: 'Sidebar or related info', uz: 'Qo\'shimcha yangilik va eslatmalar' } },
+      { code: '<footer>', name: { en: 'Footer', uz: 'Pastki Podval' }, description: { en: 'Copyright and footer info', uz: 'Mualliflik huquqi va pastki ma\'lumot' } }
     ],
-    tagShowcase: [
-      { tag: '<!DOCTYPE html>', meaning: 'Passport: Modern HTML5' },
-      { tag: '<html>', meaning: 'The big outer shell' },
-      { tag: '<head>', meaning: 'Brain: Tab title & settings' },
-      { tag: '<body>', meaning: 'Body: Everything you see' }
-    ],
-    quickTags: ['<!DOCTYPE html>', '<html>', '</html>', '<head>', '</head>', '<title>', '</title>', '<body>', '</body>'],
+    quickTags: ['<!DOCTYPE html>', '<html lang="uz">', '<head>', '<title>', '<body>', '<header>', '<nav>', '<main>', '<article>', '<section>', '<aside>', '<footer>'],
+    teacherGuide: {
+      lessonGoal: {
+        en: 'Teach full semantic HTML architecture and why search engines, screen readers, and developers rely on landmarks instead of generic divs.',
+        uz: 'To\'liq semantik HTML arxitekturasi va nega qidiruv tizimlari hamda dasturchilar oddiy div o\'rniga semantik teglardan foydalanishini o\'rgatish.'
+      },
+      commonMistakes: [
+        {
+          mistake: { en: 'Placing visible content inside <head> instead of <body>', uz: 'Ko\'rinadigan matnni <body> o\'rniga <head> ichiga yozib qo\'yish' },
+          howToHelp: { en: 'Explain: <head> is the invisible brain; <body> is the visible world!', uz: 'Tushuntiring: <head> — ko\'rinmas miya, <body> — ko\'rinadigan dunyo!' }
+        },
+        {
+          mistake: { en: 'Using multiple <main> elements on a single page', uz: 'Bitta sahifada bir nechta <main> teglarini qo\'llash' },
+          howToHelp: { en: 'A kingdom only has one king, a page only has one <main>!', uz: 'Bitta davlatda bitta qirol bo\'lgani kabi, bitta sahifada bitta <main> bo\'ladi!' }
+        }
+      ],
+      interactivePrompt: {
+        en: 'Ask: "Why do screen readers love <nav> and <main>?" (Answer: it lets blind users jump straight to content!)',
+        uz: 'Savol bering: "Ko\'zi ojizlar uchun ekran o\'quvchi dasturlar nega <nav> va <main> ni yaxshi ko\'radi? (Chunki to\'g\'ridan-to\'g\'ri asosiy kontentga sakrash imkonini beradi!)"'
+      }
+    },
     challenge: {
       mission: {
-        en: 'Add a new paragraph inside the <body> that says: "Mission Status: <b>Ready for Launch</b>"!',
-        uz: '<body> ichiga "Mission Status: <b>Ready for Launch</b>" degan yangi paragraf qo\'shing!'
+        en: 'Assemble the complete semantic architecture: wrap the portal parts in proper semantic tags: <title>, <header>, <nav>, <main>, <article>, <section>, <aside>, and <footer>.',
+        uz: 'To\'liq semantik arxitekturani quring: portal bo\'laklarini tegishli semantik teglar: <title>, <header>, <nav>, <main>, <article>, <section>, <aside> va <footer> ichiga oling.'
       },
-      hint: { en: 'Inside <body>, create a new <p> tag and wrap "Ready for Launch" in <b> and </b>.', uz: '<body> ichida yangi <p> oching va "Ready for Launch" ni <b> va </b> teglari orasiga oling.' },
+      hint: {
+        en: 'Follow steps 1 through 8 in the starter comments. Remember: brand goes to <header>, menu to <nav>, core content to <main>, sidebar to <aside>, copyright to <footer>!',
+        uz: 'Kod izohlaridagi 1 dan 8 gacha qadamlarni bajaring: brend <header> ga, menyu <nav> ga, asosiy o\'zak <main> ga, yon panel <aside> ga va pastki qism <footer> ga olinadi!'
+      },
       rules: [
         {
           type: 'hasTag',
-          tag: 'body',
-          message: 'Keep the <body> container!'
+          tag: 'title',
+          feedback: {
+            en: 'Place a <title> tag inside the <head>',
+            uz: "<head> ichiga sahifa nomi uchun <title> tegi qo'ying"
+          }
         },
         {
-          type: 'custom',
-          check: (code) => /Ready for Launch/i.test(code),
-          message: 'Add "Mission Status: Ready for Launch" inside the body!'
+          type: 'hasTag',
+          tag: 'header',
+          feedback: {
+            en: 'Wrap the top brand bar in a <header> tag',
+            uz: "Tepa brend panelini <header> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'nav',
+          feedback: {
+            en: 'Wrap the navigation links in a <nav> tag',
+            uz: "Sayt havolalari menyusini <nav> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'main',
+          feedback: {
+            en: 'Wrap the central content in a <main> tag',
+            uz: "Asosiy o'zak kontentni <main> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'article',
+          feedback: {
+            en: 'Wrap the article in an <article> tag',
+            uz: "Mustaqil maqolani <article> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'section',
+          feedback: {
+            en: 'Wrap the lab section in a <section> tag',
+            uz: "Mashg'ulot bo'limini <section> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'aside',
+          feedback: {
+            en: 'Wrap the side tip box in an <aside> tag',
+            uz: "Qo'shimcha yon maslahat qutisini <aside> tegi bilan o'rang"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'footer',
+          feedback: {
+            en: 'Wrap the bottom copyright bar in a <footer> tag',
+            uz: "Pastki mualliflik qismini <footer> tegi bilan o'rang"
+          }
         }
       ]
-    },
-    teacherGuide: {
-      analogy: 'Human anatomy: `<!DOCTYPE>` is your birth certificate. `<html>` is your skin. `<head>` is your brain (thoughts inside). `<body>` is your arms and legs (what people see).',
-      discussionQuestions: [
-        'Why doesn\'t text inside the <head> show up on the white page?',
-        'What would happen if you wrote words outside the `<body>` tags?'
-      ],
-      commonMistakes: [
-        'Putting visible words inside `<head>` instead of `<body>`',
-        'Forgetting the closing `</body>` or `</html>` tags'
-      ],
-      funActivity: 'Touch your head for <head> and touch your chest for <body>!'
     }
   },
 
-  // ==========================================
-  // THEME 3: Tables
-  // ==========================================
   {
     id: 'theme-3-tables',
     module: 'html-core',
@@ -1883,10 +2338,10 @@ const LESSONS = [
     color: #ffffff;
     border: 3px solid #2dd4bf;
 
-    /* 1-Qadam: Padding (ichki masofa) ni 24px qiling */
+    /* 1-Qadam: Quti ichidagi kontent va hoshiya orasidagi ichki nafas olish masofasini (padding) 24px ga kengaytiring. */
     padding: 0px;
 
-    /* 2-Qadam: Margin (tashqi masofa) ni 30px qiling */
+    /* 2-Qadam: Qutining tashqi qo'shnilaridan surilish masofasini (margin) 30px ga oshiring. */
     margin: 0px;
   }
 </style>
@@ -2351,7 +2806,7 @@ const LESSONS = [
     font-family: system-ui, sans-serif;
   }
 
-  /* Step 1: Turn on flexbox in .spa-navbar: display: flex; justify-content: space-between; align-items: center; */
+  /* Step 1: Arrange .spa-navbar items in a horizontal row, distribute them to opposite edges across the main X axis, and center them vertically. */
   .spa-navbar {
     background: #111827;
     border: 1px solid #1f2937;
@@ -2397,7 +2852,7 @@ const LESSONS = [
   .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }
   .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }
 
-  /* Step 2: Line up track cards horizontally: display: flex; gap: 12px; */
+  /* Step 2: Line up the track cards side-by-side in a horizontal row with 12px spacing between them. */
   .track-row {
     margin-bottom: 16px;
   }
@@ -2410,7 +2865,7 @@ const LESSONS = [
   }
   .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }
 
-  /* Step 3: Spread player controls: display: flex; justify-content: space-between; align-items: center; */
+  /* Step 3: Spread player controls across the bar from edge to edge in a row and center them vertically. */
   .spa-player {
     background: #111827;
     border: 1px solid #1f2937;
@@ -2481,7 +2936,7 @@ const LESSONS = [
     font-family: system-ui, sans-serif;
   }
 
-  /* 1-Qadam: .spa-navbar da flexboxni yoqing: display: flex; justify-content: space-between; align-items: center; */
+  /* 1-Qadam: .spa-navbar ichidagi elementlarni yonma-yon bitta gorizontal qatorga tizing, ularni X o'qi bo'yicha ikki chekkaga suring (burchaklardan burchakka taqsimlang) va vertikal markazlang. */
   .spa-navbar {
     background: #111827;
     border: 1px solid #1f2937;
@@ -2527,7 +2982,7 @@ const LESSONS = [
   .hero-banner h3 { margin: 0 0 6px 0; color: #a5b4fc; }
   .hero-banner p { margin: 0; font-size: 12px; color: #cbd5e1; }
 
-  /* 2-Qadam: .track-row dagi kartalarni bir qatorga tering: display: flex; gap: 12px; */
+  /* 2-Qadam: .track-row dagi qo'shiq kartalarini chapdan o'ngga bitta qatorga tering va ular orasida 12px oraliq masofa qoldiring. */
   .track-row {
     margin-bottom: 16px;
   }
@@ -2540,7 +2995,7 @@ const LESSONS = [
   }
   .track-card span { display: block; color: #94a3b8; font-size: 10px; margin-top: 4px; }
 
-  /* 3-Qadam: .spa-player boshqaruvini ikki chetga yoying: display: flex; justify-content: space-between; align-items: center; */
+  /* 3-Qadam: .spa-player boshqaruv tugmalarini bitta gorizontal chiziqqa tering, elementlarni ikki chetga sochib joylang va vertikal markazlang. */
   .spa-player {
     background: #111827;
     border: 1px solid #1f2937;
@@ -3417,13 +3872,13 @@ const LESSONS = [
     text-align: center;
     margin: 0 auto;
 
-    /* 1-Qadam: Matn rangini moviy HEX qiling: color: #38bdf8; */
+    /* 1-Qadam: Matn rangini moviy neon HEX kodi (#38bdf8) bilan bo'yang. */
     color: white;
 
-    /* 2-Qadam: Shaffof oyna foni bering: background: rgba(56, 189, 248, 0.12); */
+    /* 2-Qadam: Oyna fonini 12% shaffoflikdagi moviy rang (RGBA) bilan to'ldiring. */
     background: #111827;
 
-    /* 3-Qadam: Neon hoshiya bering: border: 2px solid #38bdf8; */
+    /* 3-Qadam: Kartochka atrofini 2px qalinlikdagi mustahkam moviy neon hoshiya bilan o'rang. */
     border: 1px solid #374151;
   }
 </style>
@@ -4683,7 +5138,7 @@ const LESSONS = [
       en: `<style>
   * { box-sizing: border-box; }
 
-  /* Step 1: Turn into 2D matrix: display: grid; grid-template-columns: 200px 1fr 1fr; gap: 16px; */
+  /* Step 1: Turn .spa-grid into a 2D matrix with 3 columns (first column 200px, remaining two columns equal flexible fractions), with 16px space between cells. */
   .spa-grid {
     background: #0b0f19;
     padding: 18px;
@@ -4693,7 +5148,7 @@ const LESSONS = [
     font-family: system-ui, sans-serif;
   }
 
-  /* Step 2: Span the header across all columns with grid-column: 1 / -1; */
+  /* Step 2: Stretch the header row across all columns from the first line to the very last line. */
   .spa-header {
     background: #111827;
     border: 1px solid #1f2937;
@@ -4711,7 +5166,7 @@ const LESSONS = [
     padding: 16px;
   }
 
-  /* Step 3: Expand featured hero card across 2 columns with grid-column: span 2; */
+  /* Step 3: Expand the featured hero card across 2 columns. */
   .featured-card {
     background: linear-gradient(135deg, #1e1b4b, #3730a3);
     border: 1px solid #6366f1;
@@ -4726,7 +5181,7 @@ const LESSONS = [
     padding: 16px;
   }
 
-  /* Step 4: Span the footer across all columns with grid-column: 1 / -1; */
+  /* Step 4: Stretch the footer row across all columns from the first line to the very last line. */
   .spa-footer {
     background: #111827;
     border-radius: 10px;
@@ -4778,7 +5233,7 @@ const LESSONS = [
       uz: `<style>
   * { box-sizing: border-box; }
 
-  /* 1-Qadam: .spa-grid ni 2D panjara qiling: display: grid; grid-template-columns: 200px 1fr 1fr; gap: 16px; */
+  /* 1-Qadam: .spa-grid ni 2 o'lchamli panjara tizimiga o'tkazing: 3 ta ustun (birinchi ustun 200px, qolgan ikkitasi teng ulushli moslashuvchan fr birlikda), kataklar orasida esa 16px oraliq masofa bering. */
   .spa-grid {
     background: #0b0f19;
     padding: 18px;
@@ -4788,7 +5243,7 @@ const LESSONS = [
     font-family: system-ui, sans-serif;
   }
 
-  /* 2-Qadam: Sarlavhani barcha ustunlar bo'ylab yoying: grid-column: 1 / -1; */
+  /* 2-Qadam: Tepa sarlavha panelini birinchi chiziqdan eng oxirgi chiziqqacha barcha ustunlar bo'ylab to'liq cho'zing. */
   .spa-header {
     background: #111827;
     border: 1px solid #1f2937;
@@ -4806,7 +5261,7 @@ const LESSONS = [
     padding: 16px;
   }
 
-  /* 3-Qadam: Bosh o'yin kartasini 2 ta ustunga cho'zing: grid-column: span 2; */
+  /* 3-Qadam: Bosh o'yin kartasini 2 ta ustun kengligida yoying. */
   .featured-card {
     background: linear-gradient(135deg, #1e1b4b, #3730a3);
     border: 1px solid #6366f1;
@@ -4821,7 +5276,7 @@ const LESSONS = [
     padding: 16px;
   }
 
-  /* 4-Qadam: Futerni barcha ustunlar bo'ylab yoying: grid-column: 1 / -1; */
+  /* 4-Qadam: Pastki foter panelini barcha ustunlar bo'ylab boshidan oxirigacha cho'zing. */
   .spa-footer {
     background: #111827;
     border-radius: 10px;
@@ -5191,7 +5646,7 @@ const LESSONS = [
     position: relative;
   }
 
-  /* Step 1: Make navbar stick to top edge during scroll: position: sticky; top: 0; */
+  /* Step 1: Make the navbar stick to the top edge during scrolling and pin it at top 0. */
   .sticky-navbar {
     z-index: 50;
     background: rgba(17, 24, 39, 0.95);
@@ -5212,7 +5667,7 @@ const LESSONS = [
     margin-bottom: 20px;
   }
 
-  /* Step 2: Make .shield-card the 1st GPS anchor fence using position: relative; */
+  /* Step 2: Turn .shield-card into the 1st GPS anchor boundary (coordinate frame) without disrupting its natural spot. */
   .shield-card {
     background: #1e1b4b;
     border: 2px solid #6366f1;
@@ -5221,7 +5676,7 @@ const LESSONS = [
     text-align: center;
   }
 
-  /* Step 3: Pin .alarm-badge to top-right corner: position: absolute; top: -10px; right: -10px; */
+  /* Step 3: Detach .alarm-badge from the card flow and anchor it outside the top-right corner by shifting 10px beyond top and 10px beyond right. */
   .alarm-badge {
     background: #ef4444;
     color: white;
@@ -5232,7 +5687,7 @@ const LESSONS = [
     box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
   }
 
-  /* Step 4: Make .radar-panel the 2nd GPS anchor fence using position: relative; */
+  /* Step 4: Turn .radar-panel into the 2nd GPS anchor boundary. */
   .radar-panel {
     background: #111827;
     border: 1px solid #1f2937;
@@ -5240,7 +5695,7 @@ const LESSONS = [
     padding: 24px;
   }
 
-  /* Step 5: Pin .radar-blip to bottom-right corner: position: absolute; bottom: 10px; right: 10px; */
+  /* Step 5: Detach .radar-blip from flow and anchor it inside the bottom-right corner, 10px up from bottom and 10px left from right. */
   .radar-blip {
     background: #10b981;
     color: #0b0f19;
@@ -5251,7 +5706,7 @@ const LESSONS = [
     box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
   }
 
-  /* Step 6: Glue .fixed-drone to viewport screen: position: fixed; bottom: 20px; right: 20px; */
+  /* Step 6: Pin .fixed-drone firmly to the screen viewport so it stays locked on screen when scrolling. Offset it 20px up from bottom and 20px left from right. */
   .fixed-drone {
     z-index: 100;
     background: #38bdf8;
@@ -5303,7 +5758,7 @@ const LESSONS = [
     position: relative;
   }
 
-  /* 1-Qadam: .sticky-navbar ni tepaga yopishqoq qilish uchun position: sticky; top: 0; yozing */
+  /* 1-Qadam: .sticky-navbar ni sahifa pastga scroll qilinganda tepada qotib turadigan yopishqoq qiling va uni tepadan 0 masofaga mixlang. */
   .sticky-navbar {
     z-index: 50;
     background: rgba(17, 24, 39, 0.95);
@@ -5324,7 +5779,7 @@ const LESSONS = [
     margin-bottom: 20px;
   }
 
-  /* 2-Qadam: .shield-card ni 1-GPS chegara devori qilish uchun position: relative; bering */
+  /* 2-Qadam: .shield-card ni ichki nishon uchun 1-GPS koordinata chegarasi (tayanch ramkasi) qiling (o'z o'rnini buzmagan holda). */
   .shield-card {
     background: #1e1b4b;
     border: 2px solid #6366f1;
@@ -5333,7 +5788,7 @@ const LESSONS = [
     text-align: center;
   }
 
-  /* 3-Qadam: .alarm-badge ni burchakka mixlash uchun position: absolute; top: -10px; right: -10px; yozing */
+  /* 3-Qadam: .alarm-badge nishonini oqimdan sug'urib olib, kartochkaning yuqori o'ng burchagidan 10px tepaga va 10px o'ngga chiqarib qo'ying. */
   .alarm-badge {
     background: #ef4444;
     color: white;
@@ -5344,7 +5799,7 @@ const LESSONS = [
     box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
   }
 
-  /* 4-Qadam: .radar-panel ga ham 2-GPS chegara devori: position: relative; bering */
+  /* 4-Qadam: .radar-panel ni ham 2-GPS koordinata chegarasiga aylantiring. */
   .radar-panel {
     background: #111827;
     border: 1px solid #1f2937;
@@ -5352,7 +5807,7 @@ const LESSONS = [
     padding: 24px;
   }
 
-  /* 5-Qadam: .radar-blip ni pastki o'ng burchakka mixlash: position: absolute; bottom: 10px; right: 10px; */
+  /* 5-Qadam: .radar-blip nishonini pastki o'ng burchak ichiga joylashtiring: pastdan 10px yuqoriga ko'taring va o'ngdan 10px ichkariga suring. */
   .radar-blip {
     background: #10b981;
     color: #0b0f19;
@@ -5363,7 +5818,7 @@ const LESSONS = [
     box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
   }
 
-  /* 6-Qadam: .fixed-drone ni ekran oynasiga mixlash uchun position: fixed; bottom: 20px; right: 20px; yozing */
+  /* 6-Qadam: .fixed-drone signalini sahifa qanchalik scroll bo'lsa ham foydalanuvchi ekrani oynasida qotib turadigan qiling. Uni pastki chetdan 20px ko'taring va o'ng chetdan 20px masofada saqlang. */
   .fixed-drone {
     z-index: 100;
     background: #38bdf8;
@@ -13843,16 +14298,18 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- Editor & Live Preview Split -->
-    <div class="editor-stage-split">
+    <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
+    <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
       <!-- Left: Code Studio -->
-      <div class="pane-card">
+      <div class="pane-card pane-card-editor" id="pane-card-editor">
         <div class="pane-header">
           <div class="pane-title">
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
-            <button id="btn-focus-mode" class="btn-tool" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
+            <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
+            <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
+            <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
             <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
@@ -13877,8 +14334,13 @@ function renderLessonView() {
         </div>
       </div>
 
+      <!-- Draggable Pane Resizer Divider -->
+      <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
+        <div class="resizer-knob"></div>
+      </div>
+
       <!-- Right: Preview Stage -->
-      <div class="pane-card">
+      <div class="pane-card pane-card-preview" id="pane-card-preview">
         <div class="pane-header">
           <div class="pane-title">
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
@@ -13900,6 +14362,8 @@ function renderLessonView() {
   `;
 
   elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
+  elements.workspaceStage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+  document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
   setupLessonListeners(lesson);
   if (state.focusIdeMode) {
     const focusBtn = document.getElementById('btn-focus-mode');
@@ -14005,6 +14469,15 @@ function setupLessonListeners(lesson) {
       lineNumbers.scrollTop = textarea.scrollTop;
     }
   });
+
+  // Fullscreen Dual IDE Mode Toggle
+  setupFullscreenIDE();
+
+  // Panes Swap Toggle
+  setupPanesSwap();
+
+  // Draggable Pane Resizer
+  setupPaneResizer();
 
   // Focus Mode toggle: maximizes editor and preview space and persists state
   document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
@@ -14147,6 +14620,109 @@ function setupLessonListeners(lesson) {
       });
     }
   });
+}
+
+
+function setupFullscreenIDE() {
+  const btn = document.getElementById('btn-fullscreen-ide');
+  const stage = document.querySelector('.workspace-stage');
+  if (!btn || !stage) return;
+
+  const toggle = (force) => {
+    state.fullscreenIdeMode = typeof force === 'boolean' ? force : !state.fullscreenIdeMode;
+    stage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+    document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
+    btn.classList.toggle('active', !!state.fullscreenIdeMode);
+    btn.innerHTML = state.fullscreenIdeMode
+      ? `✕ ${state.lang === 'uz' ? 'Kichraytirish' : 'Exit'}`
+      : `⛶ ${state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen'}`;
+    btn.title = state.fullscreenIdeMode
+      ? (state.lang === 'uz' ? 'To\'liq ekrandan chiqish (Esc)' : 'Exit Full Screen (Esc)')
+      : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi' : 'Full Screen Dual IDE Mode');
+    playSound('click', state.audioEnabled);
+  };
+
+  btn.addEventListener('click', () => toggle());
+
+  if (!window._htmlFsIdeEscListener) {
+    window._htmlFsIdeEscListener = true;
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && state.fullscreenIdeMode) {
+        toggle(false);
+      }
+    });
+  }
+}
+
+function setupPanesSwap() {
+  const btn = document.getElementById('btn-swap-panes');
+  const split = document.getElementById('editor-stage-split');
+  if (!btn || !split) return;
+
+  if (state.panesSwapped) {
+    split.classList.add('panes-swapped');
+    btn.classList.add('active');
+  }
+
+  btn.addEventListener('click', () => {
+    split.classList.toggle('panes-swapped');
+    state.panesSwapped = split.classList.contains('panes-swapped');
+    btn.classList.toggle('active', state.panesSwapped);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+  });
+}
+
+function setupPaneResizer() {
+  const resizer = document.getElementById('pane-resizer');
+  const split = document.getElementById('editor-stage-split');
+  const editorPane = document.getElementById('pane-card-editor');
+  const previewPane = document.getElementById('pane-card-preview');
+  if (!resizer || !split || !editorPane || !previewPane) return;
+
+  let isDragging = false;
+
+  const onPointerDown = (e) => {
+    isDragging = true;
+    resizer.classList.add('is-resizing');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    try {
+      resizer.setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDragging) return;
+    const rect = split.getBoundingClientRect();
+    const isSwapped = split.classList.contains('panes-swapped');
+    let x = e.clientX - rect.left;
+    let pct = (x / rect.width) * 100;
+    if (isSwapped) pct = 100 - pct;
+    pct = Math.max(15, Math.min(85, pct));
+    const otherPct = 100 - pct;
+
+    editorPane.style.flex = `0 0 calc(${pct}% - 5px)`;
+    editorPane.style.width = `calc(${pct}% - 5px)`;
+    previewPane.style.flex = `0 0 calc(${otherPct}% - 5px)`;
+    previewPane.style.width = `calc(${otherPct}% - 5px)`;
+  };
+
+  const onPointerUp = (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    resizer.classList.remove('is-resizing');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+    try {
+      resizer.releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  resizer.addEventListener('pointerdown', onPointerDown);
+  resizer.addEventListener('pointermove', onPointerMove);
+  resizer.addEventListener('pointerup', onPointerUp);
+  resizer.addEventListener('pointercancel', onPointerUp);
 }
 
 function insertTextAtCursor(textarea, text) {

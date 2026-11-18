@@ -697,16 +697,18 @@ function renderLessonView() {
       </div>
     </div>
 
-    <!-- Editor & Live Preview Split -->
-    <div class="editor-stage-split">
+    <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
+    <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
       <!-- Left: Code Studio -->
-      <div class="pane-card">
+      <div class="pane-card pane-card-editor" id="pane-card-editor">
         <div class="pane-header">
           <div class="pane-title">
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
-            <button id="btn-focus-mode" class="btn-tool" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
+            <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
+            <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
+            <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
             <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
             <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
           </div>
@@ -731,8 +733,13 @@ function renderLessonView() {
         </div>
       </div>
 
+      <!-- Draggable Pane Resizer Divider -->
+      <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
+        <div class="resizer-knob"></div>
+      </div>
+
       <!-- Right: Preview Stage -->
-      <div class="pane-card">
+      <div class="pane-card pane-card-preview" id="pane-card-preview">
         <div class="pane-header">
           <div class="pane-title">
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
@@ -754,6 +761,8 @@ function renderLessonView() {
   `;
 
   elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
+  elements.workspaceStage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+  document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
   setupLessonListeners(lesson);
   if (state.focusIdeMode) {
     const focusBtn = document.getElementById('btn-focus-mode');
@@ -859,6 +868,15 @@ function setupLessonListeners(lesson) {
       lineNumbers.scrollTop = textarea.scrollTop;
     }
   });
+
+  // Fullscreen Dual IDE Mode Toggle
+  setupFullscreenIDE();
+
+  // Panes Swap Toggle
+  setupPanesSwap();
+
+  // Draggable Pane Resizer
+  setupPaneResizer();
 
   // Focus Mode toggle: maximizes editor and preview space and persists state
   document.getElementById('btn-focus-mode')?.addEventListener('click', () => {
@@ -1001,6 +1019,109 @@ function setupLessonListeners(lesson) {
       });
     }
   });
+}
+
+
+function setupFullscreenIDE() {
+  const btn = document.getElementById('btn-fullscreen-ide');
+  const stage = document.querySelector('.workspace-stage');
+  if (!btn || !stage) return;
+
+  const toggle = (force) => {
+    state.fullscreenIdeMode = typeof force === 'boolean' ? force : !state.fullscreenIdeMode;
+    stage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+    document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
+    btn.classList.toggle('active', !!state.fullscreenIdeMode);
+    btn.innerHTML = state.fullscreenIdeMode
+      ? `✕ ${state.lang === 'uz' ? 'Kichraytirish' : 'Exit'}`
+      : `⛶ ${state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen'}`;
+    btn.title = state.fullscreenIdeMode
+      ? (state.lang === 'uz' ? 'To\'liq ekrandan chiqish (Esc)' : 'Exit Full Screen (Esc)')
+      : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi' : 'Full Screen Dual IDE Mode');
+    playSound('click', state.audioEnabled);
+  };
+
+  btn.addEventListener('click', () => toggle());
+
+  if (!window._htmlFsIdeEscListener) {
+    window._htmlFsIdeEscListener = true;
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && state.fullscreenIdeMode) {
+        toggle(false);
+      }
+    });
+  }
+}
+
+function setupPanesSwap() {
+  const btn = document.getElementById('btn-swap-panes');
+  const split = document.getElementById('editor-stage-split');
+  if (!btn || !split) return;
+
+  if (state.panesSwapped) {
+    split.classList.add('panes-swapped');
+    btn.classList.add('active');
+  }
+
+  btn.addEventListener('click', () => {
+    split.classList.toggle('panes-swapped');
+    state.panesSwapped = split.classList.contains('panes-swapped');
+    btn.classList.toggle('active', state.panesSwapped);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+  });
+}
+
+function setupPaneResizer() {
+  const resizer = document.getElementById('pane-resizer');
+  const split = document.getElementById('editor-stage-split');
+  const editorPane = document.getElementById('pane-card-editor');
+  const previewPane = document.getElementById('pane-card-preview');
+  if (!resizer || !split || !editorPane || !previewPane) return;
+
+  let isDragging = false;
+
+  const onPointerDown = (e) => {
+    isDragging = true;
+    resizer.classList.add('is-resizing');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    try {
+      resizer.setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDragging) return;
+    const rect = split.getBoundingClientRect();
+    const isSwapped = split.classList.contains('panes-swapped');
+    let x = e.clientX - rect.left;
+    let pct = (x / rect.width) * 100;
+    if (isSwapped) pct = 100 - pct;
+    pct = Math.max(15, Math.min(85, pct));
+    const otherPct = 100 - pct;
+
+    editorPane.style.flex = `0 0 calc(${pct}% - 5px)`;
+    editorPane.style.width = `calc(${pct}% - 5px)`;
+    previewPane.style.flex = `0 0 calc(${otherPct}% - 5px)`;
+    previewPane.style.width = `calc(${otherPct}% - 5px)`;
+  };
+
+  const onPointerUp = (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    resizer.classList.remove('is-resizing');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+    try {
+      resizer.releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  resizer.addEventListener('pointerdown', onPointerDown);
+  resizer.addEventListener('pointermove', onPointerMove);
+  resizer.addEventListener('pointerup', onPointerUp);
+  resizer.addEventListener('pointercancel', onPointerUp);
 }
 
 function insertTextAtCursor(textarea, text) {

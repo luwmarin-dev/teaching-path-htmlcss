@@ -4157,13 +4157,15 @@ function renderLessonWorkspace(lesson) {
       <!-- Bottom Interactive Code Editor & Live Console Workspace -->
       <section class="editor-preview-split" id="editor-stage-split">
         <!-- Left: Code Editor Pane -->
-        <div class="editor-pane">
+        <div class="editor-pane" id="pane-editor-js">
           <div class="pane-header">
             <div class="pane-title">
               <span>💻 ${t('codeEditorTitle', state.lang)}</span>
             </div>
             <div class="pane-actions">
-              <button id="btn-focus-mode" class="btn-tool" title="${isUz ? 'Fokus rejimi' : 'Focus Mode'}">🔍 ${isUz ? 'Fokus' : 'Focus'}</button>
+              <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (isUz ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (isUz ? 'To\'liq Ekran IDE rejimi' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (isUz ? 'Kichraytirish' : 'Exit') : '⛶ ' + (isUz ? 'To\'liq Ekran' : 'Full Screen')}</button>
+              <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${isUz ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${isUz ? 'Almashtirish' : 'Swap'}</button>
+              <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${isUz ? 'Fokus rejimi' : 'Focus Mode'}">🔍 ${isUz ? 'Fokus' : 'Focus'}</button>
               <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 ${t('copyBtn', state.lang)}</button>
               <button id="btn-tidy-code" class="btn-tool" title="Format code">🪄 ${t('tidyBtn', state.lang)}</button>
               <button id="btn-reset-code" class="btn-tool" title="Reset code">🔄 ${t('resetCode', state.lang)}</button>
@@ -4183,8 +4185,13 @@ function renderLessonWorkspace(lesson) {
           </div>
         </div>
 
+        <!-- Draggable Pane Resizer Divider -->
+        <div class="pane-resizer" id="pane-resizer" title="${isUz ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
+          <div class="resizer-knob"></div>
+        </div>
+
         <!-- Right: Live Output & Virtual Console Pane with Preview Tabs -->
-        <div class="preview-pane">
+        <div class="preview-pane" id="pane-preview-js">
           <div class="pane-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding: 8px 12px; background:var(--bg-surface);">
             <div class="preview-tabs" style="display:flex; gap:6px;">
               <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}">⚡ ${escapeHtml(t('comboViewTab', state.lang))}</button>
@@ -4222,6 +4229,8 @@ function renderLessonWorkspace(lesson) {
   `;
 
   elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
+  elements.workspaceStage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+  document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
   if (state.focusIdeMode) {
     const focusBtn = document.getElementById('btn-focus-mode');
     if (focusBtn) {
@@ -4898,6 +4907,106 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   window.addEventListener('DOMContentLoaded', () => {
     initApp();
   });
+}
+
+
+function setupJsFullscreenIDE() {
+  const btn = document.getElementById('btn-fullscreen-ide');
+  const stage = document.querySelector('.workspace-stage');
+  if (!btn || !stage) return;
+
+  const toggle = (force) => {
+    state.fullscreenIdeMode = typeof force === 'boolean' ? force : !state.fullscreenIdeMode;
+    stage.classList.toggle('fullscreen-ide-active', !!state.fullscreenIdeMode);
+    document.body.classList.toggle('fullscreen-ide-body', !!state.fullscreenIdeMode);
+    btn.classList.toggle('active', !!state.fullscreenIdeMode);
+    btn.innerHTML = state.fullscreenIdeMode
+      ? `✕ ${state.lang === 'uz' ? 'Kichraytirish' : 'Exit'}`
+      : `⛶ ${state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen'}`;
+    playSound('click', state.audioEnabled);
+  };
+
+  btn.addEventListener('click', () => toggle());
+
+  if (!window._jsFsIdeEscListener) {
+    window._jsFsIdeEscListener = true;
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && state.fullscreenIdeMode) {
+        toggle(false);
+      }
+    });
+  }
+}
+
+function setupJsPanesSwap() {
+  const btn = document.getElementById('btn-swap-panes');
+  const split = document.getElementById('editor-stage-split') || document.querySelector('.editor-preview-split');
+  if (!btn || !split) return;
+
+  if (state.panesSwapped) {
+    split.classList.add('panes-swapped');
+    btn.classList.add('active');
+  }
+
+  btn.addEventListener('click', () => {
+    split.classList.toggle('panes-swapped');
+    state.panesSwapped = split.classList.contains('panes-swapped');
+    btn.classList.toggle('active', state.panesSwapped);
+    saveStateToStorage(state);
+    playSound('click', state.audioEnabled);
+  });
+}
+
+function setupJsPaneResizer() {
+  const resizer = document.getElementById('pane-resizer');
+  const split = document.getElementById('editor-stage-split') || document.querySelector('.editor-preview-split');
+  const editorPane = document.getElementById('pane-editor-js') || document.querySelector('.editor-pane');
+  const previewPane = document.getElementById('pane-preview-js') || document.querySelector('.preview-pane');
+  if (!resizer || !split || !editorPane || !previewPane) return;
+
+  let isDragging = false;
+
+  const onPointerDown = (e) => {
+    isDragging = true;
+    resizer.classList.add('is-resizing');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    try {
+      resizer.setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDragging) return;
+    const rect = split.getBoundingClientRect();
+    const isSwapped = split.classList.contains('panes-swapped');
+    let x = e.clientX - rect.left;
+    let pct = (x / rect.width) * 100;
+    if (isSwapped) pct = 100 - pct;
+    pct = Math.max(15, Math.min(85, pct));
+    const otherPct = 100 - pct;
+
+    editorPane.style.flex = `0 0 calc(${pct}% - 5px)`;
+    editorPane.style.width = `calc(${pct}% - 5px)`;
+    previewPane.style.flex = `0 0 calc(${otherPct}% - 5px)`;
+    previewPane.style.width = `calc(${otherPct}% - 5px)`;
+  };
+
+  const onPointerUp = (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    resizer.classList.remove('is-resizing');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+    try {
+      resizer.releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  resizer.addEventListener('pointerdown', onPointerDown);
+  resizer.addEventListener('pointermove', onPointerMove);
+  resizer.addEventListener('pointerup', onPointerUp);
+  resizer.addEventListener('pointercancel', onPointerUp);
 }
 
 

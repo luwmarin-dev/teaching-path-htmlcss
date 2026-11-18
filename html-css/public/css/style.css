@@ -3633,3 +3633,111 @@ body {
 .custom-cyber-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #38bdf8;
 }
+
+/* ===================================================================
+   Dual IDE Mode, Pane Resizer, and Panes Swapping
+   =================================================================== */
+.editor-stage-split {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0 !important;
+  padding: 16px 24px 24px;
+  height: calc(100vh - 120px);
+  min-height: 560px;
+  scroll-margin-top: 14px;
+  box-sizing: border-box;
+  align-items: stretch;
+  width: 100%;
+}
+
+.pane-card {
+  flex: 1 1 50%;
+  min-width: 260px;
+  min-height: 0;
+  height: 100%;
+}
+
+.pane-resizer {
+  width: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 25;
+  flex-shrink: 0;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.15s;
+}
+
+.pane-resizer:hover, .pane-resizer.is-resizing {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+.resizer-knob {
+  width: 4px;
+  height: 38px;
+  border-radius: 2px;
+  background: #64748b;
+  transition: all 0.15s;
+}
+
+.pane-resizer:hover .resizer-knob, .pane-resizer.is-resizing .resizer-knob {
+  background: #38bdf8;
+  height: 58px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+}
+
+.editor-stage-split.panes-swapped {
+  flex-direction: row-reverse !important;
+}
+
+.btn-tool.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+}
+
+body.fullscreen-ide-body {
+  overflow: hidden !important;
+}
+
+.workspace-stage.fullscreen-ide-active {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  z-index: 999999 !important;
+  background: var(--bg-main, #0b0f19) !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.workspace-stage.fullscreen-ide-active > *:not(.editor-stage-split):not(.editor-preview-split) {
+  display: none !important;
+}
+
+.workspace-stage.fullscreen-ide-active .editor-stage-split,
+.workspace-stage.fullscreen-ide-active .editor-preview-split {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  flex: 1 !important;
+  display: flex !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.fullscreen-ide-body .app-header,
+body.fullscreen-ide-body .sidebar {
+  display: none !important;
+}
