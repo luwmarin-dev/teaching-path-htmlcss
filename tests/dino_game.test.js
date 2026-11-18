@@ -304,6 +304,130 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     const codeBoxText = await page.textContent('#template-code-box');
     assert.match(codeBoxText, /<!DOCTYPE html>/);
     assert.match(codeBoxText, /class Dino/);
+
+    // Close modal so it does not intercept subsequent pointer events
+    await page.locator('#vscode-modal button:has-text("✕")').click();
+    const modalClosed = await page.locator('#vscode-modal.open').isVisible();
+    assert.strictEqual(modalClosed, false, 'Modal should close cleanly');
+  });
+
+  await t.test('Mentor diagnostic catches CSS px unit and provides friendly guidance', async () => {
+    // Type code with 48px
+    const badPxCode = `class Dino {
+      constructor() {
+        this.width = 44;
+        this.height = 48px;
+        this.x = 60;
+        this.y = 0;
+        this.isJumping = false;
+        this.isDucking = false;
+      }
+    }`;
+    await page.locator('#student-code-editor').fill(badPxCode);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    const valText = await page.textContent('#validation-feedback-box');
+    assert.match(valText, /JavaScript CSS emas/);
+    assert.match(valText, /48px/);
+    assert.match(valText, /this\.height = 48/);
+  });
+
+  await t.test('Step 3 renders explicit sub-task criteria checklist with 4 clear tasks', async () => {
+    // We already unlocked Step 3 in previous test, let us advance to Step 3:
+    await page.locator('#btn-next-step').click();
+
+    // Verify current step is Step 3
+    const stepTitle = await page.textContent('#top-step-title');
+    assert.match(stepTitle, /3-Qadam/);
+
+    // Verify criteria container is visible
+    const criteriaVisible = await page.locator('#task-criteria-container').isVisible();
+    assert.strictEqual(criteriaVisible, true);
+
+    // Verify 4 subtasks are listed
+    const criteriaItems = page.locator('.task-criteria-item');
+    const count = await criteriaItems.count();
+    assert.strictEqual(count, 4, 'Step 3 must have 4 distinct subtask criteria');
+
+    // Verify content of subtasks: jump, duck, standUp, eventListener
+    const item1 = await criteriaItems.nth(0).textContent();
+    assert.match(item1, /jump\(\)/);
+    const item2 = await criteriaItems.nth(1).textContent();
+    assert.match(item2, /duck\(\)/);
+    const item3 = await criteriaItems.nth(2).textContent();
+    assert.match(item3, /standUp\(\)/);
+    const item4 = await criteriaItems.nth(3).textContent();
+    assert.match(item4, /addEventListener/);
+  });
+
+  await t.test('Step 3 gives precise guidance when subtasks are missing and unlocks Step 4 on completion', async () => {
+    // Partial attempt: only jump() implemented
+    const partialCode = `class Dino {
+      constructor() {
+        this.width = 44; this.height = 48;
+        this.x = 60; this.y = 0;
+        this.isJumping = false; this.isDucking = false;
+      }
+      jump() {
+        if (!this.isJumping && !this.isDucking && this.y === 0) {
+          this.isJumping = true;
+        }
+      }
+    }
+    const dino = new Dino();`;
+    await page.locator('#student-code-editor').fill(partialCode);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    let valText = await page.textContent('#validation-feedback-box');
+    assert.match(valText, /duck\(\)/, 'Must specifically guide student that duck() is missing');
+
+    // Complete valid Step 3 code according to the taught criteria
+    const completeStep3Code = `class Dino {
+      constructor() {
+        this.width = 44; this.height = 48;
+        this.x = 60; this.y = 0;
+        this.isJumping = false; this.isDucking = false;
+      }
+      jump() {
+        if (!this.isJumping && !this.isDucking && this.y === 0) {
+          this.isJumping = true;
+        }
+      }
+      duck() {
+        if (this.y === 0 && !this.isJumping) {
+          this.isDucking = true;
+          this.height = 26;
+          this.width = 55;
+        }
+      }
+      standUp() {
+        this.isDucking = false;
+        this.height = 48;
+        this.width = 44;
+      }
+    }
+    const dino = new Dino();
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') dino.jump();
+      if (e.code === 'ArrowDown') dino.duck();
+    });
+    window.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowDown') dino.standUp();
+    });`;
+
+    await page.locator('#student-code-editor').fill(completeStep3Code);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    // Verify success
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Valid Step 3 code must pass validation');
+
+    // Step 4 must now be unlocked
+    const step4Unlocked = await page.locator('#step-nav-4').isDisabled();
+    assert.strictEqual(step4Unlocked, false, 'Step 4 must now be unlocked');
+
+    const nextBtnText = await page.textContent('#btn-next-step');
+    assert.match(nextBtnText, /4-Qadamga O'tish/);
   });
 
   await t.test('Zero uncaught exceptions and zero asset loading failures', async () => {

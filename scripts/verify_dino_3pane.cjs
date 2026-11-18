@@ -80,10 +80,21 @@ const path = require('path');
   await page.screenshot({ path: path.join(artDir, 'dino_4_next_step_gating.png') });
   console.log('Saved dino_4_next_step_gating.png');
 
-  // 5. Step 3: Switch & Write Jump + Duck methods
+  // 5. Step 3: Switch to Step 3 and capture explicit criteria checklist
   await page.click('#step-nav-3');
   await page.waitForTimeout(300);
-  await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;\n  }\n  duck() {\n    if (this.y === 0) { this.isDucking = true; this.height = 26; this.width = 55; }\n  }\n  standUp() {\n    this.isDucking = false; this.height = 48; this.width = 44;\n  }\n}\nconst dino = new Dino();\nwindow.addEventListener('keydown', e => { if (e.code === 'Space') dino.jump(); if (e.code === 'ArrowDown') dino.duck(); });\nwindow.addEventListener('keyup', e => { if (e.code === 'ArrowDown') dino.standUp(); });`);
+  await page.screenshot({ path: path.join(artDir, 'dino_6_step3_criteria_checklist.png') });
+  console.log('Saved dino_6_step3_criteria_checklist.png');
+
+  // 5.a: Test Mentor Diagnostic on beginner 48px error (as in user screenshot)
+  await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48px;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n}`);
+  await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: path.join(artDir, 'dino_6_mentor_diagnostic_px.png') });
+  console.log('Saved dino_6_mentor_diagnostic_px.png');
+
+  // 5.b: Write complete valid Step 3 code fulfilling all 4 explicit subtasks
+  await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;\n  }\n  duck() {\n    if (this.y === 0 && !this.isJumping) { this.isDucking = true; this.height = 26; this.width = 55; }\n  }\n  standUp() {\n    this.isDucking = false; this.height = 48; this.width = 44;\n  }\n}\nconst dino = new Dino();\nwindow.addEventListener('keydown', e => { if (e.code === 'Space' || e.code === 'ArrowUp') dino.jump(); if (e.code === 'ArrowDown') dino.duck(); });\nwindow.addEventListener('keyup', e => { if (e.code === 'ArrowDown') dino.standUp(); });`);
   await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
   await page.waitForTimeout(300);
   await page.screenshot({ path: path.join(artDir, 'dino_2_step3_controls.png') });
