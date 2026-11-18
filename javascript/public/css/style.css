@@ -4162,8 +4162,23 @@ body.fullscreen-ide-body {
   overflow: hidden !important;
 }
 
-.workspace-stage.fullscreen-ide-active > *:not(.editor-stage-split):not(.editor-preview-split) {
+.workspace-stage.fullscreen-ide-active > *:not(.editor-stage-split):not(.editor-preview-split):not(.mission-spotlight-card) {
   display: none !important;
+}
+
+.workspace-stage.fullscreen-ide-active .mission-spotlight-card {
+  display: block !important;
+  margin: 0 0 8px 0 !important;
+  padding: 8px 14px !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  flex-shrink: 0 !important;
+}
+
+.workspace-stage.fullscreen-ide-active .mission-spotlight-body {
+  padding: 4px 0 0 0 !important;
+  font-size: 13px !important;
 }
 
 .workspace-stage.fullscreen-ide-active .editor-preview-split, .editor-stage-split {

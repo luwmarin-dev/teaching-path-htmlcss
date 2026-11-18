@@ -3382,7 +3382,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.spa-navbar\s*\{[^}]*display\s*:\s*flex/i.test(code) && /\.spa-navbar\s*\{[^}]*justify-content\s*:\s*space-between/i.test(code) && /\.spa-navbar\s*\{[^}]*align-items\s*:\s*center/i.test(code),
-          message: 'Add display: flex; justify-content: space-between; align-items: center; to .spa-navbar!'
+          message: '.spa-navbar ichidagi elementlarni qatorga tizing, X o\'qi bo\'yicha ikki chetga suring va vertikal markazlang!'
         },
         {
           type: 'custom',
@@ -3392,7 +3392,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.spa-player\s*\{[^}]*display\s*:\s*flex/i.test(code) && /\.spa-player\s*\{[^}]*justify-content\s*:\s*space-between/i.test(code) && /\.spa-player\s*\{[^}]*align-items\s*:\s*center/i.test(code),
-          message: 'Add display: flex; justify-content: space-between; align-items: center; to .spa-player!'
+          message: '.spa-player boshqaruv qismlarini bitta chiziqqa tering, ikki chekkaga yoying va vertikal markazlang!'
         }
       ]
     },
@@ -5566,12 +5566,12 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.spa-grid\s*\{[^}]*display\s*:\s*grid/i.test(code) && /\.spa-grid\s*\{[^}]*grid-template-columns\s*:\s*200px/i.test(code) && /\.spa-grid\s*\{[^}]*gap\s*:\s*16px/i.test(code),
-          message: 'Add display: grid;, grid-template-columns: 200px 1fr 1fr;, and gap: 16px; to .spa-grid!'
+          message: '.spa-grid ni 3 ustunli (200px, 1fr, 1fr) va 16px oraliqli 2D panjara tizimiga o\'tkazing!'
         },
         {
           type: 'custom',
           check: (code) => /\.spa-header\s*\{[^}]*grid-column\s*:\s*1\s*\/\s*-1/i.test(code),
-          message: 'Add grid-column: 1 / -1; to .spa-header to span across all columns!'
+          message: '.spa-header ni barcha ustunlar bo\'ylab boshidan oxirigacha cho\'zing!'
         },
         {
           type: 'custom',
@@ -5581,7 +5581,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.spa-footer\s*\{[^}]*grid-column\s*:\s*1\s*\/\s*-1/i.test(code),
-          message: 'Add grid-column: 1 / -1; to .spa-footer to span across all columns!'
+          message: '.spa-footer pastki panelini barcha ustunlar bo\'ylab to\'liq yoying!'
         }
       ]
     },
@@ -6139,27 +6139,27 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.sticky-navbar\s*\{[^}]*position\s*:\s*sticky/i.test(code) && /\.sticky-navbar\s*\{[^}]*top\s*:\s*0/i.test(code),
-          message: 'Add position: sticky; top: 0; to .sticky-navbar!'
+          message: '.sticky-navbar ni sahifa aylanganda tepada qotib turadigan qilib mahkamlang (tepadan 0 masofada)!'
         },
         {
           type: 'custom',
           check: (code) => /\.shield-card\s*\{[^}]*position\s*:\s*relative/i.test(code),
-          message: 'Add position: relative; to .shield-card as the 1st GPS anchor boundary!'
+          message: '.shield-card ni ichki nishon uchun 1-koordinata chegarasiga aylantiring!'
         },
         {
           type: 'custom',
           check: (code) => /\.alarm-badge\s*\{[^}]*position\s*:\s*absolute/i.test(code) && /\.alarm-badge\s*\{[^}]*top\s*:\s*-10px/i.test(code),
-          message: 'Add position: absolute; top: -10px; right: -10px; to .alarm-badge!'
+          message: '.alarm-badge nishonini oqimdan chiqarib, yuqori o\'ng burchakdan 10px tashqariga suring!'
         },
         {
           type: 'custom',
           check: (code) => /\.radar-panel\s*\{[^}]*position\s*:\s*relative/i.test(code),
-          message: 'Add position: relative; to .radar-panel as the 2nd GPS anchor boundary!'
+          message: '.radar-panel ni 2-koordinata devoriga aylantiring!'
         },
         {
           type: 'custom',
           check: (code) => /\.radar-blip\s*\{[^}]*position\s*:\s*absolute/i.test(code) && /\.radar-blip\s*\{[^}]*bottom\s*:\s*10px/i.test(code),
-          message: 'Add position: absolute; bottom: 10px; right: 10px; to .radar-blip!'
+          message: '.radar-blip nishonini pastki o\'ng burchak ichiga 10px masofada mixlang!'
         },
         {
           type: 'custom',
@@ -13635,7 +13635,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
 let state = loadStateFromStorage();
 let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
-let activePreviewTab = 'combo'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
+let activePreviewTab = 'live'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
 let ambientEngine = null;
 
@@ -14346,7 +14346,7 @@ function renderLessonView() {
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
             <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>

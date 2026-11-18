@@ -34,7 +34,7 @@ import { speakText, stopSpeaking, isSpeaking } from './modules/speech.js';
 let state = loadStateFromStorage();
 let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
-let activePreviewTab = 'combo'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
+let activePreviewTab = 'live'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
 let ambientEngine = null;
 
@@ -745,7 +745,7 @@ function renderLessonView() {
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
             <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>

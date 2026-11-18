@@ -806,7 +806,7 @@ function runTargetPreview(lesson) {
   });
 }
 
-let activePreviewTab = 'combo';
+let activePreviewTab = 'live';
 
 function setupPreviewTabs(lesson) {
   const tabCombo = document.getElementById('tab-combo');
