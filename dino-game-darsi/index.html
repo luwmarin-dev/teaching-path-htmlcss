@@ -1975,17 +1975,18 @@
       dino.draw(ctx);
 
       // To'siqlar generatsiyasi (Kaktuslar va Qushlar)
+      const currentSpeed = 3.4 + Math.min(score * 0.0035, 2.6);
       spawnTimer++;
-      if (spawnTimer > 90) {
+      if (spawnTimer > 115) {
         spawnTimer = 0;
-        const isBird = Math.random() < 0.35 && score > 60;
+        const isBird = Math.random() < 0.35 && score >= 50;
         if (isBird) {
-          obstacles.push({ type: 'bird', x: canvas.width, y: 38, width: 36, height: 26, speed: 7 });
+          obstacles.push({ type: 'bird', x: canvas.width, y: 38, width: 36, height: 26, speed: currentSpeed + 0.3 });
         } else {
           const type = Math.floor(Math.random() * 3);
           const w = type === 0 ? 20 : (type === 1 ? 26 : 56);
           const h = type === 0 ? 36 : (type === 1 ? 48 : 42);
-          obstacles.push({ type: 'cactus', x: canvas.width, y: 0, width: w, height: h, speed: 6.5 });
+          obstacles.push({ type: 'cactus', x: canvas.width, y: 0, width: w, height: h, speed: currentSpeed });
         }
       }
 
@@ -3283,7 +3284,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
     const liveDino = new GameDino();
     let obstacles = [];
-    let spawnCounter = 0;
+    let spawnCounter = -40; // O'yinchiga boshida nafas rostlash uchun 1.5s kechikish
+    let nextLiveSpawn = 130;
     let clouds = [
       { x: 200, y: 35, speed: 0.5 },
       { x: 550, y: 55, speed: 0.8 },
@@ -3472,7 +3474,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       isGameOver = false;
       score = 0;
       obstacles = [];
-      spawnCounter = 0;
+      spawnCounter = -45; // Boshlanishda nafas rostlash
+      nextLiveSpawn = 125;
       document.getElementById('current-score').textContent = '00000';
       loop();
     }
@@ -3497,6 +3500,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         setVisualMode('pixel');
       }
       obstacles = [];
+      spawnCounter = -45;
+      nextLiveSpawn = 125;
       updateTelemetry();
     }
 
@@ -3549,11 +3554,17 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
       // 4. TO'SIQLAR FAQAT 5-BOSQICHDA (YOKI 4-QADAM TUGAGACH) ISHLAYDI!
       if (currentStep >= 5 || unlockedSteps[4]) {
+        // Yumshoq va maroqli boshlang'ich tezlik: 3.4 px/kadr (boshlanishida bemalol sakrash/egilish mumkin)
+        // Har 100 ochkoda asta-sekin tezlashadi, maksimal chegara 5.8 px/kadr
+        const currentSpeed = 3.4 + Math.min(score * 0.003, 2.4);
+
         spawnCounter++;
-        if (spawnCounter > 85) {
+        if (spawnCounter >= nextLiveSpawn) {
           spawnCounter = 0;
-          // 35% ehtimollik bilan UCHUVCHI QUSH, 65% ehtimollik bilan 3 xil KAKTUS
-          const isBird = Math.random() < 0.35;
+          nextLiveSpawn = Math.floor(480 / currentSpeed) + Math.floor(Math.random() * 35);
+
+          // 35% ehtimollik bilan UCHUVCHI QUSH (faqat ochko >= 50 bo'lganda), boshida faqat kaktus
+          const isBird = Math.random() < 0.35 && score >= 50;
           if (isBird) {
             obstacles.push({
               type: 'bird',
@@ -3561,7 +3572,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
               y: 36, // Havoda uchadi
               width: 36,
               height: 28,
-              speed: 7,
+              speed: currentSpeed + 0.2,
               wingState: 0
             });
           } else {
@@ -3576,7 +3587,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
               y: 0,
               width: w,
               height: h,
-              speed: 6.5
+              speed: currentSpeed
             });
           }
         }
@@ -3728,7 +3739,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
     let targetGameOver = false;
     let targetScore = 0;
     let targetHighScore = 0;
-    let targetSpawnTimer = 0;
+    let targetSpawnTimer = -45; // O'yinchiga nafas rostlash uchun kechikish
+    let targetNextSpawn = 125;
     let targetObstacles = [];
     let targetClouds = [
       { x: 120, y: 30, speed: 0.6 },
@@ -3938,7 +3950,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       targetGameOver = false;
       targetScore = 0;
       targetObstacles = [];
-      targetSpawnTimer = 0;
+      targetSpawnTimer = -45; // Boshlanishda nafas rostlash
+      targetNextSpawn = 125;
       document.getElementById('target-score-display').textContent = '00000';
       document.getElementById('target-overlay-prompt').classList.add('hidden');
     }
@@ -4007,10 +4020,17 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
       // 4. To'siqlar
       if (targetDemoPlaying && !targetGameOver) {
+        // Yumshoq va maroqli boshlang'ich tezlik: 3.4 px/kadr (boshlanishida bemalol sakrash/egilish mumkin)
+        // Har 100 ochkoda asta-sekin tezlashadi, maksimal chegara 5.8 px/kadr
+        const currentSpeed = 3.4 + Math.min(targetScore * 0.003, 2.4);
+
         targetSpawnTimer++;
-        if (targetSpawnTimer > 80) {
+        if (targetSpawnTimer >= targetNextSpawn) {
           targetSpawnTimer = 0;
-          const isBird = Math.random() < 0.35;
+          targetNextSpawn = Math.floor(480 / currentSpeed) + Math.floor(Math.random() * 35);
+
+          // 35% ehtimollik bilan Uchar qush (faqat ochko >= 50 da boshlanadi), boshida faqat kaktus
+          const isBird = Math.random() < 0.35 && targetScore >= 50;
           if (isBird) {
             targetObstacles.push({
               type: 'bird',
@@ -4018,7 +4038,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
               y: 35, // Havoda - egilib o'tish lozim!
               width: 36,
               height: 26,
-              speed: 6.8,
+              speed: currentSpeed + 0.2,
               wingState: 0
             });
           } else {
@@ -4032,7 +4052,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
               y: 0,
               width: w,
               height: h,
-              speed: 6.2
+              speed: currentSpeed
             });
           }
         }
@@ -4061,13 +4081,13 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
             targetCtx.fillRect(obs.x + 3, obsRenderY + 4, 4, obs.height - 8);
           }
 
-          // AABB To'qnashuv
+          // AABB To'qnashuv (adolatli marja bilan)
           const dinoRenderY = targetCanvas.height - 30 - targetDino.height - targetDino.y;
           const isColliding = (
-            targetDino.x + 4 < obs.x + obs.width &&
-            targetDino.x + targetDino.width - 4 > obs.x &&
-            dinoRenderY + targetDino.height > obsRenderY + 2 &&
-            dinoRenderY < obsRenderY + obs.height
+            targetDino.x + 6 < obs.x + obs.width - 4 &&
+            targetDino.x + targetDino.width - 6 > obs.x + 4 &&
+            dinoRenderY + targetDino.height > obsRenderY + 3 &&
+            dinoRenderY + 3 < obsRenderY + obs.height
           );
 
           if (isColliding) {
