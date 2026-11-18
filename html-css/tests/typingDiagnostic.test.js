@@ -42,6 +42,6 @@ test('Typing Diagnostic Engine Unit Tests', async (t) => {
 
     const htmlRu = renderTypingLabHtml('ru', 'en');
     assert.ok(htmlRu.includes('KEYBOARD DIAGNOSTIC'));
-    assert.ok(htmlRu.includes('Технологии и Путь Программиста'));
+    assert.ok(htmlRu.includes('Великая Архитектура'));
   });
 });

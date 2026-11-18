@@ -217,226 +217,343 @@ export const LESSONS = [
   // ==========================================
   // THEME 1: HTML Tags (Bite-Sized Intro)
   // ==========================================
+  // ==========================================
+  // THEME 1: HTML Text Formatting & The History of HTML
+  // ==========================================
   {
     id: 'theme-1-tags',
     module: 'html-core',
     title: {
-      en: 'Theme 1: Fundamental Text Tags (Headings, Paragraphs & Highlights)',
-      uz: "1-Mavzu: Boshlang'ich Matn Teglari (Sarlavha, Paragraf va Ajratish)"
+      en: 'Theme 1: Fundamental Text Tags & History of HTML',
+      uz: "1-Mavzu: Boshlang'ich Matn Teglari va HTML Tarixi"
     },
     icon: '🏷️',
-    tag: '<h1>, <p>, <strong>, <em>, <u>',
+    tag: '<h1>, <h2>, <p>, <strong>, <em>, <u>, <mark>, <del>',
     humanIntro: {
       whatIsIt: {
-        en: 'HTML is the structural skeleton of web pages! In this first coding lesson, you will master the 5 most essential text tags: big headings (<h1>), normal paragraphs (<p>), bold text (<strong>), italic emphasis (<em>), and underline (<u>).',
-        uz: "HTML — bu veb-sahifaning suyak-karkasidir! Birinchi darsda siz eng muhim 5 ta matn tegini o'rganasiz: katta sarlavha (<h1>), oddiy matn (<p>), qalin yozuv (<strong>), yotiq urg'u (<em>) va tagiga chizish (<u>)."
+        en: 'HTML stands for "HyperText Markup Language" — the architectural skeleton of every website on Earth! In this foundational lesson, you will master all essential text formatting tags: headings (<h1>, <h2>), paragraphs (<p>), bold importance (<strong>, <b>), italics (<em>, <i>), underline (<u>), highlighter (<mark>), and strikethrough (<del>).',
+        uz: "HTML inson tilida — butun dunyodagi har bir veb-saytning me'moriy suyak-karkasidir! Ushbu poydevor darsida siz barcha asosiy matn formatlash teglarini o'rganasiz: sarlavhalar (<h1>, <h2>), xatboshilar (<p>), qalin yozuvlar (<strong>, <b>), kursivlar (<em>, <i>), tagiga chizish (<u>), sariq marker (<mark>) va ustidan chizish (<del>)."
       },
       whatIsATag: {
-        en: 'A **Tag** tells the computer how to treat text. Tags come in pairs like a sandwich: an **Opening Tag** (<tag>) to begin, words in the middle, and a **Closing Tag** (</tag>) with a slash to stop!',
-        uz: "**Teg** kompyuterga matn qanday ko'rinishini aytadi. Ular xuddi sendvich kabi juft bo'lib keladi: boshida **Ochuvchi teg** (<tag>), o'rtada matn va oxirida slesh belgili **Yopuvchi teg** (</tag>)!"
+        en: 'A **Tag** tells the computer how to treat text. Tags come in pairs like a sandwich: an **Opening Tag** (<tag>) to begin, the words in the middle, and a **Closing Tag** (</tag>) with a slash to stop! Together, they turn raw plain text into an inspiring digital article!',
+        uz: "**Teg** kompyuterga matn qanday vazifa bajarishini aytadi. Ular xuddi sendvich kabi deyarli doim juft bo'lib keladi: boshida **Ochuvchi teg** (<tag>), o'rtada matn va oxirida slesh belgili **Yopuvchi teg** (</tag>)! Barcha teglar birlashib oddiy xom matnni go'zal raqamli maqolaga aylantiradi!"
       }
     },
     summary: {
-      en: 'Write your very first greeting card using fundamental heading, paragraph, bold, italic, and underline tags.',
-      uz: "Eng muhim 5 ta matn tegi (h1, p, strong, em, u) yordamida o'zingizning birinchi kiber sahifangizni yozing."
+      en: 'Learn all fundamental text formatting tags and apply them to format an inspiring historical article about the creation and global popularity of HTML.',
+      uz: "Barcha asosiy matn formatlash teglarini o'rganing va ularni HTML ning yaratilishi hamda global ommaviyligi haqidagi tarixiy maqolani chiroyli bezashda qo'llang."
     },
     story: {
-      en: 'Welcome to the Cyber Academy! Craft your first personal profile card introducing yourself to the coding world.',
-      uz: "Kiber Akademiyaga xush kelibsiz! O'zingizni dasturlash olamiga tanituvchi birinchi shaxsiy kiber vizitkangizni yarating."
+      en: 'Journey back to 1991 at CERN! Take the raw historic manifesto about Tim Berners-Lee and the birth of HTML, and format it into a world-class digital publication.',
+      uz: "1991-yilga, CERN laboratoriyasiga sayohat qiling! Tim Berners-Lee va HTML yaratilishi haqidagi xom tarixiy matnni barcha matn teglari yordamida dunyo darajasidagi maqolaga aylantiring."
     },
     initialCode: {
-      en: `<!-- STEP 1: Add a big heading with <h1>: e.g. <h1>Hello Cyber World!</h1> -->
+      en: `<!-- 1-QADAM: Wrap the master article headline with <h1>...</h1>! -->
+HTML — The Great Foundation of the World Wide Web
 
+<!-- 2-QADAM: Wrap the first chapter subtitle with <h2>...</h2>! -->
+1. The Birth of the Web and Tim Berners-Lee
 
-<!-- STEP 2: Write a normal sentence with <p>: e.g. <p>I started learning coding.</p> -->
+<!-- 3-QADAM: Wrap this paragraph in <p>...</p>! 
+     Bold the inventor's name with <strong>Tim Berners-Lee</strong>, 
+     bold the year with <b>1991</b>, and underline <u>CERN</u>! -->
+The World Wide Web was born in 1991 at the CERN research laboratory in Switzerland, invented by British computer scientist Tim Berners-Lee.
 
+<!-- 4-QADAM: Wrap this second paragraph in <p>...</p>! 
+     Italicize the phrase "World Wide Web" with <em>...</em>! -->
+Originally built to share scientific papers among physicists, the World Wide Web today connects billions of curious minds across our planet.
 
-<!-- STEP 3: Open a new paragraph and bold your name with <strong>Alex</strong>! -->
+<!-- 5-QADAM: Wrap the second chapter subtitle with <h2>...</h2>! -->
+2. How HTML Truly Works
 
+<!-- 6-QADAM: Wrap this explanation in <p>...</p>! 
+     Highlight "hypertext markup language" with a glowing <mark>...</mark> yellow highlighter! -->
+HTML is not a complex programming language; it is a hypertext markup language that builds the structural skeleton of every webpage.
 
-<!-- STEP 4: Add vocal emphasis to a word using <em>super cool</em>! -->
+<!-- 7-QADAM: Wrap the third chapter subtitle with <h2>...</h2>! -->
+3. Global Popularity and Modern Reality
 
+<!-- 8-QADAM: Wrap this paragraph in <p>...</p>! 
+     Strike through the outdated myth "Coding is only for math geniuses" with <del>...</del>! 
+     Bold the fact "over 1.9 billion websites" with <strong>...</strong>! -->
+An outdated myth claimed: Coding is only for math geniuses — this has been completely debunked! Today, over 1.9 billion websites run entirely on HTML!
 
-<!-- STEP 5: Underline your golden rule with <u>I code every day</u>! -->
-`,
-      uz: `<!-- 1-QADAM: <h1> tegi bilan katta sarlavha yozing: Masalan, <h1>Salom Kiber Dunyo!</h1> -->
+<!-- 9-QADAM: Wrap the fine print at the bottom with a <small>...</small> tag! -->
+Web History Laboratory — Official Archive`,
+      uz: `<!-- 1-QADAM: Maqolaning bosh sarlavhasini <h1>...</h1> tegi bilan o'rang! -->
+HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori
 
+<!-- 2-QADAM: Birinchi bo'lim sarlavhasini <h2>...</h2> tegi bilan belgilang! -->
+1. Yaratilish Tarixi va Tim Berners-Lee
 
-<!-- 2-QADAM: <p> tegi ichida oddiy matn yozing: Masalan, <p>Men dasturlashni boshladim.</p> -->
+<!-- 3-QADAM: Quyidagi gapni <p>...</p> xatboshi tegi ichiga oling! 
+     Ichidagi ixtirochi nomini <strong>Tim Berners-Lee</strong>, 
+     sanani <b>1991-yil</b> bilan qalin qiling, CERN so'zining tagiga esa <u>...</u> bilan chizing! -->
+Butunjahon veb-tarmog'i 1991-yilda Shveytsariyaning CERN tadqiqot laboratoriyasida britaniyalik olim Tim Berners-Lee tomonidan ixtiro qilingan.
 
+<!-- 4-QADAM: Ushbu ikkinchi gapni ham <p>...</p> ichiga oling! 
+     "World Wide Web" iborasini <em>...</em> tegi bilan yotiq kursiv qiling! -->
+Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy World Wide Web bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda.
 
-<!-- 3-QADAM: Yangi paragraf ochib, ismingizni <strong>Ali</strong> bilan qalinlashtiring! -->
+<!-- 5-QADAM: Ikkinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
+2. HTML Qanday Ishlaydi?
 
+<!-- 6-QADAM: Ushbu tushuntirishni <p>...</p> ichiga oling! 
+     "gipermatn" so'zini <mark>...</mark> sariq marker bilan yoriting! -->
+HTML dasturlash tili emas, balki gipermatnli belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi.
 
-<!-- 4-QADAM: Biror so'zga <em>juda qiziq</em> deb yotiq urg'u bering! -->
+<!-- 7-QADAM: Uchinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
+3. Global Ommaviylik va Bugungi Haqiqat
 
+<!-- 8-QADAM: Ushbu xatboshini <p>...</p> ga oling! 
+     Eski afsona bo'lgan "Dasturlash faqat daho matematiklar uchun" jumlasini <del>...</del> bilan o'chirib chizing! 
+     "1.9 milliarddan ortiq veb-saytlar" iborasini <strong>...</strong> bilan qalinlashtiring! -->
+Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi kunda dunyoda 1.9 milliarddan ortiq veb-saytlar aynan HTML orqali ishlaydi!
 
-<!-- 5-QADAM: Oltin qoidangiz tagiga <u>har kuni kod yozaman</u> deb chizing! -->
-`
+<!-- 9-QADAM: Sahifa ostidagi rasmiy eslatmaga <small>...</small> tegi bering! -->
+Internet Tarixi Laboratoriyasi — Rasmiy Arxiv`
     },
     targetCode: {
-      en: `<h1>Hello Cyber World!</h1>
-<p>I started learning coding.</p>
-<p>My name is <strong>Alex</strong>, coding is <em>super cool</em> and <u>I code every day</u>!</p>`,
-      uz: `<h1>Salom Kiber Dunyo!</h1>
-<p>Men dasturlashni boshladim.</p>
-<p>Mening ismim <strong>Ali</strong>, dasturlash <em>juda qiziq</em> va men <u>har kuni kod yozaman</u>!</p>`
+      en: `<h1>HTML — The Great Foundation of the World Wide Web</h1>
+
+<h2>1. The Birth of the Web and Tim Berners-Lee</h2>
+<p>The World Wide Web was born in <b>1991</b> at the <u>CERN</u> research laboratory in Switzerland, invented by British computer scientist <strong>Tim Berners-Lee</strong>.</p>
+<p>Originally built to share scientific papers among physicists, the <em>World Wide Web</em> today connects billions of curious minds across our planet.</p>
+
+<h2>2. How HTML Truly Works</h2>
+<p>HTML is not a complex programming language; it is a <mark>hypertext</mark> markup language that builds the structural skeleton of every webpage.</p>
+
+<h2>3. Global Popularity and Modern Reality</h2>
+<p>An outdated myth claimed: <del>Coding is only for math geniuses</del> — this has been completely debunked! Today, <strong>over 1.9 billion websites</strong> run entirely on HTML!</p>
+
+<small>Web History Laboratory — Official Archive</small>`,
+      uz: `<h1>HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori</h1>
+
+<h2>1. Yaratilish Tarixi va Tim Berners-Lee</h2>
+<p>Butunjahon veb-tarmog'i <b>1991-yilda</b> Shveytsariyaning <u>CERN</u> tadqiqot laboratoriyasida britaniyalik olim <strong>Tim Berners-Lee</strong> tomonidan ixtiro qilingan.</p>
+<p>Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy <em>World Wide Web</em> bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda.</p>
+
+<h2>2. HTML Qanday Ishlaydi?</h2>
+<p>HTML dasturlash tili emas, balki <mark>gipermatn</mark>li belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi.</p>
+
+<h2>3. Global Ommaviylik va Bugungi Haqiqat</h2>
+<p>Eski afsonaga ko'ra: <del>Dasturlash faqat daho matematiklar uchun</del> degan gap bekor qilindi. Bugungi kunda dunyoda <strong>1.9 milliarddan ortiq veb-saytlar</strong> aynan HTML orqali ishlaydi!</p>
+
+<small>Internet Tarixi Laboratoriyasi — Rasmiy Arxiv</small>`
     },
     targetDescription: {
-      en: 'A clean introductory card featuring a prominent <h1> heading, informative <p> paragraphs, bold <strong> name, italic <em> emphasis, and an underlined <u> rule.',
-      uz: "Katta <h1> sarlavhasi, <p> paragraflari, qalin <strong> ism, yotiq <em> so'z va tagiga chizilgan <u> qoidaga ega toza boshlang'ich kiber vizitka."
+      en: 'A polished historical article about HTML featuring <h1> title, <h2> subheadings, <p> paragraphs, <strong> and <b> bold words, <em> italics, <u> underline, <mark> highlight, <del> strikethrough, and <small> footer note.',
+      uz: "HTML tarixi haqidagi to'liq maqola: <h1> bosh sarlavha, <h2> bo'limlar, <p> xatboshilar, <strong> va <b> qalin so'zlar, <em> yotiq urg'u, <u> tagiga chizish, <mark> marker, <del> o'chirish va <small> rasmiy eslatma."
     },
     anatomy: [
       {
         part: '<h1> ... </h1>',
         role: { en: 'Heading 1 (Master Title)', uz: '1-Darajali Bosh Sarlavha' },
         explanation: {
-          en: 'The most important title of the entire document. Every webpage should have one clear h1.',
-          uz: "Butun sahifadagi eng yuqori darajali asosiy sarlavha. Har bir sahifada bitta aniq h1 bo'lishi maqsadga muvofiq."
+          en: 'The single most prominent title of the entire document. Renders large and bold.',
+          uz: "Butun sahifadagi eng nufuzli va yirik bosh sarlavha."
         },
-        effect: {
-          en: 'Renders the largest, boldest title text',
-          uz: 'Eng yirik va nufuzli sarlavha matnini yaratadi'
+        effect: { en: 'Renders master headline', uz: 'Eng yirik sarlavha matnini yaratadi' },
+        visualPreview: '<div class="mini-canvas"><h1 style="font-size:22px; color:#58a6ff; margin:0;">🚀 HTML Tarixi</h1></div>'
+      },
+      {
+        part: '<h2> ... </h2>',
+        role: { en: 'Heading 2 (Section Subtitle)', uz: '2-Darajali Bo\'lim Sarlavhasi' },
+        explanation: {
+          en: 'Subheading that introduces major sections or chapters within an article.',
+          uz: "Maqolaning alohida bob yoki bo'limlarini boshlab beruvchi sarlavha."
         },
-        visualPreview: '<div class="mini-canvas"><h1 style="font-size:22px; color:#58a6ff; margin:0;">🚀 Bosh Sarlavha</h1></div>'
+        effect: { en: 'Clear chapter divider', uz: "Bo'limlarni aniq ajratuvchi sarlavha" },
+        visualPreview: '<div class="mini-canvas"><h2 style="font-size:17px; color:#38bdf8; margin:0;">1. Yaratilish Tarixi</h2></div>'
       },
       {
         part: '<p> ... </p>',
-        role: { en: 'Paragraph', uz: 'Oddiy Matn Paragrafi' },
+        role: { en: 'Paragraph Block', uz: 'Matn Xatboshisi' },
         explanation: {
-          en: 'Standard block of narrative text. Automatically adds breathing room before and after.',
-          uz: "Oddiy gaplar va fikrlar bloki. O'zidan oldin va keyin avtomatik bo'shliq hosil qiladi."
+          en: 'Standard container for sentences and paragraphs with clean automatic spacing.',
+          uz: "Oddiy gaplar va fikrlar bloki, o'zidan oldin va keyin qulay bo'shliq yaratadi."
         },
-        effect: {
-          en: 'Clean, readable paragraph block',
-          uz: "O'qishli, chiroyli matn bloki"
-        },
-        visualPreview: '<div class="mini-canvas"><p style="margin:0; color:#cbd5e1;">Men dasturlashni o\'rganmoqdaman.</p></div>'
+        effect: { en: 'Readable prose block', uz: "O'qishli matn xatboshisi" },
+        visualPreview: '<div class="mini-canvas"><p style="margin:0; color:#cbd5e1;">Veb insoniyatni birlashtirdi.</p></div>'
       },
       {
-        part: '<strong> ... </strong>',
-        role: { en: 'Strong Importance', uz: 'Jiddiy Ahamiyatli Qalin Matn' },
+        part: '<strong> & <b>',
+        role: { en: 'Bold Importance', uz: 'Qalin Matn (Ahamiyatli)' },
         explanation: {
-          en: 'Signals critical importance to screen readers, search engines, and humans. Visually bold.',
-          uz: "Brauzer va qidiruv tizimlariga bu so'z o'ta muhim ekanligini bildiradi. Qalin ko'rinadi."
+          en: '<strong> signals critical semantic importance to browsers and readers; <b> provides bold styling.',
+          uz: "<strong> o'ta muhim so'zlarni, <b> esa vizual qalin so'zlarni ifodalaydi."
         },
-        effect: {
-          en: 'Renders bold with semantic gravity',
-          uz: 'Semantik jihatdan kuchli qalin matn hosil qiladi'
-        },
-        visualPreview: '<div class="mini-canvas"><strong style="color:#ffffff; font-weight:800;">Ali</strong></div>'
+        effect: { en: 'Bold text', uz: 'Qalin qora yozuv' },
+        visualPreview: '<div class="mini-canvas"><strong style="color:#ffffff;">Tim Berners-Lee</strong></div>'
       },
       {
-        part: '<em> ... </em>',
-        role: { en: 'Vocal Stress & Emotion', uz: 'Ohangdor Urg\'u (Kursiv)' },
+        part: '<em> & <i>',
+        role: { en: 'Emphasis & Italics', uz: 'Yotiq Kursiv (Ohangli Urg\'u)' },
         explanation: {
-          en: 'Changes the vocal stress and emotional rhythm of a sentence. Visually slanted (italic).',
-          uz: "Gapdagi so'zga ohang va emotsional urg'u beradi. Matnni qiya (kursiv) qilib ko'rsatadi."
+          en: '<em> adds vocal stress and rhythm to words; <i> styles text with a slanted italic look.',
+          uz: "<em> so'zga alohida ohangli urg'u beradi, <i> esa matnni qiya (kursiv) qiladi."
         },
-        effect: {
-          en: 'Slanted italic text with vocal emphasis',
-          uz: "O'zgacha ohangga ega qiya yozuv"
-        },
-        visualPreview: '<div class="mini-canvas"><em style="color:#a5b4fc;">juda qiziq</em></div>'
+        effect: { en: 'Slanted italic text', uz: "O'zgacha ohangli qiya matn" },
+        visualPreview: '<div class="mini-canvas"><em style="color:#a5b4fc;">World Wide Web</em></div>'
       },
       {
         part: '<u> ... </u>',
-        role: { en: 'Underline', uz: 'Tagiga Chizish' },
+        role: { en: 'Underline', uz: 'Tagiga Chizilgan So\'z' },
         explanation: {
-          en: 'Draws a solid line beneath text to mark key rules or vocabulary items.',
-          uz: "Muhim qoida yoki eslatma so'zlar tagiga chiziq tortadi."
+          en: 'Draws a crisp line directly under key terminology or names.',
+          uz: "Maxsus atamalar yoki tashkilot nomlari tagiga chiziq tortadi."
         },
-        effect: {
-          en: 'Underlined text',
-          uz: 'Tagiga chizilgan matn'
+        effect: { en: 'Underline decoration', uz: 'Tagiga chizilgan matn' },
+        visualPreview: '<div class="mini-canvas"><u style="color:#38bdf8;">CERN</u></div>'
+      },
+      {
+        part: '<mark> ... </mark>',
+        role: { en: 'Highlighter Pen', uz: 'Sariq Yorituvchi Marker' },
+        explanation: {
+          en: 'Highlights text with a fluorescent marker effect to capture instant eye focus.',
+          uz: "Matnni sariq flomaster bilan yoritib, unga birinchi qarashdayoq e'tibor tortadi."
         },
-        visualPreview: '<div class="mini-canvas"><u style="color:#38bdf8;">har kuni kod yozaman</u></div>'
+        effect: { en: 'Glowing yellow highlight', uz: "Yorqin sariq fonli marker" },
+        visualPreview: '<div class="mini-canvas"><mark style="background:#e3b341; color:#0b0f19; font-weight:700; padding:1px 5px; border-radius:3px;">gipermatn</mark></div>'
+      },
+      {
+        part: '<del> & <s>',
+        role: { en: 'Strikethrough (Obsolete)', uz: 'Ustidan Chizilgan (Eski Fikr)' },
+        explanation: {
+          en: 'Strikes a horizontal line through text to indicate debunked myths or outdated ideas.',
+          uz: "Eski xato yoki bekor qilingan afsonaviy gaplar ustidan chizib qo'yadi."
+        },
+        effect: { en: 'Strikethrough line', uz: 'Ustidan chizilgan chiziq' },
+        visualPreview: '<div class="mini-canvas"><del style="color:#f87171;">eski afsona</del></div>'
+      },
+      {
+        part: '<small> ... </small>',
+        role: { en: 'Fine Print / Annotation', uz: 'Kichik Eslatma Matni' },
+        explanation: {
+          en: 'Renders copyright notices, credits, or side annotations at a smaller font size.',
+          uz: "Sahifa ostidagi mualliflik huquqi va rasmiy eslatmalarni ixcham shriftda ko'rsatadi."
+        },
+        effect: { en: 'Small subtle text', uz: 'Ixcham nozik yozuv' },
+        visualPreview: '<div class="mini-canvas"><small style="color:#94a3b8;">© 1991 Rasmiy Arxiv</small></div>'
       }
     ],
     listOfTags: [
-      { code: '<h1>', name: 'Heading 1', description: 'Top-level big headline', exampleHtml: '<h1>Kiber Sarlavha</h1>' },
-      { code: '<p>', name: 'Paragraph', description: 'Normal block of text', exampleHtml: '<p>Oddiy gap</p>' },
-      { code: '<strong>', name: 'Strong Bold', description: 'Important bolded text', exampleHtml: '<strong>Muhim</strong>' },
-      { code: '<em>', name: 'Emphasis', description: 'Italicized vocal stress', exampleHtml: '<em>Ajoyib</em>' },
-      { code: '<u>', name: 'Underline', description: 'Underlined text', exampleHtml: '<u>Qoida</u>' }
+      { code: '<h1>', name: 'Heading 1', description: 'Top-level master title', exampleHtml: '<h1>HTML Tarixi</h1>' },
+      { code: '<h2>', name: 'Heading 2', description: 'Section chapter subheading', exampleHtml: '<h2>1. Yaratilish</h2>' },
+      { code: '<p>', name: 'Paragraph', description: 'Block of narrative sentences', exampleHtml: '<p>Matn xatboshisi</p>' },
+      { code: '<strong>', name: 'Strong Bold', description: 'Crucial bold importance', exampleHtml: '<strong>Tim Berners-Lee</strong>' },
+      { code: '<em>', name: 'Emphasis', description: 'Italicized vocal stress', exampleHtml: '<em>World Wide Web</em>' },
+      { code: '<u>', name: 'Underline', description: 'Underline rule', exampleHtml: '<u>CERN</u>' },
+      { code: '<mark>', name: 'Mark Highlight', description: 'Fluorescent yellow marker', exampleHtml: '<mark>gipermatn</mark>' },
+      { code: '<del>', name: 'Delete Strike', description: 'Crossed-out obsolete myth', exampleHtml: '<del>eski afsona</del>' },
+      { code: '<small>', name: 'Small Note', description: 'Subtle copyright or annotation', exampleHtml: '<small>© 1991</small>' }
     ],
     tagShowcase: [
       { tag: '<h1>', meaning: { en: 'Master Title', uz: 'Bosh Sarlavha' } },
-      { tag: '<p>', meaning: { en: 'Paragraph', uz: 'Oddiy Matn' } },
-      { tag: '<strong>', meaning: { en: 'Bold Importance', uz: 'Qalin Matn' } },
-      { tag: '<em>', meaning: { en: 'Italic Emphasis', uz: 'Yotiq Urg\'u' } },
-      { tag: '<u>', meaning: { en: 'Underline Rule', uz: 'Tagiga Chizish' } }
+      { tag: '<h2>', meaning: { en: 'Subheading', uz: 'Bo\'lim Sarlavhasi' } },
+      { tag: '<p>', meaning: { en: 'Paragraph', uz: 'Xatboshi' } },
+      { tag: '<strong>', meaning: { en: 'Strong Bold', uz: 'Qalin Matn' } },
+      { tag: '<em>', meaning: { en: 'Italics', uz: 'Yotiq Kursiv' } },
+      { tag: '<u>', meaning: { en: 'Underline', uz: 'Tagiga Chizish' } },
+      { tag: '<mark>', meaning: { en: 'Highlighter', uz: 'Sariq Marker' } },
+      { tag: '<del>', meaning: { en: 'Strikethrough', uz: 'Ustidan Chizish' } },
+      { tag: '<small>', meaning: { en: 'Fine Print', uz: 'Kichik Eslatma' } }
     ],
-    quickTags: ['<h1>', '<p>', '<strong>', '<em>', '<u>'],
+    quickTags: ['<h1>', '<h2>', '<p>', '<strong>', '<em>', '<u>', '<mark>', '<del>', '<small>'],
     teacherGuide: {
       lessonGoal: {
-        en: 'Introduce beginners to fundamental text tags with zero intimidation, focusing on headings, paragraphs, and emphasis.',
-        uz: "Yangi boshlovchilarni qo'rqitmasdan, eng kerakli 5 ta matn tegi (h1, p, strong, em, u) bilan sodda va qiziqarli tanishtirish."
+        en: 'Inspire students by teaching the real history and creation of HTML, while giving them comprehensive hands-on practice with all foundational text tags.',
+        uz: "O'quvchilarga HTML ning haqiqiy yaratilish tarixi va qudratini o'rgatish orqali ularni ilhomlantirish hamda barcha asosiy matn teglari bo'yicha to'liq amaliyot berish."
       },
       commonMistakes: [
         {
-          mistake: { en: 'Forgetting the closing slash on tags like </h1> or </strong>', uz: '</h1> yoki </strong> kabi teglarda yopuvchi slesh belgisini unutish' },
-          howToHelp: { en: 'Show how unclosed tags bleed formatting onto following lines.', uz: "Yopilmagan teg keyingi satrlarni ham qalin yoki yotiq qilib yuborishini ko'rsating." }
+          mistake: { en: 'Forgetting to close tags like </h1> or </strong>', uz: '</h1> yoki </strong> kabi teglarda yopuvchi slesh belgisini unutish' },
+          howToHelp: { en: 'Remind them of the sandwich rule: open tag, content, close tag.', uz: "Sendvich qoidasini eslating: ochuvchi teg, o'rtada so'z, oxirida yopuvchi teg." }
         }
       ],
       interactivePrompt: {
-        en: 'Ask: "What is the difference between a big title <h1> and a normal sentence <p>?"',
-        uz: 'Savol: "Katta sarlavha <h1> bilan oddiy gap <p> o\'rtasida qanday farq bor?"'
+        en: 'Ask: "Why did Tim Berners-Lee invent HTML at CERN in 1991, and what would the internet look like without it?"',
+        uz: 'Savol bering: "Tim Berners-Lee 1991-yilda CERNda nega HTML ni yaratgan va usiz internet qanday bo\'lardi?"'
       }
     },
     challenge: {
       mission: {
-        en: 'Meet your first text tags! Use <h1> for heading, <p> for normal text, <strong> for bold, <em> for italics, and <u> for underline to craft your first cyber card!',
-        uz: "Birinchi matn teglari bilan tanishamiz! Katta sarlavha uchun <h1>, oddiy gap uchun <p>, qalin so'z uchun <strong>, yotiq so'z uchun <em> va tagiga chizish uchun <u> teglaridan foydalanib o'z kiber vizitkangizni yozing!"
+        en: 'Transform the historic article about the creation of HTML using all fundamental text tags: <h1> for master title, <h2> for sections, <p> for paragraphs, <strong> or <b> for bold names/dates, <em> for italics, <u> for underline, <mark> for highlighter, and <del> for obsolete myths!',
+        uz: "HTML tarixi haqidagi qiziqarli maqolani barcha asosiy matn teglari bilan bezang: bosh sarlavha uchun <h1>, bo'limlar uchun <h2>, xatboshilar uchun <p>, muhim nomlar va sanalar uchun <strong> yoki <b>, yotiq so'z uchun <em>, tagiga chizish uchun <u>, sariq marker uchun <mark> va eski afsonani o'chirish uchun <del> teglari ishlatilsin!"
       },
       hint: {
-        en: 'Remember to open and close tags like a sandwich: <h1>Title</h1>, <p>Text</p>, <strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>.',
-        uz: "Har bir tegni sendvichdek ochib, so'zni yozib, keyin yopishni unutmang: <h1>Sarlavha</h1>, <p>Matn</p>, <strong>Qalin</strong>, <em>Yotiq</em>, <u>Chizilgan</u>."
+        en: 'Follow each numbered step comment above the text. Wrap the indicated words with the matching opening (<tag>) and closing (</tag>) tags!',
+        uz: "Har bir xatboshi tepasidagi raqamlangan qadamlarga qarang. Ko'rsatilgan so'zlarni mos ochuvchi (<tag>) va yopuvchi (</tag>) teglar bilan o'rang!"
       },
       rules: [
         {
           type: 'hasTag',
           tag: 'h1',
           feedback: {
-            en: 'Add an <h1> heading tag!',
-            uz: "<h1> sarlavha tegini qo'shing!"
+            en: 'Wrap the master headline in an <h1> tag!',
+            uz: "Maqolaning bosh sarlavhasini <h1> tegi bilan belgilang!"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'h2',
+          feedback: {
+            en: 'Wrap section subheadings in <h2> tags!',
+            uz: "Bo'lim sarlavhalarini <h2> teglari bilan belgilang!"
           }
         },
         {
           type: 'hasTag',
           tag: 'p',
           feedback: {
-            en: 'Add a <p> paragraph tag!',
-            uz: "<p> paragraf tegini qo'shing!"
+            en: 'Wrap paragraphs in <p> tags!',
+            uz: "Matnlarni <p> xatboshi teglari bilan o'rang!"
           }
         },
         {
           type: 'custom',
           check: (code) => /<(strong|b)>[\s\S]*?<\/(strong|b)>/i.test(code),
           feedback: {
-            en: 'Wrap a word with <strong> to make it bold!',
-            uz: "Biror so'zni <strong> bilan qalinlashtiring!"
+            en: 'Bold important names or dates using <strong> or <b>!',
+            uz: "Muhim nomlar yoki sanalarni <strong> yoki <b> bilan qalin qiling!"
           }
         },
         {
           type: 'custom',
           check: (code) => /<(em|i)>[\s\S]*?<\/(em|i)>/i.test(code),
           feedback: {
-            en: 'Wrap a word with <em> to make it italic!',
-            uz: "Biror so'zni <em> bilan yotiq (kursiv) qiling!"
+            en: 'Italicize key terms with <em> or <i>!',
+            uz: "Atamalarni <em> yoki <i> bilan yotiq kursiv qiling!"
           }
         },
         {
           type: 'hasTag',
           tag: 'u',
           feedback: {
-            en: 'Wrap a word with <u> to underline it!',
-            uz: "Biror so'z tagiga <u> tegi bilan chizing!"
+            en: 'Underline CERN using the <u> tag!',
+            uz: "CERN so'zi tagiga <u> tegi bilan chizing!"
+          }
+        },
+        {
+          type: 'hasTag',
+          tag: 'mark',
+          feedback: {
+            en: 'Highlight hypertext using the <mark> tag!',
+            uz: "gipermatn so'zini <mark> tegi bilan yoriting!"
+          }
+        },
+        {
+          type: 'custom',
+          check: (code) => /<(del|s)>[\s\S]*?<\/(del|s)>/i.test(code),
+          feedback: {
+            en: 'Cross out the obsolete myth using <del> or <s>!',
+            uz: "Eski xato afsona ustidan <del> yoki <s> tegi bilan chizing!"
           }
         }
       ]
     }
   },
+
   {
     id: 'theme-2-structure',
     module: 'html-core',
@@ -465,110 +582,8 @@ export const LESSONS = [
       uz: "Kiber Texnopark Rasmiy Portalini quring: barcha strukturaviy va semantik hududlarni birlashtirib, professional HTML5 veb-sahifasini bunyod eting!"
     },
     initialCode: {
-      en: `<!-- Step 1: Start with the HTML5 doctype declaration and the root html tag with lang="en" -->
-<!DOCTYPE html>
-<html lang="en">
-  <!-- Step 2: Build the invisible brain of the page (head) containing charset UTF-8, viewport, and the page <title> -->
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Place the page title here: Cyber TechPark Portal -->
-  </head>
-
-  <!-- Step 3: Put all visible user content inside the <body> tag -->
-  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
-    <!-- Step 4: Top brand bar — wrap in a semantic <header> tag -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
-      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Cyber TechPark Headquarters</h1>
-    </div>
-
-    <!-- Step 5: Navigation menu — wrap in a semantic <nav> tag -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
-      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Home</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Courses</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Projects</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Contact</a>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <!-- Step 6: Primary central content — wrap in a semantic <main> tag containing an <article> and a <section> -->
-      <div style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
-        <div style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
-          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Coder Generation</h2>
-          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">Semantic HTML ensures digital accessibility across the universe.</p>
-        </div>
-
-        <div>
-          <h3 style="color: #38bdf8;">⚡ Today's Hands-On Lab</h3>
-          <p style="color: #94a3b8; font-size: 13px;">Mastering landmark rooms creates robust web architecture.</p>
-        </div>
-      </div>
-
-      <!-- Step 7: Complementary side information — wrap in a semantic <aside> tag -->
-      <div style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
-        <h3 style="color: #fbbf24; margin-top: 0;">💡 Daily Tip</h3>
-        <p style="color: #94a3b8;">Always use one main element per page for accessible UX.</p>
-      </div>
-    </div>
-
-    <!-- Step 8: Bottom footer — wrap in a semantic <footer> tag -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
-      © 2026 Cyber TechPark. All rights reserved.
-    </div>
-  </body>
-</html>`,
-      uz: `<!-- 1-QADAM: Sahifani HTML5 standarti deklaratsiyasi va lang="uz" bo'lgan asosiy html tegi bilan boshlang -->
-<!DOCTYPE html>
-<html lang="uz">
-  <!-- 2-QADAM: Sahifaning ko'rinmas boshqaruv miyasini (head) quring: charset UTF-8, viewport va sahifa nomi uchun <title> qo'ying -->
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Sahifa nomini shu yerga yozing: Kiber Texnopark Portali -->
-  </head>
-
-  <!-- 3-QADAM: Foydalanuvchiga ko'rinadigan barcha elementlarni <body> tegi ichiga oling -->
-  <body style="margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;">
-    <!-- 4-QADAM: Sahifaning tepa brend shapkasini semantik <header> tegi bilan o'rang -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;">
-      <h1 style="margin: 0; color: #38bdf8; font-size: 20px;">🚀 Kiber Texnopark Bosh Portali</h1>
-    </div>
-
-    <!-- 5-QADAM: Sayt navigatsiya menyusini semantik <nav> tegi bilan o'rang -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;">
-      <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold;">Asosiy</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Kurslar</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Loyihalar</a>
-      <a href="#" style="color: #94a3b8; text-decoration: none;">Aloqa</a>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <!-- 6-QADAM: Saytning eng asosiy markaziy o'zagini semantik <main> tegi bilan, uning ichidagi maqolani <article>, bo'limni esa <section> bilan o'rang -->
-      <div style="background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;">
-        <div style="margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;">
-          <h2 style="color: #a5b4fc; margin-top: 0;">🌐 Web Dasturchilarning Yangi Avlodi</h2>
-          <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">HTML semantikasi orqali sahifalar barcha qurilmalar va qidiruv tizimlari uchun ochiq bo'ladi.</p>
-        </div>
-
-        <div>
-          <h3 style="color: #38bdf8;">⚡ Bugungi Amaliy Mashg'ulotlar</h3>
-          <p style="color: #94a3b8; font-size: 13px;">Semantik zonalar sahifa arxitekturasini mustahkam qiladi.</p>
-        </div>
-      </div>
-
-      <!-- 7-QADAM: Qo'shimcha yon ma'lumotlar panelini semantik <aside> tegi bilan o'rang -->
-      <div style="background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;">
-        <h3 style="color: #fbbf24; margin-top: 0;">💡 Kundalik Maslahat</h3>
-        <p style="color: #94a3b8;">Har bir sahifada faqat bitta asosiy main tegi bo'lishi lozim.</p>
-      </div>
-    </div>
-
-    <!-- 8-QADAM: Sahifaning pastki qismini semantik <footer> tegi bilan o'rang -->
-    <div style="background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;">
-      © 2026 Kiber Texnopark. Barcha huquqlar himoyalangan.
-    </div>
-  </body>
-</html>`
+      en: "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <!-- STEP 1: Add the browser tab title inside a <title> tag: e.g. <title>Cyber Technopark Portal</title> -->\n\n  </head>\n  <body style=\"margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;\">\n\n    <!-- STEP 2: Replace the top branding <div> with a semantic <header>...</header> tag! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;\">\n      <h1 style=\"margin: 0; color: #38bdf8; font-size: 20px;\">🚀 Cyber Technopark Master Portal</h1>\n    </div>\n\n    <!-- STEP 3: Replace the navigation bar <div> with a semantic <nav>...</nav> tag! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;\">\n      <a href=\"#\" style=\"color: #38bdf8; text-decoration: none; font-weight: bold;\">Home</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Courses</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Projects</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Contact</a>\n    </div>\n\n    <div style=\"display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;\">\n      <!-- STEP 4: Replace the central content area <div> with a semantic <main>...</main> tag! -->\n      <div style=\"background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;\">\n        <!-- STEP 5: Wrap the news article in a semantic <article>...</article> tag! -->\n        <div style=\"margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;\">\n          <h2 style=\"color: #a5b4fc; margin-top: 0;\">🌐 New Generation of Web Developers</h2>\n          <p style=\"color: #cbd5e1; font-size: 14px; line-height: 1.6;\">Semantic HTML ensures pages are accessible across all devices and search engines.</p>\n        </div>\n\n        <!-- STEP 6: Wrap the daily hands-on section in a semantic <section>...</section> tag! -->\n        <div>\n          <h3 style=\"color: #38bdf8;\">⚡ Today's Hands-On Sessions</h3>\n          <p style=\"color: #94a3b8; font-size: 13px;\">Semantic landmark zones reinforce webpage architecture.</p>\n        </div>\n      </div>\n\n      <!-- STEP 7: Replace the side tip box <div> with a semantic <aside>...</aside> tag! -->\n      <div style=\"background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;\">\n        <h3 style=\"color: #fbbf24; margin-top: 0;\">💡 Daily Mentor Tip</h3>\n        <p style=\"color: #94a3b8;\">Every webpage should have exactly one central main landmark.</p>\n      </div>\n    </div>\n\n    <!-- STEP 8: Replace the bottom copyright <div> with a semantic <footer>...</footer> tag! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;\">\n      © 2026 Cyber Technopark. All rights reserved.\n    </div>\n  </body>\n</html>",
+      uz: "<!DOCTYPE html>\n<html lang=\"uz\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <!-- 1-QADAM: Brauzer tabida ko'rinadigan sayt nomini <title> tegi ichida yozing: Masalan, <title>Kiber Texnopark Portali</title> -->\n\n  </head>\n  <body style=\"margin: 0; background: #0b0f19; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 20px;\">\n\n    <!-- 2-QADAM: Tepadagi brend shapkasini maqsadsiz <div> o'rniga semantik <header>...</header> tegi bilan almashtiring! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px;\">\n      <h1 style=\"margin: 0; color: #38bdf8; font-size: 20px;\">🚀 Kiber Texnopark Bosh Portali</h1>\n    </div>\n\n    <!-- 3-QADAM: Sayt havolalar menyusini oddiy <div> o'rniga semantik <nav>...</nav> tegi bilan almashtiring! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 12px 20px; border-radius: 10px; margin-bottom: 16px; display: flex; gap: 16px;\">\n      <a href=\"#\" style=\"color: #38bdf8; text-decoration: none; font-weight: bold;\">Asosiy</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Kurslar</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Loyihalar</a>\n      <a href=\"#\" style=\"color: #94a3b8; text-decoration: none;\">Aloqa</a>\n    </div>\n\n    <div style=\"display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;\">\n      <!-- 4-QADAM: Saytning markaziy o'zagini oddiy <div> o'rniga semantik <main>...</main> tegi bilan almashtiring! -->\n      <div style=\"background: #111827; border: 1px solid #1f2937; padding: 20px; border-radius: 12px;\">\n        <!-- 5-QADAM: Yangilik maqolasini semantik <article>...</article> tegi bilan belgilang! -->\n        <div style=\"margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 14px;\">\n          <h2 style=\"color: #a5b4fc; margin-top: 0;\">🌐 Web Dasturchilarning Yangi Avlodi</h2>\n          <p style=\"color: #cbd5e1; font-size: 14px; line-height: 1.6;\">HTML semantikasi orqali sahifalar barcha qurilmalar va qidiruv tizimlari uchun ochiq bo'ladi.</p>\n        </div>\n\n        <!-- 6-QADAM: Mashg'ulotlar qismini semantik <section>...</section> tegi bilan belgilang! -->\n        <div>\n          <h3 style=\"color: #38bdf8;\">⚡ Bugungi Amaliy Mashg'ulotlar</h3>\n          <p style=\"color: #94a3b8; font-size: 13px;\">Semantik zonalar sahifa arxitekturasini mustahkam qiladi.</p>\n        </div>\n      </div>\n\n      <!-- 7-QADAM: Yon maslahat panelini oddiy <div> o'rniga semantik <aside>...</aside> tegi bilan almashtiring! -->\n      <div style=\"background: #111827; border: 1px solid #1f2937; padding: 16px; border-radius: 12px; font-size: 13px;\">\n        <h3 style=\"color: #fbbf24; margin-top: 0;\">💡 Kundalik Maslahat</h3>\n        <p style=\"color: #94a3b8;\">Har bir sahifada faqat bitta asosiy main tegi bo'lishi lozim.</p>\n      </div>\n    </div>\n\n    <!-- 8-QADAM: Sahifaning eng pastki mualliflik qismini oddiy <div> o'rniga semantik <footer>...</footer> tegi bilan almashtiring! -->\n    <div style=\"background: #111827; border: 1px solid #1f2937; padding: 14px 20px; border-radius: 10px; text-align: center; font-size: 12px; color: #64748b;\">\n      © 2026 Kiber Texnopark. Barcha huquqlar himoyalangan.\n    </div>\n  </body>\n</html>"
     },
     targetCode: {
       en: `<!DOCTYPE html>
@@ -1586,7 +1601,6 @@ export const LESSONS = [
 
 <div class="expedition-hub">
   <!-- === SIZNING VAZIFANGIZ (HTML) === -->
-  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
@@ -1669,7 +1683,6 @@ export const LESSONS = [
 
 <div class="expedition-hub">
   <!-- === SIZNING VAZIFANGIZ (HTML) === -->
-  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
