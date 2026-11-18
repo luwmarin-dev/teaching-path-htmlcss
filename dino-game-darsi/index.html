@@ -123,13 +123,13 @@
        ========================================================================== */
     .finish-goal-card {
       background: linear-gradient(135deg, #0f172a, #131d35);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 14px;
       padding: 16px 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+      gap: 14px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
       position: relative;
     }
 
@@ -152,6 +152,25 @@
       letter-spacing: 0.5px;
     }
 
+    .btn-demo-toggle {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      transition: all 0.2s ease;
+    }
+    .btn-demo-toggle:hover {
+      background: rgba(56, 189, 248, 0.28);
+      transform: translateY(-1px);
+    }
+
     .goal-features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -172,6 +191,184 @@
 
     .goal-pill strong {
       color: #38bdf8;
+    }
+
+    /* TARGET GOAL INTERACTIVE DEMO ARENA */
+    .target-demo-arena {
+      background: #080c14;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(56, 189, 248, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .target-demo-arena.collapsed {
+      display: none;
+    }
+
+    .target-demo-topbar {
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .target-demo-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 0.5px;
+    }
+
+    .live-blink-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseGreen 1.5s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .target-demo-hud {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .mode-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .target-canvas-container {
+      position: relative;
+      width: 100%;
+      background: #090d16;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .target-canvas-container canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .target-overlay-prompt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .target-overlay-prompt.hidden {
+      display: none;
+    }
+
+    .prompt-content {
+      padding: 20px;
+      max-width: 480px;
+    }
+
+    .target-play-btn {
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      color: #0b0f19;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .target-play-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+    }
+
+    .target-controls-bar {
+      background: #0f172a;
+      border-top: 1px solid #1e293b;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .target-controls-hints {
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .target-buttons-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .build-this-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .build-this-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
     }
 
     /* STEP PROGRESS BAR */
@@ -577,8 +774,32 @@
     .editor-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 0;
       flex: 1;
+    }
+
+    .editor-toolbar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 12px;
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+      font-size: 11px;
+    }
+
+    .editor-lang-badge {
+      color: #38bdf8;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .editor-help-shortcut {
+      color: #94a3b8;
     }
 
     .code-textarea {
@@ -586,7 +807,7 @@
       height: 300px;
       background: #090d16;
       border: 1px solid #1e293b;
-      border-radius: 10px;
+      border-radius: 0 0 10px 10px;
       padding: 14px;
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 13px;
@@ -987,16 +1208,25 @@
     </header>
 
     <!-- ==========================================================================
-         YAKUNIY FINISH O'YIN MAQSADI (TARGET SHOWCASE BANNER)
+         YAKUNIY FINISH O'YIN MAQSADI (TARGET SHOWCASE BANNER & PLAYABLE ARENA)
          ========================================================================== -->
     <section class="finish-goal-card">
       <div class="goal-header">
-        <span class="goal-badge">🎯 DARSNING YAKUNIY MAQSADI (BIZ QURADIGAN FINISH O'YIN)</span>
-        <span style="font-size: 12px; color: #38bdf8;">Chrome Dino Game 2.0</span>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span class="goal-badge">🎯 DARSNING YAKUNIY MAQSADI (BIZ QURADIGAN FINISH O'YIN)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">🎮 Jonli Playable Demo</span>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button class="btn-demo-toggle" id="btn-toggle-demo" onclick="toggleTargetDemo()">
+            <span id="demo-toggle-icon">🎮</span> <span id="demo-toggle-text">O'yinni Yig'ish / Ochish</span>
+          </button>
+          <span style="font-size: 12px; color: #38bdf8;">Chrome Dino Game 2.0</span>
+        </div>
       </div>
-      <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5;">
-        Ushbu 5 ta qadamni o'z qo'lingiz bilan kod yozib yakunlaganingizda, quyidagi barcha boy xususiyatlarga ega haqiqiy o'yinni qurasiz:
+      <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">
+        Ushbu 5 ta qadamni o'z qo'lingiz bilan kod yozib yakunlaganingizda, quyidagi barcha boy xususiyatlarga ega to'liq o'yinni qurasiz. O'yin mexanikasi qanday ishlashini his qilish uchun uni <strong>hoziroq pastda o'ynab ko'ring</strong>!
       </p>
+
       <div class="goal-features-grid">
         <div class="goal-pill">
           <span>🚀</span> <div><strong>2 xil harakat:</strong> Sakrash (Space / ⬆️) va Egilish (⬇️)</div>
@@ -1015,6 +1245,53 @@
         </div>
         <div class="goal-pill">
           <span>💥</span> <div><strong>AABB To'qnashuv:</strong> Bounding box geometrik tekshiruvi</div>
+        </div>
+      </div>
+
+      <!-- INTERAKTIV JONLI MAQSAD O'YINI (TARGET PLAYABLE DEMO ARENA) -->
+      <div class="target-demo-arena" id="target-demo-arena">
+        <div class="target-demo-topbar">
+          <div class="target-demo-live-badge">
+            <span class="live-blink-dot"></span>
+            <span>YAKUNIY O'YINNING JONLI KO'RINISHI (HOZIROQ SINAB KO'RING)</span>
+          </div>
+          <div class="target-demo-hud">
+            <span>OCHKO: <strong id="target-score-display" class="score-val" style="color: #f8fafc; font-family: monospace;">00000</strong></span>
+            <span>REKORD: <strong id="target-high-display" class="high-val" style="color: #38bdf8; font-family: monospace;">00000</strong></span>
+            <span id="target-daynight-tag" class="mode-tag">☀️ Kunduzgi</span>
+          </div>
+        </div>
+
+        <div class="target-canvas-container" id="target-canvas-container" onclick="focusTargetGame()">
+          <canvas id="targetGameCanvas" width="900" height="200"></canvas>
+          <div class="target-overlay-prompt" id="target-overlay-prompt">
+            <div class="prompt-content">
+              <div style="font-size: 32px; margin-bottom: 8px;">🦖</div>
+              <h3 style="font-size: 16px; margin: 0 0 6px 0; color: #f8fafc;">Yakuniy O'yinni Sinab Ko'ring!</h3>
+              <p style="font-size: 12px; color: #94a3b8; margin: 0 0 14px 0; line-height: 1.4;">
+                Kaktuslardan <strong>Space / ⬆️</strong> bilan sakrang, uchar qushlar kelganda esa <strong>⬇️ ArrowDown</strong> bilan egiling!
+              </p>
+              <button class="target-play-btn" onclick="startTargetGame(event)">▶️ O'yinni Boshlash (Space)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="target-controls-bar">
+          <div class="target-controls-hints">
+            <span>Klaviaturada: <span class="kbd">Space</span> / <span class="kbd">⬆️</span> Sakrash &bull; <span class="kbd">⬇️</span> Egilish (Duck)</span>
+          </div>
+          <div class="target-buttons-group">
+            <button class="secondary-btn" onclick="targetReset()">🔄 Qayta Boshlash</button>
+            <button class="duck-btn-action" onmousedown="targetDuckStart()" onmouseup="targetDuckEnd()" ontouchstart="targetDuckStart()" ontouchend="targetDuckEnd()">
+              <span>🦆 EGILISH (⬇️)</span>
+            </button>
+            <button class="jump-btn-action" onclick="targetJump()">
+              <span>🚀 SAKRASH (Space / ⬆️)</span>
+            </button>
+            <button class="build-this-btn" onclick="scrollToStepOne()">
+              <span>👇 1-QADAMGA TUSHISH (O'zingiz Quring!)</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -1128,7 +1405,11 @@
         </div>
 
         <!-- KOD MUHARRIRI (BO'SH BOSHLANADI - TAYYOR YECHIMSIZ!) -->
-        <div class="editor-wrapper">
+        <div class="editor-wrapper" id="editor-panel-anchor">
+          <div class="editor-toolbar-top">
+            <span class="editor-lang-badge">⚡ JavaScript (ES6)</span>
+            <span class="editor-help-shortcut">Tab: 2 ta bo'sh joy &bull; Ctrl+Enter: Ishga tushirish</span>
+          </div>
           <textarea class="code-textarea" id="student-code-editor" spellcheck="false" placeholder="// Bu yerga topshiriq kodini o'z qo'lingiz bilan yozing..."></textarea>
 
           <div class="editor-actions">
@@ -2500,7 +2781,40 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       liveDino.standUp();
     }
 
+    /* ==========================================================================
+       KEYBOARD & FOCUS MANAGEMENT (SPACEBAR BUG FIXED FOR EDITOR!)
+       ========================================================================== */
+    function isStudentTyping() {
+      const el = document.activeElement;
+      if (!el) return false;
+      const tag = el.tagName.toUpperCase();
+      return tag === 'TEXTAREA' || tag === 'INPUT' || el.isContentEditable;
+    }
+
+    let targetDemoFocused = false;
+
     window.addEventListener('keydown', (e) => {
+      // 1. Agar foydalanuvchi matn maydonida (TEXTAREA yoki INPUT) yozayotgan bo'lsa:
+      // Hech qanday tugmani (ayniqsa SPACE) to'smaymiz! O'quvchi bemalol kod yozsin!
+      if (isStudentTyping()) {
+        return;
+      }
+
+      // 2. Agar foydalanuvchi Target Demo arenasida bo'lsa:
+      const arena = document.getElementById('target-demo-arena');
+      if (targetDemoFocused && arena && !arena.classList.contains('collapsed')) {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+          e.preventDefault();
+          targetJump();
+          return;
+        } else if (e.code === 'ArrowDown') {
+          e.preventDefault();
+          targetDuckStart();
+          return;
+        }
+      }
+
+      // 3. Jonli 3-pane brauzer o'yini:
       if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault();
         handleJumpAction();
@@ -2511,10 +2825,120 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
     });
 
     window.addEventListener('keyup', (e) => {
+      if (isStudentTyping()) {
+        return;
+      }
+
+      const arena = document.getElementById('target-demo-arena');
+      if (targetDemoFocused && arena && !arena.classList.contains('collapsed')) {
+        if (e.code === 'ArrowDown') {
+          targetDuckEnd();
+          return;
+        }
+      }
+
       if (e.code === 'ArrowDown') {
         handleDuckEnd();
       }
     });
+
+    /* ==========================================================================
+       PRO CODE EDITOR ERGONOMICS (TAB, BRACKET AUTO-CLOSE, SMART INDENT)
+       ========================================================================== */
+    const studentEditor = document.getElementById('student-code-editor');
+
+    if (studentEditor) {
+      studentEditor.addEventListener('keydown', (e) => {
+        // Tab: 2 ta bo'sh joy qo'yish
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          const start = studentEditor.selectionStart;
+          const end = studentEditor.selectionEnd;
+          studentEditor.value = studentEditor.value.substring(0, start) + "  " + studentEditor.value.substring(end);
+          studentEditor.selectionStart = studentEditor.selectionEnd = start + 2;
+          clearValidationWarning();
+          return;
+        }
+
+        // Ctrl + Enter yoki Cmd + Enter: Kodni darhol ishga tushirish
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+          e.preventDefault();
+          executeStudentCode();
+          return;
+        }
+
+        // Jingalak qavs va juft belgilarni avto-yopish:
+        const pairs = { '(': ')', '{': '}', '[': ']', '"': '"', "'": "'" };
+        if (pairs[e.key]) {
+          const start = studentEditor.selectionStart;
+          const end = studentEditor.selectionEnd;
+          const openChar = e.key;
+          const closeChar = pairs[openChar];
+          e.preventDefault();
+          const selected = studentEditor.value.substring(start, end);
+          studentEditor.value = studentEditor.value.substring(0, start) + openChar + selected + closeChar + studentEditor.value.substring(end);
+          studentEditor.selectionStart = start + 1;
+          studentEditor.selectionEnd = end + 1;
+          clearValidationWarning();
+          return;
+        }
+
+        // Agar yopiluvchi qavsni o'zi bossa, dublikat qilmasdan oldinga sakrash:
+        if (['}', ')', ']', '"', "'"].includes(e.key)) {
+          const start = studentEditor.selectionStart;
+          if (studentEditor.value[start] === e.key) {
+            e.preventDefault();
+            studentEditor.selectionStart = studentEditor.selectionEnd = start + 1;
+            return;
+          }
+        }
+
+        // Backspace qavslar orasida bosilganda ikkalasini o'chirish:
+        if (e.key === 'Backspace') {
+          const start = studentEditor.selectionStart;
+          const end = studentEditor.selectionEnd;
+          if (start === end && start > 0) {
+            const prev = studentEditor.value[start - 1];
+            const next = studentEditor.value[start];
+            if ((prev === '{' && next === '}') || (prev === '(' && next === ')') || (prev === '[' && next === ']') || (prev === '"' && next === '"') || (prev === "'" && next === "'")) {
+              e.preventDefault();
+              studentEditor.value = studentEditor.value.substring(0, start - 1) + studentEditor.value.substring(start + 1);
+              studentEditor.selectionStart = studentEditor.selectionEnd = start - 1;
+              clearValidationWarning();
+              return;
+            }
+          }
+        }
+
+        // Enter bosilganda oldingi qator chekinishini (indentation) saqlash:
+        if (e.key === 'Enter') {
+          const start = studentEditor.selectionStart;
+          const lines = studentEditor.value.substring(0, start).split('\n');
+          const currentLine = lines[lines.length - 1];
+          const matchIndent = currentLine.match(/^\s*/);
+          let indent = matchIndent ? matchIndent[0] : '';
+          if (currentLine.trim().endsWith('{')) {
+            indent += '  ';
+          }
+          e.preventDefault();
+          studentEditor.value = studentEditor.value.substring(0, start) + '\n' + indent + studentEditor.value.substring(start);
+          studentEditor.selectionStart = studentEditor.selectionEnd = start + 1 + indent.length;
+          clearValidationWarning();
+          return;
+        }
+      });
+
+      studentEditor.addEventListener('input', () => {
+        clearValidationWarning();
+      });
+    }
+
+    function clearValidationWarning() {
+      const valBox = document.getElementById('validation-feedback-box');
+      if (valBox && valBox.classList.contains('error')) {
+        valBox.style.opacity = '0.5';
+      }
+    }
 
     function resetGame() {
       isGameOver = false;
@@ -2766,6 +3190,405 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       a.click();
       URL.revokeObjectURL(url);
     }
+
+    /* ==========================================================================
+       8. TARGET GOAL DEMO GAME ENGINE (CHROME DINO 2.0 FULL SHOWCASE)
+       ========================================================================== */
+    const targetCanvas = document.getElementById('targetGameCanvas');
+    const targetCtx = targetCanvas.getContext('2d');
+    let targetDemoPlaying = false;
+    let targetGameOver = false;
+    let targetScore = 0;
+    let targetHighScore = 0;
+    let targetSpawnTimer = 0;
+    let targetObstacles = [];
+    let targetClouds = [
+      { x: 120, y: 30, speed: 0.6 },
+      { x: 420, y: 50, speed: 0.8 },
+      { x: 720, y: 25, speed: 0.5 }
+    ];
+
+    class TargetDino {
+      constructor() {
+        this.standWidth = 44;
+        this.standHeight = 48;
+        this.duckWidth = 55;
+        this.duckHeight = 26;
+        this.width = this.standWidth;
+        this.height = this.standHeight;
+        this.x = 60;
+        this.y = 0;
+        this.velocityY = 0;
+        this.jumpForce = 12;
+        this.gravity = 0.6;
+        this.isJumping = false;
+        this.isDucking = false;
+        this.legStep = 0;
+      }
+
+      jump() {
+        if (!this.isJumping && !this.isDucking && this.y === 0) {
+          this.isJumping = true;
+          this.velocityY = this.jumpForce;
+          playJumpSound();
+        }
+      }
+
+      duck() {
+        if (this.y === 0 && !this.isJumping) {
+          this.isDucking = true;
+          this.width = this.duckWidth;
+          this.height = this.duckHeight;
+          playDuckSound();
+        }
+      }
+
+      standUp() {
+        this.isDucking = false;
+        this.width = this.standWidth;
+        this.height = this.standHeight;
+      }
+
+      update() {
+        if (this.isJumping) {
+          this.y += this.velocityY;
+          this.velocityY -= this.gravity;
+          if (this.y <= 0) {
+            this.y = 0;
+            this.isJumping = false;
+            this.velocityY = 0;
+          }
+        } else if (targetDemoPlaying && !targetGameOver) {
+          this.legStep = (this.legStep + 1) % 16;
+        }
+      }
+
+      draw(ctx) {
+        const renderY = targetCanvas.height - 30 - this.height - this.y;
+        const px = this.x;
+        const py = renderY;
+
+        if (this.isDucking) {
+          // Egilgan (Ducking) sprite
+          ctx.fillStyle = '#38bdf8';
+          ctx.fillRect(px, py + 10, 38, 16);
+          ctx.fillRect(px + 34, py + 2, 21, 14);
+          ctx.fillStyle = '#0b0f19';
+          ctx.fillRect(px + 48, py + 5, 3, 3);
+          ctx.fillStyle = '#38bdf8';
+          if (this.legStep < 8) {
+            ctx.fillRect(px + 12, py + 22, 6, 4);
+            ctx.fillRect(px + 26, py + 22, 6, 2);
+          } else {
+            ctx.fillRect(px + 12, py + 22, 6, 2);
+            ctx.fillRect(px + 26, py + 22, 6, 4);
+          }
+        } else {
+          // Tik turgan (Standing/Running) sprite
+          ctx.fillStyle = '#38bdf8';
+          ctx.fillRect(px + 18, py, 26, 20); // Bosh
+          ctx.fillRect(px + 22, py + 20, 12, 10);
+          ctx.fillStyle = '#0b0f19';
+          ctx.fillRect(px + 26, py + 4, 4, 4); // Ko'z
+          ctx.fillStyle = '#38bdf8';
+          ctx.fillRect(px + 12, py + 16, 16, 20); // Tana
+          ctx.fillRect(px + 6, py + 22, 14, 14);
+          ctx.fillRect(px, py + 22, 8, 8); // Dum
+          ctx.fillRect(px + 2, py + 30, 6, 6);
+          ctx.fillRect(px + 30, py + 22, 6, 4); // Qo'l
+
+          if (this.isJumping) {
+            ctx.fillRect(px + 14, py + 36, 4, 12);
+            ctx.fillRect(px + 22, py + 36, 4, 10);
+          } else if (this.legStep < 8) {
+            ctx.fillRect(px + 14, py + 36, 4, 12);
+            ctx.fillRect(px + 22, py + 36, 4, 8);
+          } else {
+            ctx.fillRect(px + 14, py + 36, 4, 8);
+            ctx.fillRect(px + 22, py + 36, 4, 12);
+          }
+        }
+      }
+    }
+
+    const targetDino = new TargetDino();
+
+    function playJumpSound() {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(580, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+      } catch (e) {}
+    }
+
+    function playDuckSound() {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+      } catch (e) {}
+    }
+
+    function playScoreChime() {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); // E5
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.2);
+      } catch (e) {}
+    }
+
+    function toggleTargetDemo() {
+      const arena = document.getElementById('target-demo-arena');
+      const text = document.getElementById('demo-toggle-text');
+      arena.classList.toggle('collapsed');
+      if (arena.classList.contains('collapsed')) {
+        text.textContent = "O'yinni Ochish (Demo)";
+        targetDemoFocused = false;
+      } else {
+        text.textContent = "O'yinni Yig'ish";
+        targetDemoFocused = true;
+      }
+    }
+
+    function focusTargetGame() {
+      targetDemoFocused = true;
+      if (!targetDemoPlaying && !targetGameOver) {
+        startTargetGame();
+      }
+    }
+
+    function startTargetGame(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('target-overlay-prompt').classList.add('hidden');
+      targetDemoFocused = true;
+      targetDemoPlaying = true;
+      targetReset();
+    }
+
+    function targetJump() {
+      targetDemoFocused = true;
+      if (!targetDemoPlaying || targetGameOver) {
+        startTargetGame();
+        return;
+      }
+      targetDino.jump();
+    }
+
+    function targetDuckStart() {
+      targetDemoFocused = true;
+      if (targetDemoPlaying && !targetGameOver) {
+        targetDino.duck();
+      }
+    }
+
+    function targetDuckEnd() {
+      targetDino.standUp();
+    }
+
+    function targetReset() {
+      targetGameOver = false;
+      targetScore = 0;
+      targetObstacles = [];
+      targetSpawnTimer = 0;
+      document.getElementById('target-score-display').textContent = '00000';
+      document.getElementById('target-overlay-prompt').classList.add('hidden');
+    }
+
+    function scrollToStepOne() {
+      const target = document.getElementById('editor-panel-anchor') || document.getElementById('student-code-editor');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          const editor = document.getElementById('student-code-editor');
+          if (editor) editor.focus();
+        }, 500);
+      }
+      targetDemoFocused = false;
+    }
+
+    function targetGameLoop() {
+      targetCtx.clearRect(0, 0, targetCanvas.width, targetCanvas.height);
+
+      // Tungi / Kunduzgi rejim (Har 100 ochkoda)
+      const isNight = targetScore >= 100 && Math.floor(targetScore / 100) % 2 === 1;
+      const dayNightTag = document.getElementById('target-daynight-tag');
+      if (dayNightTag) {
+        dayNightTag.textContent = isNight ? '🌙 Tungi Rejim' : '☀️ Kunduzgi Rejim';
+        dayNightTag.style.color = isNight ? '#fef08a' : '#38bdf8';
+      }
+
+      targetCanvas.style.background = isNight ? '#020617' : '#090d16';
+
+      // 1. Osmondagi bulutlar yoki yulduzlar
+      if (isNight) {
+        targetCtx.fillStyle = '#f8fafc';
+        [[90, 25], [220, 45], [380, 20], [540, 50], [680, 30], [800, 40]].forEach(([sx, sy]) => {
+          targetCtx.fillRect(sx, sy, 2, 2);
+        });
+        targetCtx.fillStyle = '#fef08a';
+        targetCtx.beginPath();
+        targetCtx.arc(820, 40, 12, 0, Math.PI * 2);
+        targetCtx.fill();
+      } else {
+        targetCtx.fillStyle = '#1e293b';
+        targetClouds.forEach(c => {
+          if (targetDemoPlaying && !targetGameOver) {
+            c.x -= c.speed;
+            if (c.x < -60) c.x = targetCanvas.width + 20;
+          }
+          targetCtx.beginPath();
+          targetCtx.arc(c.x, c.y, 12, 0, Math.PI * 2);
+          targetCtx.arc(c.x + 12, c.y - 5, 15, 0, Math.PI * 2);
+          targetCtx.arc(c.x + 24, c.y, 12, 0, Math.PI * 2);
+          targetCtx.fill();
+        });
+      }
+
+      // 2. Yer chizig'i
+      targetCtx.strokeStyle = isNight ? '#475569' : '#334155';
+      targetCtx.lineWidth = 2;
+      targetCtx.beginPath();
+      targetCtx.moveTo(0, targetCanvas.height - 30);
+      targetCtx.lineTo(targetCanvas.width, targetCanvas.height - 30);
+      targetCtx.stroke();
+
+      // 3. Dinozavr
+      targetDino.update();
+      targetDino.draw(targetCtx);
+
+      // 4. To'siqlar
+      if (targetDemoPlaying && !targetGameOver) {
+        targetSpawnTimer++;
+        if (targetSpawnTimer > 80) {
+          targetSpawnTimer = 0;
+          const isBird = Math.random() < 0.35;
+          if (isBird) {
+            targetObstacles.push({
+              type: 'bird',
+              x: targetCanvas.width,
+              y: 35, // Havoda - egilib o'tish lozim!
+              width: 36,
+              height: 26,
+              speed: 6.8,
+              wingState: 0
+            });
+          } else {
+            const cType = Math.floor(Math.random() * 3);
+            const w = cType === 0 ? 20 : (cType === 1 ? 26 : 56);
+            const h = cType === 0 ? 36 : (cType === 1 ? 48 : 42);
+            targetObstacles.push({
+              type: 'cactus',
+              cType: cType,
+              x: targetCanvas.width,
+              y: 0,
+              width: w,
+              height: h,
+              speed: 6.2
+            });
+          }
+        }
+
+        // To'siqlarni harakatlantirish va to'qnashuvni tekshirish
+        for (let i = targetObstacles.length - 1; i >= 0; i--) {
+          const obs = targetObstacles[i];
+          obs.x -= obs.speed;
+
+          const obsRenderY = targetCanvas.height - 30 - obs.height - (obs.y || 0);
+
+          if (obs.type === 'bird') {
+            obs.wingState = (obs.wingState + 1) % 16;
+            targetCtx.fillStyle = '#fbbf24';
+            targetCtx.fillRect(obs.x + 8, obsRenderY + 8, 20, 10);
+            targetCtx.fillRect(obs.x, obsRenderY + 4, 10, 6);
+            if (obs.wingState < 8) {
+              targetCtx.fillRect(obs.x + 12, obsRenderY - 6, 8, 12);
+            } else {
+              targetCtx.fillRect(obs.x + 12, obsRenderY + 12, 8, 10);
+            }
+          } else {
+            targetCtx.fillStyle = '#10b981';
+            targetCtx.fillRect(obs.x, obsRenderY, obs.width, obs.height);
+            targetCtx.fillStyle = '#059669';
+            targetCtx.fillRect(obs.x + 3, obsRenderY + 4, 4, obs.height - 8);
+          }
+
+          // AABB To'qnashuv
+          const dinoRenderY = targetCanvas.height - 30 - targetDino.height - targetDino.y;
+          const isColliding = (
+            targetDino.x + 4 < obs.x + obs.width &&
+            targetDino.x + targetDino.width - 4 > obs.x &&
+            dinoRenderY + targetDino.height > obsRenderY + 2 &&
+            dinoRenderY < obsRenderY + obs.height
+          );
+
+          if (isColliding) {
+            targetGameOver = true;
+            playAudioChime(false);
+
+            targetCtx.fillStyle = 'rgba(9, 13, 22, 0.85)';
+            targetCtx.fillRect(0, 0, targetCanvas.width, targetCanvas.height);
+
+            targetCtx.fillStyle = '#ef4444';
+            targetCtx.font = 'bold 20px system-ui, sans-serif';
+            targetCtx.textAlign = 'center';
+            targetCtx.fillText(obs.type === 'bird' ? '🦅 QUSH BILAN TO\'QNASHUV!' : '🌵 KAKTUSGA URILDI!', targetCanvas.width / 2, 70);
+
+            targetCtx.fillStyle = '#38bdf8';
+            targetCtx.font = 'bold 15px monospace';
+            targetCtx.fillText('TO\'PLANGAN OCHKO: ' + String(targetScore).padStart(5, '0'), targetCanvas.width / 2, 100);
+
+            targetCtx.fillStyle = '#cbd5e1';
+            targetCtx.font = '13px system-ui, sans-serif';
+            targetCtx.fillText(obs.type === 'bird' ? 'Uchar qush kelganda ⬇️ (ArrowDown) bosib egiling! Qaytadan: Space' : 'Kaktus ustidan Space bilan sakrang! Qaytadan: Space', targetCanvas.width / 2, 126);
+
+            targetCtx.fillStyle = '#34d399';
+            targetCtx.font = 'bold 13px system-ui, sans-serif';
+            targetCtx.fillText('👇 Endi pastga tushib, bu o\'yinni 1-qadamdan boshlab o\'z qo\'lingiz bilan quring!', targetCanvas.width / 2, 156);
+            targetCtx.textAlign = 'left';
+            break;
+          }
+
+          // To'siqdan eson-omon o'tganda ochko berish
+          if (obs.x + obs.width < 0) {
+            targetObstacles.splice(i, 1);
+            targetScore += 10;
+            document.getElementById('target-score-display').textContent = String(targetScore).padStart(5, '0');
+            if (targetScore % 100 === 0) {
+              playScoreChime();
+            }
+            if (targetScore > targetHighScore) {
+              targetHighScore = targetScore;
+              document.getElementById('target-high-display').textContent = String(targetHighScore).padStart(5, '0');
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(targetGameLoop);
+    }
+
+    targetGameLoop();
 
     // Ilk qadamni yuklaymiz
     switchStep(1);

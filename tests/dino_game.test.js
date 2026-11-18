@@ -90,6 +90,52 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.match(consoleText, /Kod tasdiqlandi/);
   });
 
+  await t.test('Typing in student editor preserves spacebar and supports tab indentation', async () => {
+    // Focus the editor and clear it
+    await page.locator('#student-code-editor').fill('');
+    await page.locator('#student-code-editor').focus();
+
+    // Type with keyboard to verify spacebar is NOT intercepted by game jump listener
+    await page.keyboard.type('class Dino');
+    let val = await page.inputValue('#student-code-editor');
+    assert.strictEqual(val, 'class Dino', 'Spacebar must be inserted into code editor without being swallowed');
+
+    // Press Tab to verify indentation
+    await page.keyboard.press('Tab');
+    val = await page.inputValue('#student-code-editor');
+    assert.strictEqual(val, 'class Dino  ', 'Tab must insert 2 spaces for indentation');
+  });
+
+  await t.test('Target Goal Playable Demo is interactive and responds to controls', async () => {
+    // Verify target canvas is visible
+    const targetCanvas = await page.locator('#targetGameCanvas').isVisible();
+    assert.strictEqual(targetCanvas, true, 'Target demo canvas must be visible');
+
+    // Verify overlay prompt exists
+    const promptVisible = await page.locator('#target-overlay-prompt').isVisible();
+    assert.strictEqual(promptVisible, true, 'Start prompt must be visible initially');
+
+    // Click play button to start demo
+    await page.locator('.target-play-btn').click();
+    const promptVisibleAfter = await page.locator('#target-overlay-prompt').isVisible();
+    assert.strictEqual(promptVisibleAfter, false, 'Prompt should hide when game starts');
+
+    // Click jump and duck buttons
+    await page.locator('.target-buttons-group .jump-btn-action').click();
+    await page.locator('.target-buttons-group .duck-btn-action').dispatchEvent('mousedown');
+    await page.locator('.target-buttons-group .duck-btn-action').dispatchEvent('mouseup');
+
+    // Toggle collapse/expand
+    const toggleBtn = page.locator('#btn-toggle-demo');
+    await toggleBtn.click();
+    const isVisibleCollapsed = await page.locator('#target-demo-arena').isVisible();
+    assert.strictEqual(isVisibleCollapsed, false, 'Arena should be hidden when collapsed');
+
+    await toggleBtn.click();
+    const isReopened = await page.locator('#target-demo-arena').isVisible();
+    assert.strictEqual(isReopened, true, 'Arena should reopen when clicked again');
+  });
+
   await t.test('Standalone VS Code template modal opens and contains valid HTML', async () => {
     const modalBtn = page.locator('.btn-badge:has-text("VS Code Uchun To\'liq Fayl")');
     await modalBtn.click();

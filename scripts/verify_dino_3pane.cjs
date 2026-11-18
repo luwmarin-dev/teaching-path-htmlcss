@@ -12,9 +12,21 @@ const path = require('path');
 
   const artDir = 'C:/Users/adam/.gemini/antigravity/brain/4ebe4416-8efa-4418-917d-b02799c6ed99';
 
-  // 1. Initial State Screenshot with Goal Showcase
-  await page.screenshot({ path: path.join(artDir, 'dino_2_initial_showcase.png') });
-  console.log('Saved dino_2_initial_showcase.png');
+  // 1. Initial State Screenshot with Goal Showcase & Playable Target Arena
+  // Click target demo play button to show active running state
+  await page.click('.target-play-btn');
+  await page.waitForTimeout(800); // let target demo run with dino, cacti, clouds
+  await page.screenshot({ path: path.join(artDir, 'dino_3_playable_target_arena.png') });
+  console.log('Saved dino_3_playable_target_arena.png');
+
+  // 1.b. Test Typing Spacebar in Editor without jump trigger
+  await page.click('#student-code-editor');
+  await page.fill('#student-code-editor', '');
+  await page.keyboard.type('class Dino {');
+  await page.keyboard.press('Enter');
+  await page.keyboard.type('// spacebar test working');
+  await page.screenshot({ path: path.join(artDir, 'dino_3_spacebar_typing_fixed.png') });
+  console.log('Saved dino_3_spacebar_typing_fixed.png');
 
   // 2. Empty code check
   await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
