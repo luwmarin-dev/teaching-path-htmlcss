@@ -21,7 +21,7 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
   const pageErrors = [];
   page.on('pageerror', err => pageErrors.push(err.message));
 
-  await t.test('dino-game-darsi/index.html loads with Socratic lock', async () => {
+  await t.test('dino-game-darsi/index.html loads with strict initial lock', async () => {
     const dinoPath = 'file:///' + path.join(rootDir, 'dino-game-darsi', 'index.html').replace(/\\/g, '/');
     await page.goto(dinoPath, { waitUntil: 'load' });
 
@@ -29,7 +29,7 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     const title = await page.textContent('h1');
     assert.match(title, /Chrome Dino Game/);
 
-    // Initial state: Step 1 code is locked
+    // Initial state: Step 1 code placeholder is locked
     const placeholder = await page.locator('#code-locked-placeholder').isVisible();
     assert.strictEqual(placeholder, true, 'Code should be locked initially');
 
@@ -38,7 +38,21 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.strictEqual(step2Disabled, true, 'Step 2 must be locked before Step 1 is passed');
   });
 
-  await t.test('Answering Socratic quiz unlocks code and Step 2', async () => {
+  await t.test('Clicking run on empty code fails with validation error', async () => {
+    // Click run without writing code
+    const runBtn = page.locator('.run-btn:has-text("Kodni Ishga Tushirish")');
+    await runBtn.click();
+
+    // Check error feedback
+    const errorFb = await page.locator('.validation-feedback-card.error').isVisible();
+    assert.strictEqual(errorFb, true, 'Empty code must fail validation');
+
+    // Step 2 must STILL be disabled
+    const step2Disabled = await page.locator('#step-nav-2').isDisabled();
+    assert.strictEqual(step2Disabled, true, 'Step 2 must remain locked');
+  });
+
+  await t.test('Answering Socratic quiz gives feedback without auto-passing code', async () => {
     // Click wrong answer first (Option B)
     const wrongBtn = page.locator('.quiz-opt-btn').nth(1);
     await wrongBtn.click();
@@ -50,21 +64,30 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     await correctBtn.click();
     const successFb = await page.locator('.quiz-feedback.success').isVisible();
     assert.strictEqual(successFb, true, 'Correct answer must show success feedback');
+  });
 
-    // Verify code unlocked
-    const unlockedCode = await page.locator('#raw-unlocked-code').isVisible();
-    assert.strictEqual(unlockedCode, true, 'Code must unlock after correct answer');
+  await t.test('Writing valid code passes validation, unlocks Step 2 and updates preview', async () => {
+    // Enter required code for Step 1
+    await page.fill('#student-code-editor', 'class Dino {}\nconst dino = new Dino();');
+    const runBtn = page.locator('.run-btn:has-text("Kodni Ishga Tushirish")');
+    await runBtn.click();
+
+    // Success feedback
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Valid code must pass validation');
 
     // Step 2 must now be enabled
     const step2Disabled = await page.locator('#step-nav-2').isDisabled();
-    assert.strictEqual(step2Disabled, false, 'Step 2 must be unlocked');
+    assert.strictEqual(step2Disabled, false, 'Step 2 must be unlocked after valid code');
+
+    // Model code must now be unlocked
+    const unlockedCode = await page.locator('#raw-unlocked-code').isVisible();
+    assert.strictEqual(unlockedCode, true, 'Model code should be revealed after passing');
   });
 
   await t.test('Live code runner updates virtual console', async () => {
-    const runBtn = page.locator('.run-btn:has-text("Kodni Ishga Tushirish")');
-    await runBtn.click();
     const consoleText = await page.textContent('#virtual-console');
-    assert.match(consoleText, /Kod muvaffaqiyatli ishga tushdi/);
+    assert.match(consoleText, /Kod tasdiqlandi/);
   });
 
   await t.test('Standalone VS Code template modal opens and contains valid HTML', async () => {
