@@ -248,70 +248,74 @@ export const LESSONS = [
       uz: "1991-yilga, CERN laboratoriyasiga sayohat qiling! Tim Berners-Lee va HTML yaratilishi haqidagi xom tarixiy matnni barcha matn teglari yordamida dunyo darajasidagi maqolaga aylantiring."
     },
     initialCode: {
-      en: `<!-- 1-QADAM: Wrap the master article headline with <h1>...</h1>! -->
-HTML — The Great Foundation of the World Wide Web
+      en: `<!-- 1-QADAM: Write master headline using <h1> tag: "HTML — The Great Foundation of the World Wide Web" -->
 
-<!-- 2-QADAM: Wrap the first chapter subtitle with <h2>...</h2>! -->
-1. The Birth of the Web and Tim Berners-Lee
 
-<!-- 3-QADAM: Wrap this paragraph in <p>...</p>! 
-     Bold the inventor's name with <strong>Tim Berners-Lee</strong>, 
-     bold the year with <b>1991</b>, and underline <u>CERN</u>! -->
-The World Wide Web was born in 1991 at the CERN research laboratory in Switzerland, invented by British computer scientist Tim Berners-Lee.
+<!-- 2-QADAM: Write chapter 1 subtitle using <h2> tag: "1. The Birth of the Web and Tim Berners-Lee" -->
 
-<!-- 4-QADAM: Wrap this second paragraph in <p>...</p>! 
-     Italicize the phrase "World Wide Web" with <em>...</em>! -->
-Originally built to share scientific papers among physicists, the World Wide Web today connects billions of curious minds across our planet.
 
-<!-- 5-QADAM: Wrap the second chapter subtitle with <h2>...</h2>! -->
-2. How HTML Truly Works
+<!-- 3-QADAM: Write a paragraph in <p> tag:
+     "The World Wide Web was born in 1991 at the CERN research laboratory in Switzerland, invented by British computer scientist Tim Berners-Lee."
+     Bold inventor with <strong>Tim Berners-Lee</strong>, year with <b>1991</b>, and underline <u>CERN</u>! -->
 
-<!-- 6-QADAM: Wrap this explanation in <p>...</p>! 
-     Highlight "hypertext markup language" with a glowing <mark>...</mark> yellow highlighter! -->
-HTML is not a complex programming language; it is a hypertext markup language that builds the structural skeleton of every webpage.
 
-<!-- 7-QADAM: Wrap the third chapter subtitle with <h2>...</h2>! -->
-3. Global Popularity and Modern Reality
+<!-- 4-QADAM: Write second paragraph in <p> tag:
+     "Originally built to share scientific papers among physicists, the World Wide Web today connects billions of curious minds across our planet."
+     Italicize <em>World Wide Web</em>! -->
 
-<!-- 8-QADAM: Wrap this paragraph in <p>...</p>! 
-     Strike through the outdated myth "Coding is only for math geniuses" with <del>...</del>! 
-     Bold the fact "over 1.9 billion websites" with <strong>...</strong>! -->
-An outdated myth claimed: Coding is only for math geniuses — this has been completely debunked! Today, over 1.9 billion websites run entirely on HTML!
 
-<!-- 9-QADAM: Wrap the fine print at the bottom with a <small>...</small> tag! -->
-Web History Laboratory — Official Archive`,
-      uz: `<!-- 1-QADAM: Maqolaning bosh sarlavhasini <h1>...</h1> tegi bilan o'rang! -->
-HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori
+<!-- 5-QADAM: Write chapter 2 subtitle using <h2> tag: "2. How HTML Truly Works" -->
 
-<!-- 2-QADAM: Birinchi bo'lim sarlavhasini <h2>...</h2> tegi bilan belgilang! -->
-1. Yaratilish Tarixi va Tim Berners-Lee
 
-<!-- 3-QADAM: Quyidagi gapni <p>...</p> xatboshi tegi ichiga oling! 
-     Ichidagi ixtirochi nomini <strong>Tim Berners-Lee</strong>, 
-     sanani <b>1991-yil</b> bilan qalin qiling, CERN so'zining tagiga esa <u>...</u> bilan chizing! -->
-Butunjahon veb-tarmog'i 1991-yilda Shveytsariyaning CERN tadqiqot laboratoriyasida britaniyalik olim Tim Berners-Lee tomonidan ixtiro qilingan.
+<!-- 6-QADAM: Write paragraph in <p> tag:
+     "HTML is not a complex programming language; it is a hypertext markup language that builds the structural skeleton of every webpage."
+     Highlight <mark>hypertext</mark>! -->
 
-<!-- 4-QADAM: Ushbu ikkinchi gapni ham <p>...</p> ichiga oling! 
-     "World Wide Web" iborasini <em>...</em> tegi bilan yotiq kursiv qiling! -->
-Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy World Wide Web bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda.
 
-<!-- 5-QADAM: Ikkinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
-2. HTML Qanday Ishlaydi?
+<!-- 7-QADAM: Write chapter 3 subtitle using <h2> tag: "3. Global Popularity and Modern Reality" -->
 
-<!-- 6-QADAM: Ushbu tushuntirishni <p>...</p> ichiga oling! 
-     "gipermatn" so'zini <mark>...</mark> sariq marker bilan yoriting! -->
-HTML dasturlash tili emas, balki gipermatnli belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi.
 
-<!-- 7-QADAM: Uchinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
-3. Global Ommaviylik va Bugungi Haqiqat
+<!-- 8-QADAM: Write paragraph in <p> tag:
+     "An outdated myth claimed: Coding is only for math geniuses — this has been completely debunked! Today, over 1.9 billion websites run entirely on HTML!"
+     Strike through <del>Coding is only for math geniuses</del> and bold <strong>over 1.9 billion websites</strong>! -->
 
-<!-- 8-QADAM: Ushbu xatboshini <p>...</p> ga oling! 
-     Eski afsona bo'lgan "Dasturlash faqat daho matematiklar uchun" jumlasini <del>...</del> bilan o'chirib chizing! 
-     "1.9 milliarddan ortiq veb-saytlar" iborasini <strong>...</strong> bilan qalinlashtiring! -->
-Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi kunda dunyoda 1.9 milliarddan ortiq veb-saytlar aynan HTML orqali ishlaydi!
 
-<!-- 9-QADAM: Sahifa ostidagi rasmiy eslatmaga <small>...</small> tegi bering! -->
-Internet Tarixi Laboratoriyasi — Rasmiy Arxiv`
+<!-- 9-QADAM: Write footer note at the bottom using <small>Web History Laboratory — Official Archive</small> -->
+`,
+      uz: `<!-- 1-QADAM: <h1> tegi ochib, maqolaning bosh sarlavhasini yozing: "HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori" -->
+
+
+<!-- 2-QADAM: <h2> tegi ochib, 1-bob sarlavhasini yozing: "1. Yaratilish Tarixi va Tim Berners-Lee" -->
+
+
+<!-- 3-QADAM: <p> tegi ichida xatboshi yozing:
+     "Butunjahon veb-tarmog'i 1991-yilda Shveytsariyaning CERN tadqiqot laboratoriyasida britaniyalik olim Tim Berners-Lee tomonidan ixtiro qilingan."
+     Ixtirochi nomini <strong>Tim Berners-Lee</strong>, sanani <b>1991-yilda</b> bilan qalin qiling, CERN so'zi tagiga <u>CERN</u> bilan chizing! -->
+
+
+<!-- 4-QADAM: Yangi <p> tegi ochib, ikkinchi xatboshini yozing:
+     "Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy World Wide Web bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda."
+     Unda World Wide Web iborasini <em>World Wide Web</em> bilan yotiq kursiv qiling! -->
+
+
+<!-- 5-QADAM: <h2> tegi ochib, 2-bob sarlavhasini yozing: "2. HTML Qanday Ishlaydi?" -->
+
+
+<!-- 6-QADAM: <p> tegi ochib, tushuntirish yozing:
+     "HTML dasturlash tili emas, balki gipermatnli belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi."
+     Unda gipermatn so'zini sariq <mark>gipermatn</mark> bilan yoriting! -->
+
+
+<!-- 7-QADAM: <h2> tegi ochib, 3-bob sarlavhasini yozing: "3. Global Ommaviylik va Bugungi Haqiqat" -->
+
+
+<!-- 8-QADAM: <p> tegi ochib, xatboshi yozing:
+     "Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi kunda dunyoda 1.9 milliarddan ortiq veb-saytlar aynan HTML orqali ishlaydi!"
+     Eski afsonani <del>Dasturlash faqat daho matematiklar uchun</del> bilan o'chiring, "1.9 milliarddan ortiq veb-saytlar" iborasini <strong>...</strong> bilan qalin qiling! -->
+
+
+<!-- 9-QADAM: Sahifa ostiga <small>Internet Tarixi Laboratoriyasi — Rasmiy Arxiv</small> deb rasmiy eslatma yozing -->
+`
     },
     targetCode: {
       en: `<h1>HTML — The Great Foundation of the World Wide Web</h1>

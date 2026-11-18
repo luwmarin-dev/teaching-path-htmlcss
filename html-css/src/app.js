@@ -679,104 +679,111 @@ function renderLessonView() {
     <!-- STEP 2: Step-by-Step Anatomy (Only the pieces of code for this theme & their exact visual results) -->
     ${renderAnatomySection(lesson)}
 
-    <!-- HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor) -->
-    <div class="mission-spotlight-card">
-      <div class="mission-spotlight-header">
-        <div class="mission-spotlight-badge">
-          <span class="mission-pulse-dot"></span>
-          <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
-        </div>
-        <div class="mission-quick-actions">
-          <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
-            🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
-          </button>
-          <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
-            ${escapeHtml(t('hintBtn', state.lang))}
-          </button>
-          <button id="btn-verify-mission" class="btn-mission-verify" title="${escapeHtml(t('checkCodeBtn', state.lang))}">
-            ${escapeHtml(t('checkCodeBtn', state.lang))}
-          </button>
-        </div>
+    ${lesson.id === 'theme-0-typing' ? `
+      <!-- Dedicated Full-Width Typing Diagnostic Lab (No Left Code Editor) -->
+      <div class="typing-fullwidth-stage" id="typing-fullwidth-stage">
+        <!-- Loaded by initTypingInteractive -->
       </div>
-      <div class="mission-spotlight-body">
-        <div class="mission-spotlight-text">
-          ${formatProse(localize(lesson.challenge.mission, state.lang))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
-    <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
-      <!-- Left: Code Studio -->
-      <div class="pane-card pane-card-editor" id="pane-card-editor">
-        <div class="pane-header">
-          <div class="pane-title">
-            <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
+    ` : `
+      <!-- HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor) -->
+      <div class="mission-spotlight-card">
+        <div class="mission-spotlight-header">
+          <div class="mission-spotlight-badge">
+            <span class="mission-pulse-dot"></span>
+            <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
           </div>
-          <div class="pane-tools">
-            <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
-            <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
-            <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
-            <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
-            <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
-            <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
+          <div class="mission-quick-actions">
+            <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
+              🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
+            </button>
+            <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
+              ${escapeHtml(t('hintBtn', state.lang))}
+            </button>
+            <button id="btn-verify-mission" class="btn-mission-verify" title="${escapeHtml(t('checkCodeBtn', state.lang))}">
+              ${escapeHtml(t('checkCodeBtn', state.lang))}
+            </button>
           </div>
         </div>
+        <div class="mission-spotlight-body">
+          <div class="mission-spotlight-text">
+            ${formatProse(localize(lesson.challenge.mission, state.lang))}
+          </div>
+        </div>
+      </div>
 
-        <!-- Quick Tag Insertion Bar -->
-        ${lesson.quickTags && lesson.quickTags.length > 0 ? `
-          <div class="editor-quick-tags-bar">
-            <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
-            <div class="quick-tags-chips">
-              ${lesson.quickTags.map(tag => `
-                <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
-              `).join('')}
+      <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
+      <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
+        <!-- Left: Code Studio -->
+        <div class="pane-card pane-card-editor" id="pane-card-editor">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
+            </div>
+            <div class="pane-tools">
+              <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
+              <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
+              <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
+              <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
+              <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
+              <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
             </div>
           </div>
-        ` : ''}
 
-        <!-- Code Focus Banner -->
-        <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
-          <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
-          <span class="focus-banner-text">
-            ${state.editorViewMode !== 'full' 
-              ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
-              : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
-          </span>
-        </div>
+          <!-- Quick Tag Insertion Bar -->
+          ${lesson.quickTags && lesson.quickTags.length > 0 ? `
+            <div class="editor-quick-tags-bar">
+              <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
+              <div class="quick-tags-chips">
+                ${lesson.quickTags.map(tag => `
+                  <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
 
-        <!-- Code Editor -->
-        <div class="code-editor-wrapper">
-          <div id="line-numbers" class="editor-line-numbers">1</div>
-          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
-        </div>
-      </div>
-
-      <!-- Draggable Pane Resizer Divider -->
-      <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
-        <div class="resizer-knob"></div>
-      </div>
-
-      <!-- Right: Preview Stage -->
-      <div class="pane-card pane-card-preview" id="pane-card-preview">
-        <div class="pane-header">
-          <div class="pane-title">
-            <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
+          <!-- Code Focus Banner -->
+          <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
+            <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
+            <span class="focus-banner-text">
+              ${state.editorViewMode !== 'full' 
+                ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+                : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
+            </span>
           </div>
-          <div class="preview-tabs">
-            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
-            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
-            <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
-            <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
-            <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+
+          <!-- Code Editor -->
+          <div class="code-editor-wrapper">
+            <div id="line-numbers" class="editor-line-numbers">1</div>
+            <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
           </div>
         </div>
 
-        <div id="preview-container" class="preview-wrapper">
-          ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
+        <!-- Draggable Pane Resizer Divider -->
+        <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
+          <div class="resizer-knob"></div>
+        </div>
+
+        <!-- Right: Preview Stage -->
+        <div class="pane-card pane-card-preview" id="pane-card-preview">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
+            </div>
+            <div class="preview-tabs">
+              <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+              <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
+              <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
+              <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+              <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+            </div>
+          </div>
+
+          <div id="preview-container" class="preview-wrapper">
+            ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
+          </div>
         </div>
       </div>
-    </div>
+    `}
   `;
 
   elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
@@ -1042,18 +1049,20 @@ function setupLessonListeners(lesson) {
 
 
   // Preview Tabs
-  setupPreviewTabs(lesson);
+  if (lesson.id !== 'theme-0-typing') {
+    setupPreviewTabs(lesson);
+  }
 
-  // Special Interactive Mount for Theme 0: Typing Diagnostic
+  // Special Interactive Mount for Theme 0: Typing Diagnostic (Full-Width, 2-Part Flow)
   if (lesson.id === 'theme-0-typing') {
-    const previewStage = document.getElementById('live-preview-stage') || document.querySelector('.pane-card-preview');
-    if (previewStage) {
-      previewStage.innerHTML = renderTypingLabHtml('en', state.lang);
-      initTypingInteractive(previewStage, {
+    const stageEl = document.getElementById('typing-fullwidth-stage');
+    if (stageEl) {
+      stageEl.innerHTML = renderTypingLabHtml('en', state.lang, state.typingStats || {});
+      initTypingInteractive(stageEl, {
         state,
         playSound,
-        onComplete: (stats) => {
-          state.typingStats = stats;
+        onComplete: (combinedStats) => {
+          state.typingStats = combinedStats;
           saveStateToStorage(state);
           currentCode = localize(lesson.targetCode, state.lang);
           if (elements.codeEditor) elements.codeEditor.value = currentCode;

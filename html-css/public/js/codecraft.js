@@ -256,70 +256,74 @@ const LESSONS = [
       uz: "1991-yilga, CERN laboratoriyasiga sayohat qiling! Tim Berners-Lee va HTML yaratilishi haqidagi xom tarixiy matnni barcha matn teglari yordamida dunyo darajasidagi maqolaga aylantiring."
     },
     initialCode: {
-      en: `<!-- 1-QADAM: Wrap the master article headline with <h1>...</h1>! -->
-HTML — The Great Foundation of the World Wide Web
+      en: `<!-- 1-QADAM: Write master headline using <h1> tag: "HTML — The Great Foundation of the World Wide Web" -->
 
-<!-- 2-QADAM: Wrap the first chapter subtitle with <h2>...</h2>! -->
-1. The Birth of the Web and Tim Berners-Lee
 
-<!-- 3-QADAM: Wrap this paragraph in <p>...</p>! 
-     Bold the inventor's name with <strong>Tim Berners-Lee</strong>, 
-     bold the year with <b>1991</b>, and underline <u>CERN</u>! -->
-The World Wide Web was born in 1991 at the CERN research laboratory in Switzerland, invented by British computer scientist Tim Berners-Lee.
+<!-- 2-QADAM: Write chapter 1 subtitle using <h2> tag: "1. The Birth of the Web and Tim Berners-Lee" -->
 
-<!-- 4-QADAM: Wrap this second paragraph in <p>...</p>! 
-     Italicize the phrase "World Wide Web" with <em>...</em>! -->
-Originally built to share scientific papers among physicists, the World Wide Web today connects billions of curious minds across our planet.
 
-<!-- 5-QADAM: Wrap the second chapter subtitle with <h2>...</h2>! -->
-2. How HTML Truly Works
+<!-- 3-QADAM: Write a paragraph in <p> tag:
+     "The World Wide Web was born in 1991 at the CERN research laboratory in Switzerland, invented by British computer scientist Tim Berners-Lee."
+     Bold inventor with <strong>Tim Berners-Lee</strong>, year with <b>1991</b>, and underline <u>CERN</u>! -->
 
-<!-- 6-QADAM: Wrap this explanation in <p>...</p>! 
-     Highlight "hypertext markup language" with a glowing <mark>...</mark> yellow highlighter! -->
-HTML is not a complex programming language; it is a hypertext markup language that builds the structural skeleton of every webpage.
 
-<!-- 7-QADAM: Wrap the third chapter subtitle with <h2>...</h2>! -->
-3. Global Popularity and Modern Reality
+<!-- 4-QADAM: Write second paragraph in <p> tag:
+     "Originally built to share scientific papers among physicists, the World Wide Web today connects billions of curious minds across our planet."
+     Italicize <em>World Wide Web</em>! -->
 
-<!-- 8-QADAM: Wrap this paragraph in <p>...</p>! 
-     Strike through the outdated myth "Coding is only for math geniuses" with <del>...</del>! 
-     Bold the fact "over 1.9 billion websites" with <strong>...</strong>! -->
-An outdated myth claimed: Coding is only for math geniuses — this has been completely debunked! Today, over 1.9 billion websites run entirely on HTML!
 
-<!-- 9-QADAM: Wrap the fine print at the bottom with a <small>...</small> tag! -->
-Web History Laboratory — Official Archive`,
-      uz: `<!-- 1-QADAM: Maqolaning bosh sarlavhasini <h1>...</h1> tegi bilan o'rang! -->
-HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori
+<!-- 5-QADAM: Write chapter 2 subtitle using <h2> tag: "2. How HTML Truly Works" -->
 
-<!-- 2-QADAM: Birinchi bo'lim sarlavhasini <h2>...</h2> tegi bilan belgilang! -->
-1. Yaratilish Tarixi va Tim Berners-Lee
 
-<!-- 3-QADAM: Quyidagi gapni <p>...</p> xatboshi tegi ichiga oling! 
-     Ichidagi ixtirochi nomini <strong>Tim Berners-Lee</strong>, 
-     sanani <b>1991-yil</b> bilan qalin qiling, CERN so'zining tagiga esa <u>...</u> bilan chizing! -->
-Butunjahon veb-tarmog'i 1991-yilda Shveytsariyaning CERN tadqiqot laboratoriyasida britaniyalik olim Tim Berners-Lee tomonidan ixtiro qilingan.
+<!-- 6-QADAM: Write paragraph in <p> tag:
+     "HTML is not a complex programming language; it is a hypertext markup language that builds the structural skeleton of every webpage."
+     Highlight <mark>hypertext</mark>! -->
 
-<!-- 4-QADAM: Ushbu ikkinchi gapni ham <p>...</p> ichiga oling! 
-     "World Wide Web" iborasini <em>...</em> tegi bilan yotiq kursiv qiling! -->
-Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy World Wide Web bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda.
 
-<!-- 5-QADAM: Ikkinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
-2. HTML Qanday Ishlaydi?
+<!-- 7-QADAM: Write chapter 3 subtitle using <h2> tag: "3. Global Popularity and Modern Reality" -->
 
-<!-- 6-QADAM: Ushbu tushuntirishni <p>...</p> ichiga oling! 
-     "gipermatn" so'zini <mark>...</mark> sariq marker bilan yoriting! -->
-HTML dasturlash tili emas, balki gipermatnli belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi.
 
-<!-- 7-QADAM: Uchinchi bo'lim nomini <h2>...</h2> bilan belgilang! -->
-3. Global Ommaviylik va Bugungi Haqiqat
+<!-- 8-QADAM: Write paragraph in <p> tag:
+     "An outdated myth claimed: Coding is only for math geniuses — this has been completely debunked! Today, over 1.9 billion websites run entirely on HTML!"
+     Strike through <del>Coding is only for math geniuses</del> and bold <strong>over 1.9 billion websites</strong>! -->
 
-<!-- 8-QADAM: Ushbu xatboshini <p>...</p> ga oling! 
-     Eski afsona bo'lgan "Dasturlash faqat daho matematiklar uchun" jumlasini <del>...</del> bilan o'chirib chizing! 
-     "1.9 milliarddan ortiq veb-saytlar" iborasini <strong>...</strong> bilan qalinlashtiring! -->
-Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi kunda dunyoda 1.9 milliarddan ortiq veb-saytlar aynan HTML orqali ishlaydi!
 
-<!-- 9-QADAM: Sahifa ostidagi rasmiy eslatmaga <small>...</small> tegi bering! -->
-Internet Tarixi Laboratoriyasi — Rasmiy Arxiv`
+<!-- 9-QADAM: Write footer note at the bottom using <small>Web History Laboratory — Official Archive</small> -->
+`,
+      uz: `<!-- 1-QADAM: <h1> tegi ochib, maqolaning bosh sarlavhasini yozing: "HTML — Butunjahon O'rgimchak To'rining Buyuk Poydevori" -->
+
+
+<!-- 2-QADAM: <h2> tegi ochib, 1-bob sarlavhasini yozing: "1. Yaratilish Tarixi va Tim Berners-Lee" -->
+
+
+<!-- 3-QADAM: <p> tegi ichida xatboshi yozing:
+     "Butunjahon veb-tarmog'i 1991-yilda Shveytsariyaning CERN tadqiqot laboratoriyasida britaniyalik olim Tim Berners-Lee tomonidan ixtiro qilingan."
+     Ixtirochi nomini <strong>Tim Berners-Lee</strong>, sanani <b>1991-yilda</b> bilan qalin qiling, CERN so'zi tagiga <u>CERN</u> bilan chizing! -->
+
+
+<!-- 4-QADAM: Yangi <p> tegi ochib, ikkinchi xatboshini yozing:
+     "Dastlab olimlar o'rtasida ilmiy maqolalarni o'rtoqlashish uchun yaratilgan oddiy World Wide Web bugun butun dunyodagi milliardlab insonlarni birlashtirmoqda."
+     Unda World Wide Web iborasini <em>World Wide Web</em> bilan yotiq kursiv qiling! -->
+
+
+<!-- 5-QADAM: <h2> tegi ochib, 2-bob sarlavhasini yozing: "2. HTML Qanday Ishlaydi?" -->
+
+
+<!-- 6-QADAM: <p> tegi ochib, tushuntirish yozing:
+     "HTML dasturlash tili emas, balki gipermatnli belgilash tili bo'lib, veb-sahifaning asosiy suyak-karkasini ushlab turadi."
+     Unda gipermatn so'zini sariq <mark>gipermatn</mark> bilan yoriting! -->
+
+
+<!-- 7-QADAM: <h2> tegi ochib, 3-bob sarlavhasini yozing: "3. Global Ommaviylik va Bugungi Haqiqat" -->
+
+
+<!-- 8-QADAM: <p> tegi ochib, xatboshi yozing:
+     "Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi kunda dunyoda 1.9 milliarddan ortiq veb-saytlar aynan HTML orqali ishlaydi!"
+     Eski afsonani <del>Dasturlash faqat daho matematiklar uchun</del> bilan o'chiring, "1.9 milliarddan ortiq veb-saytlar" iborasini <strong>...</strong> bilan qalin qiling! -->
+
+
+<!-- 9-QADAM: Sahifa ostiga <small>Internet Tarixi Laboratoriyasi — Rasmiy Arxiv</small> deb rasmiy eslatma yozing -->
+`
     },
     targetCode: {
       en: `<h1>HTML — The Great Foundation of the World Wide Web</h1>
@@ -8660,20 +8664,20 @@ function mergeTaskIntoFullCode(fullTemplate, userTaskCode) {
   // --- Typing Diagnostic Engine ---
   /**
  * Typing Speed & Accuracy Diagnostic Engine
- * Comprehensive 10-15 minute diagnostic session for English and Russian keyboards.
- * Evaluates WPM, CPM, Accuracy %, and typing consistency with high-contrast, large text.
+ * Comprehensive 2-Part (English & Russian) diagnostic session for 10-15 minutes each.
+ * Evaluates WPM, CPM, Accuracy %, and typing consistency across Latin and Cyrillic keyboard layouts.
  */
 
 const TYPING_TEXTS = {
   en: {
-    langLabel: 'English (10-15 min)',
+    langLabel: 'English (Part 1 / 1-Qism: 10-15 min)',
     title: 'The Great Architecture of Modern Computing & The Web',
-    text: "In the modern era, software is the invisible engine powering human civilization. From the smartphones in our pockets to satellites orbiting high above the Earth, every digital system is built on logic, algorithms, and code. Programming is not merely memorizing instructions; it is the creative art of breaking large, intimidating problems into elegant, bite-sized steps that a machine can execute with absolute precision.\n\nThe story of the World Wide Web began in nineteen ninety-one, when a visionary computer scientist named Tim Berners-Lee sought a better way for researchers to share information across different computers. He created the HyperText Markup Language, known as HTML, alongside the HTTP protocol and universal web addresses. For the first time in human history, anyone with a terminal could link thoughts, documents, and discoveries across continents in a fraction of a second. Today, almost two billion websites run on that very same foundation.\n\nTo become an exceptional software engineer, keyboard fluency is an indispensable superpower. When you master touch typing with all ten fingers, the barrier between your human thoughts and the digital screen dissolves. Your mind remains entirely free to focus on system design, database architecture, and debugging complex edge cases, rather than searching across keys with your eyes. Posture and patience are vital: keep your wrists elevated, your back straight, and let muscle memory guide your fingers across the home row.\n\nRemember that every master developer was once an apprentice who wrote their first flawed program. Errors and bugs are not failures; they are the essential clues that teach you how computer systems truly operate under the hood. Dedicate yourself to daily deliberate practice, explore the inner workings of browsers and operating systems, and take pride in building software that makes the world a smarter, more connected place."
+    text: "In the modern era, software is the invisible engine powering human civilization. From the smartphones in our pockets to satellites orbiting high above the Earth, every digital system is built on logic, algorithms, and code. Programming is not merely memorizing instructions; it is the creative art of breaking large, intimidating problems into elegant, bite-sized steps that a machine can execute with absolute precision.\n\nThe story of the World Wide Web began in nineteen ninety one, when a visionary computer scientist named Tim Berners-Lee sought a better way for researchers to share information across different computers. He created the HyperText Markup Language, known as HTML, alongside the HTTP protocol and universal web addresses. For the first time in human history, anyone with a computer terminal could link thoughts, documents, and discoveries across continents in a fraction of a second. Today, almost two billion websites run on that very same foundation.\n\nTo become an exceptional software engineer, keyboard fluency is an indispensable superpower. When you master touch typing with all ten fingers, the barrier between your human thoughts and the digital screen dissolves. Your mind remains entirely free to focus on system design, database architecture, and debugging complex edge cases, rather than searching across keys with your eyes. Posture and patience are vital: keep your wrists elevated, your back straight, and let muscle memory guide your fingers across the home row keys.\n\nWriting clean code requires discipline, curiosity, and persistent daily practice. As you type through these paragraphs, observe how each finger naturally finds its assigned key without hesitation. Embrace the rhythm of software development. Every keystroke brings you closer to architecting applications, websites, and artificial intelligence systems that will shape the next generation of digital technology. Keep your concentration sharp, maintain steady breathing, and let your keyboard become a natural extension of your creative mind.\n\nRemember that every master developer was once an apprentice who wrote their first flawed program. Errors and syntax bugs are not failures; they are the essential stepping stones that teach you how computer systems truly operate under the hood. Dedicate yourself to daily deliberate practice, explore the inner workings of browsers and operating systems, and take pride in building software that makes the world a smarter, more connected place. With perseverance, speed and precision will follow naturally."
   },
   ru: {
-    langLabel: 'Русский (10-15 мин)',
+    langLabel: 'Русский (Part 2 / 2-Qism: 10-15 мин)',
     title: 'Великая Архитектура Компьютерных Технологий и Интернета',
-    text: "В современную цифровую эпоху программное обеспечение стало невидимым двигателем человеческой цивилизации. От умных телефонов в наших карманах до космических спутников на околоземной орбите — каждая цифровая система создана на фундаменте строгой логики, алгоритмов и чистого кода. Программирование — это не просто механическое заучивание команд, а настоящее творческое искусство разделения сложных задач на простые и понятные шаги, которые компьютер выполняет с абсолютной точностью.\n\nИстория Всемирной Паутины началась в тысяча девятьсот девяносто первом году, когда британский учёный Тим Бернерс-Ли разработал способ быстрого обмена научными документами между исследовательскими центрами. Он создал язык гипертекстовой разметки HTML, сетевой протокол HTTP и систему универсальных адресов URL. Впервые в истории человечества знания, идеи и научные открытия объединились в единую мировую сеть, доступную каждому пользователю за доли секунды. Сегодня более двух миллиардов сайтов работают на этом фундаменте.\n\nДля каждого будущего инженера навык быстрой и точной печати является важнейшей суперсилой. Когда ваши пальцы свободно ориентируются на клавиатуре без необходимости смотреть на клавиши, граница между вашей мыслью и экраном исчезает. Ваш мозг полностью освобождается для проектирования архитектуры, построения баз данных и логики алгоритмов. Сидите прямо, держите пальцы на исходной позиции ФЫВА и ОЛДЖ, и позвольте мышечной памяти переносить идеи прямо в код.\n\nПомните, что каждый великий программист начинал с самых простых ошибок в коде. Ошибки — это естественные ступени профессионального роста. Регулярная практика, настойчивость и любовь к созданию полезных программ откроют перед вами двери в захватывающий мир высоких технологий."
+    text: "В современную цифровую эпоху программное обеспечение стало невидимым двигателем человеческой цивилизации. От умных телефонов в наших карманах до космических спутников на околоземной орбите — каждая цифровая система создана на фундаменте строгой логики, алгоритмов и чистого кода. Программирование — это не просто механическое заучивание команд, а настоящее творческое искусство разделения сложных задач на простые и понятные шаги, которые компьютер выполняет с абсолютной точностью.\n\nИстория Всемирной Паутины началась в тысяча девятьсот девяносто первом году, когда британский учёный Тим Бернерс-Ли разработал способ быстрого обмена научными документами между исследовательскими центрами. Он создал язык гипертекстовой разметки HTML, сетевой протокол HTTP и систему универсальных адресов URL. Впервые в истории человечества знания, идеи и научные открытия объединились в единую мировую сеть, доступную каждому пользователю за доли секунды. Сегодня более двух миллиардов сайтов работают на этом фундаменте.\n\nДля каждого будущего инженера навык быстрой и точной печати является важнейшей суперсилой. Когда ваши пальцы свободно ориентируются на клавиатуре без необходимости смотреть на клавиши, граница между вашей мыслью и экраном исчезает. Ваш мозг полностью освобождается для проектирования архитектуры, построения баз данных и логики алгоритмов. Сидите прямо, держите пальцы на исходной позиции ФЫВА и ОЛДЖ, и позвольте мышечной памяти переносить идеи прямо в код.\n\nНаписание чистого и надежного кода требует дисциплины, терпения и постоянной ежедневной практики. По мере того как вы набираете эти строки, почувствуйте уверенность в каждом нажатии клавиши. Ошибки в коде — это не поражение, а естественные ступени роста для каждого настоящего инженера. Сохраняйте высокий уровень концентрации, соблюдайте правильный ритм набора текста и стремитесь к тому, чтобы клавиатура стала продолжением вашей творческой мысли.\n\nПомните, что путь в тысячу строк кода начинается с первого правильного символа. Компьютерная индустрия постоянно развивается, и те, кто умеет быстро и безошибочно воплощать свои идеи в реальный код, ведут за собой технологический прогресс. Тренируйтесь каждый день, развивайте внимание к мельчайшим деталям синтаксиса, и вы обязательно добьетесь блестящих успехов в создании передовых цифровых продуктов будущего."
   }
 };
 
@@ -8739,24 +8743,43 @@ function calculateTypingStats({ targetText, typedText, elapsedSeconds }) {
 }
 
 /**
- * Generates interactive Typing Diagnostic Lab HTML for the workspace
+ * Generates full-width interactive 2-Part Typing Diagnostic Lab HTML
  */
-function renderTypingLabHtml(currentLang = 'en', stateLang = 'uz') {
-  const sample = TYPING_TEXTS[currentLang] || TYPING_TEXTS.en;
+function renderTypingLabHtml(currentStage = 'en', stateLang = 'uz', results = {}) {
+  const sample = TYPING_TEXTS[currentStage] || TYPING_TEXTS.en;
   const isUz = stateLang === 'uz';
+  const hasEnDone = !!results.en;
+  const hasRuDone = !!results.ru;
 
   return `
     <div class="typing-diagnostic-container" id="typing-diagnostic-container">
-      <div class="typing-header">
-        <div class="typing-badge">
-          <span>⌨️</span> ${isUz ? 'KLAVIATURA DIAGNOSTIKASI (10-15 DAQIQA — EN / RU)' : 'KEYBOARD DIAGNOSTIC (10-15 MIN — EN / RU)'}
+      <!-- 2-Part Sequential Stepper Header -->
+      <div class="typing-stepper-header">
+        <div class="typing-brand-badge">
+          <span>⌨️</span> ${isUz ? 'KLAVIATURA DIAGNOSTIKASI (2 BOSQICHLI: INGLIZ VA RUS TILLARI)' : 'KEYBOARD DIAGNOSTIC (2-PART: ENGLISH & RUSSIAN)'}
         </div>
-        <div class="typing-lang-switcher">
-          <button class="typing-lang-btn ${currentLang === 'en' ? 'active' : ''}" data-lang="en">🇬🇧 English</button>
-          <button class="typing-lang-btn ${currentLang === 'ru' ? 'active' : ''}" data-lang="ru">🇷🇺 Русский</button>
+        <div class="typing-stepper">
+          <button class="typing-step-pill ${currentStage === 'en' ? 'active' : ''} ${hasEnDone ? 'completed' : ''}" data-stage-target="en">
+            <span class="step-num">${hasEnDone ? '✓' : '1'}</span>
+            <span class="step-icon">🇬🇧</span>
+            <div class="step-meta">
+              <span class="step-title">${isUz ? '1-Qism: Ingliz Tili' : 'Part 1: English'}</span>
+              <span class="step-status">${hasEnDone ? `${results.en.wpm} WPM • ${results.en.accuracy}%` : (currentStage === 'en' ? (isUz ? 'Faol jarayon' : 'Active') : (isUz ? 'Kutilmoqda' : 'Pending'))}</span>
+            </div>
+          </button>
+          <div class="typing-stepper-divider">➔</div>
+          <button class="typing-step-pill ${currentStage === 'ru' ? 'active' : ''} ${hasRuDone ? 'completed' : ''}" data-stage-target="ru">
+            <span class="step-num">${hasRuDone ? '✓' : '2'}</span>
+            <span class="step-icon">🇷🇺</span>
+            <div class="step-meta">
+              <span class="step-title">${isUz ? '2-Qism: Rus Tili' : 'Part 2: Russian'}</span>
+              <span class="step-status">${hasRuDone ? `${results.ru.wpm} WPM • ${results.ru.accuracy}%` : (currentStage === 'ru' ? (isUz ? 'Faol jarayon' : 'Active') : (isUz ? 'Kutilmoqda' : 'Pending'))}</span>
+            </div>
+          </button>
         </div>
       </div>
 
+      <!-- Real-Time Metrics Strip -->
       <div class="typing-metrics-bar">
         <div class="metric-chip">
           <span class="metric-label">${isUz ? '⚡ Tezlik' : '⚡ Speed'}</span>
@@ -8791,26 +8814,34 @@ function renderTypingLabHtml(currentLang = 'en', stateLang = 'uz') {
         </div>
       </div>
 
+      <!-- Full-Width Sample Text Canvas with Locked Zero Horizontal Scroll -->
       <div class="typing-prompt-box">
         <div class="typing-prompt-title">
           <span>📜 ${sample.title}</span>
-          <span class="typing-hint-badge">${isUz ? 'Quyidagi matnni klaviaturaga qaramasdan yozing:' : 'Type the following text without looking at keys:'}</span>
+          <span class="typing-hint-badge">${isUz ? 'Klaviaturaga qaramasdan, barmoqlarni asosiy qatorda tutib yozing:' : 'Type without looking at keys, keeping hands on home row:'}</span>
         </div>
         <div class="typing-text-display" id="typing-text-display">
           ${sample.text.split('').map((ch, idx) => {
             if (ch === '\n') return '<br>';
-            return `<span class="char-span ${idx === 0 ? 'current' : ''}" data-idx="${idx}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+            return `<span class="char-span ${idx === 0 ? 'current' : ''}" data-idx="${idx}">${ch === ' ' ? ' ' : ch}</span>`;
           }).join('')}
         </div>
       </div>
 
+      <!-- Typing Input Box -->
       <div class="typing-input-area">
-        <textarea id="typing-input-box" class="typing-input-box" placeholder="${isUz ? 'Yozishni boshlash uchun shu yerga bosing... (Birinchi harfdan vaqt hisoblanadi)' : 'Click here and start typing... (Timer begins on first keystroke)'}" autofocus spellcheck="false"></textarea>
+        <textarea id="typing-input-box" class="typing-input-box" placeholder="${isUz ? (currentStage === 'en' ? '1-Qism (Ingliz tili): Yozishni boshlash uchun shu yerga bosing... (Birinchi harfdan vaqt boshlanadi)' : '2-Qism (Rus tili): Yozishni boshlash uchun shu yerga bosing...') : 'Click here and start typing... (Timer begins on first keystroke)'}" autofocus spellcheck="false"></textarea>
       </div>
 
+      <!-- Stage Navigation and Actions -->
       <div class="typing-actions">
-        <button id="btn-restart-typing" class="btn-typing-secondary">🔄 ${isUz ? 'Qaytadan boshlash' : 'Restart Test'}</button>
-        <button id="btn-finish-typing" class="btn-typing-primary">🏁 ${isUz ? 'Diagnostikani Baholash & Saqlash' : 'Evaluate & Save Report'}</button>
+        <button id="btn-restart-typing" class="btn-typing-secondary">🔄 ${isUz ? 'Ushbu qismni qaytadan boshlash' : 'Restart Current Part'}</button>
+        ${currentStage === 'en' ? `
+          <button id="btn-next-stage" class="btn-typing-primary">➡️ ${isUz ? "2-Qismga O'tish (Rus tili)" : 'Proceed to Part 2 (Russian)'}</button>
+        ` : `
+          <button id="btn-prev-stage" class="btn-typing-secondary">⬅️ ${isUz ? "1-Qism (Ingliz tili)" : 'Back to Part 1'}</button>
+          <button id="btn-finish-typing" class="btn-typing-primary">🏆 ${isUz ? 'Diagnostikani Yakunlash & Natija' : 'Complete Diagnostic & View Report'}</button>
+        `}
       </div>
 
       <!-- Result Modal Placeholder -->
@@ -8820,199 +8851,324 @@ function renderTypingLabHtml(currentLang = 'en', stateLang = 'uz') {
 }
 
 /**
- * Initializes interactive typing event listeners
+ * Initializes interactive typing event listeners with 2-part flow
  */
 function initTypingInteractive(container, { state, onComplete, playSound }) {
   if (!container) return;
-  let currentLang = 'en';
+  let currentStage = 'en'; // 'en' | 'ru'
   let startTime = null;
   let timerInterval = null;
   let typedText = '';
+  const results = {
+    en: state?.typingStats?.en || null,
+    ru: state?.typingStats?.ru || null
+  };
 
-  const sample = () => TYPING_TEXTS[currentLang];
-  const inputEl = container.querySelector('#typing-input-box');
-  const displayEl = container.querySelector('#typing-text-display');
-  const wpmEl = container.querySelector('#val-wpm');
-  const accEl = container.querySelector('#val-accuracy');
-  const errEl = container.querySelector('#val-errors');
-  const cpmEl = container.querySelector('#val-cpm');
-  const timeEl = container.querySelector('#val-time');
-  const progCounter = container.querySelector('#typing-progress-counter');
-  const progPercent = container.querySelector('#typing-progress-percent');
-  const progFill = container.querySelector('#typing-progress-fill');
-  const modalHost = container.querySelector('#typing-result-modal-host');
-
-  function renderChars() {
-    if (!displayEl) return;
-    const text = sample().text;
-    const typed = typedText;
-    let html = '';
-    for (let i = 0; i < text.length; i++) {
-      const ch = text[i];
-      if (ch === '\n') {
-        html += '<br>';
-        continue;
-      }
-      let cls = 'char-span';
-      if (i < typed.length) {
-        cls += typed[i] === ch ? ' correct' : ' incorrect';
-      } else if (i === typed.length) {
-        cls += ' current';
-      }
-      html += `<span class="${cls}" data-idx="${i}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
-    }
-    displayEl.innerHTML = html;
-
-    // Auto-scroll so current character stays smoothly in view
-    const currentEl = displayEl.querySelector('.char-span.current');
-    if (currentEl) {
-      currentEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
+  function getSample() {
+    return TYPING_TEXTS[currentStage];
   }
 
-  function tick() {
-    if (!startTime) return;
-    const elapsed = (Date.now() - startTime) / 1000;
-    const mins = Math.floor(elapsed / 60);
-    const secs = Math.floor(elapsed % 60);
-    if (timeEl) timeEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  function setupElements() {
+    const inputEl = container.querySelector('#typing-input-box');
+    const displayEl = container.querySelector('#typing-text-display');
+    const wpmEl = container.querySelector('#val-wpm');
+    const accEl = container.querySelector('#val-accuracy');
+    const errEl = container.querySelector('#val-errors');
+    const cpmEl = container.querySelector('#val-cpm');
+    const timeEl = container.querySelector('#val-time');
+    const progCounter = container.querySelector('#typing-progress-counter');
+    const progPercent = container.querySelector('#typing-progress-percent');
+    const progFill = container.querySelector('#typing-progress-fill');
+    const modalHost = container.querySelector('#typing-result-modal-host');
 
-    const stats = calculateTypingStats({
-      targetText: sample().text,
-      typedText,
-      elapsedSeconds: elapsed
+    function renderChars() {
+      if (!displayEl) return;
+      const text = getSample().text;
+      const typed = typedText;
+      let html = '';
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '\n') {
+          html += '<br>';
+          continue;
+        }
+        let cls = 'char-span';
+        if (i < typed.length) {
+          cls += typed[i] === ch ? ' correct' : ' incorrect';
+        } else if (i === typed.length) {
+          cls += ' current';
+        }
+        html += `<span class="${cls}" data-idx="${i}">${ch === ' ' ? ' ' : ch}</span>`;
+      }
+      displayEl.innerHTML = html;
+
+      // Safe VERTICAL-ONLY scrolling to keep current character in view without horizontal left-clipping
+      if (typed.length === 0) {
+        displayEl.scrollTop = 0;
+      } else {
+        const currentEl = displayEl.querySelector('.char-span.current');
+        if (currentEl) {
+          const currentRect = currentEl.getBoundingClientRect();
+          const displayRect = displayEl.getBoundingClientRect();
+          const relativeTop = currentRect.top - displayRect.top;
+          if (relativeTop < 25 || relativeTop > displayRect.height - 65) {
+            displayEl.scrollTop += Math.round(relativeTop - (displayRect.height / 3));
+          }
+        }
+      }
+    }
+
+    function tick() {
+      if (!startTime) return;
+      const elapsed = (Date.now() - startTime) / 1000;
+      const mins = Math.floor(elapsed / 60);
+      const secs = Math.floor(elapsed % 60);
+      if (timeEl) timeEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+      const stats = calculateTypingStats({
+        targetText: getSample().text,
+        typedText,
+        elapsedSeconds: elapsed
+      });
+
+      if (wpmEl) wpmEl.innerHTML = `${stats.wpm} <small>WPM</small>`;
+      if (accEl) accEl.innerHTML = `${stats.accuracy}<small>%</small>`;
+      if (errEl) errEl.textContent = stats.errors;
+      if (cpmEl) cpmEl.innerHTML = `${stats.cpm} <small>CPM</small>`;
+      if (progCounter) progCounter.textContent = `${stats.totalTyped} / ${stats.targetLength} ${state?.lang === 'uz' ? 'belgi' : 'chars'}`;
+      if (progPercent) progPercent.textContent = `${stats.progressPercent}%`;
+      if (progFill) progFill.style.width = `${stats.progressPercent}%`;
+
+      if (stats.isFinished) {
+        clearInterval(timerInterval);
+        if (currentStage === 'en') {
+          results.en = stats;
+          showTransitionPrompt();
+        } else {
+          results.ru = stats;
+          showDualCertificate();
+        }
+      }
+    }
+
+    inputEl?.addEventListener('input', () => {
+      if (!startTime && inputEl.value.length > 0) {
+        startTime = Date.now();
+        timerInterval = setInterval(tick, 250);
+      }
+      typedText = inputEl.value;
+      renderChars();
+      tick();
     });
 
-    if (wpmEl) wpmEl.innerHTML = `${stats.wpm} <small>WPM</small>`;
-    if (accEl) accEl.innerHTML = `${stats.accuracy}<small>%</small>`;
-    if (errEl) errEl.textContent = stats.errors;
-    if (cpmEl) cpmEl.innerHTML = `${stats.cpm} <small>CPM</small>`;
-    if (progCounter) progCounter.textContent = `${stats.totalTyped} / ${stats.targetLength} ${state?.lang === 'uz' ? 'belgi' : 'chars'}`;
-    if (progPercent) progPercent.textContent = `${stats.progressPercent}%`;
-    if (progFill) progFill.style.width = `${stats.progressPercent}%`;
-
-    if (stats.isFinished) {
+    function resetCurrentStage() {
       clearInterval(timerInterval);
-      showCertificate(stats);
+      startTime = null;
+      typedText = '';
+      if (inputEl) {
+        inputEl.value = '';
+        inputEl.focus();
+      }
+      renderChars();
+      if (wpmEl) wpmEl.innerHTML = '0 <small>WPM</small>';
+      if (accEl) accEl.innerHTML = '100<small>%</small>';
+      if (errEl) errEl.textContent = '0';
+      if (cpmEl) cpmEl.innerHTML = '0 <small>CPM</small>';
+      if (timeEl) timeEl.textContent = '00:00';
+      if (progCounter) progCounter.textContent = `0 / ${getSample().text.length} ${state?.lang === 'uz' ? 'belgi' : 'chars'}`;
+      if (progPercent) progPercent.textContent = '0%';
+      if (progFill) progFill.style.width = '0%';
+      if (modalHost) modalHost.innerHTML = '';
     }
+
+    container.querySelector('#btn-restart-typing')?.addEventListener('click', () => {
+      playSound?.('click', true);
+      resetCurrentStage();
+    });
+
+    // Proceed to Part 2 (Russian)
+    container.querySelector('#btn-next-stage')?.addEventListener('click', () => {
+      playSound?.('click', true);
+      const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
+      results.en = calculateTypingStats({
+        targetText: TYPING_TEXTS.en.text,
+        typedText: typedText || (results.en?.typedText || ''),
+        elapsedSeconds: elapsed
+      });
+      switchStage('ru');
+    });
+
+    // Back to Part 1 (English)
+    container.querySelector('#btn-prev-stage')?.addEventListener('click', () => {
+      playSound?.('click', true);
+      const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
+      results.ru = calculateTypingStats({
+        targetText: TYPING_TEXTS.ru.text,
+        typedText: typedText || (results.ru?.typedText || ''),
+        elapsedSeconds: elapsed
+      });
+      switchStage('en');
+    });
+
+    // Finish Diagnostic & Show Dual Certificate
+    container.querySelector('#btn-finish-typing')?.addEventListener('click', () => {
+      playSound?.('click', true);
+      const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
+      results.ru = calculateTypingStats({
+        targetText: TYPING_TEXTS.ru.text,
+        typedText: typedText || (results.ru?.typedText || ''),
+        elapsedSeconds: elapsed
+      });
+      showDualCertificate();
+    });
+
+    // Direct Stepper Pill Navigation
+    container.querySelectorAll('.typing-step-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const target = pill.getAttribute('data-stage-target');
+        if (target && target !== currentStage) {
+          playSound?.('click', true);
+          const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
+          results[currentStage] = calculateTypingStats({
+            targetText: getSample().text,
+            typedText,
+            elapsedSeconds: elapsed
+          });
+          switchStage(target);
+        }
+      });
+    });
+
+    function showTransitionPrompt() {
+      playSound?.('success', true);
+      const isUz = (state?.lang || 'uz') === 'uz';
+      if (modalHost) {
+        modalHost.innerHTML = `
+          <div class="modal-overlay" style="z-index: 99999;">
+            <div class="modal-card" style="max-width: 480px; text-align: center; border: 2px solid #38bdf8;">
+              <div style="font-size: 48px; margin-bottom: 12px;">🇬🇧 ➔ 🇷🇺</div>
+              <h3 style="color: #38bdf8; margin: 0 0 10px 0;">${isUz ? "1-Qism Yakunlandi!" : 'Part 1 Completed!'}</h3>
+              <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+                ${isUz 
+                  ? `Ingliz tili klaviaturasi sinovi yakunlandi: <strong>${results.en.wpm} WPM</strong> va <strong>${results.en.accuracy}%</strong> aniqlik! Endi 2-Qism: Rus tili klaviaturasi sinoviga o'tamiz.`
+                  : `English keyboard test complete: <strong>${results.en.wpm} WPM</strong> and <strong>${results.en.accuracy}%</strong> accuracy! Now proceeding to Part 2: Russian keyboard test.`}
+              </p>
+              <div class="modal-actions" style="margin-top: 20px; display: flex; justify-content: center; gap: 12px;">
+                <button id="btn-modal-start-ru" class="btn-modal btn-modal-primary" style="padding: 12px 24px; font-weight: 700;">
+                  ➡️ ${isUz ? "2-Qismga O'tish (Rus tili)" : 'Proceed to Russian Test'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        modalHost.querySelector('#btn-modal-start-ru')?.addEventListener('click', () => {
+          modalHost.innerHTML = '';
+          switchStage('ru');
+        });
+      }
+    }
+
+    function showDualCertificate() {
+      playSound?.('success', true);
+      const isUz = (state?.lang || 'uz') === 'uz';
+      const enStats = results.en || { wpm: 0, cpm: 0, accuracy: 0, errors: 0, elapsedSeconds: 0, grade: 'Pending' };
+      const ruStats = results.ru || { wpm: 0, cpm: 0, accuracy: 0, errors: 0, elapsedSeconds: 0, grade: 'Pending' };
+
+      const avgWpm = Math.round((enStats.wpm + ruStats.wpm) / 2);
+      const avgAcc = Math.round((enStats.accuracy + ruStats.accuracy) / 2);
+
+      let teacherNote = isUz
+        ? `O'quvchi har ikki klaviatura (Ingliz va Rus) tartibida testdan o'tdi. O'rtacha tezlik: ${avgWpm} WPM, aniqlik: ${avgAcc}%. Dasturlash kursining HTML/CSS amaliyotiga to'liq tayyor!`
+        : `Student completed dual keyboard assessment (EN/RU). Average velocity: ${avgWpm} WPM, accuracy: ${avgAcc}%. Fully prepared for HTML/CSS syntax implementation!`;
+
+      if (modalHost) {
+        modalHost.innerHTML = `
+          <div class="modal-overlay" style="z-index: 99999;">
+            <div class="modal-card" style="max-width: 620px; text-align: center; border: 2px solid #38bdf8; background: #0f172a;">
+              <div style="font-size: 48px; margin-bottom: 8px;">🏆</div>
+              <h3 style="color: #38bdf8; margin: 0 0 6px 0; font-size: 20px;">${isUz ? 'IKKI TILLI KLAVIATURA DIAGNOSTIKA SERTIFIKATI' : 'DUAL-LANGUAGE KEYBOARD CERTIFICATE'}</h3>
+              <p style="color: #94a3b8; font-size: 13px; margin: 0 0 16px 0;">${isUz ? "O'quvchining Ingliz va Rus tillaridagi barmoq tezligi va aniqlik xulosasi" : 'Student typing velocity and accuracy report in English and Russian'}</p>
+
+              <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 16px; text-align: left;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #334155; padding-bottom: 8px;">
+                  <span style="color: #94a3b8;">${isUz ? "O'quvchi:" : 'Student:'}</span>
+                  <strong style="color: #ffffff; font-size: 15px;">${state?.studentName || 'Code Cadet'} (${state?.shift || '1-Smena'})</strong>
+                </div>
+
+                <!-- Dual Columns: EN vs RU -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+                  <!-- English Card -->
+                  <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #38bdf8; border-radius: 10px; padding: 12px;">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                      <span style="font-size: 18px;">🇬🇧</span>
+                      <strong style="color: #38bdf8; font-size: 13px;">${isUz ? 'Ingliz Tili' : 'English Test'}</strong>
+                    </div>
+                    <div style="font-size: 22px; font-weight: 800; color: #22c55e;">${enStats.wpm} <small style="font-size: 12px; color: #94a3b8;">WPM</small></div>
+                    <div style="font-size: 12px; color: #eab308; margin-top: 2px;">${isUz ? 'Aniqlik:' : 'Accuracy:'} <strong>${enStats.accuracy}%</strong></div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">${isUz ? 'Xatolar:' : 'Errors:'} <strong style="color: #f43f5e;">${enStats.errors}</strong></div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">${enStats.totalTyped} / ${enStats.targetLength} chars (${enStats.elapsedSeconds}s)</div>
+                  </div>
+
+                  <!-- Russian Card -->
+                  <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #a855f7; border-radius: 10px; padding: 12px;">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                      <span style="font-size: 18px;">🇷🇺</span>
+                      <strong style="color: #c084fc; font-size: 13px;">${isUz ? 'Rus Tili' : 'Russian Test'}</strong>
+                    </div>
+                    <div style="font-size: 22px; font-weight: 800; color: #22c55e;">${ruStats.wpm} <small style="font-size: 12px; color: #94a3b8;">WPM</small></div>
+                    <div style="font-size: 12px; color: #eab308; margin-top: 2px;">${isUz ? 'Aniqlik:' : 'Accuracy:'} <strong>${ruStats.accuracy}%</strong></div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">${isUz ? 'Xatolar:' : 'Errors:'} <strong style="color: #f43f5e;">${ruStats.errors}</strong></div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">${ruStats.totalTyped} / ${ruStats.targetLength} chars (${ruStats.elapsedSeconds}s)</div>
+                  </div>
+                </div>
+
+                <div style="border-top: 1px dashed #334155; padding-top: 10px;">
+                  <span style="color: #94a3b8; font-size: 12px;">${isUz ? "O'qituvchi xulosasi:" : 'Teacher Assessment:'}</span>
+                  <p style="color: #f1f5f9; font-weight: 600; margin: 4px 0 0 0; font-size: 13px; line-height: 1.5;">${teacherNote}</p>
+                </div>
+              </div>
+
+              <div class="modal-actions" style="display: flex; gap: 12px; justify-content: center;">
+                <button id="btn-close-cert" class="btn-modal btn-modal-secondary">${isUz ? 'Qayta topshirish' : 'Retry Test'}</button>
+                <button id="btn-save-cert" class="btn-modal btn-modal-primary" style="background: linear-gradient(135deg, #0284c7, #2563eb); font-weight: 700;">💾 ${isUz ? 'Natijani Tasdiqlash & Saqlash' : 'Confirm & Save Report'}</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        modalHost.querySelector('#btn-close-cert')?.addEventListener('click', () => {
+          modalHost.innerHTML = '';
+        });
+
+        modalHost.querySelector('#btn-save-cert')?.addEventListener('click', () => {
+          modalHost.innerHTML = '';
+          const combined = {
+            en: enStats,
+            ru: ruStats,
+            avgWpm,
+            avgAccuracy: avgAcc,
+            passed: true,
+            status: 'completed',
+            completedAt: new Date().toISOString()
+          };
+          if (onComplete) onComplete(combined);
+        });
+      }
+    }
+
+    renderChars();
   }
 
-  inputEl?.addEventListener('input', () => {
-    if (!startTime && inputEl.value.length > 0) {
-      startTime = Date.now();
-      timerInterval = setInterval(tick, 250);
-    }
-    typedText = inputEl.value;
-    renderChars();
-    tick();
-  });
-
-  // Switch languages
-  container.querySelectorAll('.typing-lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      currentLang = lang;
-      container.querySelectorAll('.typing-lang-btn').forEach(b => b.classList.toggle('active', b === btn));
-      reset();
-    });
-  });
-
-  function reset() {
+  function switchStage(stage) {
+    currentStage = stage;
     clearInterval(timerInterval);
     startTime = null;
     typedText = '';
-    if (inputEl) inputEl.value = '';
-    renderChars();
-    if (wpmEl) wpmEl.innerHTML = '0 <small>WPM</small>';
-    if (accEl) accEl.innerHTML = '100<small>%</small>';
-    if (errEl) errEl.textContent = '0';
-    if (cpmEl) cpmEl.innerHTML = '0 <small>CPM</small>';
-    if (timeEl) timeEl.textContent = '00:00';
-    if (progCounter) progCounter.textContent = `0 / ${sample().text.length} ${state?.lang === 'uz' ? 'belgi' : 'chars'}`;
-    if (progPercent) progPercent.textContent = '0%';
-    if (progFill) progFill.style.width = '0%';
-    if (modalHost) modalHost.innerHTML = '';
+    container.innerHTML = renderTypingLabHtml(currentStage, state?.lang || 'uz', results);
+    setupElements();
   }
 
-  container.querySelector('#btn-restart-typing')?.addEventListener('click', reset);
-
-  container.querySelector('#btn-finish-typing')?.addEventListener('click', () => {
-    const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
-    clearInterval(timerInterval);
-    const stats = calculateTypingStats({
-      targetText: sample().text,
-      typedText,
-      elapsedSeconds: elapsed
-    });
-    showCertificate(stats);
-  });
-
-  function showCertificate(stats) {
-    if (playSound) playSound('success', true);
-    const isUz = (state?.lang || 'uz') === 'uz';
-    const langName = currentLang === 'en' ? 'English (10-15 min)' : 'Русский (10-15 мин)';
-    const feedback = isUz ? stats.feedbackUz : (currentLang === 'ru' ? stats.feedbackRu : stats.feedbackEn);
-
-    if (modalHost) {
-      modalHost.innerHTML = `
-        <div class="modal-overlay" style="z-index: 99999;">
-          <div class="modal-card" style="max-width: 520px; text-align: center;">
-            <div class="modal-icon" style="font-size: 48px;">🏆</div>
-            <h3 class="modal-title" style="color: #38bdf8;">${isUz ? 'KLAVIATURA DIAGNOSTIKA NATIJASI' : 'KEYBOARD DIAGNOSTIC REPORT'}</h3>
-            <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 18px; margin: 16px 0; text-align: left;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "O'quvchi:" : 'Student:'}</span>
-                <strong style="color: #ffffff;">${state?.studentName || 'Code Cadet'} (${state?.shift || '1-Smena'})</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Sinov tili:" : 'Language:'}</span>
-                <strong style="color: #38bdf8;">${langName}</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Yozish tezligi:" : 'Speed:'}</span>
-                <strong style="color: #22c55e; font-size: 18px;">${stats.wpm} WPM (${stats.cpm} CPM)</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Aniqlik darajasi:" : 'Accuracy:'}</span>
-                <strong style="color: #eab308; font-size: 18px;">${stats.accuracy}%</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Yozilgan hajm:" : 'Typed Volume:'}</span>
-                <strong style="color: #38bdf8;">${stats.totalTyped} / ${stats.targetLength} (${stats.progressPercent}%)</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Xatolar:" : 'Errors:'}</span>
-                <strong style="color: #f43f5e;">${stats.errors} ta</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94a3b8;">${isUz ? "Sarflangan vaqt:" : 'Time:'}</span>
-                <strong style="color: #ffffff;">${stats.elapsedSeconds}s</strong>
-              </div>
-              <div style="border-top: 1px dashed #334155; margin-top: 10px; padding-top: 10px;">
-                <span style="color: #94a3b8; font-size: 12px;">${isUz ? "O'qituvchi xulosasi:" : 'Teacher Assessment:'}</span>
-                <p style="color: #f1f5f9; font-weight: 700; margin: 4px 0 0 0; font-size: 13px;">${feedback}</p>
-              </div>
-            </div>
-            <div class="modal-actions" style="display: flex; gap: 12px; justify-content: center;">
-              <button id="btn-close-cert" class="btn-modal btn-modal-secondary">${isUz ? 'Yopish' : 'Close'}</button>
-              <button id="btn-save-cert" class="btn-modal btn-modal-primary">💾 ${isUz ? 'Natijani Tasdiqlash' : 'Confirm & Save'}</button>
-            </div>
-          </div>
-        </div>
-      `;
-
-      modalHost.querySelector('#btn-close-cert')?.addEventListener('click', () => {
-        modalHost.innerHTML = '';
-      });
-
-      modalHost.querySelector('#btn-save-cert')?.addEventListener('click', () => {
-        modalHost.innerHTML = '';
-        if (onComplete) onComplete(stats);
-      });
-    }
-  }
-
-  renderChars();
+  setupElements();
 }
 
 
@@ -14761,104 +14917,111 @@ function renderLessonView() {
     <!-- STEP 2: Step-by-Step Anatomy (Only the pieces of code for this theme & their exact visual results) -->
     ${renderAnatomySection(lesson)}
 
-    <!-- HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor) -->
-    <div class="mission-spotlight-card">
-      <div class="mission-spotlight-header">
-        <div class="mission-spotlight-badge">
-          <span class="mission-pulse-dot"></span>
-          <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
-        </div>
-        <div class="mission-quick-actions">
-          <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
-            🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
-          </button>
-          <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
-            ${escapeHtml(t('hintBtn', state.lang))}
-          </button>
-          <button id="btn-verify-mission" class="btn-mission-verify" title="${escapeHtml(t('checkCodeBtn', state.lang))}">
-            ${escapeHtml(t('checkCodeBtn', state.lang))}
-          </button>
-        </div>
+    ${lesson.id === 'theme-0-typing' ? `
+      <!-- Dedicated Full-Width Typing Diagnostic Lab (No Left Code Editor) -->
+      <div class="typing-fullwidth-stage" id="typing-fullwidth-stage">
+        <!-- Loaded by initTypingInteractive -->
       </div>
-      <div class="mission-spotlight-body">
-        <div class="mission-spotlight-text">
-          ${formatProse(localize(lesson.challenge.mission, state.lang))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
-    <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
-      <!-- Left: Code Studio -->
-      <div class="pane-card pane-card-editor" id="pane-card-editor">
-        <div class="pane-header">
-          <div class="pane-title">
-            <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
+    ` : `
+      <!-- HIGH-VISIBILITY MISSION SPOTLIGHT (Directly Above Code Editor) -->
+      <div class="mission-spotlight-card">
+        <div class="mission-spotlight-header">
+          <div class="mission-spotlight-badge">
+            <span class="mission-pulse-dot"></span>
+            <span class="mission-badge-text">🎯 ${escapeHtml(t('missionTag', state.lang)).toUpperCase()}</span>
           </div>
-          <div class="pane-tools">
-            <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
-            <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
-            <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
-            <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
-            <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
-            <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
+          <div class="mission-quick-actions">
+            <button id="btn-read-mission" class="btn-mission-read" title="${escapeHtml(t('readAloudBtn', state.lang))}">
+              🔊 ${escapeHtml(t('readAloudBtn', state.lang))}
+            </button>
+            <button id="btn-hint" class="btn-mission-hint" title="${escapeHtml(t('hintBtn', state.lang))}">
+              ${escapeHtml(t('hintBtn', state.lang))}
+            </button>
+            <button id="btn-verify-mission" class="btn-mission-verify" title="${escapeHtml(t('checkCodeBtn', state.lang))}">
+              ${escapeHtml(t('checkCodeBtn', state.lang))}
+            </button>
           </div>
         </div>
+        <div class="mission-spotlight-body">
+          <div class="mission-spotlight-text">
+            ${formatProse(localize(lesson.challenge.mission, state.lang))}
+          </div>
+        </div>
+      </div>
 
-        <!-- Quick Tag Insertion Bar -->
-        ${lesson.quickTags && lesson.quickTags.length > 0 ? `
-          <div class="editor-quick-tags-bar">
-            <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
-            <div class="quick-tags-chips">
-              ${lesson.quickTags.map(tag => `
-                <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
-              `).join('')}
+      <!-- Editor & Live Preview Split with Dual Fullscreen & Resizer -->
+      <div class="editor-stage-split ${state.panesSwapped ? 'panes-swapped' : ''}" id="editor-stage-split">
+        <!-- Left: Code Studio -->
+        <div class="pane-card pane-card-editor" id="pane-card-editor">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
+            </div>
+            <div class="pane-tools">
+              <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
+              <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
+              <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
+              <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
+              <button id="btn-reset-code" class="btn-tool" title="${escapeHtml(t('resetCode', state.lang))}">${escapeHtml(t('resetCode', state.lang))}</button>
+              <button id="btn-copy-code" class="btn-tool" title="${escapeHtml(t('copyBtn', state.lang))}">${escapeHtml(t('copyBtn', state.lang))}</button>
             </div>
           </div>
-        ` : ''}
 
-        <!-- Code Focus Banner -->
-        <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
-          <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
-          <span class="focus-banner-text">
-            ${state.editorViewMode !== 'full' 
-              ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
-              : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
-          </span>
-        </div>
+          <!-- Quick Tag Insertion Bar -->
+          ${lesson.quickTags && lesson.quickTags.length > 0 ? `
+            <div class="editor-quick-tags-bar">
+              <span class="quick-tags-label">🏷️ ${escapeHtml(t('tagsLabel', state.lang))}</span>
+              <div class="quick-tags-chips">
+                ${lesson.quickTags.map(tag => `
+                  <button class="tag-insert-chip" data-insert="${escapeHtml(tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tag)}</button>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
 
-        <!-- Code Editor -->
-        <div class="code-editor-wrapper">
-          <div id="line-numbers" class="editor-line-numbers">1</div>
-          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
-        </div>
-      </div>
-
-      <!-- Draggable Pane Resizer Divider -->
-      <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
-        <div class="resizer-knob"></div>
-      </div>
-
-      <!-- Right: Preview Stage -->
-      <div class="pane-card pane-card-preview" id="pane-card-preview">
-        <div class="pane-header">
-          <div class="pane-title">
-            <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
+          <!-- Code Focus Banner -->
+          <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
+            <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
+            <span class="focus-banner-text">
+              ${state.editorViewMode !== 'full' 
+                ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+                : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
+            </span>
           </div>
-          <div class="preview-tabs">
-            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
-            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
-            <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
-            <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
-            <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+
+          <!-- Code Editor -->
+          <div class="code-editor-wrapper">
+            <div id="line-numbers" class="editor-line-numbers">1</div>
+            <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
           </div>
         </div>
 
-        <div id="preview-container" class="preview-wrapper">
-          ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
+        <!-- Draggable Pane Resizer Divider -->
+        <div class="pane-resizer" id="pane-resizer" title="${state.lang === 'uz' ? 'O\'lchamni o\'zgartirish uchun suring (Drag to resize)' : 'Drag to resize panes'}">
+          <div class="resizer-knob"></div>
+        </div>
+
+        <!-- Right: Preview Stage -->
+        <div class="pane-card pane-card-preview" id="pane-card-preview">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
+            </div>
+            <div class="preview-tabs">
+              <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+              <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
+              <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
+              <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+              <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+            </div>
+          </div>
+
+          <div id="preview-container" class="preview-wrapper">
+            ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
+          </div>
         </div>
       </div>
-    </div>
+    `}
   `;
 
   elements.workspaceStage.classList.toggle('focus-ide-mode', !!state.focusIdeMode);
@@ -15124,18 +15287,20 @@ function setupLessonListeners(lesson) {
 
 
   // Preview Tabs
-  setupPreviewTabs(lesson);
+  if (lesson.id !== 'theme-0-typing') {
+    setupPreviewTabs(lesson);
+  }
 
-  // Special Interactive Mount for Theme 0: Typing Diagnostic
+  // Special Interactive Mount for Theme 0: Typing Diagnostic (Full-Width, 2-Part Flow)
   if (lesson.id === 'theme-0-typing') {
-    const previewStage = document.getElementById('live-preview-stage') || document.querySelector('.pane-card-preview');
-    if (previewStage) {
-      previewStage.innerHTML = renderTypingLabHtml('en', state.lang);
-      initTypingInteractive(previewStage, {
+    const stageEl = document.getElementById('typing-fullwidth-stage');
+    if (stageEl) {
+      stageEl.innerHTML = renderTypingLabHtml('en', state.lang, state.typingStats || {});
+      initTypingInteractive(stageEl, {
         state,
         playSound,
-        onComplete: (stats) => {
-          state.typingStats = stats;
+        onComplete: (combinedStats) => {
+          state.typingStats = combinedStats;
           saveStateToStorage(state);
           currentCode = localize(lesson.targetCode, state.lang);
           if (elements.codeEditor) elements.codeEditor.value = currentCode;

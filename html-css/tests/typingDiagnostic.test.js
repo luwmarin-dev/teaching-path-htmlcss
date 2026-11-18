@@ -37,7 +37,7 @@ test('Typing Diagnostic Engine Unit Tests', async (t) => {
   await t.test('renderTypingLabHtml generates complete interactive UI markup', () => {
     const htmlUz = renderTypingLabHtml('en', 'uz');
     assert.ok(htmlUz.includes('KLAVIATURA DIAGNOSTIKASI'));
-    assert.ok(htmlUz.includes('typing-lang-btn'));
+    assert.ok(htmlUz.includes('typing-step-pill'));
     assert.ok(htmlUz.includes('typing-input-box'));
 
     const htmlRu = renderTypingLabHtml('ru', 'en');

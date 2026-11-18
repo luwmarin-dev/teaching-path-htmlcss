@@ -3792,17 +3792,141 @@ body.fullscreen-ide-body .sidebar {
 }
 
 /* --- Typing Diagnostic Lab Styles --- */
+.typing-fullwidth-stage {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
 .typing-diagnostic-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  max-width: 960px;
+  padding: 26px 30px;
+  width: 100%;
+  max-width: 1040px;
   margin: 0 auto;
+  box-sizing: border-box;
   box-shadow: var(--shadow-card);
+}
+
+.typing-stepper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 18px;
+}
+
+.typing-brand-badge {
+  font-size: 15px;
+  font-weight: 800;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+.typing-stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.typing-step-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.typing-step-pill:hover {
+  border-color: #38bdf8;
+  background: rgba(30, 41, 59, 0.85);
+}
+
+.typing-step-pill.active {
+  border-color: #38bdf8;
+  background: rgba(2, 132, 199, 0.2);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.typing-step-pill.completed {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.typing-step-pill .step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #334155;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.typing-step-pill.active .step-num {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.typing-step-pill.completed .step-num {
+  background: #22c55e;
+  color: #0f172a;
+}
+
+.typing-step-pill .step-icon {
+  font-size: 16px;
+}
+
+.typing-step-pill .step-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.typing-step-pill .step-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.typing-step-pill .step-status {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.typing-step-pill.active .step-status {
+  color: #38bdf8;
+}
+
+.typing-step-pill.completed .step-status {
+  color: #4ade80;
+}
+
+.typing-stepper-divider {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .typing-header {
@@ -3950,19 +4074,26 @@ body.fullscreen-ide-body .sidebar {
 }
 
 .typing-text-display {
+  position: relative;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.85;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   color: #cbd5e1;
   user-select: none;
-  min-height: 140px;
-  max-height: 250px;
+  min-height: 160px;
+  max-height: 290px;
   overflow-y: auto;
-  padding: 16px 20px;
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(51, 65, 85, 0.5);
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: break-word;
+  padding: 22px 26px;
+  background: rgba(15, 23, 42, 0.65);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .char-span.correct {
@@ -3991,11 +4122,14 @@ body.fullscreen-ide-body .sidebar {
 
 .typing-input-area {
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .typing-input-box {
   width: 100%;
-  min-height: 110px;
+  box-sizing: border-box;
+  min-height: 130px;
   background: #0d1117;
   border: 2px solid #38bdf8;
   border-radius: var(--radius-md);
@@ -4003,7 +4137,7 @@ body.fullscreen-ide-body .sidebar {
   font-family: 'JetBrains Mono', monospace;
   font-size: 18px;
   line-height: 1.6;
-  padding: 14px 18px;
+  padding: 16px 20px;
   resize: vertical;
   outline: none;
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
