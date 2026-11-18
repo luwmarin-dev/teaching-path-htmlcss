@@ -155,6 +155,31 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.strictEqual(scaffoldVisibleClosed, false, 'Scaffolding box should collapse when toggled again');
   });
 
+  await t.test('Target Demo Interactive Physics Sliders Lab allows tuning speed, jump and altitude', async () => {
+    // Check that sliders are visible in Target Demo
+    const slidersDrawer = await page.locator('#target-sliders-drawer').isVisible();
+    assert.strictEqual(slidersDrawer, true, 'Physics sliders drawer must be visible');
+
+    // Change speed slider
+    await page.fill('#slider-target-speed', '5.2');
+    await page.locator('#slider-target-speed').dispatchEvent('input');
+    const speedVal = await page.textContent('#val-target-speed');
+    assert.match(speedVal, /5\.2/);
+
+    // Change Y elevation slider (Dino floats)
+    await page.fill('#slider-target-y', '35');
+    await page.locator('#slider-target-y').dispatchEvent('input');
+    const yVal = await page.textContent('#val-target-y');
+    assert.match(yVal, /35/);
+
+    // Reset sliders
+    await page.locator('.target-sliders-drawer button:has-text("Standartga Qaytarish")').click();
+    const speedValReset = await page.textContent('#val-target-speed');
+    assert.match(speedValReset, /3\.4/);
+    const yValReset = await page.textContent('#val-target-y');
+    assert.match(yValReset, /0/);
+  });
+
   await t.test('Step 3 is protected by guard until Step 2 code is correctly implemented', async () => {
     // Direct button click on step 3 should remain disabled
     const step3Disabled = await page.locator('#step-nav-3').isDisabled();
@@ -164,7 +189,34 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     const nextBtnDisabled = await page.locator('#btn-next-step').isDisabled();
     assert.strictEqual(nextBtnDisabled, true, 'Next step button must be locked on Step 2 before passing');
 
-    // Submitting valid Step 2 code
+    // Test custom experimental values (e.g., this.y = 20, this.width = 49)
+    const experimentalCode = `class Dino {
+      constructor() {
+        this.width = 49;
+        this.height = 48;
+        this.x = 60;
+        this.y = 20;
+        this.isJumping = false;
+        this.isDucking = false;
+      }
+    }`;
+    await page.locator('#student-code-editor').fill(experimentalCode);
+    await page.locator('#student-code-editor').dispatchEvent('input');
+
+    // Verify HUD telemetry immediately reflects custom values:
+    const hitboxHud = await page.textContent('#tel-hitbox');
+    assert.match(hitboxHud, /49 x 48/);
+    const statusHud = await page.textContent('#tel-status');
+    assert.match(statusHud, /Havoda.*20px/);
+
+    // Running code with y = 20 shows helpful diagnostic feedback without passing Step 2
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+    const errorFb = await page.locator('.validation-feedback-card.error').isVisible();
+    assert.strictEqual(errorFb, true, 'Custom experimental y must show test diagnostic without unlocking step');
+    const fbText = await page.textContent('.validation-feedback-card.error');
+    assert.match(fbText, /SINAYOTGANINGIZ AJOYIB/);
+
+    // Now submitting standard valid Step 2 code
     const step2Code = `class Dino {
       constructor() {
         this.width = 44;

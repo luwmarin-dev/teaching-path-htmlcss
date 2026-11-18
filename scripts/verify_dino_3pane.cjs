@@ -12,10 +12,16 @@ const path = require('path');
 
   const artDir = 'C:/Users/adam/.gemini/antigravity/brain/4ebe4416-8efa-4418-917d-b02799c6ed99';
 
-  // 1. Initial State Screenshot with Goal Showcase & Playable Target Arena
-  // Click target demo play button to show active running state
+  // 1. Initial State Screenshot with Goal Showcase & Playable Target Arena & Sliders
+  // Adjust speed and altitude slider to test interactive sliders
+  await page.fill('#slider-target-speed', '4.2');
+  await page.locator('#slider-target-speed').dispatchEvent('input');
+  await page.fill('#slider-target-y', '20');
+  await page.locator('#slider-target-y').dispatchEvent('input');
   await page.click('.target-play-btn');
-  await page.waitForTimeout(800); // let target demo run with dino, cacti, clouds
+  await page.waitForTimeout(600); // let target demo run with dino, cacti, clouds
+  await page.locator('#target-demo-arena').screenshot({ path: path.join(artDir, 'dino_5_target_sliders_lab.png') });
+  console.log('Saved dino_5_target_sliders_lab.png');
   await page.screenshot({ path: path.join(artDir, 'dino_3_playable_target_arena.png') });
   console.log('Saved dino_3_playable_target_arena.png');
 
@@ -59,7 +65,15 @@ const path = require('path');
   await page.click('.hint-toggle-btn');
   await page.waitForTimeout(200);
 
-  // Step 2: Write Constructor Code
+  // Step 2.a: Test Custom Experimental Parameters (y = 25, width = 54) to verify visual reaction
+  await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 54;\n    this.height = 48;\n    this.x = 60;\n    this.y = 25;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n}\nconst dino = new Dino();`);
+  await page.locator('#student-code-editor').dispatchEvent('input');
+  await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
+  await page.waitForTimeout(300);
+  await page.locator('#right-preview-panel').screenshot({ path: path.join(artDir, 'dino_5_custom_parameters_reaction.png') });
+  console.log('Saved dino_5_custom_parameters_reaction.png');
+
+  // Step 2.b: Write Standard Constructor Code
   await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n}\nconst dino = new Dino();`);
   await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
   await page.waitForTimeout(400);

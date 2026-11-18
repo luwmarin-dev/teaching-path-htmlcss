@@ -371,6 +371,95 @@
       box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
     }
 
+    /* TARGET DEMO PHYSICS SLIDERS LAB */
+    .target-sliders-drawer {
+      background: #090e1a;
+      border-top: 1px solid #1e293b;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sliders-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sliders-drawer-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sliders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .slider-item {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slider-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .slider-val-tag {
+      font-family: monospace;
+      font-size: 11px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .slider-item input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: #334155;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .slider-item input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .slider-item input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
     /* STEP PROGRESS BAR */
     .progress-bar-card {
       background: #0f172a;
@@ -1514,6 +1603,64 @@
             <button class="build-this-btn" onclick="scrollToStepOne()">
               <span>👇 1-QADAMGA TUSHISH (O'zingiz Quring!)</span>
             </button>
+          </div>
+        </div>
+
+        <!-- FIZIKA VA PARAMETRLAR LABORATORIYASI (JONLI SLAYDERLAR) -->
+        <div class="target-sliders-drawer" id="target-sliders-drawer">
+          <div class="sliders-drawer-header">
+            <span class="sliders-drawer-title">
+              <span>🎛️ Fizika & Parametrlar Laboratoriyasi (O'zgartirib ko'ring):</span>
+            </span>
+            <button class="secondary-btn" style="padding: 3px 10px; font-size: 11px;" onclick="resetTargetSliders()">
+              <span>🔄 Standartga Qaytarish</span>
+            </button>
+          </div>
+          <div class="sliders-grid">
+            <!-- 1. Tezlik -->
+            <div class="slider-item">
+              <div class="slider-label-row">
+                <span>🏃 Tezlik (speed)</span>
+                <span class="slider-val-tag" id="val-target-speed">3.4 px/k</span>
+              </div>
+              <input type="range" id="slider-target-speed" min="1.5" max="7.5" step="0.1" value="3.4" oninput="updateTargetPhysics()">
+            </div>
+
+            <!-- 2. Sakrash Kuchi (jumpForce) -->
+            <div class="slider-item">
+              <div class="slider-label-row">
+                <span>🚀 Sakrash (jumpForce)</span>
+                <span class="slider-val-tag" id="val-target-jump">12.0 px/k</span>
+              </div>
+              <input type="range" id="slider-target-jump" min="6" max="22" step="0.5" value="12" oninput="updateTargetPhysics()">
+            </div>
+
+            <!-- 3. Gravitatsiya (gravity) -->
+            <div class="slider-item">
+              <div class="slider-label-row">
+                <span>🌍 Gravitatsiya (gravity)</span>
+                <span class="slider-val-tag" id="val-target-grav">0.60 px/k²</span>
+              </div>
+              <input type="range" id="slider-target-grav" min="0.2" max="1.4" step="0.05" value="0.6" oninput="updateTargetPhysics()">
+            </div>
+
+            <!-- 4. To'siqlar Kattaligi (scale) -->
+            <div class="slider-item">
+              <div class="slider-label-row">
+                <span>🌵 Kaktus/To'siq O'lchami</span>
+                <span class="slider-val-tag" id="val-target-scale">1.0x</span>
+              </div>
+              <input type="range" id="slider-target-scale" min="0.6" max="1.8" step="0.1" value="1.0" oninput="updateTargetPhysics()">
+            </div>
+
+            <!-- 5. Boshlang'ich Y Balandligi (y) -->
+            <div class="slider-item">
+              <div class="slider-label-row">
+                <span>📏 Boshlang'ich Y (Havoda)</span>
+                <span class="slider-val-tag" id="val-target-y">0 px</span>
+              </div>
+              <input type="range" id="slider-target-y" min="0" max="70" step="5" value="0" oninput="updateTargetPhysics()">
+            </div>
           </div>
         </div>
       </div>
@@ -2912,24 +3059,41 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
             message = "❌ 2-Qadam bajarilmadi: 'constructor()' funksiyasi yozilmadi!";
           } else {
             const inst = new exports.Dino();
+
+            // O'quvchi yozgan har qanday parametrlarni jonli brauzerga DARHOL o'rnatamiz:
+            if (typeof inst.width === 'number') liveDino.width = inst.width;
+            if (typeof inst.height === 'number') liveDino.height = inst.height;
+            if (typeof inst.x === 'number') liveDino.x = inst.x;
+            if (typeof inst.y === 'number') {
+              liveDino.y = inst.y;
+              liveDino.baseY = inst.y;
+            }
+            updateTelemetry();
+
             if (typeof inst.width !== 'number' || inst.width <= 0) {
-              message = "❌ 'this.width = 44' eni belgilanmadi yoki xato!";
+              message = "❌ 'this.width = 44' eni musbat son bo'lishi shart!";
             } else if (typeof inst.height !== 'number' || inst.height <= 0) {
-              message = "❌ 'this.height = 48' bo'yi belgilanmadi yoki xato!";
+              message = "❌ 'this.height = 48' bo'yi musbat son bo'lishi shart!";
             } else if (typeof inst.x !== 'number') {
               message = "❌ 'this.x = 60' chap koordinatasi belgilanmadi!";
             } else if (typeof inst.y !== 'number') {
               message = "❌ 'this.y = 0' yerdan balandligi belgilanmadi!";
             } else if (typeof inst.isJumping !== 'boolean') {
-              message = "❌ 'this.isJumping = false' boshlang'ich sakrash holati belgilanmadi!";
+              message = "❌ 'this.isJumping = false' boshlang'ich sakrash holati (boolean) belgilanmadi!";
             } else if (typeof inst.isDucking !== 'boolean') {
-              message = "❌ 'this.isDucking = false' boshlang'ich egilish holati belgilanmadi!";
+              message = "❌ 'this.isDucking = false' boshlang'ich egilish holati (boolean) belgilanmadi!";
+            } else if (inst.y !== 0) {
+              // O'quvchi sinash uchun boshqa Y berganda:
+              message = `🔬 SINAYOTGANINGIZ AJOYIB! O'ngdagi brauzerga qarang: siz 'this.y = ${inst.y}' berganingiz uchun dinozavr yerdan ${inst.y}px balandlikda havoda paydo bo'ldi (o'lchov chizig'i chizildi)! Lekin o'yin boshlanganda dinozavr aynan yerda turishi shart ('this.y = 0'). Endi uni 'this.y = 0' qilib to'g'rilang.`;
+              appendConsoleLog(`⚠️ Sinov: y = ${inst.y}px havoda. Standart: y = 0.`);
+            } else if (inst.width !== 44 || inst.height !== 48) {
+              message = `🔬 O'LCHAM SINAVI: Siz eni ${inst.width}px va bo'yi ${inst.height}px qildingiz. O'ngdagi brauzerda Hitbox o'lchami o'zgardi! Ammo o'yin standarti: 'this.width = 44' va 'this.height = 48' bo'lishi lozim.`;
+              appendConsoleLog(`⚠️ Sinov: ${inst.width}x${inst.height}px. Standart: 44x48px.`);
+            } else if (inst.x !== 60) {
+              message = `🔬 X-KOORDINATA SINAVI: Dinozavr ekranda x = ${inst.x} ga siljidi. Standart joylashuv: 'this.x = 60'.`;
             } else {
               isValid = true;
-              liveDino.width = inst.width;
-              liveDino.height = inst.height;
-              liveDino.x = inst.x;
-              message = `🎉 AJOYIB! Konstruktorni muvaffaqiyatli yozdingiz. Dinozavr o'lchamlari (${liveDino.width}x${liveDino.height}px) brauzerda yashil Hitbox karobkasi sifatida yerda paydo bo'ldi!`;
+              message = `🎉 AJOYIB! Konstruktorni muvaffaqiyatli yozdingiz. Dinozavr o'lchamlari (${liveDino.width}x${liveDino.height}px) brauzerda yashil Hitbox karobkasi sifatida yerda (y: 0) to'g'ri paydo bo'ldi!`;
             }
           }
         } 
@@ -3232,7 +3396,33 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
           ctx.fillStyle = this.isDucking ? '#fbbf24' : '#34d399';
           ctx.font = 'bold 10px monospace';
           ctx.fillText(this.isDucking ? 'DUCK' : 'HITBOX', this.x + 4, renderY + 16);
-          ctx.fillText(`${this.width}x${this.height}`, this.x + 4, renderY + 24);
+          ctx.fillText(`${this.width}x${this.height}`, this.x + 4, renderY + 28);
+
+          // 1. Agar Y > 0 bo'lsa (Dino havoda bo'lsa), yerdan balandlik o'lchov chizig'ini chizamiz!
+          if (this.y > 0) {
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(this.x + this.width / 2, canvas.height - 35);
+            ctx.lineTo(this.x + this.width / 2, renderY + this.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'bold 10px monospace';
+            ctx.fillText(`▲ y: ${Math.round(this.y)}px (havoda)`, this.x + this.width + 12, canvas.height - 35 - this.y / 2 + 4);
+          }
+
+          // 2. Kenglik (Width) o'lchami ko'rsatkichi
+          ctx.fillStyle = '#38bdf8';
+          ctx.font = '9px monospace';
+          ctx.fillText(`◄- ${this.width}px -►`, this.x, renderY - 4);
+
+          // 3. X-koordinata
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '9px monospace';
+          ctx.fillText(`pos(x: ${this.x})`, this.x, renderY + this.height + 14);
         } else {
           // 100% CANVAS PIXEL ART T-REX (Tik turgan yoki Egilgan!)
           ctx.fillStyle = '#f1f5f9';
@@ -3460,6 +3650,24 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
       studentEditor.addEventListener('input', () => {
         clearValidationWarning();
+
+        // 2-bosqichda o'quvchi yozayotgan o'lcham va Y balandlikni jonli o'qib brauzerda darhol ko'rsatamiz:
+        if (currentStep === 2) {
+          const text = studentEditor.value;
+          const mW = text.match(/this\.width\s*=\s*([0-9.]+)/);
+          const mH = text.match(/this\.height\s*=\s*([0-9.]+)/);
+          const mX = text.match(/this\.x\s*=\s*([0-9.]+)/);
+          const mY = text.match(/this\.y\s*=\s*([0-9.]+)/);
+
+          if (mW && !isNaN(mW[1])) liveDino.width = parseFloat(mW[1]);
+          if (mH && !isNaN(mH[1])) liveDino.height = parseFloat(mH[1]);
+          if (mX && !isNaN(mX[1])) liveDino.x = parseFloat(mX[1]);
+          if (mY && !isNaN(mY[1])) {
+            liveDino.y = parseFloat(mY[1]);
+            liveDino.baseY = parseFloat(mY[1]);
+          }
+          updateTelemetry();
+        }
       });
     }
 
@@ -3748,6 +3956,63 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       { x: 720, y: 25, speed: 0.5 }
     ];
 
+    // JONLI SLAYDERLAR FIZIKA PARAMETRLARI:
+    let targetCustomSpeed = 3.4;
+    let targetCustomJump = 12;
+    let targetCustomGrav = 0.6;
+    let targetCustomScale = 1.0;
+    let targetCustomBaseY = 0;
+
+    function updateTargetPhysics() {
+      const sSpeed = parseFloat(document.getElementById('slider-target-speed')?.value || '3.4');
+      const sJump = parseFloat(document.getElementById('slider-target-jump')?.value || '12');
+      const sGrav = parseFloat(document.getElementById('slider-target-grav')?.value || '0.6');
+      const sScale = parseFloat(document.getElementById('slider-target-scale')?.value || '1.0');
+      const sY = parseFloat(document.getElementById('slider-target-y')?.value || '0');
+
+      targetCustomSpeed = sSpeed;
+      targetCustomJump = sJump;
+      targetCustomGrav = sGrav;
+      targetCustomScale = sScale;
+      targetCustomBaseY = sY;
+
+      const elSpeed = document.getElementById('val-target-speed');
+      const elJump = document.getElementById('val-target-jump');
+      const elGrav = document.getElementById('val-target-grav');
+      const elScale = document.getElementById('val-target-scale');
+      const elY = document.getElementById('val-target-y');
+
+      if (elSpeed) elSpeed.textContent = sSpeed.toFixed(1) + ' px/k';
+      if (elJump) elJump.textContent = sJump.toFixed(1) + ' px/k';
+      if (elGrav) elGrav.textContent = sGrav.toFixed(2) + ' px/k²';
+      if (elScale) elScale.textContent = sScale.toFixed(1) + 'x';
+      if (elY) elY.textContent = sY + ' px';
+
+      targetDino.jumpForce = sJump;
+      targetDino.gravity = sGrav;
+      targetDino.baseY = sY;
+      if (!targetDino.isJumping) {
+        targetDino.y = sY;
+      }
+    }
+
+    function resetTargetSliders() {
+      const sSpeed = document.getElementById('slider-target-speed');
+      const sJump = document.getElementById('slider-target-jump');
+      const sGrav = document.getElementById('slider-target-grav');
+      const sScale = document.getElementById('slider-target-scale');
+      const sY = document.getElementById('slider-target-y');
+
+      if (sSpeed) sSpeed.value = 3.4;
+      if (sJump) sJump.value = 12;
+      if (sGrav) sGrav.value = 0.6;
+      if (sScale) sScale.value = 1.0;
+      if (sY) sY.value = 0;
+
+      updateTargetPhysics();
+      appendConsoleLog("🔄 Yakuniy o'yin slayderlari standart qiymatlarga qaytarildi.");
+    }
+
     class TargetDino {
       constructor() {
         this.standWidth = 44;
@@ -3758,6 +4023,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         this.height = this.standHeight;
         this.x = 60;
         this.y = 0;
+        this.baseY = 0;
         this.velocityY = 0;
         this.jumpForce = 12;
         this.gravity = 0.6;
@@ -3767,7 +4033,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       }
 
       jump() {
-        if (!this.isJumping && !this.isDucking && this.y === 0) {
+        if (!this.isJumping && !this.isDucking && this.y <= (this.baseY || 0)) {
           this.isJumping = true;
           this.velocityY = this.jumpForce;
           playJumpSound();
@@ -3775,7 +4041,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       }
 
       duck() {
-        if (this.y === 0 && !this.isJumping) {
+        if (this.y <= (this.baseY || 0) && !this.isJumping) {
           this.isDucking = true;
           this.width = this.duckWidth;
           this.height = this.duckHeight;
@@ -3793,13 +4059,16 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         if (this.isJumping) {
           this.y += this.velocityY;
           this.velocityY -= this.gravity;
-          if (this.y <= 0) {
-            this.y = 0;
+          if (this.y <= (this.baseY || 0)) {
+            this.y = (this.baseY || 0);
             this.isJumping = false;
             this.velocityY = 0;
           }
-        } else if (targetDemoPlaying && !targetGameOver) {
-          this.legStep = (this.legStep + 1) % 16;
+        } else {
+          this.y = (this.baseY || 0);
+          if (targetDemoPlaying && !targetGameOver) {
+            this.legStep = (this.legStep + 1) % 16;
+          }
         }
       }
 
@@ -3807,6 +4076,22 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         const renderY = targetCanvas.height - 30 - this.height - this.y;
         const px = this.x;
         const py = renderY;
+
+        // Agar Dino havoda (baseY > 0) yugurayotgan bo'lsa, o'lchov chizig'i:
+        if (this.baseY > 0) {
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(px + this.width / 2, targetCanvas.height - 30);
+          ctx.lineTo(px + this.width / 2, py + this.height);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = '#f59e0b';
+          ctx.font = 'bold 9px monospace';
+          ctx.fillText(`▲ Y: ${this.baseY}px`, px + this.width + 6, targetCanvas.height - 30 - this.baseY / 2);
+        }
 
         if (this.isDucking) {
           // Egilgan (Ducking) sprite
@@ -4020,9 +4305,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
       // 4. To'siqlar
       if (targetDemoPlaying && !targetGameOver) {
-        // Yumshoq va maroqli boshlang'ich tezlik: 3.4 px/kadr (boshlanishida bemalol sakrash/egilish mumkin)
-        // Har 100 ochkoda asta-sekin tezlashadi, maksimal chegara 5.8 px/kadr
-        const currentSpeed = 3.4 + Math.min(targetScore * 0.003, 2.4);
+        // Dinamik tezlik (laboratoriya slayderi + ochko)
+        const currentSpeed = targetCustomSpeed + Math.min(targetScore * 0.003, 2.4);
 
         targetSpawnTimer++;
         if (targetSpawnTimer >= targetNextSpawn) {
@@ -4035,16 +4319,16 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
             targetObstacles.push({
               type: 'bird',
               x: targetCanvas.width,
-              y: 35, // Havoda - egilib o'tish lozim!
-              width: 36,
-              height: 26,
+              y: Math.max(25, Math.round(35 * targetCustomScale)),
+              width: Math.round(36 * targetCustomScale),
+              height: Math.round(26 * targetCustomScale),
               speed: currentSpeed + 0.2,
               wingState: 0
             });
           } else {
             const cType = Math.floor(Math.random() * 3);
-            const w = cType === 0 ? 20 : (cType === 1 ? 26 : 56);
-            const h = cType === 0 ? 36 : (cType === 1 ? 48 : 42);
+            const w = Math.round((cType === 0 ? 20 : (cType === 1 ? 26 : 56)) * targetCustomScale);
+            const h = Math.round((cType === 0 ? 36 : (cType === 1 ? 48 : 42)) * targetCustomScale);
             targetObstacles.push({
               type: 'cactus',
               cType: cType,
