@@ -19,6 +19,7 @@ const curriculumCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modul
 const i18nCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/i18n.js'), 'utf-8'));
 const validatorCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/validator.js'), 'utf-8'));
 const codeFocusEngineCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/codeFocusEngine.js'), 'utf-8'));
+const typingDiagnosticCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/typingDiagnostic.js'), 'utf-8'));
 const stateCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/state.js'), 'utf-8'));
 const audioCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/audio.js'), 'utf-8'));
 const ambientCanvasCode = cleanModule(fs.readFileSync(path.join(rootDir, 'src/modules/ambientCanvas.js'), 'utf-8'));
@@ -53,6 +54,9 @@ const bundledJs = `/**
 
   // --- Code Focus Engine Module ---
   ${codeFocusEngineCode}
+
+  // --- Typing Diagnostic Engine ---
+  ${typingDiagnosticCode}
 
   // --- State Module ---
   ${stateCode}

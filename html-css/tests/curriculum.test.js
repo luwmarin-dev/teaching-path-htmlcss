@@ -16,18 +16,19 @@ describe('Curriculum Data Integrity', () => {
   });
 
   it('contains all 32 foundational, intermediate, modern, third-party, and bootstrap themes', () => {
-    assert.equal(LESSONS.length, 32);
+    assert.equal(LESSONS.length, 33);
   });
 
   it('strictly covers the teacher\'s initial 8 themes in order', () => {
-    assert.equal(LESSONS[0].id, 'theme-1-tags');
-    assert.equal(LESSONS[1].id, 'theme-2-structure');
-    assert.equal(LESSONS[2].id, 'theme-3-tables');
-    assert.equal(LESSONS[3].id, 'theme-4-pictures');
-    assert.equal(LESSONS[4].id, 'theme-5-divs');
-    assert.equal(LESSONS[5].id, 'theme-6-classes');
-    assert.equal(LESSONS[6].id, 'theme-7-box-model');
-    assert.equal(LESSONS[7].id, 'theme-8-transform');
+    assert.equal(LESSONS[0].id, 'theme-0-typing');
+    assert.equal(LESSONS[1].id, 'theme-1-tags');
+    assert.equal(LESSONS[2].id, 'theme-2-structure');
+    assert.equal(LESSONS[3].id, 'theme-3-tables');
+    assert.equal(LESSONS[4].id, 'theme-4-pictures');
+    assert.equal(LESSONS[5].id, 'theme-5-divs');
+    assert.equal(LESSONS[6].id, 'theme-6-classes');
+    assert.equal(LESSONS[7].id, 'theme-7-box-model');
+    assert.equal(LESSONS[8].id, 'theme-8-transform');
   });
 
   it('ensures every lesson has bite-sized code, anatomy breakdowns, and list of tags', () => {

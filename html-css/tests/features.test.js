@@ -86,8 +86,8 @@ describe('Visual Labs and Pedagogical Enhancements', () => {
 
       const openLi = (html.match(/<li\b/g) || []).length;
       const closeLi = (html.match(/<\/li>/g) || []).length;
-      assert.equal(openLi, 32, `Expected 32 <li> for ${lang}`);
-      assert.equal(closeLi, 32, `Expected 32 </li> for ${lang}`);
+      assert.equal(openLi, 33, `Expected 33 <li> for ${lang}`);
+      assert.equal(closeLi, 33, `Expected 32 </li> for ${lang}`);
 
       // Ensure no raw unescaped < or > inside lesson titles
       for (const lesson of LESSONS) {

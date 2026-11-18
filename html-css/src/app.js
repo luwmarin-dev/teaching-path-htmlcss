@@ -1,3 +1,4 @@
+import { renderTypingLabHtml, initTypingInteractive } from './modules/typingDiagnostic.js';
 import { extractTaskCode, mergeTaskIntoFullCode, hasTaskMarkers } from './modules/codeFocusEngine.js';
 import { openStudentPortalModal } from './modules/classroom.js';
 import { initAmbientCanvas } from './modules/ambientCanvas.js';
@@ -1042,6 +1043,26 @@ function setupLessonListeners(lesson) {
 
   // Preview Tabs
   setupPreviewTabs(lesson);
+
+  // Special Interactive Mount for Theme 0: Typing Diagnostic
+  if (lesson.id === 'theme-0-typing') {
+    const previewStage = document.getElementById('live-preview-stage') || document.querySelector('.pane-card-preview');
+    if (previewStage) {
+      previewStage.innerHTML = renderTypingLabHtml('en', state.lang);
+      initTypingInteractive(previewStage, {
+        state,
+        playSound,
+        onComplete: (stats) => {
+          state.typingStats = stats;
+          saveStateToStorage(state);
+          currentCode = localize(lesson.targetCode, state.lang);
+          if (elements.codeEditor) elements.codeEditor.value = currentCode;
+          handleChallengeVerification(lesson);
+        }
+      });
+    }
+  }
+
 
   // Hint
   document.getElementById('btn-hint')?.addEventListener('click', () => {

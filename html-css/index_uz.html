@@ -3806,6 +3806,230 @@ body.fullscreen-ide-body .sidebar {
   color: #38bdf8;
 }
 
+/* --- Typing Diagnostic Lab Styles --- */
+.typing-diagnostic-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-card);
+}
+
+.typing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.typing-badge {
+  font-size: 15px;
+  font-weight: 800;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+.typing-lang-switcher {
+  display: flex;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.typing-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.typing-lang-btn:hover {
+  color: #ffffff;
+}
+
+.typing-lang-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.typing-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.metric-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 900;
+  color: #38bdf8;
+  font-family: monospace;
+}
+
+.metric-value small {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.typing-prompt-box {
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.typing-prompt-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #7ee787;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.typing-hint-badge {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.typing-text-display {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #64748b;
+  user-select: none;
+  min-height: 120px;
+}
+
+.char-span.correct {
+  color: #22c55e;
+}
+
+.char-span.incorrect {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+  border-radius: 2px;
+  text-decoration: underline;
+}
+
+.char-span.current {
+  border-bottom: 2px solid #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  animation: pulseCursor 1s infinite;
+}
+
+@keyframes pulseCursor {
+  0%, 100% { border-color: #38bdf8; }
+  50% { border-color: transparent; }
+}
+
+.typing-input-area {
+  display: flex;
+}
+
+.typing-input-box {
+  width: 100%;
+  min-height: 80px;
+  background: #0d1117;
+  border: 2px solid #38bdf8;
+  border-radius: var(--radius-md);
+  color: #f1f5f9;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  padding: 12px 16px;
+  resize: vertical;
+  outline: none;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.typing-input-box:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+}
+
+.typing-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-typing-primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.btn-typing-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-typing-secondary {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-typing-secondary:hover {
+  color: #ffffff;
+  border-color: #94a3b8;
+}
+
 </style>
 </head>
 <body>
@@ -4009,160 +4233,201 @@ const MODULES = [
 
 const LESSONS = [
   // ==========================================
-  // THEME 1: HTML Tags
+  // THEME 0: Keyboard Typing Diagnostic
+  // ==========================================
+  {
+    id: 'theme-0-typing',
+    module: 'html-core',
+    title: {
+      en: 'Theme 0: Keyboard Typing Diagnostic (Speed & Accuracy — EN / RU)',
+      uz: '0-Mavzu: Klaviatura Diagnostikasi (Yozish Tezligi va Aniqligi — EN / RU)'
+    },
+    icon: '⌨️',
+    tag: '⚡ WPM, 🎯 Aniqlik %, 🇬🇧 EN / 🇷🇺 RU',
+    humanIntro: {
+      whatIsIt: {
+        en: 'Before writing complex code, a programmer must master the keyboard! In this diagnostic session, we measure your typing speed (Words Per Minute) and accuracy in English and Russian. Your thoughts should flow directly into the computer without searching for keys!',
+        uz: "Dasturlashni boshlashdan oldin klaviaturani mahkam egallash shart! Ushbu diagnostika darsida biz sizning Ingliz va Rus tillaridagi yozish tezligingiz (WPM) va aniqligingizni sinovdan o'tkazamiz. Klaviaturaga qaramasdan, fikringizni to'g'ridan-to'g'ri ekranga tushira olishingiz kerak!"
+      },
+      whatIsATag: {
+        en: '1. **WPM (Words Per Minute)** measures how many standard words you type per minute.\n2. **Accuracy %** measures precision — zero typos mean faster bug-free coding!',
+        uz: "1. **WPM (So'z/daqiqa)** — bir daqiqada necha so'z yoza olishingiz tezligi.\n2. **Aniqlik %** — xatosiz yozish mahorati. Xatosiz yozish kod yozishda vaqtni 3 baravar tejaydi!"
+      }
+    },
+    summary: {
+      en: 'Comprehensive teacher diagnostic session to evaluate typing velocity and accuracy in English and Russian.',
+      uz: "O'quvchining Ingliz va Rus tillarida yozish tezligi va aniqligini baholovchi to'liq diagnostika darsi."
+    },
+    story: {
+      en: 'The Cyber Academy is onboarding new cadets! Take the keyboard speed and precision trial in English or Russian to receive your official diagnostic license.',
+      uz: "Kiber Akademiya yangi kursantlarni qabul qilmoqda! Ingliz yoki Rus tilida klaviatura tezligi va aniqligi sinovidan o'ting va o'z dasturchilik litsenziyangizni oling."
+    },
+    initialCode: {
+      en: `<!-- Theme 0: Keyboard Diagnostic -->
+<div class="diagnostic-card" data-status="pending">
+  <h2>⌨️ Cyber Keyboard Diagnostic</h2>
+  <p>Practice typing the technical passage on the right to measure your WPM and accuracy!</p>
+</div>`,
+      uz: `<!-- 0-Mavzu: Klaviatura Diagnostikasi -->
+<div class="diagnostic-card" data-status="pending">
+  <h2>⌨️ Kiber Klaviatura Diagnostikasi</h2>
+  <p>O'ng tarafdagi interaktiv maydonda matnni terib, tezlik va aniqligingizni tekshiring!</p>
+</div>`
+    },
+    targetCode: {
+      en: `<!-- Theme 0: Keyboard Diagnostic -->
+<div class="diagnostic-card" data-status="completed">
+  <h2>⌨️ Cyber Keyboard Diagnostic (passed)</h2>
+  <p>Practice typing the technical passage on the right to measure your WPM and accuracy!</p>
+</div>`,
+      uz: `<!-- 0-Mavzu: Klaviatura Diagnostikasi -->
+<div class="diagnostic-card" data-status="completed">
+  <h2>⌨️ Kiber Klaviatura Diagnostikasi (passed)</h2>
+  <p>O'ng tarafdagi interaktiv maydonda matnni terib, tezlik va aniqligingizni tekshiring!</p>
+</div>`
+    },
+    targetDescription: {
+      en: 'Interactive typing diagnostic lab measuring WPM, CPM, error count, and accuracy in English and Russian.',
+      uz: "Ingliz va Rus tillarida WPM, CPM, xatolar soni va aniqlikni o'lchovchi interaktiv klaviatura diagnostikasi."
+    },
+    anatomy: [
+      {
+        part: 'WPM',
+        role: { en: 'Words Per Minute', uz: "So'z / Daqiqada" },
+        explanation: { en: 'Standard typing speed metric (5 characters = 1 word).', uz: "Standart yozish tezligi ko'rsatkichi (5 ta belgi = 1 so'z)." },
+        effect: { en: 'Typing velocity', uz: 'Yozish tezligi' }
+      },
+      {
+        part: 'Accuracy %',
+        role: { en: 'Precision Score', uz: 'Aniqlik Foizi' },
+        explanation: { en: 'Percentage of keystrokes typed without errors.', uz: 'Xatolarsiz bosilgan harflar ulushi.' },
+        effect: { en: 'Fewer syntax bugs', uz: "Sintaksis xatolarining kamayishi" }
+      },
+      {
+        part: 'EN / RU',
+        role: { en: 'Dual Language', uz: 'Ikki Til' },
+        explanation: { en: 'Coding keywords in English and technical documentation in Russian.', uz: "Dasturlash so'zlari Ingliz tilida, tushuntirishlar esa Rus va O'zbek tillarida." },
+        effect: { en: 'Polyglot keyboard agility', uz: "Ko'p tilli klaviatura epchilligi" }
+      }
+    ],
+    listOfTags: [
+      { code: 'WPM', name: 'Words Per Minute', description: 'Typing speed rating (5 characters = 1 word)', exampleHtml: '45 WPM' },
+      { code: 'CPM', name: 'Chars Per Minute', description: 'Raw keystroke frequency per minute', exampleHtml: '225 CPM' },
+      { code: 'Accuracy %', name: 'Accuracy Rate', description: 'Precision of typing without typos', exampleHtml: '98%' }
+    ],
+    tagShowcase: [
+      { tag: 'WPM', meaning: { en: 'Speed', uz: 'Tezlik' } },
+      { tag: 'Accuracy', meaning: { en: 'Precision', uz: 'Aniqlik' } }
+    ],
+    quickTags: ['WPM', 'Accuracy'],
+    challenge: {
+      mission: {
+        en: 'Test your keyboard speed and precision: type the English or Russian paragraph with at least 80% accuracy in the interactive test to pass the diagnostic!',
+        uz: "Klaviaturada yozish tezligi va aniqligingizni tekshiring: O'ng tarafdagi interaktiv maydonda Ingliz yoki Rus tilidagi matnni kamida 80% aniqlik bilan yozib, diagnostikadan o'ting!"
+      },
+      hint: {
+        en: 'Focus on accuracy over rushing. Keep your fingers on the home row keys (ASDF JKL;) and look at the screen, not the keys!',
+        uz: "Shoshilishdan ko'ra aniq yozishga e'tibor bering. Barmoqlaringizni asosiy qatorda tuting va klaviaturaga qaramaslikka harakat qiling!"
+      },
+      rules: [
+        {
+          type: 'custom',
+          check: (code) => code.includes('status="completed"') && code.includes('passed'),
+          feedback: {
+            en: 'Complete the typing diagnostic session in the interactive lab!',
+            uz: "Interaktiv laboratoriyada klaviatura diagnostikasini yakunlang!"
+          }
+        }
+      ]
+    },
+    teacherGuide: {
+      lessonGoal: {
+        en: 'Assess student finger agility, language comfort (EN vs RU), and baseline typing speed before syntax instruction.',
+        uz: "Dasturlash sintaksisiga kirishdan oldin o'quvchining barmoq epchilligi, til bilishi (Ingliz va Rus) va klaviaturada yozish tezligi bazasini aniqlash."
+      },
+      commonMistakes: [
+        {
+          mistake: { en: 'Looking down at keys instead of screen', uz: 'Ekranga emas, klaviaturaga qarab yozish' },
+          howToHelp: { en: 'Remind them of the F and J home bumps and looking up.', uz: "F va J harflaridagi bo'rtmaga barmoqni qo'yib, faqat ekranga qarashni o'rgating." }
+        }
+      ],
+      interactivePrompt: {
+        en: 'Ask: "How fast do you type in English vs Russian, and why is accuracy more important than pure speed?"',
+        uz: 'Savol: "Ingliz va Rus tillarida qanday tezlikda yoza olasiz va nega dasturchi uchun aniqlik tezlikdan ham muhimroq?"'
+      }
+    }
+  },
+  // ==========================================
+  // THEME 1: HTML Tags (Bite-Sized Intro)
   // ==========================================
   {
     id: 'theme-1-tags',
     module: 'html-core',
     title: {
-      en: 'Theme 1: Cyber Coder Manifesto & All Text Tags',
-      uz: '1-Mavzu: Kiber Dasturchilar Tarixiy Manifesti va Matn Teglari'
+      en: 'Theme 1: Fundamental Text Tags (Headings, Paragraphs & Highlights)',
+      uz: "1-Mavzu: Boshlang'ich Matn Teglari (Sarlavha, Paragraf va Ajratish)"
     },
     icon: '🏷️',
-    tag: '<tag> ... </tag>',
+    tag: '<h1>, <p>, <strong>, <em>, <u>',
     humanIntro: {
       whatIsIt: {
-        en: 'HTML stands for "HyperText Markup Language", but in human language, it is simply the **architectural skeleton of web pages**! Every sentence, heading, quote, formula, and hotkey on the internet is defined using instructions called **Tags**.',
-        uz: 'HTML inson tilida — **veb-sahifaning meʼmoriy suyak-karkasidir**! Internetdagi har bir jumla, sarlavha, iqtibos, formula va tugma **Teglar** deb ataluvchi maxsus ko\'rsatmalar orqali yoziladi.'
+        en: 'HTML is the structural skeleton of web pages! In this first coding lesson, you will master the 5 most essential text tags: big headings (<h1>), normal paragraphs (<p>), bold text (<strong>), italic emphasis (<em>), and underline (<u>).',
+        uz: "HTML — bu veb-sahifaning suyak-karkasidir! Birinchi darsda siz eng muhim 5 ta matn tegini o'rganasiz: katta sarlavha (<h1>), oddiy matn (<p>), qalin yozuv (<strong>), yotiq urg'u (<em>) va tagiga chizish (<u>)."
       },
       whatIsATag: {
-        en: 'A **Tag** tells the computer how to treat and format text. Tags almost always come in pairs like a sandwich: an **Opening Tag** (<tag>) to begin, words in the middle, and a **Closing Tag** (</tag>) with a slash to stop!',
-        uz: '**Teg** kompyuterga matn qanday vazifa bajarishini aytadi. Ular xuddi sendvich kabi deyarli doim juft bo\'lib keladi: boshida **Ochuvchi teg** (<tag>), o\'rtada matn va oxirida slesh belgili **Yopuvchi teg** (</tag>)!'
+        en: 'A **Tag** tells the computer how to treat text. Tags come in pairs like a sandwich: an **Opening Tag** (<tag>) to begin, words in the middle, and a **Closing Tag** (</tag>) with a slash to stop!',
+        uz: "**Teg** kompyuterga matn qanday ko'rinishini aytadi. Ular xuddi sendvich kabi juft bo'lib keladi: boshida **Ochuvchi teg** (<tag>), o'rtada matn va oxirida slesh belgili **Yopuvchi teg** (</tag>)!"
       }
     },
     summary: {
-      en: 'Master all essential text formatting tags: h1-h3, p, strong, em, u, mark, del, ins, sub, sup, blockquote, q, code, kbd, abbr, and hr in a historic manifesto essay.',
-      uz: 'Tarixiy manifest essayi orqali barcha asosiy matn teglari: h1-h3, p, strong, em, u, mark, del, ins, sub, sup, blockquote, q, code, kbd, abbr va hr teglari mohiyatini o\'rganing.'
+      en: 'Write your very first greeting card using fundamental heading, paragraph, bold, italic, and underline tags.',
+      uz: "Eng muhim 5 ta matn tegi (h1, p, strong, em, u) yordamida o'zingizning birinchi kiber sahifangizni yozing."
     },
     story: {
-      en: 'Shape the Future Coder Manifesto: turn a raw inspiring speech into a beautifully structured digital essay using the full spectrum of HTML formatting tags.',
-      uz: "Kelajak Kiber Dasturchilar Tarixiy Manifestini shakllantiring: ilhomlantiruvchi nutq xom matnini barcha formatlash teglari bilan professional raqamli maqolaga aylantiring!"
+      en: 'Welcome to the Cyber Academy! Craft your first personal profile card introducing yourself to the coding world.',
+      uz: "Kiber Akademiyaga xush kelibsiz! O'zingizni dasturlash olamiga tanituvchi birinchi shaxsiy kiber vizitkangizni yarating."
     },
     initialCode: {
-      en: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
-  <!-- Step 1: Wrap the manifesto title in a top-level heading 1 (h1) tag, and wrap the organization in an abbreviation (<abbr title="...">) tag. -->
-  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
-    🌐 The Future Coder Historic Manifesto
-    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Author: CTA • Era: 21st Century Digital Revolution</p>
-  </header>
+      en: `<!-- STEP 1: Add a big heading with <h1>: e.g. <h1>Hello Cyber World!</h1> -->
 
-  <!-- Step 2: In the first paragraph, wrap "true art of digital wizardry" with strong importance (strong), and "completely transform" with vocal emphasis (em). -->
-  <p>Today we live in the greatest era of human history. Programming is not just an ordinary job — it is a true art of digital wizardry! Every line of code you craft has the power to completely transform millions of lives.</p>
 
-  <!-- Step 3: Frame the wisdom of Tim Berners-Lee as an indented quote block (blockquote), and enclose his direct words in an inline quotation (q). -->
-  <div style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
-    Master Tim Berners-Lee declared: The Web is a global canvas of human thought and unity.
-  </div>
+<!-- STEP 2: Write a normal sentence with <p>: e.g. <p>I started learning coding.</p> -->
 
-  <!-- Step 4: Highlight the golden motto with a glowing highlighter tag (mark). -->
-  <p>The cardinal law of cyberspace: Never fear making mistakes! Because every bug is a stepping stone to mastery.</p>
 
-  <!-- Step 5: Strike through the obsolete myth using (del or s), and mark the new reality with an inserted correction tag (ins). -->
-  <p>According to the old myth: Coding is only for math geniuses has been debunked. The modern truth is: Coding is open to every passionate and curious mind everywhere.</p>
+<!-- STEP 3: Open a new paragraph and bold your name with <strong>Alex</strong>! -->
 
-  <!-- Step 6: Add a horizontal divider line (hr) and introduce the next section with a heading 3 (h3). -->
-  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
-  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Technological Formulas and Your First Step</h3>
 
-  <!-- Step 7: Format the 2 in H2O as a chemical subscript (sub), and the 9 in 10^9 as a mathematical power superscript (sup). -->
-  <p>While the pure water on your coding desk is H2O, our neural supercomputer processes 109 operations per second.</p>
+<!-- STEP 4: Add vocal emphasis to a word using <em>super cool</em>! -->
 
-  <!-- Step 8: Wrap the Ctrl and S hotkeys in keyboard key tags (kbd), and wrap the console snippet in a computer code tag (code). -->
-  <p>Whenever you write code, press Ctrl + S to save immediately. Your first victory snippet is: console.log("Hello, Cyber World!");</p>
 
-  <!-- Step 9: Underline the final golden advice using an underline tag (u). -->
-  <p>Remember: Relentless grit and 30 minutes of daily practice will forge you into a world-class creator!</p>
-</article>`,
-      uz: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
-  <!-- 1-QADAM: Manifestning bosh nomini 1-darajali eng yirik sarlavha (h1) tegi bilan belgilang. Tashkilot nomini esa <abbr title="O'zbekiston Kiber Texnologiyalari Akademiyasi">O'zKTA</abbr> qisqartma tegi ichiga oling. -->
-  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
-    🌐 Kiber Dasturchilar Tarixiy Manifesti
-    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Muallif: O'zKTA • Davr: XXI asr axborot inqilobi</p>
-  </header>
+<!-- STEP 5: Underline your golden rule with <u>I code every day</u>! -->
+`,
+      uz: `<!-- 1-QADAM: <h1> tegi bilan katta sarlavha yozing: Masalan, <h1>Salom Kiber Dunyo!</h1> -->
 
-  <!-- 2-QADAM: Birinchi paragrafda "haqiqiy sehrgarlik san'ati" iborasini jiddiy muhim qalinlashtiruvchi teg (strong), "butunlay o'zgartirish" iborasini esa his-tuyg'uli yotiq urg'u beruvchi teg (em) bilan o'rang. -->
-  <p>Bugun biz insoniyat tarixidagi eng buyuk davrda yashamoqdamiz. Dasturlash shunchaki zerikarli kasb emas — bu haqiqiy sehrgarlik san'atidir! Chunki siz yozgan har bir satr kod millionlab insonlar hayotini butunlay o'zgartirish qudratiga ega.</p>
 
-  <!-- 3-QADAM: Mashhur ustoz Tim Berners-Lee falsafasini sahifadan ajralib turuvchi iqtibos bloki (blockquote), uning ichidagi jumlasini esa qisqa iqtibos tegi (q) bilan o'rang. -->
-  <div style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
-    Ustoz Tim Berners-Lee aytgan edi: Veb — bu insoniyatni birlashtiruvchi global tafakkur maydonidir.
-  </div>
+<!-- 2-QADAM: <p> tegi ichida oddiy matn yozing: Masalan, <p>Men dasturlashni boshladim.</p> -->
 
-  <!-- 4-QADAM: Kiber dunyoning bosh shiorini sariq flomaster bilan yorituvchi teg (mark) ichiga oling. -->
-  <p>Kiber dunyoning bosh qonuni: Hech qachon xato qilishdan qo'rqmang! Chunki xato — bu o'sish pillapoyasidir.</p>
 
-  <!-- 5-QADAM: Eski xato afsonani ustidan chizilgan teg (del yoki s), yangi to'g'ri haqiqatni esa tuzatilgan teg (ins) bilan ifodalang. -->
-  <p>Eski afsonaga ko'ra: Dasturlash faqat daho matematiklar uchun degan gap bekor qilindi. Bugungi haqiqat shundaki: Dasturlash — har bir intiluvchan inson uchun ochiq sanaladi.</p>
+<!-- 3-QADAM: Yangi paragraf ochib, ismingizni <strong>Ali</strong> bilan qalinlashtiring! -->
 
-  <!-- 6-QADAM: Bo'limlarni ajratuvchi gorizontal chiziq (hr) qo'ying va 3-darajali sarlavha (h3) bilan pastki bo'limni nomlang. -->
-  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
-  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Texnologik Formulalar va Birinchi Qadam</h3>
 
-  <!-- 7-QADAM: H2O formulasidagi 2 raqamini pastki indeks (sub), 10 ning 9-darajasini esa yuqori daraja indeksi (sup) tegi bilan yozing. -->
-  <p>Dasturchining ish stolidagi toza suv formulasi H2O bo'lsa, super-kompyuterimiz soniyasiga 109 ta amallarni bajaradi.</p>
+<!-- 4-QADAM: Biror so'zga <em>juda qiziq</em> deb yotiq urg'u bering! -->
 
-  <!-- 8-QADAM: Ctrl va S tugmalarini alohida klaviatura teglari (kbd), dastur buyrug'ini esa kod tegi (code) bilan o'rang. -->
-  <p>Har safar yangi kod yozganingizda, uni darhol saqlash uchun klaviaturadagi Ctrl + S tugmalarini bosing. Sizning birinchi kodingiz: console.log("Salom, Kiber Dunyo!"); bo'ladi.</p>
 
-  <!-- 9-QADAM: Eng oxirgi maslahatning tagiga chizish uchun (u) tegidan foydalaning. -->
-  <p>Unutmang: Qat'iyat va har kuni 30 daqiqa mashq — sizni buyuk dasturchiga aylantiradi!</p>
-</article>`
+<!-- 5-QADAM: Oltin qoidangiz tagiga <u>har kuni kod yozaman</u> deb chizing! -->
+`
     },
     targetCode: {
-      en: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
-  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
-    <h1 style="color: #58a6ff; margin: 0 0 6px 0; font-size: 24px;">🌐 The Future Coder Historic Manifesto</h1>
-    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Author: <abbr title="CyberTech Academy">CTA</abbr> • Era: 21st Century Digital Revolution</p>
-  </header>
-
-  <p>Today we live in the greatest era of human history. Programming is not just an ordinary job — it is a <strong>true art of digital wizardry</strong>! Every line of code you craft has the power to <em>completely transform</em> millions of lives.</p>
-
-  <blockquote style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
-    Master Tim Berners-Lee declared: <q>The Web is a global canvas of human thought and unity.</q>
-  </blockquote>
-
-  <p>The cardinal law of cyberspace: <mark>Never fear making mistakes!</mark> Because every bug is a stepping stone to mastery.</p>
-
-  <p>According to the old myth: <del>Coding is only for math geniuses</del> has been debunked. The modern truth is: <ins>Coding is open to every passionate and curious mind everywhere</ins>.</p>
-
-  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
-  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Technological Formulas and Your First Step</h3>
-
-  <p>While the pure water on your coding desk is H<sub>2</sub>O, our neural supercomputer processes 10<sup>9</sup> operations per second.</p>
-
-  <p>Whenever you write code, press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save immediately. Your first victory snippet is: <code>console.log("Hello, Cyber World!");</code>.</p>
-
-  <p>Remember: <u>Relentless grit and 30 minutes of daily practice</u> will forge you into a world-class creator!</p>
-</article>`,
-      uz: `<article class="manifesto-doc" style="padding: 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; color: #c9d1d9; font-family: system-ui, sans-serif; line-height: 1.7;">
-  <header style="border-bottom: 2px solid #58a6ff; padding-bottom: 12px; margin-bottom: 18px;">
-    <h1 style="color: #58a6ff; margin: 0 0 6px 0; font-size: 24px;">🌐 Kiber Dasturchilar Tarixiy Manifesti</h1>
-    <p style="margin: 6px 0 0; color: #8b949e; font-size: 13px;">Muallif: <abbr title="O'zbekiston Kiber Texnologiyalari Akademiyasi">O'zKTA</abbr> • Davr: XXI asr axborot inqilobi</p>
-  </header>
-
-  <p>Bugun biz insoniyat tarixidagi eng buyuk davrda yashamoqdamiz. Dasturlash shunchaki zerikarli kasb emas — bu <strong>haqiqiy sehrgarlik san'ati</strong>dir! Chunki siz yozgan har bir satr kod millionlab insonlar hayotini <em>butunlay o'zgartirish</em> qudratiga ega.</p>
-
-  <blockquote style="margin: 16px 0; padding: 12px 18px; background: #161b22; border-left: 4px solid #a371f7; color: #e6edf3; font-style: italic;">
-    Ustoz Tim Berners-Lee aytgan edi: <q>Veb — bu insoniyatni birlashtiruvchi global tafakkur maydonidir.</q>
-  </blockquote>
-
-  <p>Kiber dunyoning bosh qonuni: <mark>Hech qachon xato qilishdan qo'rqmang!</mark> Chunki xato — bu o'sish pillapoyasidir.</p>
-
-  <p>Eski afsonaga ko'ra: <del>Dasturlash faqat daho matematiklar uchun</del> degan gap bekor qilindi. Bugungi haqiqat shundaki: <ins>Dasturlash — har bir intiluvchan inson uchun ochiq</ins> sanaladi.</p>
-
-  <hr style="border: 0; border-top: 1px dashed #30363d; margin: 20px 0;">
-  <h3 style="color: #7ee787; margin: 0 0 10px 0;">⚡ Texnologik Formulalar va Birinchi Qadam</h3>
-
-  <p>Dasturchining ish stolidagi toza suv formulasi H<sub>2</sub>O bo'lsa, super-kompyuterimiz soniyasiga 10<sup>9</sup> ta amallarni bajaradi.</p>
-
-  <p>Har safar yangi kod yozganingizda, uni darhol saqlash uchun klaviaturadagi <kbd>Ctrl</kbd> + <kbd>S</kbd> tugmalarini bosing. Sizning birinchi kodingiz: <code>console.log("Salom, Kiber Dunyo!");</code> bo'ladi.</p>
-
-  <p>Unutmang: <u>Qat'iyat va har kuni 30 daqiqa mashq</u> — sizni buyuk dasturchiga aylantiradi!</p>
-</article>`
+      en: `<h1>Hello Cyber World!</h1>
+<p>I started learning coding.</p>
+<p>My name is <strong>Alex</strong>, coding is <em>super cool</em> and <u>I code every day</u>!</p>`,
+      uz: `<h1>Salom Kiber Dunyo!</h1>
+<p>Men dasturlashni boshladim.</p>
+<p>Mening ismim <strong>Ali</strong>, dasturlash <em>juda qiziq</em> va men <u>har kuni kod yozaman</u>!</p>`
     },
     targetDescription: {
-      en: 'A historic manifesto essay where:\n• Title is set in <h1>, acronym in <abbr>\n• High importance words are wrapped in <strong> and <em>\n• Teacher wisdom is framed in <blockquote> and <q>\n• Golden motto is lit up with <mark>\n• Obsolete myths are crossed with <del>, truth inserted with <ins>\n• Science notation uses <sub> and <sup>\n• Keyboard hotkeys use <kbd>, code snippet uses <code>, advice is underlined with <u>',
-      uz: "Tarixiy kiber manifest: sarlavhasi <h1> da, muhim so'zlari <strong> va <em> bilan ajratilgan, formulalari <sub> va <sup> da to'g'ri yozilgan toza hujjat."
+      en: 'A clean introductory card featuring a prominent <h1> heading, informative <p> paragraphs, bold <strong> name, italic <em> emphasis, and an underlined <u> rule.',
+      uz: "Katta <h1> sarlavhasi, <p> paragraflari, qalin <strong> ism, yotiq <em> so'z va tagiga chizilgan <u> qoidaga ega toza boshlang'ich kiber vizitka."
     },
     anatomy: [
       {
@@ -4170,7 +4435,7 @@ const LESSONS = [
         role: { en: 'Heading 1 (Master Title)', uz: '1-Darajali Bosh Sarlavha' },
         explanation: {
           en: 'The most important title of the entire document. Every webpage should have one clear h1.',
-          uz: 'Butun sahifadagi eng yuqori darajali asosiy sarlavha. Har bir sahifada bitta aniq h1 bo\'lishi maqsadga muvofiq.'
+          uz: "Butun sahifadagi eng yuqori darajali asosiy sarlavha. Har bir sahifada bitta aniq h1 bo'lishi maqsadga muvofiq."
         },
         effect: {
           en: 'Renders the largest, boldest title text',
@@ -4179,264 +4444,142 @@ const LESSONS = [
         visualPreview: '<div class="mini-canvas"><h1 style="font-size:22px; color:#58a6ff; margin:0;">🚀 Bosh Sarlavha</h1></div>'
       },
       {
+        part: '<p> ... </p>',
+        role: { en: 'Paragraph', uz: 'Oddiy Matn Paragrafi' },
+        explanation: {
+          en: 'Standard block of narrative text. Automatically adds breathing room before and after.',
+          uz: "Oddiy gaplar va fikrlar bloki. O'zidan oldin va keyin avtomatik bo'shliq hosil qiladi."
+        },
+        effect: {
+          en: 'Clean, readable paragraph block',
+          uz: "O'qishli, chiroyli matn bloki"
+        },
+        visualPreview: '<div class="mini-canvas"><p style="margin:0; color:#cbd5e1;">Men dasturlashni o\'rganmoqdaman.</p></div>'
+      },
+      {
         part: '<strong> ... </strong>',
         role: { en: 'Strong Importance', uz: 'Jiddiy Ahamiyatli Qalin Matn' },
         explanation: {
           en: 'Signals critical importance to screen readers, search engines, and humans. Visually bold.',
-          uz: 'Brauzer va qidiruv tizimlariga bu so\'z o\'ta muhim ekanligini bildiradi. Qalin ko\'rinadi.'
+          uz: "Brauzer va qidiruv tizimlariga bu so'z o'ta muhim ekanligini bildiradi. Qalin ko'rinadi."
         },
         effect: {
           en: 'Renders bold with semantic gravity',
           uz: 'Semantik jihatdan kuchli qalin matn hosil qiladi'
         },
-        visualPreview: '<div class="mini-canvas"><strong style="color:#ffffff; font-weight:800;">Muhim Haqiqat</strong></div>'
+        visualPreview: '<div class="mini-canvas"><strong style="color:#ffffff; font-weight:800;">Ali</strong></div>'
       },
       {
         part: '<em> ... </em>',
         role: { en: 'Vocal Stress & Emotion', uz: 'Ohangdor Urg\'u (Kursiv)' },
         explanation: {
           en: 'Changes the vocal stress and emotional rhythm of a sentence. Visually slanted (italic).',
-          uz: 'Gapdagi so\'zga ohang va emotsional urg\'u beradi. Matnni qiya (kursiv) qilib ko\'rsatadi.'
+          uz: "Gapdagi so'zga ohang va emotsional urg'u beradi. Matnni qiya (kursiv) qilib ko'rsatadi."
         },
         effect: {
           en: 'Slanted italic text with vocal emphasis',
-          uz: 'O\'zgacha ohangga ega qiya yozuv'
+          uz: "O'zgacha ohangga ega qiya yozuv"
         },
-        visualPreview: '<div class="mini-canvas"><em style="color:#a5b4fc;">butunlay o\'zgartirish</em></div>'
+        visualPreview: '<div class="mini-canvas"><em style="color:#a5b4fc;">juda qiziq</em></div>'
       },
       {
-        part: '<mark> ... </mark>',
-        role: { en: 'Highlighter Pen', uz: 'Sariq Yorituvchi Marker' },
+        part: '<u> ... </u>',
+        role: { en: 'Underline', uz: 'Tagiga Chizish' },
         explanation: {
-          en: 'Simulates a fluorescent highlighter marker across the text, drawing instant attention.',
-          uz: 'Matnni xuddi yorqin sariq flomaster bilan chizib qo\'yilgandek fonga olib yoritadi.'
+          en: 'Draws a solid line beneath text to mark key rules or vocabulary items.',
+          uz: "Muhim qoida yoki eslatma so'zlar tagiga chiziq tortadi."
         },
         effect: {
-          en: 'Glowing marker background',
-          uz: 'Yorqin ajralib turuvchi fon'
+          en: 'Underlined text',
+          uz: 'Tagiga chizilgan matn'
         },
-        visualPreview: '<div class="mini-canvas"><mark style="background:#e3b341; color:#0b0f19; font-weight:700; padding:2px 6px; border-radius:4px;">Kiber Shior</mark></div>'
-      },
-      {
-        part: '<blockquote> ... </blockquote>',
-        role: { en: 'Blockquote Container', uz: 'Katta Iqtibos Bloki' },
-        explanation: {
-          en: 'Indents and honors an extended quotation from an authority, mentor, or external source.',
-          uz: 'Ustoz yoki mashhur shaxsdan keltirilgan katta iqtibosni matndan alohida blok qilib ajratadi.'
-        },
-        effect: {
-          en: 'Indented block with vertical accent border',
-          uz: 'Yon hoshiyali va chetga surilgan iqtibos maydoni'
-        },
-        visualPreview: '<div class="mini-canvas" style="border-left:3px solid #a371f7; padding-left:8px; font-style:italic;">"Veb — umumiy tafakkur maydonidir"</div>'
-      },
-      {
-        part: '<del> & <ins>',
-        role: { en: 'Strike & Insert Truth', uz: 'O\'chirish va Yangi Kiritish' },
-        explanation: {
-          en: '<del> strikes a line through obsolete errors; <ins> underlines the new truth that replaced it.',
-          uz: '<del> xato fikr ustidan chizadi; <ins> esa uning o\'rniga kiritilgan to\'g\'ri fikrni belgilaydi.'
-        },
-        effect: {
-          en: 'Strike-through and inserted underline',
-          uz: 'Ustidan chizish va yangi tuzatish belgisi'
-        },
-        visualPreview: '<div class="mini-canvas"><del style="color:#f87171;">Eski xato</del> ➔ <ins style="color:#4ade80;">Yangi haqiqat</ins></div>'
-      },
-      {
-        part: '<sub> & <sup>',
-        role: { en: 'Sub & Super Scripts', uz: 'Pastki va Yuqori Indekslar' },
-        explanation: {
-          en: '<sub> lowers text for chemical formulas (H2O); <sup> elevates text for mathematical powers (10^9).',
-          uz: '<sub> formulalar uchun pastga tushiradi (H2O); <sup> darajalar uchun yuqoriga ko\'taradi (10^9).'
-        },
-        effect: {
-          en: 'Positioned above or below text baseline',
-          uz: 'Satrdan pastda yoki yuqorida joylashgan belgilar'
-        },
-        visualPreview: '<div class="mini-canvas">H<sub>2</sub>O va 10<sup>9</sup></div>'
-      },
-      {
-        part: '<kbd> & <code>',
-        role: { en: 'Keyboard & Code Snippet', uz: 'Klaviatura va Kod Teglari' },
-        explanation: {
-          en: '<kbd> visually frames keyboard keys (Ctrl, Enter); <code> styles programming syntax.',
-          uz: '<kbd> klaviatura tugmalarini ramkaga oladi; <code> esa dasturlash kodini monospace ko\'rsatadi.'
-        },
-        effect: {
-          en: 'Keycap button style & monospace syntax',
-          uz: 'Tugmacha ko\'rinishi va dastur kodi formati'
-        },
-        visualPreview: '<div class="mini-canvas"><kbd style="background:#21262d; border:1px solid #30363d; padding:2px 5px; border-radius:3px;">Ctrl</kbd> + <code>save()</code></div>'
+        visualPreview: '<div class="mini-canvas"><u style="color:#38bdf8;">har kuni kod yozaman</u></div>'
       }
     ],
     listOfTags: [
-      { code: '<h1>', name: { en: 'Heading 1', uz: '1-Darajali Bosh Sarlavha' }, description: { en: 'Top-level document heading', uz: 'Eng asosiy yirik sarlavha' } },
-      { code: '<h2>', name: { en: 'Heading 2', uz: '2-Darajali Sarlavha' }, description: { en: 'Major section heading', uz: 'Katta bo\'lim sarlavhasi' } },
-      { code: '<h3>', name: { en: 'Heading 3', uz: '3-Darajali Sarlavha' }, description: { en: 'Sub-topic heading', uz: 'Ichki bo\'lim sarlavhasi' } },
-      { code: '<p>', name: { en: 'Paragraph', uz: 'Xatboshi (Paragraf)' }, description: { en: 'Standard text paragraph', uz: 'Oddiy matn xatboshisi' } },
-      { code: '<strong>', name: { en: 'Strong', uz: 'Kuchli Muhimlik' }, description: { en: 'High importance bold text', uz: 'Jiddiy ahamiyatli qalin matn' } },
-      { code: '<em>', name: { en: 'Emphasis', uz: 'Ohangdor Urg\'u' }, description: { en: 'Vocal emphasis italic text', uz: 'Urg\'u berilgan qiya matn' } },
-      { code: '<mark>', name: { en: 'Mark (Highlight)', uz: 'Yorituvchi Marker' }, description: { en: 'Highlights text with fluorescent glow', uz: 'Matnni sariq marker bilan yoritish' } },
-      { code: '<del>', name: { en: 'Delete (Strikethrough)', uz: 'Ustidan Chizish' }, description: { en: 'Strikes through obsolete or mistaken text', uz: 'Bekor qilingan xato so\'z ustidan chizish' } },
-      { code: '<ins>', name: { en: 'Insert (Correction)', uz: 'Yangi Kiritilgan So\'z' }, description: { en: 'Marks newly inserted correct text', uz: 'Yangi qo\'shilgan to\'g\'ri fikrni bildirish' } },
-      { code: '<blockquote>', name: { en: 'Blockquote', uz: 'Katta Iqtibos Bloki' }, description: { en: 'Indented block quote for wisdom or citations', uz: 'Ustozlar gapi uchun alohida iqtibos bloki' } },
-      { code: '<q>', name: { en: 'Inline Quote', uz: 'Qisqa Iqtibos' }, description: { en: 'Short inline quote with automatic quotes', uz: 'Matn ichidagi qisqa iqtibos' } },
-      { code: '<sub>', name: { en: 'Subscript', uz: 'Pastki Indeks' }, description: { en: 'Lowers text for formulas like H2O', uz: 'Formulalar uchun pastki indeks' } },
-      { code: '<sup>', name: { en: 'Superscript', uz: 'Yuqori Indeks' }, description: { en: 'Elevates text for math powers like 10^9', uz: 'Matematik daraja uchun yuqori indeks' } },
-      { code: '<code>', name: { en: 'Code Snippet', uz: 'Dastur Kodi Parchasi' }, description: { en: 'Monospace programming code', uz: 'Monospace shriftli dastur kodi' } },
-      { code: '<kbd>', name: { en: 'Keyboard Key', uz: 'Klaviatura Tugmasi' }, description: { en: 'Visual keycap for shortcuts', uz: 'Klaviatura tugmasi stili' } },
-      { code: '<abbr>', name: { en: 'Abbreviation', uz: 'Qisqartma Atama' }, description: { en: 'Shows full title on hover', uz: 'Ustiga borganda to\'liq nomni ko\'rsatadi' } },
-      { code: '<u>', name: { en: 'Underline', uz: 'Tagiga Chizish' }, description: { en: 'Underlines text for emphasis', uz: 'Qoida tagiga chizish' } },
-      { code: '<hr>', name: { en: 'Horizontal Rule', uz: 'Ajratuvchi Nurli Chiziq' }, description: { en: 'Thematic break between sections', uz: 'Bo\'limlar orasidagi gorizontal chiziq' } }
+      { code: '<h1>', name: 'Heading 1', description: 'Top-level big headline', exampleHtml: '<h1>Kiber Sarlavha</h1>' },
+      { code: '<p>', name: 'Paragraph', description: 'Normal block of text', exampleHtml: '<p>Oddiy gap</p>' },
+      { code: '<strong>', name: 'Strong Bold', description: 'Important bolded text', exampleHtml: '<strong>Muhim</strong>' },
+      { code: '<em>', name: 'Emphasis', description: 'Italicized vocal stress', exampleHtml: '<em>Ajoyib</em>' },
+      { code: '<u>', name: 'Underline', description: 'Underlined text', exampleHtml: '<u>Qoida</u>' }
     ],
-    quickTags: ['<h1>', '<strong>', '<em>', '<mark>', '<blockquote>', '<q>', '<del>', '<ins>', '<sub>', '<sup>', '<kbd>', '<code>', '<u>'],
+    tagShowcase: [
+      { tag: '<h1>', meaning: { en: 'Master Title', uz: 'Bosh Sarlavha' } },
+      { tag: '<p>', meaning: { en: 'Paragraph', uz: 'Oddiy Matn' } },
+      { tag: '<strong>', meaning: { en: 'Bold Importance', uz: 'Qalin Matn' } },
+      { tag: '<em>', meaning: { en: 'Italic Emphasis', uz: 'Yotiq Urg\'u' } },
+      { tag: '<u>', meaning: { en: 'Underline Rule', uz: 'Tagiga Chizish' } }
+    ],
+    quickTags: ['<h1>', '<p>', '<strong>', '<em>', '<u>'],
     teacherGuide: {
       lessonGoal: {
-        en: 'Inspire students with a historic cyber manifesto while mastering the full palette of HTML typography and text tags.',
-        uz: 'O\'quvchilarni kiber manifest bilan ilhomlantirgan holda, HTML ning barcha tipografik va formatlash teglarini chuqur o\'rgatish.'
+        en: 'Introduce beginners to fundamental text tags with zero intimidation, focusing on headings, paragraphs, and emphasis.',
+        uz: "Yangi boshlovchilarni qo'rqitmasdan, eng kerakli 5 ta matn tegi (h1, p, strong, em, u) bilan sodda va qiziqarli tanishtirish."
       },
       commonMistakes: [
         {
           mistake: { en: 'Forgetting the closing slash on tags like </h1> or </strong>', uz: '</h1> yoki </strong> kabi teglarda yopuvchi slesh belgisini unutish' },
-          howToHelp: { en: 'Show them how unclosed tags bleed formatting across the entire page like a runaway spell.', uz: 'Yopilmagan teg butun sahifani qalin yoki markerli qilib yuborishini ko\'rsating.' }
-        },
-        {
-          mistake: { en: 'Confusing <sub> (down) with <sup> (up)', uz: '<sub> (pastga) bilan <sup> (tepaga) ni adashtirib qo\'yish' },
-          howToHelp: { en: 'Remind: "Sub" like Submarine goes underwater, "Super" like Superman flies into the sky!', uz: 'Eslatma: "Sub" submarina kabi suv ostiga sho\'ng\'iydi, "Super" esa Supermen kabi osmonga uchadi!' }
+          howToHelp: { en: 'Show how unclosed tags bleed formatting onto following lines.', uz: "Yopilmagan teg keyingi satrlarni ham qalin yoki yotiq qilib yuborishini ko'rsating." }
         }
       ],
       interactivePrompt: {
-        en: 'Ask: "If you were writing a historic law for the Internet, which motto would you highlight with <mark>?"',
-        uz: 'Savol bering: "Agar siz internetning bosh qonunini yozsangiz, qaysi shiorni <mark> bilan yoritgan bo\'lardingiz?"'
+        en: 'Ask: "What is the difference between a big title <h1> and a normal sentence <p>?"',
+        uz: 'Savol: "Katta sarlavha <h1> bilan oddiy gap <p> o\'rtasida qanday farq bor?"'
       }
     },
     challenge: {
       mission: {
-        en: 'Transform the unformatted manifesto speech into a legendary cyber document by applying all text tags: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code>, and <u>.',
-        uz: "Matnni o'qishli va chiroyli qilamiz! 1-qadamdan 9-qadamgacha berilgan ko'rsatmalarga qarab matn ichidagi so'zlarni kerakli teglarga o'rab chiqing: sarlavhani <h1> ga, muhim so'zlarni <strong> va <em> ga, iqtiboslarni <blockquote> va <q> ga, formulalarni <sub> va <sup> ga, tugmalarni <kbd> va kodni <code> ga oling!"
+        en: 'Meet your first text tags! Use <h1> for heading, <p> for normal text, <strong> for bold, <em> for italics, and <u> for underline to craft your first cyber card!',
+        uz: "Birinchi matn teglari bilan tanishamiz! Katta sarlavha uchun <h1>, oddiy gap uchun <p>, qalin so'z uchun <strong>, yotiq so'z uchun <em> va tagiga chizish uchun <u> teglaridan foydalanib o'z kiber vizitkangizni yozing!"
       },
       hint: {
-        en: 'Look at the numbered steps in the code comments. Each step tells you the semantic purpose of the tag needed (heading, quote, math power, hotkey). Recall the tag sandwich formula!',
-        uz: "Kod ichidagi raqamlangan qadamlarga qarang. Masalan sarlavha uchun <h1>...</h1>, muhim so'zga <strong>...</strong> ishlatiladi. Ochilgan tegni yopishni unutmang!"
+        en: 'Remember to open and close tags like a sandwich: <h1>Title</h1>, <p>Text</p>, <strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>.',
+        uz: "Har bir tegni sendvichdek ochib, so'zni yozib, keyin yopishni unutmang: <h1>Sarlavha</h1>, <p>Matn</p>, <strong>Qalin</strong>, <em>Yotiq</em>, <u>Chizilgan</u>."
       },
       rules: [
         {
           type: 'hasTag',
           tag: 'h1',
           feedback: {
-            en: 'Add the top-level manifesto title using the <h1> tag',
-            uz: "Manifest nomini eng yirik 1-darajali <h1> sarlavha tegi bilan belgilang"
+            en: 'Add an <h1> heading tag!',
+            uz: "<h1> sarlavha tegini qo'shing!"
           }
         },
         {
           type: 'hasTag',
-          tag: 'abbr',
+          tag: 'p',
           feedback: {
-            en: 'Wrap the academy abbreviation with an <abbr> tag',
-            uz: "Akademiya qisqartmasini <abbr> tegi bilan o'rang"
+            en: 'Add a <p> paragraph tag!',
+            uz: "<p> paragraf tegini qo'shing!"
           }
         },
         {
           type: 'custom',
           check: (code) => /<(strong|b)>[\s\S]*?<\/(strong|b)>/i.test(code),
           feedback: {
-            en: 'Emphasize importance using <strong> or <b>',
-            uz: "Muhimlikni ifodalash uchun <strong> yoki <b> tegi bilan qalin qiling"
+            en: 'Wrap a word with <strong> to make it bold!',
+            uz: "Biror so'zni <strong> bilan qalinlashtiring!"
           }
         },
         {
           type: 'custom',
           check: (code) => /<(em|i)>[\s\S]*?<\/(em|i)>/i.test(code),
           feedback: {
-            en: 'Give vocal stress or slanted emphasis using <em> or <i>',
-            uz: "His-tuyg'uli ohang berish uchun <em> yoki <i> tegidan foydalaning"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'blockquote',
-          feedback: {
-            en: 'Frame the historical quote in a <blockquote> container',
-            uz: "Ustoz hikmatini <blockquote> iqtibos bloki ichiga oling"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'q',
-          feedback: {
-            en: 'Wrap the inline quote in a <q> tag',
-            uz: "Qisqa ichki iqtibosni <q> tegi bilan o'rang"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'mark',
-          feedback: {
-            en: 'Highlight the cyber motto with a glowing <mark> tag',
-            uz: "Kiber shiorni sariq markerli <mark> tegi bilan yoriting"
-          }
-        },
-        {
-          type: 'custom',
-          check: (code) => /<(del|s)>[\s\S]*?<\/(del|s)>/i.test(code),
-          feedback: {
-            en: 'Strike through the obsolete myth using <del> or <s>',
-            uz: "Eski xato fikr ustidan <del> yoki <s> tegi bilan chizing"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'ins',
-          feedback: {
-            en: 'Mark the inserted modern truth with an <ins> tag',
-            uz: "Yangi kiritilgan to'g'ri haqiqatni <ins> tegi bilan belgilang"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'sub',
-          feedback: {
-            en: 'Use <sub> for chemical subscript in H2O',
-            uz: "H2O formulasidagi 2 raqami uchun <sub> pastki indeksidan foydalaning"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'sup',
-          feedback: {
-            en: 'Use <sup> for power superscript in 10^9',
-            uz: "10 ning 9-darajasi uchun <sup> yuqori indeksidan foydalaning"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'kbd',
-          feedback: {
-            en: 'Wrap keyboard hotkey keys in <kbd> tags',
-            uz: "Klaviatura tugmalarini <kbd> teglari bilan o'rang"
-          }
-        },
-        {
-          type: 'hasTag',
-          tag: 'code',
-          feedback: {
-            en: 'Wrap the console command in a <code> tag',
-            uz: "Dastur kodi buyrug'ini <code> tegi bilan o'rang"
+            en: 'Wrap a word with <em> to make it italic!',
+            uz: "Biror so'zni <em> bilan yotiq (kursiv) qiling!"
           }
         },
         {
           type: 'hasTag',
           tag: 'u',
           feedback: {
-            en: 'Underline the final advice with an <u> tag',
-            uz: "Eng oxirgi maslahat tagiga <u> tegi bilan chizing"
+            en: 'Wrap a word with <u> to underline it!',
+            uz: "Biror so'z tagiga <u> tegi bilan chizing!"
           }
         }
       ]
     }
   },
-
   {
     id: 'theme-2-structure',
     module: 'html-core',
@@ -5585,8 +5728,8 @@ const LESSONS = [
 </style>
 
 <div class="expedition-hub">
-  <!-- 1-Qadam: <!-- === SIZNING VAZIFANGIZ (HTML) === -->
-  <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <!-- === SIZNING VAZIFANGIZ (HTML) === -->
+  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
@@ -5668,8 +5811,8 @@ const LESSONS = [
 </style>
 
 <div class="expedition-hub">
-  <!-- 1-Qadam: <!-- === SIZNING VAZIFANGIZ (HTML) === -->
-  <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <!-- === SIZNING VAZIFANGIZ (HTML) === -->
+  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
@@ -12636,6 +12779,325 @@ function mergeTaskIntoFullCode(fullTemplate, userTaskCode) {
 }
 
 
+  // --- Typing Diagnostic Engine ---
+  /**
+ * Typing Speed & Accuracy Diagnostic Engine
+ * Allows teacher to assess student typing speed (WPM, CPM)
+ * and accuracy in Russian and English with rich diagnostic metrics.
+ */
+
+const TYPING_TEXTS = {
+  en: {
+    langLabel: 'English',
+    title: 'Technology & Programming Odyssey',
+    text: 'Technology is the art of solving problems and turning creative ideas into reality. Every amazing website, computer game, and mobile application started with a curious person typing their very first lines of code. When you practice typing with all your fingers without looking down at the keyboard, your thoughts flow directly into the computer at lightning speed. Keep your posture straight, focus on typing each letter accurately, and enjoy your journey into the world of programming!'
+  },
+  ru: {
+    langLabel: 'Русский',
+    title: 'Технологии и Путь Программиста',
+    text: 'Технологии — это искусство решать задачи и превращать творческие идеи в реальность. Каждый потрясающий сайт, компьютерная игра и мобильное приложение начинались с того, что увлечённый человек написал свои первые строки кода. Когда вы учитесь печатать всеми пальцами не глядя на клавиатуру, ваши мысли переносятся в компьютер с молниеносной скоростью. Держите осанку прямо, старайтесь нажимать каждую клавишу без ошибок и добро пожаловать в мир программирования!'
+  }
+};
+
+/**
+ * Calculates typing statistics
+ */
+function calculateTypingStats({ targetText, typedText, elapsedSeconds }) {
+  const cleanTarget = targetText || '';
+  const cleanTyped = typedText || '';
+  const totalTyped = cleanTyped.length;
+
+  let correctChars = 0;
+  let errors = 0;
+
+  for (let i = 0; i < totalTyped; i++) {
+    if (i < cleanTarget.length && cleanTyped[i] === cleanTarget[i]) {
+      correctChars++;
+    } else {
+      errors++;
+    }
+  }
+
+  const minutes = Math.max(elapsedSeconds / 60, 0.0167); // minimum 1 second
+  const cpm = Math.round((correctChars / minutes));
+  const wpm = Math.round(cpm / 5);
+  const accuracy = totalTyped > 0 ? Math.max(0, Math.round((correctChars / totalTyped) * 100)) : 100;
+  const isFinished = totalTyped >= cleanTarget.length;
+
+  let grade = 'Beginner';
+  let feedbackUz = "Boshlang'ich daraja. Ikki qo'l bilan yozish mashqlarini ko'paytirish tavsiya etiladi.";
+  let feedbackRu = 'Начальный уровень. Рекомендуется больше тренироваться десятипальцевой печати.';
+  let feedbackEn = 'Beginner level. Focus on home row finger placement and steady rhythm.';
+
+  if (wpm >= 45 && accuracy >= 95) {
+    grade = 'Expert';
+    feedbackUz = "A'lo natija! Yuqori tezlik va katta aniqlik — professional dasturlashga to'liq tayyorsiz!";
+    feedbackRu = 'Отличный результат! Высокая скорость и точность — вы полностью готовы к программированию!';
+    feedbackEn = 'Expert level! Outstanding speed and accuracy, fully ready for professional coding!';
+  } else if (wpm >= 25 && accuracy >= 90) {
+    grade = 'Intermediate';
+    feedbackUz = "Yaxshi daraja! Kod yozish uchun yetarli tezlik va yaxshi aniqlik.";
+    feedbackRu = 'Хороший уровень! Достаточная скорость и надежная точность для написания кода.';
+    feedbackEn = 'Solid intermediate level! Good typing velocity and precision for daily coding.';
+  }
+
+  return {
+    correctChars,
+    errors,
+    totalTyped,
+    elapsedSeconds: Math.round(elapsedSeconds),
+    cpm,
+    wpm,
+    accuracy,
+    isFinished,
+    grade,
+    feedbackUz,
+    feedbackRu,
+    feedbackEn
+  };
+}
+
+/**
+ * Generates interactive Typing Diagnostic Lab HTML for the workspace
+ */
+function renderTypingLabHtml(currentLang = 'en', stateLang = 'uz') {
+  const sample = TYPING_TEXTS[currentLang] || TYPING_TEXTS.en;
+  const isUz = stateLang === 'uz';
+
+  return `
+    <div class="typing-diagnostic-container" id="typing-diagnostic-container">
+      <div class="typing-header">
+        <div class="typing-badge">
+          <span>⌨️</span> ${isUz ? 'KLAVIATURA DIAGNOSTIKASI (EN / RU)' : 'KEYBOARD DIAGNOSTIC (EN / RU)'}
+        </div>
+        <div class="typing-lang-switcher">
+          <button class="typing-lang-btn ${currentLang === 'en' ? 'active' : ''}" data-lang="en">🇬🇧 English</button>
+          <button class="typing-lang-btn ${currentLang === 'ru' ? 'active' : ''}" data-lang="ru">🇷🇺 Русский</button>
+        </div>
+      </div>
+
+      <div class="typing-metrics-bar">
+        <div class="metric-chip">
+          <span class="metric-label">${isUz ? '⚡ Tezlik' : '⚡ Speed'}</span>
+          <span class="metric-value" id="val-wpm">0 <small>WPM</small></span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label">${isUz ? '🎯 Aniqlik' : '🎯 Accuracy'}</span>
+          <span class="metric-value" id="val-accuracy">100<small>%</small></span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label">${isUz ? '❌ Xatolar' : '❌ Errors'}</span>
+          <span class="metric-value" id="val-errors">0</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label">${isUz ? '⌨️ Belgilar' : '⌨️ Characters'}</span>
+          <span class="metric-value" id="val-cpm">0 <small>CPM</small></span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label">${isUz ? '⏱️ Vaqt' : '⏱️ Time'}</span>
+          <span class="metric-value" id="val-time">00:00</span>
+        </div>
+      </div>
+
+      <div class="typing-prompt-box">
+        <div class="typing-prompt-title">
+          <span>📜 ${sample.title}</span>
+          <span class="typing-hint-badge">${isUz ? 'Quyidagi matnni qaramasdan tez va aniq tering:' : 'Type the following text swiftly and accurately:'}</span>
+        </div>
+        <div class="typing-text-display" id="typing-text-display">
+          ${sample.text.split('').map((ch, idx) => `<span class="char-span ${idx === 0 ? 'current' : ''}" data-idx="${idx}">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('')}
+        </div>
+      </div>
+
+      <div class="typing-input-area">
+        <textarea id="typing-input-box" class="typing-input-box" placeholder="${isUz ? 'Yozishni boshlash uchun shu yerga bosing... (Birinchi harfdan vaqt hisoblanadi)' : 'Click here and start typing... (Timer starts on first keystroke)'}" autofocus spellcheck="false"></textarea>
+      </div>
+
+      <div class="typing-actions">
+        <button id="btn-restart-typing" class="btn-typing-secondary">🔄 ${isUz ? 'Qaytadan boshlash' : 'Restart Test'}</button>
+        <button id="btn-finish-typing" class="btn-typing-primary">🏁 ${isUz ? 'Natijani tekshirish' : 'Check Results'}</button>
+      </div>
+
+      <!-- Result Modal Placeholder -->
+      <div id="typing-result-modal-host"></div>
+    </div>
+  `;
+}
+
+/**
+ * Initializes interactive typing event listeners
+ */
+function initTypingInteractive(container, { state, onComplete, playSound }) {
+  if (!container) return;
+  let currentLang = 'en';
+  let startTime = null;
+  let timerInterval = null;
+  let typedText = '';
+
+  const sample = () => TYPING_TEXTS[currentLang];
+  const inputEl = container.querySelector('#typing-input-box');
+  const displayEl = container.querySelector('#typing-text-display');
+  const wpmEl = container.querySelector('#val-wpm');
+  const accEl = container.querySelector('#val-accuracy');
+  const errEl = container.querySelector('#val-errors');
+  const cpmEl = container.querySelector('#val-cpm');
+  const timeEl = container.querySelector('#val-time');
+  const modalHost = container.querySelector('#typing-result-modal-host');
+
+  function renderChars() {
+    if (!displayEl) return;
+    const text = sample().text;
+    const typed = typedText;
+    let html = '';
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      let cls = 'char-span';
+      if (i < typed.length) {
+        cls += typed[i] === ch ? ' correct' : ' incorrect';
+      } else if (i === typed.length) {
+        cls += ' current';
+      }
+      html += `<span class="${cls}" data-idx="${i}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+    }
+    displayEl.innerHTML = html;
+  }
+
+  function tick() {
+    if (!startTime) return;
+    const elapsed = (Date.now() - startTime) / 1000;
+    const mins = Math.floor(elapsed / 60);
+    const secs = Math.floor(elapsed % 60);
+    if (timeEl) timeEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+    const stats = calculateTypingStats({
+      targetText: sample().text,
+      typedText,
+      elapsedSeconds: elapsed
+    });
+
+    if (wpmEl) wpmEl.innerHTML = `${stats.wpm} <small>WPM</small>`;
+    if (accEl) accEl.innerHTML = `${stats.accuracy}<small>%</small>`;
+    if (errEl) errEl.textContent = stats.errors;
+    if (cpmEl) cpmEl.innerHTML = `${stats.cpm} <small>CPM</small>`;
+
+    if (stats.isFinished) {
+      clearInterval(timerInterval);
+      showCertificate(stats);
+    }
+  }
+
+  inputEl?.addEventListener('input', () => {
+    if (!startTime && inputEl.value.length > 0) {
+      startTime = Date.now();
+      timerInterval = setInterval(tick, 200);
+    }
+    typedText = inputEl.value;
+    renderChars();
+    tick();
+  });
+
+  // Switch languages
+  container.querySelectorAll('.typing-lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      currentLang = lang;
+      container.querySelectorAll('.typing-lang-btn').forEach(b => b.classList.toggle('active', b === btn));
+      reset();
+    });
+  });
+
+  function reset() {
+    clearInterval(timerInterval);
+    startTime = null;
+    typedText = '';
+    if (inputEl) inputEl.value = '';
+    renderChars();
+    if (wpmEl) wpmEl.innerHTML = '0 <small>WPM</small>';
+    if (accEl) accEl.innerHTML = '100<small>%</small>';
+    if (errEl) errEl.textContent = '0';
+    if (cpmEl) cpmEl.innerHTML = '0 <small>CPM</small>';
+    if (timeEl) timeEl.textContent = '00:00';
+    if (modalHost) modalHost.innerHTML = '';
+  }
+
+  container.querySelector('#btn-restart-typing')?.addEventListener('click', reset);
+
+  container.querySelector('#btn-finish-typing')?.addEventListener('click', () => {
+    const elapsed = startTime ? (Date.now() - startTime) / 1000 : 1;
+    clearInterval(timerInterval);
+    const stats = calculateTypingStats({
+      targetText: sample().text,
+      typedText,
+      elapsedSeconds: elapsed
+    });
+    showCertificate(stats);
+  });
+
+  function showCertificate(stats) {
+    if (playSound) playSound('success', true);
+    const isUz = state.lang === 'uz';
+    const langName = currentLang === 'en' ? 'English' : 'Русский';
+    const feedback = isUz ? stats.feedbackUz : (currentLang === 'ru' ? stats.feedbackRu : stats.feedbackEn);
+
+    if (modalHost) {
+      modalHost.innerHTML = `
+        <div class="modal-overlay" style="z-index: 99999;">
+          <div class="modal-card" style="max-width: 500px; text-align: center;">
+            <div class="modal-icon" style="font-size: 48px;">🏆</div>
+            <h3 class="modal-title" style="color: #38bdf8;">${isUz ? 'KLAVIATURA DIAGNOSTIKA NATIJASI' : 'KEYBOARD DIAGNOSTIC REPORT'}</h3>
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid #1e293b; border-radius: 12px; padding: 18px; margin: 16px 0; text-align: left;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "O'quvchi:" : 'Student:'}</span>
+                <strong style="color: #ffffff;">${state.studentName} (${state.shift})</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "Sinov tili:" : 'Language:'}</span>
+                <strong style="color: #38bdf8;">${langName}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "Yozish tezligi:" : 'Speed:'}</span>
+                <strong style="color: #22c55e; font-size: 18px;">${stats.wpm} WPM (${stats.cpm} CPM)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "Aniqlik darajasi:" : 'Accuracy:'}</span>
+                <strong style="color: #eab308; font-size: 18px;">${stats.accuracy}%</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "Xatolar:" : 'Errors:'}</span>
+                <strong style="color: #f43f5e;">${stats.errors} ta</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #94a3b8;">${isUz ? "Sarflangan vaqt:" : 'Time:'}</span>
+                <strong style="color: #ffffff;">${stats.elapsedSeconds}s</strong>
+              </div>
+              <div style="border-top: 1px dashed #334155; margin-top: 10px; padding-top: 10px;">
+                <span style="color: #94a3b8; font-size: 12px;">${isUz ? "O'qituvchi xulosasi:" : 'Teacher Assessment:'}</span>
+                <p style="color: #f1f5f9; font-weight: 700; margin: 4px 0 0 0; font-size: 13px;">${feedback}</p>
+              </div>
+            </div>
+            <div class="modal-actions" style="display: flex; gap: 12px; justify-content: center;">
+              <button id="btn-close-cert" class="btn-modal btn-modal-secondary">${isUz ? 'Yopish' : 'Close'}</button>
+              <button id="btn-save-cert" class="btn-modal btn-modal-primary">💾 ${isUz ? 'Natijani Saqlash' : 'Save Report'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modalHost.querySelector('#btn-close-cert')?.addEventListener('click', () => {
+        modalHost.innerHTML = '';
+      });
+
+      modalHost.querySelector('#btn-save-cert')?.addEventListener('click', () => {
+        modalHost.innerHTML = '';
+        if (onComplete) onComplete(stats);
+      });
+    }
+  }
+
+  renderChars();
+}
+
+
   // --- State Module ---
   /**
  * State Management Module
@@ -14784,7 +15246,8 @@ function renderGridLab(container) {
 
 
   // --- Topic Labs Module ---
-  /**
+  
+/**
  * Dedicated Multi-Stage Evolutionary Topic Visual Laboratories
  * Implements the Step-by-Step Pedagogical Lifecycle for all 24 themes:
  * 1. Initial / Empty / Problem state
@@ -15012,6 +15475,18 @@ function createStepfulLab(container, def, isUz) {
 // ===================================================================
 // 1. Text Tags (b, i, u, s)
 // ===================================================================
+
+function renderTypingDiagnosticTopicLab(container, lesson, isUz) {
+  container.innerHTML = renderTypingLabHtml('en', isUz ? 'uz' : 'en');
+  initTypingInteractive(container, {
+    state: { lang: isUz ? 'uz' : 'en', studentName: 'Cadet', shift: '1-Smena' },
+    playSound: () => {},
+    onComplete: (stats) => {
+      alert((isUz ? "Diagnostika muvaffaqiyatli saqlandi! Tezlik: " : "Diagnostic saved! Speed: ") + stats.wpm + " WPM");
+    }
+  });
+}
+
 function renderTagsLab(container, lesson, isUz) {
   createStepfulLab(container, {
     initialState: { bold: true, italic: false, underline: false, strike: false },
@@ -17658,6 +18133,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
   const isUz = lang === 'uz';
 
   const renderers = {
+    'theme-0-typing': renderTypingDiagnosticTopicLab,
     'theme-1-tags': renderTagsLab,
     'theme-2-structure': renderStructureLab,
     'theme-3-tables': renderTablesLab,
@@ -17699,6 +18175,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
 
   // --- Main App Controller ---
   
+
 
 
 /**
@@ -18735,6 +19212,26 @@ function setupLessonListeners(lesson) {
 
   // Preview Tabs
   setupPreviewTabs(lesson);
+
+  // Special Interactive Mount for Theme 0: Typing Diagnostic
+  if (lesson.id === 'theme-0-typing') {
+    const previewStage = document.getElementById('live-preview-stage') || document.querySelector('.pane-card-preview');
+    if (previewStage) {
+      previewStage.innerHTML = renderTypingLabHtml('en', state.lang);
+      initTypingInteractive(previewStage, {
+        state,
+        playSound,
+        onComplete: (stats) => {
+          state.typingStats = stats;
+          saveStateToStorage(state);
+          currentCode = localize(lesson.targetCode, state.lang);
+          if (elements.codeEditor) elements.codeEditor.value = currentCode;
+          handleChallengeVerification(lesson);
+        }
+      });
+    }
+  }
+
 
   // Hint
   document.getElementById('btn-hint')?.addEventListener('click', () => {

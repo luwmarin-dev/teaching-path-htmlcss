@@ -1,3 +1,4 @@
+import { renderTypingLabHtml, initTypingInteractive } from '../modules/typingDiagnostic.js';
 /**
  * Dedicated Multi-Stage Evolutionary Topic Visual Laboratories
  * Implements the Step-by-Step Pedagogical Lifecycle for all 24 themes:
@@ -226,6 +227,18 @@ function createStepfulLab(container, def, isUz) {
 // ===================================================================
 // 1. Text Tags (b, i, u, s)
 // ===================================================================
+
+function renderTypingDiagnosticTopicLab(container, lesson, isUz) {
+  container.innerHTML = renderTypingLabHtml('en', isUz ? 'uz' : 'en');
+  initTypingInteractive(container, {
+    state: { lang: isUz ? 'uz' : 'en', studentName: 'Cadet', shift: '1-Smena' },
+    playSound: () => {},
+    onComplete: (stats) => {
+      alert((isUz ? "Diagnostika muvaffaqiyatli saqlandi! Tezlik: " : "Diagnostic saved! Speed: ") + stats.wpm + " WPM");
+    }
+  });
+}
+
 function renderTagsLab(container, lesson, isUz) {
   createStepfulLab(container, {
     initialState: { bold: true, italic: false, underline: false, strike: false },
@@ -2872,6 +2885,7 @@ export function renderTopicLab(container, lesson, lang = 'en') {
   const isUz = lang === 'uz';
 
   const renderers = {
+    'theme-0-typing': renderTypingDiagnosticTopicLab,
     'theme-1-tags': renderTagsLab,
     'theme-2-structure': renderStructureLab,
     'theme-3-tables': renderTablesLab,
