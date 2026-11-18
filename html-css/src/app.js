@@ -830,26 +830,33 @@ function renderAnatomySection(lesson) {
         <span class="step-count-pill">${lesson.anatomy.length} ${escapeHtml(state.lang === 'uz' ? 'qadam' : 'steps')}</span>
       </div>
       <div class="step-grid">
-        ${lesson.anatomy.map((step, idx) => `
+        ${lesson.anatomy.map((step, idx) => {
+          const part = step.part || step.code || '';
+          const role = step.role || step.name || '';
+          const explanation = step.explanation || step.purpose || step.description || '';
+          const effect = step.effect || step.purpose || step.description || '';
+
+          return `
           <div class="step-item">
             <div class="step-top-row">
               <span class="step-num-badge">${escapeHtml(state.lang === 'uz' ? (idx + 1) + '-Qadam' : 'Step ' + (idx + 1))}</span>
-              <span class="step-role-badge">${escapeHtml(localize(step.role, state.lang))}</span>
+              <span class="step-role-badge">${escapeHtml(localize(role, state.lang))}</span>
             </div>
             <div class="step-code-focus">
-              <code class="step-code-chip">${escapeHtml(step.part)}</code>
+              <code class="step-code-chip">${escapeHtml(part)}</code>
             </div>
-            <div class="step-explanation">${formatProse(localize(step.explanation, state.lang))}</div>
+            <div class="step-explanation">${formatProse(localize(explanation, state.lang))}</div>
             <div class="step-result-box">
               <div class="step-result-heading">
                 <span>👉</span>
                 <strong>${escapeHtml(t('resultCallout', state.lang))}</strong>
-                <span>${formatProse(localize(step.effect, state.lang))}</span>
+                <span>${formatProse(localize(effect, state.lang))}</span>
               </div>
               ${step.visualPreview ? `<div class="step-visual-render">${step.visualPreview}</div>` : ''}
             </div>
           </div>
-        `).join('')}
+        `;
+        }).join('')}
       </div>
     </div>
   `;
