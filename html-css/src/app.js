@@ -272,6 +272,9 @@ function attachGlobalListeners() {
     if (state.editorFirstMode) {
       document.querySelector('.editor-stage-split')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       document.getElementById('code-textarea')?.focus();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelector('.lesson-workspace')?.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
 
@@ -745,7 +748,7 @@ function renderLessonView() {
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
             <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
             <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
             <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
@@ -1080,19 +1083,43 @@ function setupPaneResizer() {
   if (!resizer || !split || !editorPane || !previewPane) return;
 
   let isDragging = false;
+  let startX = 0;
+  let didMove = false;
+
+  const resetPanes = () => {
+    editorPane.style.flex = '1 1 0%';
+    editorPane.style.width = '';
+    previewPane.style.flex = '1 1 0%';
+    previewPane.style.width = '';
+    playSound('click', state.audioEnabled);
+  };
+
+  const knob = resizer.querySelector('.resizer-knob');
+  knob?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    resetPanes();
+  });
 
   const onPointerDown = (e) => {
     isDragging = true;
+    didMove = false;
+    startX = e.clientX;
     resizer.classList.add('is-resizing');
     document.body.style.cursor = 'col-resize';
     document.body.style.userSelect = 'none';
-    try {
-      resizer.setPointerCapture(e.pointerId);
-    } catch (_) {}
+    document.querySelectorAll('iframe').forEach(f => {
+      f.style.pointerEvents = 'none';
+    });
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
   };
 
   const onPointerMove = (e) => {
     if (!isDragging) return;
+    if (Math.abs(e.clientX - startX) > 3) {
+      didMove = true;
+    }
     const rect = split.getBoundingClientRect();
     const isSwapped = split.classList.contains('panes-swapped');
     let x = e.clientX - rect.left;
@@ -1113,15 +1140,20 @@ function setupPaneResizer() {
     resizer.classList.remove('is-resizing');
     document.body.style.cursor = '';
     document.body.style.userSelect = '';
-    try {
-      resizer.releasePointerCapture(e.pointerId);
-    } catch (_) {}
+    document.querySelectorAll('iframe').forEach(f => {
+      f.style.pointerEvents = '';
+    });
+    window.removeEventListener('pointermove', onPointerMove);
+    window.removeEventListener('pointerup', onPointerUp);
+    window.removeEventListener('pointercancel', onPointerUp);
+
+    // If clicked without dragging, treat as 50/50 reset
+    if (!didMove) {
+      resetPanes();
+    }
   };
 
   resizer.addEventListener('pointerdown', onPointerDown);
-  resizer.addEventListener('pointermove', onPointerMove);
-  resizer.addEventListener('pointerup', onPointerUp);
-  resizer.addEventListener('pointercancel', onPointerUp);
 }
 
 function insertTextAtCursor(textarea, text) {

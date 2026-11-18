@@ -1889,13 +1889,7 @@ export const LESSONS = [
       { tag: '<figcaption>', meaning: { en: 'Photo description', uz: 'Rasm izohi' } },
       { tag: 'object-fit: cover;', meaning: { en: 'Proportionate crop', uz: 'Chiroyli proporsional qirqish' } }
     ],
-    quickTags: [
-      '<figure class="hero-figure">',
-      '<img src="..." alt="Mars Rover" class="hero-img">',
-      '<figcaption class="gallery-caption">',
-      'object-fit: cover;',
-      'border-radius: 50%;'
-    ],
+    quickTags: ['<figure class="hero-figure">', '<img src="..." alt="Mars Rover" class="hero-img">', '<figcaption class="gallery-caption">'],
     challenge: {
       mission: {
         en: 'Build the Mars & Drone Fleet Exhibition: add the hero rover photo inside <figure>, with <figcaption>, 2 fleet images, and circular border-radius: 50% crew avatars!',
@@ -2071,7 +2065,7 @@ export const LESSONS = [
       { tag: 'border: 3px solid cyan;', meaning: 'Solid wall line' },
       { tag: 'border: 3px dashed gold;', meaning: 'Dashed line' }
     ],
-    quickTags: ['<div>', '</div>', 'style="border: 4px solid #2dd4bf;"', 'border: 4px solid #2dd4bf;'],
+    quickTags: ['<div>', '</div>'],
     challenge: {
       mission: {
         en: 'Wrap the secret chest inside a <div> container and style it with border: 4px solid #2dd4bf; padding: 16px;!',
@@ -2411,7 +2405,7 @@ export const LESSONS = [
       { tag: 'padding: 20px;', meaning: 'Inside cushion (bubble wrap)' },
       { tag: 'margin: 20px;', meaning: 'Outside breathing space' }
     ],
-    quickTags: ['padding: 24px;', 'margin: 30px;', 'margin: 0 auto;'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Set padding to "24px" and margin to "30px" on .box!',
@@ -2711,11 +2705,11 @@ export const LESSONS = [
       { tag: 'transform: scale(1.2);', meaning: { en: 'Zoom 20% larger', uz: '20% kattalashtirish' } },
       { tag: 'transform: translateY(-15px);', meaning: { en: 'Jump into the air', uz: 'Havoga sakrash' } }
     ],
-    quickTags: ['transform: rotate(15deg);', 'transform: scale(1.2);', 'transform: translateY(-15px);'],
+    quickTags: [],
     challenge: {
       mission: {
-        en: 'Move the 3 ready boxes! Rotate .box-1 by 15deg, zoom .box-2 with scale(1.2), and float .box-3 with translateY(-15px)!',
-        uz: 'Tayyor 3 ta qutini harakatlantiring! .box-1 ni rotate(15deg) bilan buring, .box-2 ni scale(1.2) bilan kattalashtiring, .box-3 ni translateY(-15px) bilan suring!'
+        en: 'Transform 3 crates in 2D space! 1) Rotate .box-1 clockwise by 15 degrees! 2) Scale up .box-2 to 1.2 times its original size! 3) Float .box-3 upward by 15 pixels along the vertical axis!',
+        uz: 'Tayyor 3 ta qutini 2D fazoda o\'zgartiring! 1) .box-1 qutisini soat mili bo\'yicha 15 gradusga buring! 2) .box-2 qutisini 1.2 barobar kattalashtirib kattaroq qiling! 3) .box-3 qutisini Y o\'qi bo\'ylab 15 piksel yuqoriga ko\'tarib muallaq qiling!'
       },
       hint: {
         en: 'In each CSS class, set transform with the specific acrobatic move: rotate(15deg) for .box-1, scale(1.2) for .box-2, and translateY(-15px) for .box-3.',
@@ -3360,11 +3354,11 @@ export const LESSONS = [
       { tag: 'align-items: center;', meaning: { en: 'Center vertically', uz: 'Vertikal markazlash' } },
       { tag: 'gap: 12px;', meaning: { en: 'Clean spacing', uz: 'Toza oraliq masofa' } }
     ],
-    quickTags: ['display: flex;', 'justify-content: space-between;', 'align-items: center;', 'gap: 12px;'],
+    quickTags: [],
     challenge: {
       mission: {
-        en: 'Build the CyberPulse Music SPA with 3 Flexbox layouts! 1) Add display: flex;, justify-content: space-between;, align-items: center; to .spa-navbar. 2) Add display: flex;, gap: 12px; to .track-row. 3) Add display: flex;, justify-content: space-between;, align-items: center; to .spa-player!',
-        uz: 'CyberPulse Musiqa SPA sahifasida 3 ta alohida Flexbox joylashuvini quring! 1) .spa-navbar ga display: flex;, justify-content: space-between; va align-items: center; bering. 2) .track-row ga display: flex; va gap: 12px; yozing. 3) .spa-player ga display: flex;, justify-content: space-between; va align-items: center; yozing!'
+        en: 'Assemble the CyberPulse Music SPA with 3 flexible row layouts! 1) Snap the children inside .spa-navbar into a single horizontal row, distribute them to opposite outer edges across the main X axis, and center them vertically! 2) Arrange the music track cards in .track-row into a horizontal line with 12px clean spacing between each card. 3) Align the .spa-player controls in a horizontal row, push the widgets to opposite ends, and center them vertically!',
+        uz: 'CyberPulse Musiqa SPA sahifasida 3 ta alohida moslashuvchan qator joylashuvini yarating! 1) .spa-navbar ichidagi bolalarni chapdan o\'ngga bitta gorizontal qatorga joylashtiring (barcha elementlar yonma-yon tizilsin), ularni asosiy X o\'qi bo\'yicha burchaklardan burchakka (ikki chetga) sochib taqsimlang va vertikal markazlang! 2) .track-row ichidagi qo\'shiq kartalarini ham gorizontal qatorga tizib, kartalar orasida 12px oraliq masofa qoldiring. 3) .spa-player boshqaruv qismini ham bitta gorizontal qatorga tizib, elementlarni ikki chekkaga yoying va vertikal markazlang!'
       },
       hint: {
         en: 'Apply flexbox to .spa-navbar, .track-row, and .spa-player to assemble all 3 sections of the music app!',
@@ -3379,7 +3373,7 @@ export const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.track-row\s*\{[^}]*display\s*:\s*flex/i.test(code) && /\.track-row\s*\{[^}]*gap\s*:\s*12px/i.test(code),
-          message: 'Add display: flex; and gap: 12px; to .track-row!'
+          message: '.track-row ichidagi kartalarni gorizontal qatorga tering va 12px oraliq qoldiring!'
         },
         {
           type: 'custom',
@@ -3523,7 +3517,7 @@ export const LESSONS = [
       { tag: ':hover', meaning: 'Mouse hover trigger' },
       { tag: 'scale(1.1)', meaning: '10% zoom pop' }
     ],
-    quickTags: ['<button class="magic-btn">', '</button>', ':hover { background: #2dd4bf; }', 'transform: scale(1.1);'],
+    quickTags: ['<button class="magic-btn">', '</button>'],
     challenge: {
       mission: {
         en: 'Put a <button class="magic-btn">✨ Turbo Boost</button> in the card, and add a .magic-btn:hover rule with background: #2dd4bf; and transform: scale(1.1);!',
@@ -3935,7 +3929,7 @@ export const LESSONS = [
       { tag: 'background: rgba(...)', meaning: { en: 'Transparent glass', uz: 'Shaffof shisha' } },
       { tag: 'border: 2px solid ...', meaning: { en: 'Border frame', uz: 'Hoshiya ramkasi' } }
     ],
-    quickTags: ['color: #38bdf8;', 'background: rgba(56, 189, 248, 0.12);', 'border: 2px solid #38bdf8;'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Style .color-badge: set color to #38bdf8, background to rgba(56, 189, 248, 0.12), and border to 2px solid #38bdf8!',
@@ -4060,7 +4054,7 @@ export const LESSONS = [
       { tag: 'text-shadow', meaning: { en: 'Neon letter glow', uz: 'Neon harf nurlari' } },
       { tag: 'font-size', meaning: { en: 'Letter size', uz: 'Harf kattaligi' } }
     ],
-    quickTags: ['text-shadow: 0 0 15px #2dd4bf;', 'font-size: 36px;'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Add text-shadow: 0 0 15px #2dd4bf; to .arcade-title to make it glow neon teal!',
@@ -4239,7 +4233,7 @@ export const LESSONS = [
       { tag: 'border-radius: 12px;', meaning: { en: 'Smooth corners', uz: 'Yumaloq burchak' } },
       { tag: 'border-radius: 50%;', meaning: { en: 'Round circle', uz: 'Aylana' } }
     ],
-    quickTags: ['border-radius: 50%;', 'border-radius: 16px;'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Put the avatar <div class="avatar">🦊</div> inside the profile badge, and shape it into a circle with border-radius: 50%;!',
@@ -4367,7 +4361,7 @@ export const LESSONS = [
       { tag: '@keyframes name', meaning: { en: 'Dance choreography', uz: 'Harakat xaritasi' } },
       { tag: 'animation: name 1s infinite;', meaning: { en: 'Loop forever', uz: 'Cheksiz takrorlash' } }
     ],
-    quickTags: ['animation: bounce 1s infinite alternate;', '@keyframes bounce {'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Add animation: bounce 1s infinite alternate; to the .alien to bring it to life!',
@@ -5544,11 +5538,11 @@ export const LESSONS = [
       { tag: 'grid-column: 1 / -1;', meaning: { en: 'Full Width Span', uz: 'To\'liq eniga cho\'zish' } },
       { tag: 'grid-column: span 2;', meaning: { en: 'Span 2 Columns', uz: '2 ta ustunni egallash' } }
     ],
-    quickTags: ['display: grid;', 'grid-template-columns: 200px 1fr 1fr;', 'gap: 16px;', 'grid-column: 1 / -1;', 'grid-column: span 2;'],
+    quickTags: [],
     challenge: {
       mission: {
-        en: 'Build the CyberStore Launcher SPA with 4 Grid operations! 1) Add display: grid;, grid-template-columns: 200px 1fr 1fr;, gap: 16px; to .spa-grid. 2) Add grid-column: 1 / -1; to .spa-header. 3) Add grid-column: span 2; to .featured-card. 4) Add grid-column: 1 / -1; to .spa-footer!',
-        uz: 'CyberStore O\'yinlar Do\'koni SPA sahifasida 4 ta Grid amalini bajaring! 1) .spa-grid ga display: grid;, grid-template-columns: 200px 1fr 1fr; va gap: 16px; bering. 2) .spa-header ga grid-column: 1 / -1; yozing. 3) .featured-card ga grid-column: span 2; bering. 4) .spa-footer ga grid-column: 1 / -1; yozing!'
+        en: 'Build the 2D layout for CyberStore Gaming Hub! 1) Activate 2D grid layout on .spa-grid with 3 columns (first fixed at 200px, next two sharing space equally at 1fr) and 16px gaps. 2) Stretch .spa-header across all columns from the first grid line to the very last line! 3) Expand .featured-card across 2 columns! 4) Span .spa-footer across the entire width from start to finish line!',
+        uz: 'CyberStore O\'yinlar Do\'koni SPA sahifasida 2 o\'lchamli to\'r quring! 1) .spa-grid konteynerida 2 o\'lchamli to\'r tizimini yoqing: 3 ta ustun hosil qiling (birinchisi 200px kenglikda, qolgan 2 tasi teng ulushda 1fr), ustun va qatorlar orasida 16px oraliq masofa qoldiring. 2) .spa-header bosh sarlavhasini birinchi chiziqdan eng oxirgi chiziqqacha butun eni bo\'ylab yoying! 3) .featured-card maxsus o\'yin kartasini 2 ta ustun kengligida yoying! 4) .spa-footer pastki panelini ham to\'liq kenglik bo\'ylab birinchi chiziqdan oxirigacha yoying!'
       },
       hint: {
         en: 'Configure the grid container on .spa-grid, then span the header with grid-column: 1 / -1;, the hero card with grid-column: span 2;, and the footer with grid-column: 1 / -1;',
@@ -6117,11 +6111,11 @@ export const LESSONS = [
       { tag: 'position: absolute;', meaning: { en: 'Corner coordinate pin', uz: 'Aniq burchak mixi' } },
       { tag: 'position: fixed;', meaning: { en: 'Glued to screen window', uz: 'Ekranga mixlangan' } }
     ],
-    quickTags: ['position: sticky;', 'top: 0;', 'position: relative;', 'position: absolute;', 'top: -10px;', 'right: -10px;', 'bottom: 10px;', 'position: fixed;', 'bottom: 20px;', 'right: 20px;'],
+    quickTags: [],
     challenge: {
       mission: {
-        en: 'Deploy all 5 positions in the Defense SPA! 1) Add position: sticky; top: 0; to .sticky-navbar. 2) Add position: relative; to .shield-card and .radar-panel. 3) Add position: absolute; top: -10px; right: -10px; to .alarm-badge. 4) Add position: absolute; bottom: 10px; right: 10px; to .radar-blip. 5) Add position: fixed; bottom: 20px; right: 20px; to .fixed-drone!',
-        uz: 'Mudofaa SPA sahifasida barcha 5 ta positionni amalda qo\'llang! 1) .sticky-navbar ga position: sticky; top: 0; yozing. 2) .shield-card va .radar-panel ga position: relative; bering. 3) .alarm-badge ga position: absolute; top: -10px; right: -10px; yozing. 4) .radar-blip ga position: absolute; bottom: 10px; right: 10px; bering. 5) .fixed-drone ga position: fixed; bottom: 20px; right: 20px; yozing!'
+        en: 'Master spatial placement across the Defense SPA! 1) Make .sticky-navbar stick to the very top edge of the screen as you scroll (0 distance from top). 2) Establish .shield-card and .radar-panel as relative coordinate anchor points for their children. 3) Position the .alarm-badge on the top-right corner of its card (top -10px, right -10px). 4) Position the .radar-blip inside the radar panel\'s bottom-right corner (bottom 10px, right 10px). 5) Anchor the .fixed-drone floating in place at the bottom-right corner of the whole browser viewport (bottom 20px, right 20px)!',
+        uz: 'Mudofaa SPA sahifasida 5 ta elementning joylashuvini to\'g\'ri boshqaring! 1) .sticky-navbar sahifa pastga aylantirilganda ham ekranning eng yuqori qismida yopishib tursin (tepadan 0 masofada). 2) .shield-card va .radar-panel konteynerlarini ichki koordinata poydevori (o\'z turgan joyiga nisbiy asos) qilib belgilang. 3) .alarm-badge ogohlantiruvchi nishonini o\'z kartochkasining yuqori o\'ng burchagiga chiqarib qo\'ying (tepadan -10px, o\'ngdan -10px). 4) .radar-blip nishonini radar panelining pastki o\'ng burchagiga joylashtiring (pastdan 10px, o\'ngdan 10px). 5) .fixed-drone dronini butun ekranning pastki o\'ng burchagida muallaq qotirib qo\'ying (pastdan 20px, o\'ngdan 20px)!'
       },
       hint: {
         en: 'Give .sticky-navbar position: sticky; top: 0; Give both .shield-card and .radar-panel position: relative; Give .alarm-badge position: absolute; top: -10px; right: -10px; Give .radar-blip position: absolute; bottom: 10px; right: 10px; Give .fixed-drone position: fixed; bottom: 20px; right: 20px;',
@@ -6335,9 +6329,7 @@ export const LESSONS = [
         }
       }
     ],
-    quickTags: [
-      'transition: all 0.3s ease;'
-    ],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Set transition: all 0.3s ease; on .magic-card so it glides smoothly on hover!',
@@ -6527,10 +6519,7 @@ export const LESSONS = [
         }
       }
     ],
-    quickTags: [
-      'filter: drop-shadow(0 0 20px #2dd4bf);',
-      'filter: blur(4px);'
-    ],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Add filter: drop-shadow(0 0 20px #2dd4bf); to .crystal so the diamond radiates a neon glow!',
@@ -6790,7 +6779,7 @@ export const LESSONS = [
       { code: 'overflow-x: auto', name: 'Horizontal Overflow', description: 'Scrolls horizontally' },
       { code: 'text-overflow: ellipsis', name: 'Ellipsis Crop', description: 'Appends ... to overflowing single line text' }
     ],
-    quickTags: ['overflow-y: auto;', 'overflow-x: auto;', 'overflow: hidden; text-overflow: ellipsis;'],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Configure all 3 overflow modes: add overflow-y: auto to .terminal-box, overflow-x: auto to .weapons-deck, and text-overflow: ellipsis with overflow: hidden to .id-badge!',
@@ -7188,14 +7177,7 @@ export const LESSONS = [
       { tag: 'radial-gradient()', meaning: { en: '3D sphere glow', uz: '3D shar nuri' } },
       { tag: 'conic-gradient()', meaning: { en: '360° radar sweep', uz: '360° radar aylanasi' } }
     ],
-    quickTags: [
-      'linear-gradient(45deg, #ff007a, #7928ca)',
-      'linear-gradient(90deg, #00f2fe, #4facfe)',
-      'linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed)',
-      'radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)',
-      'conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)',
-      '-webkit-background-clip: text;'
-    ],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Master all 5 gradient angles and styles: 45° linear, 90° linear, 135° multi-stop linear, 3D radial sphere, 360° conic radar, and text gradient with -webkit-background-clip: text!',
@@ -7405,9 +7387,7 @@ export const LESSONS = [
         description: { en: 'Conditional styling for mobile/tablet screen sizes.', uz: "Mobil va planshet ekran o'lchamlari uchun shartli uslublar." }
       }
     ],
-    quickTags: [
-      '@media (max-width: 768px) { .squad-dock { flex-direction: column; } }'
-    ],
+    quickTags: [],
     challenge: {
       mission: {
         en: 'Add @media (max-width: 768px) and set .squad-dock to flex-direction: column!',
@@ -7574,10 +7554,7 @@ export const LESSONS = [
         description: { en: 'Container for crystal-clear vector graphics.', uz: "O'ta tiniq vektor grafikalar konteyneri." }
       }
     ],
-    quickTags: [
-      "font-family: 'Orbitron', monospace, sans-serif;",
-      'letter-spacing: 3px;'
-    ],
+    quickTags: [],
     challenge: {
       mission: {
         en: "Add font-family: 'Orbitron', monospace, sans-serif; and letter-spacing: 3px; to .guild-title!",

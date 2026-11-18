@@ -1,0 +1,194 @@
+[
+  {
+    "id": "theme-1-tags",
+    "qTags": "'<h1>', '<strong>', '<em>', '<mark>', '<blockquote>', '<q>', '<del>', '<ins>', '<sub>', '<sup>', '<kbd>', '<code>', '<u>'",
+    "missionUz": "Xom manifest matnini barcha formatlash teglari: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code> va <u> teglari yordamida buyuk kiber hujjatga aylantiring.",
+    "missionEn": "Transform the unformatted manifesto speech into a legendary cyber document by applying all text tags: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code>, and <u>."
+  },
+  {
+    "id": "theme-2-structure",
+    "qTags": "'<!DOCTYPE html>', '<html lang=\"uz\">', '<head>', '<title>', '<body>', '<header>', '<nav>', '<main>', '<article>', '<section>', '<aside>', '<footer>'",
+    "missionUz": "To\\",
+    "missionEn": "Assemble the complete semantic architecture: wrap the portal parts in proper semantic tags: <title>, <header>, <nav>, <main>, <article>, <section>, <aside>, and <footer>."
+  },
+  {
+    "id": "theme-3-tables",
+    "qTags": "'<table>', '</table>', '<tr>', '</tr>', '<th>', '</th>', '<td>', '</td>', 'colspan=\"3\"'",
+    "missionUz": "Kibersport jadvalini noldan o\\",
+    "missionEn": "Construct the full Esports Standings Table from scratch! 1) Create header <tr> with 4 <th> cells. 2) Create 1st place <tr class="
+  },
+  {
+    "id": "theme-4-pictures",
+    "qTags": "'<figure class=\"hero-figure\">',\n      '<img src=\"...\" alt=\"Mars Rover\" class=\"hero-img\">',\n      '<figcaption class=\"gallery-caption\">',\n      'object-fit: cover;',\n      'border-radius: 50%;'",
+    "missionUz": "Mars & Dronlar ko",
+    "missionEn": "Build the Mars & Drone Fleet Exhibition: add the hero rover photo inside <figure>, with <figcaption>, 2 fleet images, and circular border-radius: 50% crew avatars!"
+  },
+  {
+    "id": "theme-5-divs",
+    "qTags": "'<div>', '</div>', 'style=\"border: 4px solid #2dd4bf;\"', 'border: 4px solid #2dd4bf;'",
+    "missionUz": "Maxfiy xazinani <div> qutisiga o\\",
+    "missionEn": "Wrap the secret chest inside a <div> container and style it with border: 4px solid #2dd4bf; padding: 16px;!"
+  },
+  {
+    "id": "theme-6-classes",
+    "qTags": "'class=\"badge\"', '<span class=\"badge\">', '</span>', '.badge {'",
+    "missionUz": "Level 99 span tegiga class=",
+    "missionEn": "Add class="
+  },
+  {
+    "id": "theme-7-box-model",
+    "qTags": "'padding: 24px;', 'margin: 30px;', 'margin: 0 auto;'",
+    "missionUz": ".box klassida padding ni ",
+    "missionEn": "Set padding to "
+  },
+  {
+    "id": "theme-8-transform",
+    "qTags": "'transform: rotate(15deg);', 'transform: scale(1.2);', 'transform: translateY(-15px);'",
+    "missionUz": "Tayyor 3 ta qutini harakatlantiring! .box-1 ni rotate(15deg) bilan buring, .box-2 ni scale(1.2) bilan kattalashtiring, .box-3 ni translateY(-15px) bilan suring!",
+    "missionEn": "Move the 3 ready boxes! Rotate .box-1 by 15deg, zoom .box-2 with scale(1.2), and float .box-3 with translateY(-15px)!"
+  },
+  {
+    "id": "theme-9-flexbox",
+    "qTags": "'display: flex;', 'justify-content: space-between;', 'align-items: center;', 'gap: 12px;'",
+    "missionUz": "CyberPulse Musiqa SPA sahifasida 3 ta alohida Flexbox joylashuvini quring! 1) .spa-navbar ga display: flex;, justify-content: space-between; va align-items: center; bering. 2) .track-row ga display: flex; va gap: 12px; yozing. 3) .spa-player ga display: flex;, justify-content: space-between; va align-items: center; yozing!",
+    "missionEn": "Build the CyberPulse Music SPA with 3 Flexbox layouts! 1) Add display: flex;, justify-content: space-between;, align-items: center; to .spa-navbar. 2) Add display: flex;, gap: 12px; to .track-row. 3) Add display: flex;, justify-content: space-between;, align-items: center; to .spa-player!"
+  },
+  {
+    "id": "theme-10-buttons",
+    "qTags": "'<button class=\"magic-btn\">', '</button>', ':hover { background: #2dd4bf; }', 'transform: scale(1.1);'",
+    "missionUz": "Kartochkaga <button class=",
+    "missionEn": "Put a <button class="
+  },
+  {
+    "id": "theme-11-links",
+    "qTags": "'<a href=\"https://wikipedia.org\" target=\"_blank\">', '</a>'",
+    "missionUz": "",
+    "missionEn": "Wrap the word "
+  },
+  {
+    "id": "theme-12-lists",
+    "qTags": "'<ul>', '<li>', '</li>', '</ul>'",
+    "missionUz": "3 ta jihozni <li> bilan o\\",
+    "missionEn": "Wrap the 3 items in <li> and put them inside a <ul> list container!"
+  },
+  {
+    "id": "theme-13-colors",
+    "qTags": "'color: #38bdf8;', 'background: rgba(56, 189, 248, 0.12);', 'border: 2px solid #38bdf8;'",
+    "missionUz": ".color-badge ni bezang: color ni #38bdf8 qiling, background ni rgba(56, 189, 248, 0.12) qiling va border ni 2px solid #38bdf8 bering!",
+    "missionEn": "Style .color-badge: set color to #38bdf8, background to rgba(56, 189, 248, 0.12), and border to 2px solid #38bdf8!"
+  },
+  {
+    "id": "theme-14-fonts",
+    "qTags": "'text-shadow: 0 0 15px #2dd4bf;', 'font-size: 36px;'",
+    "missionUz": ".arcade-title ga text-shadow: 0 0 15px #2dd4bf; qo\\",
+    "missionEn": "Add text-shadow: 0 0 15px #2dd4bf; to .arcade-title to make it glow neon teal!"
+  },
+  {
+    "id": "theme-15-shapes",
+    "qTags": "'border-radius: 50%;', 'border-radius: 16px;'",
+    "missionUz": "Profil kartochkasiga <div class=",
+    "missionEn": "Put the avatar <div class="
+  },
+  {
+    "id": "theme-16-animations",
+    "qTags": "'animation: bounce 1s infinite alternate;', '@keyframes bounce {'",
+    "missionUz": ".alien ga animation: bounce 1s infinite alternate; qo\\",
+    "missionEn": "Add animation: bounce 1s infinite alternate; to the .alien to bring it to life!"
+  },
+  {
+    "id": "theme-17-inputs",
+    "qTags": "'<input type=\"text\">',\r\n      '<input type=\"color\">',\r\n      '<input type=\"checkbox\">'",
+    "missionUz": "Kartochka ichiga type=",
+    "missionEn": "Add a text input with type="
+  },
+  {
+    "id": "theme-18-audio",
+    "qTags": "'<audio controls src=\"...\">', '</audio>', 'controls'",
+    "missionUz": "Kosmonavtlar musiqa tinglashi uchun ovoz paneliga <audio controls src=",
+    "missionEn": "Add an <audio controls src="
+  },
+  {
+    "id": "theme-19-video",
+    "qTags": "'<video controls width=\"320\">',\r\n      '</video>',\r\n      'controls'",
+    "missionUz": "Kino kartasi ichiga <video controls width=",
+    "missionEn": "Add a <video controls width="
+  },
+  {
+    "id": "theme-20-details",
+    "qTags": "'<details>',\r\n      '</details>',\r\n      '<summary>',\r\n      '</summary>'",
+    "missionUz": "Kartochka ichiga maxfiy kodni yashirish uchun <summary> sarlavhali <details> tegi qo\\",
+    "missionEn": "Add a <details> element with a <summary> inside the card to hide the secret code!"
+  },
+  {
+    "id": "theme-21-grid",
+    "qTags": "'display: grid;', 'grid-template-columns: 200px 1fr 1fr;', 'gap: 16px;', 'grid-column: 1 / -1;', 'grid-column: span 2;'",
+    "missionUz": "CyberStore O\\",
+    "missionEn": "Build the CyberStore Launcher SPA with 4 Grid operations! 1) Add display: grid;, grid-template-columns: 200px 1fr 1fr;, gap: 16px; to .spa-grid. 2) Add grid-column: 1 / -1; to .spa-header. 3) Add grid-column: span 2; to .featured-card. 4) Add grid-column: 1 / -1; to .spa-footer!"
+  },
+  {
+    "id": "theme-22-position",
+    "qTags": "'position: sticky;', 'top: 0;', 'position: relative;', 'position: absolute;', 'top: -10px;', 'right: -10px;', 'bottom: 10px;', 'position: fixed;', 'bottom: 20px;', 'right: 20px;'",
+    "missionUz": "Mudofaa SPA sahifasida barcha 5 ta positionni amalda qo\\",
+    "missionEn": "Deploy all 5 positions in the Defense SPA! 1) Add position: sticky; top: 0; to .sticky-navbar. 2) Add position: relative; to .shield-card and .radar-panel. 3) Add position: absolute; top: -10px; right: -10px; to .alarm-badge. 4) Add position: absolute; bottom: 10px; right: 10px; to .radar-blip. 5) Add position: fixed; bottom: 20px; right: 20px; to .fixed-drone!"
+  },
+  {
+    "id": "theme-23-transitions",
+    "qTags": "'transition: all 0.3s ease;'",
+    "missionUz": ".magic-card ga transition: all 0.3s ease; qo\\",
+    "missionEn": "Set transition: all 0.3s ease; on .magic-card so it glides smoothly on hover!"
+  },
+  {
+    "id": "theme-24-filters",
+    "qTags": "'filter: drop-shadow(0 0 20px #2dd4bf);',\r\n      'filter: blur(4px);'",
+    "missionUz": ".crystal ga filter: drop-shadow(0 0 20px #2dd4bf); qo\\",
+    "missionEn": "Add filter: drop-shadow(0 0 20px #2dd4bf); to .crystal so the diamond radiates a neon glow!"
+  },
+  {
+    "id": "theme-25-overflow",
+    "qTags": "'overflow-y: auto;', 'overflow-x: auto;', 'overflow: hidden; text-overflow: ellipsis;'",
+    "missionUz": "Barcha 3 xil overflow turini sozlang: .terminal-box ga overflow-y: auto, .weapons-deck ga overflow-x: auto va .id-badge ga text-overflow: ellipsis hamda overflow: hidden bering!",
+    "missionEn": "Configure all 3 overflow modes: add overflow-y: auto to .terminal-box, overflow-x: auto to .weapons-deck, and text-overflow: ellipsis with overflow: hidden to .id-badge!"
+  },
+  {
+    "id": "theme-26-gradients",
+    "qTags": "'linear-gradient(45deg, #ff007a, #7928ca)',\n      'linear-gradient(90deg, #00f2fe, #4facfe)',\n      'linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed)',\n      'radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)',\n      'conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)',\n      '-webkit-background-clip: text;'",
+    "missionUz": "Barcha 5 xil gradient burchaklari va turlarini qo",
+    "missionEn": "Master all 5 gradient angles and styles: 45° linear, 90° linear, 135° multi-stop linear, 3D radial sphere, 360° conic radar, and text gradient with -webkit-background-clip: text!"
+  },
+  {
+    "id": "theme-27-media-queries",
+    "qTags": "'@media (max-width: 768px) { .squad-dock { flex-direction: column; } }'",
+    "missionUz": "@media (max-width: 768px) qo",
+    "missionEn": "Add @media (max-width: 768px) and set .squad-dock to flex-direction: column!"
+  },
+  {
+    "id": "theme-28-web-fonts-icons",
+    "qTags": "\"font-family: 'Orbitron', monospace, sans-serif;\",\r\n      'letter-spacing: 3px;'",
+    "missionUz": ".guild-title ga font-family: ",
+    "missionEn": "Add font-family: "
+  },
+  {
+    "id": "theme-29-third-party-animations",
+    "qTags": "'class=\"animate__animated animate__bounceIn\"',\r\n      'class=\"animate__animated animate__pulse\"'",
+    "missionUz": ".treasure-chest elementiga animate__animated va animate__bounceIn klasslarini qo",
+    "missionEn": "Add classes animate__animated and animate__bounceIn to the .treasure-chest element!"
+  },
+  {
+    "id": "theme-30-bootstrap-grid",
+    "qTags": "'class=\"container\"',\r\n      'class=\"row g-2\"',\r\n      'class=\"col-12 col-md-4\"'",
+    "missionUz": "3 ta ustunli qutilarning har biriga class=",
+    "missionEn": "Build the 3-column layout by adding class="
+  },
+  {
+    "id": "theme-31-bootstrap-components",
+    "qTags": "'class=\"card\"',\r\n      'class=\"badge bg-success rounded-pill\"',\r\n      'class=\"alert alert-primary\"',\r\n      'class=\"btn btn-primary\"'",
+    "missionUz": "Qahramon status kartasini shakllantirish uchun card, badge bg-success, alert alert-primary va btn btn-primary klasslarini qo\\",
+    "missionEn": "Add card, badge bg-success, alert alert-primary, and btn btn-primary classes to shape the hero status card!"
+  },
+  {
+    "id": "theme-32-bootstrap-ui",
+    "qTags": "'<nav class=\"navbar navbar-dark bg-dark\">',\r\n      '<a class=\"navbar-brand\" href=\"#\">',\r\n      '<a class=\"nav-link active\" href=\"#\">'",
+    "missionUz": "Navigatsiya sarlavhasini yig\\",
+    "missionEn": "Add navbar navbar-dark bg-dark, navbar-brand, nav-link active, and button classes to assemble the navigation header!"
+  }
+]

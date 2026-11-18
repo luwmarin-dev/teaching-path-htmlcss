@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>🦖 Chrome Dino Game — Mening Ilk JS O'yinim</title>
+  <style>
+    body {
+      background: #0b0f19;
+      color: #ffffff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 { margin-bottom: 10px; color: #38bdf8; }
+    .score-board { font-size: 18px; font-weight: bold; margin-bottom: 12px; font-family: monospace; }
+    canvas {
+      background: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hint { margin-top: 15px; color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>🦖 Chrome Dino Game</h1>
+  <div class="score-board">OCHKO: <span id="score">00000</span></div>
+  <canvas id="gameCanvas" width="800" height="200"></canvas>
+  <div class="hint">Boshqaruv: <b>Space</b> yoki <b>⬆️ Strelka</b> tugmasi</div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+
+    // 1-Qadam: Dinozavr Klassi
+    class Dino {
+      constructor() {
+        this.width = 44;
+        this.height = 48;
+        this.x = 50;
+        this.y = 0;
+        this.velocityY = 0;
+        this.isJumping = false;
+        this.jumpForce = 12;
+        this.gravity = 0.6;
+      }
+
+      jump() {
+        if (!this.isJumping && this.y === 0) {
+          this.isJumping = true;
+          this.velocityY = this.jumpForce;
+        }
+      }
+
+      update() {
+        if (this.isJumping) {
+          this.y += this.velocityY;
+          this.velocityY -= this.gravity;
+          if (this.y <= 0) {
+            this.y = 0;
+            this.isJumping = false;
+            this.velocityY = 0;
+          }
+        }
+      }
+
+      draw(ctx) {
+        const renderY = canvas.height - 30 - this.height - this.y;
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillRect(this.x, renderY, this.width, this.height);
+        // Ko'z
+        ctx.fillStyle = '#0b0f19';
+        ctx.fillRect(this.x + 30, renderY + 8, 6, 6);
+      }
+    }
+
+    const dino = new Dino();
+    let cactusX = 800;
+    let score = 0;
+    let isGameOver = false;
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        if (isGameOver) {
+          isGameOver = false;
+          cactusX = 800;
+          score = 0;
+          loop();
+        } else {
+          dino.jump();
+        }
+      }
+    });
+
+    function loop() {
+      if (isGameOver) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Yer
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height - 30);
+      ctx.lineTo(canvas.width, canvas.height - 30);
+      ctx.stroke();
+
+      // Dinozavr
+      dino.update();
+      dino.draw(ctx);
+
+      // Kaktus
+      cactusX -= 6;
+      if (cactusX < -30) {
+        cactusX = 800;
+        score += 10;
+        scoreEl.textContent = String(score).padStart(5, '0');
+      }
+      ctx.fillStyle = '#10b981';
+      ctx.fillRect(cactusX, canvas.height - 30 - 45, 24, 45);
+
+      // To'qnashuv tekshiruvi (AABB)
+      const dinoY = canvas.height - 30 - dino.height - dino.y;
+      const cactusY = canvas.height - 30 - 45;
+      if (
+        dino.x < cactusX + 24 &&
+        dino.x + dino.width > cactusX &&
+        dinoY + dino.height > cactusY
+      ) {
+        isGameOver = true;
+        ctx.fillStyle = '#ef4444';
+        ctx.font = '24px sans-serif';
+        ctx.fillText('💥 O\'YIN TUGADI! Qaytadan: Space', 220, 100);
+        return;
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  <\/script>
+</body>
+</html>
