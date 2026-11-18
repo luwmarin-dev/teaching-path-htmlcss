@@ -1158,133 +1158,256 @@ const LESSONS = [
     },
     initialCode: {
       en: `<style>
-  .gallery-card {
-    background: #0b0f19;
+  .expedition-hub {
+    background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 18px;
+    border-radius: 18px;
+    padding: 20px;
     color: white;
     font-family: system-ui, sans-serif;
-    max-width: 320px;
+    max-width: 480px;
     margin: 0 auto;
+  }
+  .hero-figure {
+    margin: 0 0 16px 0;
+  }
+  .hero-img {
+    width: 100%;
+    /* 1-Qadam: aspect-ratio: 16/9; va object-fit: cover; bering */
+    border-radius: 14px;
+    border: 2px solid #38bdf8;
+    display: block;
   }
   .gallery-caption {
     font-size: 13px;
     color: #94a3b8;
-    margin: 10px 0 14px;
-    font-weight: 600;
+    margin: 10px 0 0;
+    font-weight: 700;
     text-align: center;
   }
-  .crew-deck {
-    display: flex;
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    justify-content: center;
-    border-top: 1px solid #1f2937;
-    padding-top: 12px;
+    margin-bottom: 16px;
   }
-  .crew-avatar {
-    border-radius: 50%;
-    border: 2px solid #38bdf8;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  .fleet-img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .crew-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 10px 16px;
+  }
+  .crew-avatars {
+    display: flex;
+    gap: 10px;
+  }
+  .avatar-badge {
+    width: 48px;
+    height: 48px;
+    /* 3-Qadam: border-radius: 50%; qiling */
   }
 </style>
 
-<figure class="gallery-card">
-  <!-- Step 1: Add the main rover image: <img src="rover.svg" alt="Mars Rover MK-IV" width="280"> -->
+<div class="expedition-hub">
+  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <figure class="hero-figure">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
+    <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
+  </figure>
 
-  <!-- Step 2: Add <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Red Planet Recon</figcaption> -->
-
-  <div class="crew-deck">
-    <!-- Step 3: Add 2 crew avatar images with width="56" height="56" class="crew-avatar" -->
-
+  <div class="fleet-grid">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><rect x='70' y='45' width='40' height='30' rx='4' fill='%23eab308' stroke='%23fef08a' stroke-width='2'/><rect x='20' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><rect x='115' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><circle cx='90' cy='40' r='12' fill='none' stroke='%23facc15' stroke-width='2'/><text x='90' y='64' fill='%23000' font-family='sans-serif' font-weight='bold' font-size='9' text-anchor='middle'>ORBIT-9</text></svg>" alt="Deep Space Orbital Relay" class="fleet-img">
   </div>
-</figure>`,
+
+  <div class="crew-strip">
+    <span style="font-size: 12px; font-weight: 800; color: #38bdf8;">KOSMIK EKIPAJ:</span>
+    <div class="crew-avatars">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%23f97316'/><text x='30' y='39' font-size='28' text-anchor='middle'>🦊</text></svg>" alt="Pilot Fox Commander" class="avatar-badge">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%2306b6d4'/><text x='30' y='39' font-size='28' text-anchor='middle'>🤖</text></svg>" alt="Scientist Android Prime" class="avatar-badge">
+    </div>
+  </div>
+</div>`,
       uz: `<style>
-  .gallery-card {
-    background: #0b0f19;
+  .expedition-hub {
+    background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 18px;
+    border-radius: 18px;
+    padding: 20px;
     color: white;
     font-family: system-ui, sans-serif;
-    max-width: 320px;
+    max-width: 480px;
     margin: 0 auto;
+  }
+  .hero-figure {
+    margin: 0 0 16px 0;
+  }
+  .hero-img {
+    width: 100%;
+    /* 1-Qadam: aspect-ratio: 16/9; va object-fit: cover; bering */
+    border-radius: 14px;
+    border: 2px solid #38bdf8;
+    display: block;
   }
   .gallery-caption {
     font-size: 13px;
     color: #94a3b8;
-    margin: 10px 0 14px;
-    font-weight: 600;
+    margin: 10px 0 0;
+    font-weight: 700;
     text-align: center;
   }
-  .crew-deck {
-    display: flex;
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    justify-content: center;
-    border-top: 1px solid #1f2937;
-    padding-top: 12px;
+    margin-bottom: 16px;
   }
-  .crew-avatar {
-    border-radius: 50%;
-    border: 2px solid #38bdf8;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  .fleet-img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .crew-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 10px 16px;
+  }
+  .crew-avatars {
+    display: flex;
+    gap: 10px;
+  }
+  .avatar-badge {
+    width: 48px;
+    height: 48px;
+    /* 3-Qadam: border-radius: 50%; qiling */
   }
 </style>
 
-<figure class="gallery-card">
-  <!-- 1-Qadam: Rover rasmini qo'ying: <img src="rover.svg" alt="Mars Rover MK-IV" width="280"> -->
+<div class="expedition-hub">
+  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <figure class="hero-figure">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
+    <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
+  </figure>
 
-  <!-- 2-Qadam: <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi</figcaption> qo'shing -->
-
-  <div class="crew-deck">
-    <!-- 3-Qadam: 2 ta ekipaj avatar rasmini qo'ying: width="56" height="56" class="crew-avatar" -->
-
+  <div class="fleet-grid">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><rect x='70' y='45' width='40' height='30' rx='4' fill='%23eab308' stroke='%23fef08a' stroke-width='2'/><rect x='20' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><rect x='115' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><circle cx='90' cy='40' r='12' fill='none' stroke='%23facc15' stroke-width='2'/><text x='90' y='64' fill='%23000' font-family='sans-serif' font-weight='bold' font-size='9' text-anchor='middle'>ORBIT-9</text></svg>" alt="Deep Space Orbital Relay" class="fleet-img">
   </div>
-</figure>`
+
+  <div class="crew-strip">
+    <span style="font-size: 12px; font-weight: 800; color: #38bdf8;">KOSMIK EKIPAJ:</span>
+    <div class="crew-avatars">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%23f97316'/><text x='30' y='39' font-size='28' text-anchor='middle'>🦊</text></svg>" alt="Pilot Fox Commander" class="avatar-badge">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%2306b6d4'/><text x='30' y='39' font-size='28' text-anchor='middle'>🤖</text></svg>" alt="Scientist Android Prime" class="avatar-badge">
+    </div>
+  </div>
+</div>`
     },
     targetCode: `<style>
-  .gallery-card {
-    background: #0b0f19;
+  .expedition-hub {
+    background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 18px;
+    border-radius: 18px;
+    padding: 20px;
     color: white;
     font-family: system-ui, sans-serif;
-    max-width: 320px;
+    max-width: 480px;
     margin: 0 auto;
+  }
+  .hero-figure {
+    margin: 0 0 16px 0;
+  }
+  .hero-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .hero-img:hover {
+    transform: scale(1.02);
   }
   .gallery-caption {
     font-size: 13px;
     color: #94a3b8;
-    margin: 10px 0 14px;
-    font-weight: 600;
+    margin: 10px 0 0;
+    font-weight: 700;
     text-align: center;
   }
-  .crew-deck {
-    display: flex;
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    justify-content: center;
-    border-top: 1px solid #1f2937;
-    padding-top: 12px;
+    margin-bottom: 16px;
   }
-  .crew-avatar {
+  .fleet-img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #334155;
+  }
+  .crew-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 10px 16px;
+  }
+  .crew-avatars {
+    display: flex;
+    gap: 10px;
+  }
+  .avatar-badge {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: 2px solid #38bdf8;
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    object-fit: cover;
   }
 </style>
 
-<figure class="gallery-card">
-  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='150' viewBox='0 0 280 150'><rect width='280' height='150' rx='10' fill='%23111827'/><circle cx='50' cy='40' r='18' fill='%23f59e0b'/><rect x='40' y='75' width='200' height='35' rx='8' fill='%231f2937' stroke='%2338bdf8' stroke-width='2'/><circle cx='70' cy='115' r='12' fill='%2338bdf8'/><circle cx='140' cy='115' r='12' fill='%2338bdf8'/><circle cx='210' cy='115' r='12' fill='%2338bdf8'/><text x='140' y='98' fill='%2338bdf8' font-family='sans-serif' font-weight='bold' font-size='12' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV" width="280">
-  <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi</figcaption>
-  <div class="crew-deck">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><circle cx='28' cy='28' r='26' fill='%23f97316'/><text x='28' y='36' font-size='26' text-anchor='middle'>🦊</text></svg>" alt="Pilot Fox" width="56" height="56" class="crew-avatar">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><circle cx='28' cy='28' r='26' fill='%2306b6d4'/><text x='28' y='36' font-size='26' text-anchor='middle'>🤖</text></svg>" alt="Scientist Bot" width="56" height="56" class="crew-avatar">
+<div class="expedition-hub">
+  <figure class="hero-figure">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
+    <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi 2026</figcaption>
+  </figure>
+
+  <div class="fleet-grid">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><rect x='70' y='45' width='40' height='30' rx='4' fill='%23eab308' stroke='%23fef08a' stroke-width='2'/><rect x='20' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><rect x='115' y='50' width='45' height='20' fill='%230284c7' stroke='%2338bdf8' stroke-width='1.5'/><circle cx='90' cy='40' r='12' fill='none' stroke='%23facc15' stroke-width='2'/><text x='90' y='64' fill='%23000' font-family='sans-serif' font-weight='bold' font-size='9' text-anchor='middle'>ORBIT-9</text></svg>" alt="Deep Space Orbital Relay" class="fleet-img">
   </div>
-</figure>`,
+
+  <div class="crew-strip">
+    <span style="font-size: 12px; font-weight: 800; color: #38bdf8;">KOSMIK EKIPAJ:</span>
+    <div class="crew-avatars">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%23f97316'/><text x='30' y='39' font-size='28' text-anchor='middle'>🦊</text></svg>" alt="Pilot Fox Commander" class="avatar-badge">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='28' fill='%2306b6d4'/><text x='30' y='39' font-size='28' text-anchor='middle'>🤖</text></svg>" alt="Scientist Android Prime" class="avatar-badge">
+    </div>
+  </div>
+</div>`,
     targetDescription: {
-      en: 'A Mars Rover expedition card featuring an offline vector hero graphic, semantic figcaption, and two neon circular crew avatar badges.',
-      uz: "Oflayn ishlaydigan vektorli bosh rasm, semantik figcaption va 2 ta neon dumaloq ekipaj avatari jamlangan Mars Rover ekspeditsiya kartochkasi."
+      en: 'A high-tech Mars Rover expedition exhibition featuring a responsive hero panorama with object-fit: cover, semantic figcaption, 2 fleet vehicles, and 2 neon circular crew avatar badges.',
+      uz: "Responsive rover panoramasi, object-fit: cover, semantik figcaption, 2 ta dron/yo'ldosh va 2 ta dumaloq neon ekipaj avatari jamlangan Mars ekspeditsiya ko'rgazmasi."
     },
     anatomy: [
       {
@@ -1309,56 +1432,67 @@ const LESSONS = [
     listOfTags: [
       { code: '<figure>', name: 'Figure', description: 'Semantic container for photos and illustrations', exampleHtml: '<figure><img src="rover.svg"><figcaption>Rover</figcaption></figure>' },
       { code: '<img src="" alt="">', name: 'Image', description: 'Displays an image or graphic (self-closing)', exampleHtml: '<img src="avatar.svg" alt="Pilot" width="56">' },
-      { code: '<figcaption>', name: 'Caption', description: 'Describes or captions the figure', exampleHtml: '<figcaption>Expedition Map</figcaption>' }
+      { code: '<figcaption>', name: 'Caption', description: 'Describes or captions the figure', exampleHtml: '<figcaption>Expedition Map</figcaption>' },
+      { code: 'object-fit: cover;', name: 'Object Fit', description: 'Crops image proportionately to fill container', exampleHtml: 'img { object-fit: cover; }' },
+      { code: 'border-radius: 50%;', name: 'Circle Crop', description: 'Makes image perfectly circular', exampleHtml: '.avatar { border-radius: 50%; }' }
     ],
     tagShowcase: [
       { tag: '<figure>', meaning: { en: 'Media Container', uz: 'Media Konteyner' } },
       { tag: '<img src="..." alt="...">', meaning: { en: 'Void Image sticker', uz: 'Yopilmas rasm tegi' } },
-      { tag: '<figcaption>', meaning: { en: 'Photo description', uz: 'Rasm izohi' } }
+      { tag: '<figcaption>', meaning: { en: 'Photo description', uz: 'Rasm izohi' } },
+      { tag: 'object-fit: cover;', meaning: { en: 'Proportionate crop', uz: 'Chiroyli proporsional qirqish' } }
     ],
     quickTags: [
-      '<figure>',
-      '<img src="data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%231f2937\'/><text x=\'140\' y=\'80\' fill=\'%2338bdf8\' font-size=\'14\' text-anchor=\'middle\'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV" width="280">',
+      '<figure class="hero-figure">',
+      '<img src="..." alt="Mars Rover" class="hero-img">',
       '<figcaption class="gallery-caption">',
-      '<img src="data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'56\' height=\'56\'><circle cx=\'28\' cy=\'28\' r=\'26\' fill=\'%23f97316\'/><text x=\'28\' y=\'36\' font-size=\'26\' text-anchor=\'middle\'>🦊</text></svg>" alt="Pilot" width="56" height="56" class="crew-avatar">'
+      'object-fit: cover;',
+      'border-radius: 50%;'
     ],
     challenge: {
       mission: {
-        en: 'Build the Mars Expedition gallery: add the main <img> with src and alt="Mars Rover MK-IV", add <figcaption>, and insert 2 crew avatar <img> badges with width="56"!',
-        uz: "Mars Ekspeditsiya galereyasini quring: bosh <img> ga src va alt='Mars Rover MK-IV' bering, <figcaption> izohini qo'shing va 2 ta width='56' li ekipaj avatar <img> nishonlarini joylashtiring!"
+        en: 'Build the Mars & Drone Fleet Exhibition: add the hero rover photo inside <figure>, with <figcaption>, 2 fleet images, and circular border-radius: 50% crew avatars!',
+        uz: "Mars & Dronlar ko'rgazmasini yarating: <figure> ichiga bosh rover rasmi, <figcaption> izohi, 2 ta dron/yo'ldosh rasmlari va dumaloq border-radius: 50% ekipaj avatarlarini joylashtiring!"
       },
       hint: {
-        en: 'Make sure you have <figure>, <figcaption>, and at least 3 <img> tags with src and alt attributes!',
-        uz: "<figure>, <figcaption> va kamida 3 ta <img> teglari (bosh rasm + 2 ta avatar) bo'lishi kerak!"
+        en: 'Use <figure>, <figcaption>, at least 4 <img> tags, alt attributes, object-fit: cover, and border-radius: 50%!',
+        uz: "<figure>, <figcaption>, kamida 4 ta <img> tegi, alt atributlari, object-fit: cover va border-radius: 50% qo'llang!"
       },
       rules: [
         {
           type: 'hasTag',
           tag: 'figure',
-          message: 'Wrap your gallery inside a semantic <figure> tag!'
+          message: 'Wrap your main rover photo inside a semantic <figure> tag!'
         },
         {
           type: 'hasTag',
           tag: 'figcaption',
-          message: 'Add a <figcaption> describing the expedition!'
-        },
-        {
-          type: 'hasTag',
-          tag: 'img',
-          message: 'Place <img> tags with src and alt attributes!'
+          message: 'Add a <figcaption> describing the expedition under the hero photo!'
         },
         {
           type: 'custom',
           check: (code) => {
             const matches = code.match(/<img\b/gi);
-            return matches && matches.length >= 3;
+            return matches && matches.length >= 4;
           },
-          message: 'Include at least 3 <img> tags: the main rover photo and 2 crew avatar badges!'
+          message: 'Include at least 4 <img> tags: the hero rover, 2 fleet vehicles, and crew avatars!'
         },
         {
           type: 'custom',
-          check: (code) => code.includes('alt='),
-          message: 'Ensure your <img> tags have alt descriptions!'
+          check: (code) => code.includes('alt=') && /alt\s*=\s*['"][^'"]+['"]/i.test(code),
+          message: 'Ensure your <img> tags have descriptive alt="" attributes!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'object-fit',
+          valuePattern: /cover/i,
+          message: 'Apply object-fit: cover to photos so they crop cleanly!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'border-radius',
+          valuePattern: /50%/i,
+          message: 'Make the crew avatars circular using border-radius: 50%!'
         }
       ]
     },
@@ -1371,7 +1505,7 @@ const LESSONS = [
       commonMistakes: [
         'Spelling src as "scr" (the #1 kid typo!)'
       ],
-      funActivity: 'Try setting width to 400 and watch the puppy get huge!'
+      funActivity: 'Try setting width to 400 and watch the rover get huge!'
     }
   },
 
@@ -6271,28 +6405,28 @@ const LESSONS = [
     id: 'theme-26-gradients',
     module: 'modern-mastery',
     title: {
-      en: 'Theme 26: Gradients (Linear, Radial, Conic & Gradient Text)',
-      uz: '26-Mavzu: Gradientlar (Linear, Radial, Conic va Gradient Matn)'
+      en: 'Theme 26: Gradients (Linear 45°/90°/135°, Radial & Conic)',
+      uz: '26-Mavzu: Gradientlar (45°/90°/135° Linear, Radial va Conic)'
     },
     icon: '🌈',
-    tag: 'linear-gradient(), radial-gradient(), conic-gradient(), background-clip',
+    tag: 'linear-gradient(45deg), linear-gradient(90deg), linear-gradient(135deg), radial-gradient(), conic-gradient()',
     humanIntro: {
       whatIsIt: {
-        en: 'Why settle for one flat color when CSS gives you 4 distinct gradient powers? In modern UI design, gradients create AAA gaming visuals:\n\n• **Linear (linear-gradient)**: Directional rays flowing across any angle (45deg, 135deg, to right).\n• **Radial (radial-gradient)**: Circular light radiating from an offset focal point, creating glowing 3D planets.\n• **Conic (conic-gradient)**: 360-degree color sweeps used for sci-fi radars and smart watch progress rings.\n• **Gradient Text**: Clipping a vibrant gradient directly inside typography!',
-        uz: "Nega faqat bitta oddiy rang bilan cheklanish kerak, agar CSS da 4 xil kuchli gradient usullari mavjud bo'lsa? Zamonaviy dizaynda gradientlar AAA o'yinlar darajasidagi vizuallarni yaratadi:\n\n• **Linear (linear-gradient)**: Har qanday burchak (45deg, 135deg, to right) bo'yicha yo'nalishli nur.\n• **Radial (radial-gradient)**: Markazdan yoki burchakdan nur taratuvchi 3D kiber shar va tumanliklar.\n• **Conic (conic-gradient)**: 360 darajali kiber radar va aqlli soat halqalari.\n• **Gradient Matn**: Gradientni to'g'ridan-to'g'ri harflarning ichiga lazerdek qirqib joylash!"
+        en: 'CSS gradients allow smooth color transitions across any angle: 45° dynamic diagonal, 90° horizontal horizon, 135° multi-stop fusion, 3D radial sphere orb, and 360° rotating radar conic gradients.',
+        uz: "CSS gradientlari istalgan burchakda silliq rang o'tishlarini yaratadi: 45° dinamik diagonal, 90° gorizontal gorizont, 135° ko'p rangli o'tish, 3D radial shar va 360° radar aylanasi conic gradientlari."
       },
       whatIsATag: {
-        en: '1. `linear-gradient(135deg, #ff007a, #7928ca, #4338ca)` = 3-color angled diagonal.\n2. `radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)` = 3D sphere.\n3. `conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)` = 360° radar sweep.\n4. `-webkit-background-clip: text; -webkit-text-fill-color: transparent;` = Gradient text.',
-        uz: "1. `linear-gradient(135deg, #ff007a, #7928ca, #4338ca)` = 3 rangli diagonal oqim.\n2. `radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)` = 3D nurli shar.\n3. `conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)` = 360° kiber radar.\n4. `-webkit-background-clip: text; -webkit-text-fill-color: transparent;` = Gradientli sarlavha."
+        en: '1. `linear-gradient(deg, color1, color2)` flows along a straight angled line.\n2. `radial-gradient(circle at x y, ...)` radiates from a center point into a 3D orb.\n3. `conic-gradient(from deg, ...)` sweeps around like a clock or radar.',
+        uz: "1. `linear-gradient(burchak, rang1, rang2)` to'g'ri chiziqli burchak bo'ylab oqadi.\n2. `radial-gradient(circle, ...)` markazdan tashqariga 3D shar kabi nurlanadi.\n3. `conic-gradient(from deg, ...)` soat strelkasi yoki radar kabi doira bo'ylab aylanadi."
       }
     },
     summary: {
-      en: 'Master all 4 CSS gradient techniques: multi-stop angled linear, 3D radial sphere, 360° conic radar, and clipped gradient typography.',
-      uz: "Barcha 4 xil CSS gradient uslublarini o'rganing: ko'p rangli diagonal linear, 3D radial shar, 360° conic radar va gradientli harflar."
+      en: 'Master all CSS gradient techniques: 45°, 90°, 135° multi-stop linear, 3D radial sphere, 360° conic radar, and clipped gradient typography.',
+      uz: "Barcha CSS gradient uslublarini o'rganing: 45°, 90°, 135° ko'p rangli linear, 3D radial shar, 360° conic radar va gradientli harflar."
     },
     story: {
-      en: 'The CyberPulse FX Matrix needs all 4 gradient reactors activated: a diagonal linear card, a 3D energy sphere, a conic radar scanner, and a glowing neon text title!',
-      uz: "CyberPulse FX Matritsasidagi 4 ta reaktorni ishga tushiring: diagonal linear karta, 3D nurli shar, conic radar skaneri va yorqin gradientli matn!"
+      en: 'Design the CyberPulse FX Master Console: activate 45°, 90°, and 135° linear angles, a 3D glowing radial orb, a spinning conic radar, and gradient text masking!',
+      uz: "CyberPulse FX Master Konsolini loyihalang: 45°, 90° va 135° li burchakli linear gradientlar, 3D radial shar, 360° conic radar va gradientli matnni ishga tushiring!"
     },
     initialCode: {
       en: `<style>
@@ -6303,60 +6437,86 @@ const LESSONS = [
     padding: 20px;
     background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
+    border-radius: 18px;
     color: white;
     font-family: system-ui, sans-serif;
   }
   .gradient-title {
     grid-column: span 3;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+    letter-spacing: 2px;
     background: linear-gradient(90deg, #ff007a, #00f2fe);
-    /* Step 4: Add -webkit-background-clip: text; -webkit-text-fill-color: transparent; */
+    /* 5-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; bering */
   }
-  .linear-card {
-    height: 120px;
+  .linear-45 {
+    height: 110px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
-    /* Step 1: Add background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca); */
+    font-size: 13px;
+    /* 1-Qadam: background: linear-gradient(45deg, #ff007a, #7928ca); */
     background: #1e1b4b;
   }
+  .linear-90 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    /* 2-Qadam: background: linear-gradient(90deg, #00f2fe, #4facfe); */
+    background: #0c4a6e;
+  }
+  .linear-135 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    /* 3-Qadam: background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed); */
+    background: #451a03;
+  }
   .radial-orb {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-size: 12px;
     box-shadow: 0 0 35px #00f2fe;
-    /* Step 2: Add background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
+    /* 4-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
     background: #0369a1;
   }
   .conic-reactor {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    /* Step 3: Add background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a); */
+    font-size: 12px;
     background: #3730a3;
   }
 </style>
 
 <div class="fx-matrix">
-  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
-  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="gradient-title">⚡ CYBERPULSE FX MASTER ⚡</div>
+  <div class="linear-45">✨ 45° LINEAR</div>
+  <div class="linear-90">🌊 90° LINEAR</div>
+  <div class="linear-135">🔥 135° 3-STOP</div>
   <div class="radial-orb">🔮 3D RADIAL</div>
   <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`,
@@ -6368,60 +6528,86 @@ const LESSONS = [
     padding: 20px;
     background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
+    border-radius: 18px;
     color: white;
     font-family: system-ui, sans-serif;
   }
   .gradient-title {
     grid-column: span 3;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+    letter-spacing: 2px;
     background: linear-gradient(90deg, #ff007a, #00f2fe);
-    /* 4-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; qo'shing */
+    /* 5-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; bering */
   }
-  .linear-card {
-    height: 120px;
+  .linear-45 {
+    height: 110px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
-    /* 1-Qadam: background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca); qo'shing */
+    font-size: 13px;
+    /* 1-Qadam: background: linear-gradient(45deg, #ff007a, #7928ca); */
     background: #1e1b4b;
   }
+  .linear-90 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    /* 2-Qadam: background: linear-gradient(90deg, #00f2fe, #4facfe); */
+    background: #0c4a6e;
+  }
+  .linear-135 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    /* 3-Qadam: background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed); */
+    background: #451a03;
+  }
   .radial-orb {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-size: 12px;
     box-shadow: 0 0 35px #00f2fe;
-    /* 2-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); qo'shing */
+    /* 4-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
     background: #0369a1;
   }
   .conic-reactor {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    /* 3-Qadam: background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a); qo'shing */
+    font-size: 12px;
     background: #3730a3;
   }
 </style>
 
 <div class="fx-matrix">
-  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
-  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="gradient-title">⚡ CYBERPULSE FX MASTER ⚡</div>
+  <div class="linear-45">✨ 45° LINEAR</div>
+  <div class="linear-90">🌊 90° LINEAR</div>
+  <div class="linear-135">🔥 135° 3-STOP</div>
   <div class="radial-orb">🔮 3D RADIAL</div>
   <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`
@@ -6434,134 +6620,162 @@ const LESSONS = [
     padding: 20px;
     background: #080c14;
     border: 1px solid #1e293b;
-    border-radius: 16px;
+    border-radius: 18px;
     color: white;
     font-family: system-ui, sans-serif;
   }
   .gradient-title {
     grid-column: span 3;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+    letter-spacing: 2px;
     background: linear-gradient(90deg, #ff007a, #00f2fe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .linear-card {
-    height: 120px;
+  .linear-45 {
+    height: 110px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
-    background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca);
+    font-size: 13px;
+    box-shadow: 0 8px 20px rgba(255, 0, 122, 0.35);
+    background: linear-gradient(45deg, #ff007a, #7928ca);
+  }
+  .linear-90 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    box-shadow: 0 8px 20px rgba(0, 242, 254, 0.35);
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+  }
+  .linear-135 {
+    height: 110px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+    background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed);
   }
   .radial-orb {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-size: 12px;
     box-shadow: 0 0 35px #00f2fe;
     background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712);
   }
   .conic-reactor {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-size: 12px;
     background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a);
   }
 </style>
 
 <div class="fx-matrix">
-  <div class="gradient-title">⚡ CYBERPULSE FX MATRIX ⚡</div>
-  <div class="linear-card">✨ 135° LINEAR</div>
+  <div class="gradient-title">⚡ CYBERPULSE FX MASTER ⚡</div>
+  <div class="linear-45">✨ 45° LINEAR</div>
+  <div class="linear-90">🌊 90° LINEAR</div>
+  <div class="linear-135">🔥 135° 3-STOP</div>
   <div class="radial-orb">🔮 3D RADIAL</div>
   <div class="conic-reactor">🌀 CONIC RADAR</div>
 </div>`,
     targetDescription: {
-      en: 'A AAA gaming visual matrix featuring a clipped gradient title, 135deg multi-stop linear card, 3D radial orb, and 360deg conic radar sweep!',
-      uz: "Gradientli sarlavha, 135-darajali diagonal linear karta, 3D radial shar va 360-darajali conic radarni o'z ichiga olgan kiber FX matritsasi!"
+      en: 'A CyberPulse FX matrix featuring 3 distinct linear gradient angles (45°, 90°, 135°), a 3D radial sphere orb, a 360° conic radar reactor, and gradient-clipped typography.',
+      uz: "3 xil burchakdagi linear gradientlar (45°, 90°, 135°), 3D radial shar, 360° conic radar va gradient bilan bo'yalgan sarlavha jamlangan CyberPulse FX konsoli."
     },
     anatomy: [
       {
-        code: 'linear-gradient(135deg, color1, color2, color3)',
-        name: { en: 'Multi-Stop Linear Gradient', uz: "Ko'p Rangli Linear Gradient" },
-        purpose: { en: 'Transitions multiple colors smoothly across any angle.', uz: "Ranglarni burchak bo'ylab silliq oqizadi." },
-        role: { en: 'Directional light rays', uz: "Yo'nalishli nur" }
+        part: 'linear-gradient(45deg, #ff007a, #7928ca)',
+        role: { en: '45° Diagonal Linear Gradient', uz: '45° Diagonal Linear Gradient' },
+        explanation: { en: 'Flows colors from bottom-left to top-right at a 45 degree angle.', uz: "Ranglarni 45 daraja burchak ostida pastki chapdan yuqori o'ngga yo'naltiradi." },
+        effect: { en: 'Angled color flow', uz: 'Burchakli rang oqimi' }
       },
       {
-        code: 'radial-gradient(circle at x y, c1, c2, c3)',
-        name: { en: 'Offset 3D Radial Gradient', uz: '3D Doiraviy Radial Gradient' },
-        purpose: { en: 'Illuminates from an offset position to create realistic 3D spheres.', uz: "Yorug'lik nuqtasidan 3D shar shaklida nur taratadi." },
-        role: { en: 'Glowing 3D sphere', uz: 'Nurli shar' }
+        part: 'radial-gradient(circle at 35% 35%, ...)',
+        role: { en: '3D Radial Sphere', uz: '3D Radial Shar' },
+        explanation: { en: 'Radiates light from an offset point to create 3D spherical depth.', uz: "Nurni 35% nuqtadan taratib, 3 o'lchamli shar hajmini hosil qiladi." },
+        effect: { en: '3D sphere illusion', uz: '3D shar ko\'rinishi' }
       },
       {
-        code: 'conic-gradient(from deg, c1, c2, c3, c1)',
-        name: { en: '360° Conic Gradient', uz: '360° Conic Gradient' },
-        purpose: { en: 'Rotates colors in a full circle like radar sweeps or gauge meters.', uz: "Ranglarni soat millari kabi to'liq aylanada aylantiradi." },
-        role: { en: 'Radar scanner sweep', uz: 'Radar aylanasi' }
-      },
-      {
-        code: '-webkit-background-clip: text;',
-        name: { en: 'Gradient Text Clipping', uz: 'Matn Ichiga Gradient Qirqish' },
-        purpose: { en: 'Clips background colors directly inside letter shapes.', uz: "Fon gradientini to'g'ridan-to'g'ri harflar shakli ichiga joylaydi." },
-        role: { en: 'Neon typography', uz: 'Neon harflar' }
+        part: 'conic-gradient(from 0deg, ...)',
+        role: { en: '360° Radar Conic Sweep', uz: '360° Radar Doiraviy Gradient' },
+        explanation: { en: 'Sweeps color stops around a center circle like a radar beam.', uz: 'Ranglarni markaz atrofida radar nuri kabi doira bo\'ylab aylantiradi.' },
+        effect: { en: 'Circular radar sweep', uz: 'Aylanma radar effekti' }
       }
     ],
     listOfTags: [
-      {
-        code: 'linear-gradient(135deg, c1, c2, c3)',
-        name: { en: 'Linear Gradient', uz: 'Linear Gradient' },
-        description: { en: 'Transitions colors on an angle.', uz: "Ranglarni burchak bo'yicha o'tkazadi." }
-      },
-      {
-        code: 'radial-gradient(circle at x y, c1, c2)',
-        name: { en: 'Radial Gradient', uz: 'Radial Gradient' },
-        description: { en: 'Radiates colors outward in circular waves.', uz: "Ranglarni doira bo'ylab to'lqinlantiradi." }
-      },
-      {
-        code: 'conic-gradient(from deg, c1, c2)',
-        name: { en: 'Conic Gradient', uz: 'Conic Gradient' },
-        description: { en: 'Sweeps colors in 360-degree rotation.', uz: "Ranglarni 360 daraja aylanada chizadi." }
-      },
-      {
-        code: '-webkit-background-clip: text',
-        name: { en: 'Background Clip Text', uz: 'Fonni Matnga Qirqish' },
-        description: { en: 'Cuts gradient to font outlines.', uz: "Gradientni harflarga qirqadi." }
-      }
+      { code: 'linear-gradient(45deg, ...)', name: '45° Linear', description: 'Diagonal linear color flow', exampleHtml: 'background: linear-gradient(45deg, #ff007a, #7928ca);' },
+      { code: 'linear-gradient(90deg, ...)', name: '90° Linear', description: 'Horizontal linear horizon', exampleHtml: 'background: linear-gradient(90deg, #00f2fe, #4facfe);' },
+      { code: 'linear-gradient(135deg, ...)', name: '135° Linear', description: '3-stop angled color fusion', exampleHtml: 'background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed);' },
+      { code: 'radial-gradient(circle, ...)', name: 'Radial Gradient', description: 'Circular glowing orb from center', exampleHtml: 'background: radial-gradient(circle, #00f2fe, #030712);' },
+      { code: 'conic-gradient(...)', name: 'Conic Gradient', description: '360-degree sweep around circle', exampleHtml: 'background: conic-gradient(from 0deg, #ff007a, #00f2fe);' },
+      { code: '-webkit-background-clip: text;', name: 'Gradient Text', description: 'Clips background gradient inside font', exampleHtml: 'background-clip: text;' }
+    ],
+    tagShowcase: [
+      { tag: 'linear-gradient(45deg)', meaning: { en: '45° diagonal gradient', uz: '45 darajali burchak' } },
+      { tag: 'linear-gradient(90deg)', meaning: { en: '90° horizontal gradient', uz: '90 darajali gorizontal' } },
+      { tag: 'radial-gradient()', meaning: { en: '3D sphere glow', uz: '3D shar nuri' } },
+      { tag: 'conic-gradient()', meaning: { en: '360° radar sweep', uz: '360° radar aylanasi' } }
     ],
     quickTags: [
-      'background: linear-gradient(135deg, #ff007a, #7928ca, #4338ca);',
-      'background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712);',
-      'background: conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a);',
-      '-webkit-background-clip: text; -webkit-text-fill-color: transparent;'
+      'linear-gradient(45deg, #ff007a, #7928ca)',
+      'linear-gradient(90deg, #00f2fe, #4facfe)',
+      'linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed)',
+      'radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)',
+      'conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)',
+      '-webkit-background-clip: text;'
     ],
     challenge: {
       mission: {
-        en: 'Activate all 4 gradient powers: add linear-gradient(135deg, ...) to .linear-card, radial-gradient(circle, ...) to .radial-orb, conic-gradient(...) to .conic-reactor, and -webkit-background-clip: text to .gradient-title!',
-        uz: "Barcha 4 xil gradient kuchini yoqing: .linear-card ga linear-gradient(135deg, ...), .radial-orb ga radial-gradient, .conic-reactor ga conic-gradient va .gradient-title ga -webkit-background-clip: text bering!"
+        en: 'Master all 5 gradient angles and styles: 45° linear, 90° linear, 135° multi-stop linear, 3D radial sphere, 360° conic radar, and text gradient with -webkit-background-clip: text!',
+        uz: "Barcha 5 xil gradient burchaklari va turlarini qo'llang: 45° linear, 90° linear, 135° ko'p rangli linear, 3D radial shar, 360° conic radar va -webkit-background-clip: text bilan harflarga gradient bering!"
       },
       hint: {
-        en: 'Apply linear-gradient to .linear-card, radial-gradient to .radial-orb, conic-gradient to .conic-reactor, and background-clip to .gradient-title!',
-        uz: ".linear-card ga linear-gradient, .radial-orb ga radial-gradient, .conic-reactor ga conic-gradient va .gradient-title ga background-clip bering!"
+        en: 'Apply linear-gradient(45deg, ...), linear-gradient(90deg, ...), linear-gradient(135deg, ...), radial-gradient(...), conic-gradient(...), and background-clip: text!',
+        uz: "linear-gradient(45deg, ...), linear-gradient(90deg, ...), linear-gradient(135deg, ...), radial-gradient(...), conic-gradient(...) va background-clip: text qo'llang!"
       },
       rules: [
         {
           type: 'hasCssProperty',
           property: 'background',
-          valuePattern: /linear-gradient/i,
-          message: 'Apply linear-gradient to .linear-card!'
+          valuePattern: /linear-gradient\s*\(\s*45deg/i,
+          message: 'Apply linear-gradient(45deg, ...) to .linear-45!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /linear-gradient\s*\(\s*90deg/i,
+          message: 'Apply linear-gradient(90deg, ...) to .linear-90!'
+        },
+        {
+          type: 'hasCssProperty',
+          property: 'background',
+          valuePattern: /linear-gradient\s*\(\s*135deg/i,
+          message: 'Apply linear-gradient(135deg, ...) to .linear-135!'
         },
         {
           type: 'hasCssProperty',
@@ -6577,32 +6791,22 @@ const LESSONS = [
         },
         {
           type: 'custom',
-          check: (code) => /background-clip/i.test(code),
-          message: 'Clip gradient inside letters using -webkit-background-clip: text!'
+          check: (code) => code.includes('background-clip') && (code.includes('text') || code.includes('-webkit-background-clip')),
+          message: 'Clip gradient inside title letters using -webkit-background-clip: text!'
         }
       ]
     },
     teacherGuide: {
-      analogy: {
-        en: 'Think of watercolor paints on wet paper: two colors meet and blend together seamlessly without a sharp border.',
-        uz: "Xuddi nam qog'ozdagi akvarel bo'yoqlariga o'xshaydi: ikki rang qattiq chegarasiz silliq aralashib ketadi."
-      },
+      analogy: 'Gradients are like mixing paint colors smoothly across a sunset sky or shining a round flashlight onto a ball.',
       discussionQuestions: [
-        {
-          en: 'What happens if you change 135deg to 45deg or 90deg? (The direction of the gradient rotates!)',
-          uz: "135deg burchagini 45deg yoki 90deg qilsangiz nima o'zgaradi? (Gradient oqim yo'nalishi aylanadi!)"
-        }
+        'How does a 45deg linear gradient differ from a 90deg horizontal gradient?',
+        'Where does the light start in a radial gradient?'
       ],
       commonMistakes: [
-        {
-          en: 'Missing commas between colors or forgetting the closing parenthesis.',
-          uz: "Ranglar orasidagi vergulni yoki yopuvchi qavsni unutib qo'yish."
-        }
+        'Forgetting commas between color stops',
+        'Not setting -webkit-text-fill-color: transparent when clipping text gradients'
       ],
-      funActivity: {
-        en: 'Try adding a 3rd color: linear-gradient(90deg, red, yellow, blue);!',
-        uz: "3-rangni qo'shib ko'ring: linear-gradient(90deg, red, yellow, blue);!"
-      }
+      funActivity: 'Try changing 45deg to 180deg or adding a fourth color stop to the 135deg gradient!'
     }
   },
 
@@ -7670,6 +7874,10 @@ const UI_TEXT = {
     tagsLabel: 'Tags:',
     browserPreviewTitle: 'What the Browser Draws',
     yourResultTab: 'Your Result',
+    comboViewTab: '⚡ Elements + Result',
+    elementsGuideTab: '📋 Elements Guide',
+    comboElementsTitle: '📋 Topic Elements & Quick Tags:',
+    comboMissionTitle: '🎯 Challenge Goal:',
     targetGoalTab: '🎯 Target Goal',
     compareTab: '⚖️ Compare',
     targetExplanationTitle: '🎯 What the Result Should Look Like:',
@@ -7728,6 +7936,10 @@ const UI_TEXT = {
     tagsLabel: 'Teglar:',
     browserPreviewTitle: 'Brauzer chizadigan natija',
     yourResultTab: 'Sizning kodingiz',
+    comboViewTab: '⚡ Elementlar + Natija',
+    elementsGuideTab: '📋 Mavzu Elementlari',
+    comboElementsTitle: '📋 Mavzu elementlari va teglari:',
+    comboMissionTitle: '🎯 Topshiriq maqsadi:',
     targetGoalTab: '🎯 Maqsad natijasi',
     compareTab: '⚖️ Taqqoslash',
     targetExplanationTitle: '🎯 Natija qanday ko\'rinishi kerak:',
@@ -12968,7 +13180,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
 let state = loadStateFromStorage();
 let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
-let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
+let activePreviewTab = 'combo'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
 let ambientEngine = null;
 
@@ -13672,14 +13884,16 @@ function renderLessonView() {
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
-            <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
-            <button id="tab-side" class="prev-tab-btn" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
+            <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
+            <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+            <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
           </div>
         </div>
 
         <div id="preview-container" class="preview-wrapper">
-          <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
+          ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
         </div>
       </div>
     </div>
@@ -13967,15 +14181,120 @@ function updateLivePreview() {
   iframe.srcdoc = wrapForPreview(currentCode);
 }
 
+function renderComboMarkup(lesson) {
+  const tags = lesson.listOfTags || [];
+  return `
+    <div class="combo-view-container">
+      <div class="combo-elements-shelf">
+        <div class="combo-shelf-header">
+          <span class="combo-shelf-title">📋 ${escapeHtml(t('comboElementsTitle', state.lang))}</span>
+          <span class="combo-shelf-badge">${tags.length} ta</span>
+        </div>
+        <div class="combo-tags-scroll">
+          ${tags.map(tItem => `
+            <button class="combo-tag-pill" data-insert="${escapeHtml(tItem.tag)}" title="${escapeHtml(localize(tItem.meaning, state.lang))}">
+              <code>${escapeHtml(tItem.tag)}</code>
+              <span>${escapeHtml(localize(tItem.name, state.lang))}</span>
+            </button>
+          `).join('')}
+        </div>
+        ${lesson.challenge?.mission ? `
+          <div class="combo-mission-mini">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 2px;">${escapeHtml(t('comboMissionTitle', state.lang))}</strong>
+            <span style="font-size: 11px; line-height: 16px; color: #cbd5e1;">${formatProse(localize(lesson.challenge.mission, state.lang))}</span>
+          </div>
+        ` : ''}
+      </div>
+      <div class="combo-preview-stage">
+        <div class="combo-preview-label">
+          <span>👁️ ${escapeHtml(t('yourResultTab', state.lang))} (Brauzer chizadigan jonli natija):</span>
+        </div>
+        <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
+    </div>
+  `;
+}
+
+function renderElementsMarkup(lesson) {
+  const tags = lesson.listOfTags || [];
+  return `
+    <div class="elements-tab-container">
+      <div class="elements-tab-header">
+        <h3 style="margin: 0 0 6px; font-size: 14px; color: #38bdf8;">📋 ${escapeHtml(localize(lesson.title, state.lang))} — ${escapeHtml(t('listOfTags', state.lang))}</h3>
+        <p style="margin: 0; font-size: 12px; color: #94a3b8;">${escapeHtml(t('tagListDesc', state.lang))}</p>
+      </div>
+      <div class="elements-tab-table-wrap">
+        <table class="tag-list-table">
+          <thead>
+            <tr>
+              <th>${escapeHtml(t('colCode', state.lang))}</th>
+              <th>${escapeHtml(t('colName', state.lang))}</th>
+              <th>${escapeHtml(t('colMeaning', state.lang))}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tags.map(tItem => `
+              <tr>
+                <td><button class="modal-tag-chip" data-insert="${escapeHtml(tItem.tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tItem.tag)}</button></td>
+                <td><strong>${escapeHtml(localize(tItem.name, state.lang))}</strong></td>
+                <td>${formatProse(localize(tItem.meaning, state.lang))}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+      ${lesson.stepBreakdown ? `
+        <div class="elements-steps-box" style="margin-top: 14px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="margin: 0 0 8px; font-size: 13px; color: #fbbf24;">🔍 ${escapeHtml(t('stepBreakdownHeader', state.lang))}</h4>
+          <ol style="margin: 0; padding-left: 20px; font-size: 12px; line-height: 20px; color: #e2e8f0;">
+            ${lesson.stepBreakdown.map(s => `<li>${formatProse(localize(s, state.lang))}</li>`).join('')}
+          </ol>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
 function setupPreviewTabs(lesson) {
+  const tabCombo = document.getElementById('tab-combo');
   const tabLive = document.getElementById('tab-live');
+  const tabElements = document.getElementById('tab-elements');
   const tabTarget = document.getElementById('tab-target');
   const tabSide = document.getElementById('tab-side');
   const previewContainer = document.getElementById('preview-container');
 
   function resetTabs() {
-    [tabLive, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
+    [tabCombo, tabLive, tabElements, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
   }
+
+  function attachPillListeners() {
+    const pills = previewContainer.querySelectorAll('.combo-tag-pill, .modal-tag-chip');
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        const codeToInsert = p.getAttribute('data-insert');
+        const textarea = document.getElementById('code-textarea');
+        if (textarea && codeToInsert) {
+          insertTextAtCursor(textarea, codeToInsert);
+          currentCode = textarea.value;
+          updateLivePreview();
+          updateLineNumbers();
+          playSound('click', state.audioEnabled);
+        }
+      });
+    });
+  }
+
+  attachPillListeners();
+
+  tabCombo?.addEventListener('click', () => {
+    resetTabs();
+    tabCombo.classList.add('active');
+    activePreviewTab = 'combo';
+    previewContainer.innerHTML = renderComboMarkup(lesson);
+    attachPillListeners();
+    updateLivePreview();
+    playSound('click', state.audioEnabled);
+  });
 
   tabLive?.addEventListener('click', () => {
     resetTabs();
@@ -13983,6 +14302,15 @@ function setupPreviewTabs(lesson) {
     activePreviewTab = 'live';
     previewContainer.innerHTML = `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`;
     updateLivePreview();
+    playSound('click', state.audioEnabled);
+  });
+
+  tabElements?.addEventListener('click', () => {
+    resetTabs();
+    tabElements.classList.add('active');
+    activePreviewTab = 'elements';
+    previewContainer.innerHTML = renderElementsMarkup(lesson);
+    attachPillListeners();
     playSound('click', state.audioEnabled);
   });
 

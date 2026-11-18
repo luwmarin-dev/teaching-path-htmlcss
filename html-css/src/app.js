@@ -34,7 +34,7 @@ import { speakText, stopSpeaking, isSpeaking } from './modules/speech.js';
 let state = loadStateFromStorage();
 let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
-let activePreviewTab = 'live'; // 'live' | 'target' | 'side'
+let activePreviewTab = 'combo'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
 let ambientEngine = null;
 
@@ -738,14 +738,16 @@ function renderLessonView() {
             <span>👁️</span> ${escapeHtml(t('browserPreviewTitle', state.lang))}
           </div>
           <div class="preview-tabs">
-            <button id="tab-live" class="prev-tab-btn active">${escapeHtml(t('yourResultTab', state.lang))}</button>
-            <button id="tab-target" class="prev-tab-btn">${escapeHtml(t('targetGoalTab', state.lang))}</button>
-            <button id="tab-side" class="prev-tab-btn" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
+            <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Elementlar va Natija birgalikda' : 'Elements & Result together'}">${escapeHtml(t('comboViewTab', state.lang))}</button>
+            <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">${escapeHtml(t('yourResultTab', state.lang))}</button>
+            <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Mavzu elementlari va teglari' : 'Lesson elements & tags'}">${escapeHtml(t('elementsGuideTab', state.lang))}</button>
+            <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">${escapeHtml(t('targetGoalTab', state.lang))}</button>
+            <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Yonma-yon taqqoslash' : 'Side-by-side comparison'}">${state.lang === 'uz' ? '↔️ Taqqoslash' : '↔️ Compare'}</button>
           </div>
         </div>
 
         <div id="preview-container" class="preview-wrapper">
-          <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
+          ${activePreviewTab === 'combo' ? renderComboMarkup(lesson) : (activePreviewTab === 'elements' ? renderElementsMarkup(lesson) : `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`)}
         </div>
       </div>
     </div>
@@ -1033,15 +1035,120 @@ function updateLivePreview() {
   iframe.srcdoc = wrapForPreview(currentCode);
 }
 
+function renderComboMarkup(lesson) {
+  const tags = lesson.listOfTags || [];
+  return `
+    <div class="combo-view-container">
+      <div class="combo-elements-shelf">
+        <div class="combo-shelf-header">
+          <span class="combo-shelf-title">📋 ${escapeHtml(t('comboElementsTitle', state.lang))}</span>
+          <span class="combo-shelf-badge">${tags.length} ta</span>
+        </div>
+        <div class="combo-tags-scroll">
+          ${tags.map(tItem => `
+            <button class="combo-tag-pill" data-insert="${escapeHtml(tItem.tag)}" title="${escapeHtml(localize(tItem.meaning, state.lang))}">
+              <code>${escapeHtml(tItem.tag)}</code>
+              <span>${escapeHtml(localize(tItem.name, state.lang))}</span>
+            </button>
+          `).join('')}
+        </div>
+        ${lesson.challenge?.mission ? `
+          <div class="combo-mission-mini">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 2px;">${escapeHtml(t('comboMissionTitle', state.lang))}</strong>
+            <span style="font-size: 11px; line-height: 16px; color: #cbd5e1;">${formatProse(localize(lesson.challenge.mission, state.lang))}</span>
+          </div>
+        ` : ''}
+      </div>
+      <div class="combo-preview-stage">
+        <div class="combo-preview-label">
+          <span>👁️ ${escapeHtml(t('yourResultTab', state.lang))} (Brauzer chizadigan jonli natija):</span>
+        </div>
+        <iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
+    </div>
+  `;
+}
+
+function renderElementsMarkup(lesson) {
+  const tags = lesson.listOfTags || [];
+  return `
+    <div class="elements-tab-container">
+      <div class="elements-tab-header">
+        <h3 style="margin: 0 0 6px; font-size: 14px; color: #38bdf8;">📋 ${escapeHtml(localize(lesson.title, state.lang))} — ${escapeHtml(t('listOfTags', state.lang))}</h3>
+        <p style="margin: 0; font-size: 12px; color: #94a3b8;">${escapeHtml(t('tagListDesc', state.lang))}</p>
+      </div>
+      <div class="elements-tab-table-wrap">
+        <table class="tag-list-table">
+          <thead>
+            <tr>
+              <th>${escapeHtml(t('colCode', state.lang))}</th>
+              <th>${escapeHtml(t('colName', state.lang))}</th>
+              <th>${escapeHtml(t('colMeaning', state.lang))}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tags.map(tItem => `
+              <tr>
+                <td><button class="modal-tag-chip" data-insert="${escapeHtml(tItem.tag)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(tItem.tag)}</button></td>
+                <td><strong>${escapeHtml(localize(tItem.name, state.lang))}</strong></td>
+                <td>${formatProse(localize(tItem.meaning, state.lang))}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+      ${lesson.stepBreakdown ? `
+        <div class="elements-steps-box" style="margin-top: 14px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="margin: 0 0 8px; font-size: 13px; color: #fbbf24;">🔍 ${escapeHtml(t('stepBreakdownHeader', state.lang))}</h4>
+          <ol style="margin: 0; padding-left: 20px; font-size: 12px; line-height: 20px; color: #e2e8f0;">
+            ${lesson.stepBreakdown.map(s => `<li>${formatProse(localize(s, state.lang))}</li>`).join('')}
+          </ol>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
 function setupPreviewTabs(lesson) {
+  const tabCombo = document.getElementById('tab-combo');
   const tabLive = document.getElementById('tab-live');
+  const tabElements = document.getElementById('tab-elements');
   const tabTarget = document.getElementById('tab-target');
   const tabSide = document.getElementById('tab-side');
   const previewContainer = document.getElementById('preview-container');
 
   function resetTabs() {
-    [tabLive, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
+    [tabCombo, tabLive, tabElements, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
   }
+
+  function attachPillListeners() {
+    const pills = previewContainer.querySelectorAll('.combo-tag-pill, .modal-tag-chip');
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        const codeToInsert = p.getAttribute('data-insert');
+        const textarea = document.getElementById('code-textarea');
+        if (textarea && codeToInsert) {
+          insertTextAtCursor(textarea, codeToInsert);
+          currentCode = textarea.value;
+          updateLivePreview();
+          updateLineNumbers();
+          playSound('click', state.audioEnabled);
+        }
+      });
+    });
+  }
+
+  attachPillListeners();
+
+  tabCombo?.addEventListener('click', () => {
+    resetTabs();
+    tabCombo.classList.add('active');
+    activePreviewTab = 'combo';
+    previewContainer.innerHTML = renderComboMarkup(lesson);
+    attachPillListeners();
+    updateLivePreview();
+    playSound('click', state.audioEnabled);
+  });
 
   tabLive?.addEventListener('click', () => {
     resetTabs();
@@ -1049,6 +1156,15 @@ function setupPreviewTabs(lesson) {
     activePreviewTab = 'live';
     previewContainer.innerHTML = `<iframe id="live-iframe" class="preview-iframe" sandbox="allow-scripts allow-modals"></iframe>`;
     updateLivePreview();
+    playSound('click', state.audioEnabled);
+  });
+
+  tabElements?.addEventListener('click', () => {
+    resetTabs();
+    tabElements.classList.add('active');
+    activePreviewTab = 'elements';
+    previewContainer.innerHTML = renderElementsMarkup(lesson);
+    attachPillListeners();
     playSound('click', state.audioEnabled);
   });
 

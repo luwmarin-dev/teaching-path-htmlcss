@@ -542,9 +542,11 @@ function renderLessonWorkspace(lesson) {
         <div class="preview-pane">
           <div class="pane-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding: 8px 12px; background:var(--bg-surface);">
             <div class="preview-tabs" style="display:flex; gap:6px;">
-              <button id="tab-live" class="prev-tab-btn active">💻 ${escapeHtml(t('yourResultTab', state.lang))}</button>
-              <button id="tab-target" class="prev-tab-btn">🎯 ${escapeHtml(t('targetGoalTab', state.lang))}</button>
-              <button id="tab-side" class="prev-tab-btn">⚡ ${isUz ? 'Yonma-yon' : 'Side-by-Side'}</button>
+              <button id="tab-combo" class="prev-tab-btn ${activePreviewTab === 'combo' ? 'active' : ''}">⚡ ${escapeHtml(t('comboViewTab', state.lang))}</button>
+              <button id="tab-live" class="prev-tab-btn ${activePreviewTab === 'live' ? 'active' : ''}">💻 ${escapeHtml(t('yourResultTab', state.lang))}</button>
+              <button id="tab-elements" class="prev-tab-btn ${activePreviewTab === 'elements' ? 'active' : ''}">📋 ${escapeHtml(t('elementsGuideTab', state.lang))}</button>
+              <button id="tab-target" class="prev-tab-btn ${activePreviewTab === 'target' ? 'active' : ''}">🎯 ${escapeHtml(t('targetGoalTab', state.lang))}</button>
+              <button id="tab-side" class="prev-tab-btn ${activePreviewTab === 'side' ? 'active' : ''}">⚡ ${isUz ? 'Yonma-yon' : 'Side-by-Side'}</button>
             </div>
             <button id="btn-clear-console" class="btn-tool" style="font-size:11px;">🧹 ${t('clearConsoleBtn', state.lang)}</button>
           </div>
@@ -795,10 +797,12 @@ function runTargetPreview(lesson) {
   });
 }
 
-let activePreviewTab = 'live';
+let activePreviewTab = 'combo';
 
 function setupPreviewTabs(lesson) {
+  const tabCombo = document.getElementById('tab-combo');
   const tabLive = document.getElementById('tab-live');
+  const tabElements = document.getElementById('tab-elements');
   const tabTarget = document.getElementById('tab-target');
   const tabSide = document.getElementById('tab-side');
   const stage = document.getElementById('js-preview-stage-container');
@@ -807,7 +811,110 @@ function setupPreviewTabs(lesson) {
   const isUz = state.lang === 'uz';
 
   function resetTabs() {
-    [tabLive, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
+    [tabCombo, tabLive, tabElements, tabTarget, tabSide].forEach(t => t?.classList.remove('active'));
+  }
+
+  function attachPillListeners() {
+    const pills = stage.querySelectorAll('.combo-tag-pill, .modal-tag-chip');
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        const codeToInsert = p.getAttribute('data-insert');
+        const textarea = document.getElementById('js-code-textarea');
+        if (textarea && codeToInsert) {
+          const start = textarea.selectionStart || 0;
+          const end = textarea.selectionEnd || 0;
+          textarea.value = textarea.value.substring(0, start) + codeToInsert + textarea.value.substring(end);
+          textarea.selectionStart = textarea.selectionEnd = start + codeToInsert.length;
+          textarea.focus();
+          currentCode = textarea.value;
+          runCurrentCode();
+          updateLineNumbers();
+          playSound('click', state.audioEnabled);
+        }
+      });
+    });
+  }
+
+  function renderComboView() {
+    const cmds = lesson.listOfCommands || [];
+    return `
+      <div class="combo-view-container">
+        <div class="combo-elements-shelf">
+          <div class="combo-shelf-header">
+            <span class="combo-shelf-title">📋 ${escapeHtml(t('comboElementsTitle', state.lang))}</span>
+            <span class="combo-shelf-badge">${cmds.length} ta buyruq</span>
+          </div>
+          <div class="combo-tags-scroll">
+            ${cmds.map(c => `
+              <button class="combo-tag-pill" data-insert="${escapeHtml(c.code)}" title="${escapeHtml(localize(c.description, state.lang))}">
+                <code>${escapeHtml(c.code)}</code>
+                <span>${escapeHtml(localize(c.name, state.lang))}</span>
+              </button>
+            `).join('')}
+          </div>
+          ${lesson.targetDescription ? `
+            <div class="combo-mission-mini">
+              <strong style="color: #38bdf8; display: block; margin-bottom: 2px;">${escapeHtml(t('comboMissionTitle', state.lang))}</strong>
+              <span style="font-size: 11px; line-height: 16px; color: #cbd5e1;">${formatProse(localize(lesson.targetDescription, state.lang))}</span>
+            </div>
+          ` : ''}
+        </div>
+        <div class="combo-preview-stage">
+          <div class="combo-preview-label">
+            <span>🖥️ ${escapeHtml(t('liveConsoleTitle', state.lang))} & Brauzer:</span>
+          </div>
+          <div class="js-console-body" id="js-console-body" style="flex:1; overflow-y:auto; padding:8px; font-family:monospace; font-size:11px; background:#050811;">
+            <div class="console-line console-line-log">
+              <span class="console-line-time">System</span>
+              <span class="console-line-text">&gt; CodeCraft JS Sandbox Ready ⚡</span>
+            </div>
+          </div>
+          <div style="height: 120px; border-top: 1px solid var(--border-color); background: #000;">
+            <iframe id="live-preview-frame" sandbox="allow-scripts" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderElementsView() {
+    const cmds = lesson.listOfCommands || [];
+    return `
+      <div class="elements-tab-container">
+        <div class="elements-tab-header">
+          <h3 style="margin: 0 0 6px; font-size: 14px; color: #38bdf8;">📋 ${escapeHtml(localize(lesson.title, state.lang))} — ${escapeHtml(t('listOfTags', state.lang))}</h3>
+          <p style="margin: 0; font-size: 12px; color: #94a3b8;">${escapeHtml(t('tagListDesc', state.lang))}</p>
+        </div>
+        <div class="elements-tab-table-wrap">
+          <table class="tag-list-table">
+            <thead>
+              <tr>
+                <th>${escapeHtml(t('colCode', state.lang))}</th>
+                <th>${escapeHtml(t('colName', state.lang))}</th>
+                <th>${escapeHtml(t('colMeaning', state.lang))}</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cmds.map(c => `
+                <tr>
+                  <td><button class="modal-tag-chip" data-insert="${escapeHtml(c.code)}" title="${escapeHtml(t('insertTagHint', state.lang))}">${escapeHtml(c.code)}</button></td>
+                  <td><strong>${escapeHtml(localize(c.name, state.lang))}</strong></td>
+                  <td>${formatProse(localize(c.description, state.lang))}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        ${lesson.stepBreakdown ? `
+          <div class="elements-steps-box" style="margin-top: 14px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--border-color);">
+            <h4 style="margin: 0 0 8px; font-size: 13px; color: #fbbf24;">🔍 ${escapeHtml(t('stepBreakdownHeader', state.lang))}</h4>
+            <ol style="margin: 0; padding-left: 20px; font-size: 12px; line-height: 20px; color: #e2e8f0;">
+              ${lesson.stepBreakdown.map(s => `<li>${formatProse(localize(s, state.lang))}</li>`).join('')}
+            </ol>
+          </div>
+        ` : ''}
+      </div>
+    `;
   }
 
   function renderLiveView() {
@@ -829,6 +936,32 @@ function setupPreviewTabs(lesson) {
       </div>
     `;
   }
+
+  // Initial load
+  if (activePreviewTab === 'combo') {
+    stage.innerHTML = renderComboView();
+    attachPillListeners();
+    runCurrentCode();
+  }
+
+  tabCombo?.addEventListener('click', () => {
+    resetTabs();
+    tabCombo.classList.add('active');
+    activePreviewTab = 'combo';
+    stage.innerHTML = renderComboView();
+    attachPillListeners();
+    runCurrentCode();
+    playSound('click', state.audioEnabled);
+  });
+
+  tabElements?.addEventListener('click', () => {
+    resetTabs();
+    tabElements.classList.add('active');
+    activePreviewTab = 'elements';
+    stage.innerHTML = renderElementsView();
+    attachPillListeners();
+    playSound('click', state.audioEnabled);
+  });
 
   function renderTargetView() {
     return `
