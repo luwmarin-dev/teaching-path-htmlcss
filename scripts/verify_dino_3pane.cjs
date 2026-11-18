@@ -33,19 +33,38 @@ const path = require('path');
   const errorVisible = await page.locator('.validation-feedback-card.error').isVisible();
   console.log('Empty code error visible:', errorVisible);
 
-  // 3. Step 1: Write code
+  // 3. Step 1: Write code and unlock Step 2
   await page.fill('#student-code-editor', `class Dino {\n}\nconst dino = new Dino();`);
   await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
   await page.waitForTimeout(300);
 
-  // 4. Step 2: Switch & Write Constructor Code
-  await page.click('#step-nav-2');
-  await page.waitForTimeout(300);
+  // 4. Click Next Step Button to advance to Step 2
+  await page.click('#btn-next-step');
+  await page.waitForTimeout(400);
+
+  // Snapshot 'this' simulator in Step 2
+  await page.locator('#this-simulator-box').screenshot({ path: path.join(artDir, 'dino_4_this_simulator_element.png') });
+  await page.screenshot({ path: path.join(artDir, 'dino_4_step2_this_simulator.png') });
+  console.log('Saved dino_4_this_simulator_element.png');
+
+  // Open multi-tier hints and reveal scaffolding
+  await page.click('.hint-toggle-btn');
+  await page.waitForTimeout(200);
+  await page.click('#btn-giveup');
+  await page.waitForTimeout(200);
+  await page.screenshot({ path: path.join(artDir, 'dino_4_multi_tier_hints.png') });
+  console.log('Saved dino_4_multi_tier_hints.png');
+
+  // Close hints
+  await page.click('.hint-toggle-btn');
+  await page.waitForTimeout(200);
+
+  // Step 2: Write Constructor Code
   await page.fill('#student-code-editor', `class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n}\nconst dino = new Dino();`);
   await page.click('.run-btn:has-text("Kodni Ishga Tushirish")');
-  await page.waitForTimeout(300);
-  await page.screenshot({ path: path.join(artDir, 'dino_2_step2_hitbox.png') });
-  console.log('Saved dino_2_step2_hitbox.png');
+  await page.waitForTimeout(400);
+  await page.screenshot({ path: path.join(artDir, 'dino_4_next_step_gating.png') });
+  console.log('Saved dino_4_next_step_gating.png');
 
   // 5. Step 3: Switch & Write Jump + Duck methods
   await page.click('#step-nav-3');

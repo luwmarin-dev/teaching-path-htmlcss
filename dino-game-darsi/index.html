@@ -760,7 +760,7 @@
       background: #090d16;
       border: 1px solid #334155;
       border-radius: 8px;
-      padding: 10px 12px;
+      padding: 12px 14px;
       font-size: 12px;
       color: #cbd5e1;
       line-height: 1.5;
@@ -768,6 +768,229 @@
     }
     .hint-drawer.open {
       display: block;
+    }
+
+    /* MULTI-TIER HINTS & GIVE UP BUTTON */
+    .hint-step-tier {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #334155;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .giveup-btn {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      align-self: flex-start;
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .giveup-btn:hover {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: #ef4444;
+    }
+
+    .scaffolding-box {
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #38bdf8;
+      line-height: 1.6;
+      margin-top: 6px;
+      display: none;
+    }
+    .scaffolding-box.revealed {
+      display: block;
+    }
+
+    /* THIS SIMULATOR IN TOP SECTION */
+    .this-simulator-box {
+      background: #090e1a;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: inset 0 0 25px rgba(56, 189, 248, 0.05);
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sim-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sim-visual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .sim-visual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .sim-card.active {
+      border-color: #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .sim-card-title {
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sim-memory-tag {
+      font-size: 10px;
+      font-family: monospace;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .sim-this-pointer {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sim-props-list {
+      font-family: monospace;
+      font-size: 11px;
+      color: #a5f3fc;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 8px 10px;
+      line-height: 1.6;
+    }
+
+    .sim-btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sim-action-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sim-action-btn:hover {
+      background: #25334d;
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .sim-insight-note {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.5;
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10b981;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* STRICT NEXT STEP BUTTON */
+    .next-step-container {
+      margin-top: 10px;
+    }
+
+    .next-step-btn {
+      width: 100%;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #64748b;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .next-step-btn.unlocked {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-color: #10b981;
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.4);
+      animation: glowGreen 2s infinite alternate;
+    }
+
+    .next-step-btn.unlocked:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(16, 185, 129, 0.6);
+    }
+
+    @keyframes glowGreen {
+      0% { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+      100% { box-shadow: 0 4px 25px rgba(16, 185, 129, 0.7); }
     }
 
     /* CODE EDITOR AREA */
@@ -1363,6 +1586,65 @@
         </div>
       </div>
 
+      <!-- INTERAKTIV 'THIS' KALIT SO'ZI SIMULYATORI (2-BOSQICHDA MAXSUS NAMOYISH ETILADI) -->
+      <div class="this-simulator-box" id="this-simulator-box" style="display: none;">
+        <div class="sim-header">
+          <div class="sim-title">
+            <span>🔬 INTERAKTIV SIMULYATOR: 'this' kalit so'zi aslida nima?</span>
+          </div>
+          <span style="font-size: 11px; color: #38bdf8;">OOP Xotira & Parametrlar</span>
+        </div>
+
+        <div class="sim-visual-grid">
+          <div class="sim-card active" id="sim-card-1">
+            <div class="sim-card-title">
+              <span style="color: #34d399;">🦖 yashilDino = new Dino()</span>
+              <span class="sim-memory-tag">RAM: 0x4F1A</span>
+            </div>
+            <div class="sim-this-pointer" id="sim-pointer-1">
+              <span>👉 this ayni paytda 'yashilDino' ga ishora qilmoqda</span>
+            </div>
+            <div class="sim-props-list" id="sim-props-1">
+              // Obyekt xotirasi (this):<br>
+              {<br>
+              &nbsp;&nbsp;width: <span style="color:#f59e0b;" id="sim-val-w1">44</span>,<br>
+              &nbsp;&nbsp;height: <span style="color:#f59e0b;" id="sim-val-h1">48</span>,<br>
+              &nbsp;&nbsp;x: 60, y: 0<br>
+              }
+            </div>
+          </div>
+
+          <div class="sim-card" id="sim-card-2">
+            <div class="sim-card-title">
+              <span style="color: #60a5fa;">🦖 kokDino = new Dino()</span>
+              <span class="sim-memory-tag">RAM: 0x8B3C</span>
+            </div>
+            <div class="sim-this-pointer" style="display:none; color: #60a5fa; border-color: rgba(96, 165, 250, 0.4); background: rgba(96, 165, 250, 0.15);" id="sim-pointer-2">
+              <span>👉 this endi 'kokDino' ga ishora qilmoqda</span>
+            </div>
+            <div class="sim-props-list" id="sim-props-2">
+              // Obyekt xotirasi (this):<br>
+              {<br>
+              &nbsp;&nbsp;width: <span style="color:#60a5fa;" id="sim-val-w2">60</span>,<br>
+              &nbsp;&nbsp;height: <span style="color:#60a5fa;" id="sim-val-h2">70</span>,<br>
+              &nbsp;&nbsp;x: 120, y: 0<br>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-btn-row">
+          <button class="sim-action-btn" onclick="simStep(1)"><span>▶ 1. new Dino() (Yangi Obyekt)</span></button>
+          <button class="sim-action-btn" onclick="simStep(2)"><span>🎯 2. 'this' ko'rsatkichini ulash</span></button>
+          <button class="sim-action-btn" onclick="simStep(3)"><span>💾 3. this.width = 44 biriktirish</span></button>
+          <button class="sim-action-btn" onclick="simStep(4)" style="color: #f87171; border-color: rgba(239, 68, 68, 0.3);"><span>⚡ Nega 'let' emas, 'this'?</span></button>
+        </div>
+
+        <div class="sim-insight-note" id="sim-insight-note">
+          💡 <strong>Xulosa:</strong> 'this' — bu obyekt yaratilayotgan daqiqada uning o'zini ifodalovchi jonli manzilidir. 'this.width = 44' desak, 44 soni ayni shu dinozavrning xotira blokiga abadiy mixlanadi.
+        </div>
+      </div>
+
       <!-- MANTIQIY ISINISH SAVOLI (SOCRATIC GATE) -->
       <div class="concept-quiz-bar" id="quiz-gate-box">
         <div class="quiz-question-row">
@@ -1399,8 +1681,19 @@
             Topshiriq matni...
           </div>
           <div class="hint-drawer" id="hint-drawer">
-            <strong>💡 Mantiqiy Ko'rsatma:</strong><br>
-            <span id="hint-text-content">Maslahat matni...</span>
+            <div id="hint-logic-content" style="color: #cbd5e1; font-size: 13px; line-height: 1.5; margin-bottom: 8px;"></div>
+            <div id="hint-template-content" style="color: #93c5fd; font-size: 12px; margin-bottom: 8px;"></div>
+            <div class="hint-step-tier">
+              <button class="giveup-btn" id="btn-giveup" onclick="toggleGiveupScaffolding()">
+                <span>🏳️ Qila olmadim, qisman andozani ko'rsat</span>
+              </button>
+              <div class="scaffolding-box" id="scaffolding-box">
+                <div style="font-size: 11px; color: #f59e0b; margin-bottom: 6px; font-weight: 700;">
+                  ⚠️ Mantiqiy andoza: Bu kodni shunchaki ko'chirmang! Har bir qator nima uchun yozilganini tushunib, muharrirda o'z qo'lingiz bilan kiriting:
+                </div>
+                <pre id="scaffolding-code-text" style="color: #38bdf8; font-family: monospace; white-space: pre-wrap; font-size: 12px; margin: 0;"></pre>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1424,6 +1717,14 @@
 
           <!-- MANTIQIY TEKSHIRUV / PEDAGOGIK NATIJA -->
           <div class="validation-feedback-card" id="validation-feedback-box"></div>
+
+          <!-- QAT'IY KEYINGI QADAMGA O'TISH TUGMASI (FAQAT KOD TO'G'RI BO'LGANDA OCHILADI) -->
+          <div class="next-step-container">
+            <button class="next-step-btn" id="btn-next-step" disabled onclick="goToNextStep()">
+              <span id="next-step-icon">🔒</span>
+              <span id="next-step-text">Keyingi Qadam (Avval ushbu topshiriq kodini to'g'ri yozing)</span>
+            </button>
+          </div>
 
           <!-- ANDOZA KOD KO'RINIShI (FAQAT QADAM MUVAFFAQIYATLI O'TILSAGINA OCHILADI) -->
           <div class="reference-code-accordion" id="unlocked-code-section">
@@ -1755,7 +2056,14 @@
         ],
         taskTitle: "1-Topshiriq: 'Dino' skelet sinfini va 'dino' obyektini yozing",
         taskInstruction: "Iltimos, muharrirda 'class' so'zi yordamida 'Dino' nomli sinf yarating va undan 'dino' nomli yangi nusxa ('new Dino()') oling.",
-        hintText: "1. Sinf ochish: 'class Dino { }' yoziladi.<br>2. Obyekt yasash: 'const dino = new Dino();' deb e'lon qilinadi.",
+        hintLogic: "💡 1-Qadam Mantiq: Sinf e'lon qilish uchun 'class' kalit so'zi va uning nomini yozib, jingalak qavslarni oching. Obyekt olish uchun esa 'new Dino()' operatoridan foydalanib o'zgaruvchiga tenglang.",
+        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>class SinfNomi {\n  // qolip tanasi\n}\n\nconst obyektNomi = new SinfNomi();</pre>",
+        hintScaffolding: `// 1-Qadam toza andozasi:
+class Dino {
+  // Skelet qolip
+}
+
+const dino = new Dino();`,
         quiz: {
           question: "Biz o'yinda dinozavrni nima uchun 'class Dino' orqali yaratishimiz kerak?",
           options: [
@@ -1790,30 +2098,44 @@ const dino = new Dino();`
 
       2: {
         num: 2,
-        title: "O'lchamlar & Karobka (Hitbox)",
-        concept: "Barcha professional 2D/3D o'yinlarda (Mario, GTA, Sonic) qahramon avval murakkab rasm emas, oddiy to'rtburchak (hitbox) qilib yaratiladi. 'constructor()' — obyekt tug'ilgan onda avtomatik ishga tushib, unga boshlang'ich o'lcham va koordinatalarni biriktiradi.",
-        analogy: "💡 Har bir pikselning fizik ma'nosi: width=44 (kenglik), height=48 (tik turgandagi bo'y), x=60 (ekranning chap chetidan 60px o'ngda), y=0 (oyoqlari yerda).",
+        title: "O'lchamlar, Hitbox & 'this' Mantiqi",
+        concept: "Dasturlashda personaj shunchaki rasm emas, u xotirada o'z o'lchamlari va koordinatalariga ega tirik obyektdir. Obyekt yaratilgan onda avtomatik ishga tushuvchi 'constructor()' metodi orqali biz dinozavrga o'zining shaxsiy parametrlarini beramiz. Nega 'this'? Chunki 'this' — bu ayni paytda yaratilayotgan mana shu dinozavrning xotira manzilidir!",
+        analogy: "💡 Hayotiy O'xshatish: Pasport blankasini to'ldirganda 'Mening bo'yim: 175sm, Mening vaznim: 70kg' deysiz. Dasturlashda 'Mening' so'zining o'rnini 'this' bosadi: 'this.width = 44' (Mening enim 44px)!",
         algorithm: [
           {
-            title: "constructor() metodi",
-            desc: "'new Dino()' chaqirilishi bilan bir marta ishga tushadi va personajning xotirasini to'ldiradi."
+            title: "constructor() nima?",
+            desc: "'new Dino()' chaqirilishi bilan bir marta ishga tushib, ayni yaratilgan dinozavrning xotira parametrlarini o'rnatadi."
           },
           {
-            title: "this.width = 44 & this.height = 48",
-            desc: "Piksel o'lchamlari. 'this' ayni paytda yaratilayotgan dinozavrga ishora qiladi."
+            title: "'this' ko'rsatkichi",
+            desc: "'this' aynan shu obyektdir. Oddiy 'let width' yo'qolib ketadi, lekin 'this.width' abadiy dinozavr xotirasida qoladi."
           },
           {
-            title: "this.x = 60 & this.y = 0",
-            desc: "Koordinatalar. Dinozavr chapdan 60px da turadi, y=0 esa oyoqlari yer sathida ekanini bildiradi."
+            title: "4 ta fazoviy o'lcham",
+            desc: "width: 44 (eni), height: 48 (bo'yi), x: 60 (chapdan masofa), y: 0 (oyoqlari yer sathida)."
           },
           {
-            title: "this.isJumping = false & this.isDucking = false",
-            desc: "Mantiqiy bayroqlar (flag). Hozircha u sakramayapti va egilmagan."
+            title: "2 ta mantiqiy holat bayrog'i (flag)",
+            desc: "isJumping: false (hali sakramayapti) va isDucking: false (hali egilmagan)."
           }
         ],
-        taskTitle: "2-Topshiriq: 'constructor' ichida barcha 6 ta hitbox parametrini yozing",
-        taskInstruction: "Dino klassiga 'constructor()' qo'shing va 'this' orqali 'width' (44), 'height' (48), 'x' (60), 'y' (0), 'isJumping' (false) hamda 'isDucking' (false) xususiyatlarini yozing.",
-        hintText: "Sinf ichida: 'constructor() { this.width = 44; this.height = 48; this.x = 60; this.y = 0; this.isJumping = false; this.isDucking = false; }' deb yoziladi.",
+        taskTitle: "2-Topshiriq: Dinozavrning fizik Hitbox parametrlarini obyektga biriktiring",
+        taskInstruction: "Dino klassiga 'constructor()' metodini qo'shing. Yuqoridagi simulyatorda ko'rganimizdek, 'this' kalit so'zidan foydalanib dinozavrning 4 ta fazoviy parametrini (width: 44, height: 48, x: 60, y: 0) hamda 2 ta holat bayrog'ini (isJumping: false, isDucking: false) xotirada biriktirib bering.",
+        hintLogic: "💡 1-Qadam Mantiq: Sinf ichida obyekt o'zgaruvchilari oddiy 'let' bilan emas, balki 'this' bilan yaratiladi. 'constructor()' metodi ochiladi va uning ichida 'this.parametrNomi = qiymat;' ko'rinishida yoziladi.",
+        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>constructor() {\n  this.width = 44;\n  this.height = 48;\n  this.x = 60;\n  this.y = 0;\n  this.isJumping = false;\n  this.isDucking = false;\n}</pre>",
+        hintScaffolding: `// 2-Qadam andozasi va har bir qatorning fizik ma'nosi:
+class Dino {
+  constructor() {
+    this.width = 44;        // Dinozavr eni (44px)
+    this.height = 48;       // Tik turgandagi bo'yi (48px)
+    this.x = 60;            // Ekrandagi X koordinatasi (chapdan 60px)
+    this.y = 0;             // Vertikal balandligi (0 = oyoqlari yerda)
+    this.isJumping = false; // Boshlang'ich sakrash holati
+    this.isDucking = false; // Boshlang'ich egilish holati
+  }
+}
+
+const dino = new Dino();`,
         quiz: {
           question: "Nima uchun personaj xususiyatlari (width, height, x, y) 'constructor()' ichida 'this' orqali yoziladi?",
           options: [
@@ -1835,7 +2157,8 @@ const dino = new Dino();`
           ]
         },
         starterCode: `class Dino {
-  // 2-Topshiriq: constructor() yaratib, this.width, this.height, this.x, this.y, this.isJumping va this.isDucking ni yozing:
+  // 2-Topshiriq: constructor() oching va 'this' orqali
+  // 4 ta fazoviy o'lcham (width, height, x, y) hamda 2 ta holat bayrog'ini biriktiring:
   
 }
 
@@ -1881,7 +2204,41 @@ const dino = new Dino();`
         ],
         taskTitle: "3-Topshiriq: 'jump()', 'duck()', 'standUp()' metodlari va hodisalarni yozing",
         taskInstruction: "Dino klassiga 'jump()', 'duck()', 'standUp()' metodlarini qo'shing hamda window'ga 'keydown' (Space, ArrowDown) va 'keyup' (ArrowDown) hodisalarini ulang.",
-        hintText: "Sinfda: jump() { if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true; }<br>duck() { if (this.y === 0) { this.isDucking = true; this.height = 26; this.width = 55; } }<br>standUp() { this.isDucking = false; this.height = 48; this.width = 44; }",
+        hintLogic: "💡 Mantiq: Sinf ichida metodlar 'function' so'zisiz yoziladi: 'jump() { ... }'. Egilganda bo'y (height) 26px ga tushishi, standUp() chaqirilganda esa yana 48px ga qaytishi kerak.",
+        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>jump() {\n  if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;\n}\nduck() {\n  if (this.y === 0 && !this.isJumping) { this.isDucking = true; this.height = 26; this.width = 55; }\n}\nstandUp() {\n  this.isDucking = false; this.height = 48; this.width = 44;\n}</pre>",
+        hintScaffolding: `// 3-Qadam toza andozasi:
+class Dino {
+  constructor() {
+    this.width = 44; this.height = 48;
+    this.x = 60; this.y = 0;
+    this.isJumping = false; this.isDucking = false;
+  }
+  jump() {
+    if (!this.isJumping && !this.isDucking && this.y === 0) {
+      this.isJumping = true;
+    }
+  }
+  duck() {
+    if (this.y === 0 && !this.isJumping) {
+      this.isDucking = true;
+      this.height = 26;
+      this.width = 55;
+    }
+  }
+  standUp() {
+    this.isDucking = false;
+    this.height = 48;
+    this.width = 44;
+  }
+}
+const dino = new Dino();
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space' || e.code === 'ArrowUp') dino.jump();
+  if (e.code === 'ArrowDown') dino.duck();
+});
+window.addEventListener('keyup', (e) => {
+  if (e.code === 'ArrowDown') dino.standUp();
+});`,
         quiz: {
           question: "Nega dinozavr egilganda (duck) uning 'height' parametri 48px dan 26px ga kamaytiriladi?",
           options: [
@@ -1990,7 +2347,36 @@ window.addEventListener('keyup', (e) => {
         ],
         taskTitle: "4-Topshiriq: 'jumpForce', 'gravity' va 'update()' fizika formulasini yozing",
         taskInstruction: "Dino konstruktoriga 'velocityY = 0', 'jumpForce = 12', 'gravity = 0.6' qo'shing, 'jump()' ichida 'velocityY = this.jumpForce' bering va har kadrda ishlovchi 'update()' fizika metodini yozing.",
-        hintText: "update() { if (this.isJumping) { this.y += this.velocityY; this.velocityY -= this.gravity; if (this.y <= 0) { this.y = 0; this.isJumping = false; this.velocityY = 0; } } }",
+        hintLogic: "💡 Mantiq: Vertikal harakat har kadrda yangilanadi. 'this.y' ga 'this.velocityY' qo'shiladi, 'this.velocityY' dan esa 'this.gravity' ayirib boriladi. Agar 'this.y <= 0' bo'lib yerga tushsa, uni 0 ga qaytaramiz.",
+        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>update() {\n  if (this.isJumping) {\n    this.y += this.velocityY;\n    this.velocityY -= this.gravity;\n    if (this.y <= 0) {\n      this.y = 0;\n      this.isJumping = false;\n      this.velocityY = 0;\n    }\n  }\n}</pre>",
+        hintScaffolding: `// 4-Qadam toza andozasi:
+class Dino {
+  constructor() {
+    this.width = 44; this.height = 48;
+    this.x = 60; this.y = 0;
+    this.isJumping = false; this.isDucking = false;
+    this.velocityY = 0;
+    this.jumpForce = 12;
+    this.gravity = 0.6;
+  }
+  jump() {
+    if (!this.isJumping && !this.isDucking && this.y === 0) {
+      this.isJumping = true;
+      this.velocityY = this.jumpForce;
+    }
+  }
+  update() {
+    if (this.isJumping) {
+      this.y += this.velocityY;
+      this.velocityY -= this.gravity;
+      if (this.y <= 0) {
+        this.y = 0;
+        this.isJumping = false;
+        this.velocityY = 0;
+      }
+    }
+  }
+}`,
         quiz: {
           question: "Gravitatsiya (0.6) har kadrda tezlikdan ayirilsa, nima uchun dinozavr osmonga uchib ketmay, mayin yerga qaytib tushadi?",
           options: [
@@ -2111,7 +2497,17 @@ class Dino {
         ],
         taskTitle: "5-Topshiriq: AABB to'qnashuv formulasini yakunlang",
         taskInstruction: "Dinozavr va to'siq (kaktus yoki qush) to'qnashuvini aniqlovchi 'checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH)' funksiyasini yozing.",
-        hintText: "return dinoX < obsX + obsW && dinoX + dinoW > obsX && dinoY + dinoH > obsY && dinoY < obsY + obsH;",
+        hintLogic: "💡 Mantiq: To'qnashuv bo'lishi uchun 4 ta geometrik shart bir vaqtda true bo'lishi kerak: dinoX < obsX + obsW va dinoX + dinoW > obsX va dinoY + dinoH > obsY va dinoY < obsY + obsH.",
+        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {\n  return (\n    dinoX < obsX + obsW &&\n    dinoX + dinoW > obsX &&\n    dinoY + dinoH > obsY &&\n    dinoY < obsY + obsH\n  );\n}</pre>",
+        hintScaffolding: `// 5-Qadam toza andozasi (AABB To'qnashuvi):
+function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
+  return (
+    dinoX < obsX + obsW &&
+    dinoX + dinoW > obsX &&
+    dinoY + dinoH > obsY &&
+    dinoY < obsY + obsH
+  );
+}`,
         quiz: {
           question: "Nega qush kelganda sakrash o'rniga egilish (duck) kerak?",
           options: [
@@ -2189,6 +2585,11 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
     }
 
     function switchStep(stepNum) {
+      if (stepNum > 1 && !unlockedSteps[stepNum - 1]) {
+        appendConsoleLog(`🔒 Avval ${stepNum - 1}-qadam kodini to'g'ri yozib ishga tushiring!`);
+        return;
+      }
+
       currentStep = stepNum;
       updateProgressUI();
 
@@ -2198,6 +2599,15 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       document.getElementById('top-step-title').innerHTML = `<span>🧩 ${stepNum}-Qadam: ${data.title}</span>`;
       document.getElementById('top-concept-text').textContent = data.concept;
       document.getElementById('top-analogy-text').textContent = data.analogy;
+
+      // 'this' Simulator: Faqat 2-bosqichda ko'rsatiladi
+      const simBox = document.getElementById('this-simulator-box');
+      if (simBox) {
+        simBox.style.display = (stepNum === 2) ? 'flex' : 'none';
+        if (stepNum === 2) {
+          simStep(1); // Standart holatda 1-bosqichdan boshlaymiz
+        }
+      }
 
       // Populate Algorithm Steps
       const algoContainer = document.getElementById('top-algorithm-steps');
@@ -2237,7 +2647,19 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       // 2-Qism (Chap): Topshiriq va Muharrir
       document.getElementById('task-title-badge').textContent = data.taskTitle;
       document.getElementById('task-instruction-text').textContent = data.taskInstruction;
-      document.getElementById('hint-text-content').innerHTML = data.hintText;
+
+      // 3 Darajali Mantiqiy Maslahat tizimi:
+      const hintLogicEl = document.getElementById('hint-logic-content');
+      const hintTplEl = document.getElementById('hint-template-content');
+      const scaffoldBox = document.getElementById('scaffolding-box');
+      const scaffoldText = document.getElementById('scaffolding-code-text');
+      const giveupBtn = document.getElementById('btn-giveup');
+
+      if (hintLogicEl) hintLogicEl.innerHTML = data.hintLogic || '';
+      if (hintTplEl) hintTplEl.innerHTML = data.hintTemplate || '';
+      if (scaffoldText) scaffoldText.textContent = data.hintScaffolding || '';
+      if (scaffoldBox) scaffoldBox.classList.remove('revealed');
+      if (giveupBtn) giveupBtn.innerHTML = "<span>🏳️ Qila olmadim, qisman andozani ko'rsat</span>";
       document.getElementById('hint-drawer').classList.remove('open');
 
       // Muharrirga faqat bo'sh yo'naltiruvchi starterCode qo'yiladi:
@@ -2255,9 +2677,114 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         showLockedCodePlaceholder();
       }
 
+      // Update Next Step Button state
+      updateNextStepButton();
+
       // Update Live Browser View to reflect current step
       updateBrowserPreviewForStep(stepNum);
       appendConsoleLog(`▶ ${stepNum}-qadam yuklandi: ${data.title}`);
+    }
+
+    /* ==========================================================================
+       'THIS' KALIT SO'ZI INTERAKTIV SIMULYATOR FUNKSIYALARI
+       ========================================================================== */
+    function simStep(n) {
+      const c1 = document.getElementById('sim-card-1');
+      const c2 = document.getElementById('sim-card-2');
+      const p1 = document.getElementById('sim-pointer-1');
+      const p2 = document.getElementById('sim-pointer-2');
+      const note = document.getElementById('sim-insight-note');
+      const props1 = document.getElementById('sim-props-1');
+      const props2 = document.getElementById('sim-props-2');
+
+      if (!c1 || !c2 || !note) return;
+
+      if (n === 1) {
+        c1.className = 'sim-card active';
+        c2.className = 'sim-card';
+        if (p1) p1.style.display = 'flex';
+        if (p2) p2.style.display = 'none';
+        if (props1) props1.innerHTML = `// Bo'sh obyekt xotirasi ajratildi:<br>{<br>&nbsp;&nbsp;/* Hali hech qanday xususiyat yo'q */<br>}`;
+        if (props2) props2.innerHTML = `// Ikkinchi obyekt hali yaratilmadi:<br>{ }`;
+        note.innerHTML = `<strong>1-Qadam: 'new Dino()' chaqirildi!</strong> JavaScript operativ xotiradan (RAM <code>0x4F1A</code>) yangi bo'sh obyekt <code>{}</code> ajratdi. Lekin uning hali bo'yi va eni yo'q!`;
+        playAudioChime(true);
+      } else if (n === 2) {
+        c1.className = 'sim-card active';
+        c2.className = 'sim-card';
+        if (p1) p1.style.display = 'flex';
+        if (p2) p2.style.display = 'none';
+        if (props1) props1.innerHTML = `// 'this' = 0x4F1A (yashilDino manzili):<br>{<br>&nbsp;&nbsp;/* 'this' ayni paytda faqat yashilDino ga qaratilgan */<br>}`;
+        note.innerHTML = `<strong>2-Qadam: 'this' ko'rsatkichi ulandi!</strong> Konstruktor ichida JS avtomatik ravishda <code>this</code> maxsus ko'rsatkichini yangi tug'ilgan <code>yashilDino</code> (<code>0x4F1A</code>) ga qaratadi. <code>this</code> — bu yaratilayotgan obyektning o'zidir!`;
+        playAudioChime(true);
+      } else if (n === 3) {
+        c1.className = 'sim-card active';
+        c2.className = 'sim-card';
+        if (p1) p1.style.display = 'flex';
+        if (p2) p2.style.display = 'none';
+        if (props1) props1.innerHTML = `// Obyektga xususiyatlar yozildi (this.width = 44):<br>{<br>&nbsp;&nbsp;<span style="color:#38bdf8;">width: 44</span>,<br>&nbsp;&nbsp;<span style="color:#38bdf8;">height: 48</span>,<br>&nbsp;&nbsp;<span style="color:#38bdf8;">x: 60, y: 0</span><br>}`;
+        note.innerHTML = `<strong>3-Qadam: Parametrlar biriktirildi!</strong> <code>this.width = 44; this.height = 48;</code> kodi ishlaganda, qiymatlar aynan <code>yashilDino</code>ning shaxsiy xotirasiga abadiy mixlandi.`;
+        playAudioChime(true);
+      } else if (n === 4) {
+        c1.className = 'sim-card';
+        c2.className = 'sim-card active';
+        if (p1) p1.style.display = 'none';
+        if (p2) p2.style.display = 'flex';
+        if (props2) props2.innerHTML = `// Yangi nusha (kokDino, RAM: 0x8B3C):<br>{<br>&nbsp;&nbsp;<span style="color:#60a5fa;">width: 60</span>,<br>&nbsp;&nbsp;<span style="color:#60a5fa;">height: 70</span>,<br>&nbsp;&nbsp;<span style="color:#60a5fa;">x: 120, y: 0</span><br>}`;
+        note.innerHTML = `⚠️ <strong>Nega 'let' emas, 'this'?</strong> Agar siz <code>let width = 44;</code> deb yozsangiz, u faqat konstruktor ichidagi vaqtinchalik o'zgaruvchi bo'lib qoladi va konstruktor tugashi bilanoq <strong>xotiradan butunlay o'chib ketadi</strong>! Obyekt esa bo'sh qoladi. <code>this.width</code> desangizgina u Dino obyekti bilan birga saqlanib qoladi!`;
+        playAudioChime(false);
+      }
+    }
+
+    /* ==========================================================================
+       QILA OLMADIM (SCAFFOLDING) & KEYINGI QADAMGA O'TISH
+       ========================================================================== */
+    function toggleGiveupScaffolding() {
+      const box = document.getElementById('scaffolding-box');
+      const btn = document.getElementById('btn-giveup');
+      if (!box || !btn) return;
+      const isRevealed = box.classList.toggle('revealed');
+      if (isRevealed) {
+        btn.innerHTML = "<span>▲ Andozani Yopish</span>";
+        appendConsoleLog("💡 Mantiqiy andoza ko'rsatildi. Shunchaki ko'chirmang, tushunib o'zingiz yozing!");
+      } else {
+        btn.innerHTML = "<span>🏳️ Qila olmadim, qisman andozani ko'rsat</span>";
+      }
+    }
+
+    function updateNextStepButton() {
+      const btn = document.getElementById('btn-next-step');
+      const icon = document.getElementById('next-step-icon');
+      const text = document.getElementById('next-step-text');
+      if (!btn) return;
+
+      if (unlockedSteps[currentStep]) {
+        if (currentStep < 5) {
+          btn.disabled = false;
+          btn.className = 'next-step-btn unlocked';
+          if (icon) icon.textContent = '🚀';
+          if (text) text.textContent = `${currentStep + 1}-Qadamga O'tish (${STEPS_DATA[currentStep + 1].title}) →`;
+        } else {
+          btn.disabled = true;
+          btn.className = 'next-step-btn unlocked';
+          if (icon) icon.textContent = '🏆';
+          if (text) text.textContent = "Barcha 5 ta Qadam Muvaffaqiyatli O'zlashtirildi!";
+        }
+      } else {
+        btn.disabled = true;
+        btn.className = 'next-step-btn';
+        if (icon) icon.textContent = '🔒';
+        if (text) text.textContent = `Keyingi Qadam (Avval ushbu topshiriq kodini to'g'ri yozing)`;
+      }
+    }
+
+    function goToNextStep() {
+      if (unlockedSteps[currentStep] && currentStep < 5) {
+        switchStep(currentStep + 1);
+        const target = document.getElementById('left-editor-panel');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
 
     function toggleHintDrawer() {
@@ -2518,6 +3045,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
           if (currentStep < 5) {
             document.getElementById('step-nav-' + (currentStep + 1)).disabled = false;
           }
+          updateNextStepButton();
 
           updateTelemetry();
           appendConsoleLog(`✅ Kod tasdiqlandi! ${currentStep}-qadam o'zlashtirildi.`);
