@@ -29,6 +29,7 @@ export function createInitialState() {
     audioEnabled: true,
     editorFirstMode: false,
     focusIdeMode: false,
+    editorViewMode: 'task', // 'task' | 'full'
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `<!DOCTYPE html>
@@ -165,6 +166,13 @@ export function toggleFocusIdeMode(state) {
   return {
     ...state,
     focusIdeMode: !state.focusIdeMode
+  };
+}
+
+export function toggleEditorViewMode(state) {
+  return {
+    ...state,
+    editorViewMode: state.editorViewMode === 'full' ? 'task' : 'full'
   };
 }
 

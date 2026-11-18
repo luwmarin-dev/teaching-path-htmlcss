@@ -1,3 +1,4 @@
+import { extractTaskCode, mergeTaskIntoFullCode, hasTaskMarkers } from './modules/codeFocusEngine.js';
 import { openStudentPortalModal } from './modules/classroom.js';
 import { initAmbientCanvas } from './modules/ambientCanvas.js';
 /**
@@ -16,6 +17,7 @@ import {
   setTheme,
   toggleEditorFirstMode,
   toggleFocusIdeMode,
+  toggleEditorViewMode,
   saveStateToStorage,
   loadStateFromStorage
 } from './modules/state.js';
@@ -36,6 +38,7 @@ let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
+let currentFullCode = '';
 let ambientEngine = null;
 
 // DOM Elements Cache
@@ -460,7 +463,8 @@ export function selectLesson(lessonId) {
   elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
-  currentCode = localize(lesson.initialCode, state.lang);
+  currentFullCode = localize(lesson.initialCode, state.lang);
+  currentCode = currentFullCode;
   saveStateToStorage(state);
 
   renderSidebar();
@@ -709,6 +713,7 @@ function renderLessonView() {
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
+            <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
             <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
             <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
             <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
@@ -729,10 +734,20 @@ function renderLessonView() {
           </div>
         ` : ''}
 
+        <!-- Code Focus Banner -->
+        <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
+          <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
+          <span class="focus-banner-text">
+            ${state.editorViewMode !== 'full' 
+              ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+              : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
+          </span>
+        </div>
+
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
           <div id="line-numbers" class="editor-line-numbers">1</div>
-          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(currentCode)}</textarea>
+          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
         </div>
       </div>
 
@@ -866,9 +881,42 @@ function setupLessonListeners(lesson) {
   const textarea = document.getElementById('code-textarea');
 
   textarea?.addEventListener('input', () => {
-    currentCode = textarea.value;
+    if (state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode)) {
+      currentFullCode = mergeTaskIntoFullCode(currentFullCode, textarea.value);
+      currentCode = currentFullCode;
+    } else {
+      currentFullCode = textarea.value;
+      currentCode = currentFullCode;
+    }
     updateLivePreview();
     updateLineNumbers();
+  });
+
+  // Toggle Task Focus vs Full Code
+  document.getElementById('btn-toggle-task-focus')?.addEventListener('click', () => {
+    state = toggleEditorViewMode(state);
+    saveStateToStorage(state);
+    const isTaskMode = state.editorViewMode !== 'full';
+    const btn = document.getElementById('btn-toggle-task-focus');
+    if (btn) {
+      btn.classList.toggle('active', isTaskMode);
+      btn.innerHTML = isTaskMode ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code');
+    }
+    if (isTaskMode && hasTaskMarkers(currentFullCode)) {
+      textarea.value = extractTaskCode(currentFullCode);
+    } else {
+      textarea.value = currentFullCode;
+    }
+    const banner = document.getElementById('code-focus-banner');
+    if (banner) {
+      banner.querySelector('.focus-banner-icon').textContent = isTaskMode ? '🎯' : '📄';
+      banner.querySelector('.focus-banner-text').innerHTML = isTaskMode 
+        ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+        : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.');
+    }
+    updateLivePreview();
+    updateLineNumbers();
+    playSound('click', state.audioEnabled);
   });
 
   // Keep line numbers scroll in 1:1 sync with textarea scroll
@@ -946,9 +994,14 @@ function setupLessonListeners(lesson) {
 
   // Reset to initial starter code
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    const code = localize(lesson.initialCode, state.lang);
-    textarea.value = code;
-    currentCode = code;
+    const fullCode = localize(lesson.initialCode, state.lang);
+    currentFullCode = fullCode;
+    currentCode = fullCode;
+    if (state.editorViewMode !== 'full' && hasTaskMarkers(fullCode)) {
+      textarea.value = extractTaskCode(fullCode);
+    } else {
+      textarea.value = fullCode;
+    }
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
@@ -1170,7 +1223,13 @@ function insertTextAtCursor(textarea, text) {
   textarea.value = textarea.value.substring(0, start) + text + textarea.value.substring(end);
   textarea.selectionStart = textarea.selectionEnd = start + text.length;
   textarea.focus();
-  currentCode = textarea.value;
+  if (state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode)) {
+    currentFullCode = mergeTaskIntoFullCode(currentFullCode, textarea.value);
+    currentCode = currentFullCode;
+  } else {
+    currentFullCode = textarea.value;
+    currentCode = currentFullCode;
+  }
   updateLivePreview();
   updateLineNumbers();
 }

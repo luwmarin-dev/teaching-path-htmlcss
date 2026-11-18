@@ -3772,6 +3772,40 @@ body.fullscreen-ide-body .sidebar {
   display: none !important;
 }
 
+/* Code Focus Mode Banner and Toggle */
+.btn-tool.btn-focus-toggle.active {
+  background: rgba(14, 165, 233, 0.25) !important;
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.code-focus-banner {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.code-focus-banner.is-active {
+  display: flex;
+}
+
+.code-focus-banner .focus-banner-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.code-focus-banner strong {
+  color: #38bdf8;
+}
+
 </style>
 </head>
 <body>
@@ -4128,7 +4162,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'A historic manifesto essay where:\n• Title is set in <h1>, acronym in <abbr>\n• High importance words are wrapped in <strong> and <em>\n• Teacher wisdom is framed in <blockquote> and <q>\n• Golden motto is lit up with <mark>\n• Obsolete myths are crossed with <del>, truth inserted with <ins>\n• Science notation uses <sub> and <sup>\n• Keyboard hotkeys use <kbd>, code snippet uses <code>, advice is underlined with <u>',
-      uz: 'Tarixiy kiber manifest essayi:\n• Bosh sarlavha <h1> da, qisqartma <abbr> da\n• Muhim so\'zlar <strong> va <em> bilan belgilangan\n• Ustoz so\'zi <blockquote> va <q> iqtiboslarida\n• Oltin shior sariq <mark> bilan yoritilgan\n• Xato qarash <del> bilan o\'chirilgan, haqiqat <ins> bilan kiritilgan\n• Formulalar <sub> va <sup> yordamida yozilgan\n• Klaviatura tugmalari <kbd>, kod esa <code> da, maslahat <u> bilan chizilgan'
+      uz: "Tarixiy kiber manifest: sarlavhasi <h1> da, muhim so'zlari <strong> va <em> bilan ajratilgan, formulalari <sub> va <sup> da to'g'ri yozilgan toza hujjat."
     },
     anatomy: [
       {
@@ -4280,11 +4314,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Transform the unformatted manifesto speech into a legendary cyber document by applying all text tags: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code>, and <u>.',
-        uz: 'Xom manifest matnini barcha formatlash teglari: <h1>, <abbr>, <strong>, <em>, <blockquote>, <q>, <mark>, <del>, <ins>, <sub>, <sup>, <kbd>, <code> va <u> teglari yordamida buyuk kiber hujjatga aylantiring.'
+        uz: "Matnni o'qishli va chiroyli qilamiz! 1-qadamdan 9-qadamgacha berilgan ko'rsatmalarga qarab matn ichidagi so'zlarni kerakli teglarga o'rab chiqing: sarlavhani <h1> ga, muhim so'zlarni <strong> va <em> ga, iqtiboslarni <blockquote> va <q> ga, formulalarni <sub> va <sup> ga, tugmalarni <kbd> va kodni <code> ga oling!"
       },
       hint: {
         en: 'Look at the numbered steps in the code comments. Each step tells you the semantic purpose of the tag needed (heading, quote, math power, hotkey). Recall the tag sandwich formula!',
-        uz: 'Kod izohlaridagi raqamlangan qadamlarga qarang. Har bir qadamda kerakli tegning vazifasi (sarlavha, iqtibos, daraja, tugma) aytilgan. Sendvich qoidasini unutmang!'
+        uz: "Kod ichidagi raqamlangan qadamlarga qarang. Masalan sarlavha uchun <h1>...</h1>, muhim so'zga <strong>...</strong> ishlatiladi. Ochilgan tegni yopishni unutmang!"
       },
       rules: [
         {
@@ -4626,7 +4660,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'Complete semantic architecture containing DOCTYPE, html lang, head with title, body, header, nav, main, article, section, aside, and footer.',
-      uz: 'DOCTYPE, html lang, title bilan head, body, header, nav, main, article, section, aside va footer dan iborat to\'liq semantik arxitektura.'
+      uz: "To'liq va to'g'ri terilgan semantik sayt strukturasi: header, nav, main, article, aside va footer joy-joyida."
     },
     anatomy: [
       {
@@ -4734,11 +4768,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Assemble the complete semantic architecture: wrap the portal parts in proper semantic tags: <title>, <header>, <nav>, <main>, <article>, <section>, <aside>, and <footer>.',
-        uz: 'To\'liq semantik arxitekturani quring: portal bo\'laklarini tegishli semantik teglar: <title>, <header>, <nav>, <main>, <article>, <section>, <aside> va <footer> ichiga oling.'
+        uz: "Saytning skeletini to'g'ri qismlarga ajratamiz: sarlavhani <header> ga, menyuni <nav> ga, asosiy matnni <main> ga, yon panelni <aside> ga va eng pastki qismni <footer> ga solib chiqing!"
       },
       hint: {
         en: 'Follow steps 1 through 8 in the starter comments. Remember: brand goes to <header>, menu to <nav>, core content to <main>, sidebar to <aside>, copyright to <footer>!',
-        uz: 'Kod izohlaridagi 1 dan 8 gacha qadamlarni bajaring: brend <header> ga, menyu <nav> ga, asosiy o\'zak <main> ga, yon panel <aside> ga va pastki qism <footer> ga olinadi!'
+        uz: "Kod izohlaridagi qadamlarga qarang: brend <header> ichiga, havolalar <nav> ga, maqola <article> ga, pastki matn esa <footer> ga olinadi."
       },
       rules: [
         {
@@ -5334,7 +5368,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'A grand championship standings table built completely from scratch: header row with 4 <th> cells, 3 player rows with badges, and a summary footer with colspan="3".',
-      uz: 'Noldan boshlab to\'liq qurilgan chempionat jadvali: 4 ta <th> sarlavha kataklari, nishonli 3 ta o\'yinchi qatori va colspan="3" li umumiy hisobot qatori.'
+      uz: "4 ta sarlavhali, 3 ta o'yinchi qatori va bitta birlashtirilgan umumiy hisobot qatoriga ega to'liq jadval."
     },
     anatomy: [
       {
@@ -5390,11 +5424,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Construct the full Esports Standings Table from scratch! 1) Create header <tr> with 4 <th> cells. 2) Create 1st place <tr class="champion"> for ApexDragon with 4 <td> cells. 3) Create 2nd place <tr> for PixelCat with 4 <td> cells. 4) Create 3rd place <tr> for CyberBot with 4 <td> cells. 5) Create <tr class="total-row"> with <td colspan="3"> and <td>38,450</td>!',
-        uz: 'Kibersport jadvalini noldan o\'zingiz quring! 1) 4 ta <th> katakli sarlavha <tr> qatorini oching. 2) ApexDragon uchun 4 ta <td> katakli <tr class="champion"> qatorini yozing. 3) PixelCat uchun 4 ta <td> katakli <tr> qatorini yozing. 4) CyberBot uchun 4 ta <td> katakli <tr> qatorini yozing. 5) <td colspan="3"> va <td>38,450</td> ga ega <tr class="total-row"> qatorini qo\'shing!'
+        uz: "Kibersport chempionati jadvalini tuzamiz! 1) Jadval sarlavhasi uchun <tr> ichida 4 ta <th> yozing. 2) Har bir o'yinchi (ApexDragon, PixelCat, CyberBot) uchun alohida <tr> qator ochib, ichiga 4 tadan <td> katak yozing. 3) Oxirida <td colspan=\"3\"> bilan umumiy ball qatorini qo'shing!"
       },
       hint: {
         en: 'Write 5 distinct <tr> rows: row 1 with <th>, rows 2-4 with <td> for players, and row 5 with <td colspan="3">.',
-        uz: '5 ta alohida <tr> qatori yozing: 1-qatorda <th>, 2-4 qatorlarda o\'yinchilar uchun <td>, 5-qatorda esa <td colspan="3"> bo\'lsin.'
+        uz: "Jadvalda 5 ta qator (<tr>) bo'ladi. Birinchi qatorda sarlavhalar (<th>), keyingi qatorlarda esa o'yinchilar ma'lumotlari (<td>) yoziladi."
       },
       rules: [
         {
@@ -5500,12 +5534,13 @@ const LESSONS = [
     max-width: 480px;
     margin: 0 auto;
   }
+  /* === SIZNING VAZIFANGIZ (CSS) === */
   .hero-figure {
     margin: 0 0 16px 0;
   }
   .hero-img {
     width: 100%;
-    /* 1-Qadam: aspect-ratio: 16/9; va object-fit: cover; bering */
+    /* 1-QADAM: Rover rasmini 16:9 proporsiyada cho'zilib buzilmasdan ramkaga toza sig'adigan (cover) qilib moslang */
     border-radius: 14px;
     border: 2px solid #38bdf8;
     display: block;
@@ -5544,16 +5579,19 @@ const LESSONS = [
   .avatar-badge {
     width: 48px;
     height: 48px;
-    /* 3-Qadam: border-radius: 50%; qiling */
+    /* 3-QADAM: Ekipaj avatarlarining to'rtburchak qirralarini to'liq yum-yumaloq aylanaga aylantiring */
   }
+  /* === VAZIFA TUGADI (CSS) === */
 </style>
 
 <div class="expedition-hub">
-  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <!-- 1-Qadam: <!-- === SIZNING VAZIFANGIZ (HTML) === -->
+  <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
   </figure>
+  <!-- === VAZIFA TUGADI (HTML) === -->
 
   <div class="fleet-grid">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
@@ -5579,12 +5617,13 @@ const LESSONS = [
     max-width: 480px;
     margin: 0 auto;
   }
+  /* === SIZNING VAZIFANGIZ (CSS) === */
   .hero-figure {
     margin: 0 0 16px 0;
   }
   .hero-img {
     width: 100%;
-    /* 1-Qadam: aspect-ratio: 16/9; va object-fit: cover; bering */
+    /* 1-QADAM: Rover rasmini 16:9 proporsiyada cho'zilib buzilmasdan ramkaga toza sig'adigan (cover) qilib moslang */
     border-radius: 14px;
     border: 2px solid #38bdf8;
     display: block;
@@ -5623,16 +5662,19 @@ const LESSONS = [
   .avatar-badge {
     width: 48px;
     height: 48px;
-    /* 3-Qadam: border-radius: 50%; qiling */
+    /* 3-QADAM: Ekipaj avatarlarining to'rtburchak qirralarini to'liq yum-yumaloq aylanaga aylantiring */
   }
+  /* === VAZIFA TUGADI (CSS) === */
 </style>
 
 <div class="expedition-hub">
-  <!-- 1-Qadam: <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
+  <!-- 1-Qadam: <!-- === SIZNING VAZIFANGIZ (HTML) === -->
+  <figure class="hero-figure"> ichiga rover rasmini qo'ying -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <!-- 2-Qadam: <figcaption class="gallery-caption">...</figcaption> qo'shing -->
   </figure>
+  <!-- === VAZIFA TUGADI (HTML) === -->
 
   <div class="fleet-grid">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
@@ -5719,10 +5761,12 @@ const LESSONS = [
 </style>
 
 <div class="expedition-hub">
+  <!-- === SIZNING VAZIFANGIZ (HTML) === -->
   <figure class="hero-figure">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='220' viewBox='0 0 440 220'><defs><linearGradient id='marsSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='60%' stop-color='%234c0519'/><stop offset='100%' stop-color='%23991b1b'/></linearGradient><linearGradient id='roverBody' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='100%' stop-color='%230284c7'/></linearGradient></defs><rect width='440' height='220' fill='url(%23marsSky)'/><circle cx='380' cy='45' r='22' fill='%23fbbf24' opacity='0.9'/><path d='M0 160 Q110 130 220 160 T440 150 L440 220 L0 220 Z' fill='%237f1d1d'/><path d='M0 180 Q140 165 280 185 T440 175 L440 220 L0 220 Z' fill='%23450a0a'/><rect x='130' y='110' width='180' height='45' rx='10' fill='%230f172a' stroke='%2338bdf8' stroke-width='3'/><rect x='160' y='80' width='60' height='30' rx='6' fill='%231e293b' stroke='%2338bdf8' stroke-width='2'/><circle cx='180' cy='95' r='8' fill='%2322d3ee'/><circle cx='200' cy='95' r='5' fill='%23f43f5e'/><circle cx='150' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='220' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><circle cx='290' cy='165' r='18' fill='%23334155' stroke='%2338bdf8' stroke-width='4'/><text x='220' y='138' fill='white' font-family='sans-serif' font-weight='900' font-size='13' letter-spacing='2' text-anchor='middle'>ROVER MK-IV</text></svg>" alt="Mars Rover MK-IV Hero Panoramic" class="hero-img">
     <figcaption class="gallery-caption">🚀 Mars Rover MK-IV: Qizil Sayyora Ekspeditsiyasi 2026</figcaption>
   </figure>
+  <!-- === VAZIFA TUGADI (HTML) === -->
 
   <div class="fleet-grid">
     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'><rect width='180' height='120' fill='%230b0f19' rx='10'/><circle cx='90' cy='60' r='22' fill='%231e293b' stroke='%2322c55e' stroke-width='2'/><line x1='50' y1='60' x2='130' y2='60' stroke='%23475569' stroke-width='4'/><line x1='90' y1='25' x2='90' y2='95' stroke='%23475569' stroke-width='4'/><circle cx='50' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='130' cy='60' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='25' r='10' fill='%2322c55e' opacity='0.8'/><circle cx='90' cy='95' r='10' fill='%2322c55e' opacity='0.8'/><text x='90' y='65' fill='%2322c55e' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'>DRONE X1</text></svg>" alt="Atmosphere Drone Scout X1" class="fleet-img">
@@ -5739,7 +5783,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A high-tech Mars Rover expedition exhibition featuring a responsive hero panorama with object-fit: cover, semantic figcaption, 2 fleet vehicles, and 2 neon circular crew avatar badges.',
-      uz: "Responsive rover panoramasi, object-fit: cover, semantik figcaption, 2 ta dron/yo'ldosh va 2 ta dumaloq neon ekipaj avatari jamlangan Mars ekspeditsiya ko'rgazmasi."
+      uz: "16:9 proporsiyadagi rover panoramasi, rasm ostidagi izoh va dumaloq ekipaj avatarlari bilan bezatilgan toza galereya."
     },
     anatomy: [
       {
@@ -5774,15 +5818,15 @@ const LESSONS = [
       { tag: '<figcaption>', meaning: { en: 'Photo description', uz: 'Rasm izohi' } },
       { tag: 'object-fit: cover;', meaning: { en: 'Proportionate crop', uz: 'Chiroyli proporsional qirqish' } }
     ],
-    quickTags: ['<figure class="hero-figure">', '<img src="..." alt="Mars Rover" class="hero-img">', '<figcaption class="gallery-caption">'],
+    quickTags: ['<figure>', '<figcaption>', '<img>'],
     challenge: {
       mission: {
         en: 'Assemble the Mars & Drones showcase: place the main rover inside an independent figure, attach a caption underneath, line up 2 drone cards, and shape crew avatars into rounded circles!',
-        uz: 'Mars & Dronlar ko\'rgazmasini yarating: mustaqil rasm bloki ichiga bosh rover rasmi, rasm ostiga izoh sarlavhasi, 2 ta dron rasmlari va to\'liq yumaloq aylanaga aylantirilgan ekipaj avatarlarini joylashtiring!'
+        uz: "Galereyani chiroyli qilib tartibga solamiz: 1) Katta rover rasmi cho'zilib xunuk bo'lib qolmasin — uni 16:9 ramkaga chiroyli moslang (cho'zilmasdan toza sig'sin). 2) Rasm tagiga izoh berish uchun <figcaption> tegi bilan rover nomini yozing. 3) Pastdagi ekipaj a'zolarining to'rtburchak rasmlarini yum-yumaloq aylana qilib qo'ying!"
       },
       hint: {
         en: 'Use <figure>, <figcaption>, at least 4 <img> tags, alt attributes, object-fit: cover, and border-radius: 50%!',
-        uz: "<figure>, <figcaption>, kamida 4 ta <img> tegi, alt atributlari, object-fit: cover va border-radius: 50% qo'llang!"
+        uz: "1-qadamda rasm proporsiyasi va ramkaga sig'ishini sozlang. 2-qadamda rasm ostiga <figcaption> qo'shing. 3-qadamda avatarlarni aylana qilish uchun burchaklarini 50% ga yumaloqlang."
       },
       rules: [
         {
@@ -5872,7 +5916,7 @@ const LESSONS = [
 <h3>Secret Chest</h3>
 <p>Contains 100 gold coins and a magical crystal!</p>`,
       uz: `<!-- 1-Qadam: Quyidagi xazinani <div> konteyneriga oling -->
-<!-- 2-Qadam: <div> ga style="border: 4px solid #2dd4bf; padding: 16px;" qo'shing -->
+<!-- 2-QADAM: <div> ga 4px qalinlikdagi #2dd4bf feruza devor va 16px ichki oraliq bering -->
 
 <h3>Secret Chest</h3>
 <p>Contains 100 gold coins and a magical crystal!</p>`
@@ -5883,7 +5927,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A solid card with a bright mint cyan (4px solid #2dd4bf) border wall neatly wrapping the title and text.',
-      uz: 'Sarlavha va matnni chiroyli o\'rab turuvchi yorqin feruza (4px solid #2dd4bf) devor hoshiyasiga ega karta.'
+      uz: "Sarlavha va matnni chiroyli o'rab turuvchi feruza hoshiyali va ichki oraliqli karta."
     },
     anatomy: [
       {
@@ -5954,11 +5998,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Wrap the secret artifact inside a container box (div) and outline it with a solid 4px #2dd4bf border and 16px internal padding!',
-        uz: 'Maxfiy xazinani umumiy ajratuvchi quti (div) ichiga o\'rang va uning atrofiga 4px qalinlikdagi #2dd4bf moviy hoshiya bilan 16px ichki oraliq bering!'
+        uz: "Xazinani bitta <div> qutiga solamiz! Quti chiroyli bo'lishi uchun uning atrofiga 4px qalinlikdagi #2dd4bf rangli devor (border) va ichidagi yozuvlar devorga yopishib qolmasligi uchun 16px ichki joy (padding) bering!"
       },
       hint: {
         en: 'Put <div style="border: 4px solid #2dd4bf; padding: 16px;"> before the h3, and </div> after the paragraph.',
-        uz: 'h3 dan oldin <div style="border: 4px solid #2dd4bf; padding: 16px;"> yozing va paragrafdan keyin </div> bilan yoping.'
+        uz: "<h3> dan oldin <div style=\"border: 4px solid #2dd4bf; padding: 16px;\"> yozing va matn tugagan joyda </div> bilan yoping."
       },
       rules: [
         {
@@ -6069,7 +6113,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A player profile containing two purple badge pills ("Level: 99" and "Rank: Master") both sharing the exact same `.badge` class styling.',
-      uz: 'Ikkalasi ham bir xil `.badge` klass uslubiga ega ikkita binafsharang nishonli ("Level: 99" va "Rank: Master") o\'yinchi profili.'
+      uz: "Ikkalasi ham bir xil `.badge` klassi bilan bezatilgan chiroyli o'yinchi nishonlari."
     },
     anatomy: [
       {
@@ -6125,9 +6169,9 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add class="badge" to the Level 99 span, and add a second span for "Rank: Master" with class="badge"!',
-        uz: 'Level 99 span tegiga class="badge" qo\'shing va "Rank: Master" uchun ham xuddi shu klassli ikkinchi span yarating!'
+        uz: "O'yinchi nishonlariga bir xil kiyim kiydiramiz! \"Level: 99\" turgan <span> ga class=\"badge\" deb yozing, keyin xuddi shunaqa ikkinchi <span> ochib, unga ham o'sha klassni berib \"Rank: Master\" deb yozing!"
       },
-      hint: { en: 'Add class="badge" to the span, and create a second span using the same class.', uz: 'span tegiga class="badge" qo\'shing va xuddi shu klass bilan ikkinchi span yarating.' },
+      hint: { en: 'Add class="badge" to the span, and create a second span using the same class.', uz: "Birinchi <span> ga class=\"badge\" qo'shing, so'ngra <span class=\"badge\">Rank: Master</span> deb ikkinchisini yarating." },
       rules: [
         {
           type: 'custom',
@@ -6238,7 +6282,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A spacious navy card with cozy 24px padding giving the text room to breathe inside, and generous 30px margin pushing it away from the edges.',
-      uz: 'Matnga ichkaridan nafas olishi uchun 24px padding va tashqi chetlardan itarib turish uchun 30px margin berilgan keng to\'q ko\'k kartochka.'
+      uz: "Ichkaridan erkin nafas oluvchi va tashqaridan xavfsiz masofa saqlovchi quti."
     },
     anatomy: [
       {
@@ -6294,9 +6338,9 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Pad the interior of .box with 24px so text does not touch the walls, and leave 30px of exterior margin so it separates cleanly from other cards!',
-        uz: '.box qutisining ichki qismidan matn devorga yopishib qolmasligi uchun 24 piksel ichki oraliq qoldiring va qutining tashqi tomonidan boshqa elementlar bilan to\'qnashmasligi uchun 30 piksel tashqi masofa bering!'
+        uz: ".box qutisini erkinroq qilamiz: ichidagi yozuvlar devorga yopishib xunuk turmasin — ichkaridan 24px joy (padding) oching. Qutining o'zi boshqa narsalarga tegib ketmasligi uchun tashqarisidan 30px masofa (margin) qoldiring!"
       },
-      hint: { en: 'Update padding on .box to create inside cushion, and margin to create outside space.', uz: '.box klassida ichki masofani padding, tashqi masofani margin bilan oshiring.' },
+      hint: { en: 'Update padding on .box to create inside cushion, and margin to create outside space.', uz: "Quti ichidagi bo'sh joy uchun padding: 24px;, tashqi masofa uchun margin: 30px; yozing." },
       rules: [
         {
           type: 'hasCssProperty',
@@ -6426,7 +6470,8 @@ const LESSONS = [
   .box-1 {
     background: #ff5e7e;
 
-    /* 1-Qadam: 1-qutini 15 daraja buring */
+    /* === SIZNING VAZIFANGIZ (CSS) === */
+  /* 1-Qadam: 1-qutini 15 daraja buring */
     transform: rotate(0deg);
   }
 
@@ -6486,6 +6531,7 @@ const LESSONS = [
     background: #43e97b;
     transform: translateY(-15px);
   }
+  /* === VAZIFA TUGADI (CSS) === */
 </style>
 
 <div class="box-container">
@@ -6537,7 +6583,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'Three colorful boxes side-by-side: Box 1 tilted 15 degrees, Box 2 zoomed 20% larger, and Box 3 floating 15px upward.',
-      uz: 'Yonma-yon uchta rangli quti: 1-quti 15 darajaga burilgan, 2-quti 20% ga kattalashgan va 3-quti 15px yuqoriga ko\'tarilgan.'
+      uz: "Burilgan, kattalashtirilgan va havoga ko'tarilgan 3 ta interaktiv quti."
     },
     anatomy: [
       {
@@ -6594,11 +6640,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Transform 3 crates in 2D space! 1) Rotate .box-1 clockwise by 15 degrees! 2) Scale up .box-2 to 1.2 times its original size! 3) Float .box-3 upward by 15 pixels along the vertical axis!',
-        uz: 'Tayyor 3 ta qutini 2D fazoda o\'zgartiring! 1) .box-1 qutisini soat mili bo\'yicha 15 gradusga buring! 2) .box-2 qutisini 1.2 barobar kattalashtirib kattaroq qiling! 3) .box-3 qutisini Y o\'qi bo\'ylab 15 piksel yuqoriga ko\'tarib muallaq qiling!'
+        uz: "3 ta qutiga sehrli harakat beramiz! 1) .box-1 qutisini sal qiyalashtirib, soat mili bo'yicha 15 gradusga buring! 2) .box-2 qutisini 1.2 baravar kattaroq qiling! 3) .box-3 qutisini havoga 15px balandroq ko'tarib qo'ying!"
       },
       hint: {
         en: 'In each CSS class, set transform with the specific acrobatic move: rotate(15deg) for .box-1, scale(1.2) for .box-2, and translateY(-15px) for .box-3.',
-        uz: 'Har bir CSS klass ichida transform xususiyatini o\'rnating: .box-1 uchun rotate(15deg), .box-2 uchun scale(1.2) va .box-3 uchun translateY(-15px).'
+        uz: "Buring deganda rotate(15deg), kattalashtiring deganda scale(1.2), yuqoriga ko'taring deganda translateY(-15px) ishlatiladi."
       },
       rules: [
         {
@@ -6807,6 +6853,7 @@ const LESSONS = [
     font-family: system-ui, sans-serif;
   }
 
+  /* === SIZNING VAZIFANGIZ (CSS) === */
   /* 1-Qadam: .spa-navbar ichidagi elementlarni yonma-yon bitta gorizontal qatorga tizing, ularni X o'qi bo'yicha ikki chekkaga suring (burchaklardan burchakka taqsimlang) va vertikal markazlang. */
   .spa-navbar {
     background: #111827;
@@ -6874,6 +6921,7 @@ const LESSONS = [
     padding: 12px 20px;
     font-size: 12px;
   }
+  /* === VAZIFA TUGADI (CSS) === */
   .player-track { color: #38bdf8; font-weight: bold; }
   .player-controls { display: flex; gap: 14px; font-size: 14px; cursor: pointer; }
 </style>
@@ -7199,7 +7247,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'A complete CyberPulse Music SPA with 3 flexbox layouts applied: topbar navigation, horizontal track cards with gap, and bottom player controls with space-between.',
-      uz: '3 ta joyda Flexbox qoidalari qo\'llangan to\'liq CyberPulse musiqiy SPA ilovasi: yuqori navigatsiya paneli, oraliqli qo\'shiq kartalari va ikki chetga surilgan pastki pleyer.'
+      uz: "Navigatsiya, qo'shiq kartalari va pastki pleyeri to'liq tekislangan zamonaviy CyberPulse musiqa ilovasi."
     },
     anatomy: [
       {
@@ -7243,11 +7291,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Assemble the CyberPulse Music SPA with 3 flexible row layouts! 1) Snap the children inside .spa-navbar into a single horizontal row, distribute them to opposite outer edges across the main X axis, and center them vertically! 2) Arrange the music track cards in .track-row into a horizontal line with 12px clean spacing between each card. 3) Align the .spa-player controls in a horizontal row, push the widgets to opposite ends, and center them vertically!',
-        uz: 'CyberPulse Musiqa SPA sahifasida 3 ta alohida moslashuvchan qator joylashuvini yarating! 1) .spa-navbar ichidagi bolalarni chapdan o\'ngga bitta gorizontal qatorga joylashtiring (barcha elementlar yonma-yon tizilsin), ularni asosiy X o\'qi bo\'yicha burchaklardan burchakka (ikki chetga) sochib taqsimlang va vertikal markazlang! 2) .track-row ichidagi qo\'shiq kartalarini ham gorizontal qatorga tizib, kartalar orasida 12px oraliq masofa qoldiring. 3) .spa-player boshqaruv qismini ham bitta gorizontal qatorga tizib, elementlarni ikki chekkaga yoying va vertikal markazlang!'
+        uz: "CyberPulse musiqa ilovasida hamma narsani tartibga solamiz: 1) .spa-navbar menyusidagi narsalarni yonma-yon bitta chiziqqa tizing, ikki chetga yoying va vertikal o'rtaga keltiring! 2) .track-row dagi qo'shiq kartalarini yonma-yon qatorga terib, oralarida 12px bo'sh joy qoldiring! 3) .spa-player pleyeridagi tugmalarni ham yonma-yon qilib, ikki chetga yoying va o'rtada tekislang!"
       },
       hint: {
         en: 'Apply flexbox to .spa-navbar, .track-row, and .spa-player to assemble all 3 sections of the music app!',
-        uz: '.spa-navbar, .track-row va .spa-player qismlariga flexbox qoidalarini qo\'shib butun ilovani terib chiqing.'
+        uz: "Elementlarni bitta chiziqqa terish uchun display: flex; ishlatiladi. Ikki chetga yoyish uchun justify-content, vertikal markazlash uchun align-items, oraliq masofa uchun gap yozing."
       },
       rules: [
         {
@@ -7376,7 +7424,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A stylish button placed from scratch that turns teal (#2dd4bf) and pops 10% larger (scale(1.1)) on hover.',
-      uz: 'Noldan qo\'yilgan va hover bo\'lganda yashil-ko\'k (#2dd4bf) rangga kirib, 10% kattalashadigan ajoyib tugma.'
+      uz: "Sichqoncha borganda yorqin feruza rangga kirib kattalashadigan interaktiv tugma."
     },
     anatomy: [
       {
@@ -7406,11 +7454,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Insert the ✨ Turbo Boost button inside the card, and on hover, illuminate its background in #2dd4bf while scaling it up to 1.1x size!',
-        uz: 'Kartochkaga ✨ Turbo Boost tugmasini joylashtiring va CSS da tugma ustiga sichqoncha kelganda (hover) orqa fonini #2dd4bf zumrad rangiga o\'zgartirib, hajmini 1.1 barobar kattalashtiring!'
+        uz: "Sahifaga ✨ Turbo Boost tugmasini qo'ying! Sichqoncha ustiga kelganda tugma jonlanishi kerak: orqa foni chiroyli #2dd4bf feruza rangga kirsin va o'zi 1.1 baravar kattalashsin!"
       },
       hint: {
         en: 'Put <button class="magic-btn">✨ Turbo Boost</button> in the div, then in CSS write .magic-btn:hover { background: #2dd4bf; transform: scale(1.1); }',
-        uz: 'div ichiga <button class="magic-btn">✨ Turbo Boost</button> qo\'ying va CSS da .magic-btn:hover { background: #2dd4bf; transform: scale(1.1); } yozing.'
+        uz: "HTML ga <button class=\"magic-btn\">... qo'shing. CSS da esa .magic-btn:hover ichida fon rangi va kattalashishini yozing."
       },
       rules: [
         {
@@ -7509,7 +7557,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'The word "Wikipedia" wrapped in an <a> tag pointing to https://wikipedia.org that opens in a new tab.',
-      uz: '"Wikipedia" so\'zi <a> tegi bilan https://wikipedia.org manziliga yo\'naltirilgan havola.'
+      uz: "Yangi oynada ochiladigan qulay Wikipedia havolasi."
     },
     anatomy: [
       {
@@ -7537,11 +7585,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Wrap the word "Wikipedia" in an <a href="https://wikipedia.org" target="_blank"> tag!',
-        uz: '"Wikipedia" so\'zini <a href="https://wikipedia.org" target="_blank"> tegi bilan o\'rab oling!'
+        uz: "Matndagi \"Wikipedia\" so'zini bosganda yangi oynada ochiladigan havola (link) ga aylantiring: manzilga https://wikipedia.org bering va yangi oynada ochilishi uchun target=\"_blank\" qo'shing!"
       },
       hint: {
         en: 'Use the <a> tag with href pointing to the website URL and target="_blank".',
-        uz: '<a href="https://wikipedia.org" target="_blank">Wikipedia</a> deb yozing.'
+        uz: "<a href=\"https://wikipedia.org\" target=\"_blank\">Wikipedia</a> ko'rinishida yozing."
       },
       rules: [
         {
@@ -7637,7 +7685,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A neat bullet-point list containing the 3 spy items wrapped in <li> inside <ul>.',
-      uz: '<ul> ichida 3 ta <li> tegi bilan chiroyli nuqtali ro\'yxat qilingan ayg\'oqchi jihozlari.'
+      uz: "Lazer qilich, himoya qalqoni va kiber dubulg'adan iborat tartiblangan ro'yxat."
     },
     anatomy: [
       {
@@ -7667,11 +7715,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Wrap the 3 items in <li> and put them inside a <ul> list container!',
-        uz: '3 ta jihozni <li> bilan o\'rab, ularni <ul> ichiga joylashtiring!'
+        uz: "Jihozlar ro'yxatini tuzamiz: 3 ta qahramon jihozini <li> bilan o'rab, hammasini bitta nuqtali <ul> ro'yxati ichiga soling!"
       },
       hint: {
         en: 'Start an unordered list with <ul>, and place each secret item inside its own <li> tag.',
-        uz: '<ul> ichiga 3 ta <li> yozing.'
+        uz: "<ul> oching, ichiga <li>Lazer qilich</li> va boshqa jihozlarni yozib, </ul> bilan yoping."
       },
       rules: [
         {
@@ -7782,7 +7830,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A high-tech cyber operator badge painted with cyan HEX typography (#38bdf8), frosted RGBA background, and neon perimeter border.',
-      uz: "Moviy HEX matn (#38bdf8), shaffof RGBA foni va neon hoshiyasi bilan bezatilgan kiber operator nishoni."
+      uz: "Och moviy yozuvli, shaffof fonli va kiber devorli nishon."
     },
     anatomy: [
       {
@@ -7818,11 +7866,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Style the .color-badge agent insignia: set its text to bright cyan (#38bdf8), its backdrop to a translucent 12% cyber tint (rgba(56, 189, 248, 0.12)), and encircle it with a solid 2px cyan border (#38bdf8)!',
-        uz: '.color-badge agent nishonini kiber uslubda bezang: yozuvini och ko\'k (#38bdf8) rangda, orqa fonini 12% shaffof kiber moviy tusda (rgba(56, 189, 248, 0.12)) va atrofiga 2 piksel qalinlikdagi to\'liq moviy (#38bdf8) hoshiya bilan o\'rang!'
+        uz: "Agent nishonini chiroyli bo'yaymiz: yozuviga #38bdf8 och moviy rang, orqa foniga sal shaffof moviy tus (rgba(56, 189, 248, 0.12)) bering, atrofiga esa 2px qalinlikdagi #38bdf8 devor (border) chizing!"
       },
       hint: {
         en: 'Write color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 2px solid #38bdf8; inside .color-badge.',
-        uz: ".color-badge ichiga color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 2px solid #38bdf8; yozing."
+        uz: "Yozuv rangiga color, orqa fonga background, atrofidagi hoshiyaga border xossalarini bering."
       },
       rules: [
         {
@@ -7921,7 +7969,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'The title "LEVEL UP!" glowing with a vivid neon teal aura behind the letters.',
-      uz: '"LEVEL UP!" sarlavhasi ortidan taralayotgan yorqin firuza neon nuri.'
+      uz: "Katta va neon feruza nurlari bilan yorishib turuvchi o'yin sarlavhasi."
     },
     anatomy: [
       {
@@ -7943,11 +7991,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Give .arcade-title an eye-catching arcade glow: add a glowing emerald neon text shadow of 15px in #2dd4bf and set the font size to 36px!',
-        uz: '.arcade-title o\'yin sarlavhasiga retro arkada uslubidagi 15 piksel yoyilgan #2dd4bf zumrad neon yorug\'lik soyasini va 36 piksel kattalikdagi ko\'zni qamashtiruvchi shrift hajmini bering!'
+        uz: ".arcade-title o'yin sarlavhasini retro o'yinlardek yarqirataylik: yozuvni 36px qilib kattalashtiring va orqasidan 15px yoyilgan #2dd4bf feruza rangli neon yog'du (soya) taralsin!"
       },
       hint: {
         en: 'Add the text-shadow property with horizontal offset, vertical offset, blur radius, and color.',
-        uz: '.arcade-title { ... } ichiga text-shadow: 0 0 15px #2dd4bf; deb yozing.'
+        uz: "Yozuv kattaligi uchun font-size: 36px;, neon nuri uchun text-shadow: 0 0 15px #2dd4bf; yozing."
       },
       rules: [
         {
@@ -8059,7 +8107,7 @@ const LESSONS = [
     font-size: 50px;
     margin: 0 auto 12px;
 
-    /* 2-Qadam: border-radius: 50%; bilan avatarni aylana qiling */
+    /* 2-QADAM: Avatarning to'rtburchak qirralarini to'liq yum-yumaloq aylanaga aylantiring */
   }
 </style>
 
@@ -8100,7 +8148,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'The fox avatar placed from scratch and transformed into a 100% round circular gamer badge.',
-      uz: 'Noldan qo\'yilgan va border-radius: 50% yordamida mukammal aylanaga aylantirilgan tulki nishoni.'
+      uz: "Yumaloq burchakli karta va dumaloq avatar rasmi."
     },
     anatomy: [
       {
@@ -8122,11 +8170,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Place the avatar <div class="avatar">🦊</div> inside the profile card and smooth its square corners completely into a perfect circle!',
-        uz: 'Profil kartochkasiga <div class="avatar">🦊</div> avatarsini joylashtiring va uning to\'rtburchak qirralarini to\'liq yumaloqlab, mukammal aylanaga aylantiring!'
+        uz: "Qirralarni yumaloqlaymiz: .super-card kartochkasining o'tkir burchaklarini 20px qilib yumaloq qiling, .avatar rasmini esa to'rtburchakdan to'liq aylanaga aylantirib qo'ying!"
       },
       hint: {
         en: 'Add <div class="avatar">🦊</div> inside .profile-badge, then in .avatar set border-radius: 50%;',
-        uz: '.profile-badge ichiga <div class="avatar">🦊</div> qo\'ying va .avatar ichida border-radius: 50%; deb yozing.'
+        uz: "Burchaklarni yumaloqlash uchun border-radius ishlatiladi. To'liq aylana qilish uchun 50% beriladi."
       },
       rules: [
         {
@@ -8222,7 +8270,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A purple alien invader 👾 continuously floating up and down smoothly in zero gravity.',
-      uz: 'Binafsharang fazogir 👾 vaznsizlikda yuqoriga va pastga to\'xtovsiz ravishda bir tekis suzib harakatlanmoqda.'
+      uz: "To'xtovsiz ravishda pulsatsiyalanuvchi energetik kiber shar."
     },
     anatomy: [
       {
@@ -8250,11 +8298,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Animate the alien character using the bounce sequence: make it leap continuously over 1 second, alternating directions seamlessly!',
-        uz: '.alien personajiga \'bounce\' sakrash harakatini ulang: 1 soniya davomida to\'xtovsiz, har gal yo\'nalishini almashtirib mayin sakrab tursin!'
+        uz: ".energy-orb energetik sharini to'xtovsiz nafas olib turadigan qilaylik: unga 2 soniya davomida bir tekisda to'xtovsiz (infinite) takrorlanadigan 'pulse' animatsiyasini ulang!"
       },
       hint: {
         en: 'Assign your @keyframes animation using the animation property with duration and infinite loop.',
-        uz: '.alien { ... } ichiga animation: bounce 1s infinite alternate; deb yozing.'
+        uz: "animation xossasida pulse nomini, 2s davomiyligini va infinite takrorlanishini ko'rsating."
       },
       rules: [
         {
@@ -8336,7 +8384,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A hero registration card with a stylish dark text input ready for players to type their nickname.',
-      uz: 'O\'yinchilar o\'z laqablarini yozishlari uchun chiroyli qora matn kiritish maydonchasiga ega ro\'yxatdan o\'tish kartochkasi.'
+      uz: "Ism kiritish, rang tanlash va rozilik bildirish maydonlariga ega forma."
     },
     anatomy: [
       {
@@ -8457,11 +8505,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add a text input with type="text" inside the card so players can type their name!',
-        uz: 'Kartochka ichiga type="text" bo\'lgan input qo\'shing, shunda o\'yinchilar o\'z ismlarini yoza oladilar!'
+        uz: "Foydalanuvchi anketasini tuzamiz: ism yozish uchun matnli (text), yoqtirgan rangini tanlash uchun (color) va qoidalarga roziman deyish uchun bitta katakcha (checkbox) maydonini qo'shing!"
       },
       hint: {
         en: 'Use the self-closing <input> tag with the type="text" attribute inside the card.',
-        uz: 'Karta ichiga type="text" atributiga ega <input> tegini yozing.'
+        uz: "<input type=\"text\">, <input type=\"color\"> va <input type=\"checkbox\"> teglarini yozing."
       },
       rules: [
         {
@@ -8558,7 +8606,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'An audio player placed from scratch with visible play, pause, and volume controls in the space mission card.',
-      uz: 'Fazoviy missiya kartochkasida noldan qo\'yilgan tinglash, to\'xtatish va ovoz boshqaruvi tugmalariga ega audio pleyer.'
+      uz: "Boshqaruv tugmalari bor to'liq audio pleyer."
     },
     anatomy: [
       {
@@ -8588,11 +8636,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add an <audio controls src="..."> player inside the sound deck so astronauts can play the track!',
-        uz: 'Kosmonavtlar musiqa tinglashi uchun ovoz paneliga <audio controls src="..."> pleyerini joylashtiring!'
+        uz: "Saytga audio pleyer qo'shamiz: qo'shiqni to'xtatish va ovozini balandlatish tugmalari ko'rinib turishi uchun controls sozlamasi bilan <audio> tegini joylashtiring!"
       },
       hint: {
         en: 'Write: <audio controls src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg"></audio>',
-        uz: 'Yozing: <audio controls src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg"></audio>'
+        uz: "<audio controls src=\"...\"> deb yozing, controls tugmalar chiqishi uchun shart."
       },
       rules: [
         {
@@ -8673,7 +8721,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A video movie player with visible playback controls and a width of 320 pixels.',
-      uz: 'Ko\'rinadigan boshqaruv tugmalariga va 320 piksel kenglikka ega video pleyer.'
+      uz: "320px kenglikdagi boshqariladigan video pleyer."
     },
     anatomy: [
       {
@@ -8759,11 +8807,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add a <video controls width="320" src="..."> player inside the movie card!',
-        uz: 'Kino kartasi ichiga <video controls width="320" src="..."> pleyerini qo\'shing!'
+        uz: "Saytga video pleyer o'rnatamiz: eni 320px bo'lgan, pleyer tugmalari (controls) bor <video> tegini sahifaga qo'ying!"
       },
       hint: {
         en: 'Create a <video> tag with controls and width="320" attributes, then close it with </video>.',
-        uz: 'controls va width="320" atributlariga ega <video> tegini yarating va </video> bilan yoping.'
+        uz: "<video controls width=\"320\" src=\"...\"></video> deb yozing."
       },
       rules: [
         {
@@ -8845,7 +8893,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'An interactive secret accordion that reveals the Golden Key code when clicked.',
-      uz: 'Bosilganda "Golden Key" maxfiy kodini ochib beradigan interaktiv sirli quti.'
+      uz: "Bosganda ochiladigan interaktiv sarlavha va ichidagi sirli xabar."
     },
     anatomy: [
       {
@@ -8932,11 +8980,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add a <details> element with a <summary> inside the card to hide the secret code!',
-        uz: 'Kartochka ichiga maxfiy kodni yashirish uchun <summary> sarlavhali <details> tegi qo\'shing!'
+        uz: "Bosganda ochilib-yopiladigan maxfiy quti yasaymiz: <details> tegi oching, uning sarlavhasiga <summary> bilan izoh yozing va ichiga maxfiy xabarni yashiring!"
       },
       hint: {
         en: 'Wrap your clickable heading in <summary>...</summary> inside the <details>...</details> block.',
-        uz: '<details> ichida bosiladigan sarlavhani <summary> teglari orasiga oling.'
+        uz: "<details> tegi ichiga birinchi bo'lib <summary>Sarlavha</summary> yoziladi, tagiga sirli matn qo'yiladi."
       },
       rules: [
         {
@@ -9104,6 +9152,7 @@ const LESSONS = [
       uz: `<style>
   * { box-sizing: border-box; }
 
+  /* === SIZNING VAZIFANGIZ (CSS) === */
   /* 1-Qadam: .spa-grid ni 2 o'lchamli panjara tizimiga o'tkazing: 3 ta ustun (birinchi ustun 200px, qolgan ikkitasi teng ulushli moslashuvchan fr birlikda), kataklar orasida esa 16px oraliq masofa bering. */
   .spa-grid {
     background: #0b0f19;
@@ -9157,6 +9206,7 @@ const LESSONS = [
     font-size: 12px;
     color: #94a3b8;
   }
+  /* === VAZIFA TUGADI (CSS) === */
 </style>
 
 <div class="spa-grid">
@@ -9383,7 +9433,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'A full-scale CyberStore launcher SPA featuring a 2D grid matrix, full-width header (1 / -1), wide 2-column hero game banner (span 2), and full-width footer.',
-      uz: '2D panjara tizimi, to\'liq cho\'zilgan sarlavha (1 / -1), 2 ta ustunni egallagan keng banner (span 2) va to\'liq futerga ega CyberStore o\'yin do\'koni SPA sahifasi.'
+      uz: "3 ustunli, sarlavhasi va furi to'liq eniga yoyilgan professional CyberStore to'ri."
     },
     anatomy: [
       {
@@ -9427,11 +9477,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Build the 2D layout for CyberStore Gaming Hub! 1) Activate 2D grid layout on .spa-grid with 3 columns (first fixed at 200px, next two sharing space equally at 1fr) and 16px gaps. 2) Stretch .spa-header across all columns from the first grid line to the very last line! 3) Expand .featured-card across 2 columns! 4) Span .spa-footer across the entire width from start to finish line!',
-        uz: 'CyberStore O\'yinlar Do\'koni SPA sahifasida 2 o\'lchamli to\'r quring! 1) .spa-grid konteynerida 2 o\'lchamli to\'r tizimini yoqing: 3 ta ustun hosil qiling (birinchisi 200px kenglikda, qolgan 2 tasi teng ulushda 1fr), ustun va qatorlar orasida 16px oraliq masofa qoldiring. 2) .spa-header bosh sarlavhasini birinchi chiziqdan eng oxirgi chiziqqacha butun eni bo\'ylab yoying! 3) .featured-card maxsus o\'yin kartasini 2 ta ustun kengligida yoying! 4) .spa-footer pastki panelini ham to\'liq kenglik bo\'ylab birinchi chiziqdan oxirigacha yoying!'
+        uz: "CyberStore do'koni sahifasini to'r (grid) usulida teramiz: 1) .spa-grid ga to'r tizimini yoqing: 3 ta ustun oching (chapdagisi 200px, qolgan 2 tasi teng 1fr ulushda), qatorlar orasida 16px masofa qoldiring! 2) .spa-header sarlavhasini boshidan oxirigacha butun kenglik bo'ylab yoyib qo'ying! 3) .featured-card kartochkasi 2 ta ustunni egallab tursin! 4) .spa-footer pastki qismini ham boshidan oxirigacha butun eni bo'ylab yoying!"
       },
       hint: {
         en: 'Configure the grid container on .spa-grid, then span the header with grid-column: 1 / -1;, the hero card with grid-column: span 2;, and the footer with grid-column: 1 / -1;',
-        uz: '.spa-grid da panjarani yoqing, .spa-header ga grid-column: 1 / -1;, .featured-card ga grid-column: span 2; va .spa-footer ga grid-column: 1 / -1; bering.'
+        uz: "To'r tizimi uchun display: grid; ishlatiladi. Ustunlar uchun grid-template-columns, oraliqqa gap, elementni eniga yoyish uchun grid-column: 1 / -1 yoki span 2 yozing."
       },
       rules: [
         {
@@ -9629,6 +9679,7 @@ const LESSONS = [
     position: relative;
   }
 
+  /* === SIZNING VAZIFANGIZ (CSS) === */
   /* 1-Qadam: .sticky-navbar ni sahifa pastga scroll qilinganda tepada qotib turadigan yopishqoq qiling va uni tepadan 0 masofaga mixlang. */
   .sticky-navbar {
     z-index: 50;
@@ -9700,6 +9751,7 @@ const LESSONS = [
     border-radius: 999px;
     box-shadow: 0 4px 16px rgba(56, 189, 248, 0.5);
   }
+  /* === VAZIFA TUGADI (CSS) === */
 </style>
 
 <div class="spa-command">
@@ -9949,7 +10001,7 @@ const LESSONS = [
     },
     targetDescription: {
       en: 'A high-tech Defense SPA actively utilizing all 5 CSS positions: sticky navbar, 2 relative parent anchor cards, 2 absolute corner badges, and a screen-fixed floating drone beacon.',
-      uz: 'Barcha 5 ta CSS position turlarini faol qo\'llovchi yuqori texnologiyali Mudofaa SPA sahifasi: yopishqoq sarlavha, 2 ta nisbiy ota karta, 2 ta burchakka mixlangan nishon va ekranga qadalgan dron.'
+      uz: "Yopishqoq menyu, koordinatali nishonlar va doimiy qotirilgan dron bilan to'liq boshqariladigan Mudofaa bazasi."
     },
     anatomy: [
       {
@@ -10000,11 +10052,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Master spatial placement across the Defense SPA! 1) Make .sticky-navbar stick to the very top edge of the screen as you scroll (0 distance from top). 2) Establish .shield-card and .radar-panel as relative coordinate anchor points for their children. 3) Position the .alarm-badge on the top-right corner of its card (top -10px, right -10px). 4) Position the .radar-blip inside the radar panel\'s bottom-right corner (bottom 10px, right 10px). 5) Anchor the .fixed-drone floating in place at the bottom-right corner of the whole browser viewport (bottom 20px, right 20px)!',
-        uz: 'Mudofaa SPA sahifasida 5 ta elementning joylashuvini to\'g\'ri boshqaring! 1) .sticky-navbar sahifa pastga aylantirilganda ham ekranning eng yuqori qismida yopishib tursin (tepadan 0 masofada). 2) .shield-card va .radar-panel konteynerlarini ichki koordinata poydevori (o\'z turgan joyiga nisbiy asos) qilib belgilang. 3) .alarm-badge ogohlantiruvchi nishonini o\'z kartochkasining yuqori o\'ng burchagiga chiqarib qo\'ying (tepadan -10px, o\'ngdan -10px). 4) .radar-blip nishonini radar panelining pastki o\'ng burchagiga joylashtiring (pastdan 10px, o\'ngdan 10px). 5) .fixed-drone dronini butun ekranning pastki o\'ng burchagida muallaq qotirib qo\'ying (pastdan 20px, o\'ngdan 20px)!'
+        uz: "Mudofaa bazasidagi narsalarni o'z joyiga mahkamlaymiz: 1) .sticky-navbar menyusi pastga tushganda ham tepaga yopishib qolsin (tepadan 0px)! 2) .shield-card va .radar-panel ichidagi nishonlar adashib ketmasligi uchun ularni poydevor (nisbiy asos) qilib belgilang! 3) .alarm-badge nishonini kartaning tepa o'ng burchagiga chiqarib qo'ying (-10px)! 4) .radar-blip nuqtasini radarning pastki o'ng burchagiga joylang (10px)! 5) .fixed-drone dronini ekranning pastki o'ng burchagiga qotirib qo'ying (20px)!"
       },
       hint: {
         en: 'Give .sticky-navbar position: sticky; top: 0; Give both .shield-card and .radar-panel position: relative; Give .alarm-badge position: absolute; top: -10px; right: -10px; Give .radar-blip position: absolute; bottom: 10px; right: 10px; Give .fixed-drone position: fixed; bottom: 20px; right: 20px;',
-        uz: '.sticky-navbar ga position: sticky; top: 0;, .shield-card va .radar-panel ga position: relative;, .alarm-badge ga position: absolute; top: -10px; right: -10px;, .radar-blip ga position: absolute; bottom: 10px; right: 10px; va .fixed-drone ga position: fixed; bottom: 20px; right: 20px; yozing.'
+        uz: "Yopishib turish uchun position: sticky, poydevor uchun position: relative, burchakka chiqarish uchun position: absolute, ekranga qotirib qo'yish uchun position: fixed ishlatiladi."
       },
       rules: [
         {
@@ -10143,7 +10195,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A card that glides up smoothly with a cyan border and glow when the mouse glides over it.',
-      uz: 'Sichqoncha ustiga kelganda mayin yuqoriga ko\'tariladigan va ko\'k nur taratadigan kartochka.'
+      uz: "Sichqoncha borganda 0.3s davomida mayin kengayuvchi va rangini o'zgartiruvchi karta."
     },
     anatomy: [
       {
@@ -10218,11 +10270,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Make hover changes on .magic-card transition smoothly over 0.3 seconds instead of snapping abruptly!',
-        uz: '.magic-card kartochkasi ustiga sichqoncha kelganda (hover) harakatlar birdan sakrab emas, balki 0.3 soniya davomida mayin (smooth) o\'tish bilan amalga oshsin!'
+        uz: ".magic-card kartochkasi ustiga sichqoncha borganida o'zgarishlar birdan sakrab emas, 0.3 soniya davomida juda mayin va yoqimli o'tsin!"
       },
       hint: {
         en: 'Change transition: none; to transition: all 0.3s ease; inside .magic-card.',
-        uz: '.magic-card klassidagi transition qiymatini all 0.3s ease qiling.'
+        uz: "Mayin o'tish hosil qilish uchun .magic-card ga transition: all 0.3s ease; bering."
       },
       rules: [
         {
@@ -10314,7 +10366,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A legendary crystal diamond radiating a radiant cyan neon light halo.',
-      uz: 'Atrofida yorqin och ko\'k neon nur taratayotgan afsonaviy olmos.'
+      uz: "Atrofidan zumrad neon nurlari taralib turgan kiber olmos."
     },
     anatomy: [
       {
@@ -10408,11 +10460,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Cast a silhouette-conforming 20px glowing emerald (#2dd4bf) drop shadow filter from .crystal!',
-        uz: '.crystal qimmatbaho olmosiga uning siluetini takrorlovchi 20 piksel yoyilgan #2dd4bf zumrad yog\'duli soya filtrini bering!'
+        uz: ".crystal olmosini yarqirataylik: uning shaklini aynan takrorlaydigan 20px yoyilgan #2dd4bf feruza rangli yog'duli soya filtrini bering!"
       },
       hint: {
         en: 'Set filter to drop-shadow(0 0 20px #2dd4bf); inside the .crystal class.',
-        uz: '.crystal klassidagi filter qiymatini drop-shadow(0 0 20px #2dd4bf); qiling.'
+        uz: "Shaklni takrorlovchi soya berish uchun filter: drop-shadow(0 0 20px #2dd4bf); yozing."
       },
       rules: [
         {
@@ -10496,7 +10548,8 @@ const LESSONS = [
     padding: 10px;
     font-size: 11px;
     font-family: monospace;
-    /* 1-Qadam: overflow-y: auto; bering */
+    /* === SIZNING VAZIFANGIZ (CSS) === */
+  /* 1-QADAM: Terminal ichida xabarlar qutidan toshganda vertikal skroll bo'ladigan qiling */
   }
   .weapons-deck {
     flex: 1;
@@ -10506,7 +10559,7 @@ const LESSONS = [
     border-radius: 10px;
     padding: 10px;
     white-space: nowrap;
-    /* 2-Qadam: overflow-x: auto; bering */
+    /* 2-QADAM: Qurollar qatordan toshib ketganda gorizontal skroll bo'ladigan qiling */
   }
   .id-badge {
     width: 140px;
@@ -10516,7 +10569,7 @@ const LESSONS = [
     padding: 10px;
     font-size: 11px;
     white-space: nowrap;
-    /* 3-Qadam: overflow: hidden; va text-overflow: ellipsis; bering */
+    /* 3-QADAM: Toshgan uzun agent kodini qirqib yashiring va oxiriga uch nuqta (...) qo'ying */
   }
   .log-line {
     margin-bottom: 6px;
@@ -10598,6 +10651,7 @@ const LESSONS = [
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  /* === VAZIFA TUGADI (CSS) === */
   .log-line {
     margin-bottom: 6px;
     padding: 4px 8px;
@@ -10637,7 +10691,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A 3-part Cyber Overflow Deck: vertical terminal scrolling, horizontal weapon deck scrolling, and laser-trimmed text ellipsis on the badge!',
-      uz: "3 qismli Kiber Overflow Dek: vertikal skroll bo'ladigan terminal, gorizontal qurollar karuseli va lazerdek qirqilgan agent nishoni!"
+      uz: "Vertikal skrolli terminal, gorizontal qurollar karuseli va uch nuqta bilan qisqargan agent nishoni."
     },
     anatomy: [
       {
@@ -10677,11 +10731,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Control content overflow across the Cyber Lab! 1) Enable vertical scrolling in .terminal-box when logs exceed its height. 2) Enable horizontal scrolling in .weapons-deck when weapons line up wider than the deck. 3) In .id-badge, cleanly clip overflowing text and truncate it with an ellipsis (...)!',
-        uz: 'Kiber Laboratoriya panellarida ma\'lumotlar toshib ketishini boshqaring! 1) .terminal-box ichida server xabarlari balandlikdan oshib ketganda ularni vertikal aylantirish (skroll) imkonini bering. 2) .weapons-deck ichidagi qurol kartalari gorizontal qatorga sig\'may toshganda yonga surish (skroll) imkonini bering. 3) .id-badge nishonidagi agent kodi qutidan toshib ketmasligi uchun ortiqcha qismini lazerdek toza qirqib yashiring va oxirida uch nuqta (...) bilan qisqartirib ko\'rsating!'
+        uz: "Qutilardan yozuvlar toshib ketmasin: 1) .terminal-box ichida xabarlar ko'payib ketsa, qutidan toshib ketmasdan tepaga-pastga skroll bo'lsin! 2) .weapons-deck dagi qurollar qatorga sig'masa, ularni o'ngga-chapga skroll qilib varaqlash imkonini bering! 3) .id-badge dagi uzun agent kodi toshmasligi uchun ortiqchasini yashirib, oxiriga uch nuqta (...) qo'ying!"
       },
       hint: {
         en: 'Add overflow-y: auto; to terminal, overflow-x: auto; to weapons, and overflow: hidden; text-overflow: ellipsis; to badge!',
-        uz: "Terminalga overflow-y: auto, qurollarga overflow-x: auto, nishonga esa overflow: hidden va text-overflow: ellipsis bering!"
+        uz: "Tik skroll uchun overflow-y: auto;, yonboshga skroll uchun overflow-x: auto;, uch nuqta chiqarish uchun text-overflow: ellipsis; va overflow: hidden; yoziladi."
       },
       rules: [
         {
@@ -10779,7 +10833,7 @@ const LESSONS = [
     margin: 0 0 10px;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #ff007a, #00f2fe);
-    /* 5-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; bering */
+    /* 5-QADAM: Sarlavha matni orqasidagi ranglar oqimini aynan harflar ichiga qirqib joylang */
   }
   .linear-45 {
     height: 110px;
@@ -10789,7 +10843,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 1-Qadam: background: linear-gradient(45deg, #ff007a, #7928ca); */
+    /* 1-QADAM: 45 gradus burchak ostida #ff007a dan #7928ca gacha ranglar oqimini bering */
     background: #1e1b4b;
   }
   .linear-90 {
@@ -10800,7 +10854,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 2-Qadam: background: linear-gradient(90deg, #00f2fe, #4facfe); */
+    /* 2-QADAM: 90 gradusda #00f2fe dan #4facfe gacha gorizontal ranglar oqimini bering */
     background: #0c4a6e;
   }
   .linear-135 {
@@ -10811,7 +10865,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 3-Qadam: background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed); */
+    /* 3-QADAM: 135 gradus burchak ostida uch xil rang (#f59e0b, #ef4444, #7c3aed) jilosini bering */
     background: #451a03;
   }
   .radial-orb {
@@ -10825,7 +10879,7 @@ const LESSONS = [
     font-weight: 800;
     font-size: 12px;
     box-shadow: 0 0 35px #00f2fe;
-    /* 4-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
+    /* 4-QADAM: Markazdan (35% 35%) tarqaluvchi 3D kiber shar jilosini bering (#00f2fe, #0284c7, #030712) */
     background: #0369a1;
   }
   .conic-reactor {
@@ -10870,7 +10924,7 @@ const LESSONS = [
     margin: 0 0 10px;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #ff007a, #00f2fe);
-    /* 5-Qadam: -webkit-background-clip: text; -webkit-text-fill-color: transparent; bering */
+    /* 5-QADAM: Sarlavha matni orqasidagi ranglar oqimini aynan harflar ichiga qirqib joylang */
   }
   .linear-45 {
     height: 110px;
@@ -10880,7 +10934,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 1-Qadam: background: linear-gradient(45deg, #ff007a, #7928ca); */
+    /* 1-QADAM: 45 gradus burchak ostida #ff007a dan #7928ca gacha ranglar oqimini bering */
     background: #1e1b4b;
   }
   .linear-90 {
@@ -10891,7 +10945,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 2-Qadam: background: linear-gradient(90deg, #00f2fe, #4facfe); */
+    /* 2-QADAM: 90 gradusda #00f2fe dan #4facfe gacha gorizontal ranglar oqimini bering */
     background: #0c4a6e;
   }
   .linear-135 {
@@ -10902,7 +10956,7 @@ const LESSONS = [
     justify-content: center;
     font-weight: 800;
     font-size: 13px;
-    /* 3-Qadam: background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed); */
+    /* 3-QADAM: 135 gradus burchak ostida uch xil rang (#f59e0b, #ef4444, #7c3aed) jilosini bering */
     background: #451a03;
   }
   .radial-orb {
@@ -10916,7 +10970,7 @@ const LESSONS = [
     font-weight: 800;
     font-size: 12px;
     box-shadow: 0 0 35px #00f2fe;
-    /* 4-Qadam: background: radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712); */
+    /* 4-QADAM: Markazdan (35% 35%) tarqaluvchi 3D kiber shar jilosini bering (#00f2fe, #0284c7, #030712) */
     background: #0369a1;
   }
   .conic-reactor {
@@ -11035,7 +11089,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A CyberPulse FX matrix featuring 3 distinct linear gradient angles (45°, 90°, 135°), a 3D radial sphere orb, a 360° conic radar reactor, and gradient-clipped typography.',
-      uz: "3 xil burchakdagi linear gradientlar (45°, 90°, 135°), 3D radial shar, 360° conic radar va gradient bilan bo'yalgan sarlavha jamlangan CyberPulse FX konsoli."
+      uz: "45°, 90°, 135° burchakli chiziqli gradientlar, 3D shar va aylanma radar jilosi."
     },
     anatomy: [
       {
@@ -11075,11 +11129,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Deploy all 5 gradient styles across the Cyber Lab: 45° diagonal blend (#ff007a to #7928ca), 90° horizontal blend (#00f2fe to #4facfe), 135° multicolor spectrum, centered 3D radial sphere, 360° circular radar sweep, and fill headline letters directly with the gradient!',
-        uz: 'Kiber laboratoriyada barcha 5 xil ranglar jilosini qo\'llang: 45° qiya chiziqli gradient (#ff007a dan #7928ca gacha), 90° gorizontal gradient (#00f2fe dan #4facfe gacha), 135° ko\'p rangli gradient, markazdan tarqaluvchi 3D shar, 360° aylanma radar va sarlavha harflarining o\'zini rangli gradient bilan to\'ldiring!'
+        uz: "Ranglar bilan sahifani yoritaylik! 1) .linear-box ga 45 gradus burchak ostida #ff007a dan #7928ca gacha ranglar oqimini bering! 2) .multi-box ga 90 gradusda #00f2fe dan #4facfe gacha gorizontal oqim bering! 3) .glow-box ga 135 gradusda ranglar oqimini bering! 4) .radial-sphere ni markazdan tarqaluvchi 3D shar qiling! 5) .conic-radar ga 360 gradus aylanma radar ko'rinishini bering!"
       },
       hint: {
         en: 'Apply linear-gradient(45deg, ...), linear-gradient(90deg, ...), linear-gradient(135deg, ...), radial-gradient(...), conic-gradient(...), and background-clip: text!',
-        uz: "linear-gradient(45deg, ...), linear-gradient(90deg, ...), linear-gradient(135deg, ...), radial-gradient(...), conic-gradient(...) va background-clip: text qo'llang!"
+        uz: "Chiziqli oqim uchun linear-gradient, markazdan tarqalish uchun radial-gradient, aylanma uchun conic-gradient ishlatiladi."
       },
       rules: [
         {
@@ -11258,7 +11312,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A responsive squad dock that intelligently stacks into single-column mobile cards on screens below 768px wide!',
-      uz: "768px dan kichik ekranlarda aqlli ravishda bitta ustunli mobil kartalariga aylanadigan responsiv jamoa paneli!"
+      uz: "Kichik ekranlarda avtomatik bitta ustunga teriladigan qulay mobil ko'rinish."
     },
     anatomy: [
       {
@@ -11291,11 +11345,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Write a responsive rule for compact screens (768px or narrower) that reorganizes the spaceship horizontal deck into a vertical column!',
-        uz: 'Kichik ekranli qurilmalarda (ekran kengligi 768 piksel yoki undan kichik bo\'lganda) kosmik kemadagi gorizontal qatorni vertikal ustun holatiga moslashtiruvchi ekran qoidasini yozing!'
+        uz: "Saytimiz telefonlarda ham chiroyli ochilsin! Ekran kengligi 768px yoki undan kichik bo'lganda, .crew-grid ichidagi qatorni ustun holatiga o'tkazadigan ekran qoidasini (@media) yozing!"
       },
       hint: {
         en: 'Wrap the responsive CSS inside @media (max-width: 768px) { ... }.',
-        uz: 'Moslashuvchan CSS ni @media (max-width: 768px) { ... } ichiga oling.'
+        uz: "@media (max-width: 768px) { .crew-grid { flex-direction: column; } } ko'rinishida yozing."
       },
       rules: [
         {
@@ -11426,7 +11480,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A high-tech guild card featuring wide letter-spaced cyber typography and a glowing vector gold star badge drawn in SVG code!',
-      uz: "Keng oraliqli kiber shrift hamda SVG kodida chizilgan oltin yulduzli vektor nishoniga ega yuqori texnologiyali gildiya kartasi!"
+      uz: "Orbitron shrifti va harflar orasidagi toza masofa bilan bezatilgan sarlavha."
     },
     anatomy: [
       {
@@ -11464,11 +11518,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Apply the futuristic \'Orbitron\' typography to .guild-title and add 3px of clean spacing between letters!',
-        uz: '.guild-title sarlavhasiga futuristik \'Orbitron\' shriftini o\'rnating va o\'qilishini osonlashtirish uchun harflar orasida 3 piksel kenglikdagi toza oraliq qoldiring!'
+        uz: ".guild-title sarlavhasiga kiber ko'rinish beramiz: unga 'Orbitron' shriftini o'rnating va harflar bir-biriga yopishib qolmasligi uchun oralarida 3px bo'sh joy qoldiring!"
       },
       hint: {
         en: 'Write font-family and letter-spacing inside the .guild-title style block.',
-        uz: '.guild-title ichiga font-family va letter-spacing xossalarini yozing.'
+        uz: "Shrift nomi uchun font-family: 'Orbitron', sans-serif;, harflar oralig'i uchun letter-spacing: 3px; yozing."
       },
       rules: [
         {
@@ -11595,7 +11649,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A celebration loot card that springs into view with an elastic Animate.css bounceIn pop!',
-      uz: "Animate.css ning elastik bounceIn sakrashi bilan paydo bo'ladigan bayramona xazina kartasi!"
+      uz: "Animate.css ning elastik sakrashi bilan paydo bo'ladigan xazina qutisi."
     },
     anatomy: [
       {
@@ -11636,7 +11690,7 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add classes animate__animated and animate__bounceIn to the .treasure-chest element!',
-        uz: ".treasure-chest elementiga animate__animated va animate__bounceIn klasslarini qo'shing!"
+        uz: "Xazina qutisini sakratamiz! Tayyor animatsiya kutubxonasidan foydalanib, .treasure-chest elementiga sakrab chiqishi uchun animate__animated va animate__bounceIn klasslarini qo'shing!"
       },
       hint: {
         en: 'Change <div class="treasure-chest"> to <div class="treasure-chest animate__animated animate__bounceIn">.',
@@ -11653,7 +11707,7 @@ const LESSONS = [
     teacherGuide: {
       analogy: {
         en: 'Library classes are like cheat codes in a video game: instead of building the car piece by piece, you press the code and drive away!',
-        uz: "Kutubxona klasslari video o'yindagi maxfiy kodlarga o'xshaydi: mashinani noldan yig'masdan, bitta kod bilan tayyor mashinani haydab ketasiz!"
+        uz: "<div class=\"treasure-chest animate__animated animate__bounceIn\"> ko'rinishida klasslarni qo'shing."
       },
       discussionQuestions: [
         {
@@ -11747,7 +11801,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A classic Bootstrap 3-column responsive layout built using .container, .row, and three .col-12 .col-md-4 columns!',
-      uz: '.container, .row va uchta .col-12 .col-md-4 ustunlaridan foydalanib qurilgan klassik Bootstrap 3 ustunli responsiv layout!'
+      uz: "Telefonda 1 ta, kompyuterda 3 ta ustun bo'lib turuvchi qulay Bootstrap setkasi."
     },
     anatomy: [
       {
@@ -11803,11 +11857,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Build the 3-column layout by adding class="col-12 col-md-4" to each of the 3 column boxes!',
-        uz: '3 ta ustunli qutilarning har biriga class="col-12 col-md-4" qo\'shib, 3 ustunli tartibni quring!'
+        uz: "Bootstrap setkasini yig'amiz: row ichidagi 3 ta qutining har biriga class=\"col-12 col-md-4\" deb yozing, shunda telefonda to'liq eniga, kompyuterda esa yonma-yon 3 ustun bo'lib turadi!"
       },
       hint: {
         en: 'Add class="col-12 col-md-4" to the three <div> wrappers inside the row.',
-        uz: 'row ichidagi uchta <div> ga class="col-12 col-md-4" deb yozing.'
+        uz: "Har bir ichki divga class=\"col-12 col-md-4\" klassini qo'shing."
       },
       rules: [
         {
@@ -11928,7 +11982,7 @@ const LESSONS = [
 </div>`,
     targetDescription: {
       en: 'A polished Bootstrap card complete with a rounded-pill badge, alert box, and action button!',
-      uz: "Yumaloq nishon, ogohlantirish qutisi va harakat tugmasiga ega to'liq bezatilgan Bootstrap kartasi!"
+      uz: "Nishon, ogohlantirish xabari va harakat tugmasiga ega bezatilgan Bootstrap kartasi."
     },
     anatomy: [
       {
@@ -11971,11 +12025,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add card, badge bg-success, alert alert-primary, and btn btn-primary classes to shape the hero status card!',
-        uz: 'Qahramon status kartasini shakllantirish uchun card, badge bg-success, alert alert-primary va btn btn-primary klasslarini qo\'shing!'
+        uz: "Tayyor Bootstrap qismlarini kiyintiramiz: tashqi qutiga card, ONLINE yozuviga badge bg-success, xabar maydoniga alert alert-primary va tugmaga btn btn-primary klasslarini bering!"
       },
       hint: {
         en: 'Add class="card" to the outer div, badge to ONLINE, alert to warp drive, and btn btn-primary to the button.',
-        uz: 'Tashqi divga class="card", ONLINE ga badge, xabarga alert va tugmaga btn btn-primary qo\'shing.'
+        uz: "Kodni ko'zdan kechirib, har bir elementga mos klasslarni qo'shib chiqing."
       },
       rules: [
         {
@@ -12102,7 +12156,7 @@ const LESSONS = [
 </nav>`,
     targetDescription: {
       en: 'A production-grade dark navigation header with an active home pill, navigation links, and a glowing connect button!',
-      uz: "Faol home tugmasi, menyu havolalari va ulanish tugmasiga ega professional qorong'u navigatsiya paneli!"
+      uz: "Logotipi, faol havolalari va ulanish tugmasi bor to'liq Bootstrap navigatsiya menyusi."
     },
     anatomy: [
       {
@@ -12139,11 +12193,11 @@ const LESSONS = [
     challenge: {
       mission: {
         en: 'Add navbar navbar-dark bg-dark, navbar-brand, nav-link active, and button classes to assemble the navigation header!',
-        uz: 'Navigatsiya sarlavhasini yig\'ish uchun navbar navbar-dark bg-dark, navbar-brand, nav-link active va tugma klasslarini qo\'shing!'
+        uz: "Zamonaviy qora navigatsiya menyusini teramiz: tepa <nav> ga navbar navbar-dark bg-dark, logotipga navbar-brand, havola (link) ga nav-link active klasslarini qo'shing!"
       },
       hint: {
         en: 'Add class="navbar navbar-dark bg-dark" to <nav>, class="navbar-brand" to the logo, and class="nav-link active" to Home.',
-        uz: '<nav> ga class="navbar navbar-dark bg-dark", logotipga class="navbar-brand" va Home havolasiga class="nav-link active" qo\'shing.'
+        uz: "<nav> ga navbar navbar-dark bg-dark, brend nomiga navbar-brand klasslarini bering."
       },
       rules: [
         {
@@ -12458,6 +12512,130 @@ function validateChallenge(code, rules = []) {
 }
 
 
+  // --- Code Focus Engine Module ---
+  /**
+ * Code Focus Engine
+ * Allows students to focus strictly on their assignment (Task Mode)
+ * without being overwhelmed or distracted by dozens of lines of background
+ * boilerplate styling (container shells, grids, SVG illustrations).
+ * 
+ * Provides a 1-click toggle to inspect full element styles whenever desired.
+ */
+
+const TASK_CSS_START = '/* === SIZNING VAZIFANGIZ (CSS) === */';
+const TASK_CSS_END = '/* === VAZIFA TUGADI (CSS) === */';
+const TASK_HTML_START = '<!-- === SIZNING VAZIFANGIZ (HTML) === -->';
+const TASK_HTML_END = '<!-- === VAZIFA TUGADI (HTML) === -->';
+
+/**
+ * Checks if code contains task delimiters
+ */
+function hasTaskMarkers(code) {
+  if (!code || typeof code !== 'string') return false;
+  return code.includes(TASK_CSS_START) || code.includes(TASK_HTML_START);
+}
+
+/**
+ * Extracts task-only code from full code.
+ * If markers are present, returns only the task CSS and/or task HTML.
+ * If no markers are present, returns full code unchanged.
+ */
+function extractTaskCode(fullCode) {
+  if (!fullCode || typeof fullCode !== 'string') return '';
+  if (!hasTaskMarkers(fullCode)) return fullCode;
+
+  let taskCss = '';
+  let taskHtml = '';
+
+  // Extract CSS
+  if (fullCode.includes(TASK_CSS_START)) {
+    const cssParts = fullCode.split(TASK_CSS_START);
+    if (cssParts.length > 1) {
+      const rest = cssParts[1];
+      if (rest.includes(TASK_CSS_END)) {
+        taskCss = rest.split(TASK_CSS_END)[0].trim();
+      } else {
+        taskCss = rest.trim();
+      }
+    }
+  }
+
+  // Extract HTML
+  if (fullCode.includes(TASK_HTML_START)) {
+    const htmlParts = fullCode.split(TASK_HTML_START);
+    if (htmlParts.length > 1) {
+      const rest = htmlParts[1];
+      if (rest.includes(TASK_HTML_END)) {
+        taskHtml = rest.split(TASK_HTML_END)[0].trim();
+      } else {
+        taskHtml = rest.trim();
+      }
+    }
+  }
+
+  // Compose clean task document
+  const sections = [];
+  if (taskCss) {
+    sections.push(`<style>\n${taskCss}\n</style>`);
+  }
+  if (taskHtml) {
+    sections.push(taskHtml);
+  }
+
+  return sections.join('\n\n');
+}
+
+/**
+ * Merges task code back into a full template.
+ * If fullCode has markers, replaces the task sections with userTaskCode.
+ */
+function mergeTaskIntoFullCode(fullTemplate, userTaskCode) {
+  if (!fullTemplate || typeof fullTemplate !== 'string') return userTaskCode || '';
+  if (!hasTaskMarkers(fullTemplate)) return userTaskCode;
+
+  let merged = fullTemplate;
+
+  // Check if userTaskCode contains <style>...</style>
+  let userCss = '';
+  let userHtml = userTaskCode;
+
+  const styleMatch = userTaskCode.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+  if (styleMatch) {
+    userCss = styleMatch[1].trim();
+    // HTML is everything outside the <style> tag
+    userHtml = userTaskCode.replace(/<style[^>]*>[\s\S]*?<\/style>/i, '').trim();
+  } else if (!userTaskCode.includes('<') && userTaskCode.includes('{')) {
+    // Pure CSS was provided
+    userCss = userTaskCode.trim();
+    userHtml = '';
+  }
+
+  // Replace CSS task section
+  if (fullTemplate.includes(TASK_CSS_START)) {
+    const startIdx = merged.indexOf(TASK_CSS_START);
+    const endIdx = merged.indexOf(TASK_CSS_END);
+    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+      const before = merged.slice(0, startIdx + TASK_CSS_START.length);
+      const after = merged.slice(endIdx);
+      merged = `${before}\n  ${userCss || '/* Shu yerda vazifani yozing */'}\n  ${after}`;
+    }
+  }
+
+  // Replace HTML task section
+  if (fullTemplate.includes(TASK_HTML_START)) {
+    const startIdx = merged.indexOf(TASK_HTML_START);
+    const endIdx = merged.indexOf(TASK_HTML_END);
+    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+      const before = merged.slice(0, startIdx + TASK_HTML_START.length);
+      const after = merged.slice(endIdx);
+      merged = `${before}\n  ${userHtml}\n  ${after}`;
+    }
+  }
+
+  return merged;
+}
+
+
   // --- State Module ---
   /**
  * State Management Module
@@ -12490,6 +12668,7 @@ function createInitialState() {
     audioEnabled: true,
     editorFirstMode: false,
     focusIdeMode: false,
+    editorViewMode: 'task', // 'task' | 'full'
     lang: 'en', // 'en' | 'uz'
     theme: 'dark',
     customSandboxCode: `<!DOCTYPE html>
@@ -12626,6 +12805,13 @@ function toggleFocusIdeMode(state) {
   return {
     ...state,
     focusIdeMode: !state.focusIdeMode
+  };
+}
+
+function toggleEditorViewMode(state) {
+  return {
+    ...state,
+    editorViewMode: state.editorViewMode === 'full' ? 'task' : 'full'
   };
 }
 
@@ -17514,6 +17700,7 @@ function renderTopicLab(container, lesson, lang = 'en') {
   // --- Main App Controller ---
   
 
+
 /**
  * CodeCraft Kids Main Application Controller
  * Focused, uncluttered, step-by-step educational interface.
@@ -17539,6 +17726,7 @@ let currentView = 'lesson'; // 'lesson' | 'sandbox' | 'labs'
 let currentLab = 'box'; // 'box' | 'flexbox' | 'color' | 'grid'
 let activePreviewTab = 'live'; // 'combo' | 'live' | 'elements' | 'target' | 'side'
 let currentCode = '';
+let currentFullCode = '';
 let ambientEngine = null;
 
 // DOM Elements Cache
@@ -17964,7 +18152,8 @@ function selectLesson(lessonId) {
   elements.btnLabs?.classList.remove('active');
   const lesson = getLessonById(lessonId) || LESSONS[0];
   state.currentLessonId = lesson.id;
-  currentCode = localize(lesson.initialCode, state.lang);
+  currentFullCode = localize(lesson.initialCode, state.lang);
+  currentCode = currentFullCode;
   saveStateToStorage(state);
 
   renderSidebar();
@@ -18213,6 +18402,7 @@ function renderLessonView() {
             <span>💻</span> ${escapeHtml(t('codeEditorTitle', state.lang))}
           </div>
           <div class="pane-tools">
+            <button id="btn-toggle-task-focus" class="btn-tool btn-focus-toggle ${state.editorViewMode !== 'full' ? 'active' : ''}" title="${state.lang === 'uz' ? 'Faqat vazifa kodi yoki to\'liq kodni ko\'rsatish' : 'Toggle Task Only vs Full Code'}">${state.editorViewMode !== 'full' ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code')}</button>
             <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (state.lang === 'uz' ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (state.lang === 'uz' ? 'To\'liq Ekran IDE rejimi (Kengaytirilgan ikkitalik oyna)' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (state.lang === 'uz' ? 'Kichraytirish' : 'Exit') : '⛶ ' + (state.lang === 'uz' ? 'To\'liq Ekran' : 'Full Screen')}</button>
             <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${state.lang === 'uz' ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${state.lang === 'uz' ? 'Almashtirish' : 'Swap'}</button>
             <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${state.lang === 'uz' ? 'Fokus rejimi (Kengaytirilgan IDE)' : 'Focus Mode (Expanded IDE)'}">🔍 ${state.lang === 'uz' ? 'Fokus' : 'Focus'}</button>
@@ -18233,10 +18423,20 @@ function renderLessonView() {
           </div>
         ` : ''}
 
+        <!-- Code Focus Banner -->
+        <div class="code-focus-banner ${hasTaskMarkers(currentFullCode) ? 'is-active' : ''}" id="code-focus-banner">
+          <span class="focus-banner-icon">${state.editorViewMode !== 'full' ? '🎯' : '📄'}</span>
+          <span class="focus-banner-text">
+            ${state.editorViewMode !== 'full' 
+              ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+              : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.')}
+          </span>
+        </div>
+
         <!-- Code Editor -->
         <div class="code-editor-wrapper">
           <div id="line-numbers" class="editor-line-numbers">1</div>
-          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(currentCode)}</textarea>
+          <textarea id="code-textarea" class="code-textarea" spellcheck="false">${escapeHtml(state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode) ? extractTaskCode(currentFullCode) : currentFullCode)}</textarea>
         </div>
       </div>
 
@@ -18370,9 +18570,42 @@ function setupLessonListeners(lesson) {
   const textarea = document.getElementById('code-textarea');
 
   textarea?.addEventListener('input', () => {
-    currentCode = textarea.value;
+    if (state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode)) {
+      currentFullCode = mergeTaskIntoFullCode(currentFullCode, textarea.value);
+      currentCode = currentFullCode;
+    } else {
+      currentFullCode = textarea.value;
+      currentCode = currentFullCode;
+    }
     updateLivePreview();
     updateLineNumbers();
+  });
+
+  // Toggle Task Focus vs Full Code
+  document.getElementById('btn-toggle-task-focus')?.addEventListener('click', () => {
+    state = toggleEditorViewMode(state);
+    saveStateToStorage(state);
+    const isTaskMode = state.editorViewMode !== 'full';
+    const btn = document.getElementById('btn-toggle-task-focus');
+    if (btn) {
+      btn.classList.toggle('active', isTaskMode);
+      btn.innerHTML = isTaskMode ? '🎯 ' + (state.lang === 'uz' ? 'Faqat Vazifa' : 'Task Only') : '📄 ' + (state.lang === 'uz' ? 'To\'liq Kod' : 'Full Code');
+    }
+    if (isTaskMode && hasTaskMarkers(currentFullCode)) {
+      textarea.value = extractTaskCode(currentFullCode);
+    } else {
+      textarea.value = currentFullCode;
+    }
+    const banner = document.getElementById('code-focus-banner');
+    if (banner) {
+      banner.querySelector('.focus-banner-icon').textContent = isTaskMode ? '🎯' : '📄';
+      banner.querySelector('.focus-banner-text').innerHTML = isTaskMode 
+        ? (state.lang === 'uz' ? '<strong>Faqat vazifa kodi:</strong> Elementlarning yordamchi fon stillari yashirildi. Barcha stillarni ko\'rish uchun "To\'liq Kod" tugmasini bosing.' : '<strong>Task Focus:</strong> Background framework code hidden. Click "Full Code" to inspect all styles.')
+        : (state.lang === 'uz' ? '<strong>To\'liq kod:</strong> Barcha elementlar stillari ochiq. Faqat o\'z vazifangizga qaytish uchun "Faqat Vazifa" tugmasini bosing.' : '<strong>Full Code:</strong> All element properties visible. Click "Task Only" to return to homework.');
+    }
+    updateLivePreview();
+    updateLineNumbers();
+    playSound('click', state.audioEnabled);
   });
 
   // Keep line numbers scroll in 1:1 sync with textarea scroll
@@ -18450,9 +18683,14 @@ function setupLessonListeners(lesson) {
 
   // Reset to initial starter code
   document.getElementById('btn-reset-code')?.addEventListener('click', () => {
-    const code = localize(lesson.initialCode, state.lang);
-    textarea.value = code;
-    currentCode = code;
+    const fullCode = localize(lesson.initialCode, state.lang);
+    currentFullCode = fullCode;
+    currentCode = fullCode;
+    if (state.editorViewMode !== 'full' && hasTaskMarkers(fullCode)) {
+      textarea.value = extractTaskCode(fullCode);
+    } else {
+      textarea.value = fullCode;
+    }
     updateLivePreview();
     updateLineNumbers();
     playSound('click', state.audioEnabled);
@@ -18674,7 +18912,13 @@ function insertTextAtCursor(textarea, text) {
   textarea.value = textarea.value.substring(0, start) + text + textarea.value.substring(end);
   textarea.selectionStart = textarea.selectionEnd = start + text.length;
   textarea.focus();
-  currentCode = textarea.value;
+  if (state.editorViewMode !== 'full' && hasTaskMarkers(currentFullCode)) {
+    currentFullCode = mergeTaskIntoFullCode(currentFullCode, textarea.value);
+    currentCode = currentFullCode;
+  } else {
+    currentFullCode = textarea.value;
+    currentCode = currentFullCode;
+  }
   updateLivePreview();
   updateLineNumbers();
 }
