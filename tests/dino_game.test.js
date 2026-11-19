@@ -430,6 +430,41 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.match(nextBtnText, /4-Qadamga O'tish/);
   });
 
+  await t.test('HTML & CSS boilerplate toggle button reveals foundation and hides on demand', async () => {
+    // Check that toggle button is visible in editor toolbar
+    const toggleBtn = page.locator('#btn-toggle-boilerplate');
+    const isBtnVisible = await toggleBtn.isVisible();
+    assert.strictEqual(isBtnVisible, true, 'Boilerplate toggle button must be visible in editor toolbar');
+
+    // Drawer must be initially hidden
+    let isDrawerVisible = await page.locator('#boilerplate-drawer').isVisible();
+    assert.strictEqual(isDrawerVisible, false, 'Boilerplate drawer must be initially hidden');
+
+    // Click toggle button to open
+    await toggleBtn.click();
+    isDrawerVisible = await page.locator('#boilerplate-drawer').isVisible();
+    assert.strictEqual(isDrawerVisible, true, 'Drawer must open when toggle button is clicked');
+
+    // Check Socratic QA content
+    const qaText = await page.textContent('.boilerplate-qa-card');
+    assert.match(qaText, /Nega Canvas o'lchami CSS'da emas/);
+
+    // Check code view content
+    let codeViewText = await page.textContent('#boilerplate-code-view');
+    assert.match(codeViewText, /<!DOCTYPE html>/);
+    assert.match(codeViewText, /<canvas id="gameCanvas"/);
+
+    // Switch to Full Standalone Merged tab
+    await page.locator('#tab-full-btn').click();
+    codeViewText = await page.textContent('#boilerplate-code-view');
+    assert.match(codeViewText, /dino/i);
+
+    // Click toggle button again to hide drawer
+    await toggleBtn.click();
+    isDrawerVisible = await page.locator('#boilerplate-drawer').isVisible();
+    assert.strictEqual(isDrawerVisible, false, 'Drawer must hide when toggled again');
+  });
+
   await t.test('Zero uncaught exceptions and zero asset loading failures', async () => {
     assert.deepStrictEqual(pageErrors, []);
     assert.deepStrictEqual(consoleErrors, []);

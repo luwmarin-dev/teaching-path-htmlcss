@@ -1180,6 +1180,130 @@
       gap: 6px;
     }
 
+    /* HTML & CSS BOILERPLATE DRAWER & TOGGLE BUTTON */
+    .boilerplate-toggle-btn {
+      background: #1e293b;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .boilerplate-toggle-btn:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: #7dd3fc;
+    }
+    .boilerplate-drawer {
+      background: #090e1a;
+      border: 1px solid #1e293b;
+      border-bottom: 2px solid #38bdf8;
+      border-radius: 0 0 10px 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      animation: fadeIn 0.2s ease;
+    }
+    .boilerplate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .boilerplate-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-mini {
+      background: #0284c7;
+      color: #ffffff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .mini-action-btn {
+      background: #0284c7;
+      border: 1px solid #38bdf8;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .mini-action-btn:hover {
+      background: #0369a1;
+    }
+    .mini-close-btn {
+      background: transparent;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .mini-close-btn:hover {
+      background: #1e293b;
+      color: #ffffff;
+    }
+    .boilerplate-explanation {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .boilerplate-qa-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-left: 3px solid #38bdf8;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+    .code-tab-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .code-tab {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px 4px 0 0;
+      background: #1e293b;
+      color: #94a3b8;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .code-tab.active {
+      background: #0b1120;
+      color: #38bdf8;
+      border: 1px solid #334155;
+      border-bottom: none;
+    }
+    .boilerplate-code-block {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: #e2e8f0;
+      max-height: 180px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+
     .editor-help-shortcut {
       color: #94a3b8;
     }
@@ -1922,9 +2046,52 @@
         <!-- KOD MUHARRIRI (BO'SH BOSHLANADI - TAYYOR YECHIMSIZ!) -->
         <div class="editor-wrapper" id="editor-panel-anchor">
           <div class="editor-toolbar-top">
-            <span class="editor-lang-badge">⚡ JavaScript (ES6)</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="editor-lang-badge">⚡ JavaScript (ES6)</span>
+              <button class="boilerplate-toggle-btn" id="btn-toggle-boilerplate" onclick="toggleHtmlCssBoilerplate()">
+                <span id="btn-toggle-boilerplate-icon">👁️</span>
+                <span id="btn-toggle-boilerplate-text">HTML & CSS Qobig'ini Ko'rsatish</span>
+              </button>
+            </div>
             <span class="editor-help-shortcut">Tab: 2 ta bo'sh joy &bull; Ctrl+Enter: Ishga tushirish</span>
           </div>
+
+          <!-- COLLAPSIBLE HTML & CSS FOUNDATION BOILERPLATE DRAWER -->
+          <div class="boilerplate-drawer" id="boilerplate-drawer" style="display: none;">
+            <div class="boilerplate-header">
+              <div class="boilerplate-title">
+                <span>📑 O'yinning HTML & CSS Poydevori (Notepad Uchun)</span>
+                <span class="badge-mini">Avtonom / Standalone</span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button class="mini-action-btn" onclick="copyFullStandaloneNotepadHtml()">
+                  📋 Notepad Uchun To'liq Kodni Nusxalash (.html)
+                </button>
+                <button class="mini-close-btn" onclick="toggleHtmlCssBoilerplate()">✕ Yashirish</button>
+              </div>
+            </div>
+
+            <div class="boilerplate-explanation">
+              💡 <b>Nega bu qobiq kerak?</b> Agar siz Notepad (Bloknot)'da bo'sh <code>dino.html</code> fayli ochsangiz, brauzer o'yinni chizishi uchun avval <b>HTML</b> (Canvas sahnasi) va <b>CSS</b> (markazga joylash va qoramtir arcade foni) kerak bo'ladi. Darsimizda asosiy diqqat <b>JavaScript Classes</b>ga qaratiladi, ammo ushbu tugma orqali istalgan onda to'liq HTML qobig'ini ko'rib, Notepad'ga nusxalashingiz va xohlagan brauzerda ochishingiz mumkin!
+            </div>
+
+            <!-- TEZKOR SAVOL-JAVOB / KONSEPT (SOCRATIC CHECK) -->
+            <div class="boilerplate-qa-card">
+              <div style="font-weight: 700; color: #38bdf8; font-size: 11px; margin-bottom: 3px;">❓ Muhim Savol: Nega Canvas o'lchami CSS'da emas, aynan HTML atributi sifatida (width="800" height="250") beriladi?</div>
+              <div style="color: #cbd5e1; font-size: 11px; line-height: 1.4;">
+                <b>Javob:</b> Agar o'lcham faqat CSS orqali berilsa, brauzer tayyor kichik rasmni cho'zgandek qilib piksellarni xiralashtirib (blur) yuboradi! HTML atributi (<code>width="800" height="250"</code>) esa ichki chizish koordinatalarining haqiqiy fizik piksellarini aniq belgilaydi.
+              </div>
+            </div>
+
+            <div class="boilerplate-code-preview">
+              <div class="code-tab-bar">
+                <span class="code-tab active" id="tab-html-btn" onclick="switchBoilerplateTab('html')">📄 HTML & CSS Qobig'i</span>
+                <span class="code-tab" id="tab-full-btn" onclick="switchBoilerplateTab('full')">🚀 Notepad Uchun To'liq Kod (HTML + CSS + Sizning JS)</span>
+              </div>
+              <pre id="boilerplate-code-view" class="boilerplate-code-block"></pre>
+            </div>
+          </div>
+
           <textarea class="code-textarea" id="student-code-editor" spellcheck="false" placeholder="// Bu yerga topshiriq kodini o'z qo'lingiz bilan yozing..."></textarea>
 
           <div class="editor-actions">
@@ -4283,6 +4450,232 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       a.download = 'dino.html';
       a.click();
       URL.revokeObjectURL(url);
+    }
+
+    /* ==========================================================================
+       7.b HTML & CSS POYDEVORI BOILERPLATE DRAWER KONTROLLERI
+       ========================================================================== */
+    let isBoilerplateOpen = false;
+    let activeBoilerplateTab = 'html';
+
+    function getHtmlCssShellCode() {
+      return `<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome Dino Game — Notepad O'yini</title>
+  <style>
+    body {
+      background: #0b0f19;
+      color: #ffffff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 { margin-bottom: 10px; color: #38bdf8; }
+    .score-board { font-size: 18px; font-weight: bold; margin-bottom: 12px; font-family: monospace; }
+    canvas {
+      background: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hint { margin-top: 15px; color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>🦖 Chrome Dino Game</h1>
+  <div class="score-board">OCHKO: <span id="score">00000</span></div>
+  <canvas id="gameCanvas" width="800" height="250"></canvas>
+  <div class="hint">Boshqaruv: <b>Space</b> (Sakrash) | <b>ArrowDown</b> (Egilish)</div>
+
+  <script>
+    // 1. Sahnani olish
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+
+    // === SIZNING JAVASCRIPT KODINGIZ SHU YERGA YOZILADI ===
+  <\/script>
+</body>
+</html>`;
+    }
+
+    function getFullStandaloneMergedCode() {
+      const studentCode = document.getElementById('student-code-editor').value || (STEPS_DATA[currentStep] ? STEPS_DATA[currentStep].starterCode : '');
+
+      return `<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome Dino Game — Notepad Standalone O'yini</title>
+  <style>
+    body {
+      background: #0b0f19;
+      color: #ffffff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 { margin-bottom: 10px; color: #38bdf8; }
+    .score-board { font-size: 18px; font-weight: bold; margin-bottom: 12px; font-family: monospace; }
+    canvas {
+      background: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hint { margin-top: 15px; color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>🦖 Chrome Dino Game</h1>
+  <div class="score-board">OCHKO: <span id="score">00000</span></div>
+  <canvas id="gameCanvas" width="800" height="250"></canvas>
+  <div class="hint">Boshqaruv: <b>Space</b> yoki <b>ArrowUp</b> (Sakrash) | <b>ArrowDown</b> (Egilish)</div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+
+    /* === SIZNING DINO DARSIDA YOZGAN KODINGIZ === */
+${studentCode}
+
+    /* === AVTONOM STANDALONE RUNTIME & CANVAS CHIZISH === */
+    if (typeof Dino !== 'undefined') {
+      const activeDino = (typeof dino !== 'undefined' && dino) ? dino : new Dino();
+      let cactusX = 800;
+      let score = 0;
+      let isOver = false;
+
+      function renderLoop() {
+        if (isOver) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Yer chizig'i
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height - 30);
+        ctx.lineTo(canvas.width, canvas.height - 30);
+        ctx.stroke();
+
+        // Agar update() mavjud bo'lsa fizikani hisoblaymiz:
+        if (typeof activeDino.update === 'function') {
+          activeDino.update();
+        }
+
+        // Dinozavrni chizish:
+        const curY = activeDino.y || 0;
+        const curW = activeDino.width || 44;
+        const curH = activeDino.height || 48;
+        const curX = activeDino.x || 60;
+        const screenY = canvas.height - 30 - curH - curY;
+
+        ctx.fillStyle = '#22c55e';
+        ctx.fillRect(curX, screenY, curW, curH);
+
+        // Ko'z
+        ctx.fillStyle = '#0b0f19';
+        ctx.fillRect(curX + curW - 12, screenY + 8, 4, 4);
+
+        // Kaktus harakati
+        cactusX -= 4.5;
+        if (cactusX < -30) {
+          cactusX = 800;
+          score += 10;
+          scoreEl.textContent = String(score).padStart(5, '0');
+        }
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(cactusX, canvas.height - 30 - 45, 24, 45);
+
+        // AABB to'qnashuv:
+        if (typeof checkCollision === 'function') {
+          if (checkCollision(curX, curY, curW, curH, cactusX, 0, 24, 45)) {
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 22px monospace';
+            ctx.fillText('CRASH! GAME OVER - Qaytadan boshlash uchun Space bosing', 40, 120);
+            isOver = true;
+          }
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (isOver && (e.code === 'Space' || e.code === 'ArrowUp')) {
+          isOver = false;
+          cactusX = 800;
+          score = 0;
+          scoreEl.textContent = '00000';
+          renderLoop();
+        }
+      });
+
+      renderLoop();
+    }
+  <\/script>
+</body>
+</html>`;
+    }
+
+    function toggleHtmlCssBoilerplate() {
+      const drawer = document.getElementById('boilerplate-drawer');
+      const btnIcon = document.getElementById('btn-toggle-boilerplate-icon');
+      const btnText = document.getElementById('btn-toggle-boilerplate-text');
+      if (!drawer) return;
+
+      isBoilerplateOpen = !isBoilerplateOpen;
+      drawer.style.display = isBoilerplateOpen ? 'block' : 'none';
+      if (btnIcon && btnText) {
+        btnIcon.textContent = isBoilerplateOpen ? '🙈' : '👁️';
+        btnText.textContent = isBoilerplateOpen ? "HTML & CSS Qobig'ini Yashirish" : "HTML & CSS Qobig'ini Ko'rsatish";
+      }
+
+      if (isBoilerplateOpen) {
+        updateBoilerplateView();
+      }
+    }
+
+    function switchBoilerplateTab(tab) {
+      activeBoilerplateTab = tab;
+      const tabHtml = document.getElementById('tab-html-btn');
+      const tabFull = document.getElementById('tab-full-btn');
+      if (tabHtml && tabFull) {
+        tabHtml.classList.toggle('active', tab === 'html');
+        tabFull.classList.toggle('active', tab === 'full');
+      }
+      updateBoilerplateView();
+    }
+
+    function updateBoilerplateView() {
+      const view = document.getElementById('boilerplate-code-view');
+      if (!view) return;
+      if (activeBoilerplateTab === 'html') {
+        view.textContent = getHtmlCssShellCode();
+      } else {
+        view.textContent = getFullStandaloneMergedCode();
+      }
+    }
+
+    function copyFullStandaloneNotepadHtml() {
+      const fullCode = getFullStandaloneMergedCode();
+      navigator.clipboard.writeText(fullCode).then(() => {
+        alert("🎉 Nusxa olindi! Endi Notepad (Bloknot)'ga tashlab, faylni 'dino.html' deb saqlang va brauzerda oching. O'yin to'liq ishlaydi!");
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = fullCode;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert("🎉 Nusxa olindi! Endi Notepad (Bloknot)'ga tashlab, 'dino.html' deb saqlang va brauzerda oching!");
+      });
     }
 
     /* ==========================================================================
