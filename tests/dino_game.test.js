@@ -465,6 +465,123 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.strictEqual(isDrawerVisible, false, 'Drawer must hide when toggled again');
   });
 
+  await t.test('HTML, CSS & JS Trinity Box is interactive and educates on character box anatomy', async () => {
+    // Trinity box must be visible
+    const trinityVisible = await page.locator('#trinity-box').isVisible();
+    assert.strictEqual(trinityVisible, true, 'Trinity box must be visible');
+
+    // Click Stand mode
+    await page.locator('#btn-trinity-stand').click();
+    let dimText = await page.textContent('#inspector-dimension-tag');
+    assert.match(dimText, /44px.*48px/);
+
+    // Switch to Duck mode
+    await page.locator('#btn-trinity-duck').click();
+    dimText = await page.textContent('#inspector-dimension-tag');
+    assert.match(dimText, /55px.*26px/);
+    const cssCode = await page.textContent('#trinity-code-css');
+    assert.match(cssCode, /55px/);
+    const jsCode = await page.textContent('#trinity-code-js');
+    assert.match(jsCode, /this\.height = 26/);
+
+    // Switch to Jump mode
+    await page.locator('#btn-trinity-jump').click();
+    dimText = await page.textContent('#inspector-dimension-tag');
+    assert.match(dimText, /y = \+50px/);
+
+    // Switch back to Stand mode
+    await page.locator('#btn-trinity-stand').click();
+    dimText = await page.textContent('#inspector-dimension-tag');
+    assert.match(dimText, /44px.*48px/);
+  });
+
+  await t.test('Top full-code copy button is locked initially and only reveals after all 5 steps are built', async () => {
+    // Verify top copy button is NOT visible during early progression
+    const topCopyVisibleEarly = await page.locator('#btn-copy-top-completed').isVisible();
+    assert.strictEqual(topCopyVisibleEarly, false, 'Top copy button must be hidden before all 5 steps are built');
+
+    // Verify premature copy button is completely removed from boilerplate drawer
+    const prematureBtnCount = await page.locator('.mini-action-btn:has-text("Notepad Uchun To\'liq Kodni Nusxalash")').count();
+    assert.strictEqual(prematureBtnCount, 0, 'Premature full-code copy button must be removed from drawer');
+
+    // Now advance through Step 4 and Step 5 to complete the full curriculum:
+    // Advance to Step 4:
+    await page.locator('#btn-next-step').click();
+    const step4Title = await page.textContent('#top-step-title');
+    assert.match(step4Title, /4-Qadam/);
+
+    // Implement Step 4 valid code
+    const step4Code = `class Dino {
+      constructor() {
+        this.width = 44; this.height = 48;
+        this.x = 60; this.y = 0;
+        this.isJumping = false; this.isDucking = false;
+        this.velocityY = 0;
+        this.jumpForce = 12;
+        this.gravity = 0.6;
+      }
+      jump() {
+        if (!this.isJumping && !this.isDucking && this.y === 0) {
+          this.isJumping = true;
+          this.velocityY = this.jumpForce;
+        }
+      }
+      duck() {
+        if (this.y === 0 && !this.isJumping) {
+          this.isDucking = true; this.height = 26; this.width = 55;
+        }
+      }
+      standUp() {
+        this.isDucking = false; this.height = 48; this.width = 44;
+      }
+      update() {
+        if (this.isJumping) {
+          this.y += this.velocityY;
+          this.velocityY -= this.gravity;
+          if (this.y <= 0) {
+            this.y = 0;
+            this.isJumping = false;
+            this.velocityY = 0;
+          }
+        }
+      }
+    }
+    const dino = new Dino();`;
+    await page.locator('#student-code-editor').fill(step4Code);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    // Advance to Step 5:
+    await page.locator('#btn-next-step').click();
+    const step5Title = await page.textContent('#top-step-title');
+    assert.match(step5Title, /5-Qadam/);
+
+    // Top copy button should STILL be hidden
+    const topCopyBeforeStep5 = await page.locator('#btn-copy-top-completed').isVisible();
+    assert.strictEqual(topCopyBeforeStep5, false, 'Top copy button must remain hidden until Step 5 passes');
+
+    // Implement Step 5 valid code
+    const step5Code = `function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
+      return (
+        dinoX < obsX + obsW &&
+        dinoX + dinoW > obsX &&
+        dinoY + dinoH > obsY &&
+        dinoY < obsY + obsH
+      );
+    }`;
+    await page.locator('#student-code-editor').fill(step5Code);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    // Step 5 succeeds
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Step 5 must pass validation');
+
+    // NOW top copy button MUST BE VISIBLE on top of the code editor!
+    const topCopyAfterCompletion = await page.locator('#btn-copy-top-completed').isVisible();
+    assert.strictEqual(topCopyAfterCompletion, true, 'Top copy button must become visible after all 5 steps are built');
+    const topCopyText = await page.textContent('#btn-copy-top-completed');
+    assert.match(topCopyText, /To'liq O'yin Kodini Nusxalash/);
+  });
+
   await t.test('Zero uncaught exceptions and zero asset loading failures', async () => {
     assert.deepStrictEqual(pageErrors, []);
     assert.deepStrictEqual(consoleErrors, []);

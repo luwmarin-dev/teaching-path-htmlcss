@@ -1304,6 +1304,203 @@
       margin: 0;
     }
 
+    /* TO'LIQ KODNI NUSXALASH TUGMASI (FAQAT 5 TA BOSQICH YAKUNLANGANDA GINA CHIQADI) */
+    .finished-game-copy-btn {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      color: #ffffff;
+      border: 1px solid #34d399;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      animation: pulseGreen 2.2s infinite;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+      transition: all 0.2s ease;
+    }
+    .finished-game-copy-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.75);
+    }
+    @keyframes pulseGreen {
+      0%, 100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 22px rgba(16, 185, 129, 0.85); }
+    }
+
+    /* INTERAKTIV HTML ➔ CSS ➔ JS UCHLIGI (TRINITY BOX ANATOMIYASI) */
+    .trinity-box {
+      background: #0b1220;
+      border: 1px solid #1e293b;
+      border-left: 4px solid #38bdf8;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      animation: fadeIn 0.25s ease;
+    }
+    .trinity-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .trinity-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trinity-mode-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .trinity-mode-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .trinity-mode-btn.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+    .trinity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 900px) {
+      .trinity-grid { grid-template-columns: 1fr; }
+    }
+    .trinity-card {
+      background: #060a14;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .trinity-card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trinity-tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .tag-html { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .tag-css { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .tag-js { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .trinity-card-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+    .trinity-code-block {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #e2e8f0;
+      min-height: 110px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .trinity-card-caption {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+    .trinity-live-inspector {
+      background: #060a14;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .inspector-box-wrapper {
+      position: relative;
+      width: 140px;
+      height: 90px;
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .inspector-ground {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: #1e293b;
+      border-top: 1px solid #475569;
+    }
+    .inspector-dino-box {
+      position: absolute;
+      left: 45px;
+      bottom: 12px;
+      width: 44px;
+      height: 48px;
+      background: #10b981;
+      border: 1px solid #34d399;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .inspector-dino-eye {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      width: 4px;
+      height: 4px;
+      background: #020617;
+      border-radius: 1px;
+    }
+    .inspector-dimension-tag {
+      font-size: 9px;
+      font-weight: 800;
+      font-family: monospace;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+      white-space: nowrap;
+    }
+    .inspector-insight {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      flex: 1;
+    }
+
     .editor-help-shortcut {
       color: #94a3b8;
     }
@@ -1927,6 +2124,98 @@
         </div>
       </div>
 
+      <!-- INTERAKTIV HTML ➔ CSS ➔ JAVASCRIPT UCHLIGI (DINO QUTISI ANATOMIYASI) -->
+      <div class="trinity-box" id="trinity-box">
+        <div class="trinity-header">
+          <div class="trinity-title">
+            <span>🔗 DINOZAVR ANATOMIYASI: HTML, CSS va JS Zanjiri</span>
+          </div>
+          <div class="trinity-mode-pills">
+            <button class="trinity-mode-btn active" id="btn-trinity-stand" onclick="setTrinityMode('stand')">
+              <span>🧍 1. Tik Turish (44x48)</span>
+            </button>
+            <button class="trinity-mode-btn" id="btn-trinity-duck" onclick="setTrinityMode('duck')">
+              <span>🦆 2. Egilish (55x26)</span>
+            </button>
+            <button class="trinity-mode-btn" id="btn-trinity-jump" onclick="setTrinityMode('jump')">
+              <span>🚀 3. Sakrash (Havoda)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="trinity-grid">
+          <!-- 1. HTML Qutisi -->
+          <div class="trinity-card" id="trinity-card-html">
+            <div class="trinity-card-header">
+              <span class="trinity-tag tag-html">1. HTML</span>
+              <span class="trinity-card-name">Sahifadagi Quti Uyi (&lt;div&gt;)</span>
+            </div>
+            <pre class="trinity-code-block" id="trinity-code-html">&lt;!-- Dino quti konteyneri --&gt;
+&lt;div id="game-arena"&gt;
+  &lt;div id="dino" class="dino"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+            <div class="trinity-card-caption">
+              🏷️ <b>HTML vazifasi:</b> Brauzerda dinozavr uchun <code>&lt;div id="dino"&gt;</code> qutisini yaratadi.
+            </div>
+          </div>
+
+          <!-- 2. CSS Shakli va O'lchami -->
+          <div class="trinity-card" id="trinity-card-css">
+            <div class="trinity-card-header">
+              <span class="trinity-tag tag-css">2. CSS</span>
+              <span class="trinity-card-name">Fizik Shakl & Hitbox O'lchami</span>
+            </div>
+            <pre class="trinity-code-block" id="trinity-code-css">/* Bo'sh div'ga shakl beramiz */
+#dino {
+  position: absolute;
+  left: 60px;
+  bottom: 0px;
+  width: 44px;  /* Eni */
+  height: 48px; /* Bo'yi */
+  background: #10b981;
+  border-radius: 6px;
+}</pre>
+            <div class="trinity-card-caption">
+              🎨 <b>CSS vazifasi:</b> Bo'sh qutiga 44x48px o'lcham, yashil rang va joylashuv koordinatalarini beradi.
+            </div>
+          </div>
+
+          <!-- 3. JS Class va Hitbox boshqaruvi -->
+          <div class="trinity-card" id="trinity-card-js">
+            <div class="trinity-card-header">
+              <span class="trinity-tag tag-js">3. JavaScript</span>
+              <span class="trinity-card-name">Miya & OOP Boshqaruvi</span>
+            </div>
+            <pre class="trinity-code-block" id="trinity-code-js">// JS sinfi CSS qutisi bilan bog'lanadi
+class Dino {
+  constructor() {
+    this.width = 44;   // CSS width: 44px
+    this.height = 48;  // CSS height: 48px
+    this.x = 60;       // CSS left: 60px
+    this.y = 0;        // CSS bottom: 0px
+  }
+}</pre>
+            <div class="trinity-card-caption">
+              ⚡ <b>JS vazifasi:</b> Faqat klass ochish bilan quti chiqmaydi! JS dagi <code>this.width</code> CSS qutisini boshqaradi.
+            </div>
+          </div>
+        </div>
+
+        <!-- JONLI INTERAKTIV BOX ANATOMIYASI KO'RINIShI -->
+        <div class="trinity-live-inspector">
+          <div class="inspector-box-wrapper">
+            <div class="inspector-ground"></div>
+            <div class="inspector-dino-box" id="inspector-dino-box">
+              <div class="inspector-dino-eye"></div>
+              <div class="inspector-dimension-tag" id="inspector-dimension-tag">44px × 48px</div>
+            </div>
+          </div>
+          <div class="inspector-insight" id="inspector-insight-text">
+            💡 <b>Muhim Bog'liqlik:</b> Shunchaki JavaScript klassida <code>this.width = 44</code> deb yozish bilan ekranda tayyor quti paydo bo'lib qolmaydi! HTML'dagi <code>&lt;div id="dino"&gt;</code> va CSS'dagi <code>width: 44px; height: 48px;</code> bo'lgandagina, JavaScript o'sha qutining o'lchamlarini biladi va sakratadi!
+          </div>
+        </div>
+      </div>
+
       <!-- INTERAKTIV 'THIS' KALIT SO'ZI SIMULYATORI (2-BOSQICHDA MAXSUS NAMOYISH ETILADI) -->
       <div class="this-simulator-box" id="this-simulator-box" style="display: none;">
         <div class="sim-header">
@@ -2053,6 +2342,10 @@
                 <span id="btn-toggle-boilerplate-text">HTML & CSS Qobig'ini Ko'rsatish</span>
               </button>
             </div>
+            <!-- BARCHA 5 TA BOSQICH YAKUNLANGANDA GINA CHIQADIGAN TO'LIQ KODNI NUSXALASH TUGMASI -->
+            <button id="btn-copy-top-completed" class="finished-game-copy-btn" style="display: none;" onclick="copyTopCompletedCode()">
+              📋 To'liq O'yin Kodini Nusxalash (.html)
+            </button>
             <span class="editor-help-shortcut">Tab: 2 ta bo'sh joy &bull; Ctrl+Enter: Ishga tushirish</span>
           </div>
 
@@ -2060,19 +2353,16 @@
           <div class="boilerplate-drawer" id="boilerplate-drawer" style="display: none;">
             <div class="boilerplate-header">
               <div class="boilerplate-title">
-                <span>📑 O'yinning HTML & CSS Poydevori (Notepad Uchun)</span>
-                <span class="badge-mini">Avtonom / Standalone</span>
+                <span>📑 O'yinning HTML & CSS Poydevori</span>
+                <span class="badge-mini">Poydevor Tuzilmasi</span>
               </div>
               <div style="display: flex; gap: 6px;">
-                <button class="mini-action-btn" onclick="copyFullStandaloneNotepadHtml()">
-                  📋 Notepad Uchun To'liq Kodni Nusxalash (.html)
-                </button>
                 <button class="mini-close-btn" onclick="toggleHtmlCssBoilerplate()">✕ Yashirish</button>
               </div>
             </div>
 
             <div class="boilerplate-explanation">
-              💡 <b>Nega bu qobiq kerak?</b> Agar siz Notepad (Bloknot)'da bo'sh <code>dino.html</code> fayli ochsangiz, brauzer o'yinni chizishi uchun avval <b>HTML</b> (Canvas sahnasi) va <b>CSS</b> (markazga joylash va qoramtir arcade foni) kerak bo'ladi. Darsimizda asosiy diqqat <b>JavaScript Classes</b>ga qaratiladi, ammo ushbu tugma orqali istalgan onda to'liq HTML qobig'ini ko'rib, Notepad'ga nusxalashingiz va xohlagan brauzerda ochishingiz mumkin!
+              💡 <b>Nega bu qobiq kerak?</b> Agar siz Notepad (Bloknot)'da bo'sh <code>dino.html</code> fayli ochsangiz, brauzer o'yinni chizishi uchun avval <b>HTML</b> (Canvas sahnasi yoki Dino qutisi) va <b>CSS</b> (markazga joylash va qoramtir arcade foni) kerak bo'ladi. Shunchaki JavaScript klassida <code>this.width = 44</code> deb yozish bilan ekranda tayyor quti chiqib qolmaydi — uning HTML va CSS poydevori bo'lishi shart! Ushbu bo'limda o'yin poydevorini o'rganishingiz mumkin.
             </div>
 
             <!-- TEZKOR SAVOL-JAVOB / KONSEPT (SOCRATIC CHECK) -->
@@ -2423,29 +2713,29 @@
     const STEPS_DATA = {
       1: {
         num: 1,
-        title: "Bo'sh Class (Skelet)",
-        concept: "Dasturlashda (ayniqsa o'yin yaratishda) avval barcha xususiyatlarni bir joyda tutuvchi qolip (class) yaratiladi. Bino qurishdan oldin chizmasi chizilganidek, bu yerda ham personaj qobig'i ochiladi va undan ilk tirik obyekt olinadi.",
-        analogy: "💡 Hayotiy O'xshatish: 'class Dino' — bu zavoddagi avtomobil qolipi. 'new Dino()' esa shu qolipdan quyib olingan haqiqiy temir mashina!",
+        title: "Dino Qutisi va Class Skeleti (HTML, CSS va JS Zanjiri)",
+        concept: "Web dasturlashda personaj shunchaki havoda paydo bo'lmaydi! Avval HTML'da uning uyi va qutisi belgilanadi: <div id='dino'></div>. Keyin CSS orqali unga fizik shakl, eni va bo'yi beriladi. JavaScript'dagi 'class Dino' esa shu qutining miyasi hisoblanadi. Shunchaki JS klassida o'zgaruvchi e'lon qilish bilan ekranda quti paydo bo'lib qolmaydi — uning HTML va CSS poydevori bo'lishi shart!",
+        analogy: "💡 Hayotiy O'xshatish: HTML — bu mashinaning bo'sh korpusi, CSS — uning rangi, g'ildiraklari va o'lchamlari, JavaScript 'class Dino' esa dvigatel va haydovchi!",
         algorithm: [
           {
-            title: "'class' kalit so'zi",
-            desc: "Brauzerga: 'Men yangi obyekt qolipini e'lon qilmoqdaman' degan signalni beradi."
+            title: "1. HTML Div: <div id='dino'></div>",
+            desc: "Sahifada dinozavr tanasi joylashadigan bo'sh quti (konteyner) yaratish."
           },
           {
-            title: "'Dino' sinf nomi",
-            desc: "Dasturlash odobi (PascalCase) bo'yicha sinf nomlari har doim Katta Harf bilan yoziladi."
+            title: "2. CSS Shakli: width: 44px, height: 48px",
+            desc: "#dino qutisiga aniq shakl: width: 44px; height: 48px; background: #10b981; border-radius: 6px;"
           },
           {
-            title: "{ } jingalak qavslar",
-            desc: "Sinfning tana qismi. Uning ichiga keyingi bosqichlarda o'lchamlar va harakat metodlarini joylaymiz."
+            title: "3. 'class Dino' sinf qolipi",
+            desc: "Ushbu qutini boshqarish va xususiyatlarini jamlash uchun JS sinf skeletini e'lon qilish."
           },
           {
-            title: "const dino = new Dino()",
-            desc: "'new' so'zi xotiradan joy ajratib, qolip asosida ilk faol obyektni dunyoga keltiradi."
+            title: "4. const dino = new Dino()",
+            desc: "Qolip asosida xotiradan ilk tirik dinozavr nusxasini faollashtirish."
           }
         ],
-        taskTitle: "1-Topshiriq: 'Dino' skelet sinfini va 'dino' obyektini yarating",
-        taskInstruction: "O'yindagi barcha harakat va o'lchamlarni bitta tartibli tizimga jamlash uchun 'Dino' sinfini oching va undan 'dino' nusxasini oling:",
+        taskTitle: "1-Topshiriq: HTML/CSS qutisini boshqaruvchi 'Dino' sinfini va 'dino' obyektini yarating",
+        taskInstruction: "HTML va CSS qutisiga tiriklik va aql berish uchun 'Dino' sinfini oching va undan 'dino' nusxasini oling:",
         criteria: [
           {
             title: "1. Sinf qolipini e'lon qilish",
@@ -2469,22 +2759,22 @@ class Dino {
 // 2-Talab: Qolip asosida ilk tirik 'dino' obyektini xotiradan yaratamiz
 const dino = new Dino();`,
         quiz: {
-          question: "Biz o'yinda dinozavrni nima uchun 'class Dino' orqali yaratishimiz kerak?",
+          question: "Nega faqat JavaScript'da 'class Dino' yozish bilan ekranda birdaniga tayyor quti chiqib qolmaydi?",
           options: [
             {
-              text: "A) 'class' — bu loyiha qolipi (chizma). U orqali xohlagancha dinozavr nusxalarini ('new Dino()') yaratish, ularning o'lchami va sakrashini bitta tartibli tizimga birlashtirish mumkin!",
+              text: "A) Chunki JavaScript faqat mantiq va harakatni boshqaradi! Ekranda quti paydo bo'lishi uchun HTML'da <div> e'lon qilinishi va CSS'da unga eni (width), bo'yi (height) va rangi berilishi kerak. JS klassi esa shu qutini boshqaradi!",
               correct: true,
               feedback: "🎉 Mantiqni to'g'ri tushundingiz! Endi pastdagi Kod Muharririda 'class Dino' va 'new Dino()' kodini o'z qo'lingiz bilan yozing va 'Kodni Ishga Tushirish' tugmasini bosing."
             },
             {
               text: "B) 'class' so'zi yozilmasa o'yinda ranglar ko'rinmay qoladi.",
               correct: false,
-              feedback: "❌ Noto'g'ri: Ranglar CSS va Canvas buyruqlariga bog'liq. Class esa ma'lumotlar va xatti-harakatlar tuzilmasini yaratadi."
+              feedback: "❌ Noto'g'ri: Ranglar CSS buyruqlariga bog'liq. Class esa ma'lumotlar va harakat tuzilmasini yaratadi."
             },
             {
               text: "C) Brauzer faqat 'class' so'zini taniydi, boshqa kodlarni tushunmaydi.",
               correct: false,
-              feedback: "❌ Noto'g'ri: JavaScript juda ko'p tushunchalarni biladi, lekin OOP uchun class eng zamonaviy va tartibli usuldir."
+              feedback: "❌ Noto'g'ri: JavaScript juda ko'p tushunchalarni biladi, lekin OOP uchun class eng zamonaviy usuldir."
             }
           ]
         },
@@ -2503,25 +2793,25 @@ const dino = new Dino();`
 
       2: {
         num: 2,
-        title: "O'lchamlar, Hitbox & 'this' Mantiqi",
-        concept: "Dasturlashda personaj shunchaki rasm emas, u xotirada o'z o'lchamlari va koordinatalariga ega tirik obyektdir. Obyekt yaratilgan onda avtomatik ishga tushuvchi 'constructor()' metodi orqali biz dinozavrga o'zining shaxsiy parametrlarini beramiz. Nega 'this'? Chunki 'this' — bu ayni paytda yaratilayotgan mana shu dinozavrning xotira manzilidir!",
-        analogy: "💡 Hayotiy O'xshatish: Pasport blankasini to'ldirganda 'Mening bo'yim: 175sm, Mening vaznim: 70kg' deysiz. Dasturlashda 'Mening' so'zining o'rnini 'this' bosadi: 'this.width = 44' (Mening enim 44px)!",
+        title: "O'lchamlar, Hitbox & CSS Bog'liqligi ('this.width' va 'this.height')",
+        concept: "Nega 'constructor()' ichida aynan 'this.width = 44' va 'this.height = 48' deb yozamiz? Chunki bu sonlar havodan olingan emas! Ular CSS'dagi '#dino { width: 44px; height: 48px; }' qutisining aniq fizik o'lchamlariga 1:1 mos keladi. JavaScript'da 'px' yozilmaydi, lekin bu sonlar xuddi o'sha CSS qutisining hitbox chegarasini ifodalaydi. Shunchaki konstruktorda o'zgaruvchi e'lon qilish bilan ekranda quti chiqmaydi — JS o'lchamlari CSS qutisi bilan qat'iy bog'langan!",
+        analogy: "💡 Hayotiy O'xshatish: Kostyum tikishda santimetr bilan o'lchab olinadi. CSS qutining haqiqiy matosi bo'lsa, 'this.width = 44' — bu uning xotiradagi aniq o'lchov yorlig'idir!",
         algorithm: [
           {
-            title: "constructor() nima?",
-            desc: "'new Dino()' chaqirilishi bilan bir marta ishga tushib, ayni yaratilgan dinozavrning xotira parametrlarini o'rnatadi."
+            title: "1. CSS Eni va Bo'yini JS'ga ko'chirish",
+            desc: "CSS'da 'width: 44px; height: 48px;' bo'lsa, JS konstruktorda 'this.width = 44; this.height = 48;' (px yozilmaydi!)"
           },
           {
-            title: "'this' ko'rsatkichi",
-            desc: "'this' aynan shu obyektdir. Oddiy 'let width' yo'qolib ketadi, lekin 'this.width' abadiy dinozavr xotirasida qoladi."
+            title: "2. CSS Joylashuvini Xotiraga Olish",
+            desc: "CSS'da 'left: 60px; bottom: 0px;' bo'lsa, JS'da 'this.x = 60; this.y = 0;'"
           },
           {
-            title: "4 ta fazoviy o'lcham",
-            desc: "width: 44 (eni), height: 48 (bo'yi), x: 60 (chapdan masofa), y: 0 (oyoqlari yer sathida)."
+            title: "3. 'this' ko'rsatkichi",
+            desc: "'this' aynan shu obyektdir. Oddiy 'let width' yo'qolib ketadi, lekin 'this.width' abadiy qoladi."
           },
           {
-            title: "2 ta mantiqiy holat bayrog'i (flag)",
-            desc: "isJumping: false (hali sakramayapti) va isDucking: false (hali egilmagan)."
+            title: "4. Mantiqiy harakat bayroqlari",
+            desc: "isJumping: false (hali sakramayapti), isDucking: false (hali egilmagan)."
           }
         ],
         taskTitle: "2-Topshiriq: 'constructor()' ichida 6 ta hitbox parametrini biriktiring",
@@ -2548,7 +2838,7 @@ const dino = new Dino();`
         hintScaffolding: `// 2-Qadam andozasi va har bir qatorning fizik ma'nosi:
 class Dino {
   constructor() {
-    // 1-Talab: Fazoviy o'lchamlar
+    // 1-Talab: Fazoviy o'lchamlar (CSS qutisiga mos)
     this.width = 44;        // Dinozavr eni (44px)
     this.height = 48;       // Tik turgandagi bo'yi (48px)
 
@@ -2564,10 +2854,10 @@ class Dino {
 
 const dino = new Dino();`,
         quiz: {
-          question: "Nima uchun personaj xususiyatlari (width, height, x, y) 'constructor()' ichida 'this' orqali yoziladi?",
+          question: "Nega personaj xususiyatlari (width, height, x, y) 'constructor()' ichida CSS qutisi o'lchamlari bilan bir xil yoziladi?",
           options: [
             {
-              text: "A) Chunki 'constructor()' obyekt yaratilganda avtomatik ishga tushadi va 'this' orqali yangi dinozavrning xotira parametrlarini o'rnatadi!",
+              text: "A) Chunki 'constructor()' obyekt yaratilganda avtomatik ishga tushadi va CSS qutisining aniq fizik o'lchamlarini (44x48px) xotirada hitbox sifatida saqlaydi!",
               correct: true,
               feedback: "🎉 Aynan to'g'ri! Endi muharrirda 'constructor()' yaratib, 'width', 'height', 'x', 'y', 'isJumping' va 'isDucking' ni yozing."
             },
@@ -3091,6 +3381,119 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
     // BARCHA QADAMLAR BOSHLANISHDA MUTLAQO QULFLANGAN:
     const unlockedSteps = { 1: false, 2: false, 3: false, 4: false, 5: false };
 
+    // KOD TEPASIDAGI TO'LIQ KODNI NUSXALASH TUGMASI (FAQAT BARCHA 5 TA BOSQICH QURILGANDA OCHILADI)
+    function updateTopCompletedCopyButton() {
+      const btn = document.getElementById('btn-copy-top-completed');
+      if (!btn) return;
+      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+      btn.style.display = allBuilt ? 'inline-flex' : 'none';
+    }
+
+    // INTERAKTIV HTML ➔ CSS ➔ JS TRINITY ANATOMIYA KONTROLLERI
+    let currentTrinityMode = 'stand';
+    function setTrinityMode(mode) {
+      currentTrinityMode = mode;
+      const btnStand = document.getElementById('btn-trinity-stand');
+      const btnDuck = document.getElementById('btn-trinity-duck');
+      const btnJump = document.getElementById('btn-trinity-jump');
+
+      if (btnStand) btnStand.classList.toggle('active', mode === 'stand');
+      if (btnDuck) btnDuck.classList.toggle('active', mode === 'duck');
+      if (btnJump) btnJump.classList.toggle('active', mode === 'jump');
+
+      const codeHtml = document.getElementById('trinity-code-html');
+      const codeCss = document.getElementById('trinity-code-css');
+      const codeJs = document.getElementById('trinity-code-js');
+      const box = document.getElementById('inspector-dino-box');
+      const tag = document.getElementById('inspector-dimension-tag');
+      const insight = document.getElementById('inspector-insight-text');
+
+      if (mode === 'stand') {
+        if (codeHtml) codeHtml.textContent = `<!-- 1. HTML: Dino quti konteyneri -->
+<div id="game-arena">
+  <div id="dino" class="dino"></div>
+</div>`;
+        if (codeCss) codeCss.textContent = `/* 2. CSS: Tik turish shakli & o'lchami */
+#dino {
+  position: absolute;
+  left: 60px;
+  bottom: 0px;
+  width: 44px;  /* Eni */
+  height: 48px; /* Tik bo'yi */
+  background: #10b981;
+  border-radius: 6px;
+}`;
+        if (codeJs) codeJs.textContent = `// 3. JS: Klass konstruktori va xotira
+class Dino {
+  constructor() {
+    this.width = 44;   // CSS width: 44px
+    this.height = 48;  // CSS height: 48px
+    this.x = 60;       // CSS left: 60px
+    this.y = 0;        // CSS bottom: 0px
+  }
+}`;
+        if (box) {
+          box.style.width = '44px';
+          box.style.height = '48px';
+          box.style.bottom = '12px';
+          box.style.background = '#10b981';
+        }
+        if (tag) tag.textContent = '44px × 48px';
+        if (insight) insight.innerHTML = `💡 <b>Tik turish holati:</b> HTML'da <code>&lt;div id="dino"&gt;</code> yaratilgan, CSS unga <code>width: 44px; height: 48px;</code> bergan. JavaScript konstruktorida esa aynan shu o'lchamlar (<code>this.width = 44; this.height = 48;</code>) xotiraga biriktiriladi!`;
+      } else if (mode === 'duck') {
+        if (codeHtml) codeHtml.textContent = `<!-- 1. HTML: Egilgan holat klassi qo'shildi -->
+<div id="game-arena">
+  <div id="dino" class="dino duck"></div>
+</div>`;
+        if (codeCss) codeCss.textContent = `/* 2. CSS: Egilganda bo'yi pasayadi, eni cho'ziladi */
+#dino.duck {
+  width: 55px;  /* Eni 55px ga kengaydi */
+  height: 26px; /* Bo'yi 26px ga pasaydi */
+  background: #059669;
+}`;
+        if (codeJs) codeJs.textContent = `// 3. JS: duck() metodi shaklni o'zgartiradi
+duck() {
+  this.isDucking = true;
+  this.height = 26; // CSS height: 26px
+  this.width = 55;  // CSS width: 55px
+}`;
+        if (box) {
+          box.style.width = '55px';
+          box.style.height = '26px';
+          box.style.bottom = '12px';
+          box.style.background = '#059669';
+        }
+        if (tag) tag.textContent = '55px × 26px (Duck)';
+        if (insight) insight.innerHTML = `💡 <b>Egilish (Duck) holati:</b> Uchar qushlar kelganda dinozavr egiladi. CSS qutisining bo'yi 26px ga tushadi, JS esa <code>this.height = 26; this.width = 55;</code> deb o'zgartiradi. Natijada qush dinozavr ustidan tegmasdan o'tib ketadi!`;
+      } else if (mode === 'jump') {
+        if (codeHtml) codeHtml.textContent = `<!-- 1. HTML: Quti sahnada havoga ko'tariladi -->
+<div id="game-arena">
+  <div id="dino" class="dino jumping"></div>
+</div>`;
+        if (codeCss) codeCss.textContent = `/* 2. CSS: 'bottom' parametri o'zgaradi */
+#dino.jumping {
+  /* JS 'this.y' har kadrda o'zgarib boradi */
+  bottom: 50px; /* Masalan: yerdan 50px havoda */
+  box-shadow: 0 10px 15px rgba(0,0,0,0.4);
+}`;
+        if (codeJs) codeJs.textContent = `// 3. JS: update() har kadrda 'y' ni hisoblaydi
+update() {
+  if (this.isJumping) {
+    this.y += this.velocityY;      // Yuqoriga
+    this.velocityY -= this.gravity;// Gravitatsiya
+  }
+}`;
+        if (box) {
+          box.style.width = '44px';
+          box.style.height = '48px';
+          box.style.bottom = '42px';
+          box.style.background = '#34d399';
+        }
+        if (tag) tag.textContent = 'y = +50px (Havoda)';
+        if (insight) insight.innerHTML = `💡 <b>Sakrash (Jump) holati:</b> Sakraganda JS dagi <code>this.y</code> qiymati har kadrda oshadi va bu CSS dagi <code>bottom</code> koordinatasiga aylanadi. Gravitatsiya kuchi uni yana yer sathiga (y = 0) tortadi!`;
+      }
+    }
+
     function updateProgressUI() {
       let count = 0;
       for (let s = 1; s <= 5; s++) {
@@ -3120,6 +3523,8 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
         }
         btn.classList.toggle('active', s === currentStep);
       }
+
+      updateTopCompletedCopyButton();
     }
 
     
@@ -3153,6 +3558,13 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
 
       currentStep = stepNum;
       updateProgressUI();
+
+      if (typeof setTrinityMode === 'function') {
+        if (stepNum === 1 || stepNum === 2) setTrinityMode('stand');
+        else if (stepNum === 3) setTrinityMode('duck');
+        else if (stepNum >= 4) setTrinityMode('jump');
+      }
+      updateTopCompletedCopyButton();
 
       const data = STEPS_DATA[stepNum];
 
@@ -3685,7 +4097,7 @@ function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
               message = "❌ 'checkCollision' xato: To'siq uzoqda bo'lganda false qaytarishi shart!";
             } else {
               isValid = true;
-              message = "🏆 TABRIKLAYMIZ! Siz barcha 5 ta bosqich kodini noldan o'z qo'lingiz bilan yozib tugatdingiz! Qushlar, kaktuslar va tungi rejim bilan to'liq Chrome Dino Game 2.0 ishga tushdi!";
+              message = "🏆 TABRIKLAYMIZ! Siz barcha 5 ta bosqich kodini noldan o'z qo'lingiz bilan yozib tugatdingiz! Qushlar, kaktuslar va tungi rejim bilan to'liq Chrome Dino Game 2.0 ishga tushdi! Endi kod muharririning yuqorisidagi yashil [📋 To'liq O'yin Kodini Nusxalash] tugmasi ochildi — uni bosib tayyor to'liq faylni Notepad (Bloknot)'ga tashlab o'ynashingiz mumkin!";
             }
           }
         }
@@ -4659,14 +5071,31 @@ ${studentCode}
       if (activeBoilerplateTab === 'html') {
         view.textContent = getHtmlCssShellCode();
       } else {
-        view.textContent = getFullStandaloneMergedCode();
+        const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+        if (allBuilt) {
+          view.textContent = getFullStandaloneMergedCode();
+        } else {
+          view.textContent = `/* 🔒 QULFLANGAN: Siz hali o'yinni to'liq qurmadingiz!
+ * 
+ * Ushbu to'liq birlashtirilgan o'yin kodi faqat barcha 5 ta bosqichni
+ * noldan o'z qo'lingiz bilan muvaffaqiyatli yozib yakunlaganingizdan so'ng ochiladi.
+ * 
+ * Hozircha 'HTML & CSS Qobig'i' tabidan poydevorni o'rganing va
+ * Dinozavr (Dino) sinfi hamda fizikasini o'zingiz bosqichma-bosqich quring!
+ */`;
+        }
       }
     }
 
-    function copyFullStandaloneNotepadHtml() {
+    function copyTopCompletedCode() {
+      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+      if (!allBuilt) {
+        alert("🔒 Siz hali barcha 5 ta bosqichni to'liq qurmadingiz! Avval barcha qadamlarni bajaring.");
+        return;
+      }
       const fullCode = getFullStandaloneMergedCode();
       navigator.clipboard.writeText(fullCode).then(() => {
-        alert("🎉 Nusxa olindi! Endi Notepad (Bloknot)'ga tashlab, faylni 'dino.html' deb saqlang va brauzerda oching. O'yin to'liq ishlaydi!");
+        alert("🎉 Ajoyib! Siz barcha 5 ta bosqichni to'liq o'z qo'lingiz bilan qurdingiz! To'liq o'yin kodi nusxalandi. Uni Notepad (Bloknot)'ga tashlab, 'dino.html' qilib saqlang va brauzerda oching!");
       }).catch(() => {
         const ta = document.createElement('textarea');
         ta.value = fullCode;
@@ -4674,8 +5103,12 @@ ${studentCode}
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        alert("🎉 Nusxa olindi! Endi Notepad (Bloknot)'ga tashlab, 'dino.html' deb saqlang va brauzerda oching!");
+        alert("🎉 Ajoyib! To'liq o'yin kodi nusxalandi! Uni Notepad (Bloknot)'ga tashlab, 'dino.html' deb saqlang va brauzerda oching!");
       });
+    }
+
+    function copyFullStandaloneNotepadHtml() {
+      copyTopCompletedCode();
     }
 
     /* ==========================================================================
