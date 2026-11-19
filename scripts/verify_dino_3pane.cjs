@@ -25,6 +25,14 @@ const path = require('path');
   await page.screenshot({ path: path.join(artDir, 'dino_3_playable_target_arena.png') });
   console.log('Saved dino_3_playable_target_arena.png');
 
+  // Test HTML & CSS Boilerplate Toggle Drawer
+  await page.click('#btn-toggle-boilerplate');
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: path.join(artDir, 'dino_7_boilerplate_drawer_open.png') });
+  console.log('Saved dino_7_boilerplate_drawer_open.png');
+  await page.click('#btn-toggle-boilerplate');
+  await page.waitForTimeout(200);
+
   // 1.b. Test Typing Spacebar in Editor without jump trigger
   await page.click('#student-code-editor');
   await page.fill('#student-code-editor', '');
