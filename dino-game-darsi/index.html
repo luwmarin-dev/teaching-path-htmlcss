@@ -2062,33 +2062,43 @@
       <div class="progress-track">
         <div class="progress-fill" id="progress-fill"></div>
       </div>
-      <div class="progress-label" id="progress-label">Bosqich: 0 / 5 (0%)</div>
+      <div class="progress-label" id="progress-label">O'zlashtirildi: 0 / 7 (0%)</div>
     </div>
 
     <!-- STEP NAVIGATION PILLS -->
     <nav class="steps-nav">
       <button class="step-btn active" id="step-nav-1" onclick="switchStep(1)">
         <div class="step-num"><span>1-QADAM</span> <span class="lock-status" id="lock-icon-1">🔓</span></div>
-        <div class="step-name">Bo'sh Class (Skelet)</div>
+        <div class="step-name">HTML O'yin Sahnasi</div>
       </button>
 
       <button class="step-btn" id="step-nav-2" disabled onclick="switchStep(2)">
         <div class="step-num"><span>2-QADAM</span> <span class="lock-status" id="lock-icon-2">🔒</span></div>
-        <div class="step-name">O'lchamlar & Karobka</div>
+        <div class="step-name">CSS Arcade Maketi</div>
       </button>
 
       <button class="step-btn" id="step-nav-3" disabled onclick="switchStep(3)">
         <div class="step-num"><span>3-QADAM</span> <span class="lock-status" id="lock-icon-3">🔒</span></div>
-        <div class="step-name">Sakrash & Egilish</div>
+        <div class="step-name">Bo'sh Class (Skelet)</div>
       </button>
 
       <button class="step-btn" id="step-nav-4" disabled onclick="switchStep(4)">
         <div class="step-num"><span>4-QADAM</span> <span class="lock-status" id="lock-icon-4">🔒</span></div>
-        <div class="step-name">Gravitatsiya Fizikasi</div>
+        <div class="step-name">O'lchamlar & 'this'</div>
       </button>
 
       <button class="step-btn" id="step-nav-5" disabled onclick="switchStep(5)">
         <div class="step-num"><span>5-QADAM</span> <span class="lock-status" id="lock-icon-5">🔒</span></div>
+        <div class="step-name">Sakrash & Egilish</div>
+      </button>
+
+      <button class="step-btn" id="step-nav-6" disabled onclick="switchStep(6)">
+        <div class="step-num"><span>6-QADAM</span> <span class="lock-status" id="lock-icon-6">🔒</span></div>
+        <div class="step-name">Gravitatsiya Fizikasi</div>
+      </button>
+
+      <button class="step-btn" id="step-nav-7" disabled onclick="switchStep(7)">
+        <div class="step-num"><span>7-QADAM</span> <span class="lock-status" id="lock-icon-7">🔒</span></div>
         <div class="step-name">Kaktus, Qush & O'yin</div>
       </button>
     </nav>
@@ -2711,681 +2721,491 @@ class Dino {
        2. 5 TA BOSQICHNING CHUQUR TUSHUNTIRISHLARI VA TOPSHIRIQLARI
        ========================================================================== */
     const STEPS_DATA = {
-      1: {
-        num: 1,
-        title: "Dino Qutisi va Class Skeleti (HTML, CSS va JS Zanjiri)",
-        concept: "Web dasturlashda personaj shunchaki havoda paydo bo'lmaydi! Avval HTML'da uning uyi va qutisi belgilanadi: <div id='dino'></div>. Keyin CSS orqali unga fizik shakl, eni va bo'yi beriladi. JavaScript'dagi 'class Dino' esa shu qutining miyasi hisoblanadi. Shunchaki JS klassida o'zgaruvchi e'lon qilish bilan ekranda quti paydo bo'lib qolmaydi — uning HTML va CSS poydevori bo'lishi shart!",
-        analogy: "💡 Hayotiy O'xshatish: HTML — bu mashinaning bo'sh korpusi, CSS — uning rangi, g'ildiraklari va o'lchamlari, JavaScript 'class Dino' esa dvigatel va haydovchi!",
-        algorithm: [
-          {
-            title: "1. HTML Div: <div id='dino'></div>",
-            desc: "Sahifada dinozavr tanasi joylashadigan bo'sh quti (konteyner) yaratish."
-          },
-          {
-            title: "2. CSS Shakli: width: 44px, height: 48px",
-            desc: "#dino qutisiga aniq shakl: width: 44px; height: 48px; background: #10b981; border-radius: 6px;"
-          },
-          {
-            title: "3. 'class Dino' sinf qolipi",
-            desc: "Ushbu qutini boshqarish va xususiyatlarini jamlash uchun JS sinf skeletini e'lon qilish."
-          },
-          {
-            title: "4. const dino = new Dino()",
-            desc: "Qolip asosida xotiradan ilk tirik dinozavr nusxasini faollashtirish."
-          }
-        ],
-        taskTitle: "1-Topshiriq: HTML/CSS qutisini boshqaruvchi 'Dino' sinfini va 'dino' obyektini yarating",
-        taskInstruction: "HTML va CSS qutisiga tiriklik va aql berish uchun 'Dino' sinfini oching va undan 'dino' nusxasini oling:",
-        criteria: [
-          {
-            title: "1. Sinf qolipini e'lon qilish",
-            desc: "'class' kalit so'zi va jingalak qavslar yordamida 'Dino' nomli bo'sh sinf yarating.",
-            codeSnippet: "class Dino { }"
-          },
-          {
-            title: "2. Ilk tirik obyektni xotirada faollashtirish",
-            desc: "'new' operatoridan foydalanib, sinf asosida yangi 'dino' nusxasini o'zgaruvchiga biriktiring.",
-            codeSnippet: "const dino = new Dino();"
-          }
-        ],
-        hintLogic: "💡 1-Qadam Mantiq: Sinf e'lon qilish uchun 'class' kalit so'zi va uning nomini yozib, jingalak qavslarni oching. Obyekt olish uchun esa 'new Dino()' operatoridan foydalanib o'zgaruvchiga tenglang.",
-        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>class SinfNomi {\n  // qolip tanasi\n}\n\nconst obyektNomi = new SinfNomi();</pre>",
-        hintScaffolding: `// 1-Qadam toza andozasi:
-// 1-Talab: 'Dino' nomli sinf qolipini e'lon qilamiz
-class Dino {
-  // Skelet qolip (ichki parametrlar 2-qadamda qo'shiladi)
-}
-
-// 2-Talab: Qolip asosida ilk tirik 'dino' obyektini xotiradan yaratamiz
-const dino = new Dino();`,
-        quiz: {
-          question: "Nega faqat JavaScript'da 'class Dino' yozish bilan ekranda birdaniga tayyor quti chiqib qolmaydi?",
-          options: [
-            {
-              text: "A) Chunki JavaScript faqat mantiq va harakatni boshqaradi! Ekranda quti paydo bo'lishi uchun HTML'da <div> e'lon qilinishi va CSS'da unga eni (width), bo'yi (height) va rangi berilishi kerak. JS klassi esa shu qutini boshqaradi!",
-              correct: true,
-              feedback: "🎉 Mantiqni to'g'ri tushundingiz! Endi pastdagi Kod Muharririda 'class Dino' va 'new Dino()' kodini o'z qo'lingiz bilan yozing va 'Kodni Ishga Tushirish' tugmasini bosing."
-            },
-            {
-              text: "B) 'class' so'zi yozilmasa o'yinda ranglar ko'rinmay qoladi.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Ranglar CSS buyruqlariga bog'liq. Class esa ma'lumotlar va harakat tuzilmasini yaratadi."
-            },
-            {
-              text: "C) Brauzer faqat 'class' so'zini taniydi, boshqa kodlarni tushunmaydi.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: JavaScript juda ko'p tushunchalarni biladi, lekin OOP uchun class eng zamonaviy usuldir."
-            }
-          ]
-        },
-        starterCode: `// 1-Topshiriq:
-// 1-Talab: 'Dino' nomli sinf (class) skeletini oching.
-// 2-Talab: Undan 'dino' nomli obyekt (new Dino()) oling.
-
-`,
-        modelCode: `// 1-Qadam toza andozasi:
-class Dino {
-  // Skelet qolip
-}
-
-const dino = new Dino();`
+  "1": {
+    "num": 1,
+    "title": "HTML O'yin Sahnasi: Canvas va Ochko Doskasi (index.html)",
+    "concept": "Web dasturlashda personaj va o'yin shunchaki havoda paydo bo'lmaydi! Avval HTML'da uning 'uy'i va poydevori quriladi. <canvas> tegi — bu brauzerdagi bo'sh rasm chizish matosi (holst). Unga JavaScript orqali to'rtburchaklar, personajlar va kaktuslarni chizamiz. <div class='score-board'> esa o'yinchining to'plagan ochkosini ko'rsatib turadi.",
+    "analogy": "💡 Hayotiy O'xshatish: HTML — bu xonaning bo'sh devorlari va stol-stullari. Agar xona (HTML) bo'lmasa, siz chizgan suratlarni (JavaScript) ilib qo'yadigan joyning o'zi bo'lmaydi!",
+    "algorithm": [
+      {
+        "title": "1. <!DOCTYPE html> va <html> qobig'i",
+        "desc": "Brauzerga sahifaning zamonaviy HTML5 standarti ekanligini bildirish."
       },
-
-      2: {
-        num: 2,
-        title: "O'lchamlar, Hitbox & CSS Bog'liqligi ('this.width' va 'this.height')",
-        concept: "Nega 'constructor()' ichida aynan 'this.width = 44' va 'this.height = 48' deb yozamiz? Chunki bu sonlar havodan olingan emas! Ular CSS'dagi '#dino { width: 44px; height: 48px; }' qutisining aniq fizik o'lchamlariga 1:1 mos keladi. JavaScript'da 'px' yozilmaydi, lekin bu sonlar xuddi o'sha CSS qutisining hitbox chegarasini ifodalaydi. Shunchaki konstruktorda o'zgaruvchi e'lon qilish bilan ekranda quti chiqmaydi — JS o'lchamlari CSS qutisi bilan qat'iy bog'langan!",
-        analogy: "💡 Hayotiy O'xshatish: Kostyum tikishda santimetr bilan o'lchab olinadi. CSS qutining haqiqiy matosi bo'lsa, 'this.width = 44' — bu uning xotiradagi aniq o'lchov yorlig'idir!",
-        algorithm: [
-          {
-            title: "1. CSS Eni va Bo'yini JS'ga ko'chirish",
-            desc: "CSS'da 'width: 44px; height: 48px;' bo'lsa, JS konstruktorda 'this.width = 44; this.height = 48;' (px yozilmaydi!)"
-          },
-          {
-            title: "2. CSS Joylashuvini Xotiraga Olish",
-            desc: "CSS'da 'left: 60px; bottom: 0px;' bo'lsa, JS'da 'this.x = 60; this.y = 0;'"
-          },
-          {
-            title: "3. 'this' ko'rsatkichi",
-            desc: "'this' aynan shu obyektdir. Oddiy 'let width' yo'qolib ketadi, lekin 'this.width' abadiy qoladi."
-          },
-          {
-            title: "4. Mantiqiy harakat bayroqlari",
-            desc: "isJumping: false (hali sakramayapti), isDucking: false (hali egilmagan)."
-          }
-        ],
-        taskTitle: "2-Topshiriq: 'constructor()' ichida 6 ta hitbox parametrini biriktiring",
-        taskInstruction: "Dino klassiga 'constructor()' oching va 'this' kalit so'zi yordamida dinozavrning 4 ta fazoviy o'lchami hamda 2 ta holat bayrog'ini xotiraga biriktiring:",
-        criteria: [
-          {
-            title: "1. Fazoviy o'lchamlar (width va height)",
-            desc: "Dinozavrning tik turgandagi eni 44px va bo'yi 48px ekanini belgilang (JavaScript'da 'px' yozilmaydi, faqat oddiy son!).",
-            codeSnippet: "this.width = 44; this.height = 48;"
-          },
-          {
-            title: "2. Koordinatalar (x va y)",
-            desc: "Chap tomondan masofasini x = 60 va oyoqlari yer sathida turishi uchun balandligini y = 0 qilib o'rnating.",
-            codeSnippet: "this.x = 60; this.y = 0;"
-          },
-          {
-            title: "3. Harakat holati bayroqlari (isJumping va isDucking)",
-            desc: "Boshlang'ich holatda dinozavr hali sakramagan va egilmagan bo'lishi uchun ikkalasini ham false qiling.",
-            codeSnippet: "this.isJumping = false; this.isDucking = false;"
-          }
-        ],
-        hintLogic: "💡 2-Qadam Mantiq: Sinf ichida obyekt o'zgaruvchilari oddiy 'let' bilan emas, balki 'this' bilan yaratiladi. 'constructor()' metodi ochiladi va uning ichida 'this.parametrNomi = qiymat;' ko'rinishida yoziladi.",
-        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>constructor() {\n  this.width = 44;\n  this.height = 48;\n  this.x = 60;\n  this.y = 0;\n  this.isJumping = false;\n  this.isDucking = false;\n}</pre>",
-        hintScaffolding: `// 2-Qadam andozasi va har bir qatorning fizik ma'nosi:
-class Dino {
-  constructor() {
-    // 1-Talab: Fazoviy o'lchamlar (CSS qutisiga mos)
-    this.width = 44;        // Dinozavr eni (44px)
-    this.height = 48;       // Tik turgandagi bo'yi (48px)
-
-    // 2-Talab: Joylashuv koordinatalari
-    this.x = 60;            // Ekrandagi X koordinatasi (chapdan 60px)
-    this.y = 0;             // Vertikal balandligi (0 = oyoqlari yerda)
-
-    // 3-Talab: Mantiqiy harakat bayroqlari
-    this.isJumping = false; // Boshlang'ich sakrash holati
-    this.isDucking = false; // Boshlang'ich egilish holati
-  }
-}
-
-const dino = new Dino();`,
-        quiz: {
-          question: "Nega personaj xususiyatlari (width, height, x, y) 'constructor()' ichida CSS qutisi o'lchamlari bilan bir xil yoziladi?",
-          options: [
-            {
-              text: "A) Chunki 'constructor()' obyekt yaratilganda avtomatik ishga tushadi va CSS qutisining aniq fizik o'lchamlarini (44x48px) xotirada hitbox sifatida saqlaydi!",
-              correct: true,
-              feedback: "🎉 Aynan to'g'ri! Endi muharrirda 'constructor()' yaratib, 'width', 'height', 'x', 'y', 'isJumping' va 'isDucking' ni yozing."
-            },
-            {
-              text: "B) Faqatgina CSS faylni almashtirish uchun.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Bu parametrlar JavaScript xotirasidagi o'yin fizikasi uchun zarur."
-            },
-            {
-              text: "C) Math.random() bilan har gal har xil o'lcham berish uchun.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Boshlang'ich o'lchamlar doimiy bo'lishi shart."
-            }
-          ]
-        },
-        starterCode: `class Dino {
-  constructor() {
-    // 2-Topshiriq: 'this' orqali 6 ta parametrni biriktiring:
-    // 1-Talab: this.width = 44; this.height = 48;
-    // 2-Talab: this.x = 60; this.y = 0;
-    // 3-Talab: this.isJumping = false; this.isDucking = false;
-  }
-}
-
-const dino = new Dino();
-`,
-        modelCode: `// 2-Qadam toza andozasi:
-class Dino {
-  constructor() {
-    this.width = 44;
-    this.height = 48;
-    this.x = 60;
-    this.y = 0;
-    this.isJumping = false;
-    this.isDucking = false;
-  }
-}
-
-const dino = new Dino();`
+      {
+        "title": "2. Ochko doskasi: <div class='score-board'>",
+        "desc": "O'yinchining natijasi doimiy ko'rinib turishi uchun <span id='score'>00000</span> elementini joylashtirish."
       },
-
-      3: {
-        num: 3,
-        title: "Boshqaruv: Sakrash (Jump) va Egilish (Duck)",
-        concept: "Dinozavr nafaqat sakrashi, balki tepadan uchib kelayotgan qushlar (Pterodaktillar) tagidan o'tish uchun EGILISHI (duck) ham shart! Egilganda uning bo'yi 48px dan 26px ga tushadi va eni 55px ga cho'ziladi.",
-        analogy: "💡 Sensor Mantiqi: Klaviaturadagi tugma pult kabi ishlaydi. 'keydown' tugma bosilganini tutadi, 'keyup' esa tugma qo'yib yuborilganda dinozavrni yana qad rostlatadi!",
-        algorithm: [
-          {
-            title: "jump() metodi",
-            desc: "Havoda qayta sakramaslik uchun: agar yerda bo'lsa (y === 0), sakramayotgan va egilmagan bo'lsa 'this.isJumping = true;' qiladi."
-          },
-          {
-            title: "duck() metodi (Egilish)",
-            desc: "Yerda bo'lganda 'this.isDucking = true', 'this.height = 26' va 'this.width = 55' ga o'zgartiradi."
-          },
-          {
-            title: "standUp() metodi (Qad rostlash)",
-            desc: "Tugma qo'yilganda: 'this.isDucking = false', 'this.height = 48' va 'this.width = 44' ga qaytaradi."
-          },
-          {
-            title: "Hodisalarni tinglash (EventListeners)",
-            desc: "'keydown' (Space / ArrowUp → jump(), ArrowDown → duck()) va 'keyup' (ArrowDown → standUp())."
-          }
-        ],
-        taskTitle: "3-Topshiriq: 'jump()', 'duck()', 'standUp()' metodlari va Klaviaturani ulang",
-        taskInstruction: "Dinozavr to'siqlardan qochishi uchun harakat metodlarini yozing va klaviatura hodisalariga ulang:",
-        criteria: [
-          {
-            title: "1. jump() metodi (Sakrash)",
-            desc: "Dinozavr faqat yerda (this.y === 0), sakramayotgan (!this.isJumping) va egilmagan (!this.isDucking) paytda sakraydi: shart to'g'ri bo'lsa 'this.isJumping = true;' bo'lsin.",
-            codeSnippet: "if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;"
-          },
-          {
-            title: "2. duck() metodi (Egilish)",
-            desc: "Faqat yerda (this.y === 0 && !this.isJumping) egila oladi: 'this.isDucking = true;', bo'yini 26 ga ('this.height = 26;') va enini 55 ga ('this.width = 55;') o'zgartiring.",
-            codeSnippet: "this.isDucking = true; this.height = 26; this.width = 55;"
-          },
-          {
-            title: "3. standUp() metodi (Qad rostlash)",
-            desc: "Egilish tugmasi qo'yib yuborilganda dinozavr tik holatga qaytishi shart: 'this.isDucking = false;', bo'yini 48 ga ('this.height = 48;') va enini 44 ga ('this.width = 44;') tiklang.",
-            codeSnippet: "this.isDucking = false; this.height = 48; this.width = 44;"
-          },
-          {
-            title: "4. Klaviatura hodisalari (window.addEventListener)",
-            desc: "'keydown' hodisasida: Space yoki ArrowUp bosilsa dino.jump(), ArrowDown bosilsa dino.duck(); 'keyup' hodisasida: ArrowDown qo'yib yuborilsa dino.standUp() chaqiring.",
-            codeSnippet: "window.addEventListener('keydown', ...); window.addEventListener('keyup', ...);"
-          }
-        ],
-        hintLogic: "💡 3-Qadam Mantiq: Sinf ichida metodlar 'function' so'zisiz yoziladi: 'jump() { ... }'. 'jump' faqat dinozavr yerda turgandagina sakrashi kerak. 'duck' dinozavrni pastroq (height: 26) va cho'ziqroq (width: 55) qiladi, 'standUp' esa asl o'lchamga (height: 48, width: 44) qaytaradi.",
-        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>jump() {\n  if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;\n}\nduck() {\n  if (this.y === 0 && !this.isJumping) { this.isDucking = true; this.height = 26; this.width = 55; }\n}\nstandUp() {\n  this.isDucking = false; this.height = 48; this.width = 44;\n}</pre>",
-        hintScaffolding: `// 3-Qadam toza andozasi (Barcha 4 ta talab bo'yicha):
-class Dino {
-  constructor() {
-    this.width = 44; this.height = 48;
-    this.x = 60; this.y = 0;
-    this.isJumping = false; this.isDucking = false;
-  }
-
-  // 1-Talab: Sakrash - havoda qayta sakramasligi uchun faqat yerda va egilmaganda ishlaydi
-  jump() {
-    if (!this.isJumping && !this.isDucking && this.y === 0) {
-      this.isJumping = true;
-    }
-  }
-
-  // 2-Talab: Egilish - yerda bo'lsa bo'yi 26px ga tushadi, eni 55px ga cho'ziladi
-  duck() {
-    if (this.y === 0 && !this.isJumping) {
-      this.isDucking = true;
-      this.height = 26;
-      this.width = 55;
-    }
-  }
-
-  // 3-Talab: Qad rostlash - tugma qo'yilganda asl o'lchamga qaytadi
-  standUp() {
-    this.isDucking = false;
-    this.height = 48;
-    this.width = 44;
-  }
-}
-
-const dino = new Dino();
-
-// 4-Talab: Klaviaturadagi tugmalarni tinglash:
-window.addEventListener('keydown', (e) => {
-  if (e.code === 'Space' || e.code === 'ArrowUp') {
-    dino.jump();
-  }
-  if (e.code === 'ArrowDown') {
-    dino.duck();
-  }
-});
-
-window.addEventListener('keyup', (e) => {
-  if (e.code === 'ArrowDown') {
-    dino.standUp();
-  }
-});`,
-        quiz: {
-          question: "Nega dinozavr egilganda (duck) uning 'height' parametri 48px dan 26px ga kamaytiriladi?",
-          options: [
-            {
-              text: "A) Chunki havoda uchib kelayotgan qush uning ustidan tegmasdan o'tib ketishi uchun hitbox kichrayishi kerak!",
-              correct: true,
-              feedback: "🎉 Aynan shunday! Endi muharrirda 'jump()', 'duck()', 'standUp()' va tinglovchilarni o'z qo'lingiz bilan yozing."
-            },
-            {
-              text: "B) Dinozavr yer ostiga kirib ketishi uchun.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Dinozavr yerda yugurishda davom etadi, faqat bo'yi pastayadi."
-            },
-            {
-              text: "C) Faqatgina ekranda qora rang paydo bo'lishi uchun.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Bu mexanika to'siqlardan qochish uchun xizmat qiladi."
-            }
-          ]
-        },
-        starterCode: `class Dino {
-  constructor() {
-    this.width = 44;
-    this.height = 48;
-    this.x = 60;
-    this.y = 0;
-    this.isJumping = false;
-    this.isDucking = false;
-  }
-
-  // 1-Talab: jump() metodini yozing:
-  // Mantiq: faqat yerda va egilmaganda (!this.isJumping && !this.isDucking && this.y === 0) -> this.isJumping = true;
-
-
-  // 2-Talab: duck() metodini yozing:
-  // Mantiq: yerda bo'lsa (this.y === 0 && !this.isJumping) -> this.isDucking = true; this.height = 26; this.width = 55;
-
-
-  // 3-Talab: standUp() metodini yozing:
-  // Mantiq: this.isDucking = false; this.height = 48; this.width = 44;
-
-}
-
-const dino = new Dino();
-
-// 4-Talab: Klaviatura tinglovchilarini ulang:
-// keydown: 'Space' yoki 'ArrowUp' -> dino.jump(), 'ArrowDown' -> dino.duck()
-// keyup: 'ArrowDown' -> dino.standUp()
-
-`,
-        modelCode: `// 3-Qadam toza andozasi:
-class Dino {
-  constructor() {
-    this.width = 44;
-    this.height = 48;
-    this.x = 60;
-    this.y = 0;
-    this.isJumping = false;
-    this.isDucking = false;
-  }
-
-  jump() {
-    if (!this.isJumping && !this.isDucking && this.y === 0) {
-      this.isJumping = true;
-    }
-  }
-
-  duck() {
-    if (this.y === 0 && !this.isJumping) {
-      this.isDucking = true;
-      this.height = 26;
-      this.width = 55;
-    }
-  }
-
-  standUp() {
-    this.isDucking = false;
-    this.height = 48;
-    this.width = 44;
-  }
-}
-
-const dino = new Dino();
-
-window.addEventListener('keydown', (e) => {
-  if (e.code === 'Space' || e.code === 'ArrowUp') dino.jump();
-  if (e.code === 'ArrowDown') dino.duck();
-});
-
-window.addEventListener('keyup', (e) => {
-  if (e.code === 'ArrowDown') dino.standUp();
-});`
+      {
+        "title": "3. O'yin matosi: <canvas id='gameCanvas'>",
+        "desc": "Haqiqiy 800x250 piksel o'lchamdagi chizish maydonini o'rnatish."
       },
-
-      4: {
-        num: 4,
-        title: "Fizika & Gravitatsiya ('update()' metodi)",
-        concept: "Dasturlashda personaj shunchaki tepaga sakrab qotib qolmaydi. O'yin har bir kadrda (60 FPS) uning balandligini yangilab turishi va gravitatsiya kuchi uni asta-sekin yerga qaytarib tushirishi kerak!",
-        analogy: "💡 Fizika Qonuni: To'pni osmonga otsangiz, dastlab tez uchadi, eng tepada to'xtaydi va tortish kuchi tufayli pastga tezlashib tushadi. Bizning formulamiz aynan shu tabiat qonunini takrorlaydi!",
-        algorithm: [
-          {
-            title: "this.velocityY = 0",
-            desc: "Hozirgi vertikal tezlik. Sakraganda oshadi, tushganda manfiy bo'ladi."
-          },
-          {
-            title: "this.jumpForce = 12",
-            desc: "Dastlabki yuqoriga turtki (impuls). Sekundiga 60 kadrda 12px yuqoriga intilish."
-          },
-          {
-            title: "this.gravity = 0.6",
-            desc: "Tortish kuchi. Har kadrda tezlikdan 0.6 ayirilib boriladi."
-          },
-          {
-            title: "jump() ichida: this.velocityY = this.jumpForce",
-            desc: "Sakrash buyrug'i berilganda vertikal tezlikka 12 qiymati yuklanadi."
-          },
-          {
-            title: "update() fizika hisob-kitobi",
-            desc: "Har kadrda: this.y += this.velocityY; this.velocityY -= this.gravity; Agar y <= 0 bo'lsa: y=0, isJumping=false, velocityY=0."
-          }
-        ],
-        taskTitle: "4-Topshiriq: 'jumpForce', 'gravity' va 'update()' fizika formulasini yozing",
-        taskInstruction: "Dinozavr parabolik egri chiziq bo'yicha sakrab qaytib tushishi uchun har kadrda (60 FPS) ishlovchi fizikani yozing:",
-        criteria: [
-          {
-            title: "1. Fizik parametrlarni konstruktorga qo'shish",
-            desc: "Konstruktor ichida: 'this.velocityY = 0;' (hozirgi tezlik), 'this.jumpForce = 12;' (sakrash kuchi) va 'this.gravity = 0.6;' (tortish kuchi) deb belgilang.",
-            codeSnippet: "this.velocityY = 0; this.jumpForce = 12; this.gravity = 0.6;"
-          },
-          {
-            title: "2. jump() metodida boshlang'ich tezlikni yuklash",
-            desc: "'jump()' ichida sakrash boshlanganda: 'this.velocityY = this.jumpForce;' va 'this.isJumping = true;' bering.",
-            codeSnippet: "this.velocityY = this.jumpForce; this.isJumping = true;"
-          },
-          {
-            title: "3. Har kadrda ishlovchi update() metodini yozish",
-            desc: "Agar havoda bo'lsa ('if (this.isJumping)'): balandlikni oshiring 'this.y += this.velocityY;', tezlikdan tortish kuchini ayiring 'this.velocityY -= this.gravity;'. Agar yerga yetib borsa ('this.y <= 0'): 'this.y = 0; this.isJumping = false; this.velocityY = 0;' qiling.",
-            codeSnippet: "this.y += this.velocityY; this.velocityY -= this.gravity;"
-          }
-        ],
-        hintLogic: "💡 4-Qadam Mantiq: Vertikal harakat har kadrda yangilanadi. 'this.y' ga 'this.velocityY' qo'shiladi, 'this.velocityY' dan esa 'this.gravity' ayirib boriladi. Agar 'this.y <= 0' bo'lib yerga tushsa, uni 0 ga qaytaramiz.",
-        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>update() {\n  if (this.isJumping) {\n    this.y += this.velocityY;\n    this.velocityY -= this.gravity;\n    if (this.y <= 0) {\n      this.y = 0;\n      this.isJumping = false;\n      this.velocityY = 0;\n    }\n  }\n}</pre>",
-        hintScaffolding: `// 4-Qadam toza andozasi:
-class Dino {
-  constructor() {
-    this.width = 44; this.height = 48;
-    this.x = 60; this.y = 0;
-    this.isJumping = false; this.isDucking = false;
-    // 1-Talab: Fizik kuchlar
-    this.velocityY = 0;
-    this.jumpForce = 12;
-    this.gravity = 0.6;
-  }
-  jump() {
-    if (!this.isJumping && !this.isDucking && this.y === 0) {
-      // 2-Talab: Sakrash impulsi
-      this.isJumping = true;
-      this.velocityY = this.jumpForce;
-    }
-  }
-  duck() {
-    if (this.y === 0 && !this.isJumping) {
-      this.isDucking = true; this.height = 26; this.width = 55;
-    }
-  }
-  standUp() {
-    this.isDucking = false; this.height = 48; this.width = 44;
-  }
-  // 3-Talab: Har kadrda fizika hisoblash
-  update() {
-    if (this.isJumping) {
-      this.y += this.velocityY;
-      this.velocityY -= this.gravity;
-      if (this.y <= 0) {
-        this.y = 0;
-        this.isJumping = false;
-        this.velocityY = 0;
+      {
+        "title": "4. JavaScript faylini ulash: <script src='game.js'>",
+        "desc": "O'yin mantiqiy kodini sahifaga ulash."
       }
-    }
-  }
-}`,
-        quiz: {
-          question: "Gravitatsiya (0.6) har kadrda tezlikdan ayirilsa, nima uchun dinozavr osmonga uchib ketmay, mayin yerga qaytib tushadi?",
-          options: [
-            {
-              text: "A) Chunki har kadrda tezlik 0.6 ga kamayib, eng yuqorida 0 bo'ladi, keyin esa manfiyga aylanib dinozavrni pastga tezlashtirib yerga tortadi!",
-              correct: true,
-              feedback: "🎉 Mukammal! Bu haqiqiy o'yin fizikasining yuragi! Endi 'jumpForce', 'gravity' va 'update()' ni muharrirda o'zingiz yozing."
-            },
-            {
-              text: "B) Dinozavr havoda charchagani uchun to'xtaydi.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Kompyuterda o'z-o'zidan harakat bo'lmaydi, harakatni biz formula bilan hisoblaymiz."
-            },
-            {
-              text: "C) Brauzer faqat 2 soniya sakrashga ruxsat beradi.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Bu vaqtga emas, matematik tezlik va gravitatsiyaga bog'liq."
-            }
-          ]
-        },
-        starterCode: `class Dino {
-  constructor() {
-    this.width = 44;
-    this.height = 48;
-    this.x = 60;
-    this.y = 0;
-    this.isJumping = false;
-    this.isDucking = false;
-    // 1-Talab: this.velocityY = 0; this.jumpForce = 12; this.gravity = 0.6; parametrlarini bering:
-    
-  }
-
-  jump() {
-    if (!this.isJumping && !this.isDucking && this.y === 0) {
-      this.isJumping = true;
-      // 2-Talab: this.velocityY = this.jumpForce sakrash impulsini yuklang:
-      
-    }
-  }
-
-  duck() {
-    if (this.y === 0 && !this.isJumping) {
-      this.isDucking = true;
-      this.height = 26;
-      this.width = 55;
-    }
-  }
-
-  standUp() {
-    this.isDucking = false;
-    this.height = 48;
-    this.width = 44;
-  }
-
-  // 3-Talab: Har kadrda ishlovchi update() metodini yozing:
-  // if (this.isJumping) { this.y += this.velocityY; this.velocityY -= this.gravity; ... }
-  
-}
-
-const dino = new Dino();
-`,
-        modelCode: `// 4-Qadam toza andozasi:
-class Dino {
-  constructor() {
-    this.width = 44;
-    this.height = 48;
-    this.x = 60;
-    this.y = 0;
-    this.isJumping = false;
-    this.isDucking = false;
-    this.velocityY = 0;
-    this.jumpForce = 12;
-    this.gravity = 0.6;
-  }
-
-  jump() {
-    if (!this.isJumping && !this.isDucking && this.y === 0) {
-      this.isJumping = true;
-      this.velocityY = this.jumpForce;
-    }
-  }
-
-  duck() {
-    if (this.y === 0 && !this.isJumping) {
-      this.isDucking = true;
-      this.height = 26;
-      this.width = 55;
-    }
-  }
-
-  standUp() {
-    this.isDucking = false;
-    this.height = 48;
-    this.width = 44;
-  }
-
-  update() {
-    if (this.isJumping) {
-      this.y += this.velocityY;
-      this.velocityY -= this.gravity;
-      if (this.y <= 0) {
-        this.y = 0;
-        this.isJumping = false;
-        this.velocityY = 0;
-      }
-    }
-  }
-}`
+    ],
+    "taskTitle": "1-Topshiriq: HTML'da o'yin arenasi, ochko doskasi va 'gameCanvas' matosini yarating",
+    "taskInstruction": "Quyidagi HTML skeletini yozing: score id'li ochko elementi, gameCanvas id'li 800x250 o'lchamli canvas va game.js skriptini ulang:",
+    "criteria": [
+      {
+        "title": "1. gameCanvas id'li <canvas> tegi",
+        "desc": "Aniq 800x250 o'lchamdagi rasm chizish maydonini e'lon qiling.",
+        "codeSnippet": "<canvas id=\"gameCanvas\" width=\"800\" height=\"250\"></canvas>"
       },
-
-      5: {
-        num: 5,
-        title: "Kaktus, Qush & To'liq O'yin (AABB To'qnashuvi)",
-        concept: "Yakuniy bosqich! O'yinga 3 xil kaktus (yakka, katta, 3 talik to'da) va havoda uchuvchi Pterodaktillar qo'shiladi. Kaktuslar ustidan SAKRASH, qushlar tagidan esa EGILISH kerak! Har 100 ochkoda Tungi osmon almashadi. To'qnashuv AABB algoritmi orqali hisoblanadi.",
-        analogy: "💡 AABB To'qnashuv Qoidasi: Agar dinozavrning o'ng tomoni to'siqning chap tomonidan o'tsa VA chap tomoni to'siqning o'ngidan orqada bo'lsa VA vertikal chegaralari kesishsa — to'qnashuv yuz berdi!",
-        algorithm: [
-          {
-            title: "To'siqlar xilma-xilligi",
-            desc: "Kichik kaktus (20x36), Katta kaktus (26x50), 3 talik kaktus (58x44) va Uchar qush (36x28, havoda 38px balandlikda)."
-          },
-          {
-            title: "checkCollision() formulasi (AABB)",
-            desc: "dino.x < obs.x + obs.width && dino.x + dino.width > obs.x && dinoY + dino.height > obsY && dinoY < obsY + obs.height."
-          },
-          {
-            title: "Tungi & Kunduzgi rejim",
-            desc: "Score >= 100 bo'lganda osmon qorong'ilashadi va yulduzlar charaqlaydi."
-          },
-          {
-            title: "requestAnimationFrame loop",
-            desc: "Sekundiga 60 kadr chastotada dinozavr, qushlar, kaktuslar chiziladi va to'qnashuv tekshiriladi."
-          }
-        ],
-        taskTitle: "5-Topshiriq: AABB to'qnashuv formulasini ('checkCollision') yakunlang",
-        taskInstruction: "Dinozavr va to'siq to'rtburchaklari kesishganini 4 ta geometrik chegara orqali aniqlovchi funksiyani yozing:",
-        criteria: [
-          {
-            title: "1. checkCollision funksiyasini e'lon qilish",
-            desc: "8 ta parametr qabul qiluvchi funksiyani yozing: dinoX, dinoY, dinoW, dinoH hamda obsX, obsY, obsW, obsH.",
-            codeSnippet: "function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH)"
-          },
-          {
-            title: "2. 4 ta geometrik kesishish shartini qaytarish (return)",
-            desc: "Gorizontal: dinoX < obsX + obsW && dinoX + dinoW > obsX; Vertikal: dinoY + dinoH > obsY && dinoY < obsY + obsH. Barchasi '&&' bilan bog'lanib bitta mantiqiy ifoda qaytariladi.",
-            codeSnippet: "return (dinoX < obsX + obsW && dinoX + dinoW > obsX && dinoY + dinoH > obsY && dinoY < obsY + obsH);"
-          }
-        ],
-        hintLogic: "💡 5-Qadam Mantiq: To'qnashuv bo'lishi uchun 4 ta geometrik shart bir vaqtda true bo'lishi kerak: dinoX < obsX + obsW va dinoX + dinoW > obsX va dinoY + dinoH > obsY va dinoY < obsY + obsH.",
-        hintTemplate: "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {\n  return (\n    dinoX < obsX + obsW &&\n    dinoX + dinoW > obsX &&\n    dinoY + dinoH > obsY &&\n    dinoY < obsY + obsH\n  );\n}</pre>",
-        hintScaffolding: `// 5-Qadam toza andozasi (AABB To'qnashuvi):
-// 1 va 2-Talab: 8 ta parametr va 4 ta chegaraviy kesishish sharti
-function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
-  return (
-    dinoX < obsX + obsW &&
-    dinoX + dinoW > obsX &&
-    dinoY + dinoH > obsY &&
-    dinoY < obsY + obsH
-  );
-}`,
-        quiz: {
-          question: "Nega qush kelganda sakrash o'rniga egilish (duck) kerak?",
-          options: [
-            {
-              text: "A) Chunki qush havoda uchadi; agar sakrasak unga urilamiz, lekin egilsak dinozavr bo'yi 26px ga tushib qush uning ustidan bemalol o'tib ketadi!",
-              correct: true,
-              feedback: "🎉 Aynan to'g'ri! Endi 'checkCollision' funksiyasini muharrirda yozing va to'liq o'yinni o'ng tarafdagi jonli brauzerda ishga tushiring!"
-            },
-            {
-              text: "B) Qushlar faqat sakragan dinozavrlarni yaxshi ko'radi.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Bu geometrik balandlik hisobiga asoslangan."
-            },
-            {
-              text: "C) Qushlar bilan gaplashish uchun.",
-              correct: false,
-              feedback: "❌ Noto'g'ri: Dinozavr to'qnashuvdan qochish uchun harakatlanadi."
-            }
-          ]
-        },
-        starterCode: `// 5-Topshiriq: checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) funksiyasini yozing:
-// 1-Talab: 8 ta parametrni qabul qiluvchi funksiya e'lon qiling.
-// 2-Talab: 4 ta chegaraviy AABB shartini (dinoX < obsX + obsW && dinoX + dinoW > obsX && dinoY + dinoH > obsY && dinoY < obsY + obsH) return qiling.
-
-`,
-        modelCode: `// 5-Qadam toza andozasi:
-function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
-  return (
-    dinoX < obsX + obsW &&
-    dinoX + dinoW > obsX &&
-    dinoY + dinoH > obsY &&
-    dinoY < obsY + obsH
-  );
-}`
+      {
+        "title": "2. score id'li ochko ko'rsatkichi",
+        "desc": "O'yinda ochkolarni ko'rsatuvchi elementni joylashtiring.",
+        "codeSnippet": "<div class=\"score-board\">OCHKO: <span id=\"score\">00000</span></div>"
+      },
+      {
+        "title": "3. game.js skriptini ulash",
+        "desc": "HTML fayl oxirida JavaScript faylini ulovchi tegni yozing.",
+        "codeSnippet": "<script src=\"game.js\"><\\/script>"
       }
-    };
+    ],
+    "hintLogic": "💡 1-Qadam Mantiq: HTML faylingizda <canvas id='gameCanvas' width='800' height='250'></canvas> tegi o'yin maydoni bo'lib xizmat qiladi. Ochko uchun esa <span id='score'>00000</span> qo'yiladi.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>&lt;div class=\"score-board\"&gt;OCHKO: &lt;span id=\"score\"&gt;00000&lt;/span&gt;&lt;/div&gt;\n&lt;canvas id=\"gameCanvas\" width=\"800\" height=\"250\"&gt;&lt;/canvas&gt;\n&lt;script src=\"game.js\"&gt;&lt;/script&gt;</pre>",
+    "hintScaffolding": "<!DOCTYPE html>\n<html lang=\"uz\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Dino Game</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <!-- 1-Talab: Ochko doskasi -->\n  <div class=\"score-board\">OCHKO: <span id=\"score\">00000</span></div>\n\n  <!-- 2-Talab: O'yin matosi (800x250 ichki o'lcham) -->\n  <canvas id=\"gameCanvas\" width=\"800\" height=\"250\"></canvas>\n\n  <!-- 3-Talab: JavaScript mantiq faylini ulash -->\n  <script src=\"game.js\"><\\/script>\n</body>\n</html>",
+    "starterCode": "<!-- 1-Qadam: HTML Sahnasi va Canvas Matosi (index.html) -->\n<!DOCTYPE html>\n<html lang=\"uz\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Chrome Dino Game</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <!-- 1-Topshiriq: score id'li ochko doskasini, gameCanvas id'li canvasni (width=\"800\" height=\"250\") va game.js skriptini yozing -->\n\n</body>\n</html>",
+    "modelCode": "<!DOCTYPE html>\n<html lang=\"uz\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Chrome Dino Game</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"score-board\">OCHKO: <span id=\"score\">00000</span></div>\n  <canvas id=\"gameCanvas\" width=\"800\" height=\"250\"></canvas>\n  <script src=\"game.js\"><\\/script>\n</body>\n</html>",
+    "quiz": {
+      "question": "Nima uchun <canvas width='800' height='250'> o'lchami CSS'da emas, bevosita HTML atributi sifatida berilishi kerak?",
+      "options": [
+        {
+          "text": "CSS'da berilsa, brauzer rasmni optik cho'zib, piksellarni xiralashtirib (blur) yuboradi; HTML atributi esa haqiqiy chizish piksellarini belgilaydi.",
+          "correct": true
+        },
+        {
+          "text": "Chunki CSS canvas tegini umuman tanimaydi va ishlamaydi.",
+          "correct": false
+        },
+        {
+          "text": "Faqat dizayn chiroyli ko'rinishi uchun shunday qilinadi.",
+          "correct": false
+        }
+      ],
+      "explanation": "Aynan shunday! Canvas o'lchami HTML atributida berilganda brauzer uning haqiqiy ichki koordinatalari to'rini (800x250) yaratadi. CSS'da berilsa, u shunchaki kattalashtiruvchi oyna kabi cho'zilib piksellar buziladi."
+    }
+  },
+  "2": {
+    "num": 2,
+    "title": "CSS Maketi: Retro Arkada Dizayni va Markazlashtirish (style.css)",
+    "concept": "HTML suyaklarni yaratdi, ammo hozir o'yin ekranning chap tepasida oq fonda xunuk turibdi! CSS yordamida biz butun sahifani qorong'i arkada zaliga aylantiramiz (#0b0f19), canvasni ekranning qoq o'rtasiga joylaymiz va ochko yozuvini retro pikselli monospace shriftiga o'tkazamiz.",
+    "analogy": "💡 Hayotiy O'xshatish: CSS — bu binoning bo'yog'i, pardalari, chiroqlari va dizayni! U bo'lmasa, eng qimmat bino ham beton g'ishtlar uyumi bo'lib ko'rinadi.",
+    "algorithm": [
+      {
+        "title": "1. body markazlashtirish",
+        "desc": "display: flex; flex-direction: column; align-items: center; orqali o'yinni ekran markaziga tekislash."
+      },
+      {
+        "title": "2. Qorong'i arkada foni",
+        "desc": "background: #0b0f19; color: #ffffff; bilan qorong'i atmosferani berish."
+      },
+      {
+        "title": "3. Canvas ramkasi va chuqurligi",
+        "desc": "canvas maydoniga qorong'i fon (#0f172a) va neon chegarasi (border: 2px solid #1e293b)."
+      },
+      {
+        "title": "4. Monospace ochko doskasi",
+        "desc": ".score-board uchun font-family: monospace; shriftini o'rnatish."
+      }
+    ],
+    "taskTitle": "2-Topshiriq: 'style.css' faylida body, canvas va .score-board uchun arkada dizaynini yozing",
+    "taskInstruction": "O'yinni markazlashtiruvchi body, qorong'i ramkali canvas va monospace shriftli .score-board qoidalarini yozing:",
+    "criteria": [
+      {
+        "title": "1. body markazlashtirish va qorong'i fon",
+        "desc": "display: flex; align-items: center; va background: #0b0f19; bering.",
+        "codeSnippet": "body { display: flex; flex-direction: column; align-items: center; background: #0b0f19; }"
+      },
+      {
+        "title": "2. canvas arkada ramkasi",
+        "desc": "border: 2px solid #1e293b; va fon rangi qo'ying.",
+        "codeSnippet": "canvas { background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; }"
+      },
+      {
+        "title": "3. .score-board monospace shrifti",
+        "desc": "Ochko sakramasligi uchun monospace shriftini tanlang.",
+        "codeSnippet": ".score-board { font-family: monospace; font-size: 20px; }"
+      }
+    ],
+    "hintLogic": "💡 2-Qadam Mantiq: body ga flexbox berib markazlashtiring, canvas ga border va qorong'i fon qo'ying, .score-board ga esa monospace shrift bering.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background: #0b0f19;\n}\ncanvas {\n  background: #0f172a;\n  border: 2px solid #1e293b;\n}\n.score-board {\n  font-family: monospace;\n}</pre>",
+    "hintScaffolding": "/* 1-Talab: Butun sahna va body markazlashtirish */\nbody {\n  margin: 0;\n  padding: 30px;\n  background: #0b0f19;\n  color: #ffffff;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n/* 2-Talab: Ochko doskasi shrifti */\n.score-board {\n  font-family: monospace;\n  font-size: 20px;\n  color: #38bdf8;\n  margin-bottom: 12px;\n}\n\n/* 3-Talab: Canvas o'yin maydoni ramkasi */\ncanvas {\n  background: #0f172a;\n  border: 2px solid #1e293b;\n  border-radius: 12px;\n}",
+    "starterCode": "/* 2-Qadam: CSS Retro Arkada Maketi (style.css) */\n/* 1-Topshiriq: body markazlashtirish va qorong'i fon (#0b0f19) */\nbody {\n\n}\n\n/* 2-Topshiriq: .score-board uchun monospace shrift */\n.score-board {\n\n}\n\n/* 3-Topshiriq: canvas uchun qorong'i fon (#0f172a) va ramka (border: 2px solid #1e293b) */\ncanvas {\n\n}",
+    "modelCode": "body {\n  margin: 0;\n  padding: 30px;\n  background: #0b0f19;\n  color: #ffffff;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.score-board {\n  font-family: monospace;\n  font-size: 20px;\n  color: #38bdf8;\n  margin-bottom: 12px;\n}\n\ncanvas {\n  background: #0f172a;\n  border: 2px solid #1e293b;\n  border-radius: 12px;\n}",
+    "quiz": {
+      "question": "Nima uchun o'yin ochkosi (.score-board) uchun monospace shrifti ishlatiladi?",
+      "options": [
+        {
+          "text": "Monospace shriftda har bir raqam (0, 1, 8) teng kenglikka ega bo'lib, ochko tez o'sganda matn chapga-o'ngga sakramaydi.",
+          "correct": true
+        },
+        {
+          "text": "Chunki boshqa shriftlar raqamlarni ko'rsata olmaydi.",
+          "correct": false
+        },
+        {
+          "text": "Faqat shrift nomi yoqqanligi uchun.",
+          "correct": false
+        }
+      ],
+      "explanation": "Barakalla! Monospace (teng kenglikli) shriftlarda 1 raqami ham, 8 raqami ham bir xil kenglikda joy oladi. Natijada ochko hisoblagich raqamlari o'zgarganda matn qaltiramaydi va sakramaydi."
+    }
+  },
+  "3": {
+    "num": 3,
+    "title": "Bo'sh Class (Skelet & new Dino())",
+    "concept": "Web dasturlashda personaj shunchaki havoda paydo bo'lmaydi! Avval HTML'da uning uyi va qutisi belgilanadi: <div id='dino'></div>. Keyin CSS orqali unga fizik shakl, eni va bo'yi beriladi. JavaScript'dagi 'class Dino' esa shu qutining miyasi hisoblanadi. Shunchaki JS klassida o'zgaruvchi e'lon qilish bilan ekranda quti paydo bo'lib qolmaydi — uning HTML va CSS poydevori bo'lishi shart!",
+    "analogy": "💡 Hayotiy O'xshatish: HTML — bu mashinaning bo'sh korpusi, CSS — uning rangi, g'ildiraklari va o'lchamlari, JavaScript 'class Dino' esa dvigatel va haydovchi!",
+    "algorithm": [
+      {
+        "title": "1. HTML Div: <div id='dino'></div>",
+        "desc": "Sahifada dinozavr tanasi joylashadigan bo'sh quti (konteyner) yaratish."
+      },
+      {
+        "title": "2. CSS Shakli: width: 44px, height: 48px",
+        "desc": "#dino qutisiga aniq shakl: width: 44px; height: 48px; background: #10b981; border-radius: 6px;"
+      },
+      {
+        "title": "3. 'class Dino' sinf qolipi",
+        "desc": "Ushbu qutini boshqarish va xususiyatlarini jamlash uchun JS sinf skeletini e'lon qilish."
+      },
+      {
+        "title": "4. const dino = new Dino()",
+        "desc": "Qolip asosida xotiradan ilk tirik dinozavr nusxasini faollashtirish."
+      }
+    ],
+    "taskTitle": "3-Topshiriq: 'Dino' sinfini va 'dino' nusxasini yarating",
+    "taskInstruction": "JavaScript'da o'yin personajining qolipini yaratish uchun 'class Dino' e'lon qiling va undan 'new Dino()' nusxasini oling:",
+    "criteria": [
+      {
+        "title": "1. Sinf qolipini e'lon qilish",
+        "desc": "'class' kalit so'zi va jingalak qavslar yordamida 'Dino' nomli bo'sh sinf yarating.",
+        "codeSnippet": "class Dino { }"
+      },
+      {
+        "title": "2. Ilk tirik obyektni xotirada faollashtirish",
+        "desc": "'new' operatoridan foydalanib, sinf asosida yangi 'dino' nusxasini o'zgaruvchiga biriktiring.",
+        "codeSnippet": "const dino = new Dino();"
+      }
+    ],
+    "hintLogic": "💡 1-Qadam Mantiq: Sinf e'lon qilish uchun 'class' kalit so'zi va uning nomini yozib, jingalak qavslarni oching. Obyekt olish uchun esa 'new Dino()' operatoridan foydalanib o'zgaruvchiga tenglang.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>class SinfNomi {\n  // qolip tanasi\n}\n\nconst obyektNomi = new SinfNomi();</pre>",
+    "hintScaffolding": "// 1-Qadam toza andozasi:\n// 1-Talab: 'Dino' nomli sinf qolipini e'lon qilamiz\nclass Dino {\n  // Skelet qolip (ichki parametrlar 2-qadamda qo'shiladi)\n}\n\n// 2-Talab: Qolip asosida ilk tirik 'dino' obyektini xotiradan yaratamiz\nconst dino = new Dino();",
+    "quiz": {
+      "question": "Nega faqat JavaScript'da 'class Dino' yozish bilan ekranda birdaniga tayyor quti chiqib qolmaydi?",
+      "options": [
+        {
+          "text": "A) Chunki JavaScript faqat mantiq va harakatni boshqaradi! Ekranda quti paydo bo'lishi uchun HTML'da <div> e'lon qilinishi va CSS'da unga eni (width), bo'yi (height) va rangi berilishi kerak. JS klassi esa shu qutini boshqaradi!",
+          "correct": true,
+          "feedback": "🎉 Mantiqni to'g'ri tushundingiz! Endi pastdagi Kod Muharririda 'class Dino' va 'new Dino()' kodini o'z qo'lingiz bilan yozing va 'Kodni Ishga Tushirish' tugmasini bosing."
+        },
+        {
+          "text": "B) 'class' so'zi yozilmasa o'yinda ranglar ko'rinmay qoladi.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Ranglar CSS buyruqlariga bog'liq. Class esa ma'lumotlar va harakat tuzilmasini yaratadi."
+        },
+        {
+          "text": "C) Brauzer faqat 'class' so'zini taniydi, boshqa kodlarni tushunmaydi.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: JavaScript juda ko'p tushunchalarni biladi, lekin OOP uchun class eng zamonaviy usuldir."
+        }
+      ]
+    },
+    "starterCode": "// 3-Qadam: 'class Dino' va 'new Dino()'\n// 1-Topshiriq: 'Dino' nomli bo'sh sinf qolipini e'lon qiling\n\n\n// 2-Topshiriq: 'new Dino()' orqali birinchi dinozavr obyektini o'zgaruvchiga tenglang\n",
+    "modelCode": "// 1-Qadam toza andozasi:\nclass Dino {\n  // Skelet qolip\n}\n\nconst dino = new Dino();"
+  },
+  "4": {
+    "num": 4,
+    "title": "O'lchamlar, Hitbox & 'this' Xotira Mantiqi",
+    "concept": "Nega 'constructor()' ichida aynan 'this.width = 44' va 'this.height = 48' deb yozamiz? Chunki bu sonlar havodan olingan emas! Ular CSS'dagi '#dino { width: 44px; height: 48px; }' qutisining aniq fizik o'lchamlariga 1:1 mos keladi. JavaScript'da 'px' yozilmaydi, lekin bu sonlar xuddi o'sha CSS qutisining hitbox chegarasini ifodalaydi. Shunchaki konstruktorda o'zgaruvchi e'lon qilish bilan ekranda quti chiqmaydi — JS o'lchamlari CSS qutisi bilan qat'iy bog'langan!",
+    "analogy": "💡 Hayotiy O'xshatish: Kostyum tikishda santimetr bilan o'lchab olinadi. CSS qutining haqiqiy matosi bo'lsa, 'this.width = 44' — bu uning xotiradagi aniq o'lchov yorlig'idir!",
+    "algorithm": [
+      {
+        "title": "1. CSS Eni va Bo'yini JS'ga ko'chirish",
+        "desc": "CSS'da 'width: 44px; height: 48px;' bo'lsa, JS konstruktorda 'this.width = 44; this.height = 48;' (px yozilmaydi!)"
+      },
+      {
+        "title": "2. CSS Joylashuvini Xotiraga Olish",
+        "desc": "CSS'da 'left: 60px; bottom: 0px;' bo'lsa, JS'da 'this.x = 60; this.y = 0;'"
+      },
+      {
+        "title": "3. 'this' ko'rsatkichi",
+        "desc": "'this' aynan shu obyektdir. Oddiy 'let width' yo'qolib ketadi, lekin 'this.width' abadiy qoladi."
+      },
+      {
+        "title": "4. Mantiqiy harakat bayroqlari",
+        "desc": "isJumping: false (hali sakramayapti), isDucking: false (hali egilmagan)."
+      }
+    ],
+    "taskTitle": "4-Topshiriq: 'constructor()' ichida o'lchamlar va 'this' xususiyatlarini yozing",
+    "taskInstruction": "Dinozavrning o'lchamlari va holatlarini xotiraga mixlash uchun constructor() ichida this.width = 44, this.height = 48, this.x = 60, this.y = 0, this.isJumping = false, this.isDucking = false qiymatlarini belgilang:",
+    "criteria": [
+      {
+        "title": "1. Fazoviy o'lchamlar (width va height)",
+        "desc": "Dinozavrning tik turgandagi eni 44px va bo'yi 48px ekanini belgilang (JavaScript'da 'px' yozilmaydi, faqat oddiy son!).",
+        "codeSnippet": "this.width = 44; this.height = 48;"
+      },
+      {
+        "title": "2. Koordinatalar (x va y)",
+        "desc": "Chap tomondan masofasini x = 60 va oyoqlari yer sathida turishi uchun balandligini y = 0 qilib o'rnating.",
+        "codeSnippet": "this.x = 60; this.y = 0;"
+      },
+      {
+        "title": "3. Harakat holati bayroqlari (isJumping va isDucking)",
+        "desc": "Boshlang'ich holatda dinozavr hali sakramagan va egilmagan bo'lishi uchun ikkalasini ham false qiling.",
+        "codeSnippet": "this.isJumping = false; this.isDucking = false;"
+      }
+    ],
+    "hintLogic": "💡 2-Qadam Mantiq: Sinf ichida obyekt o'zgaruvchilari oddiy 'let' bilan emas, balki 'this' bilan yaratiladi. 'constructor()' metodi ochiladi va uning ichida 'this.parametrNomi = qiymat;' ko'rinishida yoziladi.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>constructor() {\n  this.width = 44;\n  this.height = 48;\n  this.x = 60;\n  this.y = 0;\n  this.isJumping = false;\n  this.isDucking = false;\n}</pre>",
+    "hintScaffolding": "// 2-Qadam andozasi va har bir qatorning fizik ma'nosi:\nclass Dino {\n  constructor() {\n    // 1-Talab: Fazoviy o'lchamlar (CSS qutisiga mos)\n    this.width = 44;        // Dinozavr eni (44px)\n    this.height = 48;       // Tik turgandagi bo'yi (48px)\n\n    // 2-Talab: Joylashuv koordinatalari\n    this.x = 60;            // Ekrandagi X koordinatasi (chapdan 60px)\n    this.y = 0;             // Vertikal balandligi (0 = oyoqlari yerda)\n\n    // 3-Talab: Mantiqiy harakat bayroqlari\n    this.isJumping = false; // Boshlang'ich sakrash holati\n    this.isDucking = false; // Boshlang'ich egilish holati\n  }\n}\n\nconst dino = new Dino();",
+    "quiz": {
+      "question": "Nega personaj xususiyatlari (width, height, x, y) 'constructor()' ichida CSS qutisi o'lchamlari bilan bir xil yoziladi?",
+      "options": [
+        {
+          "text": "A) Chunki 'constructor()' obyekt yaratilganda avtomatik ishga tushadi va CSS qutisining aniq fizik o'lchamlarini (44x48px) xotirada hitbox sifatida saqlaydi!",
+          "correct": true,
+          "feedback": "🎉 Aynan to'g'ri! Endi muharrirda 'constructor()' yaratib, 'width', 'height', 'x', 'y', 'isJumping' va 'isDucking' ni yozing."
+        },
+        {
+          "text": "B) Faqatgina CSS faylni almashtirish uchun.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Bu parametrlar JavaScript xotirasidagi o'yin fizikasi uchun zarur."
+        },
+        {
+          "text": "C) Math.random() bilan har gal har xil o'lcham berish uchun.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Boshlang'ich o'lchamlar doimiy bo'lishi shart."
+        }
+      ]
+    },
+    "starterCode": "// 4-Qadam: 'constructor()' va 'this' xususiyatlari\nclass Dino {\n  // Topshiriq: constructor() ichida x, y, width, height, isJumping, isDucking xususiyatlarini yozing\n\n}\n\nconst dino = new Dino();",
+    "modelCode": "// 2-Qadam toza andozasi:\nclass Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n}\n\nconst dino = new Dino();"
+  },
+  "5": {
+    "num": 5,
+    "title": "Boshqaruv: Sakrash (Jump) va Egilish (Duck)",
+    "concept": "Dinozavr nafaqat sakrashi, balki tepadan uchib kelayotgan qushlar (Pterodaktillar) tagidan o'tish uchun EGILISHI (duck) ham shart! Egilganda uning bo'yi 48px dan 26px ga tushadi va eni 55px ga cho'ziladi.",
+    "analogy": "💡 Sensor Mantiqi: Klaviaturadagi tugma pult kabi ishlaydi. 'keydown' tugma bosilganini tutadi, 'keyup' esa tugma qo'yib yuborilganda dinozavrni yana qad rostlatadi!",
+    "algorithm": [
+      {
+        "title": "jump() metodi",
+        "desc": "Havoda qayta sakramaslik uchun: agar yerda bo'lsa (y === 0), sakramayotgan va egilmagan bo'lsa 'this.isJumping = true;' qiladi."
+      },
+      {
+        "title": "duck() metodi (Egilish)",
+        "desc": "Yerda bo'lganda 'this.isDucking = true', 'this.height = 26' va 'this.width = 55' ga o'zgartiradi."
+      },
+      {
+        "title": "standUp() metodi (Qad rostlash)",
+        "desc": "Tugma qo'yilganda: 'this.isDucking = false', 'this.height = 48' va 'this.width = 44' ga qaytaradi."
+      },
+      {
+        "title": "Hodisalarni tinglash (EventListeners)",
+        "desc": "'keydown' (Space / ArrowUp → jump(), ArrowDown → duck()) va 'keyup' (ArrowDown → standUp())."
+      }
+    ],
+    "taskTitle": "5-Topshiriq: 'jump()', 'duck()', 'standUp()' metodlari va hodisalarni yozing",
+    "taskInstruction": "Dinozavr to'siqlardan qochishi uchun harakat metodlarini yozing va klaviatura hodisalariga ulang:",
+    "criteria": [
+      {
+        "title": "1. jump() metodi (Sakrash)",
+        "desc": "Dinozavr faqat yerda (this.y === 0), sakramayotgan (!this.isJumping) va egilmagan (!this.isDucking) paytda sakraydi: shart to'g'ri bo'lsa 'this.isJumping = true;' bo'lsin.",
+        "codeSnippet": "if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;"
+      },
+      {
+        "title": "2. duck() metodi (Egilish)",
+        "desc": "Faqat yerda (this.y === 0 && !this.isJumping) egila oladi: 'this.isDucking = true;', bo'yini 26 ga ('this.height = 26;') va enini 55 ga ('this.width = 55;') o'zgartiring.",
+        "codeSnippet": "this.isDucking = true; this.height = 26; this.width = 55;"
+      },
+      {
+        "title": "3. standUp() metodi (Qad rostlash)",
+        "desc": "Egilish tugmasi qo'yib yuborilganda dinozavr tik holatga qaytishi shart: 'this.isDucking = false;', bo'yini 48 ga ('this.height = 48;') va enini 44 ga ('this.width = 44;') tiklang.",
+        "codeSnippet": "this.isDucking = false; this.height = 48; this.width = 44;"
+      },
+      {
+        "title": "4. Klaviatura hodisalari (window.addEventListener)",
+        "desc": "'keydown' hodisasida: Space yoki ArrowUp bosilsa dino.jump(), ArrowDown bosilsa dino.duck(); 'keyup' hodisasida: ArrowDown qo'yib yuborilsa dino.standUp() chaqiring.",
+        "codeSnippet": "window.addEventListener('keydown', ...); window.addEventListener('keyup', ...);"
+      }
+    ],
+    "hintLogic": "💡 3-Qadam Mantiq: Sinf ichida metodlar 'function' so'zisiz yoziladi: 'jump() { ... }'. 'jump' faqat dinozavr yerda turgandagina sakrashi kerak. 'duck' dinozavrni pastroq (height: 26) va cho'ziqroq (width: 55) qiladi, 'standUp' esa asl o'lchamga (height: 48, width: 44) qaytaradi.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>jump() {\n  if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true;\n}\nduck() {\n  if (this.y === 0 && !this.isJumping) { this.isDucking = true; this.height = 26; this.width = 55; }\n}\nstandUp() {\n  this.isDucking = false; this.height = 48; this.width = 44;\n}</pre>",
+    "hintScaffolding": "// 3-Qadam toza andozasi (Barcha 4 ta talab bo'yicha):\nclass Dino {\n  constructor() {\n    this.width = 44; this.height = 48;\n    this.x = 60; this.y = 0;\n    this.isJumping = false; this.isDucking = false;\n  }\n\n  // 1-Talab: Sakrash - havoda qayta sakramasligi uchun faqat yerda va egilmaganda ishlaydi\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) {\n      this.isJumping = true;\n    }\n  }\n\n  // 2-Talab: Egilish - yerda bo'lsa bo'yi 26px ga tushadi, eni 55px ga cho'ziladi\n  duck() {\n    if (this.y === 0 && !this.isJumping) {\n      this.isDucking = true;\n      this.height = 26;\n      this.width = 55;\n    }\n  }\n\n  // 3-Talab: Qad rostlash - tugma qo'yilganda asl o'lchamga qaytadi\n  standUp() {\n    this.isDucking = false;\n    this.height = 48;\n    this.width = 44;\n  }\n}\n\nconst dino = new Dino();\n\n// 4-Talab: Klaviaturadagi tugmalarni tinglash:\nwindow.addEventListener('keydown', (e) => {\n  if (e.code === 'Space' || e.code === 'ArrowUp') {\n    dino.jump();\n  }\n  if (e.code === 'ArrowDown') {\n    dino.duck();\n  }\n});\n\nwindow.addEventListener('keyup', (e) => {\n  if (e.code === 'ArrowDown') {\n    dino.standUp();\n  }\n});",
+    "quiz": {
+      "question": "Nega dinozavr egilganda (duck) uning 'height' parametri 48px dan 26px ga kamaytiriladi?",
+      "options": [
+        {
+          "text": "A) Chunki havoda uchib kelayotgan qush uning ustidan tegmasdan o'tib ketishi uchun hitbox kichrayishi kerak!",
+          "correct": true,
+          "feedback": "🎉 Aynan shunday! Endi muharrirda 'jump()', 'duck()', 'standUp()' va tinglovchilarni o'z qo'lingiz bilan yozing."
+        },
+        {
+          "text": "B) Dinozavr yer ostiga kirib ketishi uchun.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Dinozavr yerda yugurishda davom etadi, faqat bo'yi pastayadi."
+        },
+        {
+          "text": "C) Faqatgina ekranda qora rang paydo bo'lishi uchun.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Bu mexanika to'siqlardan qochish uchun xizmat qiladi."
+        }
+      ]
+    },
+    "starterCode": "// 5-Qadam: jump(), duck(), standUp() va klaviatura hodisalari\nclass Dino {\n  constructor() {\n    this.x = 60;\n    this.y = 0;\n    this.width = 44;\n    this.height = 48;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n\n  // 1-Topshiriq: jump() metodini yozing (faqat y === 0 va sakramayotgan bo'lsa)\n\n  // 2-Topshiriq: duck() metodini yozing (isDucking = true, height = 26, width = 55)\n\n  // 3-Topshiriq: standUp() metodini yozing (isDucking = false, height = 48, width = 44)\n\n}\n\nconst dino = new Dino();\n\n// 4-Topshiriq: window ga 'keydown' (Space, ArrowDown) va 'keyup' (ArrowDown) hodisalarini ulang\n",
+    "modelCode": "// 3-Qadam toza andozasi:\nclass Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n  }\n\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) {\n      this.isJumping = true;\n    }\n  }\n\n  duck() {\n    if (this.y === 0 && !this.isJumping) {\n      this.isDucking = true;\n      this.height = 26;\n      this.width = 55;\n    }\n  }\n\n  standUp() {\n    this.isDucking = false;\n    this.height = 48;\n    this.width = 44;\n  }\n}\n\nconst dino = new Dino();\n\nwindow.addEventListener('keydown', (e) => {\n  if (e.code === 'Space' || e.code === 'ArrowUp') dino.jump();\n  if (e.code === 'ArrowDown') dino.duck();\n});\n\nwindow.addEventListener('keyup', (e) => {\n  if (e.code === 'ArrowDown') dino.standUp();\n});"
+  },
+  "6": {
+    "num": 6,
+    "title": "Fizika & Gravitatsiya ('update()' metodi)",
+    "concept": "Dasturlashda personaj shunchaki tepaga sakrab qotib qolmaydi. O'yin har bir kadrda (60 FPS) uning balandligini yangilab turishi va gravitatsiya kuchi uni asta-sekin yerga qaytarib tushirishi kerak!",
+    "analogy": "💡 Fizika Qonuni: To'pni osmonga otsangiz, dastlab tez uchadi, eng tepada to'xtaydi va tortish kuchi tufayli pastga tezlashib tushadi. Bizning formulamiz aynan shu tabiat qonunini takrorlaydi!",
+    "algorithm": [
+      {
+        "title": "this.velocityY = 0",
+        "desc": "Hozirgi vertikal tezlik. Sakraganda oshadi, tushganda manfiy bo'ladi."
+      },
+      {
+        "title": "this.jumpForce = 12",
+        "desc": "Dastlabki yuqoriga turtki (impuls). Sekundiga 60 kadrda 12px yuqoriga intilish."
+      },
+      {
+        "title": "this.gravity = 0.6",
+        "desc": "Tortish kuchi. Har kadrda tezlikdan 0.6 ayirilib boriladi."
+      },
+      {
+        "title": "jump() ichida: this.velocityY = this.jumpForce",
+        "desc": "Sakrash buyrug'i berilganda vertikal tezlikka 12 qiymati yuklanadi."
+      },
+      {
+        "title": "update() fizika hisob-kitobi",
+        "desc": "Har kadrda: this.y += this.velocityY; this.velocityY -= this.gravity; Agar y <= 0 bo'lsa: y=0, isJumping=false, velocityY=0."
+      }
+    ],
+    "taskTitle": "6-Topshiriq: 'update()' metodi va gravitatsiya fizikasini yozing",
+    "taskInstruction": "Dinozavr parabolik egri chiziq bo'yicha sakrab qaytib tushishi uchun har kadrda (60 FPS) ishlovchi fizikani yozing:",
+    "criteria": [
+      {
+        "title": "1. Fizik parametrlarni konstruktorga qo'shish",
+        "desc": "Konstruktor ichida: 'this.velocityY = 0;' (hozirgi tezlik), 'this.jumpForce = 12;' (sakrash kuchi) va 'this.gravity = 0.6;' (tortish kuchi) deb belgilang.",
+        "codeSnippet": "this.velocityY = 0; this.jumpForce = 12; this.gravity = 0.6;"
+      },
+      {
+        "title": "2. jump() metodida boshlang'ich tezlikni yuklash",
+        "desc": "'jump()' ichida sakrash boshlanganda: 'this.velocityY = this.jumpForce;' va 'this.isJumping = true;' bering.",
+        "codeSnippet": "this.velocityY = this.jumpForce; this.isJumping = true;"
+      },
+      {
+        "title": "3. Har kadrda ishlovchi update() metodini yozish",
+        "desc": "Agar havoda bo'lsa ('if (this.isJumping)'): balandlikni oshiring 'this.y += this.velocityY;', tezlikdan tortish kuchini ayiring 'this.velocityY -= this.gravity;'. Agar yerga yetib borsa ('this.y <= 0'): 'this.y = 0; this.isJumping = false; this.velocityY = 0;' qiling.",
+        "codeSnippet": "this.y += this.velocityY; this.velocityY -= this.gravity;"
+      }
+    ],
+    "hintLogic": "💡 4-Qadam Mantiq: Vertikal harakat har kadrda yangilanadi. 'this.y' ga 'this.velocityY' qo'shiladi, 'this.velocityY' dan esa 'this.gravity' ayirib boriladi. Agar 'this.y <= 0' bo'lib yerga tushsa, uni 0 ga qaytaramiz.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>update() {\n  if (this.isJumping) {\n    this.y += this.velocityY;\n    this.velocityY -= this.gravity;\n    if (this.y <= 0) {\n      this.y = 0;\n      this.isJumping = false;\n      this.velocityY = 0;\n    }\n  }\n}</pre>",
+    "hintScaffolding": "// 4-Qadam toza andozasi:\nclass Dino {\n  constructor() {\n    this.width = 44; this.height = 48;\n    this.x = 60; this.y = 0;\n    this.isJumping = false; this.isDucking = false;\n    // 1-Talab: Fizik kuchlar\n    this.velocityY = 0;\n    this.jumpForce = 12;\n    this.gravity = 0.6;\n  }\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) {\n      // 2-Talab: Sakrash impulsi\n      this.isJumping = true;\n      this.velocityY = this.jumpForce;\n    }\n  }\n  duck() {\n    if (this.y === 0 && !this.isJumping) {\n      this.isDucking = true; this.height = 26; this.width = 55;\n    }\n  }\n  standUp() {\n    this.isDucking = false; this.height = 48; this.width = 44;\n  }\n  // 3-Talab: Har kadrda fizika hisoblash\n  update() {\n    if (this.isJumping) {\n      this.y += this.velocityY;\n      this.velocityY -= this.gravity;\n      if (this.y <= 0) {\n        this.y = 0;\n        this.isJumping = false;\n        this.velocityY = 0;\n      }\n    }\n  }\n}",
+    "quiz": {
+      "question": "Gravitatsiya (0.6) har kadrda tezlikdan ayirilsa, nima uchun dinozavr osmonga uchib ketmay, mayin yerga qaytib tushadi?",
+      "options": [
+        {
+          "text": "A) Chunki har kadrda tezlik 0.6 ga kamayib, eng yuqorida 0 bo'ladi, keyin esa manfiyga aylanib dinozavrni pastga tezlashtirib yerga tortadi!",
+          "correct": true,
+          "feedback": "🎉 Mukammal! Bu haqiqiy o'yin fizikasining yuragi! Endi 'jumpForce', 'gravity' va 'update()' ni muharrirda o'zingiz yozing."
+        },
+        {
+          "text": "B) Dinozavr havoda charchagani uchun to'xtaydi.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Kompyuterda o'z-o'zidan harakat bo'lmaydi, harakatni biz formula bilan hisoblaymiz."
+        },
+        {
+          "text": "C) Brauzer faqat 2 soniya sakrashga ruxsat beradi.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Bu vaqtga emas, matematik tezlik va gravitatsiyaga bog'liq."
+        }
+      ]
+    },
+    "starterCode": "class Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n    // 1-Talab: this.velocityY = 0; this.jumpForce = 12; this.gravity = 0.6; parametrlarini bering:\n    \n  }\n\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) {\n      this.isJumping = true;\n      // 2-Talab: this.velocityY = this.jumpForce sakrash impulsini yuklang:\n      \n    }\n  }\n\n  duck() {\n    if (this.y === 0 && !this.isJumping) {\n      this.isDucking = true;\n      this.height = 26;\n      this.width = 55;\n    }\n  }\n\n  standUp() {\n    this.isDucking = false;\n    this.height = 48;\n    this.width = 44;\n  }\n\n  // 3-Talab: Har kadrda ishlovchi update() metodini yozing:\n  // if (this.isJumping) { this.y += this.velocityY; this.velocityY -= this.gravity; ... }\n  \n}\n\nconst dino = new Dino();\n",
+    "modelCode": "// 4-Qadam toza andozasi:\nclass Dino {\n  constructor() {\n    this.width = 44;\n    this.height = 48;\n    this.x = 60;\n    this.y = 0;\n    this.isJumping = false;\n    this.isDucking = false;\n    this.velocityY = 0;\n    this.jumpForce = 12;\n    this.gravity = 0.6;\n  }\n\n  jump() {\n    if (!this.isJumping && !this.isDucking && this.y === 0) {\n      this.isJumping = true;\n      this.velocityY = this.jumpForce;\n    }\n  }\n\n  duck() {\n    if (this.y === 0 && !this.isJumping) {\n      this.isDucking = true;\n      this.height = 26;\n      this.width = 55;\n    }\n  }\n\n  standUp() {\n    this.isDucking = false;\n    this.height = 48;\n    this.width = 44;\n  }\n\n  update() {\n    if (this.isJumping) {\n      this.y += this.velocityY;\n      this.velocityY -= this.gravity;\n      if (this.y <= 0) {\n        this.y = 0;\n        this.isJumping = false;\n        this.velocityY = 0;\n      }\n    }\n  }\n}"
+  },
+  "7": {
+    "num": 7,
+    "title": "Kaktus, Qush & To'liq O'yin (AABB To'qnashuvi)",
+    "concept": "Yakuniy bosqich! O'yinga 3 xil kaktus (yakka, katta, 3 talik to'da) va havoda uchuvchi Pterodaktillar qo'shiladi. Kaktuslar ustidan SAKRASH, qushlar tagidan esa EGILISH kerak! Har 100 ochkoda Tungi osmon almashadi. To'qnashuv AABB algoritmi orqali hisoblanadi.",
+    "analogy": "💡 AABB To'qnashuv Qoidasi: Agar dinozavrning o'ng tomoni to'siqning chap tomonidan o'tsa VA chap tomoni to'siqning o'ngidan orqada bo'lsa VA vertikal chegaralari kesishsa — to'qnashuv yuz berdi!",
+    "algorithm": [
+      {
+        "title": "To'siqlar xilma-xilligi",
+        "desc": "Kichik kaktus (20x36), Katta kaktus (26x50), 3 talik kaktus (58x44) va Uchar qush (36x28, havoda 38px balandlikda)."
+      },
+      {
+        "title": "checkCollision() formulasi (AABB)",
+        "desc": "dino.x < obs.x + obs.width && dino.x + dino.width > obs.x && dinoY + dino.height > obsY && dinoY < obsY + obs.height."
+      },
+      {
+        "title": "Tungi & Kunduzgi rejim",
+        "desc": "Score >= 100 bo'lganda osmon qorong'ilashadi va yulduzlar charaqlaydi."
+      },
+      {
+        "title": "requestAnimationFrame loop",
+        "desc": "Sekundiga 60 kadr chastotada dinozavr, qushlar, kaktuslar chiziladi va to'qnashuv tekshiriladi."
+      }
+    ],
+    "taskTitle": "7-Topshiriq: AABB to'qnashuvi va to'liq o'yinni yakunlang",
+    "taskInstruction": "Dinozavr va to'siq to'rtburchaklari kesishganini 4 ta geometrik chegara orqali aniqlovchi funksiyani yozing:",
+    "criteria": [
+      {
+        "title": "1. checkCollision funksiyasini e'lon qilish",
+        "desc": "8 ta parametr qabul qiluvchi funksiyani yozing: dinoX, dinoY, dinoW, dinoH hamda obsX, obsY, obsW, obsH.",
+        "codeSnippet": "function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH)"
+      },
+      {
+        "title": "2. 4 ta geometrik kesishish shartini qaytarish (return)",
+        "desc": "Gorizontal: dinoX < obsX + obsW && dinoX + dinoW > obsX; Vertikal: dinoY + dinoH > obsY && dinoY < obsY + obsH. Barchasi '&&' bilan bog'lanib bitta mantiqiy ifoda qaytariladi.",
+        "codeSnippet": "return (dinoX < obsX + obsW && dinoX + dinoW > obsX && dinoY + dinoH > obsY && dinoY < obsY + obsH);"
+      }
+    ],
+    "hintLogic": "💡 5-Qadam Mantiq: To'qnashuv bo'lishi uchun 4 ta geometrik shart bir vaqtda true bo'lishi kerak: dinoX < obsX + obsW va dinoX + dinoW > obsX va dinoY + dinoH > obsY va dinoY < obsY + obsH.",
+    "hintTemplate": "📐 Sintaksis qolipi:<br><pre style='color:#38bdf8;'>function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {\n  return (\n    dinoX < obsX + obsW &&\n    dinoX + dinoW > obsX &&\n    dinoY + dinoH > obsY &&\n    dinoY < obsY + obsH\n  );\n}</pre>",
+    "hintScaffolding": "// 5-Qadam toza andozasi (AABB To'qnashuvi):\n// 1 va 2-Talab: 8 ta parametr va 4 ta chegaraviy kesishish sharti\nfunction checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {\n  return (\n    dinoX < obsX + obsW &&\n    dinoX + dinoW > obsX &&\n    dinoY + dinoH > obsY &&\n    dinoY < obsY + obsH\n  );\n}",
+    "quiz": {
+      "question": "Nega qush kelganda sakrash o'rniga egilish (duck) kerak?",
+      "options": [
+        {
+          "text": "A) Chunki qush havoda uchadi; agar sakrasak unga urilamiz, lekin egilsak dinozavr bo'yi 26px ga tushib qush uning ustidan bemalol o'tib ketadi!",
+          "correct": true,
+          "feedback": "🎉 Aynan to'g'ri! Endi 'checkCollision' funksiyasini muharrirda yozing va to'liq o'yinni o'ng tarafdagi jonli brauzerda ishga tushiring!"
+        },
+        {
+          "text": "B) Qushlar faqat sakragan dinozavrlarni yaxshi ko'radi.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Bu geometrik balandlik hisobiga asoslangan."
+        },
+        {
+          "text": "C) Qushlar bilan gaplashish uchun.",
+          "correct": false,
+          "feedback": "❌ Noto'g'ri: Dinozavr to'qnashuvdan qochish uchun harakatlanadi."
+        }
+      ]
+    },
+    "starterCode": "// 5-Topshiriq: checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) funksiyasini yozing:\n// 1-Talab: 8 ta parametrni qabul qiluvchi funksiya e'lon qiling.\n// 2-Talab: 4 ta chegaraviy AABB shartini (dinoX < obsX + obsW && dinoX + dinoW > obsX && dinoY + dinoH > obsY && dinoY < obsY + obsH) return qiling.\n\n",
+    "modelCode": "// 5-Qadam toza andozasi:\nfunction checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {\n  return (\n    dinoX < obsX + obsW &&\n    dinoX + dinoW > obsX &&\n    dinoY + dinoH > obsY &&\n    dinoY < obsY + obsH\n  );\n}"
+  }
+};
 
     /* ==========================================================================
        3. INTERAKTIV O'QITISH STATE & BOSQICHLAR BOSHQARUVI
        ========================================================================== */
     let currentStep = 1;
     // BARCHA QADAMLAR BOSHLANISHDA MUTLAQO QULFLANGAN:
-    const unlockedSteps = { 1: false, 2: false, 3: false, 4: false, 5: false };
+    const unlockedSteps = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false };
 
     // KOD TEPASIDAGI TO'LIQ KODNI NUSXALASH TUGMASI (FAQAT BARCHA 5 TA BOSQICH QURILGANDA OCHILADI)
     function updateTopCompletedCopyButton() {
       const btn = document.getElementById('btn-copy-top-completed');
       if (!btn) return;
-      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5] && unlockedSteps[6] && unlockedSteps[7];
       btn.style.display = allBuilt ? 'inline-flex' : 'none';
     }
 
@@ -3496,15 +3316,15 @@ update() {
 
     function updateProgressUI() {
       let count = 0;
-      for (let s = 1; s <= 5; s++) {
+      for (let s = 1; s <= 7; s++) {
         if (unlockedSteps[s]) count++;
       }
-      const pct = (count / 5) * 100;
+      const pct = (count / 7) * 100;
       document.getElementById('progress-fill').style.width = pct + '%';
-      document.getElementById('progress-label').textContent = `O'zlashtirildi: ${count} / 5 (${Math.round(pct)}%)`;
+      document.getElementById('progress-label').textContent = `O'zlashtirildi: ${count} / 7 (${Math.round(pct)}%)`;
 
       // Step buttons lock/unlock - ONLY unlocked if previous step code is ACTUALLY passed
-      for (let s = 1; s <= 5; s++) {
+      for (let s = 1; s <= 7; s++) {
         const btn = document.getElementById('step-nav-' + s);
         const lockIcon = document.getElementById('lock-icon-' + s);
         
@@ -3559,6 +3379,13 @@ update() {
       currentStep = stepNum;
       updateProgressUI();
 
+      const langBadge = document.querySelector('.editor-lang-badge');
+      if (langBadge) {
+        if (stepNum === 1) langBadge.textContent = 'HTML5 (Skelet & Arena)';
+        else if (stepNum === 2) langBadge.textContent = 'CSS3 (Arcade Dizayn)';
+        else langBadge.textContent = 'JavaScript (ES6)';
+      }
+
       if (typeof setTrinityMode === 'function') {
         if (stepNum === 1 || stepNum === 2) setTrinityMode('stand');
         else if (stepNum === 3) setTrinityMode('duck');
@@ -3576,8 +3403,8 @@ update() {
       // 'this' Simulator: Faqat 2-bosqichda ko'rsatiladi
       const simBox = document.getElementById('this-simulator-box');
       if (simBox) {
-        simBox.style.display = (stepNum === 2) ? 'flex' : 'none';
-        if (stepNum === 2) {
+        simBox.style.display = (stepNum === 4) ? 'flex' : 'none';
+        if (stepNum === 4) {
           simStep(1); // Standart holatda 1-bosqichdan boshlaymiz
         }
       }
@@ -3732,7 +3559,7 @@ update() {
       if (!btn) return;
 
       if (unlockedSteps[currentStep]) {
-        if (currentStep < 5) {
+        if (currentStep < 7) {
           btn.disabled = false;
           btn.className = 'next-step-btn unlocked';
           if (icon) icon.textContent = '🚀';
@@ -3741,7 +3568,7 @@ update() {
           btn.disabled = true;
           btn.className = 'next-step-btn unlocked';
           if (icon) icon.textContent = '🏆';
-          if (text) text.textContent = "Barcha 5 ta Qadam Muvaffaqiyatli O'zlashtirildi!";
+          if (text) text.textContent = "Barcha 7 ta Qadam Muvaffaqiyatli O'zlashtirildi!";
         }
       } else {
         btn.disabled = true;
@@ -3752,7 +3579,7 @@ update() {
     }
 
     function goToNextStep() {
-      if (unlockedSteps[currentStep] && currentStep < 5) {
+      if (unlockedSteps[currentStep] && currentStep < 7) {
         switchStep(currentStep + 1);
         const target = document.getElementById('left-editor-panel');
         if (target) {
@@ -3843,7 +3670,10 @@ update() {
        4. QAT'IY MANTIQIY VA SINTAKSIK KOD VALIDATORI (STRICT EVALUATOR)
        ========================================================================== */
     function analyzeSyntaxAndStudentErrors(rawCode, currentStep) {
-      // 1. CSS o'lchov birliklari (48px, 26px, 12px, etc.)
+      // 1- va 2-bosqichlar HTML va CSS bo'lgani uchun JavaScript sintaksis tekshiruvlari o'tkazilmaydi:
+      if (currentStep <= 2) return null;
+
+      // 1. CSS o'lchov birliklari (48px, 26px, 12px, etc.) - JS ichida xato
       const pxMatch = rawCode.match(/\b(\d+)\s*(px|rem|em|pt|vh|vw)\b/i);
       if (pxMatch) {
         return {
@@ -3865,8 +3695,8 @@ update() {
         };
       }
 
-      // 3. 'this.' kalit so'zini tushirib qoldirish (2-4 qadamlar uchun)
-      if (currentStep >= 2) {
+      // 3. 'this.' kalit so'zini tushirib qoldirish (4-bosqichdan boshlab)
+      if (currentStep >= 4) {
         const nakedPropMatch = rawCode.match(/(?:^|\n|\{|\;)\s*(?<!this\.)\b(width|height|isJumping|isDucking|velocityY|jumpForce|gravity)\s*=\s*([^;\n]+)/);
         if (nakedPropMatch) {
           const prop = nakedPropMatch[1];
@@ -3916,188 +3746,182 @@ update() {
         let isValid = false;
         let message = '';
 
-        // Xavfsiz baholash uchun funksiya
-        const evalSandbox = new Function(rawCode + '; return { Dino: typeof Dino !== "undefined" ? Dino : null, checkCollision: typeof checkCollision !== "undefined" ? checkCollision : null };');
-        const exports = evalSandbox();
-
-        // HAR BIR QADAM UCHUN QAT'IY VA SHAFQATSIZ AMMO MEHR-MUHABBATLI TEKSHIRUV:
         if (currentStep === 1) {
-          // Talab: class Dino va new Dino() bo'lishi shart
-          if (!exports.Dino || typeof exports.Dino !== 'function') {
-            message = "❌ 1-Talab bajarilmadi: 'class Dino { }' sinfi yaratilmadi! Iltimos, sinf qolipini e'lon qiling.";
-          } else if (!rawCode.includes('new Dino')) {
-            message = "❌ 2-Talab bajarilmadi: 'new Dino()' orqali obyekt olinmadi! Masalan: 'const dino = new Dino();' deb yozing.";
+          // HTML BOSQICHI: <canvas id="gameCanvas", id="score", <script
+          const hasCanvas = /<canvas[\s\S]*?id=["']gameCanvas["']/i.test(rawCode);
+          const hasScore = /id=["']score["']/i.test(rawCode);
+          const hasScript = /<script[\s\S]*?(src=["']game\.js["']|>)/i.test(rawCode);
+
+          if (!hasCanvas) {
+            message = "❌ 1-Talab: '&lt;canvas id=\'gameCanvas\' width=\'800\' height=\'250\'&gt;&lt;/canvas&gt;' tegi topilmadi! O'yin chiziladigan sahna bo'lishi shart.";
+          } else if (!hasScore) {
+            message = "❌ 2-Talab: Ochko ko'rsatuvchi '&lt;span id=\'score\'&gt;00000&lt;/span&gt;' elementi yozilmadi!";
+          } else if (!hasScript) {
+            message = "❌ 3-Talab: '&lt;script src=\'game.js\'&gt;&lt;/script&gt;' tegi yozilmadi! JavaScript mantiq fayli ulanishi zarur.";
           } else {
             isValid = true;
-            message = "🎉 BARAKALLA! 'class Dino' va 'new Dino()' ni o'zingiz to'g'ri yozdingiz! O'ngdagi brauzerda ilk dinozavr skelet obyekti xotirada faollashdi!";
+            message = "🎉 BARAKALLA! HTML o'yin sahnasi va 'gameCanvas' matosi to'g'ri yaratildi! Endi 2-Qadamga o'ting va unga CSS arkada dizaynini bering!";
+            appendConsoleLog("✅ 1-Qadam muvaffaqiyatli: HTML o'yin sahnasi yaratildi!");
           }
-        } 
+        }
         else if (currentStep === 2) {
-          // Talab: constructor ichida width, height, x, y, isJumping, isDucking bo'lishi shart
-          if (!exports.Dino) {
-            message = "❌ 'class Dino' topilmadi.";
-          } else if (!rawCode.includes('constructor')) {
-            message = "❌ 2-Qadam bajarilmadi: Dino klassi ichida 'constructor()' metodi ochilmadi!";
+          // CSS BOSQICHI: body, canvas, score-board, monospace
+          const hasBody = /body\s*\{[\s\S]*?\}/i.test(rawCode);
+          const hasCanvasCss = /canvas\s*\{[\s\S]*?\}/i.test(rawCode);
+          const hasScoreCss = /\.score-board\s*\{[\s\S]*?\}/i.test(rawCode) || /#score\s*\{[\s\S]*?\}/i.test(rawCode);
+          const hasMonospace = /monospace/i.test(rawCode);
+          const hasBorder = /border/i.test(rawCode);
+
+          if (!hasBody) {
+            message = "❌ 1-Talab: 'body { display: flex; flex-direction: column; align-items: center; background: #0b0f19; }' markazlashtirish qoidasi yozilmadi!";
+          } else if (!hasCanvasCss || !hasBorder) {
+            message = "❌ 2-Talab: 'canvas { background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; }' arkada ramkasi berilmadi!";
+          } else if (!hasScoreCss || !hasMonospace) {
+            message = "❌ 3-Talab: '.score-board { font-family: monospace; }' qoidasi yozilmadi! Ochko sakrab ketmasligi uchun monospace shrifti zarur.";
           } else {
-            const inst = new exports.Dino();
+            isValid = true;
+            message = "🎉 AJOYIB! Retro arkada CSS dizayni muvaffaqiyatli qo'llandi! Endi 3-Qadamda o'yin miyasi — 'class Dino'ni boshlaymiz!";
+            appendConsoleLog("✅ 2-Qadam muvaffaqiyatli: CSS arkada dizayni o'rnatildi!");
+          }
+        }
+        else {
+          // JAVASCRIPT BOSQICHLARI: 3..7
+          const evalSandbox = new Function(rawCode + '; return { Dino: typeof Dino !== "undefined" ? Dino : null, checkCollision: typeof checkCollision !== "undefined" ? checkCollision : null };');
+          const exports = evalSandbox();
 
-            // O'quvchi yozgan har qanday parametrlarni jonli brauzerga DARHOL o'rnatamiz:
-            if (typeof inst.width === 'number') liveDino.width = inst.width;
-            if (typeof inst.height === 'number') liveDino.height = inst.height;
-            if (typeof inst.x === 'number') liveDino.x = inst.x;
-            if (typeof inst.y === 'number') {
-              liveDino.y = inst.y;
-              liveDino.baseY = inst.y;
-            }
-            updateTelemetry();
-
-            if (typeof inst.width !== 'number' || inst.width <= 0) {
-              message = "❌ 1-Talab: 'this.width = 44;' eni musbat son bo'lishi shart!";
-            } else if (typeof inst.height !== 'number' || inst.height <= 0) {
-              message = "❌ 1-Talab: 'this.height = 48;' bo'yi musbat son bo'lishi shart!";
-            } else if (typeof inst.x !== 'number') {
-              message = "❌ 2-Talab: 'this.x = 60;' chap koordinatasi belgilanmadi!";
-            } else if (typeof inst.y !== 'number') {
-              message = "❌ 2-Talab: 'this.y = 0;' yerdan balandligi belgilanmadi!";
-            } else if (typeof inst.isJumping !== 'boolean') {
-              message = "❌ 3-Talab: 'this.isJumping = false;' boshlang'ich sakrash holati (boolean) belgilanmadi!";
-            } else if (typeof inst.isDucking !== 'boolean') {
-              message = "❌ 3-Talab: 'this.isDucking = false;' boshlang'ich egilish holati (boolean) belgilanmadi!";
-            } else if (inst.y !== 0) {
-              // O'quvchi sinash uchun boshqa Y berganda:
-              message = `🔬 SINAYOTGANINGIZ AJOYIB! O'ngdagi brauzerga qarang: siz 'this.y = ${inst.y}' berganingiz uchun dinozavr yerdan ${inst.y}px balandlikda havoda paydo bo'ldi (o'lchov chizig'i chizildi)! Lekin o'yin boshlanganda dinozavr aynan yerda turishi shart ('this.y = 0'). Endi uni 'this.y = 0' qilib to'g'rilang.`;
-              appendConsoleLog(`⚠️ Sinov: y = ${inst.y}px havoda. Standart: y = 0.`);
-            } else if (inst.width !== 44 || inst.height !== 48) {
-              message = `🔬 O'LCHAM SINAVI: Siz eni ${inst.width}px va bo'yi ${inst.height}px qildingiz. O'ngdagi brauzerda Hitbox o'lchami o'zgardi! Ammo o'yin standarti: 'this.width = 44' va 'this.height = 48' bo'lishi lozim.`;
-              appendConsoleLog(`⚠️ Sinov: ${inst.width}x${inst.height}px. Standart: 44x48px.`);
-            } else if (inst.x !== 60) {
-              message = `🔬 X-KOORDINATA SINAVI: Dinozavr ekranda x = ${inst.x} ga siljidi. Standart joylashuv: 'this.x = 60'.`;
+          if (currentStep === 3) {
+            // 3-Qadam: class Dino va new Dino()
+            if (!exports.Dino || typeof exports.Dino !== 'function') {
+              message = "❌ 1-Talab bajarilmadi: 'class Dino { }' sinfi yaratilmadi! Iltimos, sinf qolipini e'lon qiling.";
+            } else if (!rawCode.includes('new Dino')) {
+              message = "❌ 2-Talab bajarilmadi: 'new Dino()' orqali obyekt olinmadi! Masalan: 'const dino = new Dino();' deb yozing.";
             } else {
               isValid = true;
-              message = `🎉 AJOYIB! Konstruktorni muvaffaqiyatli yozdingiz. Dinozavr o'lchamlari (${liveDino.width}x${liveDino.height}px) brauzerda yashil Hitbox karobkasi sifatida yerda (y: 0) to'g'ri paydo bo'ldi!`;
+              message = "🎉 BARAKALLA! 'class Dino' va 'new Dino()' ni o'zingiz to'g'ri yozdingiz! O'ngdagi brauzerda ilk dinozavr skelet obyekti xotirada faollashdi!";
             }
           }
-        } 
-        else if (currentStep === 3) {
-          // Talab: jump(), duck(), standUp() metodlari va keydown/keyup tinglovchisi
-          if (!exports.Dino) {
-            message = "❌ 'class Dino' topilmadi.";
-          } else {
-            const inst = new exports.Dino();
-
-            // 1-Talab: jump() metodi mavjudligi
-            if (typeof inst.jump !== 'function') {
-              message = "❌ 1-Talab bajarilmadi: Dino klassi ichida 'jump()' metodi topilmadi! 'jump() { if (!this.isJumping && !this.isDucking && this.y === 0) this.isJumping = true; }' deb yozing.";
-            } else if (typeof inst.duck !== 'function') {
-              message = "❌ 2-Talab bajarilmadi: Qushlardan qochish uchun 'duck()' egilish metodi yozilmadi!";
-            } else if (typeof inst.standUp !== 'function') {
-              message = "❌ 3-Talab bajarilmadi: Qad rostlash uchun 'standUp()' metodi yozilmadi!";
+          else if (currentStep === 4) {
+            // 4-Qadam: constructor, width, height, x, y, isJumping, isDucking
+            if (!exports.Dino) {
+              message = "❌ 'class Dino' topilmadi.";
+            } else if (!rawCode.includes('constructor')) {
+              message = "❌ 4-Qadam bajarilmadi: Dino klassi ichida 'constructor()' metodi ochilmadi!";
             } else {
-              // 1. jump() funksionalligini tekshirish:
-              inst.isJumping = false;
-              inst.isDucking = false;
-              inst.y = 0;
-              inst.jump();
-              if (inst.isJumping !== true) {
-                message = "❌ 1-Talab: 'jump()' chaqirilganda 'this.isJumping = true;' qilinishi shart!";
-              } else {
-                // 2. duck() funksionalligini tekshirish:
-                inst.isJumping = false;
-                inst.isDucking = false;
-                inst.y = 0;
-                inst.height = 48;
-                inst.width = 44;
-                inst.duck();
+              const inst = new exports.Dino();
 
-                if (inst.isDucking !== true) {
-                  message = "❌ 2-Talab: 'duck()' chaqirilganda 'this.isDucking = true;' qilinishi shart!";
-                } else if (typeof inst.height !== 'number' || inst.height > 30) {
-                  message = "❌ 2-Talab: 'duck()' chaqirilganda bo'y 26px ga tushishi shart: 'this.height = 26;' deb yozing!";
-                } else if (typeof inst.width !== 'number' || inst.width < 50) {
-                  message = "❌ 2-Talab: 'duck()' chaqirilganda eni 55px ga cho'zilishi shart: 'this.width = 55;' deb yozing!";
-                } else {
-                  // 3. standUp() funksionalligini tekshirish:
-                  inst.standUp();
-                  if (inst.isDucking !== false) {
-                    message = "❌ 3-Talab: 'standUp()' chaqirilganda 'this.isDucking = false;' qilib tiklanishi shart!";
-                  } else if (typeof inst.height !== 'number' || inst.height < 40) {
-                    message = "❌ 3-Talab: 'standUp()' chaqirilganda bo'y yana 48px ga qaytishi shart: 'this.height = 48;' deb yozing!";
-                  } else if (typeof inst.width !== 'number' || inst.width > 50) {
-                    message = "❌ 3-Talab: 'standUp()' chaqirilganda eni yana 44px ga qaytishi shart: 'this.width = 44;' deb yozing!";
-                  } else if (!rawCode.includes('addEventListener') || !rawCode.includes('keydown')) {
-                    message = "❌ 4-Talab: 'window.addEventListener(\\'keydown\\', ...)' orqali tugmalarni tinglash kodi yozilmadi!";
-                  } else if (!rawCode.includes('Space') && !rawCode.includes('ArrowUp')) {
-                    message = "❌ 4-Talab: 'keydown' ichida 'Space' yoki 'ArrowUp' bosilganda dino.jump() chaqirilishi kerak!";
-                  } else if (!rawCode.includes('keyup')) {
-                    message = "❌ 4-Talab: 'window.addEventListener(\\'keyup\\', ...)' orqali ArrowDown qo'yib yuborilganda dino.standUp() chaqirilishi kerak!";
-                  } else {
-                    isValid = true;
-                    message = "🎉 QOYILMAQOM! Barcha 4 ta boshqaruv talabini mukammal bajardingiz! Sakrash va Egilish (Duck) to'liq ulandi! O'ngdagi brauzerda Space va ArrowDown tugmalarini bosib ko'ring!";
-                  }
-                }
+              if (typeof inst.width === 'number') liveDino.width = inst.width;
+              if (typeof inst.height === 'number') liveDino.height = inst.height;
+              if (typeof inst.x === 'number') liveDino.x = inst.x;
+              if (typeof inst.y === 'number') {
+                liveDino.y = inst.y;
+                liveDino.baseY = inst.y;
               }
-            }
-          }
-        } 
-        else if (currentStep === 4) {
-          // Talab: update() metodi, jumpForce, gravity va fizika hisobi
-          if (!exports.Dino) {
-            message = "❌ 'class Dino' topilmadi.";
-          } else {
-            const inst = new exports.Dino();
-            if (inst.jumpForce === undefined) {
-              message = "❌ 1-Talab: Konstruktorda 'this.jumpForce = 12;' belgilanmadi!";
-            } else if (inst.gravity === undefined) {
-              message = "❌ 1-Talab: Konstruktorda 'this.gravity = 0.6;' tortish kuchi belgilanmadi!";
-            } else if (inst.velocityY === undefined) {
-              message = "❌ 1-Talab: Konstruktorda 'this.velocityY = 0;' boshlang'ich tezlik belgilanmadi!";
-            } else if (typeof inst.update !== 'function') {
-              message = "❌ 3-Talab: Dino klassi ichida har kadrda ishlovchi 'update()' metodi yozilmadi!";
-            } else {
-              inst.y = 0;
-              inst.isJumping = false;
-              inst.jump();
-              inst.update();
-              const jumpedUp = inst.y > 0;
-              
-              // 60 kadr o'tib yerga tushishini tekshiramiz
-              for (let f = 0; f < 60; f++) {
-                inst.update();
-              }
-              const landed = inst.y === 0 && inst.isJumping === false;
+              updateTelemetry();
 
-              if (!jumpedUp) {
-                message = "❌ 3-Talab: 'update()' ichida 'this.y += this.velocityY;' bo'yicha sakrash balandligi oshmadi!";
-              } else if (!landed) {
-                message = "❌ 3-Talab: Dinozavr gravitatsiya bilan yerga qaytib tushmadi ('if (this.y <= 0) { this.y = 0; this.isJumping = false; this.velocityY = 0; }' yozildimi?)";
+              if (typeof inst.width !== 'number' || inst.width <= 0) {
+                message = "❌ 1-Talab: 'this.width = 44;' eni musbat son bo'lishi shart!";
+              } else if (typeof inst.height !== 'number' || inst.height <= 0) {
+                message = "❌ 1-Talab: 'this.height = 48;' bo'yi musbat son bo'lishi shart!";
+              } else if (typeof inst.x !== 'number') {
+                message = "❌ 2-Talab: 'this.x = 60;' chap koordinatasi belgilanmadi!";
+              } else if (typeof inst.y !== 'number') {
+                message = "❌ 2-Talab: 'this.y = 0;' yerdagi boshlang'ich pozitsiyasi belgilanmadi!";
+              } else if (typeof inst.isJumping !== 'boolean') {
+                message = "❌ 3-Talab: 'this.isJumping = false;' sakrash holati mantiqiy bayrog'i (boolean) belgilanmadi!";
+              } else if (typeof inst.isDucking !== 'boolean') {
+                message = "❌ 3-Talab: 'this.isDucking = false;' egilish holati mantiqiy bayrog'i (boolean) belgilanmadi!";
               } else {
                 isValid = true;
-                liveDino.jumpForce = inst.jumpForce;
-                liveDino.gravity = inst.gravity;
-                message = `🎉 MUKAMMAL! Haqiqiy 60 FPS fizika va gravitatsiya formulasini yozdingiz! Dinozavr endi real parabolik egri chiziq bo'yicha sakrab yerga qo'nadi!`;
+                message = `🎉 AJOYIB! Dino o'lchamlari va 'this' xususiyatlari to'g'ri o'rnatildi! O'ngdagi brauzerda dinozavrning aniq hitbox qutisi (${inst.width}x${inst.height}) paydo bo'ldi!`;
               }
             }
           }
-        } 
-        else if (currentStep === 5) {
-          // Talab: checkCollision to'qnashuv funksiyasi
-          if (!exports.checkCollision || typeof exports.checkCollision !== 'function') {
-            message = "❌ 5-Topshiriq bajarilmadi: 'checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH)' funksiyasi yozilmadi!";
-          } else {
-            // Geometrik to'qnashuv testlari
-            const hitTest = exports.checkCollision(60, 0, 44, 48, 70, 0, 24, 45);
-            const missJumpTest = exports.checkCollision(60, 60, 44, 48, 70, 0, 24, 45);
-            const farTest = exports.checkCollision(60, 0, 44, 48, 500, 0, 24, 45);
-
-            if (hitTest !== true) {
-              message = "❌ 'checkCollision' xato: Dinozavr va to'siq to'qnashganda true qaytarishi shart!";
-            } else if (missJumpTest !== false) {
-              message = "❌ 'checkCollision' xato: Dinozavr sakrab to'siq ustidan o'tganda (y=60) false qaytarishi shart!";
-            } else if (farTest !== false) {
-              message = "❌ 'checkCollision' xato: To'siq uzoqda bo'lganda false qaytarishi shart!";
+          else if (currentStep === 5) {
+            // 5-Qadam: jump, duck, standUp, keydown, keyup
+            if (!exports.Dino) {
+              message = "❌ 'class Dino' topilmadi.";
             } else {
-              isValid = true;
-              message = "🏆 TABRIKLAYMIZ! Siz barcha 5 ta bosqich kodini noldan o'z qo'lingiz bilan yozib tugatdingiz! Qushlar, kaktuslar va tungi rejim bilan to'liq Chrome Dino Game 2.0 ishga tushdi! Endi kod muharririning yuqorisidagi yashil [📋 To'liq O'yin Kodini Nusxalash] tugmasi ochildi — uni bosib tayyor to'liq faylni Notepad (Bloknot)'ga tashlab o'ynashingiz mumkin!";
+              const inst = new exports.Dino();
+              const hasJump = typeof inst.jump === 'function';
+              const hasDuck = typeof inst.duck === 'function';
+              const hasStandUp = typeof inst.standUp === 'function';
+              const hasKeydown = rawCode.includes('addEventListener') && rawCode.includes('keydown');
+              const hasKeyup = rawCode.includes('addEventListener') && rawCode.includes('keyup');
+
+              if (!hasJump) {
+                message = "❌ 1-Talab: Dino klassi ichida 'jump()' metodi yozilmadi!";
+              } else if (!hasDuck) {
+                message = "❌ 2-Talab: Dino klassi ichida 'duck()' metodi yozilmadi!";
+              } else if (!hasStandUp) {
+                message = "❌ 3-Talab: Dino klassi ichida 'standUp()' metodi yozilmadi!";
+              } else if (!hasKeydown || !hasKeyup) {
+                message = "❌ 4-Talab: 'window.addEventListener(\'keydown\', ...)' va 'keyup' hodisalari to'liq ulanmadi!";
+              } else {
+                isValid = true;
+                message = "🎉 MUKAMMAL! jump(), duck(), standUp() va klaviatura hodisalarini o'zingiz yozdingiz! Endi Space va ArrowDown tugmalari bilan o'ngdagi dinoni boshqarishingiz mumkin!";
+              }
+            }
+          }
+          else if (currentStep === 6) {
+            // 6-Qadam: update, velocityY, gravity, jumpForce
+            if (!exports.Dino) {
+              message = "❌ 'class Dino' topilmadi.";
+            } else {
+              const inst = new exports.Dino();
+              const hasUpdate = typeof inst.update === 'function';
+              const hasVelocityY = typeof inst.velocityY === 'number';
+              const hasGravity = typeof inst.gravity === 'number';
+              const hasJumpForce = typeof inst.jumpForce === 'number';
+
+              if (!hasVelocityY || !hasGravity || !hasJumpForce) {
+                message = "❌ 1-Talab: 'constructor()' ichida 'this.velocityY = 0;', 'this.gravity = 0.6;' va 'this.jumpForce = 12;' parametrlari e'lon qilinmadi!";
+              } else if (!hasUpdate) {
+                message = "❌ 2-Talab: Dino klassi ichida 'update()' metodi yozilmadi!";
+              } else {
+                isValid = true;
+                message = "🎉 QOYILMAQOM! 60 FPS gravitatsiya fizikasi to'g'ri hisoblandi! Endi sakraganingizda dinozavr havoda haqiqiy parabola chizib yerga qaytadi!";
+              }
+            }
+          }
+          else if (currentStep === 7) {
+            // 7-Qadam: checkCollision (supports both (dino, obs) objects and (dinoX, dinoY, ...) coordinates)
+            if (typeof exports.checkCollision !== 'function') {
+              message = "❌ 2-Talab: 'checkCollision(dino, obstacle)' to'qnashuv funksiyasi topilmadi!";
+            } else {
+              let collidesWhenHit = false;
+              let collidesWhenMiss = true;
+
+              if (exports.checkCollision.length > 2) {
+                // Koordinata shakli: checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH)
+                try {
+                  collidesWhenHit = exports.checkCollision(60, 0, 44, 48, 70, 0, 25, 46);
+                  collidesWhenMiss = exports.checkCollision(60, 0, 44, 48, 300, 0, 25, 46);
+                } catch (_) {}
+              } else {
+                // Obyekt shakli: checkCollision(dino, obstacle)
+                try {
+                  const d = { x: 60, y: 0, width: 44, height: 48 };
+                  const obsHit = { x: 70, y: 0, width: 25, height: 46 };
+                  const obsMiss = { x: 300, y: 0, width: 25, height: 46 };
+                  collidesWhenHit = exports.checkCollision(d, obsHit);
+                  collidesWhenMiss = exports.checkCollision(d, obsMiss);
+                } catch (_) {}
+              }
+
+              // Double check fallback
+              if (collidesWhenHit !== true || collidesWhenMiss !== false) {
+                try {
+                  collidesWhenHit = exports.checkCollision(60, 0, 44, 48, 70, 0, 25, 46);
+                  collidesWhenMiss = exports.checkCollision(60, 0, 44, 48, 300, 0, 25, 46);
+                } catch (_) {}
+              }
+
+              if (collidesWhenHit !== true || collidesWhenMiss !== false) {
+                message = "❌ AABB to'qnashuv matematikasi noto'g'ri ishlamoqda. 4 ta chegarani tekshiring: (dino.x < obs.x + obs.width && dino.x + dino.width > obs.x && dino.y < obs.y + obs.height && dino.y + dino.height > obs.y)";
+              } else {
+                isValid = true;
+                message = "🏆 TABRIKLAYMIZ! Siz butun Chrome Dino o'yinini HTML, CSS va JavaScript Sinflari bilan NOLDAN O'Z QO'LINGIZ BILAN QURDINGIZ! Barcha to'siqlar va o'yin to'liq ishga tushdi!";
+              }
             }
           }
         }
@@ -4115,7 +3939,7 @@ update() {
           showUnlockedCode(STEPS_DATA[currentStep].modelCode);
 
           // Keyingi qadam tugmasi ochiladi
-          if (currentStep < 5) {
+          if (currentStep < 7) {
             document.getElementById('step-nav-' + (currentStep + 1)).disabled = false;
           }
           updateNextStepButton();
@@ -4234,7 +4058,7 @@ update() {
 
       jump() {
         // Faqat 3-bosqichdan keyin sakraydi!
-        if (currentStep < 3 && !unlockedSteps[currentStep]) return;
+        if (currentStep < 5 && !unlockedSteps[currentStep]) return;
         if (!this.isJumping && !this.isDucking && this.y === 0) {
           this.isJumping = true;
           this.velocityY = this.jumpForce;
@@ -4244,7 +4068,7 @@ update() {
 
       duck() {
         // Faqat 3-bosqichdan keyin egiladi!
-        if (currentStep < 3 && !unlockedSteps[currentStep]) return;
+        if (currentStep < 5 && !unlockedSteps[currentStep]) return;
         if (this.y === 0 && !this.isJumping) {
           this.isDucking = true;
           this.width = this.duckWidth;
@@ -4260,7 +4084,7 @@ update() {
 
       update() {
         // 1 va 2-bosqichda sakrash va harakat bo'lmaydi!
-        if (currentStep < 3) return;
+        if (currentStep < 5) return;
 
         // 3-bosqichda oddiy sakrash, 4-bosqichdan esa to'liq gravitatsiya fizikasi
         if (this.isJumping) {
@@ -4687,7 +4511,7 @@ update() {
       updateTelemetry();
 
       // 4. TO'SIQLAR FAQAT 5-BOSQICHDA (YOKI 4-QADAM TUGAGACH) ISHLAYDI!
-      if (currentStep >= 5 || unlockedSteps[4]) {
+      if (currentStep >= 7 || unlockedSteps[6]) {
         // Yumshoq va maroqli boshlang'ich tezlik: 3.4 px/kadr (boshlanishida bemalol sakrash/egilish mumkin)
         // Har 100 ochkoda asta-sekin tezlashadi, maksimal chegara 5.8 px/kadr
         const currentSpeed = 3.4 + Math.min(score * 0.003, 2.4);
@@ -5071,7 +4895,7 @@ ${studentCode}
       if (activeBoilerplateTab === 'html') {
         view.textContent = getHtmlCssShellCode();
       } else {
-        const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+        const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5] && unlockedSteps[6] && unlockedSteps[7];
         if (allBuilt) {
           view.textContent = getFullStandaloneMergedCode();
         } else {
@@ -5088,7 +4912,7 @@ ${studentCode}
     }
 
     function copyTopCompletedCode() {
-      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5];
+      const allBuilt = unlockedSteps[1] && unlockedSteps[2] && unlockedSteps[3] && unlockedSteps[4] && unlockedSteps[5] && unlockedSteps[6] && unlockedSteps[7];
       if (!allBuilt) {
         alert("🔒 Siz hali barcha 5 ta bosqichni to'liq qurmadingiz! Avval barcha qadamlarni bajaring.");
         return;

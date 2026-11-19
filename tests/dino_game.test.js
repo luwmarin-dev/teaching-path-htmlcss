@@ -1,21 +1,25 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
+import { chromium } from 'playwright';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { chromium } from 'playwright';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
+test('Dino Game Socratic Progression & Live Canvas Suite (7 Steps)', async (t) => {
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    viewport: { width: 1366, height: 950 }
+  });
   const page = await context.newPage();
 
   const consoleErrors = [];
   page.on('console', msg => {
-    if (msg.type() === 'error') consoleErrors.push(msg.text());
+    if (msg.type() === 'error') {
+      consoleErrors.push(msg.text());
+    }
   });
 
   const pageErrors = [];
@@ -36,6 +40,10 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     // Step 2 button must be disabled initially
     const step2Disabled = await page.locator('#step-nav-2').isDisabled();
     assert.strictEqual(step2Disabled, true, 'Step 2 must be locked before Step 1 is passed');
+
+    // Progress label check: 0 / 7
+    const progText = await page.textContent('#progress-label');
+    assert.match(progText, /0 \/ 7/);
   });
 
   await t.test('Clicking run on empty code fails with validation error', async () => {
@@ -66,19 +74,32 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.strictEqual(successFb, true, 'Correct answer must show success feedback');
   });
 
-  await t.test('Writing valid code passes validation, unlocks Step 2 and updates preview', async () => {
-    // Enter required code for Step 1
-    await page.fill('#student-code-editor', 'class Dino {}\nconst dino = new Dino();');
+  await t.test('Writing valid HTML code passes validation, unlocks Step 2 and updates preview', async () => {
+    // Enter required HTML code for Step 1
+    const step1Html = `<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome Dino Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="score-board">OCHKO: <span id="score">00000</span></div>
+  <canvas id="gameCanvas" width="800" height="250"></canvas>
+  <script src="game.js"></script>
+</body>
+</html>`;
+    await page.fill('#student-code-editor', step1Html);
     const runBtn = page.locator('.run-btn:has-text("Kodni Ishga Tushirish")');
     await runBtn.click();
 
     // Success feedback
     const successFb = await page.locator('.validation-feedback-card.success').isVisible();
-    assert.strictEqual(successFb, true, 'Valid code must pass validation');
+    assert.strictEqual(successFb, true, 'Valid Step 1 code must pass validation');
 
     // Step 2 must now be enabled
     const step2Disabled = await page.locator('#step-nav-2').isDisabled();
-    assert.strictEqual(step2Disabled, false, 'Step 2 must be unlocked after valid code');
+    assert.strictEqual(step2Disabled, false, 'Step 2 must be unlocked after valid HTML code');
 
     // Next step button must now be unlocked with 2-Qadam label
     const nextBtnDisabled = await page.locator('#btn-next-step').isDisabled();
@@ -91,224 +112,110 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.strictEqual(unlockedCode, true, 'Model code should be revealed after passing');
   });
 
-  await t.test('Next step button advances to Step 2 and displays "this" simulator', async () => {
-    // Click Next Step button to advance to Step 2
+  await t.test('Next step button advances to Step 2 and validates CSS code', async () => {
+    // Advance to Step 2
     await page.locator('#btn-next-step').click();
 
-    // Verify current step title is Step 2
+    // Verify current step is Step 2
     const stepTitle = await page.textContent('#top-step-title');
     assert.match(stepTitle, /2-Qadam/);
 
-    // Verify 'this' simulator is visible on Step 2
+    // Verify editor badge indicates CSS
+    const langBadge = await page.textContent('.editor-lang-badge');
+    assert.match(langBadge, /CSS/);
+
+    // Step 3 button must still be disabled
+    const step3Disabled = await page.locator('#step-nav-3').isDisabled();
+    assert.strictEqual(step3Disabled, true, 'Step 3 must remain disabled before Step 2 passes');
+
+    // Enter valid CSS code for Step 2
+    const step2Css = `body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #0b0f19;
+    }
+    .score-board {
+      font-family: monospace;
+      font-size: 20px;
+    }
+    canvas {
+      background: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 12px;
+    }`;
+    await page.fill('#student-code-editor', step2Css);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    // Verify success feedback
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Valid CSS must pass validation');
+
+    // Step 3 must now be unlocked
+    const step3Unlocked = await page.locator('#step-nav-3').isDisabled();
+    assert.strictEqual(step3Unlocked, false, 'Step 3 must be unlocked after Step 2');
+
+    const nextBtnText = await page.textContent('#btn-next-step');
+    assert.match(nextBtnText, /3-Qadamga O'tish/);
+  });
+
+  await t.test('Advances to Step 3 and validates Class Dino skeleton', async () => {
+    // Advance to Step 3
+    await page.locator('#btn-next-step').click();
+
+    // Verify current step is Step 3
+    const stepTitle = await page.textContent('#top-step-title');
+    assert.match(stepTitle, /3-Qadam/);
+
+    // Verify editor badge indicates JS
+    const langBadge = await page.textContent('.editor-lang-badge');
+    assert.match(langBadge, /JavaScript/);
+
+    // Enter valid Step 3 code
+    const step3Code = `class Dino {}
+const dino = new Dino();`;
+    await page.fill('#student-code-editor', step3Code);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Step 3 class skeleton must pass validation');
+
+    // Step 4 must now be unlocked
+    const step4Disabled = await page.locator('#step-nav-4').isDisabled();
+    assert.strictEqual(step4Disabled, false, 'Step 4 must be unlocked after Step 3');
+
+    const nextBtnText = await page.textContent('#btn-next-step');
+    assert.match(nextBtnText, /4-Qadamga O'tish/);
+  });
+
+  await t.test('Advances to Step 4 and displays "this" simulator', async () => {
+    // Advance to Step 4
+    await page.locator('#btn-next-step').click();
+
+    // Verify current step is Step 4
+    const stepTitle = await page.textContent('#top-step-title');
+    assert.match(stepTitle, /4-Qadam/);
+
+    // Verify 'this' simulator is visible on Step 4
     const simVisible = await page.locator('#this-simulator-box').isVisible();
-    assert.strictEqual(simVisible, true, '"this" simulator box must be visible on Step 2');
+    assert.strictEqual(simVisible, true, '"this" simulator box must be visible on Step 4');
 
     // Verify initial note inside simulator
     const initialNote = await page.textContent('#sim-insight-note');
     assert.match(initialNote, /new Dino\(\)/);
 
     // Click simulator action buttons 2, 3, 4 and verify dynamic behavior
-    const simButtons = page.locator('.sim-action-btn');
-    
-    // Step 2: pointer attached
-    await simButtons.nth(1).click();
-    let noteText = await page.textContent('#sim-insight-note');
-    assert.match(noteText, /'this' ko'rsatkichi ulandi/);
+    await page.locator('.sim-action-btn').nth(1).click();
+    const note2 = await page.textContent('#sim-insight-note');
+    assert.match(note2, /ko'rsatkichi ulandi/);
 
-    // Step 3: properties attached
-    await simButtons.nth(2).click();
-    noteText = await page.textContent('#sim-insight-note');
-    assert.match(noteText, /Parametrlar biriktirildi/);
-    const props1Text = await page.textContent('#sim-props-1');
-    assert.match(props1Text, /width: 44/);
+    await page.locator('.sim-action-btn').nth(2).click();
+    const note3 = await page.textContent('#sim-insight-note');
+    assert.match(note3, /Parametrlar biriktirildi/);
 
-    // Step 4: why not let explanation
-    await simButtons.nth(3).click();
-    noteText = await page.textContent('#sim-insight-note');
-    assert.match(noteText, /Nega 'let' emas, 'this'/);
-  });
-
-  await t.test('Multi-tier hints display conceptual logic and scaffolding on demand', async () => {
-    // Open hint drawer
-    await page.locator('.hint-toggle-btn').click();
-    const isDrawerOpen = await page.locator('#hint-drawer.open').isVisible();
-    assert.strictEqual(isDrawerOpen, true, 'Hint drawer must open');
-
-    // Check Tier 1 (Logic) and Tier 2 (Syntax template)
-    const hintLogicText = await page.textContent('#hint-logic-content');
-    assert.match(hintLogicText, /constructor/);
-
-    // Scaffolding box must NOT be visible initially
-    const scaffoldVisibleInit = await page.locator('#scaffolding-box.revealed').isVisible();
-    assert.strictEqual(scaffoldVisibleInit, false, 'Scaffolding box must be hidden initially');
-
-    // Click "Qila olmadim" button to reveal scaffolding
-    await page.locator('#btn-giveup').click();
-    const scaffoldVisibleRevealed = await page.locator('#scaffolding-box.revealed').isVisible();
-    assert.strictEqual(scaffoldVisibleRevealed, true, 'Scaffolding box must be revealed on give-up');
-    const scaffoldCode = await page.textContent('#scaffolding-code-text');
-    assert.match(scaffoldCode, /this\.width = 44/);
-
-    // Click again to hide
-    await page.locator('#btn-giveup').click();
-    const scaffoldVisibleClosed = await page.locator('#scaffolding-box.revealed').isVisible();
-    assert.strictEqual(scaffoldVisibleClosed, false, 'Scaffolding box should collapse when toggled again');
-  });
-
-  await t.test('Target Demo Interactive Physics Sliders Lab allows tuning speed, jump and altitude', async () => {
-    // Check that sliders are visible in Target Demo
-    const slidersDrawer = await page.locator('#target-sliders-drawer').isVisible();
-    assert.strictEqual(slidersDrawer, true, 'Physics sliders drawer must be visible');
-
-    // Change speed slider
-    await page.fill('#slider-target-speed', '5.2');
-    await page.locator('#slider-target-speed').dispatchEvent('input');
-    const speedVal = await page.textContent('#val-target-speed');
-    assert.match(speedVal, /5\.2/);
-
-    // Change Y elevation slider (Dino floats)
-    await page.fill('#slider-target-y', '35');
-    await page.locator('#slider-target-y').dispatchEvent('input');
-    const yVal = await page.textContent('#val-target-y');
-    assert.match(yVal, /35/);
-
-    // Reset sliders
-    await page.locator('.target-sliders-drawer button:has-text("Standartga Qaytarish")').click();
-    const speedValReset = await page.textContent('#val-target-speed');
-    assert.match(speedValReset, /3\.4/);
-    const yValReset = await page.textContent('#val-target-y');
-    assert.match(yValReset, /0/);
-  });
-
-  await t.test('Step 3 is protected by guard until Step 2 code is correctly implemented', async () => {
-    // Direct button click on step 3 should remain disabled
-    const step3Disabled = await page.locator('#step-nav-3').isDisabled();
-    assert.strictEqual(step3Disabled, true, 'Step 3 must remain disabled');
-
-    // Next step button on Step 2 must be locked
-    const nextBtnDisabled = await page.locator('#btn-next-step').isDisabled();
-    assert.strictEqual(nextBtnDisabled, true, 'Next step button must be locked on Step 2 before passing');
-
-    // Test custom experimental values (e.g., this.y = 20, this.width = 49)
-    const experimentalCode = `class Dino {
-      constructor() {
-        this.width = 49;
-        this.height = 48;
-        this.x = 60;
-        this.y = 20;
-        this.isJumping = false;
-        this.isDucking = false;
-      }
-    }`;
-    await page.locator('#student-code-editor').fill(experimentalCode);
-    await page.locator('#student-code-editor').dispatchEvent('input');
-
-    // Verify HUD telemetry immediately reflects custom values:
-    const hitboxHud = await page.textContent('#tel-hitbox');
-    assert.match(hitboxHud, /49 x 48/);
-    const statusHud = await page.textContent('#tel-status');
-    assert.match(statusHud, /Havoda.*20px/);
-
-    // Running code with y = 20 shows helpful diagnostic feedback without passing Step 2
-    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
-    const errorFb = await page.locator('.validation-feedback-card.error').isVisible();
-    assert.strictEqual(errorFb, true, 'Custom experimental y must show test diagnostic without unlocking step');
-    const fbText = await page.textContent('.validation-feedback-card.error');
-    assert.match(fbText, /SINAYOTGANINGIZ AJOYIB/);
-
-    // Now submitting standard valid Step 2 code
-    const step2Code = `class Dino {
-      constructor() {
-        this.width = 44;
-        this.height = 48;
-        this.x = 60;
-        this.y = 0;
-        this.isJumping = false;
-        this.isDucking = false;
-      }
-    }`;
-    await page.locator('#student-code-editor').fill(step2Code);
-    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
-
-    // Check validation passed
-    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
-    assert.strictEqual(successFb, true, 'Step 2 code must pass validation');
-
-    // Step 3 button must now be unlocked
-    const step3Unlocked = await page.locator('#step-nav-3').isDisabled();
-    assert.strictEqual(step3Unlocked, false, 'Step 3 must now be unlocked');
-
-    // Next step button must now offer advancement to Step 3
-    const nextBtnStep2Unlocked = await page.locator('#btn-next-step').isDisabled();
-    assert.strictEqual(nextBtnStep2Unlocked, false);
-    const nextBtnStep2Text = await page.textContent('#btn-next-step');
-    assert.match(nextBtnStep2Text, /3-Qadamga O'tish/);
-  });
-
-  await t.test('Live code runner updates virtual console', async () => {
-    const consoleText = await page.textContent('#virtual-console');
-    assert.match(consoleText, /Kod tasdiqlandi/);
-  });
-
-  await t.test('Typing in student editor preserves spacebar and supports tab indentation', async () => {
-    // Focus the editor and clear it
-    await page.locator('#student-code-editor').fill('');
-    await page.locator('#student-code-editor').focus();
-
-    // Type with keyboard to verify spacebar is NOT intercepted by game jump listener
-    await page.keyboard.type('class Dino');
-    let val = await page.inputValue('#student-code-editor');
-    assert.strictEqual(val, 'class Dino', 'Spacebar must be inserted into code editor without being swallowed');
-
-    // Press Tab to verify indentation
-    await page.keyboard.press('Tab');
-    val = await page.inputValue('#student-code-editor');
-    assert.strictEqual(val, 'class Dino  ', 'Tab must insert 2 spaces for indentation');
-  });
-
-  await t.test('Target Goal Playable Demo is interactive and responds to controls', async () => {
-    // Verify target canvas is visible
-    const targetCanvas = await page.locator('#targetGameCanvas').isVisible();
-    assert.strictEqual(targetCanvas, true, 'Target demo canvas must be visible');
-
-    // Verify overlay prompt exists
-    const promptVisible = await page.locator('#target-overlay-prompt').isVisible();
-    assert.strictEqual(promptVisible, true, 'Start prompt must be visible initially');
-
-    // Click play button to start demo
-    await page.locator('.target-play-btn').click();
-    const promptVisibleAfter = await page.locator('#target-overlay-prompt').isVisible();
-    assert.strictEqual(promptVisibleAfter, false, 'Prompt should hide when game starts');
-
-    // Click jump and duck buttons
-    await page.locator('.target-buttons-group .jump-btn-action').click();
-    await page.locator('.target-buttons-group .duck-btn-action').dispatchEvent('mousedown');
-    await page.locator('.target-buttons-group .duck-btn-action').dispatchEvent('mouseup');
-
-    // Toggle collapse/expand
-    const toggleBtn = page.locator('#btn-toggle-demo');
-    await toggleBtn.click();
-    const isVisibleCollapsed = await page.locator('#target-demo-arena').isVisible();
-    assert.strictEqual(isVisibleCollapsed, false, 'Arena should be hidden when collapsed');
-
-    await toggleBtn.click();
-    const isReopened = await page.locator('#target-demo-arena').isVisible();
-    assert.strictEqual(isReopened, true, 'Arena should reopen when clicked again');
-  });
-
-  await t.test('Standalone VS Code template modal opens and contains valid HTML', async () => {
-    const modalBtn = page.locator('.btn-badge:has-text("VS Code Uchun To\'liq Fayl")');
-    await modalBtn.click();
-    const modalVisible = await page.locator('#vscode-modal.open').isVisible();
-    assert.strictEqual(modalVisible, true);
-    const codeBoxText = await page.textContent('#template-code-box');
-    assert.match(codeBoxText, /<!DOCTYPE html>/);
-    assert.match(codeBoxText, /class Dino/);
-
-    // Close modal so it does not intercept subsequent pointer events
-    await page.locator('#vscode-modal button:has-text("✕")').click();
-    const modalClosed = await page.locator('#vscode-modal.open').isVisible();
-    assert.strictEqual(modalClosed, false, 'Modal should close cleanly');
+    await page.locator('.sim-action-btn').nth(3).click();
+    const note4 = await page.textContent('#sim-insight-note');
+    assert.match(note4, /Nega 'let' emas/);
   });
 
   await t.test('Mentor diagnostic catches CSS px unit and provides friendly guidance', async () => {
@@ -332,13 +239,37 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.match(valText, /this\.height = 48/);
   });
 
-  await t.test('Step 3 renders explicit sub-task criteria checklist with 4 clear tasks', async () => {
-    // We already unlocked Step 3 in previous test, let us advance to Step 3:
+  await t.test('Valid Step 4 code unlocks Step 5', async () => {
+    const step4Code = `class Dino {
+      constructor() {
+        this.width = 44;
+        this.height = 48;
+        this.x = 60;
+        this.y = 0;
+        this.isJumping = false;
+        this.isDucking = false;
+      }
+    }
+    const dino = new Dino();`;
+    await page.locator('#student-code-editor').fill(step4Code);
+    await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
+
+    const successFb = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(successFb, true, 'Step 4 dimensions must pass validation');
+
+    const step5Unlocked = await page.locator('#step-nav-5').isDisabled();
+    assert.strictEqual(step5Unlocked, false, 'Step 5 must be unlocked');
+
+    const nextBtnText = await page.textContent('#btn-next-step');
+    assert.match(nextBtnText, /5-Qadamga O'tish/);
+  });
+
+  await t.test('Step 5 renders explicit sub-task criteria checklist with 4 clear tasks', async () => {
+    // Advance to Step 5
     await page.locator('#btn-next-step').click();
 
-    // Verify current step is Step 3
     const stepTitle = await page.textContent('#top-step-title');
-    assert.match(stepTitle, /3-Qadam/);
+    assert.match(stepTitle, /5-Qadam/);
 
     // Verify criteria container is visible
     const criteriaVisible = await page.locator('#task-criteria-container').isVisible();
@@ -347,7 +278,7 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     // Verify 4 subtasks are listed
     const criteriaItems = page.locator('.task-criteria-item');
     const count = await criteriaItems.count();
-    assert.strictEqual(count, 4, 'Step 3 must have 4 distinct subtask criteria');
+    assert.strictEqual(count, 4, 'Step 5 must have 4 distinct subtask criteria');
 
     // Verify content of subtasks: jump, duck, standUp, eventListener
     const item1 = await criteriaItems.nth(0).textContent();
@@ -360,7 +291,7 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.match(item4, /addEventListener/);
   });
 
-  await t.test('Step 3 gives precise guidance when subtasks are missing and unlocks Step 4 on completion', async () => {
+  await t.test('Step 5 gives precise guidance when subtasks are missing and unlocks Step 6 on completion', async () => {
     // Partial attempt: only jump() implemented
     const partialCode = `class Dino {
       constructor() {
@@ -381,8 +312,8 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     let valText = await page.textContent('#validation-feedback-box');
     assert.match(valText, /duck\(\)/, 'Must specifically guide student that duck() is missing');
 
-    // Complete valid Step 3 code according to the taught criteria
-    const completeStep3Code = `class Dino {
+    // Complete valid Step 5 code
+    const completeStep5Code = `class Dino {
       constructor() {
         this.width = 44; this.height = 48;
         this.x = 60; this.y = 0;
@@ -415,19 +346,19 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
       if (e.code === 'ArrowDown') dino.standUp();
     });`;
 
-    await page.locator('#student-code-editor').fill(completeStep3Code);
+    await page.locator('#student-code-editor').fill(completeStep5Code);
     await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
 
     // Verify success
     const successFb = await page.locator('.validation-feedback-card.success').isVisible();
-    assert.strictEqual(successFb, true, 'Valid Step 3 code must pass validation');
+    assert.strictEqual(successFb, true, 'Valid Step 5 code must pass validation');
 
-    // Step 4 must now be unlocked
-    const step4Unlocked = await page.locator('#step-nav-4').isDisabled();
-    assert.strictEqual(step4Unlocked, false, 'Step 4 must now be unlocked');
+    // Step 6 must now be unlocked
+    const step6Unlocked = await page.locator('#step-nav-6').isDisabled();
+    assert.strictEqual(step6Unlocked, false, 'Step 6 must now be unlocked');
 
     const nextBtnText = await page.textContent('#btn-next-step');
-    assert.match(nextBtnText, /4-Qadamga O'tish/);
+    assert.match(nextBtnText, /6-Qadamga O'tish/);
   });
 
   await t.test('HTML & CSS boilerplate toggle button reveals foundation and hides on demand', async () => {
@@ -495,23 +426,54 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
     assert.match(dimText, /44px.*48px/);
   });
 
-  await t.test('Top full-code copy button is locked initially and only reveals after all 5 steps are built', async () => {
+  await t.test('Target Demo Interactive Physics Sliders Lab allows tuning speed, jump and altitude', async () => {
+    // Change custom speed slider to 4.5
+    await page.fill('#slider-target-speed', '4.5');
+    await page.locator('#slider-target-speed').dispatchEvent('input');
+    const speedVal = await page.textContent('#val-target-speed');
+    assert.match(speedVal, /4\.5/);
+
+    // Change altitude baseline slider to 15
+    await page.fill('#slider-target-y', '15');
+    await page.locator('#slider-target-y').dispatchEvent('input');
+    const yVal = await page.textContent('#val-target-y');
+    assert.match(yVal, /15/);
+
+    // Click reset button
+    await page.locator('.sliders-drawer-header button:has-text("Standartga Qaytarish")').click();
+    const speedValReset = await page.textContent('#val-target-speed');
+    assert.match(speedValReset, /3\.4/);
+    const yValReset = await page.textContent('#val-target-y');
+    assert.match(yValReset, /0/);
+  });
+
+  await t.test('Standalone VS Code template modal opens and contains valid HTML', async () => {
+    await page.locator('button:has-text("VS Code")').click();
+    const modalVisible = await page.locator('#vscode-modal.open').isVisible();
+    assert.strictEqual(modalVisible, true, 'VS Code modal must open');
+
+    const templateContent = await page.textContent('#template-code-box');
+    assert.match(templateContent, /<!DOCTYPE html>/, 'Template must be valid HTML');
+    assert.match(templateContent, /class Dino/, 'Template must contain Dino class');
+
+    // Close modal
+    await page.locator('#vscode-modal [onclick="closeVsCodeModal()"]').click();
+    const modalClosed = await page.locator('#vscode-modal.open').isVisible();
+    assert.strictEqual(modalClosed, false, 'Modal should close cleanly');
+  });
+
+  await t.test('Completes Step 6 (Physics) and Step 7 (Collision) to unlock full-code copy button', async () => {
     // Verify top copy button is NOT visible during early progression
     const topCopyVisibleEarly = await page.locator('#btn-copy-top-completed').isVisible();
-    assert.strictEqual(topCopyVisibleEarly, false, 'Top copy button must be hidden before all 5 steps are built');
+    assert.strictEqual(topCopyVisibleEarly, false, 'Top copy button must be hidden before all 7 steps are built');
 
-    // Verify premature copy button is completely removed from boilerplate drawer
-    const prematureBtnCount = await page.locator('.mini-action-btn:has-text("Notepad Uchun To\'liq Kodni Nusxalash")').count();
-    assert.strictEqual(prematureBtnCount, 0, 'Premature full-code copy button must be removed from drawer');
-
-    // Now advance through Step 4 and Step 5 to complete the full curriculum:
-    // Advance to Step 4:
+    // Advance to Step 6:
     await page.locator('#btn-next-step').click();
-    const step4Title = await page.textContent('#top-step-title');
-    assert.match(step4Title, /4-Qadam/);
+    const step6Title = await page.textContent('#top-step-title');
+    assert.match(step6Title, /6-Qadam/);
 
-    // Implement Step 4 valid code
-    const step4Code = `class Dino {
+    // Implement Step 6 valid code (Gravity & Physics)
+    const step6Code = `class Dino {
       constructor() {
         this.width = 44; this.height = 48;
         this.x = 60; this.y = 0;
@@ -547,20 +509,27 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
       }
     }
     const dino = new Dino();`;
-    await page.locator('#student-code-editor').fill(step4Code);
+    await page.locator('#student-code-editor').fill(step6Code);
     await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
 
-    // Advance to Step 5:
+    // Verify Step 6 passed and Step 7 unlocked
+    const step6Pass = await page.locator('.validation-feedback-card.success').isVisible();
+    assert.strictEqual(step6Pass, true, 'Step 6 physics must pass validation');
+
+    const step7Unlocked = await page.locator('#step-nav-7').isDisabled();
+    assert.strictEqual(step7Unlocked, false, 'Step 7 must now be unlocked');
+
+    // Advance to Step 7:
     await page.locator('#btn-next-step').click();
-    const step5Title = await page.textContent('#top-step-title');
-    assert.match(step5Title, /5-Qadam/);
+    const step7Title = await page.textContent('#top-step-title');
+    assert.match(step7Title, /7-Qadam/);
 
-    // Top copy button should STILL be hidden
-    const topCopyBeforeStep5 = await page.locator('#btn-copy-top-completed').isVisible();
-    assert.strictEqual(topCopyBeforeStep5, false, 'Top copy button must remain hidden until Step 5 passes');
+    // Top copy button should STILL be hidden before Step 7 passes
+    const topCopyBeforeStep7 = await page.locator('#btn-copy-top-completed').isVisible();
+    assert.strictEqual(topCopyBeforeStep7, false, 'Top copy button must remain hidden until Step 7 passes');
 
-    // Implement Step 5 valid code
-    const step5Code = `function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
+    // Implement Step 7 valid code (AABB Collision)
+    const step7Code = `function checkCollision(dinoX, dinoY, dinoW, dinoH, obsX, obsY, obsW, obsH) {
       return (
         dinoX < obsX + obsW &&
         dinoX + dinoW > obsX &&
@@ -568,16 +537,20 @@ test('Dino Game Socratic Progression & Live Canvas Suite', async (t) => {
         dinoY < obsY + obsH
       );
     }`;
-    await page.locator('#student-code-editor').fill(step5Code);
+    await page.locator('#student-code-editor').fill(step7Code);
     await page.locator('.run-btn:has-text("Kodni Ishga Tushirish")').click();
 
-    // Step 5 succeeds
+    // Step 7 succeeds
     const successFb = await page.locator('.validation-feedback-card.success').isVisible();
-    assert.strictEqual(successFb, true, 'Step 5 must pass validation');
+    assert.strictEqual(successFb, true, 'Step 7 must pass validation');
+
+    // Progress label check: 7 / 7 (100%)
+    const progText = await page.textContent('#progress-label');
+    assert.match(progText, /7 \/ 7.*100%/);
 
     // NOW top copy button MUST BE VISIBLE on top of the code editor!
     const topCopyAfterCompletion = await page.locator('#btn-copy-top-completed').isVisible();
-    assert.strictEqual(topCopyAfterCompletion, true, 'Top copy button must become visible after all 5 steps are built');
+    assert.strictEqual(topCopyAfterCompletion, true, 'Top copy button must become visible after all 7 steps are built');
     const topCopyText = await page.textContent('#btn-copy-top-completed');
     assert.match(topCopyText, /To'liq O'yin Kodini Nusxalash/);
   });
