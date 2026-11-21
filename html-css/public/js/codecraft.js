@@ -14933,7 +14933,10 @@ function renderLessonView() {
     <!-- STEP 1: In Human Language (Plain explanation for kids) -->
     ${renderHumanIntro(lesson)}
 
-    <!-- STEP 2: Step-by-Step Anatomy (Only the pieces of code for this theme & their exact visual results) -->
+    <!-- STEP 2: Interactive Type-by-Type Live Sandbox (Open Progressive Mini-Lab) -->
+    ${renderInteractiveMiniLab(lesson)}
+
+    <!-- Step-by-Step Anatomy Breakdown -->
     ${renderAnatomySection(lesson)}
 
     ${lesson.id === 'theme-0-typing' ? `
@@ -15097,6 +15100,193 @@ function renderTagShowcase(lesson) {
   `;
 }
 
+function renderInteractiveMiniLab(lesson) {
+  if (!lesson.anatomy || lesson.anatomy.length === 0) return '';
+
+  const isUz = state.lang === 'uz';
+  return `
+    <div class="interactive-minilab-card" id="interactive-minilab">
+      <div class="minilab-header">
+        <div class="minilab-title-box">
+          <span class="minilab-icon">🧪</span>
+          <div>
+            <h3 class="minilab-title">${isUz ? "2-QADAM: Har Bir Turni Jonli Sinab Ko'rish Laboratoriyasi" : "STEP 2: Interactive Type-by-Type Live Sandbox"}</h3>
+            <p class="minilab-subtitle">${isUz ? "Istalgan tur tugmasini bosing, kodni o'zgartirib darhol jonli natijani ko'ring va kodingizga joylang!" : "Click each variant tab, tweak live code snippets, observe instant visual results, and inject into your code!"}</p>
+          </div>
+        </div>
+        <div class="minilab-stats-pill" id="minilab-stats-pill">
+          ⭐ <span id="minilab-stars-count">0</span> / ${lesson.anatomy.length} ${isUz ? "Sinov O'tdi" : "Variants Mastered"}
+        </div>
+      </div>
+
+      <!-- Type Selector Tabs -->
+      <div class="minilab-tabs-bar" id="minilab-tabs-bar">
+        ${lesson.anatomy.map((step, idx) => `
+          <button type="button" class="minilab-tab-btn ${idx === 0 ? 'active' : ''}" data-type-index="${idx}">
+            <span class="tab-idx">${idx + 1}</span>
+            <span class="tab-label">${escapeHtml(localize(step.role || step.name || 'Variant', state.lang))}</span>
+            <span class="tab-status" id="tab-status-${idx}">⚪</span>
+          </button>
+        `).join('')}
+      </div>
+
+      <!-- Active Testing Stage -->
+      <div class="minilab-stage" id="minilab-stage">
+        <!-- Loaded dynamically by setupInteractiveMiniLab -->
+      </div>
+    </div>
+  `;
+}
+
+function setupInteractiveMiniLab(lesson) {
+  const container = document.getElementById('interactive-minilab');
+  if (!container || !lesson.anatomy || lesson.anatomy.length === 0) return;
+
+  const isUz = state.lang === 'uz';
+  let activeIndex = 0;
+  const testedSteps = new Set();
+
+  function renderStage(idx) {
+    const step = lesson.anatomy[idx];
+    if (!step) return;
+
+    const part = step.part || step.code || '';
+    const role = localize(step.role || step.name || '', state.lang);
+    const explanation = localize(step.explanation || step.purpose || '', state.lang);
+    const effect = localize(step.effect || step.purpose || '', state.lang);
+
+    let sampleStyle = '';
+    let innerText = '';
+
+    if (part.includes('linear-gradient')) {
+      sampleStyle = `background: ${part}; height: 110px; width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
+      innerText = `✨ ${role}`;
+    } else if (part.includes('radial-gradient')) {
+      sampleStyle = `background: ${part}; height: 110px; width: 110px; margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; box-shadow: 0 0 30px #00f2fe; text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
+      innerText = `🔮 3D ORB`;
+    } else if (part.includes('conic-gradient')) {
+      sampleStyle = `background: ${part}; height: 110px; width: 110px; margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; box-shadow: 0 0 25px rgba(255,0,122,0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
+      innerText = `🌀 CONIC`;
+    } else if (part.includes('clip: text') || part.includes('background-clip')) {
+      sampleStyle = `background: linear-gradient(90deg, #ff007a, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 22px; font-weight: 900; letter-spacing: 2px; text-align: center;`;
+      innerText = `⚡ GRADIENT TEXT ⚡`;
+    } else {
+      sampleStyle = `padding: 16px; border-radius: 8px; font-weight: 700; color: #38bdf8; text-align: center; font-size: 14px;`;
+      innerText = `👉 ${role}`;
+    }
+
+    const stageEl = document.getElementById('minilab-stage');
+    if (!stageEl) return;
+
+    stageEl.innerHTML = `
+      <div class="minilab-workspace">
+        <div class="minilab-left-panel">
+          <div class="minilab-panel-badge">
+            <span>✏️ ${isUz ? 'Mini Kod Muharriri' : 'Mini Code Playground'}</span>
+            <span class="minilab-badge-step">${role}</span>
+          </div>
+          <p class="minilab-panel-desc">${explanation}</p>
+          <div class="minilab-input-wrap">
+            <label class="minilab-input-label">${isUz ? "Ushbu tur kodi (jonli o'zgartiring):" : "Type snippet (tweak live):"}</label>
+            <input type="text" id="minilab-code-input" class="minilab-code-input" value="${escapeHtml(part)}" spellcheck="false" />
+          </div>
+          <div class="minilab-actions-bar">
+            <button type="button" id="btn-minilab-test" class="btn-minilab-test">
+              ⚡ ${isUz ? "Sinab Ko'rish" : "Test & Render"}
+            </button>
+            <button type="button" id="btn-minilab-insert" class="btn-minilab-insert" title="${isUz ? 'Ushbu kodni pastdagi asosiy muharrirga joylash' : 'Inject snippet into main code editor'}">
+              📥 ${isUz ? "Kodinga Joylash" : "Insert to Code"}
+            </button>
+            <span id="minilab-success-toast" class="minilab-toast hidden">
+              🎉 ${isUz ? "+1 Bonus Yulduz! Zo'r natija!" : "+1 Bonus Star! Excellent!"}
+            </span>
+          </div>
+        </div>
+
+        <div class="minilab-right-panel">
+          <div class="minilab-panel-badge">
+            <span>👁️ ${isUz ? 'Jonli Vizual Natija' : 'Live Render Output'}</span>
+            <span class="minilab-badge-live">LIVE CSS</span>
+          </div>
+          <div class="minilab-preview-canvas">
+            <div id="minilab-target-element" style="${sampleStyle}">
+              ${innerText}
+            </div>
+          </div>
+          <div class="minilab-effect-callout">
+            👉 <strong>${isUz ? "Natija:" : "Effect:"}</strong> <span>${effect}</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const inputEl = document.getElementById('minilab-code-input');
+    const targetEl = document.getElementById('minilab-target-element');
+    const btnTest = document.getElementById('btn-minilab-test');
+    const btnInsert = document.getElementById('btn-minilab-insert');
+    const toast = document.getElementById('minilab-success-toast');
+
+    function applyMiniInput() {
+      if (!inputEl || !targetEl) return;
+      const val = inputEl.value.trim();
+      if (val.includes('-gradient')) {
+        targetEl.style.background = val;
+      } else if (val.includes(':')) {
+        targetEl.style.cssText += ';' + val;
+      }
+    }
+
+    inputEl?.addEventListener('input', applyMiniInput);
+
+    btnTest?.addEventListener('click', () => {
+      applyMiniInput();
+      testedSteps.add(idx);
+      const statusIcon = document.getElementById('tab-status-' + idx);
+      if (statusIcon) statusIcon.textContent = '✓';
+      const counter = document.getElementById('minilab-stars-count');
+      if (counter) counter.textContent = testedSteps.size;
+
+      if (toast) {
+        toast.textContent = isUz ? "+1 Bonus Yulduz! Zo'r natija!" : "+1 Bonus Star! Excellent!";
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2500);
+      }
+      playSound('star', state.audioEnabled);
+    });
+
+    btnInsert?.addEventListener('click', () => {
+      const textarea = document.getElementById('code-textarea');
+      if (textarea && inputEl) {
+        const val = inputEl.value.trim();
+        insertTextAtCursor(textarea, val.includes(';') ? val : val + ';');
+        playSound('click', state.audioEnabled);
+        if (toast) {
+          toast.textContent = isUz ? "✓ Kodingizga qo'shildi!" : "✓ Inserted to editor!";
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 2000);
+        }
+      }
+    });
+  }
+
+  // Render initial active step
+  renderStage(0);
+
+  // Wire tab buttons
+  const tabBtns = container.querySelectorAll('.minilab-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-type-index'), 10);
+      if (!isNaN(idx)) {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderStage(idx);
+        playSound('click', state.audioEnabled);
+      }
+    });
+  });
+}
+
 function renderAnatomySection(lesson) {
   if (!lesson.anatomy || lesson.anatomy.length === 0) return '';
 
@@ -15191,6 +15381,9 @@ function setupLessonListeners(lesson) {
       lineNumbers.scrollTop = textarea.scrollTop;
     }
   });
+
+  // Interactive Type-by-Type Live Mini-Lab Setup
+  setupInteractiveMiniLab(lesson);
 
   // Fullscreen Dual IDE Mode Toggle
   setupFullscreenIDE();
