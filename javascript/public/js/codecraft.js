@@ -8,68 +8,83 @@
   // --- Curriculum Module ---
   /**
  * JavaScript for Kids (CodeCraft JS) Curriculum
- * 24 Foundational, Intermediate, and Practical Topics
- * Bilingual (Uzbek & English), 100% Offline, Hands-On
- * Elevated with Pedagogy, Bilingual Code Comments, Target Descriptions,
- * List of Commands, and Simple Big SPA Web Page Practices.
+ * 24 Comprehensive, Engaging, Hands-on Topics with Strict 3-Step Methodology:
+ *   1. Theory (Nazariya): Relatable real-world analogies, formulas, and deep syntax breakdown.
+ *   2. Guided Practice (Amaliyot): Multi-step, numbered instructions with live visual outcomes.
+ *   3. Exam Challenge (Sinov): Independent, creative missions verifying concept mastery.
+ *
+ * Covers: console, variables (let/const), data types, operators & math, template literals,
+ * prompt/confirm, if/else/else if, comparisons & logic, switch & ternary, function declarations,
+ * parameters & return, arrow functions, arrays, push/pop/shift/unshift, for loops,
+ * while & do...while, for...of vs for...in, classes & OOP with 'this', DOM selection,
+ * DOM modification, click events, keyboard & window keys (e.key vs e.code), timers & Math.random,
+ * and a complete capstone interactive game!
  */
 
 const MODULES = [
   {
-    id: 'mod-js-basics',
+    id: "mod-js-basics",
     title: { uz: "1. JS Boshlanishi va O'zgaruvchilar (1 - 6)", en: "1. JS Basics & Variables (Themes 1 - 6)" },
-    color: '#3b82f6',
-    icon: '🚀'
+    color: "#3b82f6",
+    icon: "🚀"
   },
   {
-    id: 'mod-js-logic',
+    id: "mod-js-logic",
     title: { uz: "2. Mantiq, Shartlar va Funksiyalar (7 - 12)", en: "2. Logic, Conditions & Functions (Themes 7 - 12)" },
-    color: '#10b981',
-    icon: '🧠'
+    color: "#10b981",
+    icon: "🧠"
   },
   {
-    id: 'mod-js-data',
-    title: { uz: "3. Massivlar, Tsikllar va Obyektlar (13 - 18)", en: "3. Arrays, Loops & Objects (Themes 13 - 18)" },
-    color: '#f59e0b',
-    icon: '🎒'
+    id: "mod-js-data",
+    title: { uz: "3. Massivlar, Tsikllar va Klasslar (13 - 18)", en: "3. Arrays, Loops & Classes (Themes 13 - 18)" },
+    color: "#f59e0b",
+    icon: "🎒"
   },
   {
-    id: 'mod-js-dom',
-    title: { uz: "4. Jonli Veb Sahifa va Mini-O'yinlar (19 - 24)", en: "4. Interactive DOM & Mini-Games (Themes 19 - 24)" },
-    color: '#8b5cf6',
-    icon: '🎮'
+    id: "mod-js-dom",
+    title: { uz: "4. Jonli DOM, Klaviatura va Mini-O'yin (19 - 24)", en: "4. Interactive DOM & Game (Themes 19 - 24)" },
+    color: "#8b5cf6",
+    icon: "🎮"
   }
 ];
 
 const LESSONS = [
-  // THEME 1
+  // THEME 1: console.log() & alert()
   {
-    id: 'js-1-console',
-    module: 'mod-js-basics',
-    icon: '💬',
-    title: { uz: "1-Mavzu: console.log() va alert() — Salom Dunyo!", en: "Theme 1: console.log() & alert() — Hello World!" },
+    id: "js-1-console",
+    module: "mod-js-basics",
+    icon: "💬",
+    title: {
+      uz: "1-Mavzu: console.log() va alert() — Salom Dunyo!",
+      en: "Theme 1: console.log() & alert() — Hello World!"
+    },
     concept: {
-      uz: "JavaScript kompyuter bilan gaplashish tilidir. console.log() orqali maxfiy konsol oynasiga xabar chiqaramiz, alert() esa ekranda chiroyli xabar oynachasini ochadi.",
-      en: "JavaScript is the language of computer action. console.log() prints messages to the secret developer console, while alert() pops up a friendly dialog."
+      uz: "JavaScript kompyuter bilan gaplashish tilidir. console.log() dasturchining maxfiy konsol daftariga xabarlar yozadi, alert() esa ekranda foydalanuvchiga qalqib chiquvchi ogohlantirish oynasini ko'rsatadi.",
+      en: "JavaScript is the action language of the web. console.log() writes messages to the developer console, while alert() pops up a dialog window on screen."
     },
     humanLanguage: {
-      uz: "Tasavvur qiling, kompyuter sizning buyruqlaringizni bajaruvchi robot. console.log('Salom!') desangiz, u o'z daftariga 'Salom!' deb yozadi.",
-      en: "Imagine your computer is a robot eager to speak. Saying console.log('Hello!') tells the robot to write 'Hello!' in its developer notebook."
+      uz: "Tasavvur qiling, kompyuter sizning buyruqlaringizni bajaruvchi sodiq robot. console.log('Salom!') desangiz, u o'z daftariga 'Salom!' deb yozib qo'yadi. alert('Diqqat!') desangiz esa, ekranga chiqib ovoz beradi!",
+      en: "Imagine the computer is a helpful robot. Saying console.log('Hello!') writes a note in its log book. Calling alert('Attention!') makes it pop up an announcement dialog directly on screen!"
     },
     secretSandwich: {
-      uz: "Sehrli formula: console.log('Sizning matningiz'); — doimo qavs () ichiga qo'shtirnoq '' bilan matn solasiz va oxiriga nuqta-vergul ; qo'yasiz!",
-      en: "Magic formula: console.log('Your text'); — always wrap strings inside quotes '' and parentheses (), ending with a semicolon ;!"
+      uz: "Sehrli formula: console.log('Sizning matningiz', son); — qavs () ichiga vergul bilan istalgancha xabar solishingiz mumkin va oxiriga nuqta-vergul ; qo'yasiz!",
+      en: "Magic formula: console.log('Your text', number); — pass text inside quotes and separate multiple values with commas, ending with semicolon ;!"
     },
     stepBreakdown: [
       {
         part: "console.log()",
-        explanation: { uz: "Konsolga chop etish buyrug'i", en: "Command to print to developer console" },
+        explanation: { uz: "Dasturchilar konsoliga chop etish buyrug'i", en: "Command to print to developer console" },
         visualResult: { uz: "Brauzer konsolida ko'rinadi", en: "Prints line in the console" }
       },
       {
-        part: '"Salom, Dunyo!"',
+        part: "\"Salom, Dunyo!\"",
         explanation: { uz: "Chiqarmoqchi bo'lgan matn (String)", en: "The message text string to output" },
         visualResult: { uz: "Ekranda matn paydo bo'ladi", en: "Text displays in output" }
+      },
+      {
+        part: "alert()",
+        explanation: { uz: "Qalqib chiquvchi ogohlantirish oynasi", en: "Pops up an interactive modal dialog" },
+        visualResult: { uz: "Foydalanuvchi ekranda oynani ko'radi", en: "User sees popup window" }
       }
     ],
     listOfCommands: [
@@ -81,480 +96,417 @@ const LESSONS = [
       { tag: 'alert()', name: { uz: "Ogohlantirish oynasi", en: "Alert Popup" }, meaning: { uz: "Ekranda qalqib chiquvchi oyna ochadi", en: "Shows popup window" } }
     ],
     mission: {
-      uz: 'Konsolga "Salom, Dunyo!" xabarini console.log() orqali chiqaring.',
-      en: 'Print "Salom, Dunyo!" or "Hello, World!" to the console using console.log().'
+      uz: "Robotni tanishtiring: console.log() bilan \"Robot faollashdi!\" va alert() bilan \"Tizim tayyor!\" xabarlarini chiqaring.",
+      en: "Introduce the robot: use console.log() to print \"Robot faollashdi!\" and alert() with \"Tizim tayyor!\"."
     },
     targetDescription: {
-      uz: 'Dasturchilar konsoliga chiqarilgan "Salom, Dunyo!" xabari.',
-      en: 'The friendly greeting "Salom, Dunyo!" or "Hello, World!" printed into the developer console.'
+      uz: "Konsolga chiqarilgan robot xabari va ekranda paydo bo'lgan alert oynasi.",
+      en: "System activation logged to console and interactive alert displayed."
     },
     initialCode: {
-      en: '// Theme 1: Hello World\n// Step 1: Type console.log("Salom, Dunyo!"); below:\n',
-      uz: '// 1-Mavzu: Salom Dunyo\n// 1-Qadam: Quyiga console.log("Salom, Dunyo!"); deb yozing:\n'
+      en: "// Theme 1: Hello World & Console\n// Step 1: Log system startup to the console:\n// console.log(\"Robot faollashdi!\");\n\n// Step 2: Show popup alert to user:\n// alert(\"Tizim tayyor!\");\n",
+      uz: "// 1-Mavzu: Salom Dunyo va Konsol\n// 1-QADAM: Robot faollashganini konsolga chiqaring:\n// console.log(\"Robot faollashdi!\");\n\n// 2-QADAM: Foydalanuvchiga alert oynasini ko'rsating:\n// alert(\"Tizim tayyor!\");\n"
     },
     targetCode: {
-      en: '// Theme 1 Solution\nconsole.log("Salom, Dunyo!");',
-      uz: '// 1-Mavzu Yechimi\nconsole.log("Salom, Dunyo!");'
+      en: "// Theme 1 Solution\nconsole.log(\"Robot faollashdi!\");\nalert(\"Tizim tayyor!\");",
+      uz: "// 1-Mavzu Yechimi\nconsole.log(\"Robot faollashdi!\");\nalert(\"Tizim tayyor!\");"
     },
     hints: [
-      { uz: 'console.log("Salom, Dunyo!"); deb yozing.', en: 'Type: console.log("Salom, Dunyo!");' }
+      { uz: "console.log(\"Robot faollashdi!\"); va alert(\"Tizim tayyor!\"); deb yozing.", en: "Type console.log(\"Robot faollashdi!\"); and alert(\"Tizim tayyor!\");" }
     ],
     validate: (code) => {
-      if (!/console\.log\s*\(/.test(code)) return { passed: false, message: "console.log() buyrug'idan foydalaning!" };
-      if (!/["'`].+["'`]/.test(code)) return { passed: false, message: "Qo'shtirnoq ichiga matn kiriting!" };
-      return { passed: true, message: "Ajoyib! Birinchi JavaScript kodingiz muvaffaqiyatli ishladi! 🎉" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/console\.log\s*\(/.test(clean)) return { passed: false, message: "console.log() buyrug'idan foydalaning!" };
+      if (!/alert\s*\(/.test(clean)) return { passed: false, message: "alert() buyrug'idan ham foydalaning!" };
+      if (!/["'].+["']/.test(clean)) return { passed: false, message: "Qo'shtirnoq ichiga matn kiriting!" };
+      return { passed: true, message: "Ajoyib! Birinchi JavaScript dasturingiz muvaffaqiyatli ishladi! 🎉" };
     }
   },
 
-  // THEME 2
+  // THEME 2: let & const
   {
-    id: 'js-2-variables',
-    module: 'mod-js-basics',
-    icon: '📦',
-    title: { uz: "2-Mavzu: let va const — Sehrli Qutilar (O'zgaruvchilar)", en: "Theme 2: let & const — Magic Boxes (Variables)" },
+    id: "js-2-variables",
+    module: "mod-js-basics",
+    icon: "📦",
+    title: {
+      uz: "2-Mavzu: let va const — Sehrli Xotira Qutilari",
+      en: "Theme 2: let & const — Magic Storage Boxes"
+    },
     concept: {
-      uz: "O'zgaruvchi — bu kompyuter xotirasidagi nomlangan quti. let o'zgaruvchan quti (ballar, tangalar), const esa o'zgarmas quti (ism, tug'ilgan yil).",
-      en: "A variable is a labeled storage box in memory. Use let for values that change (score, coins), and const for fixed constants (name, ID)."
+      uz: "O'zgaruvchi — bu kompyuter xotirasidagi nomlangan quti. let o'zgaruvchan quti (ballar, tangalar, vaqt), const esa qulflangan o'zgarmas quti (ism, tug'ilgan yil, doimiy qoidalar).",
+      en: "A variable is a labeled storage box in memory. Use let for values that change (score, coins), and const for locked constants (name, ID)."
     },
     humanLanguage: {
-      uz: "O'yindagi tangalar soni o'zgarib turadi, shuning uchun let coins = 10; deymiz. O'yinchi ismi esa o'zgarmaydi: const name = 'Ali';",
-      en: "Your score keeps increasing so you use let score = 100;. Your player hero name stays fixed so you use const hero = 'Knight';"
+      uz: "O'yindagi tangalar soni doim o'zgaradi, shuning uchun let coins = 10; deymiz va coins = coins + 5; deb yangilaymiz. Qahramon nomi esa o'zgarmas doimiy bo'lgani uchun const hero = 'Temur'; deb qulflaymiz!",
+      en: "In a game your coins change constantly so you use let coins = 10; and update it with coins += 5;. Your hero name stays fixed forever so you lock it with const hero = 'Temur'!"
     },
     secretSandwich: {
-      uz: "let qutiNomi = qiymat; — qutiga nom bering va unga istalgan narsani joylang.",
-      en: "let boxName = value; — name the container and put anything inside."
+      uz: "let qutiNomi = qiymat; (o'zgartirish mumkin) | const qutiNomi = qiymat; (qulflangan, o'zgartirib bo'lmaydi!)",
+      en: "let name = val; (reassignable) | const name = val; (locked constant!)"
     },
     stepBreakdown: [
       {
-        part: "let score = 100;",
-        explanation: { uz: "O'zgaruvchan quti yaratib, unga 100 sonini solish", en: "Creates changeable variable with 100" },
+        part: "let score = 50;",
+        explanation: { uz: "O'zgaruvchan quti yaratib, unga 50 sonini solish", en: "Creates changeable variable with 50" },
         visualResult: { uz: "score qutisi xotirada saqlanadi", en: "score box stored in memory" }
       },
       {
-        part: 'const hero = "Knight";',
+        part: "score = score + 25;",
+        explanation: { uz: "Qutidagi eski qiymatga 25 qo'shib yangilash", en: "Updates score box value to 75" },
+        visualResult: { uz: "score qiymati 75 ga aylanadi", en: "score updates to 75" }
+      },
+      {
+        part: "const hero = \"Temur\";",
         explanation: { uz: "O'zgarmas doimiy quti yaratish", en: "Creates locked constant container" },
         visualResult: { uz: "hero qutisi qulflanadi", en: "hero locked in memory" }
       }
     ],
     listOfCommands: [
       { code: 'let name = value;', name: { uz: "O'zgaruvchan quti", en: "Changeable Variable" }, description: { uz: "Keyinchalik qiymati o'zgarishi mumkin bo'lgan o'zgaruvchi", en: "Declares a reassignable variable" } },
-      { code: 'const name = value;', name: { uz: "O'zgarmas quti", en: "Constant Variable" }, description: { uz: "Qiymati doimiy qoladigan o'zgaruvchi", en: "Declares a permanent locked constant" } }
+      { code: 'const name = value;', name: { uz: "O'zgarmas quti", en: "Constant Variable" }, description: { uz: "Qiymati doimiy qoladigan qulflangan o'zgaruvchi", en: "Declares a permanent locked constant" } }
     ],
     tagShowcase: [
       { tag: 'let', name: { uz: "O'zgaruvchan", en: "Variable" }, meaning: { uz: "Qiymati o'zgaradigan quti", en: "Value can change" } },
       { tag: 'const', name: { uz: "Doimiy", en: "Constant" }, meaning: { uz: "Qiymati o'zgarmas quti", en: "Value cannot change" } }
     ],
     mission: {
-      uz: "let score = 100; va const hero = 'Knight'; deb yozing hamda console.log(score); qiling.",
-      en: "Declare let score = 100; and const hero = 'Knight';, then log score with console.log(score);."
+      uz: "const heroName = 'Temur'; va let coins = 50; e'lon qiling. Tangalarni coins = coins + 25; qilib oshiring va console.log(heroName, coins); chiqaring.",
+      en: "Declare const heroName = 'Temur'; and let coins = 50;. Increase coins with coins = coins + 25; and log with console.log(heroName, coins);."
     },
     targetDescription: {
-      uz: "Xotirada saqlangan o'zgaruvchi (score = 100) va qahramon nomi konsolga chiqariladi.",
-      en: "Changeable score variable (100) and constant hero name stored in memory and logged to console."
+      uz: "Qahramon nomi va 75 ga tenglashgan tangalar konsolga chiqariladi.",
+      en: "Hero name and updated coins (75) logged to console."
     },
     initialCode: {
-      en: '// Theme 2: Variables\n// Step 1: Declare let score = 100;\n// Step 2: Declare const hero = "Knight";\n// Step 3: Log score to console:\n',
-      uz: '// 2-Mavzu: O\'zgaruvchilar\n// 1-Qadam: let score = 100; deb yozing\n// 2-Qadam: const hero = "Knight"; deb yozing\n// 3-Qadam: score ni konsolga chiqaring:\n'
+      en: "// Theme 2: Variables (let vs const)\n// Step 1: Declare locked hero name with const:\n// const heroName = \"Temur\";\n\n// Step 2: Declare changeable coins with let:\n// let coins = 50;\n\n// Step 3: Increase coins by 25:\n// coins = coins + 25;\n\n// Step 4: Log heroName and coins:\n// console.log(heroName, coins);\n",
+      uz: "// 2-Mavzu: O'zgaruvchilar (let va const)\n// 1-QADAM: const bilan o'zgarmas qahramon ismini e'lon qiling:\n// const heroName = \"Temur\";\n\n// 2-QADAM: let bilan o'zgaruvchan tangalarni e'lon qiling:\n// let coins = 50;\n\n// 3-QADAM: Tangalarga 25 qo'shib yangilang:\n// coins = coins + 25;\n\n// 4-QADAM: Qahramon va tangalarni konsolga chiqaring:\n// console.log(heroName, coins);\n"
     },
     targetCode: {
-      en: '// Theme 2 Solution\nlet score = 100;\nconst hero = "Knight";\nconsole.log(score);',
-      uz: '// 2-Mavzu Yechimi\nlet score = 100;\nconst hero = "Knight";\nconsole.log(score);'
+      en: "// Theme 2 Solution\nconst heroName = \"Temur\";\nlet coins = 50;\ncoins = coins + 25;\nconsole.log(heroName, coins);",
+      uz: "// 2-Mavzu Yechimi\nconst heroName = \"Temur\";\nlet coins = 50;\ncoins = coins + 25;\nconsole.log(heroName, coins);"
     },
     hints: [
-      { uz: 'let score = 100; const hero = "Knight"; console.log(score); deb yozing.', en: 'Type let score = 100; const hero = "Knight"; console.log(score);' }
+      { uz: "const heroName = \"Temur\"; let coins = 50; coins = coins + 25; console.log(heroName, coins);", en: "Declare heroName with const, coins with let, add 25 and log." }
     ],
     validate: (code) => {
-      if (!/let\s+score\s*=/.test(code)) return { passed: false, message: "let score = 100; deb e'lon qiling!" };
-      if (!/const\s+hero\s*=/.test(code)) return { passed: false, message: "const hero = 'Knight'; deb e'lon qiling!" };
-      if (!/console\.log\s*\(\s*score\s*\)/.test(code)) return { passed: false, message: "console.log(score); orqali ballni chiqaring!" };
-      return { passed: true, message: "Barakalla! O'zgaruvchilar va doimiylar xotirada saqlandi! 📦⭐" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/const\s+\w+/.test(clean)) return { passed: false, message: "const kalit so'zi bilan o'zgarmas yarating!" };
+      if (!/let\s+\w+/.test(clean)) return { passed: false, message: "let kalit so'zi bilan o'zgaruvchi yarating!" };
+      if (!/\+\s*25|coins\s*\+=\s*25/.test(clean)) return { passed: false, message: "Tangalarni 25 ga oshiring (coins = coins + 25)!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Barakalla! let va const qoidalarini mukammal o'zlashtirdingiz! 💎" };
     }
   },
 
-  // THEME 3
+  // THEME 3: Data Types & typeof
   {
-    id: 'js-3-types',
-    module: 'mod-js-basics',
-    icon: '🧩',
-    title: { uz: "3-Mavzu: Ma'lumot Turlari — String, Number va Boolean", en: "Theme 3: Data Types — String, Number & Boolean" },
+    id: "js-3-types",
+    module: "mod-js-basics",
+    icon: "🏷️",
+    title: {
+      uz: "3-Mavzu: Ma'lumot Turlari — String, Number, Boolean va typeof",
+      en: "Theme 3: Data Types — String, Number, Boolean & typeof"
+    },
     concept: {
-      uz: "JavaScriptda har bir qiymat o'z turiga ega: Matnlar (String), Raqamlar (Number) va Rost/Yolg'on (Boolean). typeof operatori turini aytib beradi.",
-      en: "Every value has a data type: text (String), numbers (Number), and true/false switches (Boolean). typeof inspects the type."
+      uz: "JavaScript-da har bir qiymat o'z turiga ega: String (qo'shtirnoqdagi matn), Number (oddiy son), Boolean (faqat true yoki false). typeof operatori esa qiymatning turini tekshiradi.",
+      en: "Every value has a data type: String (text in quotes), Number (numeric value), Boolean (true or false). The typeof operator detects the type of any value."
     },
     humanLanguage: {
-      uz: "Raqamlarni qo'shtirnoqsiz yozamiz (10, 25), matnlarni esa qo'shtirnoqqa olamiz ('Salom'). Rost/yolg'on esa faqat true yoki false bo'ladi.",
-      en: "Numbers are bare (10, 25), words need quotes ('Hello'). Booleans are binary switches: true or false."
+      uz: "'Ali' bu matn (String), 15 bu son (Number), true bu haqiqat (Boolean). Kompyuterdan typeof 15 deb so'rasangiz, u darhol 'number' deb javob beradi!",
+      en: "'Ali' is text (String), 15 is a number, true is a boolean. Asking typeof 15 tells the computer to report 'number'!"
     },
     secretSandwich: {
-      uz: "typeof qiymat — masalan: typeof 'Salom' natijasi 'string' bo'ladi.",
-      en: "typeof value — e.g. typeof 'Hello' evaluates to 'string'."
+      uz: "typeof o'zgaruvchi — o'zgaruvchi turini aniqlaydi. console.log(typeof 'salom') => 'string'.",
+      en: "typeof variable — checks and returns the data type string."
     },
     stepBreakdown: [
       {
-        part: 'typeof "Dragon"',
-        explanation: { uz: "Matn turini tekshirish", en: "Check text string type" },
-        visualResult: { uz: '"string" chiqadi', en: 'Outputs "string"' }
+        part: "const name = \"Ninja\";",
+        explanation: { uz: "Matn turi (String) — qo'shtirnoqda yoziladi", en: "String type in quotes" },
+        visualResult: { uz: "Xotirada matn saqlanadi", en: "Text stored in memory" }
       },
       {
-        part: "typeof 99",
-        explanation: { uz: "Son turini tekshirish", en: "Check number type" },
-        visualResult: { uz: '"number" chiqadi', en: 'Outputs "number"' }
-      }
-    ],
-    listOfCommands: [
-      { code: 'typeof val', name: { uz: "Tur aniqlovchi", en: "Type Inspector" }, description: { uz: "Qiymatning ma'lumot turini qaytaradi ('string', 'number', 'boolean')", en: "Returns the data type of any variable" } },
-      { code: 'true / false', name: { uz: "Mantiqiy qiymat", en: "Boolean" }, description: { uz: "Rost yoki yolg'on holat kaliti", en: "Binary true or false logic values" } }
-    ],
-    tagShowcase: [
-      { tag: 'typeof', name: { uz: "Tur aniqlovchi", en: "Type Operator" }, meaning: { uz: "Qiymat turini bildiradi", en: "Inspects value type" } },
-      { tag: 'boolean', name: { uz: "Mantiqiy", en: "Boolean" }, meaning: { uz: "true yoki false", en: "True or false" } }
-    ],
-    mission: {
-      uz: 'const pet = "Dragon"; deb oling va console.log(typeof pet); qiling.',
-      en: 'Declare const pet = "Dragon"; and log console.log(typeof pet);.'
-    },
-    targetDescription: {
-      uz: 'Konsolda matn turi ("string") ko\'rinadi.',
-      en: 'The console displays "string", proving the variable holds a text string.'
-    },
-    initialCode: {
-      en: '// Theme 3: Data Types\n// Step 1: Declare const pet = "Dragon";\n// Step 2: Log console.log(typeof pet); below:\n',
-      uz: '// 3-Mavzu: Ma\'lumot Turlari\n// 1-Qadam: const pet = "Dragon"; deb e\'lon qiling\n// 2-Qadam: console.log(typeof pet); deb konsolga chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 3 Solution\nconst pet = "Dragon";\nconsole.log(typeof pet);',
-      uz: '// 3-Mavzu Yechimi\nconst pet = "Dragon";\nconsole.log(typeof pet);'
-    },
-    hints: [
-      { uz: 'const pet = "Dragon"; console.log(typeof pet); deb yozing.', en: 'Type: const pet = "Dragon"; console.log(typeof pet);' }
-    ],
-    validate: (code) => {
-      if (!/typeof/.test(code)) return { passed: false, message: "typeof operatoridan foydalaning!" };
-      if (!/pet/.test(code)) return { passed: false, message: "pet o'zgaruvchisidan foydalaning!" };
-      return { passed: true, message: "Zo'r! Ma'lumot turlarini aniqlashni o'rgandingiz! 🧩🎉" };
-    }
-  },
-
-  // THEME 4
-  {
-    id: 'js-4-math',
-    module: 'mod-js-basics',
-    icon: '➕',
-    title: { uz: "4-Mavzu: Matematika — Qo'shish, Ayirish, Ko'paytirish (+, -, *, /)", en: "Theme 4: Math Operations — Arithmetic (+, -, *, /)" },
-    concept: {
-      uz: "JavaScript — dunyodagi eng tezkor kalkulyatordir. +, -, *, / va % (qoldiq) yordamida o'yindagi ballarni hisoblaymiz.",
-      en: "JavaScript calculates equations in milliseconds using +, -, *, /, and % (modulo remainder)."
-    },
-    humanLanguage: {
-      uz: "O'yinda 10 ta tangangiz bor edi, har biri 2 tadan bo'lgan 5 ta sandiq topdingiz: total = 10 + 5 * 2 = 20!",
-      en: "You have 10 coins and found 5 chests with 2 coins each: total = 10 + 5 * 2 = 20 coins!"
-    },
-    secretSandwich: {
-      uz: "let natija = 10 + 5 * 2; — ko'paytirish qo'shishdan oldin bajariladi!",
-      en: "let result = 10 + 5 * 2; — multiplication takes priority over addition!"
-    },
-    stepBreakdown: [
-      {
-        part: "5 * 2",
-        explanation: { uz: "Avval ko'paytirish bajariladi (10)", en: "Multiplication evaluates first to 10" },
-        visualResult: { uz: "10 chiqadi", en: "Produces 10" }
+        part: "const level = 10;",
+        explanation: { uz: "Son turi (Number) — qo'shtirnoqsiz sof raqam", en: "Number type without quotes" },
+        visualResult: { uz: "Xotirada son saqlanadi", en: "Number stored in memory" }
       },
       {
-        part: "10 + 10",
-        explanation: { uz: "So'ngra qo'shish bajariladi", en: "Addition runs next" },
-        visualResult: { uz: "Jami 20", en: "Final total 20" }
+        part: "const isAlive = true;",
+        explanation: { uz: "Mantiqiy tur (Boolean) — faqat true yoki false", en: "Boolean type: true or false" },
+        visualResult: { uz: "Mantiqiy holat saqlanadi", en: "Boolean state stored" }
       }
     ],
     listOfCommands: [
-      { code: '+, -, *, /', name: { uz: "Matematik amallar", en: "Arithmetic Operators" }, description: { uz: "Qo'shish, ayirish, ko'paytirish va bo'lish", en: "Add, subtract, multiply, and divide numbers" } },
-      { code: '%', name: { uz: "Qoldiq operatori", en: "Modulo Operator" }, description: { uz: "Bo'lishdan qolgan qoldiqni topadi (masalan: 10 % 3 = 1)", en: "Finds the remainder of division (e.g. 10 % 3 = 1)" } }
+      { code: 'typeof x', name: { uz: "Turni aniqlash", en: "Check Data Type" }, description: { uz: "Qiymat turini matn ko'rinishida qaytaradi ('string', 'number', 'boolean')", en: "Returns the data type of an operand" } }
     ],
     tagShowcase: [
-      { tag: '+', name: { uz: "Qo'shish", en: "Add" }, meaning: { uz: "Sonlarni qo'shadi", en: "Adds numbers" } },
-      { tag: '*', name: { uz: "Ko'paytirish", en: "Multiply" }, meaning: { uz: "Sonlarni ko'paytiradi", en: "Multiplies numbers" } }
+      { tag: 'String', name: { uz: "Matn", en: "String" }, meaning: { uz: "Qo'shtirnoq ichidagi matn", en: "Text inside quotes" } },
+      { tag: 'Number', name: { uz: "Son", en: "Number" }, meaning: { uz: "Sof raqamli qiymat", en: "Numeric value" } },
+      { tag: 'Boolean', name: { uz: "Mantiqiy", en: "Boolean" }, meaning: { uz: "Rost (true) yoki yolg'on (false)", en: "True or false" } }
     ],
     mission: {
-      uz: "let total = 10 + 5 * 2; deb hisoblang va console.log(total); qiling.",
-      en: "Calculate let total = 10 + 5 * 2; and log total with console.log(total);."
+      uz: "Uch xil o'zgaruvchi yarating: const title = 'Dino'; const speed = 25; const isActive = true; va ularning typeof turlarini console.log() bilan chiqaring.",
+      en: "Create 3 variables: const title = 'Dino'; const speed = 25; const isActive = true; and log their typeof values."
     },
     targetDescription: {
-      uz: "Konsolda arifmetik amallar natijasi (20) ko'rinadi.",
-      en: "The calculated total 20 is printed to the console."
+      uz: "String, Number va Boolean turlarining typeof natijalari konsolga chiqadi.",
+      en: "The types 'string', 'number', and 'boolean' logged to console."
     },
     initialCode: {
-      en: '// Theme 4: Math Operators\n// Step 1: Calculate total = 10 + 5 * 2;\n// Step 2: Log total with console.log(total);\n',
-      uz: '// 4-Mavzu: Matematika\n// 1-Qadam: let total = 10 + 5 * 2; deb yozing\n// 2-Qadam: console.log(total); deb konsolga chiqaring:\n'
+      en: "// Theme 3: Data Types & typeof\n// Step 1: Create a string, number, and boolean:\n// const title = \"Dino\";\n// const speed = 25;\n// const isActive = true;\n\n// Step 2: Log their data types using typeof:\n// console.log(typeof title, typeof speed, typeof isActive);\n",
+      uz: "// 3-Mavzu: Ma'lumot Turlari va typeof\n// 1-QADAM: Matn, son va mantiqiy o'zgaruvchilarni e'lon qiling:\n// const title = \"Dino\";\n// const speed = 25;\n// const isActive = true;\n\n// 2-QADAM: Ularning turlarini typeof orqali konsolga chiqaring:\n// console.log(typeof title, typeof speed, typeof isActive);\n"
     },
     targetCode: {
-      en: '// Theme 4 Solution\nlet total = 10 + 5 * 2;\nconsole.log(total);',
-      uz: '// 4-Mavzu Yechimi\nlet total = 10 + 5 * 2;\nconsole.log(total);'
+      en: "// Theme 3 Solution\nconst title = \"Dino\";\nconst speed = 25;\nconst isActive = true;\nconsole.log(typeof title, typeof speed, typeof isActive);",
+      uz: "// 3-Mavzu Yechimi\nconst title = \"Dino\";\nconst speed = 25;\nconst isActive = true;\nconsole.log(typeof title, typeof speed, typeof isActive);"
     },
     hints: [
-      { uz: "let total = 10 + 5 * 2; console.log(total); deb yozing.", en: "Type: let total = 10 + 5 * 2; console.log(total);" }
+      { uz: "console.log(typeof title, typeof speed, typeof isActive); deb yozing.", en: "Use typeof operator on all three variables." }
     ],
     validate: (code) => {
-      if (!/total\s*=/.test(code)) return { passed: false, message: "total o'zgaruvchisini yarating!" };
-      if (!/console\.log\s*\(\s*total\s*\)/.test(code)) return { passed: false, message: "console.log(total); orqali natijani chiqaring!" };
-      return { passed: true, message: "Ajoyib hisob-kitob! Siz matematikani zabt etdingiz! ➕⚡" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/typeof/.test(clean)) return { passed: false, message: "typeof operatoridan foydalaning!" };
+      if (!/true|false/.test(clean)) return { passed: false, message: "Boolean (true yoki false) o'zgaruvchi kiriting!" };
+      if (!/\d+/.test(clean)) return { passed: false, message: "Number (sonli) o'zgaruvchi kiriting!" };
+      return { passed: true, message: "Ajoyib! Barcha asosiy ma'lumot turlarini to'g'ri ajratdingiz! 🌟" };
     }
   },
 
-  // THEME 5
+  // THEME 4: Math & Arithmetic
   {
-    id: 'js-5-strings',
-    module: 'mod-js-basics',
-    icon: '✨',
-    title: { uz: "5-Mavzu: Matnlar va Sehrli Backtick (`${ism}`)", en: "Theme 5: Strings & Template Literals (`${name}`)" },
+    id: "js-4-math",
+    module: "mod-js-basics",
+    icon: "➕",
+    title: {
+      uz: "4-Mavzu: Arifmetika va Operatorlar (+, -, *, /, %, +=, -=)",
+      en: "Theme 4: Math & Arithmetic (+, -, *, /, %, +=, -=)"
+    },
     concept: {
-      uz: "Zamonaviy JavaScriptda bektik ` belgisi orqali matn ichiga o'zgaruvchilarni ${o'zgaruvchi} ko'rinishida oson joylaymiz.",
-      en: "Modern JavaScript uses backticks ` and ${variable} template literals to inject variables cleanly into strings."
+      uz: "JavaScript mukammal kalkulyatordir. Asosiy amallar: +, -, *, /. Muhim qoidalar: % (qoldiq bo'lish) va tezkor o'zgartirish operatorlari: +=, -=, ++.",
+      en: "JavaScript is a full calculator. Standard operators: +, -, *, /. Crucial programming operators: % (modulo remainder), and shorthand assignments: +=, -=, ++."
     },
     humanLanguage: {
-      uz: "Eski usulda 'Salom ' + ism + '!' deb qiynalardik. Endi esa `Salom ${ism}!` deb bitta gap qilib chiroyli yozamiz.",
-      en: "Instead of messy concatenation ('Hello ' + name), template literals let you write `Hello ${name}!` like magic."
+      uz: "10 ta shokoladni 3 ta bolaga teng taqsimlasak, har biriga 3 tadan tegadi va 1 ta ortib qoladi. Aynan shu ortib qolgan sonni 10 % 3 = 1 beradi! O'yinda har safar jon kamayganda health -= 15; deb yozamiz.",
+      en: "Sharing 10 candies between 3 kids gives 3 each with 1 left over. 10 % 3 gives exactly that remainder 1! When hit by an enemy we write health -= 15;."
     },
     secretSandwich: {
-      uz: "`Mening ismim ${name}, yoshim ${age} da!`",
-      en: "`My name is ${name} and I am ${age} years old!`"
+      uz: "health -= zarar; (ayirib yangilaydi) | qoldiq = a % b; (bo'lishdan qolgan qoldiqni hisoblaydi)",
+      en: "health -= damage; (subtracts and assigns) | rem = a % b; (modulo remainder)"
     },
     stepBreakdown: [
       {
-        part: "`...`",
-        explanation: { uz: "Bektik qavslari (Tab ustidagi tugma)", en: "Backtick string delimiters" },
-        visualResult: { uz: "Shablonli matn ochiladi", en: "Enables template string" }
+        part: "let hp = 100;",
+        explanation: { uz: "Boshlang'ich 100 jon", en: "Starting health points" },
+        visualResult: { uz: "hp = 100", en: "hp = 100" }
       },
       {
-        part: "${name}",
-        explanation: { uz: "O'zgaruvchi qiymatini matnga joylash", en: "Injects variable into string" },
-        visualResult: { uz: "O'zgaruvchi matn ichida chiqadi", en: "Replaces with variable value" }
-      }
-    ],
-    listOfCommands: [
-      { code: '`...`', name: { uz: "Bektik matn", en: "Template Literal" }, description: { uz: "O'zgaruvchilarni matn ichiga joylash imkonini beradi", en: "Allows variable interpolation inside backticks" } },
-      { code: '${variable}', name: { uz: "O'zgaruvchi joylovchi", en: "Variable Placeholder" }, description: { uz: "Bektik ichida o'zgaruvchini hisoblab matnga qo'shadi", en: "Evaluates and embeds variable inside backtick string" } }
-    ],
-    tagShowcase: [
-      { tag: '` `', name: { uz: "Bektik", en: "Backtick" }, meaning: { uz: "Yangi shablon matn", en: "Template string" } },
-      { tag: '${}', name: { uz: "O'zgaruvchi joyi", en: "Placeholder" }, meaning: { uz: "Matn ichiga o'zgaruvchi qo'yish", en: "Embeds variable" } }
-    ],
-    mission: {
-      uz: "const name = 'Sam'; const age = 11; oling va `Hi, I am ${name} and I am ${age} years old!` xabarini konsolga chiqaring.",
-      en: "Declare const name = 'Sam'; const age = 11; and log `Hi, I am ${name} and I am ${age} years old!`."
-    },
-    targetDescription: {
-      uz: "Bektik yordamida o'zgaruvchilar birlashtirilgan jumla konsolga chiqadi: \"Hi, I am Sam and I am 11 years old!\".",
-      en: "The interpolated string \"Hi, I am Sam and I am 11 years old!\" printed into the console."
-    },
-    initialCode: {
-      en: '// Theme 5: Template Literals\nconst name = "Sam";\nconst age = 11;\n// Step 1: Create msg = `Hi, I am ${name} and I am ${age} years old!`;\n// Step 2: Log msg using console.log(msg);\n',
-      uz: '// 5-Mavzu: Shablonli Matnlar\nconst name = "Sam";\nconst age = 11;\n// 1-Qadam: const msg = `Hi, I am ${name} and I am ${age} years old!`; deb yozing\n// 2-Qadam: console.log(msg); deb konsolga chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 5 Solution\nconst name = "Sam";\nconst age = 11;\nconst msg = `Hi, I am ${name} and I am ${age} years old!`;\nconsole.log(msg);',
-      uz: '// 5-Mavzu Yechimi\nconst name = "Sam";\nconst age = 11;\nconst msg = `Hi, I am ${name} and I am ${age} years old!`;\nconsole.log(msg);'
-    },
-    hints: [
-      { uz: "const msg = `Hi, I am ${name} and I am ${age} years old!`; console.log(msg); deb yozing.", en: "Type the template literal sentence and log it." }
-    ],
-    validate: (code) => {
-      if (!/`[\s\S]*\${name}[\s\S]*`/.test(code)) return { passed: false, message: "Bektik ` va ${name} dan foydalaning!" };
-      return { passed: true, message: "Sehrli matn tayyor! Bektiklar haqiqiy super kuch! ✨🚀" };
-    }
-  },
-
-  // THEME 6
-  {
-    id: 'js-6-prompt',
-    module: 'mod-js-basics',
-    icon: '🎤',
-    title: { uz: "6-Mavzu: Foydalanuvchidan Ma'lumot Olish — prompt()", en: "Theme 6: User Input — prompt()" },
-    concept: {
-      uz: "prompt() funksiyasi ekranda matn kiritish oynasini ochadi va foydalanuvchi yozgan javobni o'zgaruvchiga saqlaydi.",
-      en: "prompt() pops up an input box, listens for the user to type an answer, and returns it to your code."
-    },
-    humanLanguage: {
-      uz: "Kompyuter foydalanuvchidan: 'Isming nima?' deb so'raydi, foydalanuvchi javob yozgach, kompyuter uni eslab qoladi.",
-      en: "The computer asks 'What is your name?'. Once the user types an answer, your game greets them by name."
-    },
-    secretSandwich: {
-      uz: "const javob = prompt('Savolingiz');",
-      en: "const answer = prompt('Your question');"
-    },
-    stepBreakdown: [
-      {
-        part: 'prompt("Ismingiz nima?")',
-        explanation: { uz: "Savol oynasini ochish", en: "Opens input dialog" },
-        visualResult: { uz: "Ekranda yozish oynasi chiqadi", en: "Shows prompt box" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'prompt("Savol")', name: { uz: "Kiritish oynasi", en: "Input Prompt" }, description: { uz: "Foydalanuvchidan klaviatura orqali javob so'raydi", en: "Asks user for keyboard text input" } }
-    ],
-    tagShowcase: [
-      { tag: 'prompt()', name: { uz: "Kiritish so'rovi", en: "Prompt" }, meaning: { uz: "Foydalanuvchidan matn so'raydi", en: "Prompts user for text" } }
-    ],
-    mission: {
-      uz: 'const userName = prompt("Ismingiz nima?"); deb so\'rang va console.log(`Salom, ${userName}!`); qiling.',
-      en: 'Ask with const userName = prompt("What is your name?"); and log console.log(`Salom, ${userName}!`);.'
-    },
-    targetDescription: {
-      uz: "Foydalanuvchi kiritgan ism qabul qilinib, konsolga shaxsiy tabrik xabari chiqariladi.",
-      en: "User input is captured from prompt() and greeted personally in the console."
-    },
-    initialCode: {
-      en: '// Theme 6: prompt() Input\n// Step 1: const userName = prompt("What is your name?");\n// Step 2: Log console.log(`Salom, ${userName}!`);\n',
-      uz: '// 6-Mavzu: prompt() Kiritmasi\n// 1-Qadam: const userName = prompt("Ismingiz nima?"); deb yozing\n// 2-Qadam: console.log(`Salom, ${userName}!`); deb konsolga chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 6 Solution\nconst userName = prompt("What is your name?");\nconsole.log(`Salom, ${userName}!`);',
-      uz: '// 6-Mavzu Yechimi\nconst userName = prompt("Ismingiz nima?");\nconsole.log(`Salom, ${userName}!`);'
-    },
-    hints: [
-      { uz: 'const userName = prompt("Ismingiz nima?"); console.log(`Salom, ${userName}!`); deb yozing.', en: 'Write the prompt assignment and log it.' }
-    ],
-    validate: (code) => {
-      if (!/prompt\s*\(/.test(code)) return { passed: false, message: "prompt() dan foydalaning!" };
-      if (!/console\.log/.test(code)) return { passed: false, message: "console.log() orqali tabrikni chiqaring!" };
-      return { passed: true, message: "Interaktiv dasturchi! Dasturingiz foydalanuvchi bilan muloqot qildi! 🎤🎉" };
-    }
-  },
-
-  // THEME 7
-  {
-    id: 'js-7-if-else',
-    module: 'mod-js-logic',
-    icon: '🔀',
-    title: { uz: "7-Mavzu: Shartlar — if va else (Tanlov Yo'li)", en: "Theme 7: Conditions — if & else (Branching)" },
-    concept: {
-      uz: "if va else kompyuterga qaror qabul qilishni o'rgatadi: Agar ball 50 dan baland bo'lsa — 'Yutdingiz', aks holda — 'Qayta o'ynang'.",
-      en: "if/else makes decisions: if score >= 50 you pass, else you try again."
-    },
-    humanLanguage: {
-      uz: "Yo'l ikkiga ajraldi: Agar yomg'ir yog'sa soyabon olamiz (if), aks holda quyoshdan saqlanuvchi ko'zoynak taqamiz (else).",
-      en: "A fork in the road: if it rains take an umbrella, else wear sunglasses."
-    },
-    secretSandwich: {
-      uz: "if (shart) { bajariladigan_kod } else { muqobil_kod }",
-      en: "if (condition) { code if true } else { code if false }"
-    },
-    stepBreakdown: [
-      {
-        part: "if (score >= 50)",
-        explanation: { uz: "Shartni tekshirish", en: "Condition test" },
-        visualResult: { uz: "Rost bo'lsa ichiga kiradi", en: "Enters branch if true" }
+        part: "hp -= 30;",
+        explanation: { uz: "30 jon ayirish (tezkor -= operatori)", en: "Subtract 30 health shorthand" },
+        visualResult: { uz: "hp = 70", en: "hp = 70" }
       },
       {
-        part: "else { ... }",
-        explanation: { uz: "Shart bajarilmagandagi yo'l", en: "Alternative branch" },
-        visualResult: { uz: "Yolg'on bo'lsa ishlaydi", en: "Executes if false" }
+        part: "const rem = 17 % 5;",
+        explanation: { uz: "17 ni 5 ga bo'lgandagi qoldiq (2)", en: "Remainder of 17 divided by 5" },
+        visualResult: { uz: "rem = 2", en: "rem = 2" }
       }
     ],
     listOfCommands: [
-      { code: 'if (shart) {}', name: { uz: "Agar sharti", en: "If Branch" }, description: { uz: "Shart to'g'ri bo'lganda kodni ishga tushiradi", en: "Runs code if condition is true" } },
-      { code: 'else {}', name: { uz: "Aks holda", en: "Else Branch" }, description: { uz: "Shart noto'g'ri bo'lganda muqobil kodni ishga tushiradi", en: "Runs fallback code if condition is false" } }
+      { code: 'a % b', name: { uz: "Qoldiq olish (Modulo)", en: "Modulo Remainder" }, description: { uz: "Bo'lish natijasidagi qoldiqni hisoblaydi", en: "Returns the integer remainder of division" } },
+      { code: 'x += y', name: { uz: "Qo'shib tayinlash", en: "Add Assignment" }, description: { uz: "O'zgaruvchiga qiymat qo'shadi (x = x + y)", en: "Adds value to variable and reassigns" } },
+      { code: 'x -= y', name: { uz: "Ayirib tayinlash", en: "Subtract Assignment" }, description: { uz: "O'zgaruvchidan qiymat ayiradi (x = x - y)", en: "Subtracts value from variable and reassigns" } }
     ],
     tagShowcase: [
-      { tag: 'if', name: { uz: "Agar", en: "If" }, meaning: { uz: "Shartni tekshiradi", en: "Tests condition" } },
-      { tag: 'else', name: { uz: "Aks holda", en: "Else" }, meaning: { uz: "Muqobil yo'l", en: "Fallback path" } }
+      { tag: '%', name: { uz: "Qoldiq", en: "Modulo" }, meaning: { uz: "Bo'lishdan qolgan qoldiq", en: "Remainder of division" } },
+      { tag: '+=', name: { uz: "Qo'shish", en: "Add Assign" }, meaning: { uz: "Qiymatni oshirib yozish", en: "Add and assign" } },
+      { tag: '-=', name: { uz: "Ayirish", en: "Sub Assign" }, meaning: { uz: "Qiymatni kamaytirib yozish", en: "Subtract and assign" } }
     ],
     mission: {
-      uz: 'let score = 80; oling. Agar score >= 50 bo\'lsa "O\'tdingiz! 🎉", aks holda "Qayta urinib ko\'ring!" deb chiqaring.',
-      en: 'Declare let score = 80;. If score >= 50 log "O\'tdingiz! 🎉", else log "Qayta urinib ko\'ring!".'
+      uz: "let hp = 100; e'lon qiling. hp -= 30; qiling va const rem = 17 % 5; ni hisoblab, console.log(hp, rem); qiling.",
+      en: "Declare let hp = 100;, apply hp -= 30;, calculate const rem = 17 % 5;, and log console.log(hp, rem);."
     },
     targetDescription: {
-      uz: "Shart to'g'ri bo'lgani (80 >= 50) uchun konsolga \"O'tdingiz! 🎉\" chiqadi.",
-      en: "Since 80 >= 50 is true, the winning branch executes and logs \"O'tdingiz! 🎉\"."
+      uz: "Hisoblangan 70 jon va 2 ga teng qoldiq konsolga chiqadi.",
+      en: "Calculated 70 hp and remainder 2 logged to console."
     },
     initialCode: {
-      en: '// Theme 7: if / else\nlet score = 80;\n// Step 1: Write if (score >= 50) { console.log("O\'tdingiz! 🎉"); }\n// Step 2: Add else { console.log("Qayta urinib ko\'ring!"); }\n',
-      uz: '// 7-Mavzu: if va else\nlet score = 80;\n// 1-Qadam: if (score >= 50) { console.log("O\'tdingiz! 🎉"); } deb yozing\n// 2-Qadam: else { console.log("Qayta urinib ko\'ring!"); } qo\'shing:\n'
+      en: "// Theme 4: Arithmetic & Modulo\n// Step 1: Declare starting health with let:\n// let hp = 100;\n\n// Step 2: Subtract 30 using -= operator:\n// hp -= 30;\n\n// Step 3: Calculate remainder of 17 divided by 5:\n// const rem = 17 % 5;\n\n// Step 4: Log hp and rem:\n// console.log(hp, rem);\n",
+      uz: "// 4-Mavzu: Arifmetika va Qoldiq Operatorlari\n// 1-QADAM: let bilan boshlang'ich jonni e'lon qiling:\n// let hp = 100;\n\n// 2-QADAM: -= operatori yordamida 30 jon ayiring:\n// hp -= 30;\n\n// 3-QADAM: 17 ni 5 ga bo'lgandagi qoldiqni hisoblang (%):\n// const rem = 17 % 5;\n\n// 4-QADAM: hp va rem ni konsolga chiqaring:\n// console.log(hp, rem);\n"
     },
     targetCode: {
-      en: '// Theme 7 Solution\nlet score = 80;\nif (score >= 50) {\n  console.log("O\'tdingiz! 🎉");\n} else {\n  console.log("Qayta urinib ko\'ring!");\n}',
-      uz: '// 7-Mavzu Yechimi\nlet score = 80;\nif (score >= 50) {\n  console.log("O\'tdingiz! 🎉");\n} else {\n  console.log("Qayta urinib ko\'ring!");\n}'
+      en: "// Theme 4 Solution\nlet hp = 100;\nhp -= 30;\nconst rem = 17 % 5;\nconsole.log(hp, rem);",
+      uz: "// 4-Mavzu Yechimi\nlet hp = 100;\nhp -= 30;\nconst rem = 17 % 5;\nconsole.log(hp, rem);"
     },
     hints: [
-      { uz: 'if (score >= 50) { console.log("O\'tdingiz! 🎉"); } else { ... } deb yozing.', en: "Write the if/else condition block." }
+      { uz: "let hp = 100; hp -= 30; const rem = 17 % 5; console.log(hp, rem); deb yozing.", en: "Use -= and % operators." }
     ],
     validate: (code) => {
-      if (!/if\s*\(/.test(code)) return { passed: false, message: "if shartidan foydalaning!" };
-      if (!/else/.test(code)) return { passed: false, message: "else blokini qo'shing!" };
-      return { passed: true, message: "Aqlli mantiq! Dasturingiz mustaqil qaror qabul qildi! 🔀⭐" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/hp\s*-=\s*30|hp\s*=\s*hp\s*-\s*30/.test(clean)) return { passed: false, message: "hp dan 30 ni ayiring (hp -= 30)!" };
+      if (!/%\s*5/.test(clean)) return { passed: false, message: "17 % 5 qoldiq amalini kiriting!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Qoyilmaqom! Dasturchilarning arifmetik sirlarini to'liq o'rgandingiz! 🧮" };
     }
   },
 
-  // THEME 8
+  // THEME 5: Strings & Template Literals
   {
-    id: 'js-8-comparison',
-    module: 'mod-js-logic',
-    icon: '⚖️',
-    title: { uz: "8-Mavzu: Taqqoslash Operatorlari (===, !==, >, <)", en: "Theme 8: Comparison Operators (===, !==, >, <)" },
+    id: "js-5-strings",
+    module: "mod-js-basics",
+    icon: "✨",
+    title: {
+      uz: "5-Mavzu: Matnlar va Sehrli Backtick (\`\${...}\`)",
+      en: "Theme 5: Strings & Magic Backticks (\`\${...}\`)"
+    },
     concept: {
-      uz: "=== (tengmi?), !== (teng emasmi?), > (kattami?), < (kichikmi?) doimo true yoki false qiymat qaytaradi.",
-      en: "=== (equal), !== (not equal), > (greater), < (less) evaluate logic to boolean true or false."
+      uz: "Matnlarni birlashtirishning eng zamonaviy va qulay usuli — bu Backtick (\`\`) belgisi va uning ichidagi \${o'zgaruvchi} formulasidir (Template Literals). Shuningdek .length matn uzunligini ko'rsatadi.",
+      en: "Template literals with backticks (\`\`) and \${variable} are the cleanest way to embed expressions in strings. .length returns the string length."
     },
     humanLanguage: {
-      uz: "Ikki narsani taroziga qo'ydik: 10 === 10 teng bo'lgani uchun tarozi 'true' deb javob beradi.",
-      en: "Like a scale: checking if level 10 === 10 evaluates to true."
+      uz: "Eski usulda 'Salom ' + ism + ', sizda ' + ball + ' bor' deb qiynalib plyus qo'yardik. Yangi sehrli Backtick bilan esa xuddi she'rdek \`Salom \${ism}, sizda \${ball} bor\` deb yozamiz!",
+      en: "Instead of messy string concatenation with plus signs ('Hello ' + name), template literals let us write clean sentences: \`Hello \${name}, you have \${score} points!\`."
     },
     secretSandwich: {
-      uz: "console.log(10 === 10); // true chiqadi",
-      en: "console.log(10 === 10); // logs true"
+      uz: "\`Matn \${o'zgaruvchi} matn\` — Esc tugmasi tagidagi backtick belgisi bilan matn yaratiladi va ichiga \${} qo'yiladi.",
+      en: "\`Text \${expression} text\` — wrap string in backticks and embed variables with \${}."
     },
     stepBreakdown: [
       {
-        part: "playerLevel === 10",
-        explanation: { uz: "Qat'iy tenglikni tekshirish", en: "Strict equality check" },
-        visualResult: { uz: "true bo'ladi", en: "Evaluates to true" }
+        part: "const hero = \"Batman\";",
+        explanation: { uz: "Qahramon ismi matni", en: "Hero name string" },
+        visualResult: { uz: "hero = 'Batman'", en: "hero = 'Batman'" }
+      },
+      {
+        part: "const power = 95;",
+        explanation: { uz: "Quvvat darajasi soni", en: "Power level number" },
+        visualResult: { uz: "power = 95", en: "power = 95" }
+      },
+      {
+        part: "\`Qahramon: \${hero}, Quvvat: \${power}!\`",
+        explanation: { uz: "Backtick orqali o'zgaruvchilarni matnga joylash", en: "Template literal string embedding" },
+        visualResult: { uz: "'Qahramon: Batman, Quvvat: 95!'", en: "'Qahramon: Batman, Quvvat: 95!'" }
       }
     ],
     listOfCommands: [
-      { code: '===', name: { uz: "Qat'iy tenglik", en: "Strict Equality" }, description: { uz: "Ikkita qiymatning qiymati va turi tengligini tekshiradi", en: "Checks if both value and type are identical" } },
-      { code: '!==', name: { uz: "Teng emas", en: "Not Equal" }, description: { uz: "Ikkita qiymat teng bo'lmasa true qaytaradi", en: "Checks if values are not equal" } },
-      { code: '> / <', name: { uz: "Katta / Kichik", en: "Greater / Less" }, description: { uz: "Sonlarni o'zaro taqqoslaydi", en: "Compares numerical size" } }
+      { code: '`...${x}...`', name: { uz: "Template Literal (Backtick)", en: "Template Literal" }, description: { uz: "O'zgaruvchilarni matn ichiga qulay joylash", en: "Embeds expressions inside strings using backticks" } },
+      { code: 'str.length', name: { uz: "Matn uzunligi", en: "String Length" }, description: { uz: "Matndagi harflar va belgilar sonini qaytaradi", en: "Returns total number of characters in string" } }
     ],
     tagShowcase: [
-      { tag: '===', name: { uz: "Tengmi?", en: "Equal?" }, meaning: { uz: "To'liq tenglik", en: "Strict equality" } },
-      { tag: '!==', name: { uz: "Teng emasmi?", en: "Not equal?" }, meaning: { uz: "Teng emaslik", en: "Inequality" } }
+      { tag: '`...`', name: { uz: "Backtick", en: "Backtick" }, meaning: { uz: "Zamonaviy matn qolipi", en: "Template string container" } },
+      { tag: '${...}', name: { uz: "Interpolyatsiya", en: "Interpolation" }, meaning: { uz: "Matn ichidagi jonli o'zgaruvchi", en: "Live variable inside text" } }
     ],
     mission: {
-      uz: "const playerLevel = 10; oling va console.log(playerLevel === 10); qilib tenglikni tekshiring.",
-      en: "Declare const playerLevel = 10; and log console.log(playerLevel === 10);."
+      uz: "const hero = 'Batman'; va const power = 95; e'lon qiling. Backtick bilan: const card = \`Qahramon: \${hero}, Quvvati: \${power}!\`; yasang va console.log(card, hero.length); chiqaring.",
+      en: "Declare const hero = 'Batman'; and const power = 95;. Create const card = \`Qahramon: \${hero}, Quvvati: \${power}!\`; with backticks and log card and hero.length."
     },
     targetDescription: {
-      uz: "Taqqoslash natijasi sifatida konsolda true aks etadi.",
-      en: "The boolean comparison result true is logged to the console."
+      uz: "Chiroyli birlashgan qahramon kartochkasi va harflar soni (6) konsolga chiqadi.",
+      en: "Template literal sentence and hero name length (6) logged to console."
     },
     initialCode: {
-      en: '// Theme 8: Comparison\nconst playerLevel = 10;\n// Step 1: Check equality: console.log(playerLevel === 10);\n',
-      uz: '// 8-Mavzu: Taqqoslash\nconst playerLevel = 10;\n// 1-Qadam: console.log(playerLevel === 10); deb tenglikni tekshiring:\n'
+      en: "// Theme 5: Template Literals & Backticks\n// Step 1: Declare hero and power:\n// const hero = \"Batman\";\n// const power = 95;\n\n// Step 2: Build card string using backticks:\n// const card = `Qahramon: ${hero}, Quvvati: ${power}!`;\n\n// Step 3: Log card and hero length:\n// console.log(card, hero.length);\n",
+      uz: "// 5-Mavzu: Matnlar va Backtick (\${...})\n// 1-QADAM: Qahramon va quvvatni e'lon qiling:\n// const hero = \"Batman\";\n// const power = 95;\n\n// 2-QADAM: Backtick bilan matn kartochkasini yasang:\n// const card = `Qahramon: ${hero}, Quvvati: ${power}!`;\n\n// 3-QADAM: Kartochka va qahramon ismining uzunligini konsolga chiqaring:\n// console.log(card, hero.length);\n"
     },
     targetCode: {
-      en: '// Theme 8 Solution\nconst playerLevel = 10;\nconsole.log(playerLevel === 10);',
-      uz: '// 8-Mavzu Yechimi\nconst playerLevel = 10;\nconsole.log(playerLevel === 10);'
+      en: "// Theme 5 Solution\nconst hero = \"Batman\";\nconst power = 95;\nconst card = `Qahramon: ${hero}, Quvvati: ${power}!`;\nconsole.log(card, hero.length);",
+      uz: "// 5-Mavzu Yechimi\nconst hero = \"Batman\";\nconst power = 95;\nconst card = `Qahramon: ${hero}, Quvvati: ${power}!`;\nconsole.log(card, hero.length);"
     },
     hints: [
-      { uz: "console.log(playerLevel === 10); deb yozing.", en: "Type: console.log(playerLevel === 10);" }
+      { uz: "Backtick (\` \`) belgisini klaviaturada Esc ostidagi tugmadan topishingiz mumkin.", en: "Use backticks \`\` around the card text and embed with \${hero}." }
     ],
     validate: (code) => {
-      if (!/===/.test(code)) return { passed: false, message: "=== operatoridan foydalaning!" };
-      return { passed: true, message: "Mukammal taqqoslash! Rost va yolg'on sirlari ochildi! ⚖️🎉" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/`[^`]*\$\{[^}]+\}[^`]*`/.test(clean)) return { passed: false, message: "Backtick (\`\`) va \${...} interpolyatsiyasidan foydalaning!" };
+      if (!/\.length/.test(clean)) return { passed: false, message: "hero.length yordamida matn uzunligini o'qing!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Ajoyib! Sehrli Backtick matnlarini professional darajada o'rgandingiz! 🖋️" };
     }
   },
 
-  // THEME 9
+  // THEME 6: prompt() & Number()
   {
-    id: 'js-9-else-if',
-    module: 'mod-js-logic',
-    icon: '🚦',
-    title: { uz: "9-Mavzu: Bir Nechta Shartlar — else if (Baholash Tizimi)", en: "Theme 9: Multiple Conditions — else if (Grading)" },
+    id: "js-6-prompt",
+    module: "mod-js-basics",
+    icon: "🙋",
+    title: {
+      uz: "6-Mavzu: Foydalanuvchidan Ma'lumot Olish — prompt() va Number()",
+      en: "Theme 6: User Input — prompt() & Number() Conversion"
+    },
     concept: {
-      uz: "Agar variantlar ikkitadan ko'p bo'lsa (masalan: 90 dan baland = A, 70 dan baland = B, aks holda = C), else if zanjiridan foydalanamiz.",
-      en: "When you have 3 or more paths (e.g. 90+ = A, 70+ = B, else = C), chain conditions with else if."
+      uz: "prompt() foydalanuvchiga savol berib, u yozgan javobni qabul qiladi. Muhim qoida: prompt() doimo javobni MATN (String) sifatida qaytaradi! Matematika qilish uchun uni Number() bilan songa aylantirish shart.",
+      en: "prompt() asks the user for input. Crucial rule: prompt() always returns a String! Wrap it in Number() to convert it into a real number for math."
     },
     humanLanguage: {
-      uz: "Svetofor: Yashil yonsa — yur (if), sariq yonsa — tayyorlan (else if), qizil yonsa — to'xta (else)!",
-      en: "Traffic light: Green = Go (if), Yellow = Ready (else if), Red = Stop (else)!"
+      uz: "Agar prompt('Yoshingiz?') deb 10 yozsangiz, u '10' matnini oladi. Agar '10' + 5 qilsangiz, '105' bo'lib qoladi! Shuning uchun Number('10') + 5 = 15 deb songa aylantirishimiz kerak.",
+      en: "prompt() gives text. '10' + 5 produces '105'! Wrapping it with Number(prompt(...)) turns it into a real number so 10 + 5 = 15."
+    },
+    secretSandwich: {
+      uz: "const son = Number(prompt('Savol')) || 0; — foydalanuvchi kiritgan javobni toza songa aylantirish formulasi.",
+      en: "const num = Number(prompt('Question')) || 0; — converts input to a pure number."
+    },
+    stepBreakdown: [
+      {
+        part: "prompt(\"Ismingiz?\")",
+        explanation: { uz: "Foydalanuvchiga savol berish oynasi", en: "Input dialog window" },
+        visualResult: { uz: "Ekranda kiritish maydoni ochiladi", en: "Opens input modal" }
+      },
+      {
+        part: "Number(\"12\")",
+        explanation: { uz: "Matnni matematik songa aylantirish", en: "Converts string to number" },
+        visualResult: { uz: "12 soni hosil bo'ladi", en: "Produces number 12" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'prompt("...")', name: { uz: "Foydalanuvchidan so'rash", en: "Prompt Input" }, description: { uz: "Ekranda matn kiritish darchasini ochadi", en: "Displays dialog prompting user for input" } },
+      { code: 'Number(x)', name: { uz: "Songa aylantirish", en: "To Number" }, description: { uz: "Matn yoki boshqa qiymatni matematik songa o'tkazadi", en: "Converts value to a numeric type" } }
+    ],
+    tagShowcase: [
+      { tag: 'prompt()', name: { uz: "Kiritish oynasi", en: "Prompt" }, meaning: { uz: "Foydalanuvchidan ma'lumot olish", en: "Get input from user" } },
+      { tag: 'Number()', name: { uz: "Songa o'tkazish", en: "To Number" }, meaning: { uz: "Matndan son yasash", en: "Convert to numeric" } }
+    ],
+    mission: {
+      uz: "Foydalanuvchidan ismini: const name = prompt('Ismingiz?') || 'Ali'; va yoshini: const age = Number(prompt('Yoshingiz?') || 10); oling. const nextAge = age + 1; hisoblab, console.log(name, nextAge); chiqaring.",
+      en: "Ask name with prompt() and age with Number(prompt()). Calculate const nextAge = age + 1; and log name and nextAge."
+    },
+    targetDescription: {
+      uz: "Foydalanuvchi ismi va 1 yilga kattargan yoshi konsolga chiqariladi.",
+      en: "User name and incremented age logged to console."
+    },
+    initialCode: {
+      en: "// Theme 6: prompt() & Number() Conversion\n// Step 1: Ask for user name:\n// const name = prompt(\"Ismingiz?\") || \"Ali\";\n\n// Step 2: Ask for age and convert to Number:\n// const age = Number(prompt(\"Yoshingiz?\") || 10);\n\n// Step 3: Calculate next year age:\n// const nextAge = age + 1;\n\n// Step 4: Log name and nextAge:\n// console.log(name, nextAge);\n",
+      uz: "// 6-Mavzu: prompt() va Number() Konvertatsiyasi\n// 1-QADAM: Foydalanuvchidan ismini so'rang:\n// const name = prompt(\"Ismingiz?\") || \"Ali\";\n\n// 2-QADAM: Yoshini so'rab, Number() bilan songa aylantiring:\n// const age = Number(prompt(\"Yoshingiz?\") || 10);\n\n// 3-QADAM: Kelasi yilgi yoshini hisoblang (age + 1):\n// const nextAge = age + 1;\n\n// 4-QADAM: Ism va kelasi yilgi yoshni konsolga chiqaring:\n// console.log(name, nextAge);\n"
+    },
+    targetCode: {
+      en: "// Theme 6 Solution\nconst name = prompt(\"Ismingiz?\") || \"Ali\";\nconst age = Number(prompt(\"Yoshingiz?\") || 10);\nconst nextAge = age + 1;\nconsole.log(name, nextAge);",
+      uz: "// 6-Mavzu Yechimi\nconst name = prompt(\"Ismingiz?\") || \"Ali\";\nconst age = Number(prompt(\"Yoshingiz?\") || 10);\nconst nextAge = age + 1;\nconsole.log(name, nextAge);"
+    },
+    hints: [
+      { uz: "Number(prompt(...)) orqali kiritilgan yoshni songa aylantiring.", en: "Use Number(prompt(...)) to parse the numeric input." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/prompt\s*\(/.test(clean)) return { passed: false, message: "prompt() buyrug'idan foydalaning!" };
+      if (!/Number\s*\(/.test(clean)) return { passed: false, message: "Yoshni Number() bilan songa aylantiring!" };
+      if (!/\+\s*1/.test(clean)) return { passed: false, message: "Kelasi yilgi yoshni hisoblash uchun + 1 qo'shing!" };
+      return { passed: true, message: "Ofarin! Foydalanuvchilar bilan muloqot qilishni o'rgandingiz! 💬" };
+    }
+  },
+
+  // THEME 7: if, else if, else
+  {
+    id: "js-7-if-else",
+    module: "mod-js-logic",
+    icon: "🚦",
+    title: {
+      uz: "7-Mavzu: Shartlar — if, else if va else (Qarorlar Daraxti)",
+      en: "Theme 7: Conditions — if, else if & else (Decision Trees)"
+    },
+    concept: {
+      uz: "Dasturlar aqlli qarorlar qabul qilishi shart. if (shart) { ... } shart to'g'ri bo'lsa ishlaydi, else if boshqa shartni tekshiradi, else esa hech qaysi shart bajarilmaganda ishga tushadi.",
+      en: "Programs make intelligent choices using conditions. if (cond) runs when true, else if checks alternate branches, and else is the default fallback."
+    },
+    humanLanguage: {
+      uz: "Svetofor qoidasi: Agar (if) yashil bo'lsa — yur! Bo'lmasa agar (else if) sariq bo'lsa — tayyorlan! Aks holda (else) — to'xta!",
+      en: "Traffic light logic: if light is green — go! Else if yellow — get ready! Else — stop!"
     },
     secretSandwich: {
       uz: "if (shart1) { ... } else if (shart2) { ... } else { ... }",
@@ -562,974 +514,1255 @@ const LESSONS = [
     },
     stepBreakdown: [
       {
-        part: "else if (grade >= 70)",
-        explanation: { uz: "Ikkinchi shartni tekshirish", en: "Secondary condition check" },
-        visualResult: { uz: "Birinchisi xato bo'lsa buni tekshiradi", en: "Checked if first fails" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'else if (shart) {}', name: { uz: "Aks holda agar", en: "Else If" }, description: { uz: "Oldingi shart bajarilmaganda navbatdagi yangi shartni tekshiradi", en: "Evaluates secondary condition if previous check fails" } }
-    ],
-    tagShowcase: [
-      { tag: 'else if', name: { uz: "Aks holda agar", en: "Else If" }, meaning: { uz: "Qo'shimcha shart", en: "Secondary condition" } }
-    ],
-    mission: {
-      uz: 'let grade = 95; oling. Agar grade >= 90 bo\'lsa "Baho: A+ 🌟", else if (grade >= 70) bo\'lsa "Baho: B 👍", else "Baho: C" chiqaring.',
-      en: 'Declare let grade = 95;. If grade >= 90 log "Baho: A+ 🌟", else if grade >= 70 log "Baho: B 👍", else log "Baho: C".'
-    },
-    targetDescription: {
-      uz: "95 ball yuqori bo'lgani uchun konsolga \"Baho: A+ 🌟\" chiqadi.",
-      en: "Because 95 >= 90 is met first, the console displays \"Baho: A+ 🌟\"."
-    },
-    initialCode: {
-      en: '// Theme 9: else if\nlet grade = 95;\n// Step 1: if (grade >= 90) { console.log("Baho: A+ 🌟"); }\n// Step 2: else if (grade >= 70) { console.log("Baho: B 👍"); }\n// Step 3: else { console.log("Baho: C"); }\n',
-      uz: '// 9-Mavzu: else if\nlet grade = 95;\n// 1-Qadam: if (grade >= 90) { console.log("Baho: A+ 🌟"); }\n// 2-Qadam: else if (grade >= 70) { console.log("Baho: B 👍"); }\n// 3-Qadam: else { console.log("Baho: C"); } deb yozing:\n'
-    },
-    targetCode: {
-      en: '// Theme 9 Solution\nlet grade = 95;\nif (grade >= 90) {\n  console.log("Baho: A+ 🌟");\n} else if (grade >= 70) {\n  console.log("Baho: B 👍");\n} else {\n  console.log("Baho: C");\n}',
-      uz: '// 9-Mavzu Yechimi\nlet grade = 95;\nif (grade >= 90) {\n  console.log("Baho: A+ 🌟");\n} else if (grade >= 70) {\n  console.log("Baho: B 👍");\n} else {\n  console.log("Baho: C");\n}'
-    },
-    hints: [
-      { uz: "if (grade >= 90) ... else if (grade >= 70) ... else ... deb yozing.", en: "Write the multi-tier if/else if/else blocks." }
-    ],
-    validate: (code) => {
-      if (!/else\s+if/.test(code)) return { passed: false, message: "else if shartidan foydalaning!" };
-      return { passed: true, message: "Qoyilmaqom! Baholash algoritmi benuqson ishladi! 🚦🏆" };
-    }
-  },
-
-  // THEME 10
-  {
-    id: 'js-10-functions',
-    module: 'mod-js-logic',
-    icon: '⚙️',
-    title: { uz: "10-Mavzu: Funksiyalar — Sehrli Qayta Ishlatiluvchi Mashina", en: "Theme 10: Functions — Magic Reusable Machines" },
-    concept: {
-      uz: "Funksiya — bu ma'lum bir vazifani bajaruvchi nomlangan kod blokidir. Uni bir marta yozib, istalgancha qayta chaqirish mumkin.",
-      en: "A function packages code into a reusable machine. Define it once and call it whenever you need."
-    },
-    humanLanguage: {
-      uz: "Har kuni 'Salom, do'stim!' deb qayta-qayta yozmaysiz. Bitta sayHello() tugmasi yasab, kerak paytda bosasiz!",
-      en: "Instead of repeating code, build a sayHello() robot button you can press anytime."
-    },
-    secretSandwich: {
-      uz: "function nom() { bajariladigan_kod } va chaqirish: nom();",
-      en: "function name() { code } and invoke: name();"
-    },
-    stepBreakdown: [
-      {
-        part: "function sayHello() { ... }",
-        explanation: { uz: "Funksiyani yaratish va nomlash", en: "Define function signature" },
-        visualResult: { uz: "Xotirada funksiya saqlanadi", en: "Saved in memory" }
+        part: "if (score >= 90)",
+        explanation: { uz: "Birinchi va eng yuqori shartni tekshirish", en: "Checks top condition" },
+        visualResult: { uz: "90 dan oshsa 'A' beriladi", en: "Assigns 'A' if 90+" }
       },
       {
-        part: "sayHello();",
-        explanation: { uz: "Funksiyani ishga tushirish (chaqirish)", en: "Invoke the function" },
-        visualResult: { uz: "Ichidagi kod ishlaydi", en: "Executes inside code" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'function name() {}', name: { uz: "Funksiya e'loni", en: "Function Declaration" }, description: { uz: "Qayta ishlatiluvchi buyruqlar blokini yaratadi", en: "Defines a reusable named code block" } },
-      { code: 'name()', name: { uz: "Funksiyani chaqirish", en: "Function Invocation" }, description: { uz: "Funksiya ichidagi buyruqlarni ishga tushiradi", en: "Executes the code block" } }
-    ],
-    tagShowcase: [
-      { tag: 'function', name: { uz: "Funksiya", en: "Function" }, meaning: { uz: "Yangi buyruqlar to'plami", en: "Defines reusable block" } }
-    ],
-    mission: {
-      uz: "sayHello() nomli funksiya tuzing: console.log('Salom, Dasturchi! 🤖'); va uni chaqiring: sayHello();",
-      en: "Declare function sayHello() logging 'Salom, Dasturchi! 🤖' and invoke it with sayHello();."
-    },
-    targetDescription: {
-      uz: "Chaqirilgan funksiya konsolga \"Salom, Dasturchi! 🤖\" xabarini chiqaradi.",
-      en: "The invoked function logs \"Salom, Dasturchi! 🤖\" to the developer console."
-    },
-    initialCode: {
-      en: '// Theme 10: Functions\n// Step 1: Declare function sayHello() { console.log("Salom, Dasturchi! 🤖"); }\n// Step 2: Call sayHello(); below:\n',
-      uz: '// 10-Mavzu: Funksiyalar\n// 1-Qadam: function sayHello() { console.log("Salom, Dasturchi! 🤖"); } deb yozing\n// 2-Qadam: sayHello(); deb chaqiring:\n'
-    },
-    targetCode: {
-      en: '// Theme 10 Solution\nfunction sayHello() {\n  console.log("Salom, Dasturchi! 🤖");\n}\nsayHello();',
-      uz: '// 10-Mavzu Yechimi\nfunction sayHello() {\n  console.log("Salom, Dasturchi! 🤖");\n}\nsayHello();'
-    },
-    hints: [
-      { uz: 'function sayHello() { console.log("Salom, Dasturchi! 🤖"); } sayHello(); deb yozing.', en: "Declare the function and call sayHello();." }
-    ],
-    validate: (code) => {
-      if (!/function\s+sayHello\s*\(/.test(code)) return { passed: false, message: "sayHello nomli funksiya e'lon qiling!" };
-      if (!/sayHello\s*\(\s*\)/.test(code)) return { passed: false, message: "sayHello(); deb funksiyani chaqiring!" };
-      return { passed: true, message: "Ofarin! O'z shaxsiy funksiyangizni yaratdingiz! ⚙️🎉" };
-    }
-  },
-
-  // THEME 11
-  {
-    id: 'js-11-params-return',
-    module: 'mod-js-logic',
-    icon: '📥',
-    title: { uz: "11-Mavzu: Parametrlar va Return — Kiruvchi va Qaytaruvchi Qiymat", en: "Theme 11: Parameters & Return — Input and Output" },
-    concept: {
-      uz: "Funksiya qavslari ichiga kiruvchi ma'lumotlar (parametrlar) oladi, return esa hisoblab tayyor natijani orqaga qaytaradi.",
-      en: "Functions accept arguments as parameters and send computed results back with return."
-    },
-    humanLanguage: {
-      uz: "Sharbat siquvchi mashina: ichiga olma va apelsin solasiz (parametr), u esa sizga tayyor mevali sharbat qaytaradi (return)!",
-      en: "A juicer machine: feed it apples (parameters), and it returns fresh juice (return)!"
-    },
-    secretSandwich: {
-      uz: "function multiply(a, b) { return a * b; }",
-      en: "function multiply(a, b) { return a * b; }"
-    },
-    stepBreakdown: [
-      {
-        part: "function multiply(a, b)",
-        explanation: { uz: "Ikkita parametr qabul qilish", en: "Accepts 2 parameters" },
-        visualResult: { uz: "Sonlar funksiyaga kiradi", en: "Inputs enter function" }
+        part: "else if (score >= 70)",
+        explanation: { uz: "Ikkinchi oraliq shart", en: "Checks mid range condition" },
+        visualResult: { uz: "70 dan oshsa 'B' beriladi", en: "Assigns 'B' if 70+" }
       },
       {
-        part: "return a * b;",
-        explanation: { uz: "Ko'paytma natijasini qaytarish", en: "Returns the multiplied product" },
-        visualResult: { uz: "Natija tashqariga chiqadi", en: "Product returned" }
+        part: "else",
+        explanation: { uz: "Qolgan barcha holatlar", en: "Default catch-all fallback" },
+        visualResult: { uz: "Aks holda 'C' beriladi", en: "Assigns 'C' otherwise" }
       }
     ],
     listOfCommands: [
-      { code: 'function f(a, b) {}', name: { uz: "Parametrlar", en: "Parameters" }, description: { uz: "Funksiyaga uzatiladigan ma'lumotlar qutilari", en: "Variables accepting input into a function" } },
-      { code: 'return natija;', name: { uz: "Qiymat qaytarish", en: "Return" }, description: { uz: "Hisoblangan natijani chaqirilgan joyga qaytaradi", en: "Returns computed result back to caller" } }
+      { code: 'if (cond) { }', name: { uz: "Agar (if)", en: "If Branch" }, description: { uz: "Shart rost (true) bo'lganda kodni bajaradi", en: "Executes block when condition is true" } },
+      { code: 'else if (c) { }', name: { uz: "Aks holda agar", en: "Else If Branch" }, description: { uz: "Oldingi shart yolg'on bo'lsa yangi shartni tekshiradi", en: "Tests secondary condition" } },
+      { code: 'else { }', name: { uz: "Aks holda", en: "Else Fallback" }, description: { uz: "Hech bir shart bajarilmaganda ishga tushadi", en: "Executes when all conditions fail" } }
     ],
     tagShowcase: [
-      { tag: 'return', name: { uz: "Qaytarish", en: "Return" }, meaning: { uz: "Natijani qaytaradi", en: "Returns result" } }
+      { tag: 'if', name: { uz: "Agar", en: "If" }, meaning: { uz: "Boshlang'ich shart", en: "Initial check" } },
+      { tag: 'else if', name: { uz: "Aks holda agar", en: "Else if" }, meaning: { uz: "Qo'shimcha shart", en: "Alternate check" } },
+      { tag: 'else', name: { uz: "Aks holda", en: "Else" }, meaning: { uz: "Zaxira yo'l", en: "Fallback" } }
     ],
     mission: {
-      uz: "multiply(a, b) funksiyasini yozing: return a * b; va console.log(multiply(4, 5)); qiling.",
-      en: "Write function multiply(a, b) { return a * b; } and log console.log(multiply(4, 5));."
+      uz: "const score = 85; e'lon qiling. let grade = ''; qiling. if (score >= 90) { grade = 'A'; } else if (score >= 70) { grade = 'B'; } else { grade = 'C'; } deb yozing va console.log(grade); chiqaring.",
+      en: "Declare const score = 85; let grade = '';. Write if (score >= 90) { grade = 'A'; } else if (score >= 70) { grade = 'B'; } else { grade = 'C'; } and log grade."
     },
     targetDescription: {
-      uz: "4 va 5 sonlari ko'paytirilib, konsolga 20 natijasi chiqadi.",
-      en: "The function multiplies 4 and 5, returning 20 to be printed to the console."
+      uz: "Shart tekshirilib, konsolga 'B' bahosi chiqariladi.",
+      en: "Grade 'B' evaluated by condition and logged to console."
     },
     initialCode: {
-      en: '// Theme 11: Parameters and Return\n// Step 1: Declare function multiply(a, b) { return a * b; }\n// Step 2: Log multiply(4, 5) with console.log(multiply(4, 5));\n',
-      uz: '// 11-Mavzu: Parametrlar va Return\n// 1-Qadam: function multiply(a, b) { return a * b; } deb yozing\n// 2-Qadam: console.log(multiply(4, 5)); deb konsolga chiqaring:\n'
+      en: "// Theme 7: Conditions (if, else if, else)\n// Step 1: Declare score and empty grade:\n// const score = 85;\n// let grade = \"\";\n\n// Step 2: Implement decision tree:\n// if (score >= 90) {\n//   grade = \"A\";\n// } else if (score >= 70) {\n//   grade = \"B\";\n// } else {\n//   grade = \"C\";\n// }\n\n// Step 3: Log grade to console:\n// console.log(grade);\n",
+      uz: "// 7-Mavzu: Shartlar (if, else if, else)\n// 1-QADAM: Ball va bo'sh baho o'zgaruvchisini e'lon qiling:\n// const score = 85;\n// let grade = \"\";\n\n// 2-QADAM: Shartlar daraxtini yozing:\n// if (score >= 90) {\n//   grade = \"A\";\n// } else if (score >= 70) {\n//   grade = \"B\";\n// } else {\n//   grade = \"C\";\n// }\n\n// 3-QADAM: Bahoni konsolga chiqaring:\n// console.log(grade);\n"
     },
     targetCode: {
-      en: '// Theme 11 Solution\nfunction multiply(a, b) {\n  return a * b;\n}\nconsole.log(multiply(4, 5));',
-      uz: '// 11-Mavzu Yechimi\nfunction multiply(a, b) {\n  return a * b;\n}\nconsole.log(multiply(4, 5));'
+      en: "// Theme 7 Solution\nconst score = 85;\nlet grade = \"\";\nif (score >= 90) {\n  grade = \"A\";\n} else if (score >= 70) {\n  grade = \"B\";\n} else {\n  grade = \"C\";\n}\nconsole.log(grade);",
+      uz: "// 7-Mavzu Yechimi\nconst score = 85;\nlet grade = \"\";\nif (score >= 90) {\n  grade = \"A\";\n} else if (score >= 70) {\n  grade = \"B\";\n} else {\n  grade = \"C\";\n}\nconsole.log(grade);"
     },
     hints: [
-      { uz: "function multiply(a, b) { return a * b; } console.log(multiply(4, 5)); deb yozing.", en: "Declare multiply(a, b) returning a * b and log multiply(4, 5)." }
+      { uz: "if (score >= 90) { grade = \"A\"; } else if (score >= 70) { grade = \"B\"; } else { grade = \"C\"; }", en: "Use if / else if / else structure." }
     ],
     validate: (code) => {
-      if (!/return/.test(code)) return { passed: false, message: "return buyrug'idan foydalaning!" };
-      if (!/multiply/.test(code)) return { passed: false, message: "multiply nomli funksiya tuzing!" };
-      return { passed: true, message: "Super hisoblagich! Parametrlar va return ustasisiz! 📥💎" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/if\s*\(/.test(clean)) return { passed: false, message: "if shart operatoridan foydalaning!" };
+      if (!/else\s+if\s*\(/.test(clean)) return { passed: false, message: "else if oraliq shartidan foydalaning!" };
+      if (!/else\s*\{/.test(clean)) return { passed: false, message: "else zaxira blokini yozing!" };
+      return { passed: true, message: "Ajoyib! Shartlar daraxtini xatosiz qurasiz! 🚦" };
     }
   },
 
-  // THEME 12
+  // THEME 8: Comparisons & Logic
   {
-    id: 'js-12-arrow-functions',
-    module: 'mod-js-logic',
-    icon: '🏹',
-    title: { uz: "12-Mavzu: Arrow Funksiyalar — Zamonaviy Qisqa Yozuv (() => {})", en: "Theme 12: Arrow Functions — Modern Syntax (() => {})" },
+    id: "js-8-comparison",
+    module: "mod-js-logic",
+    icon: "⚖️",
+    title: {
+      uz: "8-Mavzu: Taqqoslash va Mantiqiy Operatorlar (===, !==, &&, ||, !)",
+      en: "Theme 8: Comparisons & Logic (===, !==, &&, ||, !)"
+    },
     concept: {
-      uz: "Zamonaviy JavaScriptda funksiyalarni kamon o'qi ko'rinishida => qisqa va chiroyli yozish mumkin.",
-      en: "Arrow functions give you a sleek, concise syntax using the fat arrow operator =>."
+      uz: "Taqqoslashlar: === (qat'iy tenglik), !== (teng emas), > va <. Mantiqiy operatorlar: && (VA — ikkala shart ham true bo'lishi shart), || (YOKI — kamida bittasi true bo'lsa kifoya), ! (INKOR — teskarisiga o'girish).",
+      en: "Strict comparisons: === and !==. Logical operators: && (AND — both must be true), || (OR — at least one must be true), and ! (NOT — inverts boolean)."
     },
     humanLanguage: {
-      uz: "function so'zini yozish o'rniga (n) => n * 2 deb juda tez va chiroyli yozamiz.",
-      en: "Instead of typing the long word function, write (n) => n * 2 like a ninja."
+      uz: "Sehrli qasrga kirish uchun: daraja kamida 10 bo'lishi VA (&&) kalit bo'lishi shart: (level >= 10 && hasKey === true). Agar bittasi yo'q bo'lsa, eshik ochilmaydi!",
+      en: "Entering the secret castle requires level >= 10 AND (&&) having the key: (level >= 10 && hasKey === true). Both must hold true!"
     },
     secretSandwich: {
-      uz: "const nom = (parametr) => natija;",
-      en: "const name = (param) => result;"
+      uz: "(shart1 && shart2) => ikkalasi ham to'g'ri bo'lsin | (shart1 || shart2) => bittasi to'g'ri bo'lsa ham yetarli",
+      en: "(c1 && c2) => both required | (c1 || c2) => either is enough"
     },
     stepBreakdown: [
       {
-        part: "=>",
-        explanation: { uz: "Arrow (kamon o'qi) operatori", en: "Fat arrow operator" },
-        visualResult: { uz: "Qisqa funksiya hosil qiladi", en: "Produces concise function" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'const f = (x) => x * 2;', name: { uz: "Arrow Funksiya", en: "Arrow Function" }, description: { uz: "Zamonaviy ixcham funksiya sintaksisi", en: "Concise ES6 function syntax" } }
-    ],
-    tagShowcase: [
-      { tag: '=>', name: { uz: "Arrow operatori", en: "Arrow operator" }, meaning: { uz: "Yangi ixcham funksiya sintaksisi", en: "Concise function token" } }
-    ],
-    mission: {
-      uz: "const double = (n) => n * 2; arrow funksiyasini yozing va konsolga double(5) ni chiqaring.",
-      en: "Write const double = (n) => n * 2; and log double(5)."
-    },
-    targetDescription: {
-      uz: "Arrow funksiya orqali 5 soni ikkiga ko'paytirilib, konsolga 10 chiqadi.",
-      en: "The arrow function multiplies 5 by 2, logging 10 into the console."
-    },
-    initialCode: {
-      en: '// Theme 12: Arrow Functions\n// Step 1: Write const double = (n) => n * 2;\n// Step 2: Log double(5) with console.log(double(5));\n',
-      uz: '// 12-Mavzu: Arrow Funksiya\n// 1-Qadam: const double = (n) => n * 2; deb yozing\n// 2-Qadam: console.log(double(5)); deb konsolga chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 12 Solution\nconst double = (n) => n * 2;\nconsole.log(double(5));',
-      uz: '// 12-Mavzu Yechimi\nconst double = (n) => n * 2;\nconsole.log(double(5));'
-    },
-    hints: [
-      { uz: "const double = (n) => n * 2; console.log(double(5)); deb yozing.", en: "Type: const double = (n) => n * 2; and log double(5);" }
-    ],
-    validate: (code) => {
-      if (!/=>/.test(code)) return { passed: false, message: "=> arrow belgisidan foydalaning!" };
-      if (!/double/.test(code)) return { passed: false, message: "double nomli funksiya yarating!" };
-      return { passed: true, message: "Kamon o'qi kabi tezkor! Arrow funksiyalar bo'yicha mutaxassissiz! 🏹⚡" };
-    }
-  },
-
-  // THEME 13 - BIG TOPIC (RPG HERO INVENTORY SPA)
-  {
-    id: 'js-13-arrays',
-    module: 'mod-js-data',
-    icon: '🎒',
-    title: { uz: "13-Mavzu: Massivlar — Sehrli Ryukzak va Ro'yxatlar ([])", en: "Theme 13: Arrays — Magic Inventory & Lists ([])" },
-    concept: {
-      uz: "Massiv (Array) — bu bitta o'zgaruvchi ichida ko'plab buyumlarni ro'yxat qilib saqlash usulidir. Kvadrat qavs [] bilan yoziladi va 0 dan boshlab sanaladi.",
-      en: "An array stores a structured list of items inside square brackets []. Each item has a numeric index starting from 0."
-    },
-    humanLanguage: {
-      uz: "O'yindagi qahramon ryukzagida qurollar bor: ['Flame Sword', 'Crystal Shield', 'Elixir']. Birinchi buyumni olish uchun inventory[0] deymiz!",
-      en: "In your RPG backpack: ['Flame Sword', 'Crystal Shield', 'Elixir']. To equip the first weapon, call inventory[0]!"
-    },
-    secretSandwich: {
-      uz: "let ro'yxat = ['1-element', '2-element', '3-element']; va chaqirish: ro'yxat[0]",
-      en: "let list = ['item1', 'item2', 'item3']; and access: list[0]"
-    },
-    stepBreakdown: [
-      {
-        part: '["Flame Sword", "Crystal Shield"]',
-        explanation: { uz: "Kvadrat qavs ichidagi ro'yxat", en: "List items inside square brackets" },
-        visualResult: { uz: "Xotirada tartiblangan ro'yxat", en: "Ordered list in memory" }
+        part: "level >= 10 && hasKey === true",
+        explanation: { uz: "Ikkala talab ham bajarilishi shart (VA)", en: "Both conditions required (AND)" },
+        visualResult: { uz: "Ikkisi ham true bo'lsagina eshik ochiladi", en: "Passes only if both are true" }
       },
       {
-        part: "inventory[0]",
-        explanation: { uz: "Nolinchi (birinchi) elementni olish", en: "Access first item at index 0" },
-        visualResult: { uz: '"Flame Sword" olinadi', en: 'Retrieves "Flame Sword"' }
+        part: "!isLocked",
+        explanation: { uz: "Qulf yo'qligini tekshirish (INKOR)", en: "Negates condition (NOT)" },
+        visualResult: { uz: "Qulf ochilgan bo'lsa true", en: "True if not locked" }
       }
     ],
     listOfCommands: [
-      { code: 'let arr = [1, 2, 3];', name: { uz: "Massiv yaratish", en: "Array Declaration" }, description: { uz: "Kvadrat qavsda tartiblangan ro'yxat tuzadi", en: "Creates an indexed array of values" } },
-      { code: 'arr[0]', name: { uz: "0-Indeks", en: "Zero Index" }, description: { uz: "Massivdagi eng birinchi elementni oladi", en: "Accesses the very first element" } },
-      { code: 'arr.length', name: { uz: "Uzunlik xossasi", en: "Array Length" }, description: { uz: "Massivdagi jami elementlar sonini bildiradi", en: "Counts total items in the array" } }
+      { code: 'a === b', name: { uz: "Qat'iy tenglik", en: "Strict Equality" }, description: { uz: "Qiymati va turi bir xilligini tekshiradi", en: "Checks equal value and equal type" } },
+      { code: 'a && b', name: { uz: "Mantiqiy VA (AND)", en: "Logical AND" }, description: { uz: "Ikkala tomon ham true bo'lsagina true qaytaradi", en: "True only if both sides are true" } },
+      { code: 'a || b', name: { uz: "Mantiqiy YOKI (OR)", en: "Logical OR" }, description: { uz: "Kamida bitta tomoni true bo'lsa true qaytaradi", en: "True if at least one side is true" } }
     ],
     tagShowcase: [
-      { tag: '[]', name: { uz: "Kvadrat qavslar", en: "Square Brackets" }, meaning: { uz: "Massiv yaratadi va indeks bo'yicha oladi", en: "Defines array and accesses index" } },
-      { tag: '.length', name: { uz: "Uzunlik xususiyati", en: "Length property" }, meaning: { uz: "Massivda nechta element borligini aytadi", en: "Counts total elements" } }
+      { tag: '===', name: { uz: "Teng", en: "Strict Equal" }, meaning: { uz: "To'liq tenglik", en: "Exact equality" } },
+      { tag: '&&', name: { uz: "VA", en: "AND" }, meaning: { uz: "Ikkalasi ham", en: "Both required" } },
+      { tag: '||', name: { uz: "YOKI", en: "OR" }, meaning: { uz: "Biri bo'lsa ham", en: "Either is enough" } }
     ],
     mission: {
-      uz: "inventory nomli massiv tuzing: ['Flame Sword', 'Crystal Shield', 'Elixir'] va birinchi qurolni console.log(inventory[0]); qiling.",
-      en: "Create an inventory array with ['Flame Sword', 'Crystal Shield', 'Elixir'] and log inventory[0] using console.log(inventory[0]);."
+      uz: "const level = 12; const hasKey = true; e'lon qiling. if (level >= 10 && hasKey === true) { console.log('Eshik ochildi! 🏰'); } else { console.log('Ruxsat yoq!'); } deb yozing.",
+      en: "Declare const level = 12; const hasKey = true;. Check if (level >= 10 && hasKey === true) and log 'Eshik ochildi! 🏰'."
     },
     targetDescription: {
-      uz: "Qahramonning ryukzagi massivda saqlanib, 0-indeksdagi bosh qurol (\"Flame Sword\") konsolga chiqariladi.",
-      en: "The RPG Hero backpack array is stored in memory and the primary weapon (\"Flame Sword\") at index 0 is logged."
+      uz: "Mantiqiy shart to'g'ri chiqib, 'Eshik ochildi! 🏰' xabari konsolga chiqadi.",
+      en: "'Eshik ochildi! 🏰' logged to console upon passing compound condition."
     },
     initialCode: {
-      en: '// Theme 13: RPG Hero Inventory SPA\n// Step 1: Create let inventory = ["Flame Sword", "Crystal Shield", "Elixir"];\n// Step 2: Log the primary weapon (index 0) with console.log(inventory[0]);\n',
-      uz: '// 13-Mavzu: Qahramon Ryukzagi SPA\n// 1-Qadam: let inventory = ["Flame Sword", "Crystal Shield", "Elixir"]; deb massiv tuzing\n// 2-Qadam: 0-indeksdagi bosh qurolni console.log(inventory[0]); deb chiqaring:\n'
+      en: "// Theme 8: Comparisons & Logical Operators\n// Step 1: Declare level and hasKey:\n// const level = 12;\n// const hasKey = true;\n\n// Step 2: Test compound condition using &&:\n// if (level >= 10 && hasKey === true) {\n//   console.log(\"Eshik ochildi! 🏰\");\n// } else {\n//   console.log(\"Ruxsat yo'q!\");\n// }\n",
+      uz: "// 8-Mavzu: Taqqoslash va Mantiqiy Operatorlar\n// 1-QADAM: level va hasKey ni e'lon qiling:\n// const level = 12;\n// const hasKey = true;\n\n// 2-QADAM: && mantiqiy operatori bilan ikkala shartni tekshiring:\n// if (level >= 10 && hasKey === true) {\n//   console.log(\"Eshik ochildi! 🏰\");\n// } else {\n//   console.log(\"Ruxsat yo'q!\");\n// }\n"
     },
     targetCode: {
-      en: '// Theme 13 Solution\nlet inventory = ["Flame Sword", "Crystal Shield", "Elixir"];\nconsole.log(inventory[0]);',
-      uz: '// 13-Mavzu Yechimi\nlet inventory = ["Flame Sword", "Crystal Shield", "Elixir"];\nconsole.log(inventory[0]);'
+      en: "// Theme 8 Solution\nconst level = 12;\nconst hasKey = true;\nif (level >= 10 && hasKey === true) {\n  console.log(\"Eshik ochildi! 🏰\");\n} else {\n  console.log(\"Ruxsat yo'q!\");\n}",
+      uz: "// 8-Mavzu Yechimi\nconst level = 12;\nconst hasKey = true;\nif (level >= 10 && hasKey === true) {\n  console.log(\"Eshik ochildi! 🏰\");\n} else {\n  console.log(\"Ruxsat yo'q!\");\n}"
     },
     hints: [
-      { uz: 'let inventory = ["Flame Sword", "Crystal Shield", "Elixir"]; console.log(inventory[0]); deb yozing.', en: 'Declare inventory and log inventory[0].' }
+      { uz: "level >= 10 && hasKey === true shartidan foydalaning.", en: "Use && to combine both checks." }
     ],
     validate: (code) => {
-      if (!/inventory\s*=\s*\[/.test(code)) return { passed: false, message: "let inventory = [...] massivini e'lon qiling!" };
-      if (!/inventory\s*\[\s*0\s*\]/.test(code)) return { passed: false, message: "inventory[0] orqali birinchi elementni oling!" };
-      return { passed: true, message: "Zo'r! Birinchi massivingiz va uning 0-indeksini zabt etdingiz! 🎒⭐" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/&&/.test(clean)) return { passed: false, message: "&& mantiqiy operatoridan foydalaning!" };
+      if (!/===|==/.test(clean)) return { passed: false, message: "=== taqqoslash operatoridan foydalaning!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Zo'r! Murakkab mantiqiy shartlarni osonlik bilan hal qildingiz! 🛡️" };
     }
   },
 
-  // THEME 14 - BIG TOPIC (ARRAY METHODS SPA)
+  // THEME 9: switch...case & Ternary Operator
   {
-    id: 'js-14-array-methods',
-    module: 'mod-js-data',
-    icon: '🛠️',
-    title: { uz: "14-Mavzu: Massiv Metodlari — push() va pop() (Qo'shish va Olish)", en: "Theme 14: Array Methods — push() & pop()" },
+    id: "js-9-else-if",
+    module: "mod-js-logic",
+    icon: "🎛️",
+    title: {
+      uz: "9-Mavzu: Ko'p Tarmoqli Tanlov — switch...case va Ternary Operator (? :)",
+      en: "Theme 9: Multi-branch — switch...case & Ternary Operator (? :)"
+    },
     concept: {
-      uz: "push() massivning oxiriga yangi buyum qo'shadi, pop() esa oxirgi buyumni sug'urib oladi.",
-      en: "push() adds a new item to the end of your list, while pop() removes the last item."
+      uz: "Bitta o'zgaruvchining juda ko'p aniq qiymatlarini tekshirishda if/else o'rniga switch...case juda tartibli ko'rinadi. Qisqa 1 qatorli if/else uchun esa Ternary operatori (shart ? rost : yolg'on) ishlatiladi.",
+      en: "When testing one variable against many exact values, switch...case is much cleaner than stacked if/else. For concise 1-line conditions, the Ternary operator (cond ? trueVal : falseVal) is ideal."
     },
     humanLanguage: {
-      uz: "Ryukzakka yangi qurol topib soldingiz: inventory.push('Dragon Bow'). Massiv uzunligi bittaga ko'payadi!",
-      en: "You looted a legendary bow: inventory.push('Dragon Bow'). The inventory expands!"
+      uz: "Hafta kuni raqami bo'yicha nom tanlashda switch (kun) { case 1: ... } qulay. Yosh 18 dan oshganmi? const ruxsat = (yosh >= 18) ? 'Ha' : 'Yo\\'q'; deymiz!",
+      en: "Switch is like a multi-way track switch. Ternary operator compresses an if/else into one neat line: const pass = score >= 50 ? 'Pass' : 'Fail';"
     },
     secretSandwich: {
-      uz: "massiv.push('yangi'); — qo'shish | massiv.pop(); — oxirgisini olish",
-      en: "array.push('new'); — append | array.pop(); — remove last"
+      uz: "switch (x) { case 1: ... break; default: ... } | const res = shart ? 'rost' : 'yolgon';",
+      en: "switch (val) { case x: ... break; } | const ans = cond ? 'yes' : 'no';"
     },
     stepBreakdown: [
       {
-        part: '.push("Dragon Bow")',
-        explanation: { uz: "Oxiriga yangi element qo'shadi", en: "Appends item to array end" },
-        visualResult: { uz: "Massiv kattalashadi", en: "Array expands" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'arr.push(item)', name: { uz: "Oxiriga qo'shish", en: "Push method" }, description: { uz: "Massiv oxiriga yangi element qo'shadi", en: "Adds a new element to array end" } },
-      { code: 'arr.pop()', name: { uz: "Oxirgisini olish", en: "Pop method" }, description: { uz: "Massivning oxirgi elementini o'chiradi", en: "Removes and returns last element" } }
-    ],
-    tagShowcase: [
-      { tag: '.push()', name: { uz: "Qo'shish metodi", en: "Push method" }, meaning: { uz: "Oxiriga element qo'shadi", en: "Adds item to end" } },
-      { tag: '.pop()', name: { uz: "Olib tashlash metodi", en: "Pop method" }, meaning: { uz: "Oxirgi elementni o'chiradi", en: "Removes last item" } }
-    ],
-    mission: {
-      uz: 'inventory massiviga inventory.push("Dragon Bow"); qilib yangi qurol qo\'shing va console.log(inventory.length); qiling.',
-      en: 'Add "Dragon Bow" to inventory using inventory.push("Dragon Bow"); and log console.log(inventory.length);.'
-    },
-    targetDescription: {
-      uz: "Ryukzakka push() orqali \"Dragon Bow\" qo'shiladi va yangi qurollar soni (3) konsolga chiqadi.",
-      en: "\"Dragon Bow\" is pushed into the inventory, and the new total count (3) is logged to the console."
-    },
-    initialCode: {
-      en: '// Theme 14: Array push()\nlet inventory = ["Flame Sword", "Crystal Shield"];\n// Step 1: Add "Dragon Bow" with inventory.push("Dragon Bow");\n// Step 2: Log length using console.log(inventory.length);\n',
-      uz: '// 14-Mavzu: Massivga push()\nlet inventory = ["Flame Sword", "Crystal Shield"];\n// 1-Qadam: inventory.push("Dragon Bow"); deb yangi qurol qo\'shing\n// 2-Qadam: console.log(inventory.length); deb uzunlikni chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 14 Solution\nlet inventory = ["Flame Sword", "Crystal Shield"];\ninventory.push("Dragon Bow");\nconsole.log(inventory.length);',
-      uz: '// 14-Mavzu Yechimi\nlet inventory = ["Flame Sword", "Crystal Shield"];\ninventory.push("Dragon Bow");\nconsole.log(inventory.length);'
-    },
-    hints: [
-      { uz: 'inventory.push("Dragon Bow"); console.log(inventory.length); deb yozing.', en: 'Push "Dragon Bow" and log inventory.length.' }
-    ],
-    validate: (code) => {
-      if (!/inventory\.push\s*\(/.test(code)) return { passed: false, message: "inventory.push() dan foydalaning!" };
-      if (!/inventory\.length/.test(code)) return { passed: false, message: "inventory.length orqali sonini chiqaring!" };
-      return { passed: true, message: "Ajoyib! Massivga yangi qurol muvaffaqiyatli qo'shildi! 🛠️🎉" };
-    }
-  },
-
-  // THEME 15
-  {
-    id: 'js-15-for-loop',
-    module: 'mod-js-data',
-    icon: '🔁',
-    title: { uz: "15-Mavzu: Takrorlash Mashinasi — for Tsikli", en: "Theme 15: Repetition Machine — The for Loop" },
-    concept: {
-      uz: "Bir xil ishni 100 marta qo'lda yozmaysiz. for tsikli kompyuterga bir necha qator kodni kerakli martagacha chaqmoqdek tez takrorlatadi.",
-      en: "Never write repetitive code by hand. The for loop repeats code as many times as you command in milliseconds."
-    },
-    humanLanguage: {
-      uz: "Stadionda 5 marta yugurish: 1-aylana, 2-aylana, 3-aylana... for (let i = 1; i <= 5; i++) xuddi shu sanagichdir!",
-      en: "Running 5 laps around the track: 1, 2, 3, 4, 5. for (let i = 1; i <= 5; i++) does the exact lap counting!"
-    },
-    secretSandwich: {
-      uz: "for (boshlanish; shart; qadam) { takrorlanuvchi kod }",
-      en: "for (start; condition; step) { code to repeat }"
-    },
-    stepBreakdown: [
-      {
-        part: "let i = 1;",
-        explanation: { uz: "Sanagichning boshlanishi", en: "Loop counter starting point" },
-        visualResult: { uz: "i = 1 bo'ladi", en: "i begins at 1" }
+        part: "switch (mode) { case 'easy': ... }",
+        explanation: { uz: "O'yin rejimiga qarab shoxlanish", en: "Switches on game mode" },
+        visualResult: { uz: "Mos rejim kodi ishlaydi", en: "Executes matching case" }
       },
       {
-        part: "i <= 5;",
-        explanation: { uz: "Takrorlanish chegarasi", en: "Loop limit condition" },
-        visualResult: { uz: "5 ga yetguncha aylanadi", en: "Runs until 5" }
+        part: "const status = isWin ? 'G'alaba!' : 'Mag'lubiyat';",
+        explanation: { uz: "1 qatorli tezkor ternary tanlov", en: "1-line concise ternary choice" },
+        visualResult: { uz: "status qiymati aniqlanadi", en: "Assigns status" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'switch (x) { case a: ... break; }', name: { uz: "Switch tanlash", en: "Switch Statement" }, description: { uz: "O'zgaruvchi qiymatiga qarab mos case blokini ishga tushiradi", en: "Evaluates expression and matches against cases" } },
+      { code: 'c ? a : b', name: { uz: "Ternary operator", en: "Ternary Operator" }, description: { uz: "3 ta qismli 1 qatorli shartli if/else ifodasi", en: "Shorthand conditional expression" } }
+    ],
+    tagShowcase: [
+      { tag: 'switch', name: { uz: "Ulagich", en: "Switch" }, meaning: { uz: "Variantlar bo'yicha tanlash", en: "Branching statement" } },
+      { tag: 'case', name: { uz: "Holat", en: "Case" }, meaning: { uz: "Aniq bir holat qiymati", en: "Specific case match" } },
+      { tag: '? :', name: { uz: "Ternary", en: "Ternary" }, meaning: { uz: "1 qatorli if-else", en: "Inline conditional" } }
+    ],
+    mission: {
+      uz: "const day = 2; let name = ''; switch (day) { case 1: name = 'Dushanba'; break; case 2: name = 'Seshanba'; break; default: name = 'Boshqa'; } const isWeekday = (day <= 5) ? 'Ish kuni' : 'Dam olish'; console.log(name, isWeekday); deb yozing.",
+      en: "Implement switch on const day = 2; and use ternary operator for isWeekday, then log results."
+    },
+    targetDescription: {
+      uz: "'Seshanba' va 'Ish kuni' qiymatlari konsolga chiqariladi.",
+      en: "'Seshanba' and 'Ish kuni' logged to console."
+    },
+    initialCode: {
+      en: "// Theme 9: switch...case & Ternary Operator\n// Step 1: Declare day number:\n// const day = 2;\n// let name = \"\";\n\n// Step 2: Implement switch statement:\n// switch (day) {\n//   case 1: name = \"Dushanba\"; break;\n//   case 2: name = \"Seshanba\"; break;\n//   default: name = \"Boshqa\";\n// }\n\n// Step 3: Implement ternary operator:\n// const isWeekday = (day <= 5) ? \"Ish kuni\" : \"Dam olish\";\n\n// Step 4: Log name and isWeekday:\n// console.log(name, isWeekday);\n",
+      uz: "// 9-Mavzu: switch...case va Ternary Operator (? :)\n// 1-QADAM: Kun raqamini e'lon qiling:\n// const day = 2;\n// let name = \"\";\n\n// 2-QADAM: switch orqali kun nomini aniqlang:\n// switch (day) {\n//   case 1: name = \"Dushanba\"; break;\n//   case 2: name = \"Seshanba\"; break;\n//   default: name = \"Boshqa\";\n// }\n\n// 3-QADAM: Ternary operatori bilan ish kuni yoki dam olish ekanini toping:\n// const isWeekday = (day <= 5) ? \"Ish kuni\" : \"Dam olish\";\n\n// 4-QADAM: Natijalarni konsolga chiqaring:\n// console.log(name, isWeekday);\n"
+    },
+    targetCode: {
+      en: "// Theme 9 Solution\nconst day = 2;\nlet name = \"\";\nswitch (day) {\n  case 1: name = \"Dushanba\"; break;\n  case 2: name = \"Seshanba\"; break;\n  default: name = \"Boshqa\";\n}\nconst isWeekday = (day <= 5) ? \"Ish kuni\" : \"Dam olish\";\nconsole.log(name, isWeekday);",
+      uz: "// 9-Mavzu Yechimi\nconst day = 2;\nlet name = \"\";\nswitch (day) {\n  case 1: name = \"Dushanba\"; break;\n  case 2: name = \"Seshanba\"; break;\n  default: name = \"Boshqa\";\n}\nconst isWeekday = (day <= 5) ? \"Ish kuni\" : \"Dam olish\";\nconsole.log(name, isWeekday);"
+    },
+    hints: [
+      { uz: "switch (day) va (day <= 5) ? \"Ish kuni\" : \"Dam olish\" dan foydalaning.", en: "Combine switch and ternary operator." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/switch\s*\(/.test(clean)) return { passed: false, message: "switch operatoridan foydalaning!" };
+      if (!/case\s+2:/.test(clean)) return { passed: false, message: "case 2: holatini yozing!" };
+      if (!/\?\s*["'].+["']\s*:\s*["'].+["']/.test(clean)) return { passed: false, message: "Ternary (? :) operatoridan foydalaning!" };
+      return { passed: true, message: "Mukammal! switch va ternary operatorini ajoyib o'zlashtirdingiz! 🎛️" };
+    }
+  },
+
+  // THEME 10: Functions
+  {
+    id: "js-10-functions",
+    module: "mod-js-logic",
+    icon: "⚙️",
+    title: {
+      uz: "10-Mavzu: Funksiyalar — Sehrli Qayta Ishlatiluvchi Mashina",
+      en: "Theme 10: Functions — Magic Reusable Code Machines"
+    },
+    concept: {
+      uz: "Funksiya — bu ma'lum bir vazifani bajaruvchi kodlar bloki. Bir marta yozib, istalgancha qayta-qayta chaqirish mumkin (DRY qoidasi: Don't Repeat Yourself).",
+      en: "A function is a reusable block of code designed to perform a specific task. Write once and call it thousands of times with different inputs."
+    },
+    humanLanguage: {
+      uz: "Tasavvur qiling, qahva tayyorlaydigan sehrli apparat bor. Siz faqat tugmasini bosasiz (funksiyani chaqirasiz), u esa barcha bosqichlarni o'zi bajarib beradi!",
+      en: "A function is like a vending machine. You press the button (call it) and it executes its internal steps to deliver the result!"
+    },
+    secretSandwich: {
+      uz: "function nom() { ... } (yaratish) | nom(); (ishga tushirish / chaqirish)",
+      en: "function name() { ... } (declare) | name(); (call/invoke)"
+    },
+    stepBreakdown: [
+      {
+        part: "function greetHero(name) { ... }",
+        explanation: { uz: "Yangi funksiya mashinasini yaratish", en: "Declares function" },
+        visualResult: { uz: "greetHero xotirada saqlanadi", en: "Saved in memory" }
       },
       {
-        part: "i++",
-        explanation: { uz: "Har aylanganda i ga 1 qo'shish", en: "Increment i by 1 each lap" },
-        visualResult: { uz: "1, 2, 3, 4, 5 bo'lib oshadi", en: "Steps forward" }
+        part: "greetHero('Temur')",
+        explanation: { uz: "Funksiyani 'Temur' ismi bilan ishga tushirish", en: "Calls function with argument" },
+        visualResult: { uz: "Natija xabar hosil bo'ladi", en: "Executes logic" }
       }
     ],
     listOfCommands: [
-      { code: 'for (let i = 0; i < N; i++) {}', name: { uz: "For tsikli", en: "For Loop" }, description: { uz: "Belgilangan miqdorda kodni avtomatik takrorlaydi", en: "Repeats a block of code for a set number of iterations" } },
-      { code: 'i++', name: { uz: "Inkrement", en: "Increment" }, description: { uz: "O'zgaruvchi qiymatiga har qadamda 1 qo'shadi", en: "Adds 1 to variable each iteration" } }
+      { code: 'function name(p) { }', name: { uz: "Funksiya e'lon qilish", en: "Function Declaration" }, description: { uz: "Qayta ishlatiluvchi mustaqil funksiya yaratadi", en: "Defines a named callable function" } }
     ],
     tagShowcase: [
-      { tag: 'for', name: { uz: "For tsikli", en: "For loop" }, meaning: { uz: "Belgilangan miqdorda takrorlaydi", en: "Repeats code for set counts" } },
-      { tag: 'i++', name: { uz: "Inkrement (1 qo'shish)", en: "Increment operator" }, meaning: { uz: "Sanagichni bittaga oshiradi", en: "Adds 1 to number" } }
+      { tag: 'function', name: { uz: "Funksiya", en: "Function" }, meaning: { uz: "Sehrli mashina kalit so'zi", en: "Function keyword" } },
+      { tag: '()', name: { uz: "Qavslar", en: "Parentheses" }, meaning: { uz: "Chaqirish va parametrlar joyi", en: "Call and parameter container" } }
     ],
     mission: {
-      uz: "for tsikli yordamida 1 dan 5 gacha sonlarni console.log(i); qilib konsolga chiqaring.",
-      en: "Use a for loop to log numbers from 1 to 5 with console.log(i);."
+      uz: "Qahramonni olqishlovchi funksiya yarating: function praiseHero(name) { return 'Ofarin, jasur ' + name + '! ⚔️'; } va console.log(praiseHero('Alpomish')); qiling.",
+      en: "Create function praiseHero(name) returning a greeting, then log praiseHero('Alpomish')."
     },
     targetDescription: {
-      uz: "1 dan 5 gacha bo'lgan barcha sonlar ketma-ketlikda konsolga chiqariladi.",
-      en: "Numbers 1, 2, 3, 4, and 5 are logged sequentially by the loop."
+      uz: "'Ofarin, jasur Alpomish! ⚔️' xabari funksiya orqali chiqariladi.",
+      en: "'Ofarin, jasur Alpomish! ⚔️' returned by function and logged."
     },
     initialCode: {
-      en: '// Theme 15: for loop\n// Step 1: Write for (let i = 1; i <= 5; i++) {\n// Step 2: Log each number with console.log(i);\n',
-      uz: '// 15-Mavzu: for tsikli\n// 1-Qadam: for (let i = 1; i <= 5; i++) { deb yozing\n// 2-Qadam: console.log(i); deb chiqaring:\n'
+      en: "// Theme 10: Functions\n// Step 1: Define praiseHero function:\n// function praiseHero(name) {\n//   return \"Ofarin, jasur \" + name + \"! ⚔️\";\n// }\n\n// Step 2: Call function and log result:\n// console.log(praiseHero(\"Alpomish\"));\n",
+      uz: "// 10-Mavzu: Funksiyalar\n// 1-QADAM: praiseHero nomli funksiya e'lon qiling:\n// function praiseHero(name) {\n//   return \"Ofarin, jasur \" + name + \"! ⚔️\";\n// }\n\n// 2-QADAM: Funksiyani \"Alpomish\" bilan chaqirib, konsolga chiqaring:\n// console.log(praiseHero(\"Alpomish\"));\n"
     },
     targetCode: {
-      en: '// Theme 15 Solution\nfor (let i = 1; i <= 5; i++) {\n  console.log(i);\n}',
-      uz: '// 15-Mavzu Yechimi\nfor (let i = 1; i <= 5; i++) {\n  console.log(i);\n}'
+      en: "// Theme 10 Solution\nfunction praiseHero(name) {\n  return \"Ofarin, jasur \" + name + \"! ⚔️\";\n}\nconsole.log(praiseHero(\"Alpomish\"));",
+      uz: "// 10-Mavzu Yechimi\nfunction praiseHero(name) {\n  return \"Ofarin, jasur \" + name + \"! ⚔️\";\n}\nconsole.log(praiseHero(\"Alpomish\"));"
     },
     hints: [
-      { uz: "for (let i = 1; i <= 5; i++) { console.log(i); } deb yozing.", en: "Type: for (let i = 1; i <= 5; i++) { console.log(i); }" }
+      { uz: "function praiseHero(name) { return \"Ofarin, jasur \" + name + \"! ⚔️\"; } deb yozing.", en: "Define function praiseHero with parameter name and return." }
     ],
     validate: (code) => {
-      if (!/for\s*\(/.test(code)) return { passed: false, message: "for tsiklini yozing!" };
-      if (!/i\+\+/.test(code) && !/i\s*\+=\s*1/.test(code)) return { passed: false, message: "i++ inkrementidan foydalaning!" };
-      return { passed: true, message: "Ajoyib takrorlash mashinasi! 5 ta qadam sanaldi! 🔁⭐" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/function\s+\w+\s*\(/.test(clean)) return { passed: false, message: "function kalit so'zi bilan funksiya e'lon qiling!" };
+      if (!/return/.test(clean)) return { passed: false, message: "Funksiya ichida return yordamida qiymat qaytaring!" };
+      if (!/praiseHero\s*\(/.test(clean)) return { passed: false, message: "praiseHero() funksiyasini chaqiring!" };
+      return { passed: true, message: "Ajoyib! O'z funksiyangizni muvaffaqiyatli qurdingiz! ⚙️" };
     }
   },
 
-  // THEME 16
+  // THEME 11: Parameters & Return
   {
-    id: 'js-16-while-loop',
-    module: 'mod-js-data',
-    icon: '⏳',
-    title: { uz: "16-Mavzu: Shartli Takrorlash — while Tsikli", en: "Theme 16: Conditional Repetition — The while Loop" },
+    id: "js-11-params-return",
+    module: "mod-js-logic",
+    icon: "📥",
+    title: {
+      uz: "11-Mavzu: Parametrlar va Return — Kiruvchi va Qaytaruvchi Qiymat",
+      en: "Theme 11: Parameters, Return & Default Values"
+    },
     concept: {
-      uz: "while tsikli 'modomiki shart to'g'ri ekan, takrorla' degan ma'noni beradi. Masalan, energiyamiz bor ekan, yuguramiz.",
-      en: "The while loop runs as long as its condition holds true: while (energy > 0) keep running!"
+      uz: "Parametrlar — funksiya ishlashi uchun beriladigan xomashyo (kiruvchi ma'lumotlar). return esa tayyor natijani dasturga chiqarib berish kalitidir. Agar parametr berilmasa, default qiymat (masalan: mult = 2) ishlaydi.",
+      en: "Parameters are the inputs fed into a function. return sends the computed result back to the caller. Default parameters supply fallbacks when omitted."
     },
     humanLanguage: {
-      uz: "Telefon quvvati 0 dan katta ekan, o'yin o'ynayverasiz. Har daqiqada quvvat 1 taga kamayadi: battery--.",
-      en: "As long as battery > 0, your game continues. Each round battery decreases by 1."
+      uz: "Sharbat siquvchi mashinaga 2 ta meva solasiz (parametrlar: olma, apelsin), u esa tayyor vitaminli sharbatni qaytaradi (return). Agar meva aytmasangiz, sukut bo'yicha olmali sharbat qiladi!",
+      en: "A blender takes ingredients (parameters: apple, orange) and delivers delicious juice (return). Default params ensure juice even if you forget to specify!"
     },
     secretSandwich: {
-      uz: "while (shart) { kod; shartni_o'zgartirish; } — diqqat: o'zgaruvchini kamaytirishni unutmang!",
-      en: "while (condition) { code; update; } — always change state to avoid infinite freezes!"
+      uz: "function hisobla(a, b = 2) { return a * b; }",
+      en: "function calc(a, b = 2) { return a * b; }"
     },
     stepBreakdown: [
       {
-        part: "while (energy > 0)",
-        explanation: { uz: "Energiya borligini tekshirish", en: "Check remaining energy" },
-        visualResult: { uz: "0 bo'lganda to'xtaydi", en: "Stops when 0" }
+        part: "function calcDamage(base, mult = 2)",
+        explanation: { uz: "Asosiy zarba va karrali ko'paytuvchi (default: 2)", en: "Base damage with default multiplier 2" },
+        visualResult: { uz: "Funksiya parametrlarni qabul qiladi", en: "Accepts inputs" }
       },
       {
-        part: "energy--;",
-        explanation: { uz: "Energiyani 1 taga kamaytirish", en: "Decrease energy by 1" },
-        visualResult: { uz: "Energiya kamayib boradi", en: "Counts down" }
+        part: "return base * mult;",
+        explanation: { uz: "Ko'paytirilgan yakuniy zararni qaytarish", en: "Returns total calculated damage" },
+        visualResult: { uz: "Natija chaqiruvchiga qaytadi", en: "Returns computed number" }
       }
     ],
     listOfCommands: [
-      { code: 'while (shart) {}', name: { uz: "While tsikli", en: "While Loop" }, description: { uz: "Shart rost bo'lib turguncha kodni takrorlaydi", en: "Repeats code while condition remains true" } },
-      { code: 'energy--', name: { uz: "Dekrement", en: "Decrement" }, description: { uz: "O'zgaruvchi qiymatidan 1 ayiradi", en: "Decreases variable value by 1" } }
+      { code: 'return value;', name: { uz: "Natijani qaytarish", en: "Return Statement" }, description: { uz: "Funksiya ishini tugatadi va natijani qaytaradi", en: "Specifies value returned from function call" } }
     ],
     tagShowcase: [
-      { tag: 'while', name: { uz: "While tsikli", en: "While loop" }, meaning: { uz: "Shart rost bo'lguncha aylanadi", en: "Runs while condition is true" } },
-      { tag: '--', name: { uz: "Dekrement (1 ayirish)", en: "Decrement operator" }, meaning: { uz: "Sonni bittaga kamaytiradi", en: "Subtracts 1" } }
+      { tag: 'param', name: { uz: "Parametr", en: "Parameter" }, meaning: { uz: "Kiruvchi ma'lumot", en: "Input argument" } },
+      { tag: 'return', name: { uz: "Qaytarish", en: "Return" }, meaning: { uz: "Chiquvchi natija", en: "Output result" } }
     ],
     mission: {
-      uz: "while (energy > 0) tsiklida console.log(energy); chiqaring va energy--; bilan kamaytiring.",
-      en: "In a while (energy > 0) loop log energy and decrease it with energy--;."
+      uz: "function calculateDamage(base, mult = 2) { return base * mult; } yarating. const total = calculateDamage(35, 3); hisoblab, console.log(total); qiling.",
+      en: "Create function calculateDamage(base, mult = 2) returning base * mult, calculate total with (35, 3), and log."
     },
     targetDescription: {
-      uz: "Energiya 3 dan 1 gacha orqaga sanalib, konsolda aks etadi.",
-      en: "Energy counts down from 3 to 1 and logs each remaining unit."
+      uz: "Hisoblangan 105 umumiy zarar konsolga chiqariladi.",
+      en: "Calculated damage 105 logged to console."
     },
     initialCode: {
-      en: '// Theme 16: while loop\nlet energy = 3;\nwhile (energy > 0) {\n  // Step 1: console.log(energy);\n  // Step 2: energy--;\n}\n',
-      uz: '// 16-Mavzu: while tsikli\nlet energy = 3;\nwhile (energy > 0) {\n  // 1-Qadam: console.log(energy); deb chiqaring\n  // 2-Qadam: energy--; deb kamaytiring:\n}\n'
+      en: "// Theme 11: Parameters & Return\n// Step 1: Create damage calculator function with default parameter:\n// function calculateDamage(base, mult = 2) {\n//   return base * mult;\n// }\n\n// Step 2: Call with base 35 and mult 3:\n// const total = calculateDamage(35, 3);\n\n// Step 3: Log total damage:\n// console.log(total);\n",
+      uz: "// 11-Mavzu: Parametrlar va Return\n// 1-QADAM: Default parametrli zarar hisoblash funksiyasini yozing:\n// function calculateDamage(base, mult = 2) {\n//   return base * mult;\n// }\n\n// 2-QADAM: Funksiyani 35 va 3 qiymatlari bilan chaqirib, total ga saqlang:\n// const total = calculateDamage(35, 3);\n\n// 3-QADAM: Umumiy zararni konsolga chiqaring:\n// console.log(total);\n"
     },
     targetCode: {
-      en: '// Theme 16 Solution\nlet energy = 3;\nwhile (energy > 0) {\n  console.log(energy);\n  energy--;\n}',
-      uz: '// 16-Mavzu Yechimi\nlet energy = 3;\nwhile (energy > 0) {\n  console.log(energy);\n  energy--;\n}'
+      en: "// Theme 11 Solution\nfunction calculateDamage(base, mult = 2) {\n  return base * mult;\n}\nconst total = calculateDamage(35, 3);\nconsole.log(total);",
+      uz: "// 11-Mavzu Yechimi\nfunction calculateDamage(base, mult = 2) {\n  return base * mult;\n}\nconst total = calculateDamage(35, 3);\nconsole.log(total);"
     },
     hints: [
-      { uz: "console.log(energy); energy--; deb yozing.", en: "Write: console.log(energy); energy--;" }
+      { uz: "function calculateDamage(base, mult = 2) { return base * mult; }", en: "Define function with default parameter." }
     ],
     validate: (code) => {
-      if (!/while\s*\(/.test(code)) return { passed: false, message: "while tsiklidan foydalaning!" };
-      if (!/energy--/.test(code) && !/energy\s*-=\s*1/.test(code)) return { passed: false, message: "energy--; bilan qiymatni kamaytiring!" };
-      return { passed: true, message: "Vaqt va shartlar bo'yicha mukammal tsikl tuzildi! ⏳🎉" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/mult\s*=\s*2/.test(clean)) return { passed: false, message: "mult = 2 default parametrini belgilang!" };
+      if (!/return\s+base\s*\*\s*mult/.test(clean)) return { passed: false, message: "return base * mult; bilan qiymatni qaytaring!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Ofarin! Parametrlar va return formulalarini to'liq egalladingiz! 🎯" };
     }
   },
 
-  // THEME 17 - BIG TOPIC (HERO CHARACTER SHEET SPA)
+  // THEME 12: Arrow Functions
   {
-    id: 'js-17-objects',
-    module: 'mod-js-data',
-    icon: '👤',
-    title: { uz: "17-Mavzu: Obyektlar — Qahramon Xususiyatlari ({})", en: "Theme 17: Objects — Hero Character Sheets ({})" },
+    id: "js-12-arrow-functions",
+    module: "mod-js-logic",
+    icon: "🏹",
+    title: {
+      uz: "12-Mavzu: Arrow Funksiyalar — Zamonaviy Qisqa Yozuv (() => {})",
+      en: "Theme 12: Arrow Functions — Modern Concise Syntax (() => {})"
+    },
     concept: {
-      uz: "Obyekt — bu bitta narsaning barcha xususiyatlarini (nomi, kuchi, joni) bitta joyda jingalak qavs {} ichida saqlashdir.",
-      en: "An object packs key-value properties describing a real-world entity inside curly braces {}."
+      uz: "Arrow funksiyalar (strelka funksiyalar) ES6 da paydo bo'lgan zamonaviy usul. Oddiy function so'zi o'rniga => belgisi ishlatiladi. Agar funksiya 1 qatordan iborat bo'lsa, qavslar {} va return so'zini yozmaslik ham mumkin!",
+      en: "Arrow functions provide a clean, modern shorthand using => instead of the function keyword. Single-line arrow functions offer implicit return without curly braces."
     },
     humanLanguage: {
-      uz: "RPG o'yindagi qahramoningiz: { name: 'Alpomish', hp: 100, power: 50 }. Jonini bilmoqchimisiz? hero.hp deysiz!",
-      en: "Your superhero profile: { name: 'Alpomish', hp: 100, power: 50 }. Access properties with dot notation: hero.name!"
+      uz: "Eski usul: const add = function(a, b) { return a + b; };\\nYangi zamonaviy arrow usul: const add = (a, b) => a + b;\\nKo'rdingizmi, qanchalik qisqa, go'zal va tez yoziladi!",
+      en: "Traditional: const add = function(a, b) { return a + b; };\\nModern Arrow: const add = (a, b) => a + b;\\nMuch shorter, cleaner, and faster to write!"
     },
     secretSandwich: {
-      uz: "let obyekt = { kalit: 'qiymat', son: 10 }; va chaqirish: obyekt.kalit",
-      en: "let obj = { key: 'value', num: 10 }; and access: obj.key"
+      uz: "const nom = (parametrlar) => ifoda; (1 qatorli avtomatik return!)",
+      en: "const name = (params) => expression; (implicit return)"
     },
     stepBreakdown: [
       {
-        part: '{ name: "Alpomish" }',
-        explanation: { uz: "Kalit va qiymat juftligi", en: "Key-value property" },
-        visualResult: { uz: "Obyekt xossasi saqlanadi", en: "Property saved" }
+        part: "const square = n => n * n;",
+        explanation: { uz: "1 ta parametrli, 1 qatorda kvadrat hisoblovchi arrow funksiya", en: "Single-param concise arrow function" },
+        visualResult: { uz: "Tezkor kvadrat hisoblagich", en: "Computes square instantly" }
       },
       {
-        part: "hero.name",
-        explanation: { uz: "Nuqta orqali xususiyatni o'qish", en: "Dot notation property access" },
-        visualResult: { uz: '"Alpomish" chiqadi', en: 'Reads "Alpomish"' }
+        part: "const add = (a, b) => a + b;",
+        explanation: { uz: "2 ta parametrni qo'shuvchi ixcham arrow funksiya", en: "2-param concise arrow function" },
+        visualResult: { uz: "Tezkor qo'shuvchi funksiya", en: "Adds two numbers" }
       }
     ],
     listOfCommands: [
-      { code: 'let obj = { k: v };', name: { uz: "Obyekt yaratish", en: "Object Literal" }, description: { uz: "Jingalak qavsda xususiyatlar to'plamini tuzadi", en: "Groups key-value properties inside curly braces" } },
-      { code: 'obj.key', name: { uz: "Nuqta bilan olish", en: "Dot Property Access" }, description: { uz: "Obyekt ichidagi xususiyat qiymatini o'qiydi", en: "Accesses a named property on an object" } }
+      { code: '(a, b) => a + b', name: { uz: "Arrow funksiya", en: "Arrow Function" }, description: { uz: "Qisqa sintaksisli zamonaviy funksiya", en: "Concise anonymous function syntax with lexical this" } }
     ],
     tagShowcase: [
-      { tag: '{}', name: { uz: "Jingalak qavslar", en: "Curly Braces" }, meaning: { uz: "Yangi obyekt yaratadi", en: "Creates an object literal" } },
-      { tag: '.', name: { uz: "Nuqta operatori", en: "Dot operator" }, meaning: { uz: "Obyekt ichidagi xususiyatni chaqiradi", en: "Accesses object properties" } }
+      { tag: '=>', name: { uz: "Strelka (Arrow)", en: "Fat Arrow" }, meaning: { uz: "Funksiya tanasini bildiradi", en: "Points to function body" } }
     ],
     mission: {
-      uz: "hero nomli obyekt tuzing (name: 'Alpomish', hp: 100, power: 50) va console.log(hero.name); qiling.",
-      en: "Create a hero object (name: 'Alpomish', hp: 100, power: 50) and log hero.name."
+      uz: "Ikkita sonni qo'shuvchi arrow funksiya: const add = (a, b) => a + b; va kvadrat hisoblovchi: const square = x => x * x; yarating hamda console.log(add(8, 12), square(5)); chiqaring.",
+      en: "Create const add = (a, b) => a + b; and const square = x => x * x; arrow functions, then log their results."
     },
     targetDescription: {
-      uz: "Qahramon obyekti xotirada saqlanib, uning nomi (\"Alpomish\") konsolga chiqariladi.",
-      en: "The hero profile object is created and its name (\"Alpomish\") is logged using dot notation."
+      uz: "Arrow funksiyalar natijalari (20 va 25) konsolga chiqariladi.",
+      en: "Computed arrow function values (20 and 25) logged to console."
     },
     initialCode: {
-      en: '// Theme 17: Hero Profile Object SPA\n// Step 1: Create let hero = { name: "Alpomish", hp: 100, power: 50 };\n// Step 2: Log name with console.log(hero.name);\n',
-      uz: '// 17-Mavzu: Qahramon Pasporti Obyekti\n// 1-Qadam: let hero = { name: "Alpomish", hp: 100, power: 50 }; deb obyekt tuzing\n// 2-Qadam: console.log(hero.name); deb konsolga chiqaring:\n'
+      en: "// Theme 12: Arrow Functions\n// Step 1: Create arrow function to add two numbers:\n// const add = (a, b) => a + b;\n\n// Step 2: Create arrow function to square a number:\n// const square = x => x * x;\n\n// Step 3: Log add(8, 12) and square(5):\n// console.log(add(8, 12), square(5));\n",
+      uz: "// 12-Mavzu: Arrow Funksiyalar (() => {})\n// 1-QADAM: Ikkita sonni qo'shuvchi arrow funksiya yozing:\n// const add = (a, b) => a + b;\n\n// 2-QADAM: Sonning kvadratini hisoblovchi arrow funksiya yozing:\n// const square = x => x * x;\n\n// 3-QADAM: add(8, 12) va square(5) natijalarini konsolga chiqaring:\n// console.log(add(8, 12), square(5));\n"
     },
     targetCode: {
-      en: '// Theme 17 Solution\nlet hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\nconsole.log(hero.name);',
-      uz: '// 17-Mavzu Yechimi\nlet hero = {\n  name: "Alpomish",\n  hp: 100,\n  power: 50\n};\nconsole.log(hero.name);'
+      en: "// Theme 12 Solution\nconst add = (a, b) => a + b;\nconst square = x => x * x;\nconsole.log(add(8, 12), square(5));",
+      uz: "// 12-Mavzu Yechimi\nconst add = (a, b) => a + b;\nconst square = x => x * x;\nconsole.log(add(8, 12), square(5));"
     },
     hints: [
-      { uz: 'let hero = { name: "Alpomish", hp: 100, power: 50 }; console.log(hero.name); deb yozing.', en: 'Declare hero object and log hero.name.' }
+      { uz: "const add = (a, b) => a + b; va const square = x => x * x;", en: "Use concise arrow function syntax without curly braces." }
     ],
     validate: (code) => {
-      if (!/hero\s*=\s*\{/.test(code)) return { passed: false, message: "hero obyektini yarating!" };
-      if (!/name\s*:\s*["']Alpomish["']/.test(code)) return { passed: false, message: "name: 'Alpomish' xususiyatini kiriting!" };
-      if (!/hero\.name/.test(code)) return { passed: false, message: "hero.name orqali nomni chaqiring!" };
-      return { passed: true, message: "Super qahramon pasporti tayyor! Obyektlar ajoyib! 👤💎" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/=>/.test(clean)) return { passed: false, message: "=> arrow (strelka) belgisidan foydalaning!" };
+      if (!/square/.test(clean) || !/add/.test(clean)) return { passed: false, message: "add va square arrow funksiyalarini yarating!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Qoyilmaqom! Zamonaviy Arrow funksiyalarni mahorat bilan ishlatdingiz! 🏹" };
     }
   },
 
-  // THEME 18 - BIG TOPIC (CYBER STORE MARKETPLACE SPA)
+  // THEME 13: Arrays Basics
   {
-    id: 'js-18-array-objects',
-    module: 'mod-js-data',
-    icon: '🏪',
-    title: { uz: "18-Mavzu: O'yin Do'koni — Obyektlar Massivi", en: "Theme 18: Game Shop — Array of Objects" },
+    id: "js-13-arrays",
+    module: "mod-js-data",
+    icon: "🎒",
+    title: {
+      uz: "13-Mavzu: Massivlar — Sehrli Ryukzak va Ro'yxatlar ([])",
+      en: "Theme 13: Arrays — Magic Inventory Backpacks ([])"
+    },
     concept: {
-      uz: "Massiv va Obyektlarni birlashtirsak, butun boshli o'yin do'koni yoki maktab o'quvchilari bazasini yaratishimiz mumkin!",
-      en: "Combining arrays and objects lets you build real databases like a Game Shop or Student Directory."
+      uz: "Massiv (Array) — bu bitta o'zgaruvchida bir nechta qiymatlarni tartib bilan saqlash usuli. Massivdagi elementlar 0 dan boshlab raqamlanadi (0-indeks). .length uning uzunligini ko'rsatadi.",
+      en: "An Array stores an ordered list of values inside square brackets []. Elements are indexed starting from 0. .length returns item count."
     },
     humanLanguage: {
-      uz: "Do'konda ko'plab mahsulotlar bor. Har bir mahsulot bitta obyekt: [{ name: 'Cyber Apple', price: 5 }, { name: 'Plasma Shield', price: 20 }].",
-      en: "An inventory of store items: each shop item is an object inside one parent list array."
+      uz: "O'yinchi ryukzagida qilich, qalqon va dori bor: const inv = ['Qilich', 'Qalqon', 'Dori'];. 1-buyumni olish uchun inv[0] deymiz, chunki dasturchilar sanashni 0 dan boshlaydi!",
+      en: "An inventory backpack holds items: ['Sword', 'Shield', 'Potion']. First item is at index 0 (inv[0]) because computer counting begins at 0!"
     },
     secretSandwich: {
-      uz: "let shop = [ { name: '...', price: ... }, { name: '...', price: ... } ];",
-      en: "let shop = [ { name: '...', price: ... }, { name: '...', price: ... } ];"
+      uz: "const massiv = [a, b, c]; — to'rtburchak qavs ichida vergul bilan ajratilgan ro'yxat.",
+      en: "const arr = [a, b, c]; — comma-separated elements in square brackets."
     },
     stepBreakdown: [
       {
-        part: "shop[0].name",
-        explanation: { uz: "Birinchi mahsulotning nomini olish", en: "Access name of first shop item" },
-        visualResult: { uz: '"Cyber Apple" olinadi', en: 'Returns "Cyber Apple"' }
-      }
-    ],
-    listOfCommands: [
-      { code: 'let db = [{id: 1}, {id: 2}];', name: { uz: "Obyektlar massivi", en: "Array of Objects" }, description: { uz: "Ma'lumotlar bazasi jadvallarini saqlash usuli", en: "Stores a database table of structured records" } },
-      { code: 'db[0].prop', name: { uz: "Maydonni o'qish", en: "Field Access" }, description: { uz: "Muayyan yozuv ichidagi maydonni o'qiydi", en: "Accesses specific field of an indexed record" } }
-    ],
-    tagShowcase: [
-      { tag: '[{}]', name: { uz: "Obyektlar massivi", en: "Array of objects" }, meaning: { uz: "Murakkab ma'lumotlar to'plami", en: "Structured record database" } }
-    ],
-    mission: {
-      uz: "shop massividan birinchi mahsulot nomini console.log(shop[0].name); qilib chiqaring.",
-      en: "Log the name of the first shop item using console.log(shop[0].name);."
-    },
-    targetDescription: {
-      uz: "Do'kon bazasidan 0-indeksdagi birinchi mahsulot nomi (\"Cyber Apple\") konsolga chiqariladi.",
-      en: "The first item name (\"Cyber Apple\") in the shop array is queried and logged."
-    },
-    initialCode: {
-      en: '// Theme 18: CyberStore Database\nlet shop = [\n  { name: "Cyber Apple", price: 5 },\n  { name: "Plasma Shield", price: 20 }\n];\n// Step 1: Log first item name with console.log(shop[0].name);\n',
-      uz: '// 18-Mavzu: CyberStore Do\'kon Bazasi\nlet shop = [\n  { name: "Cyber Apple", price: 5 },\n  { name: "Plasma Shield", price: 20 }\n];\n// 1-Qadam: console.log(shop[0].name); deb birinchi mahsulot nomini chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 18 Solution\nlet shop = [\n  { name: "Cyber Apple", price: 5 },\n  { name: "Plasma Shield", price: 20 }\n];\nconsole.log(shop[0].name);',
-      uz: '// 18-Mavzu Yechimi\nlet shop = [\n  { name: "Cyber Apple", price: 5 },\n  { name: "Plasma Shield", price: 20 }\n];\nconsole.log(shop[0].name);'
-    },
-    hints: [
-      { uz: "console.log(shop[0].name); deb yozing.", en: "Write: console.log(shop[0].name);" }
-    ],
-    validate: (code) => {
-      if (!/shop\[0\]\.name/.test(code)) return { passed: false, message: "shop[0].name orqali nomni oling!" };
-      return { passed: true, message: "Haqiqiy o'yin do'koni ma'lumotlar bazasi tayyor! 🏪⭐" };
-    }
-  },
-
-  // THEME 19 - BIG TOPIC (DOM SELECTOR)
-  {
-    id: 'js-19-dom-select',
-    module: 'mod-js-dom',
-    icon: '🎯',
-    title: { uz: "19-Mavzu: Sahifani Boshqarish — querySelector()", en: "Theme 19: Finding Elements — querySelector()" },
-    concept: {
-      uz: "DOM (Document Object Model) — bu HTML sahifaning JavaScriptdagi ko'rinishi. querySelector('#id') yordamida sahifadagi istalgan sarlavha yoki tugmani ushlab olamiz!",
-      en: "The DOM lets JavaScript talk to HTML. document.querySelector('#id') grabs any element on screen so you can control it."
-    },
-    humanLanguage: {
-      uz: "HTML — bu skelet. JavaScript — bu miya. Miya skeletning qo'lini qimirlatish uchun avval uni ushlab olishi (querySelector) kerak!",
-      en: "HTML is the body, JS is the brain. Before the brain can move a hand, it locates it with querySelector."
-    },
-    secretSandwich: {
-      uz: "const element = document.querySelector('#elementId');",
-      en: "const element = document.querySelector('#elementId');"
-    },
-    stepBreakdown: [
-      {
-        part: 'document.querySelector("#title")',
-        explanation: { uz: "id si title bo'lgan elementni topish", en: "Find element with id='title'" },
-        visualResult: { uz: "HTML elementi o'zgaruvchiga olinadi", en: "Grabs HTML element" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'document.querySelector(sel)', name: { uz: "Element qidiruvchi", en: "Query Selector" }, description: { uz: "CSS selektori bo'yicha sahifadagi elementni topadi", en: "Finds matching element on the page using CSS selector" } },
-      { code: 'el.textContent', name: { uz: "Matnni o'qish", en: "Text Content" }, description: { uz: "Element ichidagi matnni o'qiydi yoki almashtiradi", en: "Reads or updates the text inside an element" } }
-    ],
-    tagShowcase: [
-      { tag: 'querySelector', name: { uz: "Elementni topuvchi", en: "Query selector" }, meaning: { uz: "CSS selektori bo'yicha elementni topadi", en: "Selects matching element" } },
-      { tag: 'document', name: { uz: "Veb sahifa hujjati", en: "HTML Document" }, meaning: { uz: "Butun sahifaning boshqaruv obyekti", en: "Root document object" } }
-    ],
-    mission: {
-      uz: 'document.querySelector("#title") orqali sarlavhani oling va console.log(title.textContent); qiling.',
-      en: 'Select #title with document.querySelector("#title") and log title.textContent.'
-    },
-    targetDescription: {
-      uz: "Sahifadagi #title elementi topilib, uning sarlavha matni (\"CodeCraft JS Sandbox ⚡\") konsolga chiqariladi.",
-      en: "The #title element is selected from the DOM and its text content is logged."
-    },
-    initialCode: {
-      en: '// Theme 19: querySelector\n// Step 1: const title = document.querySelector("#title");\n// Step 2: Log console.log(title.textContent);\n',
-      uz: '// 19-Mavzu: querySelector\n// 1-Qadam: const title = document.querySelector("#title"); deb sarlavhani ushlang\n// 2-Qadam: console.log(title.textContent); deb konsolga chiqaring:\n'
-    },
-    targetCode: {
-      en: '// Theme 19 Solution\nconst title = document.querySelector("#title");\nconsole.log(title.textContent);',
-      uz: '// 19-Mavzu Yechimi\nconst title = document.querySelector("#title");\nconsole.log(title.textContent);'
-    },
-    hints: [
-      { uz: 'const title = document.querySelector("#title"); console.log(title.textContent); deb yozing.', en: 'Select #title and log title.textContent.' }
-    ],
-    validate: (code) => {
-      if (!/document\.querySelector\s*\(\s*["']#title["']\s*\)/.test(code)) return { passed: false, message: 'document.querySelector("#title") orqali elementni oling!' };
-      if (!/title\.textContent/.test(code)) return { passed: false, message: 'title.textContent orqali matnni chiqaring!' };
-      return { passed: true, message: "Element ushlab olindi! Endi sahifani boshqara olasiz! 🎯🎉" };
-    }
-  },
-
-  // THEME 20 - BIG TOPIC (DOM MODIFY & STYLES)
-  {
-    id: 'js-20-dom-modify',
-    module: 'mod-js-dom',
-    icon: '🎨',
-    title: { uz: "20-Mavzu: Matn va Rangni O'zgartirish — textContent va style", en: "Theme 20: Changing Text & Colors — textContent & style" },
-    concept: {
-      uz: "Ushlab olingan elementning yozuvini .textContent orqali, ko'rinishini esa .style.color yoki .style.backgroundColor orqali o'zgartiramiz!",
-      en: "Modify what the element says using .textContent, and change its visual CSS using .style properties."
-    },
-    humanLanguage: {
-      uz: "Sehrli tayoqcha bilan tegdingiz: box.textContent = 'Sehrli Quti!'; box.style.backgroundColor = 'gold';",
-      en: "Like a wizard spell: box.textContent = 'Magic Box!'; box.style.backgroundColor = 'gold';"
-    },
-    secretSandwich: {
-      uz: "element.textContent = 'yangi matn'; | element.style.xossa = 'qiymat';",
-      en: "element.textContent = 'new text'; | element.style.property = 'value';"
-    },
-    stepBreakdown: [
-      {
-        part: 'box.textContent = "Sehrli Quti!"',
-        explanation: { uz: "Element ichidagi matnni almashtiradi", en: "Updates element text" },
-        visualResult: { uz: "Ekranda matn yangilanadi", en: "Screen text updates" }
+        part: "const heroes = ['Ninja', 'Mage', 'Warrior'];",
+        explanation: { uz: "3 ta qahramondan iborat massiv yaratish", en: "Creates array with 3 heroes" },
+        visualResult: { uz: "3 ta elementli ro'yxat hosil bo'ladi", en: "List of 3 items" }
       },
       {
-        part: 'box.style.backgroundColor = "gold"',
-        explanation: { uz: "CSS fon rangini o'zgartiradi", en: "Changes CSS background" },
-        visualResult: { uz: "Quti oltin rangga kiradi", en: "Turns gold" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'el.textContent = "..."', name: { uz: "Matnni o'zgartirish", en: "Set Text Content" }, description: { uz: "Element ichidagi matnni almashtiradi", en: "Sets the text content of an HTML element" } },
-      { code: 'el.style.backgroundColor = "..."', name: { uz: "Fon rangini o'zgartirish", en: "Set Background" }, description: { uz: "Elementning CSS fon rangini o'zgartiradi", en: "Mutates the CSS background color" } }
-    ],
-    tagShowcase: [
-      { tag: '.textContent', name: { uz: "Matn tarkibi", en: "Text content" }, meaning: { uz: "Element ichidagi matnni o'zgartiradi", en: "Sets text content" } },
-      { tag: '.style', name: { uz: "Uslub xususiyati", en: "Style property" }, meaning: { uz: "CSS dizaynini jonli o'zgartiradi", en: "Mutates CSS styles" } }
-    ],
-    mission: {
-      uz: 'box elementining textContent ini "Sehrli Quti!" va style.backgroundColor ini "gold" qilib o\'zgartiring.',
-      en: 'Set box.textContent = "Sehrli Quti!" and box.style.backgroundColor = "gold".'
-    },
-    targetDescription: {
-      uz: "Sahifadagi #box elementi ichidagi matn \"Sehrli Quti!\" ga va uning foni yorqin oltin rangga aylanadi.",
-      en: "The #box element dynamically updates its label to \"Sehrli Quti!\" and changes its background color to golden yellow."
-    },
-    initialCode: {
-      en: '// Theme 20: DOM Modification\nconst box = document.querySelector("#box");\n// Step 1: Change text: box.textContent = "Sehrli Quti!";\n// Step 2: Change background: box.style.backgroundColor = "gold";\n',
-      uz: '// 20-Mavzu: DOM O\'zgartirish\nconst box = document.querySelector("#box");\n// 1-Qadam: box.textContent = "Sehrli Quti!"; deb yozing\n// 2-Qadam: box.style.backgroundColor = "gold"; deb rang bering:\n'
-    },
-    targetCode: {
-      en: '// Theme 20 Solution\nconst box = document.querySelector("#box");\nbox.textContent = "Sehrli Quti!";\nbox.style.backgroundColor = "gold";',
-      uz: '// 20-Mavzu Yechimi\nconst box = document.querySelector("#box");\nbox.textContent = "Sehrli Quti!";\nbox.style.backgroundColor = "gold";'
-    },
-    hints: [
-      { uz: 'box.textContent = "Sehrli Quti!"; box.style.backgroundColor = "gold"; deb yozing.', en: "Set box.textContent and box.style.backgroundColor." }
-    ],
-    validate: (code) => {
-      if (!/box\.textContent\s*=/.test(code)) return { passed: false, message: "box.textContent ni o'zgartiring!" };
-      if (!/box\.style\.backgroundColor\s*=/.test(code) && !/box\.style\.background\s*=/.test(code)) return { passed: false, message: "box.style.backgroundColor ni o'zgartiring!" };
-      return { passed: true, message: "Sahifadagi quti bir zumda sehrlandi! 🎨✨" };
-    }
-  },
-
-  // THEME 21 - BIG TOPIC (EVENT LISTENERS & CLICK ACTIONS)
-  {
-    id: 'js-21-events',
-    module: 'mod-js-dom',
-    icon: '⚡',
-    title: { uz: "21-Mavzu: Hodisalar — addEventListener('click') (Jonli Tugma)", en: "Theme 21: Events — addEventListener('click') (Live Button)" },
-    concept: {
-      uz: "Foydalanuvchi tugmani bosganda, sichqonchani yurgizganda yoki klaviaturani bosganda hodisa (Event) sodir bo'ladi. addEventListener shu hodisani poylaydi!",
-      en: "When a user clicks, moves the mouse, or presses a key, an event fires. addEventListener listens for it and acts!"
-    },
-    humanLanguage: {
-      uz: "Tugmaga qo'riqchi qo'ydik: 'Qachonki seni bossalar (click), darhol ovoz chiqar yoki rangni o'zgartir!'",
-      en: "Setting a watcher on a button: 'Whenever someone clicks you, update the UI and celebrate!'"
-    },
-    secretSandwich: {
-      uz: "element.addEventListener('click', () => { bajariladigan ish });",
-      en: "element.addEventListener('click', () => { action to do });"
-    },
-    stepBreakdown: [
-      {
-        part: '.addEventListener("click", ...)',
-        explanation: { uz: "Bosilish hodisasini eshitish", en: "Listen for user click" },
-        visualResult: { uz: "Foydalanuvchi bosganda ishlaydi", en: "Fires when clicked" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'el.addEventListener("click", () => {})', name: { uz: "Hodisa tinglovchi", en: "Event Listener" }, description: { uz: "Element bosilganda yoki o'zgarganda funksiyani ishga tushiradi", en: "Executes callback function when event occurs" } }
-    ],
-    tagShowcase: [
-      { tag: 'addEventListener', name: { uz: "Hodisani tinglovchi", en: "Event Listener" }, meaning: { uz: "Tugma bosilishini kutib turadi", en: "Attaches trigger listener" } },
-      { tag: '"click"', name: { uz: "Chertish hodisasi", en: "Click event" }, meaning: { uz: "Sichqoncha bilan bosilganda yuz beradi", en: "Mouse click trigger" } }
-    ],
-    mission: {
-      uz: 'btn ga "click" hodisasini qo\'shing va bosilganda btn.textContent = "BOSILDI! 🎉"; bo\'lsin.',
-      en: 'Add a "click" event listener to btn that sets btn.textContent = "BOSILDI! 🎉".'
-    },
-    targetDescription: {
-      uz: "Jonli #btn tugmasi bosilganda uning yozuvi darhol \"BOSILDI! 🎉\" ga aylanadi.",
-      en: "Clicking the interactive #btn immediately updates its text to \"BOSILDI! 🎉\"."
-    },
-    initialCode: {
-      en: '// Theme 21: Click Events\nconst btn = document.querySelector("#btn");\n// Step 1: Add click listener: btn.addEventListener("click", () => {\n// Step 2: Set btn.textContent = "BOSILDI! 🎉";\n// });\n',
-      uz: '// 21-Mavzu: Chertish Hodisalari\nconst btn = document.querySelector("#btn");\n// 1-Qadam: btn.addEventListener("click", () => { deb yozing\n// 2-Qadam: btn.textContent = "BOSILDI! 🎉"; deb o\'zgartiring:\n'
-    },
-    targetCode: {
-      en: '// Theme 21 Solution\nconst btn = document.querySelector("#btn");\nbtn.addEventListener("click", () => {\n  btn.textContent = "BOSILDI! 🎉";\n});',
-      uz: '// 21-Mavzu Yechimi\nconst btn = document.querySelector("#btn");\nbtn.addEventListener("click", () => {\n  btn.textContent = "BOSILDI! 🎉";\n});'
-    },
-    hints: [
-      { uz: 'btn.addEventListener("click", () => { btn.textContent = "BOSILDI! 🎉"; }); deb yozing.', en: "Type the click event listener." }
-    ],
-    validate: (code) => {
-      if (!/addEventListener\s*\(\s*["']click["']/.test(code)) return { passed: false, message: "addEventListener('click', ...) dan foydalaning!" };
-      return { passed: true, message: "Interaktivlik cho'qqisi! Tugma jonlandi! ⚡🎉" };
-    }
-  },
-
-  // THEME 22
-  {
-    id: 'js-22-timers',
-    module: 'mod-js-dom',
-    icon: '⏰',
-    title: { uz: "22-Mavzu: Taymerlar — setTimeout() va setInterval()", en: "Theme 22: Timers — setTimeout() & setInterval()" },
-    concept: {
-      uz: "setTimeout(funksiya, ms) ma'lum vaqt kutib bir marta ishlaydi. setInterval(funksiya, ms) esa har belgilangan vaqtda tinimsiz qaytariladi.",
-      en: "setTimeout runs once after a delay in milliseconds. setInterval repeats continuously every set interval."
-    },
-    humanLanguage: {
-      uz: "1 soniya = 1000 millisoniya (ms). setTimeout bilan 2000 ms (2 soniya) kutib o'yinni boshlash mumkin!",
-      en: "1000 milliseconds = 1 second. Use setTimeout to wait 2 seconds before launching fireworks!"
-    },
-    secretSandwich: {
-      uz: "setTimeout(() => { ... }, 2000); — 2 soniyadan keyin ishlaydi.",
-      en: "setTimeout(() => { ... }, 2000); — runs after 2000 ms."
-    },
-    stepBreakdown: [
-      {
-        part: "setTimeout(..., 2000)",
-        explanation: { uz: "2 soniya (2000 ms) kechiktirish", en: "Delay by 2000 ms" },
-        visualResult: { uz: "Vaqt o'tib xabar chiqadi", en: "Triggers after delay" }
-      }
-    ],
-    listOfCommands: [
-      { code: 'setTimeout(fn, ms)', name: { uz: "Kechiktiruvchi taymer", en: "Timeout" }, description: { uz: "Belgilangan millisoniya o'tgach funksiyani 1 marta ishlatadi", en: "Runs function once after delay in milliseconds" } },
-      { code: 'setInterval(fn, ms)', name: { uz: "Davriy taymer", en: "Interval" }, description: { uz: "Har belgilangan millisoniyada funksiyani takrorlab turadi", en: "Repeats function continuously at regular intervals" } }
-    ],
-    tagShowcase: [
-      { tag: 'setTimeout()', name: { uz: "Kechiktiruvchi taymer", en: "Timeout timer" }, meaning: { uz: "Belgilangan vaqt o'tgach 1 marta ishlaydi", en: "Runs once after delay" } },
-      { tag: 'setInterval()', name: { uz: "Davriy taymer", en: "Interval timer" }, meaning: { uz: "Har belgilangan vaqtda takrorlanadi", en: "Repeats every interval" } }
-    ],
-    mission: {
-      uz: 'setTimeout orqali 2000 millisoniyadan so\'ng console.log("Vaqt tugadi! ⏰"); xabarini chiqaring.',
-      en: 'Use setTimeout to log "Vaqt tugadi! ⏰" after 2000 ms.'
-    },
-    targetDescription: {
-      uz: "2000 millisoniya (2 soniya) kechikish bilan konsolga \"Vaqt tugadi! ⏰\" xabari chiqariladi.",
-      en: "The countdown timer delays 2000ms before logging \"Vaqt tugadi! ⏰\"."
-    },
-    initialCode: {
-      en: '// Theme 22: setTimeout timer\n// Step 1: Write setTimeout(() => { console.log("Vaqt tugadi! ⏰"); }, 2000);\n',
-      uz: '// 22-Mavzu: setTimeout taymeri\n// 1-Qadam: setTimeout(() => { console.log("Vaqt tugadi! ⏰"); }, 2000); deb yozing:\n'
-    },
-    targetCode: {
-      en: '// Theme 22 Solution\nsetTimeout(() => {\n  console.log("Vaqt tugadi! ⏰");\n}, 2000);',
-      uz: '// 22-Mavzu Yechimi\nsetTimeout(() => {\n  console.log("Vaqt tugadi! ⏰");\n}, 2000);'
-    },
-    hints: [
-      { uz: 'setTimeout(() => { console.log("Vaqt tugadi! ⏰"); }, 2000); deb yozing.', en: "Type the setTimeout statement." }
-    ],
-    validate: (code) => {
-      if (!/setTimeout\s*\(/.test(code)) return { passed: false, message: "setTimeout() dan foydalaning!" };
-      if (!/2000/.test(code)) return { passed: false, message: "2000 ms (2 soniya) kiriting!" };
-      return { passed: true, message: "Vaqt nazoratchisi! Taymer ajoyib ishladi! ⏰⭐" };
-    }
-  },
-
-  // THEME 23
-  {
-    id: 'js-23-math-random',
-    module: 'mod-js-dom',
-    icon: '🎲',
-    title: { uz: "23-Mavzu: Tasodifiy Sonlar va O'yin Oshiqlari — Math.random()", en: "Theme 23: Random Numbers & Dice — Math.random()" },
-    concept: {
-      uz: "Math.random() 0 dan 1 gacha tasodifiy son beradi. Math.floor() esa uni yaxlitlaydi. Bu o'yinlarda zar tashlash, dushmanni tasodifiy joylashtirish uchun kerak!",
-      en: "Math.random() generates random floats. Multiplied and rounded with Math.floor(), it rolls dice from 1 to 6!"
-    },
-    humanLanguage: {
-      uz: "Nardadagi oshiqni tashladingiz: 1 dan 6 gacha son chiqadi! Math.floor(Math.random() * 6) + 1 xuddi shu zar toshidir.",
-      en: "Rolling a 6-sided die: Math.floor(Math.random() * 6) + 1 picks a random number from 1 to 6."
-    },
-    secretSandwich: {
-      uz: "let dice = Math.floor(Math.random() * 6) + 1;",
-      en: "let dice = Math.floor(Math.random() * 6) + 1;"
-    },
-    stepBreakdown: [
-      {
-        part: "Math.random() * 6",
-        explanation: { uz: "0 dan 5.99 gacha tasodifiy son", en: "Random float between 0 and 5.99" },
-        visualResult: { uz: "Tasodifiy qiymat", en: "Random multiplier" }
+        part: "heroes[0]",
+        explanation: { uz: "0-indeksdagi birinchi element ('Ninja')", en: "First element at index 0" },
+        visualResult: { uz: "'Ninja'", en: "'Ninja'" }
       },
       {
-        part: "Math.floor(...) + 1",
-        explanation: { uz: "Pastga yaxlitlab 1 qo'shish", en: "Round down and shift +1" },
-        visualResult: { uz: "1 dan 6 gacha butun son", en: "Integer between 1 and 6" }
+        part: "heroes[1] = 'CyberMage';",
+        explanation: { uz: "2-elementni yangisiga almashtirish", en: "Updates element at index 1" },
+        visualResult: { uz: "Massiv yangilanadi", en: "Array updated" }
       }
     ],
     listOfCommands: [
-      { code: 'Math.random()', name: { uz: "Tasodifiy generator", en: "Random Generator" }, description: { uz: "0 dan 1 gacha bo'lgan tasodifiy o'nli son hosil qiladi", en: "Returns a pseudo-random decimal number between 0 and 1" } },
-      { code: 'Math.floor(num)', name: { uz: "Pastga yaxlitlash", en: "Floor Function" }, description: { uz: "O'nli sonni pastki butun songa aylantiradi", en: "Rounds a decimal number down to the nearest integer" } }
+      { code: '[a, b, c]', name: { uz: "Massiv", en: "Array Bracket" }, description: { uz: "Bir nechta elementlar ro'yxatini yaratadi", en: "Creates an ordered array" } },
+      { code: 'arr[i]', name: { uz: "Indeks orqali murojaat", en: "Index Access" }, description: { uz: "i-o'rindagi elementni o'qiydi yoki o'zgartiradi", en: "Accesses element at index i" } }
     ],
     tagShowcase: [
-      { tag: 'Math.random()', name: { uz: "Tasodifiy generator", en: "Random generator" }, meaning: { uz: "Tasodifiy o'nli son qaytaradi", en: "Generates random float" } },
-      { tag: 'Math.floor()', name: { uz: "Pastga yaxlitlash", en: "Floor rounding" }, meaning: { uz: "O'nli sonni pastki butunga aylantiradi", en: "Rounds down to integer" } }
+      { tag: '[]', name: { uz: "Qavs", en: "Bracket" }, meaning: { uz: "Massiv belgisi", en: "Array container" } },
+      { tag: '[0]', name: { uz: "0-indeks", en: "Index 0" }, meaning: { uz: "Birinchi element", en: "First element" } }
     ],
     mission: {
-      uz: "dice nomli o'zgaruvchida 1 dan 6 gacha tasodifiy son hosil qiling va console.log(dice); qiling.",
-      en: "Generate a random number 1 to 6 in dice and log it."
+      uz: "const tools = ['Qilich', 'Qalqon', 'Kamon']; e'lon qiling. Ikkinchi elementni tools[1] = 'Plazma Qalqon'; qilib o'zgartiring va console.log(tools[0], tools[1], tools.length); chiqaring.",
+      en: "Declare const tools = ['Qilich', 'Qalqon', 'Kamon'];, update tools[1] = 'Plazma Qalqon';, and log tools[0], tools[1], and tools.length."
     },
     targetDescription: {
-      uz: "1 dan 6 gacha bo'lgan tasodifiy zar tashlash natijasi konsolda chop etiladi.",
-      en: "A randomized integer between 1 and 6 simulating a dice roll is printed to the console."
+      uz: "Birinchi element, yangilangan ikkinchi element va jami uzunlik (3) konsolga chiqadi.",
+      en: "First item, updated second item, and length 3 logged."
     },
     initialCode: {
-      en: '// Theme 23: Dice Roll\n// Step 1: Generate let dice = Math.floor(Math.random() * 6) + 1;\n// Step 2: Log with console.log(dice);\n',
-      uz: '// 23-Mavzu: O\'yin Zari (Dice)\n// 1-Qadam: let dice = Math.floor(Math.random() * 6) + 1; deb yozing\n// 2-Qadam: console.log(dice); deb chiqaring:\n'
+      en: "// Theme 13: Arrays\n// Step 1: Create array of tools:\n// const tools = [\"Qilich\", \"Qalqon\", \"Kamon\"];\n\n// Step 2: Update second item at index 1:\n// tools[1] = \"Plazma Qalqon\";\n\n// Step 3: Log first item, second item, and total length:\n// console.log(tools[0], tools[1], tools.length);\n",
+      uz: "// 13-Mavzu: Massivlar Asoslari\n// 1-QADAM: tools nomli 3 ta buyumdan iborat massiv yarating:\n// const tools = [\"Qilich\", \"Qalqon\", \"Kamon\"];\n\n// 2-QADAM: 1-indeksdagi elementni \"Plazma Qalqon\" ga almashtiring:\n// tools[1] = \"Plazma Qalqon\";\n\n// 3-QADAM: 0-element, 1-element va massiv uzunligini konsolga chiqaring:\n// console.log(tools[0], tools[1], tools.length);\n"
     },
     targetCode: {
-      en: '// Theme 23 Solution\nlet dice = Math.floor(Math.random() * 6) + 1;\nconsole.log(dice);',
-      uz: '// 23-Mavzu Yechimi\nlet dice = Math.floor(Math.random() * 6) + 1;\nconsole.log(dice);'
+      en: "// Theme 13 Solution\nconst tools = [\"Qilich\", \"Qalqon\", \"Kamon\"];\ntools[1] = \"Plazma Qalqon\";\nconsole.log(tools[0], tools[1], tools.length);",
+      uz: "// 13-Mavzu Yechimi\nconst tools = [\"Qilich\", \"Qalqon\", \"Kamon\"];\ntools[1] = \"Plazma Qalqon\";\nconsole.log(tools[0], tools[1], tools.length);"
     },
     hints: [
-      { uz: "let dice = Math.floor(Math.random() * 6) + 1; deb yozing.", en: "Write: let dice = Math.floor(Math.random() * 6) + 1;" }
+      { uz: "tools[1] = \"Plazma Qalqon\"; va console.log(tools[0], tools[1], tools.length);", en: "Modify index 1 and check length." }
     ],
     validate: (code) => {
-      if (!/Math\.random\s*\(\s*\)/.test(code)) return { passed: false, message: "Math.random() dan foydalaning!" };
-      if (!/Math\.floor\s*\(/.test(code)) return { passed: false, message: "Math.floor() orqali yaxlitlang!" };
-      return { passed: true, message: "Zar tashlandi! Tasodifiy sonlar sizga bo'ysundi! 🎲🎉" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/\[.*\]/.test(clean)) return { passed: false, message: "Massiv yaratish uchun [] to'rtburchak qavslardan foydalaning!" };
+      if (!/tools\[1\]\s*=/.test(clean)) return { passed: false, message: "tools[1] elementini yangilang!" };
+      if (!/\.length/.test(clean)) return { passed: false, message: "tools.length orqali massiv uzunligini tekshiring!" };
+      return { passed: true, message: "Zo'r! Massivlar va indekslar bilan ishlashni to'liq o'rgandingiz! 🎒" };
     }
   },
 
-  // THEME 24 - GRAND CAPSTONE MINI-GAME SPA
+  // THEME 14: push, pop, shift, unshift
   {
-    id: 'js-24-clicker-game',
-    module: 'mod-js-dom',
-    icon: '🏆',
-    title: { uz: "24-Mavzu: Super Mini-Loyiha — Jonli Kliker O'yini (Clicker Game)", en: "Theme 24: Grand Project — Interactive Clicker Game" },
+    id: "js-14-array-methods",
+    module: "mod-js-data",
+    icon: "🥞",
+    title: {
+      uz: "14-Mavzu: Massiv Metodlari — push(), pop(), shift() va unshift()",
+      en: "Theme 14: Adding & Removing — push(), pop(), shift(), unshift()"
+    },
     concept: {
-      uz: "Barcha o'rganganlarimizni birlashtiramiz: o'zgaruvchi (count), querySelector, addEventListener, textContent va shart (if)!",
-      en: "Bring it all together: variables (count), DOM selectors, click listeners, text updates, and winning conditions!"
+      uz: "Massivning boshidan va oxiridan element qo'shish va olib tashlash uchun maxsus 4 ta asosiy metod mavjud:\\n1. push() — OXIRIGA yangi element qo'shadi\\n2. pop() — OXIRIDAN bitta elementni olib tashlaydi\\n3. unshift() — BOSHIGA yangi element qo'shadi\\n4. shift() — BOSHIDAN bitta elementni sug'urib oladi",
+      en: "The four core array mutator methods:\\n1. push() adds to END\\n2. pop() removes from END\\n3. unshift() adds to FRONT\\n4. shift() removes from FRONT."
     },
     humanLanguage: {
-      uz: "Tugmani bosganda hisob oshadi. Agar hisob 10 ga yetsa — 'Siz g'olib bo'ldingiz!' deb tabriklaymiz!",
-      en: "Every click increments your score. Reach 10 clicks to win the championship trophy!"
+      uz: "Tarelka taxlami (stack): yangi tarelka tepasiga qo'yiladi (push) va eng tepasidagisi olinadi (pop).\\nNavbat (queue): yangi odam navbat boshiga nohaq o'tishi (unshift) va navbat boshidagi odam birinchi ketishi (shift)!",
+      en: "Stack of plates: push adds to the top/end, pop removes from the top/end.\\nStore queue: unshift adds to the front of the line, shift removes the first person served from the front!"
     },
     secretSandwich: {
-      uz: "count++; countEl.textContent = count; if (count === 10) alert('G\'alaba!');",
-      en: "count++; countEl.textContent = count; if (count === 10) alert('Winner!');"
+      uz: "arr.push(x) [oxiriga] | arr.pop() [oxiridan] | arr.unshift(x) [boshiga] | arr.shift() [boshidan]",
+      en: "push/pop (at end) | unshift/shift (at start)"
     },
     stepBreakdown: [
       {
-        part: "count++;",
-        explanation: { uz: "Hisobni 1 taga oshirish", en: "Increment score" },
-        visualResult: { uz: "1, 2, 3... bo'lib o'sadi", en: "Score goes up" }
+        part: "squad.push('Warrior')",
+        explanation: { uz: "Massivning eng oxiriga 'Warrior' qo'shiladi", en: "Appends 'Warrior' to end" },
+        visualResult: { uz: "Oxiriga yangi qahramon qo'shiladi", en: "Added to end" }
       },
       {
-        part: "countEl.textContent = count;",
-        explanation: { uz: "Ekranda hisobni yangilash", en: "Update DOM score" },
-        visualResult: { uz: "Ekranda ko'rinadi", en: "Displayed on page" }
+        part: "squad.unshift('Leader')",
+        explanation: { uz: "Massivning eng boshiga (0-indeksga) 'Leader' qo'shiladi", en: "Prepends 'Leader' to front" },
+        visualResult: { uz: "Boshiga yangi qahramon qo'shiladi", en: "Added to start" }
       },
       {
-        part: "if (count === 10)",
-        explanation: { uz: "G'alaba shartini tekshirish", en: "Check victory condition" },
-        visualResult: { uz: "10 bo'lganda sovrin beradi", en: "Triggers victory" }
+        part: "squad.pop()",
+        explanation: { uz: "Eng oxirgi element o'chirib olinadi", en: "Pops last item" },
+        visualResult: { uz: "Oxirgi element chiqib ketadi", en: "Removes from end" }
+      },
+      {
+        part: "squad.shift()",
+        explanation: { uz: "Eng birinchi element o'chirib olinadi", en: "Shifts first item" },
+        visualResult: { uz: "Birinchi element chiqib ketadi", en: "Removes from start" }
       }
     ],
     listOfCommands: [
-      { code: 'count++', name: { uz: "Hisobni oshirish", en: "Increment" }, description: { uz: "O'yinchi hisobini har bosishda 1 taga oshiradi", en: "Increments player counter by 1 on each click" } },
-      { code: 'countEl.textContent = count;', name: { uz: "Hisobni ekranga chiqarish", en: "Update Counter DOM" }, description: { uz: "Yangi ballni ekrandagi katakka joylaydi", en: "Refreshes displayed score in browser DOM" } },
-      { code: 'if (count === 10) alert(...)', name: { uz: "Yutuq sharti", en: "Victory Condition" }, description: { uz: "10 ball to'planganda g'alaba tabrigini chiqaradi", en: "Fires celebration alert when score reaches 10" } }
+      { code: 'arr.push(item)', name: { uz: "Oxiriga qo'shish", en: "Push to End" }, description: { uz: "Massivning oxiriga yangi element qo'shadi", en: "Appends one or more elements to end of array" } },
+      { code: 'arr.pop()', name: { uz: "Oxiridan olish", en: "Pop from End" }, description: { uz: "Massivning oxirgi elementini sug'urib oladi", en: "Removes and returns last element" } },
+      { code: 'arr.unshift(item)', name: { uz: "Boshiga qo'shish", en: "Unshift to Start" }, description: { uz: "Massivning boshiga yangi element qo'shadi", en: "Inserts one or more elements at start" } },
+      { code: 'arr.shift()', name: { uz: "Boshidan olish", en: "Shift from Start" }, description: { uz: "Massivning birinchi elementini olib tashlaydi", en: "Removes and returns first element" } }
     ],
     tagShowcase: [
-      { tag: 'Clicker Game', name: { uz: "Kliker O'yini", en: "Clicker Game" }, meaning: { uz: "To'liq interaktiv brauzer o'yini", en: "Complete browser mini-game" } }
+      { tag: 'push()', name: { uz: "Oxiriga qo'shish", en: "Push" }, meaning: { uz: "Oxiriga yangi qiymat", en: "Append to end" } },
+      { tag: 'pop()', name: { uz: "Oxiridan olish", en: "Pop" }, meaning: { uz: "Oxirgisini sug'urish", en: "Remove from end" } },
+      { tag: 'unshift()', name: { uz: "Boshiga qo'shish", en: "Unshift" }, meaning: { uz: "Boshiga yangi qiymat", en: "Insert at front" } },
+      { tag: 'shift()', name: { uz: "Boshidan olish", en: "Shift" }, meaning: { uz: "Birinchisini olish", en: "Remove from front" } }
     ],
     mission: {
-      uz: 'clickBtn bosilganda count ni oshiring, countEl.textContent ga chiqaring va count === 10 bo\'lsa alert("G\'alaba! 🏆"); qiling.',
-      en: 'On clickBtn click, increment count, update countEl.textContent, and alert("G\'alaba! 🏆") when count === 10.'
+      uz: "let squad = ['Ninja', 'Mage']; e'lon qiling. squad.push('Warrior'); qiling. squad.unshift('Leader'); qiling. const removed = squad.pop(); qiling va console.log(squad, removed); chiqaring.",
+      en: "Declare let squad = ['Ninja', 'Mage'];. Apply push('Warrior'), unshift('Leader'), pop(), and log the squad and removed item."
     },
     targetDescription: {
-      uz: "To'liq Kliker o'yini: #click-btn har bosilganda #count soni ortadi va 10 ga yetganda 'G'alaba! 🏆' qalqib chiquvchi oynasi ochiladi.",
-      en: "A complete browser Clicker Game: clicking #click-btn updates #count in real-time and triggers a celebration alert at 10 clicks."
+      uz: "O'zgartirilgan massiv (['Leader', 'Ninja', 'Mage']) va olingan 'Warrior' konsolga chiqadi.",
+      en: "Updated squad array and popped 'Warrior' item logged."
     },
     initialCode: {
-      en: '// Theme 24: Grand Clicker Game SPA\nlet count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  // Step 1: count++;\n  // Step 2: countEl.textContent = count;\n  // Step 3: if (count === 10) { alert("G\'alaba! 🏆"); }\n});\n',
-      uz: '// 24-Mavzu: Bosh Loyiha — Jonli Kliker O\'yini SPA\nlet count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  // 1-Qadam: count++; deb hisobni oshiring\n  // 2-Qadam: countEl.textContent = count; deb chiqaring\n  // 3-Qadam: if (count === 10) { alert("G\'alaba! 🏆"); } deb yozing:\n});\n'
+      en: "// Theme 14: push, pop, shift, unshift\n// Step 1: Declare squad array:\n// let squad = [\"Ninja\", \"Mage\"];\n\n// Step 2: Push \"Warrior\" to the end:\n// squad.push(\"Warrior\");\n\n// Step 3: Unshift \"Leader\" to the front:\n// squad.unshift(\"Leader\");\n\n// Step 4: Pop the last item from the end:\n// const removed = squad.pop();\n\n// Step 5: Log squad and removed:\n// console.log(squad, removed);\n",
+      uz: "// 14-Mavzu: push, pop, shift, unshift Metodlari\n// 1-QADAM: squad nomli massiv e'lon qiling:\n// let squad = [\"Ninja\", \"Mage\"];\n\n// 2-QADAM: push() bilan massiv oxiriga \"Warrior\" qo'shing:\n// squad.push(\"Warrior\");\n\n// 3-QADAM: unshift() bilan massiv boshiga \"Leader\" qo'shing:\n// squad.unshift(\"Leader\");\n\n// 4-QADAM: pop() yordamida eng oxirgi elementni sug'urib olib removed ga saqlang:\n// const removed = squad.pop();\n\n// 5-QADAM: Jamoa va olingan elementni konsolga chiqaring:\n// console.log(squad, removed);\n"
     },
     targetCode: {
-      en: '// Theme 24 Solution\nlet count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  count++;\n  countEl.textContent = count;\n  if (count === 10) {\n    alert("G\'alaba! 🏆");\n  }\n});',
-      uz: '// 24-Mavzu Yechimi\nlet count = 0;\nconst countEl = document.querySelector("#count");\nconst clickBtn = document.querySelector("#click-btn");\n\nclickBtn.addEventListener("click", () => {\n  count++;\n  countEl.textContent = count;\n  if (count === 10) {\n    alert("G\'alaba! 🏆");\n  }\n});'
+      en: "// Theme 14 Solution\nlet squad = [\"Ninja\", \"Mage\"];\nsquad.push(\"Warrior\");\nsquad.unshift(\"Leader\");\nconst removed = squad.pop();\nconsole.log(squad, removed);",
+      uz: "// 14-Mavzu Yechimi\nlet squad = [\"Ninja\", \"Mage\"];\nsquad.push(\"Warrior\");\nsquad.unshift(\"Leader\");\nconst removed = squad.pop();\nconsole.log(squad, removed);"
     },
     hints: [
-      { uz: 'count++; countEl.textContent = count; if (count === 10) alert("G\'alaba! 🏆"); deb yozing.', en: "Increment count, set countEl.textContent, and check if count === 10." }
+      { uz: "squad.push(\"Warrior\"); squad.unshift(\"Leader\"); squad.pop(); metodlarini ketma-ket qo'llang.", en: "Use push to add to end, unshift to add to front, and pop to remove from end." }
     ],
     validate: (code) => {
-      if (!/count\+\+/.test(code) && !/count\s*\+=\s*1/.test(code)) return { passed: false, message: "count++ bilan hisobni oshiring!" };
-      if (!/countEl\.textContent\s*=/.test(code)) return { passed: false, message: "countEl.textContent ga hisobni chiqaring!" };
-      if (!/if\s*\(\s*count/.test(code)) return { passed: false, message: "if (count === 10) shartini tekshiring!" };
-      return { passed: true, message: "MUBORAKBOD ETAMIZ! SIZ JAVASCRIPT KURSINI TO'LIQ BITIRIB, O'Z O'YININGIZNI YARATDINGIZ! 🏆🎉🚀" };
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/\.push\s*\(/.test(clean)) return { passed: false, message: ".push() metodidan foydalaning!" };
+      if (!/\.unshift\s*\(/.test(clean)) return { passed: false, message: ".unshift() metodidan foydalaning!" };
+      if (!/\.pop\s*\(/.test(clean)) return { passed: false, message: ".pop() metodidan foydalaning!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Mukammal! push, pop, shift va unshift sirlarini to'liq o'zlashtirdingiz! 🥞" };
+    }
+  },
+
+  // THEME 15: for loop
+  {
+    id: "js-15-for-loop",
+    module: "mod-js-data",
+    icon: "🔁",
+    title: {
+      uz: "15-Mavzu: Takrorlash Mashinasi — for Tsikli va Indekslar",
+      en: "Theme 15: Loop Machine — for Loop & Iteration"
+    },
+    concept: {
+      uz: "for tsikli kompyuterga bir xil ishni yuzlab marta soniyalarda bajartirish imkonini beradi. U 3 ta qismdan iborat: boshlanish (let i = 0), shart (i < n) va har bir qadam (i++).",
+      en: "The classic for loop repeats instructions precisely a given number of times. It has 3 parts: initializer (let i = 0), condition (i < n), and increment (i++)."
+    },
+    humanLanguage: {
+      uz: "Xuddi stadionda 5 davra yugurishdek: 1-davradan boshlaysiz (i = 1), har safar 1 davra qo'shiladi (i++), va 5 ta bo'lguncha davom etadi (i <= 5)!",
+      en: "Like running laps on a track: start at lap 1 (i = 1), add one each time (i++), and stop once you finish 5 laps (i <= 5)!"
+    },
+    secretSandwich: {
+      uz: "for (let i = 0; i < n; i++) { ... qayta-qayta ishlaydigan kod ... }",
+      en: "for (let i = 0; i < n; i++) { ... repeated code ... }"
+    },
+    stepBreakdown: [
+      {
+        part: "let i = 1; i <= 5; i++",
+        explanation: { uz: "1 dan 5 gacha bittalab hisoblovchi for formulasi", en: "Counts 1 through 5 step by step" },
+        visualResult: { uz: "Tsikl 5 marta aylanadi", en: "Executes 5 iterations" }
+      },
+      {
+        part: "console.log('Yulduzcha: ' + i + ' ⭐')",
+        explanation: { uz: "Har bir aylanishda raqamni chiqarish", en: "Logs lap index each step" },
+        visualResult: { uz: "Konsolda 1, 2, 3, 4, 5 chiqadi", en: "Prints 1 through 5" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'for (let i=0; i<n; i++)', name: { uz: "for tsikli", en: "For Loop" }, description: { uz: "Hisoblagich orqali kodni belgilangan marta takrorlaydi", en: "Loops through block of code a specified number of times" } }
+    ],
+    tagShowcase: [
+      { tag: 'for', name: { uz: "Takrorlash", en: "For" }, meaning: { uz: "Tsikl kalit so'zi", en: "Loop keyword" } },
+      { tag: 'i++', name: { uz: "1 qadam", en: "Increment" }, meaning: { uz: "Har aylanishda 1 ga oshirish", en: "Increase i by 1" } }
+    ],
+    mission: {
+      uz: "for tsikli yordamida 1 dan 5 gacha sanang: for (let i = 1; i <= 5; i++) { console.log('Yulduzcha: ' + i + ' ⭐'); }",
+      en: "Use a for loop to count from 1 to 5 and log 'Yulduzcha: ' + i + ' ⭐'."
+    },
+    targetDescription: {
+      uz: "1 dan 5 gacha yulduzcha raqamlari qatorma-qator konsolga chiqadi.",
+      en: "Stars 1 through 5 logged sequentially to console."
+    },
+    initialCode: {
+      en: "// Theme 15: for Loop\n// Step 1: Write a for loop counting from 1 to 5:\n// for (let i = 1; i <= 5; i++) {\n//   console.log(\"Yulduzcha: \" + i + \" ⭐\");\n// }\n",
+      uz: "// 15-Mavzu: for Tsikli\n// 1-QADAM: 1 dan 5 gacha hisoblovchi for tsiklini yozing:\n// for (let i = 1; i <= 5; i++) {\n//   console.log(\"Yulduzcha: \" + i + \" ⭐\");\n// }\n"
+    },
+    targetCode: {
+      en: "// Theme 15 Solution\nfor (let i = 1; i <= 5; i++) {\n  console.log(\"Yulduzcha: \" + i + \" ⭐\");\n}",
+      uz: "// 15-Mavzu Yechimi\nfor (let i = 1; i <= 5; i++) {\n  console.log(\"Yulduzcha: \" + i + \" ⭐\");\n}"
+    },
+    hints: [
+      { uz: "for (let i = 1; i <= 5; i++) { console.log(\"Yulduzcha: \" + i + \" ⭐\"); }", en: "Write for loop with i initialized to 1 up to 5." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/for\s*\(\s*let\s+i\s*=\s*1;\s*i\s*<=\s*5;\s*i\+\+\s*\)/.test(clean)) return { passed: false, message: "for (let i = 1; i <= 5; i++) tsiklini to'g'ri yozing!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Tsikl ichida console.log() bilan natijani chiqaring!" };
+      return { passed: true, message: "Barakalla! for takrorlash mashinasini to'liq egalladingiz! 🔁" };
+    }
+  },
+
+  // THEME 16: while & do...while
+  {
+    id: "js-16-while-loop",
+    module: "mod-js-data",
+    icon: "⏳",
+    title: {
+      uz: "16-Mavzu: while va do...while Tsikllari va Ularning Nozik Farqi!",
+      en: "Theme 16: while & do...while Loops — Critical Differences!"
+    },
+    concept: {
+      uz: "while va do...while shartli takrorlash tsikllaridir. Nozik va eng muhim farqi:\\n1. while (shart) — shartni AVVAL tekshiradi. Agar shart boshidayoq false bo'lsa, kod 0 marta (umuman) ishlamaydi!\\n2. do { ... } while (shart) — AVVAL kodni kamida 1 marta bajaradi, so'ngra shartni tekshiradi!",
+      en: "while vs do...while: while evaluates the condition FIRST. If false, it never executes! do...while executes the block AT LEAST ONCE before evaluating the condition."
+    },
+    humanLanguage: {
+      uz: "Tasavvur qiling: while — bu chiptachi eshik oldida turgan attraksion (chiptang bo'lmasa kiritmaydi). do...while — bu xonaga kirib o'tirasan, keyin chiptangni so'rashadi (kamida 1 marta kirgan bo'lasan)!",
+      en: "while checks your ticket before entering the ride. do...while lets you board the ride once before asking for the ticket!"
+    },
+    secretSandwich: {
+      uz: "while (shart) { ... } [0 yoki ko'p marta] | do { ... } while (shart); [kamida 1 marta!]",
+      en: "while (cond) { } (0+ times) | do { } while (cond); (at least 1 time guaranteed!)"
+    },
+    stepBreakdown: [
+      {
+        part: "while (battery > 0) { battery--; }",
+        explanation: { uz: "Quvvat borligini avval tekshirib keyin sarflash", en: "Checks battery before each discharge" },
+        visualResult: { uz: "Quvvat 0 bo'lganda to'xtaydi", en: "Stops when battery reaches 0" }
+      },
+      {
+        part: "do { roll = 6; } while (false);",
+        explanation: { uz: "Shart false bo'lsa ham kamida bir marta zar tashlash", en: "Runs body at least once even if condition is false" },
+        visualResult: { uz: "Bir marta bajariladi", en: "Executes exactly once" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'while (cond) { }', name: { uz: "while tsikli", en: "While Loop" }, description: { uz: "Shart rost bo'lib turganda kodni takrorlaydi (avval tekshiradi)", en: "Repeats block while condition evaluates to true" } },
+      { code: 'do { } while (cond);', name: { uz: "do...while tsikli", en: "Do While Loop" }, description: { uz: "Kodni kamida bir marta bajarib, so'ngra shartni tekshiradi", en: "Executes block once before condition is evaluated" } }
+    ],
+    tagShowcase: [
+      { tag: 'while', name: { uz: "Shartli tsikl", en: "While" }, meaning: { uz: "Shart avval tekshiriladi", en: "Condition checked first" } },
+      { tag: 'do...while', name: { uz: "Kamida 1 marta", en: "Do while" }, meaning: { uz: "Oldin bajarib keyin tekshirish", en: "Execute once, then check" } }
+    ],
+    mission: {
+      uz: "let battery = 3; while (battery > 0) { console.log('Dron parvozi:', battery); battery--; } do...while bilan: let roll = 1; do { console.log('Zar otildi:', roll); roll++; } while (roll <= 1); yozing.",
+      en: "Implement while countdown loop with battery, and do...while loop with roll."
+    },
+    targetDescription: {
+      uz: "while va do...while ishlashi konsolga chiqariladi.",
+      en: "While loop iterations and do...while execution logged to console."
+    },
+    initialCode: {
+      en: "// Theme 16: while vs do...while\n// Step 1: while loop checks condition first:\n// let battery = 3;\n// while (battery > 0) {\n//   console.log(\"Dron parvozi:\", battery);\n//   battery--;\n// }\n\n// Step 2: do...while executes at least once:\n// let roll = 1;\n// do {\n//   console.log(\"Zar otildi:\", roll);\n//   roll++;\n// } while (roll <= 1);\n",
+      uz: "// 16-Mavzu: while va do...while Tsikllari\n// 1-QADAM: while tsikli bilan dron quvvatini kamaytirib boring:\n// let battery = 3;\n// while (battery > 0) {\n//   console.log(\"Dron parvozi:\", battery);\n//   battery--;\n// }\n\n// 2-QADAM: do...while tsikli bilan kamida 1 marta zar tashlang:\n// let roll = 1;\n// do {\n//   console.log(\"Zar otildi:\", roll);\n//   roll++;\n// } while (roll <= 1);\n"
+    },
+    targetCode: {
+      en: "// Theme 16 Solution\nlet battery = 3;\nwhile (battery > 0) {\n  console.log(\"Dron parvozi:\", battery);\n  battery--;\n}\nlet roll = 1;\ndo {\n  console.log(\"Zar otildi:\", roll);\n  roll++;\n} while (roll <= 1);",
+      uz: "// 16-Mavzu Yechimi\nlet battery = 3;\nwhile (battery > 0) {\n  console.log(\"Dron parvozi:\", battery);\n  battery--;\n}\nlet roll = 1;\ndo {\n  console.log(\"Zar otildi:\", roll);\n  roll++;\n} while (roll <= 1);"
+    },
+    hints: [
+      { uz: "while (battery > 0) { ... battery--; } va do { ... } while (roll <= 1); yozing.", en: "Write both while and do...while blocks." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/while\s*\(\s*battery\s*>\s*0\s*\)/.test(clean)) return { passed: false, message: "while (battery > 0) tsiklini yozing!" };
+      if (!/do\s*\{[\s\S]*\}\s*while/.test(clean)) return { passed: false, message: "do { ... } while (...); tsiklidan foydalaning!" };
+      if (!/battery--/.test(clean)) return { passed: false, message: "battery-- qadamini unutmang!" };
+      return { passed: true, message: "Ajoyib! while va do...while orasidagi farqni mukammal tushundingiz! ⏳" };
+    }
+  },
+
+  // THEME 17: for...of vs for...in & Objects
+  {
+    id: "js-17-objects",
+    module: "mod-js-data",
+    icon: "💎",
+    title: {
+      uz: "17-Mavzu: for...of va for...in Farqi hamda Obyektlar Asoslari ({})",
+      en: "Theme 17: for...of vs for...in & Objects Foundations ({})"
+    },
+    concept: {
+      uz: "Obyekt (Object) — kalit-qiymat (key-value) juftliklaridan iborat bo'lib, narsalarning xususiyatlarini saqlaydi: { name: 'Dino', speed: 50 }.\\nTsikllarning tub farqi:\\n1. for...of — Massivdagi QIYMATLAR (values) bo'yicha aylanadi\\n2. for...in — Obyektdagi KALITLAR (keys) bo'yicha aylanadi!",
+      en: "Objects store key-value properties inside curly braces {}. Fundamental loop contrast:\\n1. for...of iterates over array VALUES\\n2. for...in iterates over object KEYS!"
+    },
+    humanLanguage: {
+      uz: "Massivda [10, 20, 30] bo'lsa, for (const val of arr) aynan 10, 20, 30 qiymatlarini beradi. Obyektda { name: 'Dino', speed: 50 } bo'lsa, for (const key in obj) aynan 'name', 'speed' kalit nomlarini aylanadi!",
+      en: "for...of gets the actual values of an array. for...in loops through the property keys of an object!"
+    },
+    secretSandwich: {
+      uz: "for (const val of massiv) [qiymatlar] | for (const key in obyekt) [kalitlar]",
+      en: "for...of (array values) | for...in (object keys)"
+    },
+    stepBreakdown: [
+      {
+        part: "for (const score of [10, 20, 30])",
+        explanation: { uz: "Massiv qiymatlari bo'yicha aylanish (for...of)", en: "Iterates array values (for...of)" },
+        visualResult: { uz: "10, 20, 30 qiymatlari chiqadi", en: "Prints 10, 20, 30" }
+      },
+      {
+        part: "for (const key in hero)",
+        explanation: { uz: "Obyekt kalitlari bo'yicha aylanish (for...in)", en: "Iterates object keys (for...in)" },
+        visualResult: { uz: "Obyekt xususiyat nomlari chiqadi", en: "Prints keys" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'for (const v of arr)', name: { uz: "for...of tsikli", en: "For Of Loop" }, description: { uz: "Massiv qiymatlarini ketma-ket aylanadi", en: "Iterates iterable array values directly" } },
+      { code: 'for (const k in obj)', name: { uz: "for...in tsikli", en: "For In Loop" }, description: { uz: "Obyektning barcha kalitlarini aylanadi", en: "Iterates enumerable keys of an object" } }
+    ],
+    tagShowcase: [
+      { tag: 'for...of', name: { uz: "Qiymatlar tsikli", en: "For Of" }, meaning: { uz: "Massiv elementlari uchun", en: "For array values" } },
+      { tag: 'for...in', name: { uz: "Kalitlar tsikli", en: "For In" }, meaning: { uz: "Obyekt xususiyatlari uchun", en: "For object keys" } }
+    ],
+    mission: {
+      uz: "const scores = [10, 20, 30]; for (const s of scores) { console.log('Ball:', s); } va const hero = { name: 'Dino', level: 5 }; for (const key in hero) { console.log(key, hero[key]); } deb yozing.",
+      en: "Iterate const scores with for...of and const hero object with for...in."
+    },
+    targetDescription: {
+      uz: "Massiv ballari va obyektning kalit-qiymatlari konsolga chiqariladi.",
+      en: "Array scores from for...of and object properties from for...in logged."
+    },
+    initialCode: {
+      en: "// Theme 17: for...of vs for...in & Objects\n// Step 1: Loop array values using for...of:\n// const scores = [10, 20, 30];\n// for (const s of scores) {\n//   console.log(\"Ball:\", s);\n// }\n\n// Step 2: Loop object keys using for...in:\n// const hero = { name: \"Dino\", level: 5 };\n// for (const key in hero) {\n//   console.log(key, hero[key]);\n// }\n",
+      uz: "// 17-Mavzu: for...of va for...in Farqi hamda Obyektlar\n// 1-QADAM: for...of bilan massiv qiymatlarini aylaning:\n// const scores = [10, 20, 30];\n// for (const s of scores) {\n//   console.log(\"Ball:\", s);\n// }\n\n// 2-QADAM: for...in bilan obyekt kalitlarini aylaning:\n// const hero = { name: \"Dino\", level: 5 };\n// for (const key in hero) {\n//   console.log(key, hero[key]);\n// }\n"
+    },
+    targetCode: {
+      en: "// Theme 17 Solution\nconst scores = [10, 20, 30];\nfor (const s of scores) {\n  console.log(\"Ball:\", s);\n}\nconst hero = { name: \"Dino\", level: 5 };\nfor (const key in hero) {\n  console.log(key, hero[key]);\n}",
+      uz: "// 17-Mavzu Yechimi\nconst scores = [10, 20, 30];\nfor (const s of scores) {\n  console.log(\"Ball:\", s);\n}\nconst hero = { name: \"Dino\", level: 5 };\nfor (const key in hero) {\n  console.log(key, hero[key]);\n}"
+    },
+    hints: [
+      { uz: "for (const s of scores) va for (const key in hero) qoliplaridan foydalaning.", en: "Use for...of for array and for...in for object." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/for\s*\(\s*const\s+\w+\s+of\s+/.test(clean)) return { passed: false, message: "Massiv qiymatlari uchun for...of tsiklidan foydalaning!" };
+      if (!/for\s*\(\s*const\s+\w+\s+in\s+/.test(clean)) return { passed: false, message: "Obyekt kalitlari uchun for...in tsiklidan foydalaning!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Barakalla! for...of va for...in farqini aniq tushundingiz! 💎" };
+    }
+  },
+
+  // THEME 18: Classes & OOP
+  {
+    id: "js-18-array-objects",
+    module: "mod-js-data",
+    icon: "🏛️",
+    title: {
+      uz: "18-Mavzu: Klasslar (Classes), constructor, Metodlar va 'this' — OOP!",
+      en: "Theme 18: Classes, constructor, Methods & 'this' — OOP!"
+    },
+    concept: {
+      uz: "Klass (Class) — bu obyektlar ishlab chiqaruvchi chizma yoki qolipdir. constructor() yangi obyekt yaratilganda xususiyatlarni (this.name, this.hp) o'rnatadi. 'this' so'zi esa yaratilgan aynan o'sha nusxani bildiradi. Metodlar — klass ichidagi funksiyalardir.",
+      en: "A Class is a blueprint for producing multiple objects. The constructor() initializes properties using 'this', while methods define behavior."
+    },
+    humanLanguage: {
+      uz: "Klass bu g'isht qolipi kabi: bitta class Hero { ... } qolipini yasab olamiz va new Hero('Alpomish', 100); deb minglab bir xil xususiyatli, lekin o'z nomiga ega qahramonlarni yaratamiz!",
+      en: "A class is like a hero cookie cutter: define class Hero once, then stamp out individual hero instances with new Hero('Alpomish', 100)!"
+    },
+    secretSandwich: {
+      uz: "class Qolip { constructor(p) { this.x = p; } metod() { ... } } | const obj = new Qolip(qiymat);",
+      en: "class Blueprint { constructor(p) { this.p = p; } act() { } } | const x = new Blueprint(v);"
+    },
+    stepBreakdown: [
+      {
+        part: "class Hero { constructor(name, hp) { this.name = name; this.hp = hp; } }",
+        explanation: { uz: "Qahramon chizmasini yaratish va xususiyatlarini this ga yuklash", en: "Defines class with constructor assigning properties to this" },
+        visualResult: { uz: "Hero qolipi tayyor", en: "Hero class defined" }
+      },
+      {
+        part: "attack() { return this.name + ' zarba berdi! HP: ' + this.hp; }",
+        explanation: { uz: "Klass ichidagi metod (harakat)", en: "Method attached to class" },
+        visualResult: { uz: "Har bir qahramon hujum qila oladi", en: "Instances can attack" }
+      },
+      {
+        part: "const hero1 = new Hero('Alpomish', 100);",
+        explanation: { uz: "new kalit so'zi bilan chizmadan jonli obyekt yasash", en: "Instantiates new Hero instance" },
+        visualResult: { uz: "Yangi Alpomish qahramoni hosil bo'ladi", en: "hero1 created" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'class Name { }', name: { uz: "Klass e'lon qilish", en: "Class Declaration" }, description: { uz: "Obyektlar yaratuvchi shablon qolipini e'lon qiladi", en: "Defines a class template for objects" } },
+      { code: 'constructor()', name: { uz: "Konstruktor", en: "Constructor Method" }, description: { uz: "Yangi obyekt yaratilganda avtomatik ishga tushadigan sozlovchi funksiya", en: "Special method initializing new instances" } },
+      { code: 'this', name: { uz: "O'ziga ishora (this)", en: "This Keyword" }, description: { uz: "Aynan joriy obyekt nusxasining o'zini bildiradi", en: "Refers to current instance object" } },
+      { code: 'new ClassName()', name: { uz: "Yangi nusxa yaratish", en: "New Instance" }, description: { uz: "Klassdan yangi jonli obyekt ishlab chiqaradi", en: "Instantiates a class" } }
+    ],
+    tagShowcase: [
+      { tag: 'class', name: { uz: "Klass", en: "Class" }, meaning: { uz: "Obyekt qolipi", en: "Blueprint" } },
+      { tag: 'constructor', name: { uz: "Konstruktor", en: "Constructor" }, meaning: { uz: "Boshlang'ich sozlovchi", en: "Initializer" } },
+      { tag: 'this', name: { uz: "O'zi", en: "This" }, meaning: { uz: "Joriy nusxaga murojaat", en: "Current instance" } },
+      { tag: 'new', name: { uz: "Yangi", en: "New" }, meaning: { uz: "Obyekt yasash", en: "Instantiate" } }
+    ],
+    mission: {
+      uz: "class Hero { constructor(name, hp) { this.name = name; this.hp = hp; } attack() { return this.name + ' zarba berdi! HP: ' + this.hp; } } yarating. const hero1 = new Hero('Alpomish', 100); qilib, console.log(hero1.attack()); chiqaring.",
+      en: "Define class Hero with constructor, this.name, this.hp, and attack() method. Instantiate hero1 with new Hero('Alpomish', 100) and log attack()."
+    },
+    targetDescription: {
+      uz: "'Alpomish zarba berdi! HP: 100' xabari klass metodi orqali konsolga chiqadi.",
+      en: "'Alpomish zarba berdi! HP: 100' returned by class instance method and logged."
+    },
+    initialCode: {
+      en: "// Theme 18: Classes & OOP\n// Step 1: Define class Hero with constructor and this:\n// class Hero {\n//   constructor(name, hp) {\n//     this.name = name;\n//     this.hp = hp;\n//   }\n//   attack() {\n//     return this.name + \" zarba berdi! HP: \" + this.hp;\n//   }\n// }\n\n// Step 2: Instantiate new hero using new keyword:\n// const hero1 = new Hero(\"Alpomish\", 100);\n\n// Step 3: Call attack method and log:\n// console.log(hero1.attack());\n",
+      uz: "// 18-Mavzu: Klasslar, constructor va this (OOP)\n// 1-QADAM: Hero nomli klass va uning konstruktorini yozing:\n// class Hero {\n//   constructor(name, hp) {\n//     this.name = name;\n//     this.hp = hp;\n//   }\n//   attack() {\n//     return this.name + \" zarba berdi! HP: \" + this.hp;\n//   }\n// }\n\n// 2-QADAM: new kalit so'zi orqali yangi qahramon nusxasini yarating:\n// const hero1 = new Hero(\"Alpomish\", 100);\n\n// 3-QADAM: attack metodini chaqirib, konsolga chiqaring:\n// console.log(hero1.attack());\n"
+    },
+    targetCode: {
+      en: "// Theme 18 Solution\nclass Hero {\n  constructor(name, hp) {\n    this.name = name;\n    this.hp = hp;\n  }\n  attack() {\n    return this.name + \" zarba berdi! HP: \" + this.hp;\n  }\n}\nconst hero1 = new Hero(\"Alpomish\", 100);\nconsole.log(hero1.attack());",
+      uz: "// 18-Mavzu Yechimi\nclass Hero {\n  constructor(name, hp) {\n    this.name = name;\n    this.hp = hp;\n  }\n  attack() {\n    return this.name + \" zarba berdi! HP: \" + this.hp;\n  }\n}\nconst hero1 = new Hero(\"Alpomish\", 100);\nconsole.log(hero1.attack());"
+    },
+    hints: [
+      { uz: "class Hero { constructor(name, hp) { this.name = name; this.hp = hp; } attack() { return this.name + \" zarba berdi! HP: \" + this.hp; } }", en: "Define class with constructor, this, and method." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/class\s+Hero/.test(clean)) return { passed: false, message: "class Hero { ... } kalit so'zi bilan klass yarating!" };
+      if (!/constructor\s*\(/.test(clean)) return { passed: false, message: "constructor() funksiyasini yozing!" };
+      if (!/this\.name|this\.hp/.test(clean)) return { passed: false, message: "this kalit so'zi orqali xususiyatlarni sozlang!" };
+      if (!/new\s+Hero/.test(clean)) return { passed: false, message: "new Hero(...) bilan yangi nusxa yarating!" };
+      return { passed: true, message: "Qoyilmaqom! Obyektga yo'naltirilgan dasturlash (OOP) sirlarini egalladingiz! 🏛️" };
+    }
+  },
+
+  // THEME 19: DOM Selection
+  {
+    id: "js-19-dom-select",
+    module: "mod-js-dom",
+    icon: "🎯",
+    title: {
+      uz: "19-Mavzu: Sahifani Boshqarish — document.querySelector()",
+      en: "Theme 19: Selecting Elements — document.querySelector()"
+    },
+    concept: {
+      uz: "DOM (Document Object Model) — veb sahifadagi barcha HTML elementlarni JavaScript bilan boshqarish imkoniyatidir. document.querySelector('#id') yordamida sahifadagi istalgan elementni (sarlavha, tugma, quti) lazer nuri kabi topib olamiz.",
+      en: "DOM selection allows JavaScript to target HTML elements. document.querySelector() finds elements using CSS selectors by ID (#id), class (.class), or tag name."
+    },
+    humanLanguage: {
+      uz: "querySelector xuddi do'kondagi lazerli skanerga o'xshaydi: '#box' deb yozsangiz, u HTML ichidan id='box' bo'lgan qutini topib keladi va sizga beradi!",
+      en: "querySelector is like a laser pointer. Asking for '#box' locates the exact element with id='box' in HTML!"
+    },
+    secretSandwich: {
+      uz: "const el = document.querySelector('#elementId'); — elementni topib o'zgaruvchiga saqlash.",
+      en: "const el = document.querySelector('#selector'); — grabs matching DOM element."
+    },
+    stepBreakdown: [
+      {
+        part: "document.querySelector('#title')",
+        explanation: { uz: "id='title' bo'lgan sarlavhani topish", en: "Selects #title heading" },
+        visualResult: { uz: "title elementi o'zgaruvchiga o'tadi", en: "Heading stored in variable" }
+      },
+      {
+        part: "document.querySelector('#box')",
+        explanation: { uz: "id='box' bo'lgan qutini topish", en: "Selects #box container" },
+        visualResult: { uz: "box elementi o'zgaruvchiga o'tadi", en: "Box element stored" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'document.querySelector("#id")', name: { uz: "Elementni tanlash", en: "Query Selector" }, description: { uz: "CSS selektori bo'yicha birinchi mos kelgan HTML elementni qaytaradi", en: "Returns first element matching CSS selector" } }
+    ],
+    tagShowcase: [
+      { tag: 'document', name: { uz: "Hujjat", en: "Document" }, meaning: { uz: "Butun veb-sahifa", en: "Root web page" } },
+      { tag: 'querySelector', name: { uz: "Topuvchi", en: "QuerySelector" }, meaning: { uz: "Element qidiruvchi", en: "Selector finder" } }
+    ],
+    mission: {
+      uz: "const title = document.querySelector('#title'); va const box = document.querySelector('#box'); qilib elementlarni toping hamda console.log(title.textContent, box.id); chiqaring.",
+      en: "Select title (#title) and box (#box) with document.querySelector, then log title.textContent and box.id."
+    },
+    targetDescription: {
+      uz: "Topilgan sarlavha matni va qutining id si konsolga chiqariladi.",
+      en: "Selected title textContent and box id logged to console."
+    },
+    initialCode: {
+      en: "// Theme 19: DOM Selection\n// Step 1: Select title using querySelector:\n// const title = document.querySelector(\"#title\");\n\n// Step 2: Select box using querySelector:\n// const box = document.querySelector(\"#box\");\n\n// Step 3: Log title text and box id:\n// console.log(title.textContent, box.id);\n",
+      uz: "// 19-Mavzu: DOM Elementlarini Tanlash\n// 1-QADAM: #title elementini querySelector bilan tanlang:\n// const title = document.querySelector(\"#title\");\n\n// 2-QADAM: #box elementini querySelector bilan tanlang:\n// const box = document.querySelector(\"#box\");\n\n// 3-QADAM: Sarlavha matni va quti id sini konsolga chiqaring:\n// console.log(title.textContent, box.id);\n"
+    },
+    targetCode: {
+      en: "// Theme 19 Solution\nconst title = document.querySelector(\"#title\");\nconst box = document.querySelector(\"#box\");\nconsole.log(title.textContent, box.id);",
+      uz: "// 19-Mavzu Yechimi\nconst title = document.querySelector(\"#title\");\nconst box = document.querySelector(\"#box\");\nconsole.log(title.textContent, box.id);"
+    },
+    hints: [
+      { uz: "document.querySelector(\"#title\") va document.querySelector(\"#box\")", en: "Use document.querySelector with ID selectors." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/document\.querySelector\s*\(\s*["']#title["']\s*\)/.test(clean)) return { passed: false, message: "document.querySelector('#title') bilan sarlavhani toping!" };
+      if (!/document\.querySelector\s*\(\s*["']#box["']\s*\)/.test(clean)) return { passed: false, message: "document.querySelector('#box') bilan qutini toping!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Zo'r! Veb sahifa elementlarini topishni o'rgandingiz! 🎯" };
+    }
+  },
+
+  // THEME 20: DOM Modification
+  {
+    id: "js-20-dom-modify",
+    module: "mod-js-dom",
+    icon: "🎨",
+    title: {
+      uz: "20-Mavzu: Sahifani O'zgartirish — textContent va style",
+      en: "Theme 20: Modifying DOM — textContent & style Properties"
+    },
+    concept: {
+      uz: "Elementni topgach, uning matnini .textContent orqali o'zgartirishimiz, .style orqali esa CSS ranglari va o'lchamlarini jonli o'zgartirishimiz mumkin.",
+      en: "Once selected, an element's text is changed via .textContent, and visual styles (colors, sizing, transforms) are manipulated dynamically through .style."
+    },
+    humanLanguage: {
+      uz: "Sehrli qalam bilan sahifadagi qutiga yangi so'z yozish (box.textContent = 'Salom!') va uning rangini bo'yash (box.style.backgroundColor = '#10b981') kabi!",
+      en: "Like painting directly on the webpage: box.textContent changes the text inside, and box.style.backgroundColor changes its color instantly!"
+    },
+    secretSandwich: {
+      uz: "el.textContent = 'yangi matn'; | el.style.backgroundColor = 'rang';",
+      en: "el.textContent = 'text'; | el.style.color = 'color';"
+    },
+    stepBreakdown: [
+      {
+        part: "box.textContent = '⚡ Super Quti!';",
+        explanation: { uz: "Quti ichidagi matnni almashtirish", en: "Replaces text content of box" },
+        visualResult: { uz: "Qutida 'Super Quti!' paydo bo'ladi", en: "Text updates on page" }
+      },
+      {
+        part: "box.style.backgroundColor = '#10b981';",
+        explanation: { uz: "Quti fon rangini zumrad yashil qilish", en: "Changes box background color to emerald green" },
+        visualResult: { uz: "Quti yashil rangga kiradi", en: "Box becomes green" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'el.textContent = "..."', name: { uz: "Matnni o'zgartirish", en: "Text Content" }, description: { uz: "Element ichidagi matnni xavfsiz o'zgartiradi", en: "Sets text content of node" } },
+      { code: 'el.style.prop = "..."', name: { uz: "Stil berish", en: "Inline Style" }, description: { uz: "Elementga to'g'ridan-to'g'ri CSS stillarini o'rnatadi", en: "Applies inline CSS styling property" } }
+    ],
+    tagShowcase: [
+      { tag: '.textContent', name: { uz: "Matn", en: "TextContent" }, meaning: { uz: "Element matni", en: "Element text" } },
+      { tag: '.style', name: { uz: "Stil", en: "Style" }, meaning: { uz: "Element ko'rinishi", en: "Element style" } }
+    ],
+    mission: {
+      uz: "const box = document.querySelector('#box'); oling. box.textContent = '⚡ Super Quti!'; qiling va box.style.backgroundColor = '#10b981'; deb yozing.",
+      en: "Select #box, update box.textContent = '⚡ Super Quti!';, and set box.style.backgroundColor = '#10b981'."
+    },
+    targetDescription: {
+      uz: "Qutining matni '⚡ Super Quti!' ga va fon rangi zumrad yashilga aylanadi.",
+      en: "Box displays '⚡ Super Quti!' on emerald green background."
+    },
+    initialCode: {
+      en: "// Theme 20: Modifying DOM\n// Step 1: Select the box element:\n// const box = document.querySelector(\"#box\");\n\n// Step 2: Change its text content:\n// box.textContent = \"⚡ Super Quti!\";\n\n// Step 3: Change its background color:\n// box.style.backgroundColor = \"#10b981\";\n",
+      uz: "// 20-Mavzu: Sahifa Elementlarini O'zgartirish\n// 1-QADAM: #box elementini tanlang:\n// const box = document.querySelector(\"#box\");\n\n// 2-QADAM: Quti matnini o'zgartiring:\n// box.textContent = \"⚡ Super Quti!\";\n\n// 3-QADAM: Quti fon rangini zumrad yashil qiling:\n// box.style.backgroundColor = \"#10b981\";\n"
+    },
+    targetCode: {
+      en: "// Theme 20 Solution\nconst box = document.querySelector(\"#box\");\nbox.textContent = \"⚡ Super Quti!\";\nbox.style.backgroundColor = \"#10b981\";",
+      uz: "// 20-Mavzu Yechimi\nconst box = document.querySelector(\"#box\");\nbox.textContent = \"⚡ Super Quti!\";\nbox.style.backgroundColor = \"#10b981\";"
+    },
+    hints: [
+      { uz: "box.textContent = \"⚡ Super Quti!\"; va box.style.backgroundColor = \"#10b981\";", en: "Update textContent and style.backgroundColor." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/box\.textContent\s*=/.test(clean)) return { passed: false, message: "box.textContent orqali quti matnini o'zgartiring!" };
+      if (!/backgroundColor/.test(clean)) return { passed: false, message: "box.style.backgroundColor orqali quti rangini o'zgartiring!" };
+      return { passed: true, message: "Barakalla! Brauzer sahifasini JavaScript orqali bo'yadingiz! 🎨" };
+    }
+  },
+
+  // THEME 21: Click Events
+  {
+    id: "js-21-events",
+    module: "mod-js-dom",
+    icon: "⚡",
+    title: {
+      uz: "21-Mavzu: Hodisalar — addEventListener('click') (Jonli Tugma)",
+      en: "Theme 21: Events — addEventListener('click') (Interactive Button)"
+    },
+    concept: {
+      uz: "Hodisalar (Events) — foydalanuvchining har bir harakati (sichqonchani bosishi, harakatlantirishi). addEventListener('click', handler) orqali tugma bosilganda aynan qaysi kod bajarilishi kerakligini belgilaymiz.",
+      en: "Events detect user interactions. addEventListener('click', callback) binds a listener function that executes immediately whenever the target element is clicked."
+    },
+    humanLanguage: {
+      uz: "Eshik qo'ng'irog'i kabi: qo'ng'iroq tugmasi bosilganda (click hodisasi), ichkarida musiqa yangrashi kerak!",
+      en: "Like a doorbell: when someone presses the button (click event), the chime rings (event handler callback)!"
+    },
+    secretSandwich: {
+      uz: "tugma.addEventListener('click', () => { ... bosilganda bajariladigan ishlar ... });",
+      en: "btn.addEventListener('click', () => { ... actions ... });"
+    },
+    stepBreakdown: [
+      {
+        part: "btn.addEventListener('click', () => { ... })",
+        explanation: { uz: "Tugmaga sichqoncha bosilishini tinglovchi quloq o'rnatish", en: "Attaches click event listener" },
+        visualResult: { uz: "Tugma bosishni kuta boshlaydi", en: "Listens for user clicks" }
+      },
+      {
+        part: "box.style.backgroundColor = '#f59e0b';",
+        explanation: { uz: "Tugma bosilganda qutini sariq rangga bo'yash", en: "Changes box color on click" },
+        visualResult: { uz: "Tugma bosilishi bilan rang o'zgaradi", en: "Color transforms upon click" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'el.addEventListener("click", fn)', name: { uz: "Tinglovchi qo'shish", en: "Add Event Listener" }, description: { uz: "Elementda hodisa (bosish) yuz berganda funksiyani chaqiradi", en: "Registers event handler on element" } }
+    ],
+    tagShowcase: [
+      { tag: 'addEventListener', name: { uz: "Hodisa tinglovchi", en: "Event Listener" }, meaning: { uz: "Tugma bosilishini kutish", en: "Listen for interaction" } },
+      { tag: "'click'", name: { uz: "Bosish", en: "Click" }, meaning: { uz: "Sichqoncha bosilishi", en: "Mouse click event" } }
+    ],
+    mission: {
+      uz: "const btn = document.querySelector('#btn'); va const box = document.querySelector('#box'); oling. btn.addEventListener('click', () => { box.textContent = 'Bosildi! 🎉'; box.style.backgroundColor = '#f59e0b'; }); qiling.",
+      en: "Attach click listener to #btn that updates #box text and background color."
+    },
+    targetDescription: {
+      uz: "Tugma bosilganda quti matni 'Bosildi! 🎉' ga va rangi sariqqa o'zgaradi.",
+      en: "Clicking button updates box text and changes color to amber."
+    },
+    initialCode: {
+      en: "// Theme 21: Click Events\n// Step 1: Select button and box:\n// const btn = document.querySelector(\"#btn\");\n// const box = document.querySelector(\"#box\");\n\n// Step 2: Attach click listener:\n// btn.addEventListener(\"click\", () => {\n//   box.textContent = \"Bosildi! 🎉\";\n//   box.style.backgroundColor = \"#f59e0b\";\n// });\n",
+      uz: "// 21-Mavzu: Sichqoncha Hodisalari (click)\n// 1-QADAM: Tugma va qutini tanlang:\n// const btn = document.querySelector(\"#btn\");\n// const box = document.querySelector(\"#box\");\n\n// 2-QADAM: Tugmaga click hodisasini ulang:\n// btn.addEventListener(\"click\", () => {\n//   box.textContent = \"Bosildi! 🎉\";\n//   box.style.backgroundColor = \"#f59e0b\";\n// });\n"
+    },
+    targetCode: {
+      en: "// Theme 21 Solution\nconst btn = document.querySelector(\"#btn\");\nconst box = document.querySelector(\"#box\");\nbtn.addEventListener(\"click\", () => {\n  box.textContent = \"Bosildi! 🎉\";\n  box.style.backgroundColor = \"#f59e0b\";\n});",
+      uz: "// 21-Mavzu Yechimi\nconst btn = document.querySelector(\"#btn\");\nconst box = document.querySelector(\"#box\");\nbtn.addEventListener(\"click\", () => {\n  box.textContent = \"Bosildi! 🎉\";\n  box.style.backgroundColor = \"#f59e0b\";\n});"
+    },
+    hints: [
+      { uz: "btn.addEventListener(\"click\", () => { box.textContent = \"Bosildi! 🎉\"; box.style.backgroundColor = \"#f59e0b\"; });", en: "Attach click event listener to btn." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/addEventListener\s*\(\s*["']click["']/.test(clean)) return { passed: false, message: "addEventListener('click', ...) dan foydalaning!" };
+      if (!/box\.textContent/.test(clean)) return { passed: false, message: "Tugma bosilganda quti matnini o'zgartiring!" };
+      return { passed: true, message: "Ajoyib! Jonli interaktiv tugma yaratdingiz! ⚡" };
+    }
+  },
+
+  // THEME 22: Keyboard & Window Keys
+  {
+    id: "js-22-timers",
+    module: "mod-js-dom",
+    icon: "⌨️",
+    title: {
+      uz: "22-Mavzu: Klaviatura & Window Keys — window.addEventListener('keydown') va e.key / e.code",
+      en: "Theme 22: Keyboard & Window Keys — window 'keydown' (e.key vs e.code)"
+    },
+    concept: {
+      uz: "O'yinlarda boshqaruv butun brauzer oynasiga bog'lanadi: window.addEventListener('keydown', (e) => { ... }).\\nNozik va muhim farq:\\n1. e.key — bosilgan belgining ma'nosi ('ArrowUp', ' ', 'a', 'A')\\n2. e.code — klaviaturadagi jismoniy tugma kodi ('Space', 'ArrowUp', 'KeyW') — til ruscha yoki o'zbekchaga o'zgarsa ham 'KeyW' o'zgarmaydi!",
+      en: "Games use window-level keyboard listeners: window.addEventListener('keydown', (e) => { ... }).\\nKey difference:\\n1. e.key is the character value ('ArrowUp', 'Space', 'w')\\n2. e.code is the physical key code ('Space', 'KeyW') regardless of keyboard language layout!"
+    },
+    humanLanguage: {
+      uz: "O'yinda sakrash uchun probel (Space) bosilganda: if (e.code === 'Space') qahramon sakraydi. Window tinglovchi bo'lgani uchun fokus qayerda bo'lishidan qat'i nazar har doim tugmani taniydi!",
+      en: "Listening on window ensures game controls catch keypresses everywhere on page. Checking e.code === 'Space' detects the physical spacebar reliably across all languages!"
+    },
+    secretSandwich: {
+      uz: "window.addEventListener('keydown', (e) => { if (e.code === 'Space' || e.key === 'ArrowUp') { ... } });",
+      en: "window.addEventListener('keydown', (e) => { if (e.code === 'Space') { ... } });"
+    },
+    stepBreakdown: [
+      {
+        part: "window.addEventListener('keydown', (e) => { ... })",
+        explanation: { uz: "Butun oyna bo'ylab klaviatura tugmalari bosilishini tinglash", en: "Listens to all keyboard presses window-wide" },
+        visualResult: { uz: "Istalgan tugma bosilganda xabar oladi", en: "Triggers on any key press" }
+      },
+      {
+        part: "e.key === 'ArrowUp' || e.code === 'Space'",
+        explanation: { uz: "Tugmaning nomi va kodini tekshirish", en: "Checks key identity" },
+        visualResult: { uz: "Yuqoriga yoki probel bosilganda sakraydi", en: "Detects up/space actions" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'window.addEventListener("keydown", fn)', name: { uz: "Klaviatura tinglash", en: "Window Keydown" }, description: { uz: "Butun oyna bo'ylab tugma bosilishini qabul qiladi", en: "Listens for physical keystrokes globally" } },
+      { code: 'e.key', name: { uz: "Tugma belgisi", en: "Event Key" }, description: { uz: "Bosilgan harf yoki belgi matni ('ArrowUp', 'a')", en: "The value of the key pressed" } },
+      { code: 'e.code', name: { uz: "Jismoniy tugma kodi", en: "Event Code" }, description: { uz: "Klaviaturadagi tugma kodi ('Space', 'KeyW')", en: "The physical key code string" } }
+    ],
+    tagShowcase: [
+      { tag: 'keydown', name: { uz: "Tugma bosilishi", en: "Keydown" }, meaning: { uz: "Klaviaturadagi hodisa", en: "Keyboard event" } },
+      { tag: 'e.key', name: { uz: "Belgi", en: "e.key" }, meaning: { uz: "Tugma qiymati", en: "Character value" } },
+      { tag: 'e.code', name: { uz: "Kodi", en: "e.code" }, meaning: { uz: "Jismoniy tugma", en: "Physical key" } }
+    ],
+    mission: {
+      uz: "window.addEventListener('keydown', (e) => { const box = document.querySelector('#box'); if (e.key === 'ArrowUp' || e.code === 'Space') { box.textContent = 'Sakradi! 🚀'; box.style.backgroundColor = '#ec4899'; console.log('Bosildi:', e.key, e.code); } }); deb yozing.",
+      en: "Add window keydown listener checking e.key === 'ArrowUp' or e.code === 'Space' that updates box text and color."
+    },
+    targetDescription: {
+      uz: "Klaviatura orqali boshqariluvchi sakrash reaksiyasi konsolga chiqariladi.",
+      en: "Keyboard arrow/space control updates box and logs key & code."
+    },
+    initialCode: {
+      en: "// Theme 22: Keyboard & Window Keys (e.key vs e.code)\n// Step 1: Add global keydown listener to window:\n// window.addEventListener(\"keydown\", (e) => {\n//   const box = document.querySelector(\"#box\");\n//   if (e.key === \"ArrowUp\" || e.code === \"Space\") {\n//     box.textContent = \"Sakradi! 🚀\";\n//     box.style.backgroundColor = \"#ec4899\";\n//     console.log(\"Bosildi:\", e.key, e.code);\n//   }\n// });\n",
+      uz: "// 22-Mavzu: Klaviatura va Window Hodisalari (e.key va e.code)\n// 1-QADAM: window obyektiga keydown hodisasini ulang:\n// window.addEventListener(\"keydown\", (e) => {\n//   const box = document.querySelector(\"#box\");\n//   if (e.key === \"ArrowUp\" || e.code === \"Space\") {\n//     box.textContent = \"Sakradi! 🚀\";\n//     box.style.backgroundColor = \"#ec4899\";\n//     console.log(\"Bosildi:\", e.key, e.code);\n//   }\n// });\n"
+    },
+    targetCode: {
+      en: "// Theme 22 Solution\nwindow.addEventListener(\"keydown\", (e) => {\n  const box = document.querySelector(\"#box\");\n  if (e.key === \"ArrowUp\" || e.code === \"Space\") {\n    box.textContent = \"Sakradi! 🚀\";\n    box.style.backgroundColor = \"#ec4899\";\n    console.log(\"Bosildi:\", e.key, e.code);\n  }\n});",
+      uz: "// 22-Mavzu Yechimi\nwindow.addEventListener(\"keydown\", (e) => {\n  const box = document.querySelector(\"#box\");\n  if (e.key === \"ArrowUp\" || e.code === \"Space\") {\n    box.textContent = \"Sakradi! 🚀\";\n    box.style.backgroundColor = \"#ec4899\";\n    console.log(\"Bosildi:\", e.key, e.code);\n  }\n});"
+    },
+    hints: [
+      { uz: "window.addEventListener(\"keydown\", (e) => { if (e.key === \"ArrowUp\" || e.code === \"Space\") { ... } });", en: "Listen on window for keydown events." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/window\.addEventListener\s*\(\s*["']keydown["']/.test(clean)) return { passed: false, message: "window.addEventListener('keydown', ...) dan foydalaning!" };
+      if (!/e\.key|e\.code/.test(clean)) return { passed: false, message: "e.key yoki e.code xususiyatlarini tekshiring!" };
+      return { passed: true, message: "Ofarin! O'yinlarni klaviatura orqali boshqarish sirlarini egalladingiz! ⌨️" };
+    }
+  },
+
+  // THEME 23: Timers & Math.random
+  {
+    id: "js-23-math-random",
+    module: "mod-js-dom",
+    icon: "🎲",
+    title: {
+      uz: "23-Mavzu: Taymerlar va Tasodifiylik — setTimeout() va Math.random()",
+      en: "Theme 23: Timers & Randomness — setTimeout() & Math.random()"
+    },
+    concept: {
+      uz: "O'yinlarda kutilmagan hodisalar kerak. Math.random() 0 dan 1 gacha tasodifiy o'nlik son beradi. Math.floor(Math.random() * 6) + 1 esa 1 dan 6 gacha zar tashlaydi! setTimeout(fn, ms) esa ma'lum millisekunddan so'ng kodni ishga tushiradi.",
+      en: "Math.random() generates pseudo-random numbers. Multiplying and using Math.floor produces integer rolls like dice (1-6). setTimeout() runs a callback after delay."
+    },
+    humanLanguage: {
+      uz: "O'yin boshlanganda 3 soniya sanab (setTimeout) 'GO!' deb start beriladi, o'ljalar esa tasodifiy joylarda (Math.random) paydo bo'ladi!",
+      en: "Countdowns use setTimeout (delaying start), while dice and random item spawns use Math.random()!"
+    },
+    secretSandwich: {
+      uz: "const zar = Math.floor(Math.random() * 6) + 1; | setTimeout(() => { ... }, 1000);",
+      en: "const dice = Math.floor(Math.random() * 6) + 1; | setTimeout(() => { }, ms);"
+    },
+    stepBreakdown: [
+      {
+        part: "Math.floor(Math.random() * 6) + 1",
+        explanation: { uz: "1 dan 6 gacha tasodifiy butun son yasash", en: "Generates random integer 1 to 6" },
+        visualResult: { uz: "1, 2, 3, 4, 5 yoki 6 chiqadi", en: "Produces dice roll" }
+      },
+      {
+        part: "setTimeout(() => { ... }, 1000)",
+        explanation: { uz: "1000 millisekund (1 soniya) kutilgach ishga tushish", en: "Executes callback after 1 second delay" },
+        visualResult: { uz: "1 soniyadan keyin xabar chiqadi", en: "Runs after 1 second" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'Math.random()', name: { uz: "Tasodifiy son", en: "Random Number" }, description: { uz: "0 va 1 oralig'ida tasodifiy son hosil qiladi", en: "Generates pseudo-random float between 0 and 1" } },
+      { code: 'setTimeout(fn, ms)', name: { uz: "Kechiktirilgan taymer", en: "Set Timeout" }, description: { uz: "Kodni belgilangan vaqtdan keyin bir marta bajaradi", en: "Executes function after specified milliseconds" } }
+    ],
+    tagShowcase: [
+      { tag: 'Math.random()', name: { uz: "Tasodif", en: "Random" }, meaning: { uz: "Tasodifiy sonlar", en: "Random float" } },
+      { tag: 'setTimeout()', name: { uz: "Taymer", en: "Timeout" }, meaning: { uz: "Vaqt o'tib ishlash", en: "Delayed run" } }
+    ],
+    mission: {
+      uz: "const dice = Math.floor(Math.random() * 6) + 1; console.log('Zar:', dice); qiling va setTimeout(() => { console.log('BOMBA PORTLADI! 💥'); }, 1000); deb yozing.",
+      en: "Roll dice using Math.random() and set 1-second timeout logging bomb explosion."
+    },
+    targetDescription: {
+      uz: "Tasodifiy zar raqami va 1 soniyadan so'ng bomba portlashi konsolga chiqadi.",
+      en: "Dice roll and 1-second delayed explosion message logged."
+    },
+    initialCode: {
+      en: "// Theme 23: Timers & Math.random\n// Step 1: Roll a 6-sided dice:\n// const dice = Math.floor(Math.random() * 6) + 1;\n// console.log(\"Zar:\", dice);\n\n// Step 2: Set 1-second delayed timer:\n// setTimeout(() => {\n//   console.log(\"BOMBA PORTLADI! 💥\");\n// }, 1000);\n",
+      uz: "// 23-Mavzu: Taymerlar va Tasodifiy Sonlar\n// 1-QADAM: 1 dan 6 gacha tasodifiy zar tashlang:\n// const dice = Math.floor(Math.random() * 6) + 1;\n// console.log(\"Zar:\", dice);\n\n// 2-QADAM: 1 soniya (1000ms) kechikuvchi taymer o'rnating:\n// setTimeout(() => {\n//   console.log(\"BOMBA PORTLADI! 💥\");\n// }, 1000);\n"
+    },
+    targetCode: {
+      en: "// Theme 23 Solution\nconst dice = Math.floor(Math.random() * 6) + 1;\nconsole.log(\"Zar:\", dice);\nsetTimeout(() => {\n  console.log(\"BOMBA PORTLADI! 💥\");\n}, 1000);",
+      uz: "// 23-Mavzu Yechimi\nconst dice = Math.floor(Math.random() * 6) + 1;\nconsole.log(\"Zar:\", dice);\nsetTimeout(() => {\n  console.log(\"BOMBA PORTLADI! 💥\");\n}, 1000);"
+    },
+    hints: [
+      { uz: "Math.floor(Math.random() * 6) + 1 va setTimeout(() => { ... }, 1000); dan foydalaning.", en: "Use Math.random and setTimeout." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/Math\.random/.test(clean)) return { passed: false, message: "Math.random() dan foydalaning!" };
+      if (!/setTimeout/.test(clean)) return { passed: false, message: "setTimeout() taymeridan foydalaning!" };
+      if (!/console\.log/.test(clean)) return { passed: false, message: "Natijani console.log() bilan chiqaring!" };
+      return { passed: true, message: "Qoyilmaqom! Taymerlar va tasodifiy sonlarni to'liq o'rgandingiz! 🎲" };
+    }
+  },
+
+  // THEME 24: Capstone Game
+  {
+    id: "js-24-clicker-game",
+    module: "mod-js-dom",
+    icon: "🏆",
+    title: {
+      uz: "24-Mavzu: Yakuniy Super Mini-Loyiha — Jonli Interaktiv Kliker va Klaviatura O'yini",
+      en: "Theme 24: Capstone Project — Live Interactive Clicker & Keyboard Game"
+    },
+    concept: {
+      uz: "Barcha o'rganganlarimizni bitta to'liq o'yinda birlashtiramiz: Klass (Game), konstruktor, 'this', DOM tanlash (#count, #click-btn), sichqoncha hodisasi va klaviatura Space tugmasi bilan hisobni oshirish!",
+      en: "Combines everything learned into one full game: Class (Game), constructor, 'this', DOM selection (#count, #click-btn), click events, and keyboard Space bar to increase score!"
+    },
+    humanLanguage: {
+      uz: "Siz haqiqiy o'yin dasturchisiz! Tugma bosilganda ham, klaviaturada Probel (Space) bosilganda ham ball oshadi va ekrandagi hisob (#count) yangilanadi!",
+      en: "You are a real game developer! Clicking the button or pressing Space increases score and updates the DOM display live on screen!"
+    },
+    secretSandwich: {
+      uz: "class Game { constructor() { this.score = 0; } addPoint() { this.score++; el.textContent = this.score; } }",
+      en: "Full object-oriented game state with UI synchronization."
+    },
+    stepBreakdown: [
+      {
+        part: "class ClickerGame { constructor() { this.score = 0; ... } }",
+        explanation: { uz: "O'yin holati va hisobini boshqaruvchi klass", en: "Class managing game score and state" },
+        visualResult: { uz: "O'yin mexanikasi tayyor", en: "Game engine initialized" }
+      },
+      {
+        part: "this.countEl.textContent = this.score;",
+        explanation: { uz: "Sahifadagi hisob ko'rsatkichini jonli yangilash", en: "Updates live score element" },
+        visualResult: { uz: "Ekranda hisob oshadi", en: "Score number increases on screen" }
+      }
+    ],
+    listOfCommands: [
+      { code: 'class Game { }', name: { uz: "O'yin klassi", en: "Game Class" }, description: { uz: "Butun o'yin holatini bitta tizimga jamlaydi", en: "Encapsulates entire game system" } },
+      { code: 'game.addPoint()', name: { uz: "Ball qo'shish", en: "Add Point" }, description: { uz: "Ballni 1 ga oshirib ekranni yangilaydi", en: "Increments score and synchronizes UI" } }
+    ],
+    tagShowcase: [
+      { tag: 'Game', name: { uz: "O'yin", en: "Game" }, meaning: { uz: "O'yin klassi", en: "Game class" } },
+      { tag: 'click', name: { uz: "Klik", en: "Click" }, meaning: { uz: "Tugma bosilishi", en: "Button click" } },
+      { tag: 'Space', name: { uz: "Probel", en: "Space" }, meaning: { uz: "Klaviatura boshqaruvi", en: "Keyboard control" } }
+    ],
+    mission: {
+      uz: "O'yin klassini yarating: class Game { constructor() { this.score = 0; this.el = document.querySelector('#count'); } add() { this.score++; this.el.textContent = this.score; console.log('Ball:', this.score); } } const g = new Game(); document.querySelector('#click-btn').addEventListener('click', () => g.add()); window.addEventListener('keydown', (e) => { if (e.code === 'Space') g.add(); });",
+      en: "Build full Game class with score counter, wire to #click-btn and window Space key."
+    },
+    targetDescription: {
+      uz: "O'yin ishga tushib, tugma yoki Probel bosilganda ball oshadi va konsolga chiqadi.",
+      en: "Interactive game running: click or Space increments score on screen and in console."
+    },
+    initialCode: {
+      en: "// Theme 24: Capstone Game (Classes + DOM + Events + Keyboard)\n// Step 1: Define Game class:\n// class Game {\n//   constructor() {\n//     this.score = 0;\n//     this.el = document.querySelector(\"#count\");\n//   }\n//   add() {\n//     this.score++;\n//     this.el.textContent = this.score;\n//     console.log(\"Ball:\", this.score);\n//   }\n// }\n\n// Step 2: Instantiate game:\n// const g = new Game();\n\n// Step 3: Wire click event on #click-btn:\n// document.querySelector(\"#click-btn\").addEventListener(\"click\", () => g.add());\n\n// Step 4: Wire keyboard Space bar on window:\n// window.addEventListener(\"keydown\", (e) => {\n//   if (e.code === \"Space\") g.add();\n// });\n",
+      uz: "// 24-Mavzu: Yakuniy Loyiha (Klasslar, DOM, Hodisalar va Klaviatura)\n// 1-QADAM: O'yin mexanikasini boshqaruvchi Game klassini yozing:\n// class Game {\n//   constructor() {\n//     this.score = 0;\n//     this.el = document.querySelector(\"#count\");\n//   }\n//   add() {\n//     this.score++;\n//     this.el.textContent = this.score;\n//     console.log(\"Ball:\", this.score);\n//   }\n// }\n\n// 2-QADAM: new Game() orqali o'yinni yarating:\n// const g = new Game();\n\n// 3-QADAM: #click-btn tugmasiga click hodisasini ulang:\n// document.querySelector(\"#click-btn\").addEventListener(\"click\", () => g.add());\n\n// 4-QADAM: window obyektiga Probel (Space) tugmasini ulang:\n// window.addEventListener(\"keydown\", (e) => {\n//   if (e.code === \"Space\") g.add();\n// });\n"
+    },
+    targetCode: {
+      en: "// Theme 24 Solution\nclass Game {\n  constructor() {\n    this.score = 0;\n    this.el = document.querySelector(\"#count\");\n  }\n  add() {\n    this.score++;\n    this.el.textContent = this.score;\n    console.log(\"Ball:\", this.score);\n  }\n}\nconst g = new Game();\ndocument.querySelector(\"#click-btn\").addEventListener(\"click\", () => g.add());\nwindow.addEventListener(\"keydown\", (e) => {\n  if (e.code === \"Space\") g.add();\n});",
+      uz: "// 24-Mavzu Yechimi\nclass Game {\n  constructor() {\n    this.score = 0;\n    this.el = document.querySelector(\"#count\");\n  }\n  add() {\n    this.score++;\n    this.el.textContent = this.score;\n    console.log(\"Ball:\", this.score);\n  }\n}\nconst g = new Game();\ndocument.querySelector(\"#click-btn\").addEventListener(\"click\", () => g.add());\nwindow.addEventListener(\"keydown\", (e) => {\n  if (e.code === \"Space\") g.add();\n});"
+    },
+    hints: [
+      { uz: "Game klassini yarating, add metodini #click-btn va window keydown Space hodisalariga ulang.", en: "Build Game class and bind to both click and Space keydown." }
+    ],
+    validate: (code) => {
+      const clean = (code || '').replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
+      if (!/class\s+Game/.test(clean)) return { passed: false, message: "class Game { ... } klassini e'lon qiling!" };
+      if (!/this\.score\+\+|this\.score\s*\+=\s*1/.test(clean)) return { passed: false, message: "add() metodida hisobni oshiring!" };
+      if (!/addEventListener\s*\(\s*["']click["']/.test(clean)) return { passed: false, message: "Tugmaga click hodisasini ulang!" };
+      if (!/addEventListener\s*\(\s*["']keydown["']/.test(clean)) return { passed: false, message: "Klaviaturaga keydown hodisasini ulang!" };
+      return { passed: true, message: "TABRIKLAYMIZ! Siz to'liq JavaScript o'yin dasturchisi bo'ldingiz! 🏆⭐⭐⭐" };
     }
   }
 ];
@@ -1541,23 +1774,6 @@ function getLessonById(id) {
 function getLessonsByModule(modId) {
   return LESSONS.filter(l => l.module === modId);
 }
-
-// Ensure validators ignore comments so hints/comments in starter code never trigger false passes
-LESSONS.forEach(lesson => {
-  const originalValidate = lesson.validate;
-  lesson.validate = (code) => {
-    const codeStr = (typeof code === 'object' && code !== null)
-      ? (code.uz || code.en || Object.values(code)[0] || '')
-      : code;
-    if (!codeStr || typeof codeStr !== 'string') {
-      return { passed: false, message: 'Kodingizni yozing!' };
-    }
-    const cleanCode = codeStr
-      .replace(/\/\/.*$/gm, '')
-      .replace(/\/\*[\s\S]*?\*\//g, '');
-    return originalValidate(cleanCode);
-  };
-});
 
 
   // --- i18n Module ---
@@ -4163,12 +4379,88 @@ function renderLessonWorkspace(lesson) {
               <span>💻 ${t('codeEditorTitle', state.lang)}</span>
             </div>
             <div class="pane-actions">
+              <button id="btn-toggle-html-boilerplate" class="btn-tool ${state.showHtmlDrawer ? 'active' : ''}" title="${isUz ? 'HTML va CSS qolip kodini ko\'rsatish/yashirish' : 'Show or hide underlying HTML & CSS boilerplate'}">🌐 ${state.showHtmlDrawer ? (isUz ? 'HTML/CSS Yashirish' : 'Hide HTML/CSS') : (isUz ? 'HTML & CSS' : 'HTML & CSS')}</button>
               <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (isUz ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (isUz ? 'To\'liq Ekran IDE rejimi' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (isUz ? 'Kichraytirish' : 'Exit') : '⛶ ' + (isUz ? 'To\'liq Ekran' : 'Full Screen')}</button>
               <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${isUz ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${isUz ? 'Almashtirish' : 'Swap'}</button>
               <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${isUz ? 'Fokus rejimi' : 'Focus Mode'}">🔍 ${isUz ? 'Fokus' : 'Focus'}</button>
               <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 ${t('copyBtn', state.lang)}</button>
               <button id="btn-tidy-code" class="btn-tool" title="Format code">🪄 ${t('tidyBtn', state.lang)}</button>
               <button id="btn-reset-code" class="btn-tool" title="Reset code">🔄 ${t('resetCode', state.lang)}</button>
+            </div>
+          </div>
+
+          <!-- Underlying HTML & CSS Sandbox Drawer (Toggleable with 1-click) -->
+          <div id="html-css-boilerplate-drawer" class="html-css-boilerplate-drawer ${state.showHtmlDrawer ? 'open' : ''}" style="${state.showHtmlDrawer ? '' : 'display:none;'}">
+            <div class="boilerplate-drawer-header">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-weight:700; color:#38bdf8; font-size:12px;">🌐 ${isUz ? 'Laboratoriya HTML & CSS Asosi (Boilerplate)' : 'Sandbox HTML & CSS Boilerplate'}</span>
+                <span class="badge-chip" style="font-size:10px; background:rgba(56,189,248,0.15); color:#38bdf8; padding:2px 6px; border-radius:4px; font-weight:700;">HTML5 + CSS3</span>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button id="btn-copy-boilerplate" class="btn-tool" style="font-size:11px;" title="${isUz ? 'Qolip koddan nusxa olish' : 'Copy boilerplate'}">📋 ${isUz ? 'Nusxalash' : 'Copy'}</button>
+                <button id="btn-close-boilerplate" class="btn-tool" style="font-size:11px;" title="${isUz ? 'Yopish' : 'Close'}">✕ ${isUz ? 'Yashirish' : 'Hide'}</button>
+              </div>
+            </div>
+            <div class="boilerplate-drawer-content">
+              <div class="boilerplate-pane">
+                <div class="boilerplate-title">📄 index.html</div>
+                <pre class="boilerplate-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="uz"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;JavaScript Sandbox&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="title"&gt;Salom JavaScript!&lt;/h1&gt;
+  &lt;div id="box"&gt;Interaktiv Quti&lt;/div&gt;
+  &lt;p&gt;Hisob: &lt;span id="count"&gt;0&lt;/span&gt;&lt;/p&gt;
+  &lt;button id="btn"&gt;Bosing! 🚀&lt;/button&gt;
+  &lt;canvas id="game-canvas" width="400" height="150"&gt;&lt;/canvas&gt;
+
+  &lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+              <div class="boilerplate-pane">
+                <div class="boilerplate-title">🎨 style.css</div>
+                <pre class="boilerplate-code"><code>body {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+  background: #0f172a;
+  color: #f8fafc;
+}
+#title {
+  color: #38bdf8;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+#box {
+  padding: 16px;
+  background: #1e293b;
+  border: 2px dashed #38bdf8;
+  border-radius: 8px;
+  margin: 12px 0;
+  transition: all 0.3s ease;
+}
+#btn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#btn:hover { background: #2563eb; }
+#game-canvas {
+  background: #090d16;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  margin-top: 12px;
+  display: block;
+}</code></pre>
+              </div>
             </div>
           </div>
 
@@ -4363,6 +4655,68 @@ function attachLessonEvents(lesson) {
       btn.style.borderColor = state.focusIdeMode ? '#f59e0b' : '';
     }
     playSound('click', state.audioEnabled);
+  });
+
+  // HTML & CSS Sandbox Boilerplate Drawer toggle
+  const btnToggleHtml = document.getElementById('btn-toggle-html-boilerplate');
+  const drawerEl = document.getElementById('html-css-boilerplate-drawer');
+  const btnCloseDrawer = document.getElementById('btn-close-boilerplate');
+  const btnCopyBoilerplate = document.getElementById('btn-copy-boilerplate');
+
+  function toggleHtmlDrawer() {
+    state.showHtmlDrawer = !state.showHtmlDrawer;
+    if (drawerEl) {
+      drawerEl.style.display = state.showHtmlDrawer ? 'flex' : 'none';
+      drawerEl.classList.toggle('open', state.showHtmlDrawer);
+    }
+    if (btnToggleHtml) {
+      btnToggleHtml.classList.toggle('active', state.showHtmlDrawer);
+      btnToggleHtml.innerHTML = state.showHtmlDrawer
+        ? `👁️ ${isUz ? 'HTML/CSS Yashirish' : 'Hide HTML/CSS'}`
+        : `🌐 ${isUz ? 'HTML & CSS' : 'HTML & CSS'}`;
+      btnToggleHtml.style.color = state.showHtmlDrawer ? '#38bdf8' : '';
+      btnToggleHtml.style.borderColor = state.showHtmlDrawer ? '#38bdf8' : '';
+    }
+    playSound('click', state.audioEnabled);
+  }
+
+  btnToggleHtml?.addEventListener('click', toggleHtmlDrawer);
+  btnCloseDrawer?.addEventListener('click', toggleHtmlDrawer);
+
+  btnCopyBoilerplate?.addEventListener('click', () => {
+    const fullBoilerplate = `<!-- index.html -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="title">Salom JavaScript!</h1>
+  <div id="box">Interaktiv Quti</div>
+  <p>Hisob: <span id="count">0</span></p>
+  <button id="btn">Bosing! 🚀</button>
+  <canvas id="game-canvas" width="400" height="150"></canvas>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+/* style.css */
+body { font-family: system-ui, sans-serif; padding: 20px; background: #0f172a; color: #f8fafc; }
+#title { color: #38bdf8; font-size: 22px; margin-bottom: 8px; }
+#box { padding: 16px; background: #1e293b; border: 2px dashed #38bdf8; border-radius: 8px; margin: 12px 0; transition: all 0.3s ease; }
+#btn { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+#btn:hover { background: #2563eb; }
+#game-canvas { background: #090d16; border: 1px solid #334155; border-radius: 6px; margin-top: 12px; display: block; }`;
+
+    navigator.clipboard?.writeText(fullBoilerplate).then(() => {
+      btnCopyBoilerplate.textContent = isUz ? '✓ Nusxalandi!' : '✓ Copied!';
+      setTimeout(() => {
+        btnCopyBoilerplate.textContent = isUz ? '📋 Nusxalash' : '📋 Copy';
+      }, 1500);
+    });
   });
 
   // Start Practice Action (Jump to Code Editor & turn on Direct Code mode)

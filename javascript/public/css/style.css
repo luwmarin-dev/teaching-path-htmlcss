@@ -4193,3 +4193,73 @@ body.fullscreen-ide-body .app-header,
 body.fullscreen-ide-body .sidebar {
   display: none !important;
 }
+
+/* HTML & CSS Sandbox Boilerplate Drawer */
+.html-css-boilerplate-drawer {
+  background: #090d16;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+  overflow: hidden;
+  animation: slideDownDrawer 0.25s ease-out;
+  z-index: 10;
+}
+
+@keyframes slideDownDrawer {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 280px;
+    opacity: 1;
+  }
+}
+
+.boilerplate-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: #0d1322;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.boilerplate-drawer-content {
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px;
+  overflow-y: auto;
+  max-height: 230px;
+}
+
+.boilerplate-pane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #06080e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.boilerplate-title {
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: #0a0f1d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.boilerplate-code {
+  margin: 0;
+  padding: 10px;
+  font-family: var(--font-code, monospace);
+  font-size: 11px;
+  line-height: 1.5;
+  color: #38bdf8;
+  overflow-x: auto;
+}

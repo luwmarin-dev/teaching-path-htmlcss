@@ -1571,7 +1571,7 @@ export function openTopicLabModal(lesson) {
 }
 
 function handleChallengeVerification(lesson) {
-  const result = validateChallenge(currentCode, lesson.challenge.rules);
+  const result = validateChallenge(currentCode, lesson.challenge.rules, state.lang);
 
   if (result.passed) {
     playSound('success', state.audioEnabled);

@@ -176,9 +176,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'WPM', name: 'Words Per Minute', description: 'Typing speed rating (5 characters = 1 word)', exampleHtml: '45 WPM' },
-      { code: 'CPM', name: 'Chars Per Minute', description: 'Raw keystroke frequency per minute', exampleHtml: '225 CPM' },
-      { code: 'Accuracy %', name: 'Accuracy Rate', description: 'Precision of typing without typos', exampleHtml: '98%' }
+      { code: 'WPM', name: { en: "Words Per Minute", uz: "Daqiqadagi so'zlar soni (WPM)" }, description: { en: "Typing speed rating (5 characters = 1 word)", uz: "Yozish tezligi reytingi (5 ta belgi = 1 ta so'z)" }, exampleHtml: '45 WPM' },
+      { code: 'CPM', name: { en: "Chars Per Minute", uz: "Daqiqadagi belgilar soni (CPM)" }, description: { en: "Raw keystroke frequency per minute", uz: "Bir daqiqada bosilgan umumiy belgilar soni" }, exampleHtml: '225 CPM' },
+      { code: 'Accuracy %', name: { en: "Accuracy Rate", uz: "Aniqlik darajasi (%)" }, description: { en: "Precision of typing without typos", uz: "Xatosiz va to'g'ri yozish ko'rsatkichi foizda" }, exampleHtml: '98%' }
     ],
     tagShowcase: [
       { tag: 'WPM', meaning: { en: 'Speed', uz: 'Tezlik' } },
@@ -450,15 +450,15 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<h1>', name: 'Heading 1', description: 'Top-level master title', exampleHtml: '<h1>HTML Tarixi</h1>' },
-      { code: '<h2>', name: 'Heading 2', description: 'Section chapter subheading', exampleHtml: '<h2>1. Yaratilish</h2>' },
-      { code: '<p>', name: 'Paragraph', description: 'Block of narrative sentences', exampleHtml: '<p>Matn xatboshisi</p>' },
-      { code: '<strong>', name: 'Strong Bold', description: 'Crucial bold importance', exampleHtml: '<strong>Tim Berners-Lee</strong>' },
-      { code: '<em>', name: 'Emphasis', description: 'Italicized vocal stress', exampleHtml: '<em>World Wide Web</em>' },
-      { code: '<u>', name: 'Underline', description: 'Underline rule', exampleHtml: '<u>CERN</u>' },
-      { code: '<mark>', name: 'Mark Highlight', description: 'Fluorescent yellow marker', exampleHtml: '<mark>gipermatn</mark>' },
-      { code: '<del>', name: 'Delete Strike', description: 'Crossed-out obsolete myth', exampleHtml: '<del>eski afsona</del>' },
-      { code: '<small>', name: 'Small Note', description: 'Subtle copyright or annotation', exampleHtml: '<small>© 1991</small>' }
+      { code: '<h1>', name: { en: "Heading 1", uz: "1-darajali bosh sarlavha" }, description: { en: "Top-level master title", uz: "Sahifaning eng asosiy va yirik sarlavhasi" }, exampleHtml: '<h1>HTML Tarixi</h1>' },
+      { code: '<h2>', name: { en: "Heading 2", uz: "2-darajali bob sarlavhasi" }, description: { en: "Section chapter subheading", uz: "Bo'limlar va mavzular uchun o'rta sarlavha" }, exampleHtml: '<h2>1. Yaratilish</h2>' },
+      { code: '<p>', name: { en: "Paragraph", uz: "Matn xatboshisi" }, description: { en: "Block of narrative sentences", uz: "Oddiy matnlar va jumlalar bloki" }, exampleHtml: '<p>Matn xatboshisi</p>' },
+      { code: '<strong>', name: { en: "Strong Bold", uz: "Qalin muhim matn (Strong)" }, description: { en: "Crucial bold importance", uz: "Alohida ahamiyatga ega qalin matn" }, exampleHtml: '<strong>Tim Berners-Lee</strong>' },
+      { code: '<em>', name: { en: "Emphasis", uz: "Kursiv urg'u (Em)" }, description: { en: "Italicized vocal stress", uz: "Yotiq kursiv yozuvdagi so'z" }, exampleHtml: '<em>World Wide Web</em>' },
+      { code: '<u>', name: { en: "Underline", uz: "Tagiga chizilgan matn" }, description: { en: "Underline rule", uz: "Matn ostiga chiziq tortish" }, exampleHtml: '<u>CERN</u>' },
+      { code: '<mark>', name: { en: "Mark Highlight", uz: "Sariq markerli matn" }, description: { en: "Fluorescent yellow marker", uz: "Xuddi flomaster bilan bo'yalgandek ajratish" }, exampleHtml: '<mark>gipermatn</mark>' },
+      { code: '<del>', name: { en: "Delete Strike", uz: "Ustidan chizilgan matn" }, description: { en: "Crossed-out obsolete myth", uz: "Eski yoki xato ma'lumot ustidan chizish" }, exampleHtml: '<del>eski afsona</del>' },
+      { code: '<small>', name: { en: "Small Note", uz: "Kichik eslatma matni" }, description: { en: "Subtle copyright or annotation", uz: "Mualliflik huquqi yoki mayda izohlar" }, exampleHtml: '<small>© 1991</small>' }
     ],
     tagShowcase: [
       { tag: '<h1>', meaning: { en: 'Master Title', uz: 'Bosh Sarlavha' } },
@@ -1434,11 +1434,11 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<table> ... </table>', name: 'Table Container', description: 'The outer container frame for a data table', exampleHtml: '<table>...</table>' },
-      { code: '<tr> ... </tr>', name: 'Table Row', description: 'Creates one horizontal line of cells across the table', exampleHtml: '<tr><td>A</td><td>B</td></tr>' },
-      { code: '<th> ... </th>', name: 'Table Header', description: 'Bold title cell at the top of a column', exampleHtml: '<th>Player</th>' },
-      { code: '<td> ... </td>', name: 'Table Data', description: 'Standard data cell box holding facts or numbers', exampleHtml: '<td>15,400</td>' },
-      { code: 'colspan="3"', name: 'Column Span', description: 'Combines 3 horizontal cells into one wide cell', exampleHtml: '<td colspan="3">Total</td>' }
+      { code: '<table> ... </table>', name: { en: "Table Container", uz: "Jadval konteyneri" }, description: { en: "The outer container frame for a data table", uz: "Barcha satr va kataklarni o'rab turuvchi ramka" }, exampleHtml: '<table>...</table>' },
+      { code: '<tr> ... </tr>', name: { en: "Table Row", uz: "Jadval satri (Row)" }, description: { en: "Creates one horizontal line of cells across the table", uz: "Jadvalda gorizontal qator yaratadi" }, exampleHtml: '<tr><td>A</td><td>B</td></tr>' },
+      { code: '<th> ... </th>', name: { en: "Table Header", uz: "Ustun sarlavhasi (Header)" }, description: { en: "Bold title cell at the top of a column", uz: "Ustun tepasidagi qalin sarlavha katagi" }, exampleHtml: '<th>Player</th>' },
+      { code: '<td> ... </td>', name: { en: "Table Data", uz: "Ma'lumot katagi (Cell)" }, description: { en: "Standard data cell box holding facts or numbers", uz: "Raqam yoki matn saqlovchi oddiy katakcha" }, exampleHtml: '<td>15,400</td>' },
+      { code: 'colspan="3"', name: { en: "Column Span", uz: "Ustunlarni birlashtirish" }, description: { en: "Combines 3 horizontal cells into one wide cell", uz: "Bir nechta katakni gorizontaliga bitta qilib kengaytiradi" }, exampleHtml: '<td colspan="3">Total</td>' }
     ],
     tagShowcase: [
       { tag: '<table>', meaning: 'The whole grid' },
@@ -1831,11 +1831,11 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<figure>', name: 'Figure', description: 'Semantic container for photos and illustrations', exampleHtml: '<figure><img src="rover.svg"><figcaption>Rover</figcaption></figure>' },
-      { code: '<img src="" alt="">', name: 'Image', description: 'Displays an image or graphic (self-closing)', exampleHtml: '<img src="avatar.svg" alt="Pilot" width="56">' },
-      { code: '<figcaption>', name: 'Caption', description: 'Describes or captions the figure', exampleHtml: '<figcaption>Expedition Map</figcaption>' },
-      { code: 'object-fit: cover;', name: 'Object Fit', description: 'Crops image proportionately to fill container', exampleHtml: 'img { object-fit: cover; }' },
-      { code: 'border-radius: 50%;', name: 'Circle Crop', description: 'Makes image perfectly circular', exampleHtml: '.avatar { border-radius: 50%; }' }
+      { code: '<figure>', name: { en: "Figure", uz: "Rasm konteyneri (Figure)" }, description: { en: "Semantic container for photos and illustrations", uz: "Surat va uning izohini birga ushlab turuvchi blok" }, exampleHtml: '<figure><img src="rover.svg"><figcaption>Rover</figcaption></figure>' },
+      { code: '<img src="" alt="">', name: { en: "Image", uz: "Rasm tegi (Img)" }, description: { en: "Displays an image or graphic (self-closing)", uz: "Veb-sahifada grafik suratni aks ettiradi" }, exampleHtml: '<img src="avatar.svg" alt="Pilot" width="56">' },
+      { code: '<figcaption>', name: { en: "Caption", uz: "Rasm izohi (Figcaption)" }, description: { en: "Describes or captions the figure", uz: "Surat ostidagi tushuntiruvchi matn" }, exampleHtml: '<figcaption>Expedition Map</figcaption>' },
+      { code: 'object-fit: cover;', name: { en: "Object Fit", uz: "Surat proporsiyasini saqlash" }, description: { en: "Crops image proportionately to fill container", uz: "Surat cho'zilmasdan ramkani chiroyli to'ldiradi" }, exampleHtml: 'img { object-fit: cover; }' },
+      { code: 'border-radius: 50%;', name: { en: "Circle Crop", uz: "Doiraviy qirqish" }, description: { en: "Makes image perfectly circular", uz: "Surat burchaklarini 50% qilib dumaloq aylantiradi" }, exampleHtml: '.avatar { border-radius: 50%; }' }
     ],
     tagShowcase: [
       { tag: '<figure>', meaning: { en: 'Media Container', uz: 'Media Konteyner' } },
@@ -2009,10 +2009,10 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<div> ... </div>', name: 'Div Box', description: 'An empty container box to group items together', exampleHtml: '<div style="border: 1px solid white;">Box</div>' },
-      { code: 'border: 2px solid cyan;', name: 'Solid Border', description: 'Draws a solid colored wall around the box', exampleHtml: '<div style="border: 2px solid #2dd4bf;">Wall</div>' },
-      { code: 'border: 2px dashed red;', name: 'Dashed Border', description: 'Draws a dashed treasure-map line around the box', exampleHtml: '<div style="border: 2px dashed red;">Dashed</div>' },
-      { code: 'style="..."', name: 'Style Attribute', description: 'Attaches CSS styles directly onto an HTML element', exampleHtml: 'style="color: red;"' }
+      { code: '<div> ... </div>', name: { en: "Div Box", uz: "Konteyner Quti (Div)" }, description: { en: "An empty container box to group items together", uz: "Elementlarni bitta joyga jamlovchi bo'sh quti" }, exampleHtml: '<div style="border: 1px solid white;">Box</div>' },
+      { code: 'border: 2px solid cyan;', name: { en: "Solid Border", uz: "To'g'ri chiziqli hoshiya" }, description: { en: "Draws a solid colored wall around the box", uz: "Quti atrofida uzluksiz chiziqli devor chizadi" }, exampleHtml: '<div style="border: 2px solid #2dd4bf;">Wall</div>' },
+      { code: 'border: 2px dashed red;', name: { en: "Dashed Border", uz: "Nuqtali/Uzilgan hoshiya" }, description: { en: "Draws a dashed treasure-map line around the box", uz: "Quti atrofida xarita kabi uzilgan chiziq chizadi" }, exampleHtml: '<div style="border: 2px dashed red;">Dashed</div>' },
+      { code: 'style="..."', name: { en: "Style Attribute", uz: "Stil atributi" }, description: { en: "Attaches CSS styles directly onto an HTML element", uz: "CSS xususiyatlarini to'g'ridan-to'g'ri teg ichiga kiritadi" }, exampleHtml: 'style="color: red;"' }
     ],
     tagShowcase: [
       { tag: '<div> ... </div>', meaning: 'The cardboard box' },
@@ -2182,9 +2182,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'class="name"', name: 'Class Attribute', description: 'Gives a reusable nickname to any HTML tag', exampleHtml: '<div class="card">Card</div>' },
-      { code: '.name { ... }', name: 'Class Selector', description: 'CSS selector starting with a dot . targeting that class', exampleHtml: '.card { color: red; }' },
-      { code: 'id="name"', name: 'ID Attribute', description: 'A unique name for a single unique element (# in CSS)', exampleHtml: '<div id="main-boss">Boss</div>' }
+      { code: 'class="name"', name: { en: "Class Attribute", uz: "Klass atributi" }, description: { en: "Gives a reusable nickname to any HTML tag", uz: "Istalgan tegga ko'p marta ishlatiladigan umumiy nom beradi" }, exampleHtml: '<div class="card">Card</div>' },
+      { code: '.name { ... }', name: { en: "Class Selector", uz: "Klass selektori (.nom)" }, description: { en: "CSS selector starting with a dot . targeting that class", uz: "CSS da nuqta . bilan boshlanib shu klassli elementlarni bezaydi" }, exampleHtml: '.card { color: red; }' },
+      { code: 'id="name"', name: { en: "ID Attribute", uz: "ID atributi (#nom)" }, description: { en: "A unique name for a single unique element (# in CSS)", uz: "Faqat bitta yagona element uchun beriladigan maxsus nom" }, exampleHtml: '<div id="main-boss">Boss</div>' }
     ],
     tagShowcase: [
       { tag: 'class="hero"', meaning: 'HTML nickname' },
@@ -2351,9 +2351,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'padding: 24px;', name: 'Padding', description: 'Inside bubble wrap cushioning between text and the border', exampleHtml: '<div style="padding: 15px; border: 1px solid white;">Cushioned</div>' },
-      { code: 'margin: 30px;', name: 'Margin', description: 'Personal space outside pushing neighboring elements away', exampleHtml: '<div style="margin: 10px; background: #2dd4bf; color: black; padding: 4px;">Spaced</div>' },
-      { code: 'margin: 0 auto;', name: 'Margin Auto', description: 'Automatically centers a box horizontally in the middle of the screen', exampleHtml: 'margin: 0 auto;' }
+      { code: 'padding: 24px;', name: { en: "Padding", uz: "Ichki bo'shliq (Padding)" }, description: { en: "Inside bubble wrap cushioning between text and the border", uz: "Matn bilan quti devori orasidagi ichki yumshoq masofa" }, exampleHtml: '<div style="padding: 15px; border: 1px solid white;">Cushioned</div>' },
+      { code: 'margin: 30px;', name: { en: "Margin", uz: "Tashqi masofa (Margin)" }, description: { en: "Personal space outside pushing neighboring elements away", uz: "Quti tashqarisidagi qo'shni elementlarni itaruvchi oraliq" }, exampleHtml: '<div style="margin: 10px; background: #2dd4bf; color: black; padding: 4px;">Spaced</div>' },
+      { code: 'margin: 0 auto;', name: { en: "Margin Auto", uz: "Avtomatik markazlash" }, description: { en: "Automatically centers a box horizontally in the middle of the screen", uz: "Qutini ekranning o'rtasiga gorizontal markazlashtiradi" }, exampleHtml: 'margin: 0 auto;' }
     ],
     tagShowcase: [
       { tag: 'padding: 20px;', meaning: 'Inside cushion (bubble wrap)' },
@@ -3466,9 +3466,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<button> ... </button>', name: 'Button', description: 'Creates an interactive clickable button', exampleHtml: '<button>Press Me</button>' },
-      { code: ':hover', name: 'Hover State', description: 'Triggers animation or color shifts when hovering over an element', exampleHtml: '.btn:hover { background: cyan; }' },
-      { code: 'cursor: pointer;', name: 'Pointer Cursor', description: 'Changes mouse arrow into a clicking hand', exampleHtml: 'cursor: pointer;' }
+      { code: '<button> ... </button>', name: { en: "Button", uz: "Tugma (Button)" }, description: { en: "Creates an interactive clickable button", uz: "Foydalanuvchi bosishi mumkin bo'lgan jonli tugma" }, exampleHtml: '<button>Press Me</button>' },
+      { code: ':hover', name: { en: "Hover State", uz: "Sichqoncha ustiga kelganda (:hover)" }, description: { en: "Triggers animation or color shifts when hovering over an element", uz: "Kursor element ustiga kelganda rang yoki o'lcham o'zgarishi" }, exampleHtml: '.btn:hover { background: cyan; }' },
+      { code: 'cursor: pointer;', name: { en: "Pointer Cursor", uz: "Ko'rsatkich kursor (Qo'lcha)" }, description: { en: "Changes mouse arrow into a clicking hand", uz: "Kursor strelkasini tugma bosish qo'lchasiga aylantiradi" }, exampleHtml: 'cursor: pointer;' }
     ],
     tagShowcase: [
       { tag: '<button>', meaning: 'Clickable button' },
@@ -3495,19 +3495,19 @@ const LESSONS = [
           type: 'hasAttribute',
           tag: 'button',
           attribute: 'class',
-          message: 'Give the button class="magic-btn"!'
+          feedback: { en: 'Give the button class="magic-btn"!', uz: 'Tugmaga class="magic-btn" bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'background',
           valuePattern: '#2dd4bf',
-          message: 'Set background: #2dd4bf on hover!'
+          feedback: { en: 'Set background: #2dd4bf on hover!', uz: ':hover holatida background: #2dd4bf bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'transform',
           valuePattern: 'scale(1.1)',
-          message: 'Set transform: scale(1.1) on hover!'
+          feedback: { en: 'Set transform: scale(1.1) on hover!', uz: ':hover holatida transform: scale(1.1) bering!' }
         }
       ]
     },
@@ -3620,14 +3620,14 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'a',
-          message: 'Add an <a> tag!'
+          feedback: { en: 'Add an <a> tag!', uz: '<a> havola tegini qo\'shing!' }
         },
         {
           type: 'hasAttribute',
           tag: 'a',
           attribute: 'href',
           valuePattern: /wikipedia/i,
-          message: 'Set href to https://wikipedia.org!'
+          feedback: { en: 'Set href to https://wikipedia.org!', uz: 'href atributiga https://wikipedia.org manzilini yozing!' }
         }
       ]
     },
@@ -3750,12 +3750,12 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'ul',
-          message: 'Add an <ul> tag!'
+          feedback: { en: 'Add an <ul> tag!', uz: '<ul> tartibsiz ro\'yxat tegini qo\'shing!' }
         },
         {
           type: 'hasTag',
           tag: 'li',
-          message: 'Add <li> items!'
+          feedback: { en: 'Add <li> items!', uz: 'Ro\'yxat ichiga <li> elementlarini qo\'shing!' }
         }
       ]
     },
@@ -3878,9 +3878,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'color: #hex', name: 'Text Color', description: 'Sets the font color' },
-      { code: 'background: rgba(r,g,b,a)', name: 'RGBA Color', description: 'Color with transparency' },
-      { code: 'border: 2px solid #hex', name: 'Border Color', description: 'Sets outline color' }
+      { code: 'color: #hex', name: { en: "Text Color", uz: "Matn rangi (Color)" }, description: { en: "Sets the font color", uz: "Harflar va matnning rangini belgilaydi" } },
+      { code: 'background: rgba(r,g,b,a)', name: { en: "RGBA Color", uz: "Shaffof rang (RGBA)" }, description: { en: "Color with transparency", uz: "Qizil, yashil, ko'k va shaffoflik (alfa) bilan rang" } },
+      { code: 'border: 2px solid #hex', name: { en: "Border Color", uz: "Hoshiya rangi" }, description: { en: "Sets outline color", uz: "Element atrofidagi devor rangini belgilaydi" } }
     ],
     tagShowcase: [
       { tag: 'color: #38bdf8;', meaning: { en: 'Font color', uz: 'Matn rangi' } },
@@ -3902,19 +3902,19 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'color',
           valuePattern: /#38bdf8|38bdf8/i,
-          message: 'Set color: #38bdf8 on .color-badge!'
+          feedback: { en: 'Set color: #38bdf8 on .color-badge!', uz: '.color-badge klassiga color: #38bdf8 bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'background',
           valuePattern: /rgba/i,
-          message: 'Set background with rgba(...) on .color-badge!'
+          feedback: { en: 'Set background with rgba(...) on .color-badge!', uz: '.color-badge klassiga rgba(...) bilan shaffof fon bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'border',
           valuePattern: /solid/i,
-          message: 'Set border: 2px solid #38bdf8 on .color-badge!'
+          feedback: { en: 'Set border: 2px solid #38bdf8 on .color-badge!', uz: '.color-badge klassiga border: 2px solid #38bdf8 bering!' }
         }
       ]
     },
@@ -4027,7 +4027,7 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'text-shadow',
           valuePattern: /#2dd4bf|2dd4bf|15px/i,
-          message: 'Add a text-shadow with 15px blur and #2dd4bf!'
+          feedback: { en: 'Add a text-shadow with 15px blur and #2dd4bf!', uz: 'Matnga 15px xiralashgan #2dd4bf rangli text-shadow bering!' }
         }
       ]
     },
@@ -4205,13 +4205,13 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /class=["'][^"']*avatar[^"']*["']/i.test(code) && /🦊/.test(code),
-          message: 'Put <div class="avatar">🦊</div> inside the profile badge!'
+          feedback: { en: 'Put <div class="avatar">🦊</div> inside the profile badge!', uz: 'Profil nishoni ichiga <div class="avatar">🦊</div> ni joylang!' }
         },
         {
           type: 'hasCssProperty',
           property: 'border-radius',
           valuePattern: /50%/i,
-          message: 'Set border-radius: 50% on .avatar!'
+          feedback: { en: 'Set border-radius: 50% on .avatar!', uz: '.avatar klassiga border-radius: 50% bering!' }
         }
       ]
     },
@@ -4334,7 +4334,7 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'animation',
           valuePattern: /bounce/i,
-          message: 'Attach the bounce animation!'
+          feedback: { en: 'Attach the bounce animation!', uz: 'Sakrovchi bounce animatsiyasini ulang!' }
         }
       ]
     },
@@ -4540,14 +4540,14 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'input',
-          message: 'Add the <input> tag!'
+          feedback: { en: 'Add the <input> tag!', uz: '<input> kiritish maydoni tegini qo\'shing!' }
         },
         {
           type: 'hasAttribute',
           tag: 'input',
           attribute: 'type',
           valuePattern: /text/i,
-          message: 'Set type="text" on the input tag!'
+          feedback: { en: 'Set type="text" on the input tag!', uz: 'Input tegi uchun type="text" atributini bering!' }
         }
       ]
     },
@@ -4650,8 +4650,8 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: '<audio controls src="...">', name: 'Audio Player', description: 'Embeds sound clips or background music with user controls', exampleHtml: '<audio controls src="song.mp3"></audio>' },
-      { code: 'autoplay', name: 'Autoplay', description: 'Starts playing audio automatically on page load', exampleHtml: '<audio autoplay src="ambient.mp3"></audio>' }
+      { code: '<audio controls src="...">', name: { en: "Audio Player", uz: "Ovoz pleyeri (Audio)" }, description: { en: "Embeds sound clips or background music with user controls", uz: "Sahifaga musiqa va ovozli fayllarni joylaydi" }, exampleHtml: '<audio controls src="song.mp3"></audio>' },
+      { code: 'autoplay', name: { en: "Autoplay", uz: "Avtomatik ijro (Autoplay)" }, description: { en: "Starts playing audio automatically on page load", uz: "Sahifa ochilishi bilan musiqani avtomatik chaladi" }, exampleHtml: '<audio autoplay src="ambient.mp3"></audio>' }
     ],
     tagShowcase: [
       { tag: '<audio controls>', meaning: 'Music player' },
@@ -4671,19 +4671,19 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'audio',
-          message: 'Add the <audio> player tag!'
+          feedback: { en: 'Add the <audio> player tag!', uz: '<audio> pleyer tegini qo\'shing!' }
         },
         {
           type: 'hasAttribute',
           tag: 'audio',
           attribute: 'controls',
-          message: 'Add the controls attribute to the audio tag!'
+          feedback: { en: 'Add the controls attribute to the audio tag!', uz: 'Audio tegiga controls atributini qo\'shing!' }
         },
         {
           type: 'hasAttribute',
           tag: 'audio',
           attribute: 'src',
-          message: 'Add the src attribute to the audio track link!'
+          feedback: { en: 'Add the src attribute to the audio track link!', uz: 'Audio tegiga audio fayl havolasi bilan src atributini qo\'shing!' }
         }
       ]
     },
@@ -4842,12 +4842,12 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'video',
-          message: 'Add the <video> tag!'
+          feedback: { en: 'Add the <video> tag!', uz: '<video> video pleyer tegini qo\'shing!' }
         },
         {
           type: 'custom',
           check: (code) => /<video[^>]*\bcontrols\b/i.test(code),
-          message: 'Add the controls attribute to <video>!'
+          feedback: { en: 'Add the controls attribute to <video>!', uz: '<video> tegiga controls atributini qo\'shing!' }
         }
       ]
     },
@@ -5015,12 +5015,12 @@ const LESSONS = [
         {
           type: 'hasTag',
           tag: 'details',
-          message: 'Add the <details> tag!'
+          feedback: { en: 'Add the <details> tag!', uz: '<details> ochiluvchi blok tegini qo\'shing!' }
         },
         {
           type: 'hasTag',
           tag: 'summary',
-          message: 'Add the <summary> tag inside details!'
+          feedback: { en: 'Add the <summary> tag inside details!', uz: 'Details ichiga <summary> sarlavha tegini qo\'shing!' }
         }
       ]
     },
@@ -5522,7 +5522,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.featured-card\s*\{[^}]*grid-column\s*:\s*span\s*2/i.test(code),
-          message: 'Add grid-column: span 2; to .featured-card!'
+          feedback: { en: 'Add grid-column: span 2; to .featured-card!', uz: '.featured-card ga grid-column: span 2; bering!' }
         },
         {
           type: 'custom',
@@ -6112,17 +6112,17 @@ const LESSONS = [
         {
           type: 'custom',
           check: (code) => /\.fixed-drone\s*\{[^}]*position\s*:\s*fixed/i.test(code) && /\.fixed-drone\s*\{[^}]*bottom\s*:\s*20px/i.test(code),
-          message: 'Add position: fixed; bottom: 20px; right: 20px; to .fixed-drone!'
+          feedback: { en: 'Add position: fixed; bottom: 20px; right: 20px; to .fixed-drone!', uz: '.fixed-drone ga position: fixed; bottom: 20px; right: 20px; bering!' }
         },
         {
           type: 'custom',
           check: (code) => /<span[^>]*class="[^"]*alarm-badge[^"]*"[^>]*>/i.test(code),
-          message: 'Place the <span class="alarm-badge">🔥 ALERT</span> inside .shield-card!'
+          feedback: { en: 'Place the <span class="alarm-badge">🔥 ALERT</span> inside .shield-card!', uz: '.shield-card ichiga <span class="alarm-badge">🔥 ALERT</span> ni joylang!' }
         },
         {
           type: 'custom',
           check: (code) => /<span[^>]*class="[^"]*radar-blip[^"]*"[^>]*>/i.test(code),
-          message: 'Place the <span class="radar-blip">🟢 ACTIVE SCAN</span> inside .radar-panel!'
+          feedback: { en: 'Place the <span class="radar-blip">🟢 ACTIVE SCAN</span> inside .radar-panel!', uz: '.radar-panel ichiga <span class="radar-blip">🟢 ACTIVE SCAN</span> ni joylang!' }
         }
       ]
     },
@@ -6306,7 +6306,7 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'transition',
           valuePattern: /all.*0\.3s|0\.3s.*ease/i,
-          message: 'Set transition: all 0.3s ease; on .magic-card!'
+          feedback: { en: 'Set transition: all 0.3s ease; on .magic-card!', uz: '.magic-card ga transition: all 0.3s ease; bering!' }
         }
       ]
     },
@@ -6496,7 +6496,7 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'filter',
           valuePattern: /drop-shadow/i,
-          message: 'Add the drop-shadow filter to .crystal!'
+          feedback: { en: 'Add the drop-shadow filter to .crystal!', uz: '.crystal ga drop-shadow filtri bering!' }
         }
       ]
     },
@@ -6748,9 +6748,9 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'overflow-y: auto', name: 'Vertical Overflow', description: 'Scrolls vertically' },
-      { code: 'overflow-x: auto', name: 'Horizontal Overflow', description: 'Scrolls horizontally' },
-      { code: 'text-overflow: ellipsis', name: 'Ellipsis Crop', description: 'Appends ... to overflowing single line text' }
+      { code: 'overflow-y: auto', name: { en: "Vertical Overflow", uz: "Vertikal aylanma (overflow-y)" }, description: { en: "Scrolls vertically", uz: "Matn sig'maganda yuqoridan-pastga aylantirish" } },
+      { code: 'overflow-x: auto', name: { en: "Horizontal Overflow", uz: "Gorizontal aylanma (overflow-x)" }, description: { en: "Scrolls horizontally", uz: "Keng elementlar uchun chapdan-o'ngga aylantirish" } },
+      { code: 'text-overflow: ellipsis', name: { en: "Ellipsis Crop", uz: "Uch nuqta bilan qirqish (...)" }, description: { en: "Appends ... to overflowing single line text", uz: "Bir qatorga sig'magan matn oxiriga ... qo'yadi" } }
     ],
     quickTags: [],
     challenge: {
@@ -6767,19 +6767,19 @@ const LESSONS = [
           type: 'hasCssProperty',
           property: 'overflow-y',
           valuePattern: /auto|scroll/i,
-          message: 'Add overflow-y: auto to .terminal-box!'
+          feedback: { en: 'Add overflow-y: auto to .terminal-box!', uz: '.terminal-box ga overflow-y: auto; bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'overflow-x',
           valuePattern: /auto|scroll/i,
-          message: 'Add overflow-x: auto to .weapons-deck!'
+          feedback: { en: 'Add overflow-x: auto to .weapons-deck!', uz: '.weapons-deck ga overflow-x: auto; bering!' }
         },
         {
           type: 'hasCssProperty',
           property: 'text-overflow',
           valuePattern: /ellipsis/i,
-          message: 'Add text-overflow: ellipsis to .id-badge!'
+          feedback: { en: 'Add text-overflow: ellipsis to .id-badge!', uz: '.id-badge ga text-overflow: ellipsis; bering!' }
         }
       ]
     },
@@ -6825,8 +6825,8 @@ const LESSONS = [
         uz: "CSS gradientlari istalgan burchakda silliq rang o'tishlarini yaratadi: 45° dinamik diagonal, 90° gorizontal gorizont, 135° ko'p rangli o'tish, 3D radial shar va 360° radar aylanasi conic gradientlari."
       },
       whatIsATag: {
-        en: '1. `linear-gradient(deg, color1, color2)` flows along a straight angled line.\n2. `radial-gradient(circle at x y, ...)` radiates from a center point into a 3D orb.\n3. `conic-gradient(from deg, ...)` sweeps around like a clock or radar.',
-        uz: "1. `linear-gradient(burchak, rang1, rang2)` to'g'ri chiziqli burchak bo'ylab oqadi.\n2. `radial-gradient(circle, ...)` markazdan tashqariga 3D shar kabi nurlanadi.\n3. `conic-gradient(from deg, ...)` soat strelkasi yoki radar kabi doira bo'ylab aylanadi."
+        en: '1. `linear-gradient(deg, color1, color2)` flows along a straight angled line.\n2. `radial-gradient(circle at x y, ...)` radiates from a center point into a 3D orb.\n3. `conic-gradient(from deg, ...)` sweeps around like a clock or radar.\n4. **Gradient Text Clipping**: To make letters themselves glow with dynamic rainbow gradients, use `background: linear-gradient(...); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`! This clips the background gradient strictly inside the text font!',
+        uz: "1. `linear-gradient(burchak, rang1, rang2)` to'g'ri chiziqli burchak bo'ylab oqadi.\n2. `radial-gradient(circle, ...)` markazdan tashqariga 3D shar kabi nurlanadi.\n3. `conic-gradient(from deg, ...)` soat strelkasi yoki radar kabi doira bo'ylab aylanadi.\n4. **Gradientli Matn (Text Clipping)**: Harflarning o'zini gradient bilan porlatish uchun `background: linear-gradient(...); -webkit-background-clip: text; -webkit-text-fill-color: transparent;` yoziladi! Bu uslub fon rangini aynan harflar ichiga qirqib joylaydi!"
       }
     },
     summary: {
@@ -7118,6 +7118,21 @@ const LESSONS = [
     },
     anatomy: [
       {
+        part: '-webkit-background-clip: text; -webkit-text-fill-color: transparent;',
+        role: {
+          en: 'Gradient Text Clipping',
+          uz: 'Gradientni Harflar Ichiga Qirqish'
+        },
+        explanation: {
+          en: 'Clips the background gradient exclusively inside text characters and makes font transparent so the gradient shines through.',
+          uz: "Fon gradientini aynan harflar ichiga qirqib joylaydi va shaffof shrift orqali gradient jilosini ko'rsatadi."
+        },
+        effect: {
+          en: 'Neon glowing gradient text',
+          uz: 'Neon gradientli porloq matn'
+        }
+      },
+      {
         part: 'linear-gradient(45deg, #ff007a, #7928ca)',
         role: { en: '45° Diagonal Linear Gradient', uz: '45° Diagonal Linear Gradient' },
         explanation: { en: 'Flows colors from bottom-left to top-right at a 45 degree angle.', uz: "Ranglarni 45 daraja burchak ostida pastki chapdan yuqori o'ngga yo'naltiradi." },
@@ -7137,12 +7152,12 @@ const LESSONS = [
       }
     ],
     listOfTags: [
-      { code: 'linear-gradient(45deg, ...)', name: '45° Linear', description: 'Diagonal linear color flow', exampleHtml: 'background: linear-gradient(45deg, #ff007a, #7928ca);' },
-      { code: 'linear-gradient(90deg, ...)', name: '90° Linear', description: 'Horizontal linear horizon', exampleHtml: 'background: linear-gradient(90deg, #00f2fe, #4facfe);' },
-      { code: 'linear-gradient(135deg, ...)', name: '135° Linear', description: '3-stop angled color fusion', exampleHtml: 'background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed);' },
-      { code: 'radial-gradient(circle, ...)', name: 'Radial Gradient', description: 'Circular glowing orb from center', exampleHtml: 'background: radial-gradient(circle, #00f2fe, #030712);' },
-      { code: 'conic-gradient(...)', name: 'Conic Gradient', description: '360-degree sweep around circle', exampleHtml: 'background: conic-gradient(from 0deg, #ff007a, #00f2fe);' },
-      { code: '-webkit-background-clip: text;', name: 'Gradient Text', description: 'Clips background gradient inside font', exampleHtml: 'background-clip: text;' }
+      { code: 'linear-gradient(45deg, ...)', name: { en: "45° Linear", uz: "45° Diagonal Linear Gradient" }, description: { en: "Diagonal linear color flow", uz: "Pastki chapdan yuqori o'ngga 45 darajali ranglar oqimi" }, exampleHtml: 'background: linear-gradient(45deg, #ff007a, #7928ca);' },
+      { code: 'linear-gradient(90deg, ...)', name: { en: "90° Linear", uz: "90° Gorizontal Linear Gradient" }, description: { en: "Horizontal linear horizon", uz: "Chapdan o'ngga 90 darajali gorizontal ranglar oqimi" }, exampleHtml: 'background: linear-gradient(90deg, #00f2fe, #4facfe);' },
+      { code: 'linear-gradient(135deg, ...)', name: { en: "135° Linear", uz: "135° Uch Rangli Fusion Gradient" }, description: { en: "3-stop angled color fusion", uz: "135 daraja burchakda uchta rangning jiloli o'tishi" }, exampleHtml: 'background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed);' },
+      { code: 'radial-gradient(circle, ...)', name: { en: "Radial Gradient", uz: "3D Shar Radial Gradient" }, description: { en: "Circular glowing orb from center", uz: "Markazdan nurlanuvchi uch o'lchamli shar jilosi" }, exampleHtml: 'background: radial-gradient(circle, #00f2fe, #030712);' },
+      { code: 'conic-gradient(...)', name: { en: "Conic Gradient", uz: "360° Conic Doiraviy Radar Gradient" }, description: { en: "360-degree sweep around circle", uz: "Markaz atrofida radar kabi 360 daraja aylanuvchi ranglar" }, exampleHtml: 'background: conic-gradient(from 0deg, #ff007a, #00f2fe);' },
+      { code: '-webkit-background-clip: text;', name: { en: "Gradient Text", uz: "Gradientli Matn (-webkit-background-clip)" }, description: { en: "Clips background gradient inside font", uz: "Fon rangini harflar shakli ichiga qirqib joylaydi" }, exampleHtml: 'background-clip: text;' }
     ],
     tagShowcase: [
       { tag: 'linear-gradient(45deg)', meaning: { en: '45° diagonal gradient', uz: '45 darajali burchak' } },
@@ -7380,7 +7395,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: code => code.includes('@media') && code.includes('max-width') && code.includes('column'),
-          message: 'Add @media (max-width: 768px) and set flex-direction: column!'
+          feedback: { en: 'Add @media (max-width: 768px) and set flex-direction: column!', uz: '@media (max-width: 768px) yozib, flex-direction: column bering!' }
         }
       ]
     },
@@ -7553,7 +7568,7 @@ const LESSONS = [
         {
           type: 'hasCssProperty',
           property: 'font-family',
-          message: 'Set font-family on .guild-title!'
+          feedback: { en: 'Set font-family on .guild-title!', uz: '.guild-title ga chiroyli font-family shriftini bering!' }
         }
       ]
     },
@@ -7725,7 +7740,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: code => code.includes('animate__animated') && code.includes('animate__bounceIn'),
-          message: 'Add animate__animated and animate__bounceIn classes!'
+          feedback: { en: 'Add animate__animated and animate__bounceIn classes!', uz: 'Elementga animate__animated va animate__bounceIn klasslarini bering!' }
         }
       ]
     },
@@ -7892,7 +7907,7 @@ const LESSONS = [
         {
           type: 'custom',
           check: code => (code.match(/col-12\s+col-md-4|col-md-4/g) || []).length >= 3,
-          message: 'Add class="col-12 col-md-4" to all 3 cards!'
+          feedback: { en: 'Add class="col-12 col-md-4" to all 3 cards!', uz: 'Barcha 3 ta kartochkaga class="col-12 col-md-4" bering!' }
         }
       ]
     },
@@ -8060,22 +8075,22 @@ const LESSONS = [
         {
           type: 'custom',
           check: code => code.includes('card'),
-          message: 'Add class="card" to the outer card container!'
+          feedback: { en: 'Add class="card" to the outer card container!', uz: 'Tashqi kartochka konteyneriga class="card" bering!' }
         },
         {
           type: 'custom',
           check: code => code.includes('badge') && code.includes('bg-success'),
-          message: 'Add class="badge bg-success rounded-pill" to the ONLINE badge!'
+          feedback: { en: 'Add class="badge bg-success rounded-pill" to the ONLINE badge!', uz: 'ONLINE nishoniga class="badge bg-success rounded-pill" bering!' }
         },
         {
           type: 'custom',
           check: code => code.includes('alert') && code.includes('alert-primary'),
-          message: 'Add class="alert alert-primary" to the notification banner!'
+          feedback: { en: 'Add class="alert alert-primary" to the notification banner!', uz: 'Bildirishnoma paneliga class="alert alert-primary" bering!' }
         },
         {
           type: 'custom',
           check: code => code.includes('btn') && code.includes('btn-primary'),
-          message: 'Add class="btn btn-primary" to the launch button!'
+          feedback: { en: 'Add class="btn btn-primary" to the launch button!', uz: 'Tugmaga class="btn btn-primary" bering!' }
         }
       ]
     },
@@ -8228,22 +8243,22 @@ const LESSONS = [
         {
           type: 'custom',
           check: code => /<nav[^>]*class=["'][^"']*navbar\s+navbar-dark\s+bg-dark[^"']*["']/.test(code),
-          message: 'Add class="navbar navbar-dark bg-dark" to the <nav> element!'
+          feedback: { en: 'Add class="navbar navbar-dark bg-dark" to the <nav> element!', uz: '<nav> elementiga class="navbar navbar-dark bg-dark" bering!' }
         },
         {
           type: 'custom',
           check: code => /class=["'][^"']*navbar-brand[^"']*["']/.test(code),
-          message: 'Add class="navbar-brand" to the logo link!'
+          feedback: { en: 'Add class="navbar-brand" to the logo link!', uz: 'Logo havolasiga class="navbar-brand" bering!' }
         },
         {
           type: 'custom',
           check: code => /nav-link\s+active/.test(code),
-          message: 'Add class="nav-link active" to the Home link!'
+          feedback: { en: 'Add class="nav-link active" to the Home link!', uz: 'Asosiy sahifa havolasiga class="nav-link active" bering!' }
         },
         {
           type: 'custom',
           check: code => /btn\s+btn-outline-info/.test(code),
-          message: 'Add class="btn btn-outline-info btn-sm" to the connect button!'
+          feedback: { en: 'Add class="btn btn-outline-info btn-sm" to the connect button!', uz: 'Ulanish tugmasiga class="btn btn-outline-info btn-sm" bering!' }
         }
       ]
     },
@@ -8435,15 +8450,15 @@ function escapeHtml(str) {
  * Evaluates whether student HTML/CSS code meets the learning objectives.
  */
 
-function validateChallenge(code, rules = []) {
+function validateChallenge(code, rules = [], lang = 'en') {
   const codeStr = (typeof code === 'object' && code !== null)
-    ? (code.en || code.uz || Object.values(code)[0] || '')
+    ? (code[lang] || code.en || code.uz || Object.values(code)[0] || '')
     : code;
 
   if (!codeStr || typeof codeStr !== 'string') {
     return {
       passed: false,
-      feedback: ['Write some code in the editor to start the challenge!']
+      feedback: [lang === 'uz' ? 'Topshiriqni boshlash uchun muharrirga kod yozing!' : 'Write some code in the editor to start the challenge!']
     };
   }
 
@@ -8526,7 +8541,11 @@ function validateChallenge(code, rules = []) {
     }
 
     if (!passed) {
-      feedback.push(rule.message || 'Check this mission requirement!');
+      let msg = rule.feedback || rule.message || (lang === 'uz' ? "Ushbu topshiriq talabini tekshirib ko'ring!" : 'Check this mission requirement!');
+      if (typeof msg === 'object' && msg !== null) {
+        msg = msg[lang] || msg.uz || msg.en || Object.values(msg)[0];
+      }
+      feedback.push(msg);
     }
   }
 
@@ -15809,7 +15828,7 @@ function openTopicLabModal(lesson) {
 }
 
 function handleChallengeVerification(lesson) {
-  const result = validateChallenge(currentCode, lesson.challenge.rules);
+  const result = validateChallenge(currentCode, lesson.challenge.rules, state.lang);
 
   if (result.passed) {
     playSound('success', state.audioEnabled);

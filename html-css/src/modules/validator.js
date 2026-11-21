@@ -3,15 +3,15 @@
  * Evaluates whether student HTML/CSS code meets the learning objectives.
  */
 
-export function validateChallenge(code, rules = []) {
+export function validateChallenge(code, rules = [], lang = 'en') {
   const codeStr = (typeof code === 'object' && code !== null)
-    ? (code.en || code.uz || Object.values(code)[0] || '')
+    ? (code[lang] || code.en || code.uz || Object.values(code)[0] || '')
     : code;
 
   if (!codeStr || typeof codeStr !== 'string') {
     return {
       passed: false,
-      feedback: ['Write some code in the editor to start the challenge!']
+      feedback: [lang === 'uz' ? 'Topshiriqni boshlash uchun muharrirga kod yozing!' : 'Write some code in the editor to start the challenge!']
     };
   }
 
@@ -94,7 +94,11 @@ export function validateChallenge(code, rules = []) {
     }
 
     if (!passed) {
-      feedback.push(rule.message || 'Check this mission requirement!');
+      let msg = rule.feedback || rule.message || (lang === 'uz' ? "Ushbu topshiriq talabini tekshirib ko'ring!" : 'Check this mission requirement!');
+      if (typeof msg === 'object' && msg !== null) {
+        msg = msg[lang] || msg.uz || msg.en || Object.values(msg)[0];
+      }
+      feedback.push(msg);
     }
   }
 

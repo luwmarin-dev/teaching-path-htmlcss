@@ -518,12 +518,88 @@ function renderLessonWorkspace(lesson) {
               <span>💻 ${t('codeEditorTitle', state.lang)}</span>
             </div>
             <div class="pane-actions">
+              <button id="btn-toggle-html-boilerplate" class="btn-tool ${state.showHtmlDrawer ? 'active' : ''}" title="${isUz ? 'HTML va CSS qolip kodini ko\'rsatish/yashirish' : 'Show or hide underlying HTML & CSS boilerplate'}">🌐 ${state.showHtmlDrawer ? (isUz ? 'HTML/CSS Yashirish' : 'Hide HTML/CSS') : (isUz ? 'HTML & CSS' : 'HTML & CSS')}</button>
               <button id="btn-fullscreen-ide" class="btn-tool btn-fullscreen ${state.fullscreenIdeMode ? 'active' : ''}" title="${state.fullscreenIdeMode ? (isUz ? 'Kichraytirish (Esc)' : 'Exit Full Screen (Esc)') : (isUz ? 'To\'liq Ekran IDE rejimi' : 'Full Screen Dual IDE Mode')}">${state.fullscreenIdeMode ? '✕ ' + (isUz ? 'Kichraytirish' : 'Exit') : '⛶ ' + (isUz ? 'To\'liq Ekran' : 'Full Screen')}</button>
               <button id="btn-swap-panes" class="btn-tool ${state.panesSwapped ? 'active' : ''}" title="${isUz ? 'O\'ng va chap oynalar o\'rnini almashtirish' : 'Swap Editor and Preview panes'}">⇄ ${isUz ? 'Almashtirish' : 'Swap'}</button>
               <button id="btn-focus-mode" class="btn-tool ${state.focusIdeMode ? 'active' : ''}" title="${isUz ? 'Fokus rejimi' : 'Focus Mode'}">🔍 ${isUz ? 'Fokus' : 'Focus'}</button>
               <button id="btn-copy-code" class="btn-tool" title="Copy code">📋 ${t('copyBtn', state.lang)}</button>
               <button id="btn-tidy-code" class="btn-tool" title="Format code">🪄 ${t('tidyBtn', state.lang)}</button>
               <button id="btn-reset-code" class="btn-tool" title="Reset code">🔄 ${t('resetCode', state.lang)}</button>
+            </div>
+          </div>
+
+          <!-- Underlying HTML & CSS Sandbox Drawer (Toggleable with 1-click) -->
+          <div id="html-css-boilerplate-drawer" class="html-css-boilerplate-drawer ${state.showHtmlDrawer ? 'open' : ''}" style="${state.showHtmlDrawer ? '' : 'display:none;'}">
+            <div class="boilerplate-drawer-header">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-weight:700; color:#38bdf8; font-size:12px;">🌐 ${isUz ? 'Laboratoriya HTML & CSS Asosi (Boilerplate)' : 'Sandbox HTML & CSS Boilerplate'}</span>
+                <span class="badge-chip" style="font-size:10px; background:rgba(56,189,248,0.15); color:#38bdf8; padding:2px 6px; border-radius:4px; font-weight:700;">HTML5 + CSS3</span>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button id="btn-copy-boilerplate" class="btn-tool" style="font-size:11px;" title="${isUz ? 'Qolip koddan nusxa olish' : 'Copy boilerplate'}">📋 ${isUz ? 'Nusxalash' : 'Copy'}</button>
+                <button id="btn-close-boilerplate" class="btn-tool" style="font-size:11px;" title="${isUz ? 'Yopish' : 'Close'}">✕ ${isUz ? 'Yashirish' : 'Hide'}</button>
+              </div>
+            </div>
+            <div class="boilerplate-drawer-content">
+              <div class="boilerplate-pane">
+                <div class="boilerplate-title">📄 index.html</div>
+                <pre class="boilerplate-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="uz"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;JavaScript Sandbox&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="title"&gt;Salom JavaScript!&lt;/h1&gt;
+  &lt;div id="box"&gt;Interaktiv Quti&lt;/div&gt;
+  &lt;p&gt;Hisob: &lt;span id="count"&gt;0&lt;/span&gt;&lt;/p&gt;
+  &lt;button id="btn"&gt;Bosing! 🚀&lt;/button&gt;
+  &lt;canvas id="game-canvas" width="400" height="150"&gt;&lt;/canvas&gt;
+
+  &lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+              <div class="boilerplate-pane">
+                <div class="boilerplate-title">🎨 style.css</div>
+                <pre class="boilerplate-code"><code>body {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+  background: #0f172a;
+  color: #f8fafc;
+}
+#title {
+  color: #38bdf8;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+#box {
+  padding: 16px;
+  background: #1e293b;
+  border: 2px dashed #38bdf8;
+  border-radius: 8px;
+  margin: 12px 0;
+  transition: all 0.3s ease;
+}
+#btn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#btn:hover { background: #2563eb; }
+#game-canvas {
+  background: #090d16;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  margin-top: 12px;
+  display: block;
+}</code></pre>
+              </div>
             </div>
           </div>
 
@@ -718,6 +794,68 @@ function attachLessonEvents(lesson) {
       btn.style.borderColor = state.focusIdeMode ? '#f59e0b' : '';
     }
     playSound('click', state.audioEnabled);
+  });
+
+  // HTML & CSS Sandbox Boilerplate Drawer toggle
+  const btnToggleHtml = document.getElementById('btn-toggle-html-boilerplate');
+  const drawerEl = document.getElementById('html-css-boilerplate-drawer');
+  const btnCloseDrawer = document.getElementById('btn-close-boilerplate');
+  const btnCopyBoilerplate = document.getElementById('btn-copy-boilerplate');
+
+  function toggleHtmlDrawer() {
+    state.showHtmlDrawer = !state.showHtmlDrawer;
+    if (drawerEl) {
+      drawerEl.style.display = state.showHtmlDrawer ? 'flex' : 'none';
+      drawerEl.classList.toggle('open', state.showHtmlDrawer);
+    }
+    if (btnToggleHtml) {
+      btnToggleHtml.classList.toggle('active', state.showHtmlDrawer);
+      btnToggleHtml.innerHTML = state.showHtmlDrawer
+        ? `👁️ ${isUz ? 'HTML/CSS Yashirish' : 'Hide HTML/CSS'}`
+        : `🌐 ${isUz ? 'HTML & CSS' : 'HTML & CSS'}`;
+      btnToggleHtml.style.color = state.showHtmlDrawer ? '#38bdf8' : '';
+      btnToggleHtml.style.borderColor = state.showHtmlDrawer ? '#38bdf8' : '';
+    }
+    playSound('click', state.audioEnabled);
+  }
+
+  btnToggleHtml?.addEventListener('click', toggleHtmlDrawer);
+  btnCloseDrawer?.addEventListener('click', toggleHtmlDrawer);
+
+  btnCopyBoilerplate?.addEventListener('click', () => {
+    const fullBoilerplate = `<!-- index.html -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="title">Salom JavaScript!</h1>
+  <div id="box">Interaktiv Quti</div>
+  <p>Hisob: <span id="count">0</span></p>
+  <button id="btn">Bosing! 🚀</button>
+  <canvas id="game-canvas" width="400" height="150"></canvas>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+/* style.css */
+body { font-family: system-ui, sans-serif; padding: 20px; background: #0f172a; color: #f8fafc; }
+#title { color: #38bdf8; font-size: 22px; margin-bottom: 8px; }
+#box { padding: 16px; background: #1e293b; border: 2px dashed #38bdf8; border-radius: 8px; margin: 12px 0; transition: all 0.3s ease; }
+#btn { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+#btn:hover { background: #2563eb; }
+#game-canvas { background: #090d16; border: 1px solid #334155; border-radius: 6px; margin-top: 12px; display: block; }`;
+
+    navigator.clipboard?.writeText(fullBoilerplate).then(() => {
+      btnCopyBoilerplate.textContent = isUz ? '✓ Nusxalandi!' : '✓ Copied!';
+      setTimeout(() => {
+        btnCopyBoilerplate.textContent = isUz ? '📋 Nusxalash' : '📋 Copy';
+      }, 1500);
+    });
   });
 
   // Start Practice Action (Jump to Code Editor & turn on Direct Code mode)

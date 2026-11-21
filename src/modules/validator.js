@@ -3,16 +3,22 @@
  * Evaluates whether student HTML/CSS code meets the learning objectives.
  */
 
-export function validateChallenge(code, rules = []) {
-  if (!code || typeof code !== 'string') {
+export function validateChallenge(code, rules = [], lang = 'en') {
+  const codeStr = (typeof code === 'object' && code !== null)
+    ? (code[lang] || code.en || code.uz || Object.values(code)[0] || '')
+    : code;
+
+  if (!codeStr || typeof codeStr !== 'string') {
     return {
       passed: false,
-      feedback: ['Write some code in the editor to start the challenge!']
+      feedback: [lang === 'uz' ? 'Topshiriqni boshlash uchun muharrirga kod yozing!' : 'Write some code in the editor to start the challenge!']
     };
   }
 
-  // Strip HTML comments so instructions inside comments don't trigger false passes
-  const codeWithoutComments = code.replace(/<!--[\s\S]*?-->/g, '');
+  // Strip HTML and CSS comments so instructions inside comments don't trigger false passes
+  const codeWithoutComments = codeStr
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '');
   const feedback = [];
 
   for (const rule of rules) {
@@ -75,7 +81,8 @@ export function validateChallenge(code, rules = []) {
 
       case 'custom': {
         try {
-          passed = !!rule.check(code);
+          const fn = rule.check || rule.fn;
+          passed = typeof fn === 'function' ? !!fn(codeWithoutComments) : false;
         } catch {
           passed = false;
         }
@@ -87,7 +94,11 @@ export function validateChallenge(code, rules = []) {
     }
 
     if (!passed) {
-      feedback.push(rule.message || 'Check this mission requirement!');
+      let msg = rule.feedback || rule.message || (lang === 'uz' ? "Ushbu topshiriq talabini tekshirib ko'ring!" : 'Check this mission requirement!');
+      if (typeof msg === 'object' && msg !== null) {
+        msg = msg[lang] || msg.uz || msg.en || Object.values(msg)[0];
+      }
+      feedback.push(msg);
     }
   }
 
