@@ -119,10 +119,11 @@ export function formatProse(str) {
   if (str === null || str === undefined) return '';
   const text = String(str);
   return escapeHtml(text)
+    .replace(/\\n/g, '<br>')
+    .replace(/\n/g, '<br>')
     .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\n/g, '<br>');
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
 }
 
 export function initApp() {
@@ -843,6 +844,159 @@ function renderTagShowcase(lesson) {
   `;
 }
 
+export function getWhyNecessary(step, lesson, lang = 'uz') {
+  if (step.whyNecessary) {
+    return localize(step.whyNecessary, lang);
+  }
+  const text = (step.part || step.code || step.role?.en || '').toLowerCase();
+  
+  if (text.includes('doctype')) {
+    return lang === 'uz'
+      ? "Agar bu yozilmasa, brauzer 1995-yilgi 'Quirks Mode'ga o'tadi va zamonaviy CSS flex/grid stillarini buzib tashlaydi!"
+      : "Without DOCTYPE, browsers switch to 1995 Quirks Mode, breaking modern CSS layouts!";
+  }
+  if (text.includes('title')) {
+    return lang === 'uz'
+      ? "Foydalanuvchi qaysi saytda turganini bilishi, xatcho'p (bookmark) qila olishi va Google qidiruvida chiqishi uchun shart!"
+      : "Essential for browser tab identification, bookmarking, and search engine optimization!";
+  }
+  if (text.includes('head')) {
+    return lang === 'uz'
+      ? "Sahifaning ko'rinmas miyasi: kodirovkalar, shriftlar va CSS stillarini bog'lash uchun zarur!"
+      : "The document's invisible brain: required for metadata, fonts, stylesheets, and browser settings!";
+  }
+  if (text.includes('meta') || text.includes('utf-8')) {
+    return lang === 'uz'
+      ? "O'zbekcha 'o', 'g'' harflari, emojilar to'g'ri chiqishi (UTF-8) va telefon ekranlariga moslashish uchun shart!"
+      : "Ensures international character encoding (UTF-8) and mobile screen responsiveness!";
+  }
+  if (text.includes('controls')) {
+    return lang === 'uz'
+      ? "Agar 'controls' yozilmasa, foydalanuvchi videoni yoqa olmaydi — video qora quti bo'lib qotib turadi!"
+      : "Without 'controls', the player has no Play/Pause/Volume buttons and remains an unplayable black frame!";
+  }
+  if (text.includes('video')) {
+    return lang === 'uz'
+      ? "Saytda video fayllarni (MP4/WebM) brauzerda to'g'ridan-to'g'ri ijro etishning yagona rasmiy HTML5 usuli!"
+      : "The official HTML5 method to embed and stream playable video in modern web pages.";
+  }
+  if (text.includes('audio')) {
+    return lang === 'uz'
+      ? "Saytga musiqa, podkast yoki ovozli effektlar qo'shish uchun rasmiy pleyer konteyneri."
+      : "Official HTML5 audio player for music, speech, and sound effects.";
+  }
+  if (text.includes('width')) {
+    return lang === 'uz'
+      ? "Video yoki rasm butun ekranga toshib ketmasligi va sahifa tartibini buzmasligi uchun qat'iy o'lcham beradi."
+      : "Constrains media dimensions so large files do not break the page layout.";
+  }
+  if (text.includes('linear-gradient')) {
+    return lang === 'uz'
+      ? "Sayt kartochkalari va foniga zamonaviy kiber-dizayn va silliq ranglar o'tishini beradi."
+      : "Creates modern smooth color gradients along directional vectors for rich visual polish.";
+  }
+  if (text.includes('radial-gradient')) {
+    return lang === 'uz'
+      ? "Yassi doiralarni 3D hajmli shar yoki yorug'lik effektiga aylantirish uchun zarur."
+      : "Radiates color outward from focal points to create 3D spherical depth and glowing orbs.";
+  }
+  if (text.includes('conic-gradient')) {
+    return lang === 'uz'
+      ? "Radar, soat yoki kiber reaktorlar uchun 360 darajali aylanma ranglar g'ildiragini yasaydi."
+      : "Sweeps color around a 360° pivot point for radars, clocks, and circular meters.";
+  }
+  if (text.includes('clip') || text.includes('text-fill-color')) {
+    return lang === 'uz'
+      ? "Harflarning o'zini rang-barang gradient bilan porlatish imkonini beradi — sarlavhalar uchun ajoyib uslub!"
+      : "Clips the background gradient exclusively into text glyphs for glowing cyber headlines!";
+  }
+  if (text.includes('table') || text.includes('tr') || text.includes('td')) {
+    return lang === 'uz'
+      ? "Ma'lumotlar, jadvallar va narxlar ro'yxatini tartibli qator-ustun qilib taqdim etish uchun shart."
+      : "Essential for presenting structured tabular data, price matrixes, and financial rows.";
+  }
+  if (text.includes('header')) {
+    return lang === 'uz'
+      ? "Sayt logotipi va bosh brend sarlavhasini semantik ajratib ko'rsatish uchun zarur."
+      : "Semantically identifies the top branding and banner zone of the webpage.";
+  }
+  if (text.includes('nav')) {
+    return lang === 'uz'
+      ? "Foydalanuvchilar va qidiruv botlari sayt sahifalari bo'ylab erkin harakatlanishi uchun zarur."
+      : "Groups navigation links so screen readers and users can navigate the site.";
+  }
+  if (text.includes('main')) {
+    return lang === 'uz'
+      ? "Sahifaning yagona bosh mazmunini ko'rsatadi — qidiruv tizimlari asosiy kontentni aynan shu yerdan o'qiydi!"
+      : "Declares the unique central content of the document; critical for accessibility and SEO.";
+  }
+  if (text.includes('footer')) {
+    return lang === 'uz'
+      ? "Mualliflik huquqi (copyright), ijtimoiy tarmoqlar va aloqa havolalarini joylashtirish uchun standart qism."
+      : "Standard base for copyright, legal disclaimers, contact links, and site credits.";
+  }
+  if (text.includes('flex')) {
+    return lang === 'uz'
+      ? "Elementlarni bir qatorda yoki ustunda avtomatik tekislash va bo'sh joylarni taqsimlash uchun zarur."
+      : "Essential 1D layout mechanism for distributing space and aligning elements dynamically.";
+  }
+  if (text.includes('grid')) {
+    return lang === 'uz'
+      ? "Sahifani murakkab kiber-matritsa, 2 o'lchamli panjara qilib terish uchun asosiy vosita."
+      : "Defines 2D column and row layouts for sophisticated dashboards and app interfaces.";
+  }
+  if (text.includes('transition')) {
+    return lang === 'uz'
+      ? "Tugma va kartochkalar holati o'zgarganda sakrab emas, balki mayin va tabiiy harakatlanishi uchun zarur."
+      : "Smoothly interpolates CSS property changes over time so interactions feel polished and fluid.";
+  }
+  if (text.includes('animation') || text.includes('@keyframes')) {
+    return lang === 'uz'
+      ? "Elementlarni mustaqil harakatlantirish va sahifani jonlantirish uchun kerak."
+      : "Orchestrates continuous dynamic motion, spins, pulses, and lively cyber animations.";
+  }
+
+  const fallback = localize(step.effect || step.explanation || step.purpose || '', lang);
+  return lang === 'uz'
+    ? `Ushbu loyiha bosqichida to'g'ri natijaga erishish va ${fallback} imkoniyatini ta'minlash uchun zarur.`
+    : `Essential in this project stage to achieve proper styling and ensure ${fallback}.`;
+}
+
+function checkStepInCode(code, step) {
+  if (!code) return false;
+  const part = (step.part || step.code || '').trim().toLowerCase();
+  const c = code.toLowerCase();
+  
+  if (part.includes('doctype')) return c.includes('<!doctype') || c.includes('doctype');
+  if (part.includes('controls')) return c.includes('controls');
+  if (part.includes('<video')) return c.includes('<video');
+  if (part.includes('<audio')) return c.includes('<audio');
+  if (part.includes('width=')) return c.includes('width=') || c.includes('width:');
+  if (part.includes('linear-gradient')) return c.includes('linear-gradient');
+  if (part.includes('radial-gradient')) return c.includes('radial-gradient');
+  if (part.includes('conic-gradient')) return c.includes('conic-gradient');
+  if (part.includes('background-clip') || part.includes('clip: text')) return c.includes('background-clip') || c.includes('clip: text');
+  if (part.includes('<title')) return c.includes('<title');
+  if (part.includes('<head')) return c.includes('<head');
+  if (part.includes('<header')) return c.includes('<header');
+  if (part.includes('<nav')) return c.includes('<nav');
+  if (part.includes('<main')) return c.includes('<main');
+  if (part.includes('<footer')) return c.includes('<footer');
+  if (part.includes('<table')) return c.includes('<table');
+  if (part.includes('<tr')) return c.includes('<tr');
+  if (part.includes('<td')) return c.includes('<td');
+  if (part.includes('<th')) return c.includes('<th');
+  if (part.includes('<input')) return c.includes('<input');
+  if (part.includes('<details')) return c.includes('<details');
+  if (part.includes('<summary')) return c.includes('<summary');
+  
+  const tokens = part.replace(/[<>/;:"'()=]/g, ' ').split(/\s+/).filter(Boolean);
+  if (tokens.length > 0) {
+    return tokens.every(tok => c.includes(tok));
+  }
+  return c.includes(part);
+}
+
 function renderInteractiveMiniLab(lesson) {
   if (!lesson.anatomy || lesson.anatomy.length === 0) return '';
 
@@ -853,12 +1007,12 @@ function renderInteractiveMiniLab(lesson) {
         <div class="minilab-title-box">
           <span class="minilab-icon">🧪</span>
           <div>
-            <h3 class="minilab-title">${isUz ? "2-QADAM: Har Bir Turni Jonli Sinab Ko'rish Laboratoriyasi" : "STEP 2: Interactive Type-by-Type Live Sandbox"}</h3>
-            <p class="minilab-subtitle">${isUz ? "Istalgan tur tugmasini bosing, kodni o'zgartirib darhol jonli natijani ko'ring va kodingizga joylang!" : "Click each variant tab, tweak live code snippets, observe instant visual results, and inject into your code!"}</p>
+            <h3 class="minilab-title">${isUz ? "2-QADAM: Har Bir Turni O'zingiz Yozib Sinash Laboratoriyasi" : "STEP 2: Active-Coding Live Laboratory"}</h3>
+            <p class="minilab-subtitle">${isUz ? "Har bir element va xususiyatni o'zingiz yozing, jonli vizual natijani ko'ring va nega zarurligini jadvalda o'rganing!" : "Write each element and style yourself, observe responsive live output, and inspect why it's necessary in the project spec table!"}</p>
           </div>
         </div>
         <div class="minilab-stats-pill" id="minilab-stats-pill">
-          ⭐ <span id="minilab-stars-count">0</span> / ${lesson.anatomy.length} ${isUz ? "Sinov O'tdi" : "Variants Mastered"}
+          ⭐ <span id="minilab-stars-count">0</span> / ${lesson.anatomy.length} ${isUz ? "Sinov Muvaffaqiyatli" : "Variants Mastered"}
         </div>
       </div>
 
@@ -887,9 +1041,12 @@ function setupInteractiveMiniLab(lesson) {
 
   const isUz = state.lang === 'uz';
   let activeIndex = 0;
+  let activeViewMode = 'preview'; // 'preview' or 'table'
   const testedSteps = new Set();
+  const studentCodes = {}; // Persist student input per tab index
 
   function renderStage(idx) {
+    activeIndex = idx;
     const step = lesson.anatomy[idx];
     if (!step) return;
 
@@ -898,124 +1055,406 @@ function setupInteractiveMiniLab(lesson) {
     const explanation = localize(step.explanation || step.purpose || '', state.lang);
     const effect = localize(step.effect || step.purpose || '', state.lang);
 
-    let sampleStyle = '';
-    let innerText = '';
-
-    if (part.includes('linear-gradient')) {
-      sampleStyle = `background: ${part}; height: 110px; width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
-      innerText = `✨ ${role}`;
-    } else if (part.includes('radial-gradient')) {
-      sampleStyle = `background: ${part}; height: 110px; width: 110px; margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; box-shadow: 0 0 30px #00f2fe; text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
-      innerText = `🔮 3D ORB`;
-    } else if (part.includes('conic-gradient')) {
-      sampleStyle = `background: ${part}; height: 110px; width: 110px; margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; box-shadow: 0 0 25px rgba(255,0,122,0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.6);`;
-      innerText = `🌀 CONIC`;
-    } else if (part.includes('clip: text') || part.includes('background-clip')) {
-      sampleStyle = `background: linear-gradient(90deg, #ff007a, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 22px; font-weight: 900; letter-spacing: 2px; text-align: center;`;
-      innerText = `⚡ GRADIENT TEXT ⚡`;
-    } else {
-      sampleStyle = `padding: 16px; border-radius: 8px; font-weight: 700; color: #38bdf8; text-align: center; font-size: 14px;`;
-      innerText = `👉 ${role}`;
-    }
+    const currentCode = studentCodes[idx] !== undefined ? studentCodes[idx] : '';
 
     const stageEl = document.getElementById('minilab-stage');
     if (!stageEl) return;
 
     stageEl.innerHTML = `
       <div class="minilab-workspace">
+        <!-- LEFT: Active Student Code Studio -->
         <div class="minilab-left-panel">
           <div class="minilab-panel-badge">
-            <span>✏️ ${isUz ? 'Mini Kod Muharriri' : 'Mini Code Playground'}</span>
-            <span class="minilab-badge-step">${role}</span>
+            <span>✏️ ${isUz ? 'Jonli Kod Yozish Maydoni' : 'Active Coding Studio'}</span>
+            <span class="minilab-badge-step">${escapeHtml(role)}</span>
           </div>
-          <p class="minilab-panel-desc">${explanation}</p>
+          <p class="minilab-panel-desc">${formatProse(explanation)}</p>
+
+          <!-- Mission prompt -->
+          <div class="minilab-mission-prompt">
+            ✍️ <strong>${isUz ? "O'zingiz to'liq yozing:" : "Write the complete code:"}</strong>
+          </div>
+
+          <!-- Toggleable Syntax Hint Card -->
+          <div class="minilab-hint-box" id="minilab-hint-box">
+            <div class="minilab-hint-header">
+              <span>💡 ${isUz ? "Namuna Sintaksis (Ko'rsatma):" : "Syntax Example Reference:"}</span>
+              <button type="button" class="btn-minilab-hint-use" id="btn-use-hint" title="${isUz ? "Kodni maydonga nusxalash" : "Copy to code editor"}">
+                📋 ${isUz ? "Namunani Qo'yish" : "Use Example"}
+              </button>
+            </div>
+            <code class="minilab-hint-code">${escapeHtml(part)}</code>
+          </div>
+
+          <!-- Code Writing Editor Textarea -->
           <div class="minilab-input-wrap">
-            <label class="minilab-input-label">${isUz ? "Ushbu tur kodi (jonli o'zgartiring):" : "Type snippet (tweak live):"}</label>
-            <input type="text" id="minilab-code-input" class="minilab-code-input" value="${escapeHtml(part)}" spellcheck="false" />
+            <textarea id="minilab-code-input" class="minilab-code-input" rows="3" placeholder="${isUz ? "Kodni shu yerga to'liq o'zingiz yozing... (Yoki 'Namunani Qo'yish' tugmasini bosing)" : "Type the full code here... (Or click 'Use Example')"}" spellcheck="false">${escapeHtml(currentCode)}</textarea>
           </div>
+
+          <!-- Action Buttons -->
           <div class="minilab-actions-bar">
             <button type="button" id="btn-minilab-test" class="btn-minilab-test">
-              ⚡ ${isUz ? "Sinab Ko'rish" : "Test & Render"}
+              ⚡ ${isUz ? "Sinab Ko'rish" : "Test & Run"}
+            </button>
+            <button type="button" id="btn-minilab-clear" class="btn-tool" style="font-size: 11px;">
+              🔄 ${isUz ? "Tozalash" : "Clear"}
             </button>
             <button type="button" id="btn-minilab-insert" class="btn-minilab-insert" title="${isUz ? 'Ushbu kodni pastdagi asosiy muharrirga joylash' : 'Inject snippet into main code editor'}">
               📥 ${isUz ? "Kodinga Joylash" : "Insert to Code"}
             </button>
-            <span id="minilab-success-toast" class="minilab-toast hidden">
-              🎉 ${isUz ? "+1 Bonus Yulduz! Zo'r natija!" : "+1 Bonus Star! Excellent!"}
-            </span>
+            <span id="minilab-success-toast" class="minilab-toast hidden"></span>
           </div>
         </div>
 
+        <!-- RIGHT: Live Output & Why Necessary Spec Table -->
         <div class="minilab-right-panel">
           <div class="minilab-panel-badge">
-            <span>👁️ ${isUz ? 'Jonli Vizual Natija' : 'Live Render Output'}</span>
-            <span class="minilab-badge-live">LIVE CSS</span>
+            <div class="minilab-view-tabs">
+              <button type="button" id="tab-btn-preview" class="minilab-view-tab-btn ${activeViewMode === 'preview' ? 'active' : ''}">
+                👁️ ${isUz ? 'Jonli Vizual Natija' : 'Live Output'}
+              </button>
+              <button type="button" id="tab-btn-table" class="minilab-view-tab-btn ${activeViewMode === 'table' ? 'active' : ''}">
+                📋 ${isUz ? 'Nega Zarur? Jadvali' : 'Spec Table'}
+              </button>
+            </div>
+            <span class="minilab-badge-live" id="minilab-tech-badge">LIVE PREVIEW</span>
           </div>
-          <div class="minilab-preview-canvas">
-            <div id="minilab-target-element" style="${sampleStyle}">
-              ${innerText}
+
+          <!-- VIEW 1: Live Render Canvas -->
+          <div id="minilab-view-canvas-wrap" style="${activeViewMode === 'preview' ? 'display:block' : 'display:none'}">
+            <div class="minilab-preview-canvas" id="minilab-preview-canvas">
+              <!-- Dynamically rendered -->
+            </div>
+            <div class="minilab-effect-callout">
+              👉 <strong>${isUz ? "Natija:" : "Effect:"}</strong> <span>${formatProse(effect)}</span>
             </div>
           </div>
-          <div class="minilab-effect-callout">
-            👉 <strong>${isUz ? "Natija:" : "Effect:"}</strong> <span>${effect}</span>
+
+          <!-- VIEW 2: Spec & Why Necessary Table -->
+          <div id="minilab-view-table-wrap" style="${activeViewMode === 'table' ? 'display:block' : 'display:none'}">
+            <div class="minilab-spec-table-wrap" id="minilab-spec-table-container">
+              <!-- Dynamically populated table -->
+            </div>
           </div>
         </div>
       </div>
     `;
 
+    // Elements
     const inputEl = document.getElementById('minilab-code-input');
-    const targetEl = document.getElementById('minilab-target-element');
     const btnTest = document.getElementById('btn-minilab-test');
+    const btnClear = document.getElementById('btn-minilab-clear');
+    const btnUseHint = document.getElementById('btn-use-hint');
     const btnInsert = document.getElementById('btn-minilab-insert');
     const toast = document.getElementById('minilab-success-toast');
+    const tabBtnPreview = document.getElementById('tab-btn-preview');
+    const tabBtnTable = document.getElementById('tab-btn-table');
+    const previewWrap = document.getElementById('minilab-view-canvas-wrap');
+    const tableWrap = document.getElementById('minilab-view-table-wrap');
 
-    function applyMiniInput() {
-      if (!inputEl || !targetEl) return;
-      const val = inputEl.value.trim();
-      if (val.includes('-gradient')) {
-        targetEl.style.background = val;
-      } else if (val.includes(':')) {
-        targetEl.style.cssText += ';' + val;
+    // View switcher listeners
+    tabBtnPreview?.addEventListener('click', () => {
+      activeViewMode = 'preview';
+      tabBtnPreview.classList.add('active');
+      tabBtnTable?.classList.remove('active');
+      if (previewWrap) previewWrap.style.display = 'block';
+      if (tableWrap) tableWrap.style.display = 'none';
+      updateLiveStage();
+    });
+
+    tabBtnTable?.addEventListener('click', () => {
+      activeViewMode = 'table';
+      tabBtnTable.classList.add('active');
+      tabBtnPreview?.classList.remove('active');
+      if (previewWrap) previewWrap.style.display = 'none';
+      if (tableWrap) tableWrap.style.display = 'block';
+      updateSpecTable();
+    });
+
+    // Populate hint into code input
+    btnUseHint?.addEventListener('click', () => {
+      if (inputEl) {
+        inputEl.value = part;
+        studentCodes[idx] = part;
+        updateLiveStage();
+        updateSpecTable();
+        playSound('click', state.audioEnabled);
       }
-    }
+    });
 
-    inputEl?.addEventListener('input', applyMiniInput);
+    btnClear?.addEventListener('click', () => {
+      if (inputEl) {
+        inputEl.value = '';
+        studentCodes[idx] = '';
+        updateLiveStage();
+        updateSpecTable();
+        playSound('click', state.audioEnabled);
+      }
+    });
 
+    // Reactive typing
+    inputEl?.addEventListener('input', () => {
+      studentCodes[idx] = inputEl.value;
+      updateLiveStage();
+      updateSpecTable();
+    });
+
+    // Test & Validate Action
     btnTest?.addEventListener('click', () => {
-      applyMiniInput();
-      testedSteps.add(idx);
-      const statusIcon = document.getElementById('tab-status-' + idx);
-      if (statusIcon) statusIcon.textContent = '✓';
-      const counter = document.getElementById('minilab-stars-count');
-      if (counter) counter.textContent = testedSteps.size;
+      const code = inputEl ? inputEl.value.trim() : '';
+      const ok = checkStepInCode(code, step);
+      
+      if (ok || code.length > 0) {
+        testedSteps.add(idx);
+        const statusIcon = document.getElementById('tab-status-' + idx);
+        if (statusIcon) statusIcon.textContent = '✓';
+        const counter = document.getElementById('minilab-stars-count');
+        if (counter) counter.textContent = testedSteps.size;
 
-      if (toast) {
-        toast.textContent = isUz ? "+1 Bonus Yulduz! Zo'r natija!" : "+1 Bonus Star! Excellent!";
-        toast.classList.remove('hidden');
-        setTimeout(() => toast.classList.add('hidden'), 2500);
+        if (toast) {
+          toast.textContent = isUz ? "🎉 Barakalla! Kod to'g'ri yozildi va jonli ishga tushirildi! (+1 Yulduz)" : "🎉 Excellent! Code verified and live-rendered! (+1 Star)";
+          toast.className = 'minilab-toast success';
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+        playSound('star', state.audioEnabled);
+      } else {
+        if (toast) {
+          toast.textContent = isUz ? `💡 Maslahat: Kodingizda "${part}" qatnashishi kerak. "Namunani Qo'yish" tugmasiga qarang!` : `💡 Hint: Code should include "${part}". See example!`;
+          toast.className = 'minilab-toast warning';
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+        playSound('click', state.audioEnabled);
       }
-      playSound('star', state.audioEnabled);
+      updateLiveStage();
+      updateSpecTable();
     });
 
     btnInsert?.addEventListener('click', () => {
       const textarea = document.getElementById('code-textarea');
       if (textarea && inputEl) {
-        const val = inputEl.value.trim();
-        insertTextAtCursor(textarea, val.includes(';') ? val : val + ';');
+        const val = inputEl.value.trim() || part;
+        insertTextAtCursor(textarea, val.includes(';') || val.includes('>') ? val : val + ';');
         playSound('click', state.audioEnabled);
         if (toast) {
           toast.textContent = isUz ? "✓ Kodingizga qo'shildi!" : "✓ Inserted to editor!";
+          toast.className = 'minilab-toast success';
           toast.classList.remove('hidden');
           setTimeout(() => toast.classList.add('hidden'), 2000);
         }
       }
     });
+
+    // Updates live stage rendering
+    function updateLiveStage() {
+      const canvasEl = document.getElementById('minilab-preview-canvas');
+      const badgeEl = document.getElementById('minilab-tech-badge');
+      if (!canvasEl) return;
+
+      const code = inputEl ? inputEl.value.trim() : '';
+      const effectiveCode = code || part;
+
+      const isStructure = lesson.id === 'theme-2-structure' || effectiveCode.includes('<!DOCTYPE') || effectiveCode.includes('<head') || effectiveCode.includes('<title');
+      const isVideo = lesson.id === 'theme-19-video' || effectiveCode.includes('<video') || part.includes('video');
+      const isAudio = lesson.id === 'theme-18-audio' || effectiveCode.includes('<audio') || part.includes('audio');
+      const isGradient = effectiveCode.includes('-gradient') || part.includes('-gradient') || effectiveCode.includes('background-clip');
+
+      if (isStructure) {
+        if (badgeEl) badgeEl.textContent = 'BROWSER ENGINE HUD';
+        const hasDoctype = effectiveCode.toLowerCase().includes('<!doctype') || effectiveCode.toLowerCase().includes('doctype');
+        const hasCharset = effectiveCode.toLowerCase().includes('utf-8');
+        const hasTitle = effectiveCode.toLowerCase().includes('<title');
+        const titleMatch = effectiveCode.match(/<title>([\s\S]*?)<\/title>/i);
+        const tabTitle = titleMatch ? titleMatch[1].trim() : (hasTitle ? (isUz ? "Kiber Texnopark Portali" : "Cyber Technopark Portal") : (isUz ? "(Nomsiz Tab)" : "(Untitled Tab)"));
+        const hasHeader = effectiveCode.toLowerCase().includes('<header');
+        const hasNav = effectiveCode.toLowerCase().includes('<nav');
+        const hasMain = effectiveCode.toLowerCase().includes('<main');
+        const hasFooter = effectiveCode.toLowerCase().includes('<footer');
+
+        canvasEl.innerHTML = `
+          <div class="minilab-browser-hud">
+            <div class="minilab-browser-bar">
+              <div class="browser-dot-group">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+              </div>
+              <div class="minilab-browser-tab ${hasTitle ? 'active' : ''}">
+                <span>🌐</span> <span>${escapeHtml(tabTitle)}</span>
+              </div>
+              <div class="browser-url-bar">🔒 https://kiber-texnopark.uz/portal</div>
+            </div>
+            <div class="minilab-engine-matrix">
+              <div class="minilab-engine-card">
+                <div class="engine-card-label">📜 DOCTYPE Rejimi:</div>
+                <div class="engine-card-val ${hasDoctype ? 'active' : 'inactive'}">
+                  ${hasDoctype ? (isUz ? "🟢 HTML5 Standart Rejim (No Quirks)" : "🟢 Modern HTML5 Mode") : (isUz ? "🔴 Quirks Rejimi (1995-yilgi xatolar)" : "🔴 Quirks Mode (Legacy)")}
+                </div>
+              </div>
+              <div class="minilab-engine-card">
+                <div class="engine-card-label">🌐 Belgilar Kodirovkasi:</div>
+                <div class="engine-card-val ${hasCharset ? 'active' : 'inactive'}">
+                  ${hasCharset ? (isUz ? "🟢 UTF-8 Dunyo Kodirovkasi Faol" : "🟢 UTF-8 Active") : (isUz ? "⚪ Standart ANSI" : "⚪ Default ANSI")}
+                </div>
+              </div>
+              <div class="minilab-engine-card" style="grid-column: span 2;">
+                <div class="engine-card-label">🏛️ Semantik Xonalar Arxitekturasi:</div>
+                <div class="minilab-landmark-blocks">
+                  <span class="landmark-chip ${hasHeader ? 'active' : ''}">&lt;header&gt; ${hasHeader ? '✓' : ''}</span>
+                  <span class="landmark-chip ${hasNav ? 'active' : ''}">&lt;nav&gt; ${hasNav ? '✓' : ''}</span>
+                  <span class="landmark-chip ${hasMain ? 'active' : ''}">&lt;main&gt; ${hasMain ? '✓' : ''}</span>
+                  <span class="landmark-chip ${hasFooter ? 'active' : ''}">&lt;footer&gt; ${hasFooter ? '✓' : ''}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (isVideo) {
+        if (badgeEl) badgeEl.textContent = 'LIVE HTML5 VIDEO';
+        const hasControls = effectiveCode.toLowerCase().includes('controls');
+        const widthMatch = effectiveCode.match(/width=["']?(\d+)%?["']?/i);
+        const playerWidth = widthMatch ? (widthMatch[1] + (effectiveCode.includes('%') ? '%' : 'px')) : '320px';
+
+        canvasEl.innerHTML = `
+          <div class="minilab-video-wrap">
+            <video id="minilab-video-player" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" ${hasControls ? 'controls' : ''} style="width: ${playerWidth}; max-width: 100%; border-radius: 10px; background: #000; box-shadow: 0 8px 24px rgba(0,0,0,0.6);"></video>
+            <div class="minilab-status-alert ${hasControls ? 'success' : 'warning'}">
+              ${hasControls 
+                ? (isUz ? "🟢 Boshqaruv faol: Ijro (Play), Pauza, Ovoz va To'liq ekran tugmalari ishga tushdi!" : "🟢 Controls active: Play, Pause, Volume, and Fullscreen are operational!")
+                : (isUz ? "⚠️ controls atributi yo'q — video pleyer boshqaruvsiz qotib turibdi. Kodingizga 'controls' deb yozing!" : "⚠️ Missing controls attribute — video is frozen without user controls. Type 'controls' in your code!")}
+            </div>
+            <div class="minilab-video-ctrls-bar">
+              <button type="button" class="btn-video-test-action" id="btn-vid-toggle">▶️ Play / Pause</button>
+              <button type="button" class="btn-video-test-action" id="btn-vid-mute">🔊 Ovoz</button>
+            </div>
+          </div>
+        `;
+
+        const videoEl = document.getElementById('minilab-video-player');
+        const btnVidToggle = document.getElementById('btn-vid-toggle');
+        const btnVidMute = document.getElementById('btn-vid-mute');
+
+        btnVidToggle?.addEventListener('click', () => {
+          if (!videoEl) return;
+          if (videoEl.paused) { videoEl.play().catch(() => {}); } else { videoEl.pause(); }
+        });
+        btnVidMute?.addEventListener('click', () => {
+          if (!videoEl) return;
+          videoEl.muted = !videoEl.muted;
+          btnVidMute.textContent = videoEl.muted ? '🔇 Ovoz o\'chiq' : '🔊 Ovoz yoqiq';
+        });
+      } else if (isAudio) {
+        if (badgeEl) badgeEl.textContent = 'LIVE HTML5 AUDIO';
+        const hasControls = effectiveCode.toLowerCase().includes('controls');
+        canvasEl.innerHTML = `
+          <div style="padding: 16px; text-align: center; width: 100%;">
+            <audio id="minilab-audio-player" src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg" ${hasControls ? 'controls' : ''} style="width: 100%; max-width: 320px;"></audio>
+            <div class="minilab-status-alert ${hasControls ? 'success' : 'warning'}" style="margin-top: 10px;">
+              ${hasControls 
+                ? (isUz ? "🟢 Audio boshqaruvi tayyor: Play/Pause tugmalari faol!" : "🟢 Audio controls ready!")
+                : (isUz ? "⚠️ controls atributi yo'q — audio pleyer ko'rinmayapti!" : "⚠️ Missing controls attribute!")}
+            </div>
+          </div>
+        `;
+      } else if (isGradient) {
+        if (badgeEl) badgeEl.textContent = 'LIVE CSS GRADIENT';
+        if (effectiveCode.includes('radial-gradient')) {
+          canvasEl.innerHTML = `
+            <div style="background: ${effectiveCode.includes('radial-gradient') ? effectiveCode : 'radial-gradient(circle at 35% 35%, #00f2fe, #0284c7, #030712)'}; height: 120px; width: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: #fff; box-shadow: 0 0 35px #00f2fe;">
+              🔮 3D ORB
+            </div>
+          `;
+        } else if (effectiveCode.includes('conic-gradient')) {
+          canvasEl.innerHTML = `
+            <div style="background: ${effectiveCode.includes('conic-gradient') ? effectiveCode : 'conic-gradient(from 0deg, #ff007a, #7928ca, #00f2fe, #ff007a)'}; height: 120px; width: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; box-shadow: 0 0 25px rgba(255,0,122,0.4);">
+              🌀 RADAR
+            </div>
+          `;
+        } else if (effectiveCode.includes('clip: text') || effectiveCode.includes('background-clip')) {
+          canvasEl.innerHTML = `
+            <div style="background: linear-gradient(90deg, #ff007a, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 900; letter-spacing: 2px; text-align: center;">
+              ⚡ GRADIENT TEXT ⚡
+            </div>
+          `;
+        } else {
+          canvasEl.innerHTML = `
+            <div style="background: ${effectiveCode.includes('linear-gradient') ? effectiveCode : 'linear-gradient(45deg, #ff007a, #7928ca)'}; height: 110px; width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+              ✨ ${escapeHtml(role)}
+            </div>
+          `;
+        }
+      } else if (effectiveCode.startsWith('<') || effectiveCode.includes('</') || effectiveCode.includes('/>')) {
+        if (badgeEl) badgeEl.textContent = 'LIVE HTML';
+        canvasEl.innerHTML = `
+          <div style="width: 100%; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; text-align: center;">
+            ${effectiveCode}
+          </div>
+        `;
+      } else {
+        if (badgeEl) badgeEl.textContent = 'LIVE CSS';
+        canvasEl.innerHTML = `
+          <div style="padding: 16px; border-radius: 8px; font-weight: 700; color: #38bdf8; text-align: center; font-size: 14px; background: rgba(56, 189, 248, 0.08); border: 1px dashed #38bdf8; width: 100%;">
+            👉 ${escapeHtml(role)}: <code>${escapeHtml(effectiveCode)}</code>
+          </div>
+        `;
+      }
+    }
+
+    // Updates specification & "Why Necessary?" table
+    function updateSpecTable() {
+      const tableContainer = document.getElementById('minilab-spec-table-container');
+      if (!tableContainer) return;
+
+      const code = inputEl ? inputEl.value.trim() : '';
+
+      tableContainer.innerHTML = `
+        <table class="minilab-spec-table">
+          <thead>
+            <tr>
+              <th>${isUz ? "Teg / Parametr" : "Tag / Property"}</th>
+              <th>${isUz ? "Nima Qiladi? (Funksiyasi)" : "Function & What It Does"}</th>
+              <th>${isUz ? "Loyiha Uchun Nega Zarur?" : "Why Necessary in Project?"}</th>
+              <th>${isUz ? "Kodingizdagi Holat" : "Status in Code"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${lesson.anatomy.map((s, sIdx) => {
+              const sPart = s.part || s.code || '';
+              const sRole = localize(s.role || s.name || '', state.lang);
+              const sExp = localize(s.explanation || s.purpose || '', state.lang);
+              const sWhy = getWhyNecessary(s, lesson, state.lang);
+              const isMatch = checkStepInCode(code, s);
+
+              return `
+                <tr class="${sIdx === activeIndex ? 'active-row' : ''}">
+                  <td>
+                    <code class="minilab-spec-code">${escapeHtml(sPart)}</code>
+                    <div style="font-weight: 700; color: #cbd5e1; font-size: 11px;">${escapeHtml(sRole)}</div>
+                  </td>
+                  <td>${formatProse(sExp)}</td>
+                  <td><span class="minilab-spec-why">${formatProse(sWhy)}</span></td>
+                  <td>
+                    ${isMatch 
+                      ? `<span class="status-pill-active">🟢 ${isUz ? "Faol (Yozildi)" : "Active in code"}</span>`
+                      : `<span class="status-pill-pending">⚪ ${isUz ? "Hali yozilmagan" : "Not in code yet"}</span>`}
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    updateLiveStage();
+    updateSpecTable();
   }
 
   // Render initial active step
   renderStage(0);
 
-  // Wire tab buttons
+  // Wire step selector tabs
   const tabBtns = container.querySelectorAll('.minilab-tab-btn');
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {

@@ -4366,8 +4366,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **Input** — bu foydalanuvchilar o\'z ismlarini yozishi, rang tanlashi yoki maxfiy parollarni kiritishi mumkin bo\'lgan maydonchadir!'
       },
       whatIsATag: {
-        en: `1. \`<input type="text">\` creates a blank typing box.\\n2. \`<input type="color">\` pops open a rainbow color palette.\\n3. Notice: \`<input>\` is a void tag with NO closing tag!`,
-        uz: `1. \`<input type="text">\` matn yozish qutisini yaratadi.\\n2. \`<input type="color">\` kamalak rang palitrasini ochadi.\\n3. E'tibor bering: \`<input>\` bo'sh teg bo'lib, yopiluvchi juftga ega emas!`
+        en: `1. \`<input type="text">\` creates a blank typing box.
+2. \`<input type="color">\` pops open a rainbow color palette.
+3. Notice: \`<input>\` is a void tag with NO closing tag!`,
+        uz: `1. \`<input type="text">\` matn yozish qutisini yaratadi.
+2. \`<input type="color">\` kamalak rang palitrasini ochadi.
+3. E'tibor bering: \`<input>\` bo'sh teg bo'lib, yopiluvchi juftga ega emas!`
       }
     },
     summary: {
@@ -4585,8 +4589,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **Audio** tegi veb-sahifangizga ovoz effektlari, fon musiqasi yoki podkastlar qo\'shib jon bag\'ishlaydi!'
       },
       whatIsATag: {
-        en: `1. \`<audio>\` is the sound player container.\\n2. The \`controls\` attribute draws the play/pause button and volume bar.\\n3. \`src="..."\` tells the browser where the sound file lives.`,
-        uz: `1. \`<audio>\` — ovoz pleyerining qobig'i.\\n2. \`controls\` atributi tinglash/to'xtatish tugmasi va ovoz balandligini chiqaradi.\\n3. \`src="..."\` ovoz fayli manzilini ko'rsatadi.`
+        en: `1. \`<audio>\` is the sound player container.
+2. The \`controls\` attribute draws the play/pause button and volume bar.
+3. \`src="..."\` tells the browser where the sound file lives.`,
+        uz: `1. \`<audio>\` — ovoz pleyerining qobig'i.
+2. \`controls\` atributi tinglash/to'xtatish tugmasi va ovoz balandligini chiqaradi.
+3. \`src="..."\` ovoz fayli manzilini ko'rsatadi.`
       }
     },
     summary: {
@@ -4627,16 +4635,18 @@ export const LESSONS = [
     },
     anatomy: [
       {
-        part: '<audio',
-        role: { en: 'Audio Container', uz: 'Audio qobig\'i' },
-        explanation: { en: 'Initializes the sound player in HTML.', uz: 'HTML da ovoz pleyerini boshlaydi.' },
+        part: '<audio src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg">\n</audio>',
+        role: { en: 'Audio Container (<audio>)', uz: 'Audio qobig\'i (<audio>)' },
+        explanation: { en: 'Initializes the sound player in HTML and attaches the audio file.', uz: 'HTML da ovoz pleyerini boshlaydi va audio fayl manzilini (src) ulaydi.' },
+        whyNecessary: { en: 'The standard HTML5 element to stream audio on websites.', uz: 'Saytda musiqa yoki ovozli fayllarni ijro etishning rasmiy HTML5 tegi.' },
         effect: { en: 'Audio player element', uz: 'Audio pleyer elementi' },
         visualPreview: '<div class="mini-canvas">🎵 Sound Player Container</div>'
       },
       {
-        part: 'controls',
-        role: { en: 'Player Controls', uz: 'Boshqaruv tugmalari' },
+        part: '<audio controls src="https://actions.google.com/sounds/v1/science_fiction/alien_hum.ogg">\n</audio>',
+        role: { en: 'Player Controls (controls)', uz: 'Boshqaruv tugmalari (controls)' },
         explanation: { en: 'Displays Play/Pause, scrubber, and volume buttons.', uz: 'Play/Pause, vaqt chizig\'i va ovoz tugmalarini ko\'rsatadi.' },
+        whyNecessary: { en: 'Without controls, the user cannot start playback or adjust volume!', uz: 'Agar controls bo\'lmasa, foydalanuvchi musiqani yoqa olmaydi yoki ovozini o\'zgartira olmaydi!' },
         effect: { en: 'Reveals UI controls', uz: 'Tugmalarni ko\'rsatadi' },
         visualPreview: '<div class="mini-canvas">▶️ ⏸️ 🔊 Player Bar</div>'
       }
@@ -4715,8 +4725,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **Video** tegi veb-sahifangizga filmlar, o\'yin videolari yoki animatsiyalarni joylashtirish imkonini beradi!'
       },
       whatIsATag: {
-        en: `1. \`<video>\` creates the cinema screen.\\n2. \`controls\` enables play, pause, and full-screen buttons.\\n3. \`width="320"\` sizes the movie screen.`,
-        uz: `1. \`<video>\` — kino ekranini yaratadi.\\n2. \`controls\` — ijro etish, to'xtatish va butun ekranga ochish tugmalarini faollashtiradi.\\n3. \`width="320"\` — video ekranining kengligini belgilaydi.`
+        en: `1. \`<video>\` creates the cinema screen.
+2. \`controls\` enables play, pause, and full-screen buttons.
+3. \`width="320"\` sizes the movie screen.`,
+        uz: `1. \`<video>\` — kino ekranini yaratadi.
+2. \`controls\` — ijro etish, to'xtatish va butun ekranga ochish tugmalarini faollashtiradi.
+3. \`width="320"\` — video ekranining kengligini belgilaydi.`
       }
     },
     summary: {
@@ -4742,14 +4756,18 @@ export const LESSONS = [
     },
     anatomy: [
       {
-        part: '<video',
+        part: '<video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" width="320">\n</video>',
         role: {
-          en: 'Video Element',
-          uz: 'Video elementi'
+          en: 'Video Element (<video>)',
+          uz: 'Video elementi (<video>)'
         },
         explanation: {
-          en: 'Initializes the video display canvas in the browser.',
-          uz: 'Brauzerda video ko\'rsatish ekranini boshlaydi.'
+          en: 'Initializes the video display canvas and loads the source video file.',
+          uz: 'Brauzerda video ko\'rsatish ekranini ochadi va video fayl manzilini (src) yuklaydi.'
+        },
+        whyNecessary: {
+          en: 'Without <video>, browsers cannot display MP4 or WebM media — only static text would remain!',
+          uz: '<video> tegisiz brauzer videofayllarni ekranda ko\'rsata olmaydi — saytda faqat statik matn qoladi!'
         },
         effect: {
           en: 'Places video screen',
@@ -4758,20 +4776,44 @@ export const LESSONS = [
         visualPreview: '<div class="mini-canvas">🎬 Cinema Screen Placed</div>'
       },
       {
-        part: 'controls',
+        part: '<video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" width="320">\n</video>',
         role: {
-          en: 'Video Controls',
-          uz: 'Video boshqaruvi'
+          en: 'Video Controls (controls)',
+          uz: 'Video boshqaruvi (controls)'
         },
         explanation: {
-          en: 'Provides play/pause, time seeker, and fullscreen options.',
-          uz: 'Ijro etish, to\'xtatish va to\'liq ekranga ochish imkoniyatlarini beradi.'
+          en: 'Enables play/pause buttons, progress seeker, volume slider, and fullscreen controls.',
+          uz: 'Ijro etish, to\'xtatish, ovoz balandligi va to\'liq ekranga ochish tugmalarini faollashtiradi.'
+        },
+        whyNecessary: {
+          en: 'Without "controls", the user cannot click Play, Pause, or adjust volume — it remains a frozen black box!',
+          uz: '"controls" atributi bo\'lmasa, foydalanuvchi videoni yoqa olmaydi — video qora quti bo\'lib qotib turadi!'
         },
         effect: {
-          en: 'Enables video controls',
+          en: 'Enables interactive video controls',
           uz: 'Video boshqaruv tugmalarini chiqaradi'
         },
         visualPreview: '<div class="mini-canvas">▶️ Fullscreen &amp; Play Controls</div>'
+      },
+      {
+        part: 'width="320"',
+        role: {
+          en: 'Video Width (width="320")',
+          uz: 'Video kengligi (width="320")'
+        },
+        explanation: {
+          en: 'Sizes the video container to exactly 320 pixels wide so it fits your page layout cleanly.',
+          uz: 'Video ekranining kengligini 320 piksel qilib cheklaydi, shunda sahifa tartibi buzilmaydi.'
+        },
+        whyNecessary: {
+          en: 'Without explicit width, high-resolution 4K video will overflow the browser boundaries and break the design!',
+          uz: 'Kenglik berilmasa, 4K yoki katta videolar butun sayt dizaynini yorib tashqariga toshib ketadi!'
+        },
+        effect: {
+          en: 'Constrains player to 320px',
+          uz: 'Video ixcham 320px o\'lchamga keladi'
+        },
+        visualPreview: '<div class="mini-canvas">📏 320px Width Lock</div>'
       }
     ],
     listOfTags: [
@@ -4885,8 +4927,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **<details>** — bu sehrli maxfiy konvert! Foydalanuvchi uning sarlavhasi (**<summary>**) ustiga bosmaguncha yopiq turadi va hech qanday JavaScriptsiz ochiladi!'
       },
       whatIsATag: {
-        en: `1. \`<details>\` is the expandable secret box.\\n2. \`<summary>\` is the clickable question or title.\\n3. Whatever you write below \`<summary>\` is kept hidden until clicked!`,
-        uz: `1. \`<details>\` — ochiluvchi maxfiy quti.\\n2. \`<summary>\` — bosiladigan sarlavha yoki savol.\\n3. \`<summary>\` dan pastda yozgan hamma narsangiz bosilmaguncha yashirin turadi!`
+        en: `1. \`<details>\` is the expandable secret box.
+2. \`<summary>\` is the clickable question or title.
+3. Whatever you write below \`<summary>\` is kept hidden until clicked!`,
+        uz: `1. \`<details>\` — ochiluvchi maxfiy quti.
+2. \`<summary>\` — bosiladigan sarlavha yoki savol.
+3. \`<summary>\` dan pastda yozgan hamma narsangiz bosilmaguncha yashirin turadi!`
       }
     },
     summary: {
@@ -6155,8 +6201,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **Transition** — bu CSS ning yumshoq moyidir! Usiz rang va harakatlar chiroqni o\'chirgandek bir zumda sakraydi. Transition bilan esa hamma narsa xuddi asaldek mayin sirpanadi.'
       },
       whatIsATag: {
-        en: `1. \`transition: all 0.3s ease;\` tells the browser: "When any style changes, glide it over 0.3 seconds!"\\n2. \`0.3s\` is the duration (a third of a second).\\n3. \`ease\` makes the start and stop feel natural and soft.`,
-        uz: `1. \`transition: all 0.3s ease;\` — brauzerga: "Har qanday uslub o'zgarganda, uni 0.3 soniya davomida mayin o'zgartir!" deydi.\\n2. \`0.3s\` — davomiylik vaqti.\\n3. \`ease\` — harakatni tabiiy va yumshoq qiladi.`
+        en: `1. \`transition: all 0.3s ease;\` tells the browser: "When any style changes, glide it over 0.3 seconds!"
+2. \`0.3s\` is the duration (a third of a second).
+3. \`ease\` makes the start and stop feel natural and soft.`,
+        uz: `1. \`transition: all 0.3s ease;\` — brauzerga: "Har qanday uslub o'zgarganda, uni 0.3 soniya davomida mayin o'zgartir!" deydi.
+2. \`0.3s\` — davomiylik vaqti.
+3. \`ease\` — harakatni tabiiy va yumshoq qiladi.`
       }
     },
     summary: {
@@ -6344,8 +6394,12 @@ export const LESSONS = [
         uz: 'Oddiy inson tilida, **CSS Filtrlari** — bu fotosuratlarning sehrli effektlaridir! Ular yordamida shakllarni xiralashtirish, oq-qora qilish yoki atrofida porlovchi neon auralar hosil qilish mumkin.'
       },
       whatIsATag: {
-        en: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` creates a glowing colored halo that perfectly outlines emojis and transparent PNGs!\\n2. \`filter: blur(4px);\` softens things like frosted glass.\\n3. \`filter: grayscale(100%);\` turns everything black & white.`,
-        uz: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` — emoji yoki shaffof rasmlar atrofida neon nur taratadi!\\n2. \`filter: blur(4px);\` — xuddi muzlagan oynadek xiralashtiradi.\\n3. \`filter: grayscale(100%);\` — hamma ranglarni oq-qora qiladi.`
+        en: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` creates a glowing colored halo that perfectly outlines emojis and transparent PNGs!
+2. \`filter: blur(4px);\` softens things like frosted glass.
+3. \`filter: grayscale(100%);\` turns everything black & white.`,
+        uz: `1. \`filter: drop-shadow(0 0 20px #2dd4bf);\` — emoji yoki shaffof rasmlar atrofida neon nur taratadi!
+2. \`filter: blur(4px);\` — xuddi muzlagan oynadek xiralashtiradi.
+3. \`filter: grayscale(100%);\` — hamma ranglarni oq-qora qiladi.`
       }
     },
     summary: {

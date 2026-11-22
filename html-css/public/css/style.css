@@ -4348,21 +4348,66 @@ body.fullscreen-ide-body .sidebar {
   font-size: 13px;
   line-height: 1.5;
   color: #e2e8f0;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
+}
+
+.minilab-mission-prompt {
+  font-size: 12px;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+/* Syntax Hint Card */
+.minilab-hint-box {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.minilab-hint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
+
+.minilab-hint-code {
+  font-family: var(--font-code, monospace);
+  font-size: 12px;
+  color: #f8fafc;
+  background: #060910;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.btn-minilab-hint-use {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-minilab-hint-use:hover {
+  background: #38bdf8;
+  color: #0b0f19;
 }
 
 .minilab-input-wrap {
   margin-bottom: 12px;
-}
-
-.minilab-input-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  color: #94a3b8;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .minilab-code-input {
@@ -4429,8 +4474,21 @@ body.fullscreen-ide-body .sidebar {
 .minilab-toast {
   font-size: 12px;
   font-weight: 700;
-  color: #fbbf24;
+  padding: 4px 10px;
+  border-radius: 6px;
   animation: fadeInToast 0.3s ease;
+}
+
+.minilab-toast.success {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid #10b981;
+}
+
+.minilab-toast.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid #f59e0b;
 }
 
 .minilab-toast.hidden {
@@ -4442,12 +4500,41 @@ body.fullscreen-ide-body .sidebar {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* View Switcher Tabs */
+.minilab-view-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.minilab-view-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.minilab-view-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+
+.minilab-view-tab-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
 .minilab-preview-canvas {
   background: #030508;
   border: 1px solid #1e293b;
   border-radius: 10px;
   padding: 16px;
-  min-height: 150px;
+  min-height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4461,4 +4548,277 @@ body.fullscreen-ide-body .sidebar {
   background: rgba(255, 255, 255, 0.03);
   padding: 8px 12px;
   border-radius: 6px;
+}
+
+/* Simulated Browser Window Chrome (X-Ray HUD) */
+.minilab-browser-hud {
+  width: 100%;
+  background: #0a0e17;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.minilab-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #111827;
+  padding: 8px 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.browser-dot-group {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.browser-dot.red { background: #ef4444; }
+.browser-dot.yellow { background: #f59e0b; }
+.browser-dot.green { background: #10b981; }
+
+.minilab-browser-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0b0f19;
+  border: 1px solid #334155;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.minilab-browser-tab.active {
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.browser-url-bar {
+  flex: 1;
+  background: #070a11;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.minilab-engine-matrix {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.minilab-engine-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+
+.engine-card-label {
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.engine-card-val {
+  font-weight: 800;
+}
+
+.engine-card-val.active {
+  color: #10b981;
+}
+
+.engine-card-val.inactive {
+  color: #f43f5e;
+}
+
+.minilab-landmark-blocks {
+  grid-column: span 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.landmark-chip {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  background: #1e293b;
+  color: #64748b;
+  border: 1px solid #334155;
+  transition: all 0.2s;
+}
+
+.landmark-chip.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+/* Live Video Player Wrapper & Controls */
+.minilab-video-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.minilab-video-ctrls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.btn-video-test-action {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-video-test-action:hover {
+  background: #334155;
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.minilab-status-alert {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.minilab-status-alert.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.minilab-status-alert.warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Spec & Why Necessary Table */
+.minilab-spec-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  background: #080c14;
+  max-height: 280px;
+}
+
+.minilab-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+}
+
+.minilab-spec-table th {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 800;
+  border-bottom: 1px solid #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.minilab-spec-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.minilab-spec-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.minilab-spec-table tr.active-row td {
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.minilab-spec-code {
+  font-family: var(--font-code, monospace);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.minilab-spec-why {
+  color: #fbbf24;
+  font-size: 11px;
+}
+
+.status-pill-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid #10b981;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+
+.status-pill-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border: 1px solid #475569;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 10.5px;
+  white-space: nowrap;
 }
